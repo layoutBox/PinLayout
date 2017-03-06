@@ -14,6 +14,15 @@ import UIKit
  
     - Implement Layout + Layout operator
  
+    - layout.snapTopLeft(to: .bottomRight, of: view2)
+    - layout.snapTopLeft(to: .bottomRight, of: view2)
+    - layout.snapTopLeft(to: view2, .bottomRight)
+    - layout.topLeft(to: .bottomRight, of: view2)
+    - layout.topLeft(view2.bottomRight) -> Ne fonctionne pas si pas le même parent!
+    - layout.snapTop(to: .bottom, of: view2)
+    - layout.top(to: .bottom, of: view2)
+ 
+ 
     - Implement 
             - marginHorizontal
             - marginVertical
@@ -147,16 +156,16 @@ public extension UIView {
         return Layout(view: self)
     }
     
-//    func layout(_ positionning: Layout) {
-//        positionning.apply(onView: self)
-//    }
+    func layout(with layout: Layout) {
+        layout.apply(onView: self)
+    }
 }
 
 
 public class Layout {
     static var logConflicts = true
 
-    fileprivate let view: UIView?
+    fileprivate let view: UIView
     
     fileprivate var top: CGFloat?
     fileprivate var left: CGFloat?
@@ -180,7 +189,7 @@ public class Layout {
     fileprivate var bottomInset: CGFloat?
     fileprivate var rightInset: CGFloat?
     
-    public init (view: UIView? = nil) {
+    public init (view: UIView/*? = nil*/) {
         self.view = view
     }
     
@@ -219,92 +228,130 @@ public class Layout {
     
     @discardableResult
     public func topLeft(_ point: CGPoint) -> Layout {
-        return topLeft(x: point.x, y: point.y)
+        return setTopLeft(x: point.x, y: point.y, setterContext: "topLeft(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func topLeft(x: CGFloat, y: CGFloat) -> Layout {
-        return setTopLeft(x: x, y: y, setterContext: "topLeft(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func topLeft(x: CGFloat, y: CGFloat) -> Layout {
+//        return setTopLeft(x: x, y: y, setterContext: "topLeft(x: \(x), y:\(y))")
+//    }
     
     @discardableResult
     public func topCenter(_ point: CGPoint) -> Layout {
-        return topCenter(x: point.x, y: point.y)
+        return setTopCenter(x: point.x, y: point.y, setterContext: "topCenter(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func topCenter(x: CGFloat, y: CGFloat) -> Layout {
-        return setTopCenter(x: x, y: y, setterContext: "topCenter(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func topCenter(x: CGFloat, y: CGFloat) -> Layout {
+//        return setTopCenter(x: x, y: y, setterContext: "topCenter(x: \(x), y:\(y))")
+//    }
     
     @discardableResult
     public func topRight(_ point: CGPoint) -> Layout {
-        return topRight(x: point.x, y: point.y)
+        return setTopRight(x: point.x, y: point.y, setterContext: "topRight(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func topRight(x: CGFloat, y: CGFloat) -> Layout {
-        return setTopRight(x: x, y: y, setterContext: "topRight(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func topRight(x: CGFloat, y: CGFloat) -> Layout {
+//        return setTopRight(x: x, y: y, setterContext: "topRight(x: \(x), y:\(y))")
+//    }
     
     @discardableResult
     public func leftCenter(_ point: CGPoint) -> Layout {
-        return leftCenter(x: point.x, y: point.y)
+        return setLeftCenter(x: point.x, y: point.y, setterContext: "leftCenter(CGPoint(\(point.x), \(point.y)))")
+    }
+
+//    @discardableResult
+//    public func leftCenter(x: CGFloat, y: CGFloat) -> Layout {
+//        return setLeftCenter(x: x, y: y, setterContext: "leftCenter(x: \(x), y:\(y))")
+//    }
+    
+    @discardableResult
+    public func centers(_ point: CGPoint) -> Layout {
+        return setCenters(x: point.x, y: point.y, setterContext: "centers(CGPoint(\(point.x), \(point.y)))")
+    }
+    
+    @discardableResult
+    public func centers(of relativeView: UIView) -> Layout {        
+        if let layoutSuperview = validateLayoutSuperview(setterContext: "centers(of: \(view))") {
+            if let relativeSuperview = relativeView.superview {
+                let center: CGPoint
+                if layoutSuperview == relativeSuperview {
+                    center = relativeView.centers   // same parent => no coordinates conversion required.
+                } else {
+                    center = relativeSuperview.convert(relativeView.centers, to: layoutSuperview)
+                }
+                setCenters(x: center.x, y: center.y, setterContext: "centers(of: \(view))")
+            } else {
+                warn("relative view's superview is nil", setterContext: "centers(of: \(view))")
+            }
+        }
+        return self
     }
 
     @discardableResult
-    public func leftCenter(x: CGFloat, y: CGFloat) -> Layout {
-        return setLeftCenter(x: x, y: y, setterContext: "leftCenter(\(x), \(y))")
+    public func centers() -> Layout {
+        if let layoutSuperview = validateLayoutSuperview(setterContext: "centers()") {
+            let center = layoutSuperview.center
+            setCenters(x: center.x, y: center.y, setterContext: "centers()")
+        }
+        return self
     }
     
-    // TODO center!!!
-//    var centers: CGPoint {
-//        get { return CGPoint(x: hCenter, y: vCenter) }
-//        set {
-//            left = newValue.x - (width / 2)
-//            top = newValue.y - (width / 2)
-//        }
+    fileprivate func validateLayoutSuperview(setterContext: @autoclosure () -> String) -> UIView? {
+        if let parentView = view.superview {
+            return parentView
+        } else {
+            warn("Layout's view must be added to a UIView before being layouted using this method.", setterContext: setterContext)
+            return nil
+        }
+    }
+
+    
+//    @discardableResult
+//    public func centers(x: CGFloat, y: CGFloat) -> Layout {
+//        return setCenters(x: x, y: y, setterContext: "centers(x: \(x), y:\(y))")
 //    }
 
     @discardableResult
     public func rightCenter(_ point: CGPoint) -> Layout {
-        return rightCenter(x: point.x, y: point.y)
+        return setRightCenter(x: point.x, y: point.y, setterContext: "rightCenter(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func rightCenter(x: CGFloat, y: CGFloat) -> Layout {
-        return setRightCenter(x: x, y: y, setterContext: "rightCenter(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func rightCenter(x: CGFloat, y: CGFloat) -> Layout {
+//        return setRightCenter(x: x, y: y, setterContext: "rightCenter(x: \(x), y:\(y))")
+//    }
     
     @discardableResult
     public func bottomLeft(_ point: CGPoint) -> Layout {
-        return bottomLeft(x: point.x, y: point.y)
+        return setBottomLeft(x: point.x, y: point.y, setterContext: "bottomLeft(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func bottomLeft(x: CGFloat, y: CGFloat) -> Layout {
-        return setBottomLeft(x: x, y: y, setterContext: "bottomLeft(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func bottomLeft(x: CGFloat, y: CGFloat) -> Layout {
+//        return setBottomLeft(x: x, y: y, setterContext: "bottomLeft(x: \(x), y:\(y))")
+//    }
 
     @discardableResult
     public func bottomCenter(_ point: CGPoint) -> Layout {
-        return bottomCenter(x: point.x, y: point.y)
+        return setBottomCenter(x: point.x, y: point.y, setterContext: "bottomCenter(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func bottomCenter(x: CGFloat, y: CGFloat) -> Layout {
-        return setBottomCenter(x: x, y: y, setterContext: "bottomCenter(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func bottomCenter(x: CGFloat, y: CGFloat) -> Layout {
+//        return setBottomCenter(x: x, y: y, setterContext: "bottomCenter(x: \(x), y:\(y))")
+//    }
     
     @discardableResult
     public func bottomRight(_ point: CGPoint) -> Layout {
-        return bottomRight(x: point.x, y: point.y)
+        return setBottomRight(x: point.x, y: point.y, setterContext: "bottomRight(CGPoint(\(point.x), \(point.y)))")
     }
     
-    @discardableResult
-    public func bottomRight(x: CGFloat, y: CGFloat) -> Layout {
-        return setBottomRight(x: x, y: y, setterContext: "bottomRight(\(x), \(y))")
-    }
+//    @discardableResult
+//    public func bottomRight(x: CGFloat, y: CGFloat) -> Layout {
+//        return setBottomRight(x: x, y: y, setterContext: "bottomRight(x: \(x), y:\(y))")
+//    }
     
     // RELATIVE POSITION
     public enum HorizontalAlignment {
@@ -598,7 +645,7 @@ public class Layout {
     }
     
     fileprivate func apply() {
-        guard let view = view else { return }
+        //guard let view = view else { return }
         apply(onView: view)
     }
     
@@ -623,7 +670,7 @@ public class Layout {
             } else if bottom != nil {
                 // bottom is set => adjust the origin and the height
                 newRect.origin.y = applyMarginsAndInsets(top: top)
-                newRect.size.height = applyTopBottomInsets(bottom! - top)
+                newRect.size.height = applyMarginsAndInsets(bottom: bottom! - newRect.origin.y)
             } else if height != nil {
                 // height is set => adjust the origin and the height
                 newRect.origin.y = applyMarginsAndInsets(top: top)
@@ -676,7 +723,7 @@ public class Layout {
             } else if right != nil {
                 // right is set => adjust the origin and the width
                 newRect.origin.x = applyMarginsAndInsets(left: left)
-                newRect.size.width = right! - newRect.origin.x - (rightMargin ?? 0) - (rightInset ?? 0)
+                newRect.size.width = applyMarginsAndInsets(right: right!) - newRect.origin.x//! - newRect.origin.x - (rightMargin ?? 0) - (rightInset ?? 0)
             } else if width != nil {
                 // width is set => adjust the origin and the height
                 newRect.origin.x = applyMarginsAndInsets(left: left)
@@ -826,6 +873,13 @@ extension Layout {
     }
     
     @discardableResult
+    fileprivate func setCenters(x: CGFloat, y: CGFloat, setterContext: @autoclosure () -> String) -> Layout {
+        setHorizontalCenter(x, setterContext: setterContext)
+        setVerticalCenter(y, setterContext: setterContext)
+        return self
+    }
+    
+    @discardableResult
     fileprivate func setRightCenter(x: CGFloat, y: CGFloat, setterContext: @autoclosure () -> String) -> Layout {
         setRightCoordinate(x, setterContext: setterContext)
         setVerticalCenter(y, setterContext: setterContext)
@@ -911,8 +965,16 @@ extension Layout {
         return top + (topMargin ?? 0) + (topInset ?? 0)
     }
     
+    fileprivate func applyMarginsAndInsets(bottom: CGFloat) -> CGFloat {
+        return bottom -  (bottomMargin ?? 0) - (bottomInset ?? 0)
+    }
+    
     fileprivate func applyMarginsAndInsets(left: CGFloat) -> CGFloat {
         return left + (leftMargin ?? 0) + (leftInset ?? 0)
+    }
+    
+    fileprivate func applyMarginsAndInsets(right: CGFloat) -> CGFloat {
+        return right - (rightMargin ?? 0) - (rightInset ?? 0)
     }
     
     fileprivate func applyTopBottomInsets(_ height: CGFloat) -> CGFloat {

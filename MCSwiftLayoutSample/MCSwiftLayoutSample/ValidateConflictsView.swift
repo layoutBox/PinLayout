@@ -32,6 +32,6 @@ class ValidateConflictsView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        topLeftView.layout.right(10).width(20).topLeft(x: 10, y: 10).left(10)
+        topLeftView.layout.right(10).width(20).top(10).left(10).left(10)
      }
 }

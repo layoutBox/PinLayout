@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.backgroundColor = UIColor.white
         window!.rootViewController = UINavigationController(rootViewController: MenuViewController())
         window!.makeKeyAndVisible()
-        
+
         return true
     }
 }
-

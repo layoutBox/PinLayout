@@ -15,6 +15,7 @@ enum Page: Int {
     
     case chainedLayout
     
+    case bothEdgesSnapped
     case marginsAndPaddingLeftWidth
     case marginsAndPaddingLeftRight
     
@@ -27,8 +28,9 @@ enum Page: Int {
         case .relativePositions:          return "Test Relative"
         case .multiRelativePositions:     return "Test Multiple Relatives"
         case .chainedLayout:              return "Chained Layout"
-        case .marginsAndPaddingLeftWidth: return "Test margings and paddings - Left+Width"
-        case .marginsAndPaddingLeftRight: return "Test margings and paddings - Left+Right"
+        case .bothEdgesSnapped:           return "NOT USED YET"
+        case .marginsAndPaddingLeftWidth: return "topLeft & width - Test margings and paddings"
+        case .marginsAndPaddingLeftRight: return "topLeft & bottomRight - Test margings and paddings"
         case .validateConflicts:          return "Validate properties conflicts"
         case .count:                             return "Unknown"
         }
@@ -68,6 +70,8 @@ extension MenuViewController: MenuViewDelegate {
             controller = MultiRelativeViewController()
         case .chainedLayout:
             controller = ChainedLayoutViewController()
+        case .bothEdgesSnapped:
+            controller = BothEdgesSnappedViewController()
         case .marginsAndPaddingLeftWidth:
             controller = MarginsAndPaddingsLeftWidthViewController()
         case .marginsAndPaddingLeftRight:

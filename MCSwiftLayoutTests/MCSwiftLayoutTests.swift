@@ -10,20 +10,25 @@ import XCTest
 @testable import MCSwiftLayout
 
 class MCSwiftLayoutTests: XCTestCase {
+    var viewController: UIViewController!
+    var rootView: UIView!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+        
+        viewController = UIViewController()
+        
+        rootView = UIView()
+        rootView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        viewController.view.addSubview(rootView)
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let child1 = UIView()
+        rootView.addSubview(child1)
+        
+        child1.layout.centers(of: rootView)
+        print("child1.frame: \(child1.frame)")
     }
     
     func testPerformanceExample() {

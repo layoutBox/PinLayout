@@ -6,6 +6,7 @@
 //  Copyright (c) 2017 Mirego. All rights reserved.
 //
 import UIKit
+import MCSwiftLayout
 
 class BothEdgesSnappedView: UIView {
     private let contentScrollView = UIScrollView()
@@ -33,31 +34,37 @@ class BothEdgesSnappedView: UIView {
 //    private let leftRightMarginsRightInsetView = BasicView(text: "LM-RM RI", color: UIColor.purple.withAlphaComponent(0.6))
 //    private let leftRightMarginsLeftRightInsetView = BasicView(text: "LM-RM LI-RI", color: UIColor.purple.withAlphaComponent(0.4))
     
-    var childLevel1: UIView!
-    var anotherChildLevel1: UIView!
-    var childLevel2: UIView!
-    var anotherChildLevel2: UIView!
+    var rootView: UILabel!
+    var aView: UILabel!
+    var aViewChild: UILabel!
+    
+    var bView: UILabel!
+    var bViewChild: UILabel!
     
     init() {
         super.init(frame: .zero)
         
-        backgroundColor = .white
+        backgroundColor = .black
         
-        childLevel1 = UIView()
-        childLevel1.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        addSubview(childLevel1)
+        rootView = UILabel()
+        setup(rootView, color: .white, text: "")
+        addSubview(rootView)
         
-        anotherChildLevel1 = UIView()
-        anotherChildLevel1.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
-        addSubview(anotherChildLevel1)
+        aView = UILabel()
+        setup(aView, color: UIColor.red.withAlphaComponent(0.5), text: "View A")
+        rootView.addSubview(aView)
         
-        childLevel2 = UIView()
-        childLevel1.backgroundColor = UIColor.green.withAlphaComponent(0.5)
-        childLevel1.addSubview(childLevel2)
+        aViewChild = UILabel()
+        setup(aViewChild, color: UIColor.red.withAlphaComponent(1), text: "View A Child")
+        aView.addSubview(aViewChild)
         
-        anotherChildLevel2 = UIView()
-        anotherChildLevel2.backgroundColor = UIColor.yellow.withAlphaComponent(0.5)
-        anotherChildLevel1.addSubview(anotherChildLevel2)
+        bView = UILabel()
+        setup(bView, color: UIColor.blue.withAlphaComponent(0.5), text: "View B")
+        rootView.addSubview(bView)
+        
+        bViewChild = UILabel()
+        setup(bViewChild, color: UIColor.blue.withAlphaComponent(0.7), text: "View B Child")
+        bView.addSubview(bViewChild)
         
 //        contentScrollView.backgroundColor = .yellow
 //        addSubview(contentScrollView)
@@ -105,63 +112,96 @@ class BothEdgesSnappedView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        childLevel1.frame = CGRect(x: 10, y: 20, width: 40, height: 60)
-//        childLevel2.frame = CGRect(x: 10, y: 20, width: 20, height: 40)
-//        anotherChildLevel1.frame = CGRect(x: 10, y: 10, width: 30, height: 50)
-//        childLevel2.layout.centers(of: anotherChildLevel1)
+        print("\n")
         
-//        childLevel1.frame = CGRect(x: 10, y: 20, width: 40, height: 60)
-//        childLevel2.frame = CGRect(x: 10, y: 20, width: 20, height: 40)
-//        anotherChildLevel1.frame = CGRect(x: 10, y: 10, width: 30, height: 50)
-//        
-//        anotherChildLevel1.layout.centers(of: childLevel2)
+        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        
+        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
+        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+        
+        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
+        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
+        
+        // topLeft
+//        aView.layout.topLeft()                    // CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0)
+        aViewChild.layout.topLeft(.topLeft, of: aView)  //(of: aView)      // CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)
+        aViewChild.layout.topLeft(of: aView)      // CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)
+//        aView.layout.topLe
+//        aViewChild.layout.topLeft(of: bView)      // CGRect(x: 20.0, y: 100.0, width: 50.0, height: 30.0)
+//        bView.layout.topLeft(of: aViewChild)      // CGRect(x: 150.0, y: 120.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.topLeft(of: aViewChild) // CGRect(x: -10.0, y: -80.0, width: 60.0, height: 20.0)
+        
+        // topCenter
+//        aView.layout.topCenter()                      // CGRect(x: 150.0, y: 0.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.topCenter(of: aView)        //CGRect(x: 25.0, y: 0.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.topCenter(of: bView)        //CGRect(x: 50.0, y: 100.0, width: 50.0, height: 30.0)
+//        bView.layout.topCenter(of: aViewChild)        //CGRect(x: 120.0, y: 120.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.topCenter(of: aViewChild)   //CGRect(x: -15.0, y: -80.0, width: 60.0, height: 20.0)
+ 
+        // topRight
+//        aView.layout.topRight()                      //CGRect(x: 300.0, y: 0.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.topRight(of: aView)        //GRect(x: 50.0, y: 0.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.topRight(of: bView)        //CGRect(x: 80.0, y: 100.0, width: 50.0, height: 30.0)
+//        bView.layout.topRight(of: aViewChild)        //CGRect(x: 90.0, y: 120.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.topRight(of: aViewChild)   //CGRect(x: -20.0, y: -80.0, width: 60.0, height: 20.0)
+        
+        // leftCenter
+//        aView.layout.leftCenter()                    //CGRect(x: 0.0, y: 170.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.leftCenter(of: aView)      //CGRect(x: 0.0, y: 15.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.leftCenter(of: bView)      //CGRect(x: 20.0, y: 125.0, width: 50.0, height: 30.0)
+//        bView.layout.leftCenter(of: aViewChild)      //CGRect(x: 150.0, y: 95.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.leftCenter(of: aViewChild) //CGRect(x: -10.0, y: -75.0, width: 60.0, height: 20.0)
 
-        childLevel1.frame = CGRect(x: 10, y: 20, width: 40, height: 60)
-        childLevel2.frame = CGRect(x: 10, y: 20, width: 30, height: 40)
-        anotherChildLevel1.frame = CGRect(x: 10, y: 80, width: 30, height: 50)
-        anotherChildLevel2.frame = CGRect(x: 0, y: 0, width: 20, height: 10)
-        
-        
-        anotherChildLevel2.layout.centers(of: childLevel2)
+        // Centers
+//        aView.layout.centers()                    //CGRect(x: 150.0, y: 170.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.centers(of: aView)      //CGRect(x: 25.0, y: 15.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.centers(of: bView)      //CGRect(x: 50.0, y: 125.0, width: 50.0, height: 30.0)
+//        bView.layout.centers(of: aViewChild)      //CGRect(x: 120.0, y: 95.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.centers(of: aViewChild) //CGRect(x: -15.0, y: -75.0, width: 60.0, height: 20.0)
     
-        print(anotherChildLevel2.frame)
-        
-//        let leftPosition: CGFloat = 0
-//
-//        contentScrollView.layout.topLeft(CGPoint(x: 0, y: 0)).width(width).height(height).topInset(64)
-//        
-//        descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-//        descriptionLabel.layout.topLeft(CGPoint(x: leftPosition, y: 10))
-//        
-//        // No margins
-//        let rightPosition: CGFloat = 70
-//        //var index = 0
-//        //var nextBottomPosition: CGFloat = descriptionLabel.bottom + 30
-//        noMarginsNoPaddings.layout.topLeft(descriptionLabel.bottomLeft).bottomRight(x: descriptionLabel.bottom + 30, y: rightPosition)
-//        
-//        noMarginsLeftInsetView.layout.topLeft(noMarginsNoPaddings.bottomLeft).bottomRight(x: noMarginsNoPaddings.bottom + 30, y: rightPosition).leftInset(10)
-//        noMarginsRightInsetView.layout.topLeft(noMarginsLeftInsetView.bottomLeft).bottomRight(x: noMarginsLeftInsetView.bottom + 30, y: rightPosition).rightInset(10)
-//        noMarginsLeftRightInsetView.layout.topLeft(noMarginsRightInsetView.bottomLeft).bottomRight(x: noMarginsRightInsetView.bottom + 30, y: rightPosition).leftInset(10).rightInset(10)
-//
-//        // Left margin
-//        leftMarginView.layout2.top(noMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).leftMargin(10)
-//        leftMarginLeftPaddingView.layout2.top(leftMarginView.bottom).left(leftPosition).width(70).leftMargin(10).leftInset(10)
-//        leftMarginRightInsetView.layout2.top(leftMarginLeftInsetView.bottom).left(leftPosition).width(70).leftMargin(10).RightInset(10)
-//        leftMarginLeftRightInsetView.layout2.top(leftMarginRightInsetView.bottom).left(leftPosition).width(70).leftMargin(10).leftInset(10).RightInset(10)
-//        
-//        // Right margin
-//        rigthMarginView.layout2.top(leftMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).rightMargin(10)
-//        rigthMarginLeftInsetView.layout2.top(rigthMarginView.bottom).left(leftPosition).width(70).rightMargin(10).leftInset(10)
-//        rigthMarginRightInsetView.layout2.top(rigthMarginleftInsetView.bottom).left(leftPosition).width(70).rightMargin(10).RightInset(10)
-//        rigthMarginLeftRightInsetView.layout2.top(rigthMarginRightInsetView.bottom).left(leftPosition).width(70).rightMargin(10).leftInset(10).RightInset(10)
-//        
-//        // Left and right margins
-//        leftRightMarginsView.layout2.top(rigthMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).leftMargin(10).rightMargin(10)
-//        leftRightMarginsleftInsetView.layout2.top(leftRightMarginsView.bottom).left(leftPosition).width(70).leftMargin(10).rightMargin(10).leftInset(10)
-//        leftRightMarginsRightInsetView.layout2.top(leftRightMarginsleftInsetView.bottom).left(leftPosition).width(70).leftMargin(10).rightMargin(10).RightInset(10)
-//        leftRightMarginsLeftRightInsetView.layout2.top(leftRightMarginsRightInsetView.bottom).left(leftPosition).width(70).leftMargin(10).rightMargin(10).leftInset(10).RightInset(10)
-        
-//        contentScrollView.contentSize = CGSize(width: width, height: leftRightMarginsLeftRightInsetView.bottom)
-//        contentScrollView.contentInset = UIEdgeInsets.zero
+        // rightCenter
+//        aView.layout.rightCenter()                    //CGRect(x: 300.0, y: 170.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.rightCenter(of: aView)      //CGRect(x: 50.0, y: 15.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.rightCenter(of: bView)      //CGRect(x: 80.0, y: 125.0, width: 50.0, height: 30.0)
+//        bView.layout.rightCenter(of: aViewChild)      //CGRect(x: 90.0, y: 95.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.rightCenter(of: aViewChild) //CGRect(x: -20.0, y: -75.0, width: 60.0, height: 20.0)
+
+        // bottomLeft
+//        aView.layout.bottomLeft()                    //CGRect(x: 0.0, y: 340.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.bottomLeft(of: aView)      //CGRect(x: 0.0, y: 30.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.bottomLeft(of: bView)      //CGRect(x: 20.0, y: 150.0, width: 50.0, height: 30.0)
+//        bView.layout.bottomLeft(of: aViewChild)      //CGRect(x: 150.0, y: 70.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.bottomLeft(of: aViewChild) //CGRect(x: -10.0, y: -70.0, width: 60.0, height: 20.0)
+
+        // bottomCenter
+//        aView.layout.bottomCenter()                    //CGRect(x: 150.0, y: 340.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.bottomCenter(of: aView)      //CGRect(x: 25.0, y: 30.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.bottomCenter(of: bView)      //CGRect(x: 50.0, y: 150.0, width: 50.0, height: 30.0)
+//        bView.layout.bottomCenter(of: aViewChild)      //CGRect(x: 120.0, y: 70.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.bottomCenter(of: aViewChild) //CGRect(x: -15.0, y: -70.0, width: 60.0, height: 20.0)
+
+        // bottomRight
+//        aView.layout.bottomRight()                    //CGRect(x: 300.0, y: 340.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.bottomRight(of: aView)      //CGRect(x: 50.0, y: 30.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.bottomRight(of: bView)      //CGRect(x: 80.0, y: 150.0, width: 50.0, height: 30.0)
+//        bView.layout.bottomRight(of: aViewChild)      //CGRect(x: 90.0, y: 70.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.bottomRight(of: aViewChild) //CGRect(x: -20.0, y: -70.0, width: 60.0, height: 20.0)
+
+        printViewFrame(aView, name: "aView")
+        printViewFrame(aViewChild, name: "aViewChild")
+        printViewFrame(bView, name: "bView")
+        printViewFrame(bViewChild, name: "bViewChild")
+    }
+    
+    fileprivate func setup(_ view: UILabel, color: UIColor, text: String) {
+        view.text = text
+        view.font = UIFont.systemFont(ofSize: 6)
+        view.backgroundColor = color
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    fileprivate func printViewFrame(_ view: UIView, name: String) {
+        print("\(name): CGRect(x: \(view.frame.origin.x), y: \(view.frame.origin.y), width: \(view.frame.size.width), height: \(view.frame.size.height))")
     }
 }

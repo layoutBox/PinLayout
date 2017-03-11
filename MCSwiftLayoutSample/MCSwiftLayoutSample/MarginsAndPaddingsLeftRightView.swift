@@ -35,13 +35,12 @@ class MarginsAndPaddingsLeftRightView: UIView {
     private let leftRightMarginsLeftRightInsetView = BasicView(text: "LM-RM LI-RI", color: UIColor.purple.withAlphaComponent(0.4))
 
 //    TODO
-        private let noMarginsNoPaddings2 = BasicView(text: "70x30", color: UIColor.black)
-        private let topMarginView = BasicView(text: "TM", color: UIColor.orange.withAlphaComponent(1))
-        private let topMarginTopPaddingView = BasicView(text: "TM TP", color: UIColor.orange.withAlphaComponent(0.8))
-        private let topMarginBottomPaddingView = BasicView(text: "TM BP", color: UIColor.orange.withAlphaComponent(0.6))
-        private let topMarginTopBottomPaddingView = BasicView(text: "TM TP-BP", color: UIColor.orange.withAlphaComponent(0.4))
+    private let noMarginsNoPaddings2 = BasicView(text: "70x30", color: UIColor.black)
+    private let topMarginView = BasicView(text: "TM", color: UIColor.orange.withAlphaComponent(1))
+    private let topMarginTopPaddingView = BasicView(text: "TM TP", color: UIColor.orange.withAlphaComponent(0.8))
+    private let topMarginBottomPaddingView = BasicView(text: "TM BP", color: UIColor.orange.withAlphaComponent(0.6))
+    private let topMarginTopBottomPaddingView = BasicView(text: "TM TP-BP", color: UIColor.orange.withAlphaComponent(0.4))
 
-    
     init() {
         super.init(frame: .zero)
         

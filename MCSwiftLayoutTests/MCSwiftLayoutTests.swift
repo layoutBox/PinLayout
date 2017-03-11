@@ -27,7 +27,7 @@ class MCSwiftLayoutTests: XCTestCase {
         let child1 = UIView()
         rootView.addSubview(child1)
         
-        child1.layout.centers(of: rootView)
+        child1.layout.center(of: rootView)
         print("child1.frame: \(child1.frame)")
     }
     

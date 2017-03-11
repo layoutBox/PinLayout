@@ -54,6 +54,11 @@ class MenuViewController: UIViewController {
         view = MenuView()
         mainView.delegate = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        didSelect(page: .bothEdgesSnapped)
+    }
 }
 
 // MARK: MenuViewDelegate

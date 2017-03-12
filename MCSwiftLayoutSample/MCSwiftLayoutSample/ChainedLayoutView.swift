@@ -75,13 +75,13 @@ class ChainedLayoutView: UIView {
         //        topRightView.bottomRight = centerView.topRight
 
         //bottomLeftView.layout2.topLeft(centerView.bottomLeft).margins(10)
-        bottomLeftView.layout.topLeft(centerView.bottomLeft).height(50).topMargin(10).bottomMargin(10)
-        bottomCenterView.layout.topCenter(centerView.bottomCenter).height(50).topMargin(10).bottomMargin(10)
-        bottomRightView.layout.topRight(centerView.bottomRight).height(50).topMargin(10).bottomMargin(10)
+        bottomLeftView.layout.pinTopLeft(to: centerView.bottomLeft).height(50).topMargin(10).bottomMargin(10)
+        bottomCenterView.layout.pinCenter(to: centerView.bottomCenter).height(50).topMargin(10).bottomMargin(10)
+        bottomRightView.layout.pinTopRight(to: centerView.bottomRight).height(50).topMargin(10).bottomMargin(10)
         
-        rightTopView.layout.topLeft(centerView.topRight).width(50).leftMargin(10).rightMargin(10)
-        rightCenterView.layout.leftCenter(centerView.rightCenter).height(50).leftMargin(10).rightMargin(10)
-        rightBottomView.layout.bottomLeft(centerView.bottomRight).height(50).leftMargin(10).rightMargin(10)
+        rightTopView.layout.pinTopLeft(to: centerView.topRight).width(50).leftMargin(10).rightMargin(10)
+        rightCenterView.layout.pinLeftCenter(to: centerView.rightCenter).height(50).leftMargin(10).rightMargin(10)
+        rightBottomView.layout.pinBottomLeft(to: centerView.bottomRight).height(50).leftMargin(10).rightMargin(10)
         
 //
 //        leftTopView.topRight = centerView.topLeft

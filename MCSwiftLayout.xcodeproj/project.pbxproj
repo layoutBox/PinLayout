@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2439CC311E6659FA003326FB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC301E6659FA003326FB /* Layout.swift */; };
+		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
+		246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
 		249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */; };
 		249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E88B11042FE48DD3D4E7EB0C /* Pods_MCSwiftLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB717599553AA71EE659C312 /* Pods_MCSwiftLayoutTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,12 +28,17 @@
 
 /* Begin PBXFileReference section */
 		2439CC301E6659FA003326FB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgeCoordinateSpec.swift; sourceTree = "<group>"; };
+		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCSwiftLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSwiftLayout.h; sourceTree = "<group>"; };
 		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249EFE831E64FB4C00165E39 /* MCSwiftLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSwiftLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSwiftLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		657A2A825B5BD607ACB09F58 /* Pods-MCSwiftLayoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB717599553AA71EE659C312 /* Pods_MCSwiftLayoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCSwiftLayoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8C9302287EF4331340F627C /* Pods-MCSwiftLayoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,18 +54,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */,
+				E88B11042FE48DD3D4E7EB0C /* Pods_MCSwiftLayoutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		138A1F602470415292B7194B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB717599553AA71EE659C312 /* Pods_MCSwiftLayoutTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		249EFE701E64FB4C00165E39 = {
 			isa = PBXGroup;
 			children = (
 				249EFE7C1E64FB4C00165E39 /* MCSwiftLayout */,
 				249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
+				8604B3F1C9C7A0EB2F11356F /* Pods */,
+				138A1F602470415292B7194B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,9 +103,20 @@
 			isa = PBXGroup;
 			children = (
 				249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */,
+				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
+				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
 			);
 			path = MCSwiftLayoutTests;
+			sourceTree = "<group>";
+		};
+		8604B3F1C9C7A0EB2F11356F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				657A2A825B5BD607ACB09F58 /* Pods-MCSwiftLayoutTests.debug.xcconfig */,
+				E8C9302287EF4331340F627C /* Pods-MCSwiftLayoutTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 249EFE911E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutTests" */;
 			buildPhases = (
+				DD0B0B702D32991A998E967B /* [CP] Check Pods Manifest.lock */,
 				249EFE7F1E64FB4C00165E39 /* Sources */,
 				249EFE801E64FB4C00165E39 /* Frameworks */,
 				249EFE811E64FB4C00165E39 /* Resources */,
+				45B171B50A18EC68ECE6BBC9 /* [CP] Embed Pods Frameworks */,
+				876430984866C52BFD6C79B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,6 +230,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45B171B50A18EC68ECE6BBC9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/MCSwiftLayoutSample/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		876430984866C52BFD6C79B8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/MCSwiftLayoutSample/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD0B0B702D32991A998E967B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		249EFE751E64FB4C00165E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -210,6 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */,
+				246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */,
 				249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +419,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MCSwiftLayout/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,6 +441,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MCSwiftLayout/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -367,6 +452,7 @@
 		};
 		249EFE921E64FB4C00165E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 657A2A825B5BD607ACB09F58 /* Pods-MCSwiftLayoutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
@@ -380,6 +466,7 @@
 		};
 		249EFE931E64FB4C00165E39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8C9302287EF4331340F627C /* Pods-MCSwiftLayoutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;

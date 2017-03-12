@@ -7,17 +7,28 @@
 //
 import UIKit
 
-class BasicView: UILabel {
+class BasicView: UIView {
+    fileprivate let label = UILabel()
+    
     init(text: String? = nil, color: UIColor) {
         super.init(frame: .zero)
 
-        self.text = text
-        font = UIFont.systemFont(ofSize: 7)
-        textColor = .white
         backgroundColor = color
+        
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: 7)
+        label.textColor = .white
+        label.sizeToFit()
+        addSubview(label)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+            
+        label.layout.top(0).left(0)
     }
 }

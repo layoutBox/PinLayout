@@ -8,11 +8,12 @@
 import UIKit
 
 class MarginsAndPaddingsLeftRightView: UIView {
+    fileprivate let viewHeight: CGFloat = 40
     private let contentScrollView = UIScrollView()
     
     private let descriptionLabel = UILabel()
     
-    private let noMarginsNoPaddings = BasicView(text: "70x30", color: .black)
+    private let noMarginsNoPaddings = BasicView(text: "70x40", color: .black)
     
     private let noMarginsLeftInsetView = BasicView(text: "LI", color: UIColor.red.withAlphaComponent(1.0))
     private let noMarginsRightInsetView = BasicView(text: "RI", color: UIColor.red.withAlphaComponent(0.8))
@@ -32,7 +33,14 @@ class MarginsAndPaddingsLeftRightView: UIView {
     private let leftRightMarginsLeftInsetView = BasicView(text: "LM-RM LI", color: UIColor.purple.withAlphaComponent(0.8))
     private let leftRightMarginsRightInsetView = BasicView(text: "LM-RM RI", color: UIColor.purple.withAlphaComponent(0.6))
     private let leftRightMarginsLeftRightInsetView = BasicView(text: "LM-RM LI-RI", color: UIColor.purple.withAlphaComponent(0.4))
-    
+
+//    TODO
+    private let noMarginsNoPaddings2 = BasicView(text: "70x30", color: UIColor.black)
+    private let topMarginView = BasicView(text: "TM", color: UIColor.orange.withAlphaComponent(1))
+    private let topMarginTopPaddingView = BasicView(text: "TM TP", color: UIColor.orange.withAlphaComponent(0.8))
+    private let topMarginBottomPaddingView = BasicView(text: "TM BP", color: UIColor.orange.withAlphaComponent(0.6))
+    private let topMarginTopBottomPaddingView = BasicView(text: "TM TP-BP", color: UIColor.orange.withAlphaComponent(0.4))
+
     init() {
         super.init(frame: .zero)
         
@@ -52,7 +60,7 @@ class MarginsAndPaddingsLeftRightView: UIView {
         addView(noMarginsLeftInsetView)
         addView(noMarginsRightInsetView)
         addView(noMarginsLeftRightInsetView)
-        
+
         // Left margin
         addView(leftMarginView)
         addView(leftMarginLeftInsetView)
@@ -64,7 +72,7 @@ class MarginsAndPaddingsLeftRightView: UIView {
         addView(rigthMarginLeftInsetView)
         addView(rigthMarginRightInsetView)
         addView(rigthMarginLeftRightInsetView)
-        
+
         // Left and right margins
         addView(leftRightMarginsView)
         addView(leftRightMarginsLeftInsetView)
@@ -73,7 +81,7 @@ class MarginsAndPaddingsLeftRightView: UIView {
     }
     
     fileprivate func addView(_ view: BasicView) {
-        view.layout.height(30).width(70)
+        view.layout.height(viewHeight).width(70)
         contentScrollView.addSubview(view)
     }
     
@@ -86,40 +94,86 @@ class MarginsAndPaddingsLeftRightView: UIView {
         
         let leftPosition: CGFloat = 0
         
-        contentScrollView.layout.topLeft(CGPoint(x: 0, y: 0)).width(width).height(height).topInset(64)
+        contentScrollView.layout.pinTopLeft().width(width).height(height).topInset(64)
         
         descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-        descriptionLabel.layout.topLeft(CGPoint(x: leftPosition, y: 10))
+        descriptionLabel.layout.pinTopLeft(to: CGPoint(x: leftPosition, y: 10))
         
         // No margins
         let rightPosition: CGFloat = 70
-        //var index = 0
-        //var nextBottomPosition: CGFloat = descriptionLabel.bottom + 30
-        noMarginsNoPaddings.layout.topLeft(descriptionLabel.bottomLeft).bottomRight(x: descriptionLabel.bottom + 30, y: rightPosition)
+        var topPosition = descriptionLabel.bottom + 10
         
-        noMarginsLeftInsetView.layout.topLeft(noMarginsNoPaddings.bottomLeft).bottomRight(x: noMarginsNoPaddings.bottom + 30, y: rightPosition).leftInset(10)
-        noMarginsRightInsetView.layout.topLeft(noMarginsLeftInsetView.bottomLeft).bottomRight(x: noMarginsLeftInsetView.bottom + 30, y: rightPosition).rightInset(10)
-        noMarginsLeftRightInsetView.layout.topLeft(noMarginsRightInsetView.bottomLeft).bottomRight(x: noMarginsRightInsetView.bottom + 30, y: rightPosition).leftInset(10).rightInset(10)
-//
-//        // Left margin
-//        leftMarginView.layout2.top(noMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).leftMargin(10)
-//        leftMarginLeftPaddingView.layout2.top(leftMarginView.bottom).left(leftPosition).width(70).leftMargin(10).leftInset(10)
-//        leftMarginRightInsetView.layout2.top(leftMarginLeftInsetView.bottom).left(leftPosition).width(70).leftMargin(10).RightInset(10)
-//        leftMarginLeftRightInsetView.layout2.top(leftMarginRightInsetView.bottom).left(leftPosition).width(70).leftMargin(10).leftInset(10).RightInset(10)
-//        
-//        // Right margin
-//        rigthMarginView.layout2.top(leftMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).rightMargin(10)
-//        rigthMarginLeftInsetView.layout2.top(rigthMarginView.bottom).left(leftPosition).width(70).rightMargin(10).leftInset(10)
-//        rigthMarginRightInsetView.layout2.top(rigthMarginleftInsetView.bottom).left(leftPosition).width(70).rightMargin(10).RightInset(10)
-//        rigthMarginLeftRightInsetView.layout2.top(rigthMarginRightInsetView.bottom).left(leftPosition).width(70).rightMargin(10).leftInset(10).RightInset(10)
-//        
-//        // Left and right margins
-//        leftRightMarginsView.layout2.top(rigthMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).leftMargin(10).rightMargin(10)
-//        leftRightMarginsleftInsetView.layout2.top(leftRightMarginsView.bottom).left(leftPosition).width(70).leftMargin(10).rightMargin(10).leftInset(10)
-//        leftRightMarginsRightInsetView.layout2.top(leftRightMarginsleftInsetView.bottom).left(leftPosition).width(70).leftMargin(10).rightMargin(10).RightInset(10)
-//        leftRightMarginsLeftRightInsetView.layout2.top(leftRightMarginsRightInsetView.bottom).left(leftPosition).width(70).leftMargin(10).rightMargin(10).leftInset(10).RightInset(10)
+        noMarginsNoPaddings.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition)
+        expect(view: noMarginsNoPaddings, toMatchRect: CGRect(x: 0, y: 63, width: 70, height: 40))
+        topPosition += viewHeight
         
-        contentScrollView.contentSize = CGSize(width: width, height: leftRightMarginsLeftRightInsetView.bottom)
+        noMarginsLeftInsetView.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).leftInset(10)
+        expect(view: noMarginsLeftInsetView, toMatchRect: CGRect(x: 10, y: 103, width: 60, height: 40))
+        topPosition += viewHeight
+        
+        noMarginsRightInsetView.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).rightInset(10)
+        expect(view: noMarginsRightInsetView, toMatchRect: CGRect(x: 0, y: 143, width: 60, height: 40))
+        topPosition += viewHeight
+        
+        noMarginsLeftRightInsetView.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).leftInset(10).rightInset(10)
+        expect(view: noMarginsLeftRightInsetView, toMatchRect: CGRect(x: 10, y: 183, width: 50, height: 40))
+        topPosition += viewHeight
+        
+        // Left margin
+        topPosition += 5
+        leftMarginView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10)
+        expect(view: leftMarginView, toMatchRect: CGRect(x: 10, y: 228, width: 60, height: 40))
+        topPosition += viewHeight
+        
+        leftMarginLeftInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).leftInset(10)
+        expect(view: leftMarginLeftInsetView, toMatchRect: CGRect(x: 20, y: 268, width: 50, height: 40))
+        topPosition += viewHeight
+        
+        leftMarginRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).rightInset(10)
+        expect(view: leftMarginRightInsetView, toMatchRect: CGRect(x: 10, y: 308, width: 50, height: 40))
+        topPosition += viewHeight
+        
+        leftMarginLeftRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).leftInset(10).rightInset(10)
+        expect(view: leftMarginLeftRightInsetView, toMatchRect: CGRect(x: 20, y: 348, width: 40, height: 40))
+        topPosition += viewHeight
+        
+        // Right margin
+        topPosition += 5
+        rigthMarginView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).rightMargin(10)
+        expect(view: rigthMarginView, toMatchRect: CGRect(x: 0, y: 393, width: 60, height: 40))
+        topPosition += viewHeight
+        
+        rigthMarginLeftInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).rightMargin(10).leftInset(10)
+        expect(view: rigthMarginLeftInsetView, toMatchRect: CGRect(x: 10, y: 433, width: 50, height: 40))
+        topPosition += viewHeight
+        
+        rigthMarginRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).rightMargin(10).rightInset(10)
+        expect(view: rigthMarginRightInsetView, toMatchRect: CGRect(x: 0, y: 473, width: 50, height: 40))
+        topPosition += viewHeight
+        
+        rigthMarginLeftRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).rightMargin(10).leftInset(10).rightInset(10)
+        expect(view: rigthMarginLeftRightInsetView, toMatchRect: CGRect(x: 10, y: 513, width: 40, height: 40))
+        topPosition += viewHeight
+        
+        // Left and right margins
+        topPosition += 5
+        leftRightMarginsView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).rightMargin(10)
+        expect(view: leftRightMarginsView, toMatchRect: CGRect(x: 10, y: 558, width: 50, height: 40))
+        topPosition += viewHeight
+        
+        leftRightMarginsLeftInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).rightMargin(10).leftInset(10)
+        expect(view: leftRightMarginsLeftInsetView, toMatchRect: CGRect(x: 20, y: 598, width: 40, height: 40))
+        topPosition += viewHeight
+        
+        leftRightMarginsRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).rightMargin(10).rightInset(10)
+        expect(view: leftRightMarginsRightInsetView, toMatchRect: CGRect(x: 10, y: 638, width: 40, height: 40))
+        topPosition += viewHeight
+
+        leftRightMarginsLeftRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).leftMargin(10).rightMargin(10).leftInset(10).rightInset(10)
+        expect(view: leftRightMarginsLeftRightInsetView, toMatchRect: CGRect(x: 20, y: 678, width: 30, height: 40))
+        topPosition += viewHeight
+
+        contentScrollView.contentSize = CGSize(width: width, height: topPosition)
         contentScrollView.contentInset = UIEdgeInsets.zero
     }
 }

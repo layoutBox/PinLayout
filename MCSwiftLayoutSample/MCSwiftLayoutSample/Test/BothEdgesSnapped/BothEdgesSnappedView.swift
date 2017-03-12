@@ -122,21 +122,64 @@ class BothEdgesSnappedView: UIView {
         bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
         bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
         
+        //
+        // pin coordinate
+        //
+//        aViewChild.layout.pinTop(.top, of: aView) //CGRect(x: 10.0, y: 0.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinTop(.top, of: bView)      // CGRect(x: 10.0, y: 100.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinTop(.top, of: aViewChild) //CGRect(x: 40.0, y: -80.0, width: 60.0, height: 20.0)
+
+//        aViewChild.layout.pinTop(.bottom, of: aView)      //CGRect(x: 10.0, y: 60.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinTop(.bottom, of: bView)      //CGRect(x: 10.0, y: 180.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinTop(.bottom, of: aViewChild) //CGRect(x: 40.0, y: -50.0, width: 60.0, height: 20.0)
+        
+//        aViewChild.layout.pinBottom(.top, of: aView) //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.pinBottom(.top, of: bView)      //CGRect(x: 10.0, y: 70.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinBottom(.top, of: aViewChild) //CGRect(x: 40.0, y: -100.0, width: 60.0, height: 20.0)
+//
+//        aViewChild.layout.pinBottom(.bottom, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.pinBottom(.bottom, of: bView)      //CGRect(x: 10.0, y: 150.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinBottom(.bottom, of: aViewChild) //CGRect(x: 40.0, y: -70.0, width: 60.0, height: 20.0)
+
+//        aViewChild.layout.pinLeft(.left, of: aView) //CGRect(x: 0.0, y: 20.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinLeft(.left, of: bView)      //CGRect(x: 20.0, y: 20.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinLeft(.left, of: aViewChild) //CGRect(x: -10.0, y: 10.0, width: 60.0, height: 20.0)
+//
+//        aViewChild.layout.pinLeft(.right, of: aView)      //CGRect(x: 100.0, y: 20.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinLeft(.right, of: bView)      //CGRect(x: 130.0, y: 20.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinLeft(.right, of: aViewChild) //CGRect(x: 40.0, y: 10.0, width: 60.0, height: 20.0)
+
+//        aViewChild.layout.pinRight(.left, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.pinRight(.left, of: bView)      //CGRect(x: -30.0, y: 20.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinRight(.left, of: aViewChild) //CGRect(x: -70.0, y: 10.0, width: 60.0, height: 20.0)
+//
+//        aViewChild.layout.pinRight(.right, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.pinRight(.right, of: bView)      //CGRect(x: 80.0, y: 20.0, width: 50.0, height: 30.0)
+//        bViewChild.layout.pinRight(.right, of: aViewChild) //CGRect(x: -20.0, y: 10.0, width: 60.0, height: 20.0)
+
+        //
+        // pin point
+        //
+        
         // topLeft
 //        aView.layout.topLeft()                    // CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0)
-        aViewChild.layout.topLeft(.topLeft, of: aView)  //(of: aView)      // CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)
-        aViewChild.layout.topLeft(of: aView)      // CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)
-//        aView.layout.topLe
+//        aViewChild.layout.pinTopLeft(.topLeft, of: aView)  //(of: aView)      // CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinTopLeft(of: aView)      // CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinTopLeft(of: aView).pinBottomRight()
 //        aViewChild.layout.topLeft(of: bView)      // CGRect(x: 20.0, y: 100.0, width: 50.0, height: 30.0)
 //        bView.layout.topLeft(of: aViewChild)      // CGRect(x: 150.0, y: 120.0, width: 110.0, height: 80.0)
-//        bViewChild.layout.topLeft(of: aViewChild) // CGRect(x: -10.0, y: -80.0, width: 60.0, height: 20.0)
+//        bViewChild.layout.pinTopLeft(to: aViewChild)< // CGRect(x: -10.0, y: -80.0, width: 60.0, height: 20.0)
         
-        // topCenter
-//        aView.layout.topCenter()                      // CGRect(x: 150.0, y: 0.0, width: 100.0, height: 60.0)
-//        aViewChild.layout.topCenter(of: aView)        //CGRect(x: 25.0, y: 0.0, width: 50.0, height: 30.0)
-//        aViewChild.layout.topCenter(of: bView)        //CGRect(x: 50.0, y: 100.0, width: 50.0, height: 30.0)
-//        bView.layout.topCenter(of: aViewChild)        //CGRect(x: 120.0, y: 120.0, width: 110.0, height: 80.0)
-//        bViewChild.layout.topCenter(of: aViewChild)   //CGRect(x: -15.0, y: -80.0, width: 60.0, height: 20.0)
+        
+//        bView.layout.pinBottomRight().pinTopLeft(to: .zero).below(of: bViewChild)
+        
+        
+        // pinTopCenter
+//        aView.layout.pinTopCenter()                      // CGRect(x: 150.0, y: 0.0, width: 100.0, height: 60.0)
+//        aViewChild.layout.pinTopCenter(of: aView)        //CGRect(x: 25.0, y: 0.0, width: 50.0, height: 30.0)
+//        aViewChild.layout.pinTopCenter(of: bView)        //CGRect(x: 50.0, y: 100.0, width: 50.0, height: 30.0)
+//        bView.layout.pinTopCenter(of: aViewChild)        //CGRect(x: 120.0, y: 120.0, width: 110.0, height: 80.0)
+//        bViewChild.layout.pinTopCenter(of: aViewChild)   //CGRect(x: -15.0, y: -80.0, width: 60.0, height: 20.0)
  
         // topRight
 //        aView.layout.topRight()                      //CGRect(x: 300.0, y: 0.0, width: 100.0, height: 60.0)

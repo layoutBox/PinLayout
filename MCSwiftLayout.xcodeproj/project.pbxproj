@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2439CC311E6659FA003326FB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC301E6659FA003326FB /* Layout.swift */; };
-		246D36481E6C46F50050F202 /* BasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* BasicTests.swift */; };
+		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
+		246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
 		249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */; };
 		249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,7 +28,8 @@
 
 /* Begin PBXFileReference section */
 		2439CC301E6659FA003326FB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		246D36471E6C46F50050F202 /* BasicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTests.swift; sourceTree = "<group>"; };
+		2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgeCoordinateSpec.swift; sourceTree = "<group>"; };
+		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCSwiftLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSwiftLayout.h; sourceTree = "<group>"; };
 		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,7 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */,
-				246D36471E6C46F50050F202 /* BasicTests.swift */,
+				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
+				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
 			);
 			path = MCSwiftLayoutTests;
@@ -288,7 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				246D36481E6C46F50050F202 /* BasicTests.swift in Sources */,
+				2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */,
+				246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */,
 				249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -94,10 +94,10 @@ class MarginsAndPaddingsLeftRightView: UIView {
         
         let leftPosition: CGFloat = 0
         
-        contentScrollView.layout.topLeft(CGPoint(x: 0, y: 0)).width(width).height(height).topInset(64)
+        contentScrollView.layout.pinTopLeft().width(width).height(height).topInset(64)
         
         descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-        descriptionLabel.layout.topLeft(CGPoint(x: leftPosition, y: 10))
+        descriptionLabel.layout.pinTopLeft(to: CGPoint(x: leftPosition, y: 10))
         
         // No margins
         let rightPosition: CGFloat = 70

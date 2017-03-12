@@ -59,7 +59,7 @@ class PinPointCoordinatesSpec: QuickSpec {
         describe("the result of the centers(to: UIView) method") {
             it("should warns that the view is not added to any view") {
                 let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
-                unAttachedView.layout.pinCenter(to: rootView)
+                unAttachedView.layout.pinCenter(to: rootView.pin.bottomCenter)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
             }
@@ -80,23 +80,27 @@ class PinPointCoordinatesSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0)))
             }
             
-//            it("should position the aViewChild's topLeft corner on the specified view's topLeft corner") {
-//                aViewChild.layout.pinTopLeft(Pin.topLeft, to: aView)
-//                expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)))
-//            }
+            it("should position the aViewChild's topLeft corner on the specified view's topLeft corner") {
+//                aViewChild.layout.pinTopLeft(Pin.topLeft, of: aView)
+//                aViewChild.layout.pinTopLeft(aView.pin.topLeft)
+//                aViewChild.layout.pinTopLeft(<#T##pin: PinType##PinType#>, of: <#T##UIView#>)
+                aViewChild.layout.pinTopLeft(to: aView.pin.topLeft)
+
+                expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 50.0, height: 30.0)))
+            }
 
             it("should position the aViewChild's topLeft corner on its parent sibling (bView)'s topLeft corner") {
-                aViewChild.layout.pinTopLeft(to: bView)
+                aViewChild.layout.pinTopLeft(to: bView.pin.topLeft)
                 expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 50.0, height: 30.0)))
             }
             
             it("should position the bView's topLeft corner on its sibling's (aView) children (aViewChild)'s topLeft corner") {
-                bView.layout.pinTopLeft(to: aViewChild)
+                bView.layout.pinTopLeft(to: aViewChild.pin.topLeft)
                 expect(bView.frame).to(equal(CGRect(x: 150.0, y: 120.0, width: 110.0, height: 80.0)))
             }
             
             it("should position the bViewChild's topLeft corner on its parent sibling's (aView) children (aViewChild)'s topLeft corner") {
-                bViewChild.layout.pinTopLeft(to: aViewChild)
+                bViewChild.layout.pinTopLeft(to: aViewChild.pin.topLeft)
                 expect(bViewChild.frame).to(equal(CGRect(x: -10.0, y: -80.0, width: 60.0, height: 20.0)))
             }
         }
@@ -117,22 +121,22 @@ class PinPointCoordinatesSpec: QuickSpec {
             }
             
             it("should position the aViewChild's topCenter corner on the specified view's topCenter corner") {
-                aViewChild.layout.pinTopCenter(to: aView)
+                aViewChild.layout.pinTopCenter(to: aView.pin.topCenter)
                 expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 0.0, width: 50.0, height: 30.0)))
             }
             
             it("should position the aViewChild's topCenter corner on its parent sibling (bView)'s topCenter corner") {
-                aViewChild.layout.pinTopCenter(to: bView)
+                aViewChild.layout.pinTopCenter(to: bView.pin.topCenter)
                 expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 50.0, height: 30.0)))
             }
             
             it("should position the bView's topCenter corner on its sibling's (aView) children (aViewChild)'s topCenter corner") {
-                bView.layout.pinTopCenter(to: aViewChild)
+                bView.layout.pinTopCenter(to: aViewChild.pin.topCenter)
                 expect(bView.frame).to(equal(CGRect(x: 120.0, y: 120.0, width: 110.0, height: 80.0)))
             }
             
             it("should position the bViewChild's topCenter corner on its parent sibling's (aView) children (aViewChild)'s topCenter corner") {
-                bViewChild.layout.pinTopCenter(to: aViewChild)
+                bViewChild.layout.pinTopCenter(to: aViewChild.pin.topCenter)
                 expect(bViewChild.frame).to(equal(CGRect(x: -15.0, y: -80.0, width: 60.0, height: 20.0)))
             }
         }
@@ -148,22 +152,22 @@ class PinPointCoordinatesSpec: QuickSpec {
             }
             
             it("should position the aView's pinTopRight corner at the specified position") {
-                aViewChild.layout.pinTopRight(to: aView)
+                aViewChild.layout.pinTopRight(to: aView.pin.topRight)
                 expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 0.0, width: 50.0, height: 30.0)))
             }
 
             it("should position the aView's pinTopRight corner at the specified position") {
-                aViewChild.layout.pinTopRight(to: bView)
+                aViewChild.layout.pinTopRight(to: bView.pin.topRight)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's pinTopRight corner at the specified position") {
-                bView.layout.pinTopRight(to: aViewChild)
+                bView.layout.pinTopRight(to: aViewChild.pin.topRight)
                 expect(bView.frame).to(equal(CGRect(x: 90.0, y: 120.0, width: 110.0, height: 80.0)))
             }
             
             it("should position the aView's pinTopRight corner at the specified position") {
-                bViewChild.layout.pinTopRight(to: aViewChild)
+                bViewChild.layout.pinTopRight(to: aViewChild.pin.topRight)
                 expect(bViewChild.frame).to(equal(CGRect(x: -20.0, y: -80.0, width: 60.0, height: 20.0)))
             }
         }
@@ -178,22 +182,22 @@ class PinPointCoordinatesSpec: QuickSpec {
             }
             
             it("should position the aView's pinLeftCenter corner at the specified position") {
-                aViewChild.layout.pinLeftCenter(to: aView)
+                aViewChild.layout.pinLeftCenter(to: aView.pin.leftCenter)
                 expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 15.0, width: 50.0, height: 30.0)))
             }
             
             it("should position the aView's pinLeftCenter corner at the specified position") {
-                aViewChild.layout.pinLeftCenter(to: bView)
+                aViewChild.layout.pinLeftCenter(to: bView.pin.leftCenter)
                 expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 125.0, width: 50.0, height: 30.0)))
             }
             
             it("should position the aView's pinLeftCenter corner at the specified position") {
-                bView.layout.pinLeftCenter(to: aViewChild)
+                bView.layout.pinLeftCenter(to: aViewChild.pin.leftCenter)
                 expect(bView.frame).to(equal(CGRect(x: 150.0, y: 95.0, width: 110.0, height: 80.0)))
             }
             
             it("should position the aView's pinLeftCenter corner at the specified position") {
-                bViewChild.layout.pinLeftCenter(to: aViewChild)
+                bViewChild.layout.pinLeftCenter(to: aViewChild.pin.leftCenter)
                 expect(bViewChild.frame).to(equal(CGRect(x: -10.0, y: -75.0, width: 60.0, height: 20.0)))
             }
         }

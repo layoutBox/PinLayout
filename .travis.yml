@@ -6,15 +6,15 @@ xcode_scheme: MCSwiftLayout
 xcode_sdk: iphonesimulator9.3
 env:
   global: 
-    - FRAMEWORK_NAME=MCSwiftLayout
+   # - FRAMEWORK_NAME=MCSwiftLayout
 before_install:
-  - brew update
-  - brew outdated carthage || brew upgrade carthage
+  #- brew update
+  #- brew outdated carthage || brew upgrade carthage
 before_script:
   - pod install
   # bootstrap the dependencies for the project
   # you can remove if you don't have dependencies
-  - carthage bootstrap  
+  #- carthage bootstrap  
 before_deploy:
-  - carthage build --no-skip-current
-  - carthage archive $FRAMEWORK_NAME
+  #- carthage build --no-skip-current
+  #- carthage archive $FRAMEWORK_NAME

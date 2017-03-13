@@ -34,36 +34,31 @@ class BothEdgesSnappedView: UIView {
 //    private let leftRightMarginsRightInsetView = BasicView(text: "LM-RM RI", color: UIColor.purple.withAlphaComponent(0.6))
 //    private let leftRightMarginsLeftRightInsetView = BasicView(text: "LM-RM LI-RI", color: UIColor.purple.withAlphaComponent(0.4))
     
-    var rootView: UILabel!
-    var aView: UILabel!
-    var aViewChild: UILabel!
+    var rootView: BasicView!
+    var aView: BasicView!
+    var aViewChild: BasicView!
     
-    var bView: UILabel!
-    var bViewChild: UILabel!
+    var bView: BasicView!
+    var bViewChild: BasicView!
     
     init() {
         super.init(frame: .zero)
         
         backgroundColor = .black
         
-        rootView = UILabel()
-        setup(rootView, color: .white, text: "")
+        rootView = BasicView(text: "", color: .white)
         addSubview(rootView)
         
-        aView = UILabel()
-        setup(aView, color: UIColor.red.withAlphaComponent(0.5), text: "View A")
+        aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
         rootView.addSubview(aView)
         
-        aViewChild = UILabel()
-        setup(aViewChild, color: UIColor.red.withAlphaComponent(1), text: "View A Child")
+        aViewChild = BasicView(text: "View A Child", color: UIColor.red.withAlphaComponent(1))
         aView.addSubview(aViewChild)
         
-        bView = UILabel()
-        setup(bView, color: UIColor.blue.withAlphaComponent(0.5), text: "View B")
+        bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
         rootView.addSubview(bView)
         
-        bViewChild = UILabel()
-        setup(bViewChild, color: UIColor.blue.withAlphaComponent(0.7), text: "View B Child")
+        bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
         bView.addSubview(bViewChild)
         
 //        contentScrollView.backgroundColor = .yellow
@@ -121,6 +116,37 @@ class BothEdgesSnappedView: UIView {
         
         bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
         bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
+        
+        let label = UILabel()
+        label.text = "clafsdj lfkd asdkjkd lkjlksfjd daljs df flkjdslkjf lksfjlkj jaslkj ljdfaj lkajdsfl k asdlkd jassd adskjfksad laksdj fds;alkj l"
+        label.numberOfLines = 0
+//        let toto = label.sizeThatFits(CGSize(width: 20, height: CGFloat.greatestFiniteMagnitude))
+//        let toto2 = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20))
+//        let toto3 = label.sizeThatFits(CGSize(width: 20, height: 20))
+//        
+//        let toto4 = label.sizeThatFits(CGSize(width: 100, height: CGFloat.greatestFiniteMagnitude))
+//        let toto5 = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 100))
+//        let toto6 = label.sizeThatFits(CGSize(width: 100, height: 100))
+//        
+//        let toto7 = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
+        
+        //
+        // sizeThatFits
+        //
+        aView.sizeThatFitsExpectedArea = 40 * 40
+        
+//        aView.layout.sizeThatFits(size: CGSize(width: 100, height: CGFloat.greatestFiniteMagnitude)) //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)
+//        aView.layout.sizeThatFits(width: 100) // CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)
+//        aView.layout.sizeThatFits(widthOf: aViewChild) //CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)
+        
+//        aView.layout.sizeThatFits(size: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 100)) //CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)
+//        aView.layout.sizeThatFits(height: 100) //CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)
+//        aView.layout.sizeThatFits(heightOf: aViewChild)// CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0)
+        
+//        aView.layout.sizeThatFits(sizeOf: aViewChild)//CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)
+        
+//        aView.layout.size(of: aViewChild)// CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)
+//        aView.layout.size(CGSize(width: 25, height: 25))//CGRect(x: 140.0, y: 100.0, width: 25.0, height: 25.0)
         
         //
         // pin coordinate
@@ -234,14 +260,6 @@ class BothEdgesSnappedView: UIView {
         printViewFrame(aViewChild, name: "aViewChild")
         printViewFrame(bView, name: "bView")
         printViewFrame(bViewChild, name: "bViewChild")
-    }
-    
-    fileprivate func setup(_ view: UILabel, color: UIColor, text: String) {
-        view.text = text
-        view.font = UIFont.systemFont(ofSize: 6)
-        view.backgroundColor = color
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     fileprivate func printViewFrame(_ view: UIView, name: String) {

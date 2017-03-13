@@ -1,5 +1,5 @@
 //
-//  BasicTests.swift
+//  PinEdgeCoordinateSpec.swift
 //  MCSwiftLayout
 //
 //  Created by DION, Luc (MTL) on 2017-03-05.
@@ -23,7 +23,7 @@ class PinEdgeCoordinateSpec: QuickSpec {
         /*
           root
            |
-            - childLevel1
+            - aView
            |    |
            |     - aViewChild
            |

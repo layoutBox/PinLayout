@@ -10,8 +10,8 @@ env:
 before_install:
   #- brew update
   #- brew outdated carthage || brew upgrade carthage
-before_script:
   - pod repo update
+before_script:
   - pod install
   # bootstrap the dependencies for the project
   # you can remove if you don't have dependencies

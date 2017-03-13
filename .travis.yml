@@ -1,0 +1,5 @@
+language: objective-c  
+osx_image: xcode8.2
+xcode_project: MCSwiftLayout.xcodeproj
+xcode_scheme: MCSwiftLayout 
+xcode_sdk: iphonesimulator8.4 

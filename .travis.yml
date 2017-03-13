@@ -18,4 +18,4 @@ before_script:
   #- carthage bootstrap  
 before_deploy:
   #- carthage build --no-skip-current
-  #- carthage archive $FRAMEWORK_NAME
+  #- carthage archive $FRAMEWORK_NAME 

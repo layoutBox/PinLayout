@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode8
 xcode_project: MCSwiftLayout.xcodeproj
 # xcode_workspace: <WORKSPACE_PLACEHOLDER>
 xcode_scheme: MCSwiftLayout
@@ -8,14 +8,22 @@ env:
   global: 
    # - FRAMEWORK_NAME=MCSwiftLayout
 before_install:
+  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   #- brew update
   #- brew outdated carthage || brew upgrade carthage
-  - pod repo update
+  #- pod repo update
 before_script:
-  - pod install
+  #- pod install
   # bootstrap the dependencies for the project
   # you can remove if you don't have dependencies
   #- carthage bootstrap  
 before_deploy:
   #- carthage build --no-skip-current
   #- carthage archive $FRAMEWORK_NAME 
+
+
+env:
+  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone 6S'
+  
+script:
+  - set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty

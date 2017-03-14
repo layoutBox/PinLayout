@@ -791,6 +791,23 @@ public class Layout {
     }
     
     @discardableResult
+    public func sizeThatFits() -> Layout {
+        // TODO
+        // TODO
+        // TODO
+        // TODO
+        // TODO
+        
+        // We will call sizeThatFits() using the width and/or height set by other methods.
+        
+        
+//        if isSizeNotSet(context: { return "sizeThatFits(CGSize(width: \(size.width), height: \(size.height)))" }) {
+//            fitSize = size
+//        }
+        return self
+    }
+    
+    @discardableResult
     public func sizeThatFits(size: CGSize) -> Layout {
         if isSizeNotSet(context: { return "sizeThatFits(CGSize(width: \(size.width), height: \(size.height)))" }) {
             fitSize = size
@@ -979,10 +996,11 @@ public class Layout {
     }
     
     public func apply(onView view: UIView) {
-        assert(width == nil || (right == nil || left == nil))
-        assert(height == nil || (top == nil || bottom == nil))
-        assert(hCenter == nil || (left == nil && right == nil))
-        assert(vCenter == nil || (top == nil && bottom == nil))
+//        assert(width != nil && (right == nil || left == nil), "width and right+left shouldn't be set simultaneously")
+//        assert(height != nil || (top == nil || bottom == nil), "height and top+bottom shouldn't be set simultaneously")
+//        assert(hCenter == nil || (left == nil && right == nil), "hCenter and right+left shouldn't be set simultaneously")
+//        assert(vCenter == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
+//        assert(fitSize == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
         
         var newRect = view.frame
         var isVerticalPositionApplied = false

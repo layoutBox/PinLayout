@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2439CC311E6659FA003326FB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC301E6659FA003326FB /* Layout.swift */; };
+		244C6E151E776A0C0074FC74 /* MarginsAndInsetsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */; };
 		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
 		2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
 		2469C5021E75D88500073BEE /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		2439CC301E6659FA003326FB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsAndInsetsSpec.swift; sourceTree = "<group>"; };
 		2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgeCoordinateSpec.swift; sourceTree = "<group>"; };
 		2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustSizeSpec.swift; sourceTree = "<group>"; };
 		2469C5011E75D88500073BEE /* BasicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				2469C5011E75D88500073BEE /* BasicView.swift */,
 				249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */,
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
+				244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */,
 				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
 				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
@@ -305,6 +308,7 @@
 				2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */,
 				2469C5021E75D88500073BEE /* BasicView.swift in Sources */,
 				246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */,
+				244C6E151E776A0C0074FC74 /* MarginsAndInsetsSpec.swift in Sources */,
 				249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

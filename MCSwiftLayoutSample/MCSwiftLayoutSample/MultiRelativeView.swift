@@ -33,8 +33,8 @@ class MultiRelativeView: UIView {
         super.layoutSubviews()
         
         view1.layout.top(64).left(10).width(100).height(100)
-        view2.layout.right(of: view1, aligned: .top).leftMargin(150).width(100).height(100)
+        view2.layout.right(of: view1, aligned: .top).marginLeft(150).width(100).height(100)
         
-        view.layout.right(of: view1, aligned: .top).left(of: view2).height(75).leftInset(10).rightInset(10)
+        view.layout.right(of: view1, aligned: .top).left(of: view2).height(75).insetLeft(10).insetRight(10)
     }
 }

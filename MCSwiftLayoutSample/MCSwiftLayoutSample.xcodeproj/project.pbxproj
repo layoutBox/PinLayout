@@ -26,6 +26,8 @@
 		2439CC571E665C6B003326FB /* ViewExtensionsPositionningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC441E665C6B003326FB /* ViewExtensionsPositionningViewController.swift */; };
 		2439CC581E665C6B003326FB /* ValidateConflictsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC451E665C6B003326FB /* ValidateConflictsView.swift */; };
 		2439CC591E665C6B003326FB /* ValidateConflictsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC461E665C6B003326FB /* ValidateConflictsViewController.swift */; };
+		244C6E1A1E776ADB0074FC74 /* MarginsAndInsetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */; };
+		244C6E1B1E776ADB0074FC74 /* MarginsAndInsetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */; };
 		249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE421E64FAFE00165E39 /* AppDelegate.swift */; };
 		249EFE4A1E64FAFE00165E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE491E64FAFE00165E39 /* Assets.xcassets */; };
 		249EFE4D1E64FAFE00165E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */; };
@@ -107,6 +109,8 @@
 		2439CC441E665C6B003326FB /* ViewExtensionsPositionningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensionsPositionningViewController.swift; sourceTree = "<group>"; };
 		2439CC451E665C6B003326FB /* ValidateConflictsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateConflictsView.swift; sourceTree = "<group>"; };
 		2439CC461E665C6B003326FB /* ValidateConflictsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateConflictsViewController.swift; sourceTree = "<group>"; };
+		244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginsAndInsetsView.swift; path = Test/MarginsAndInsets/MarginsAndInsetsView.swift; sourceTree = "<group>"; };
+		244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginsAndInsetsViewController.swift; path = Test/MarginsAndInsets/MarginsAndInsetsViewController.swift; sourceTree = "<group>"; };
 		249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCSwiftLayoutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE421E64FAFE00165E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		249EFE491E64FAFE00165E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 		2439CC371E665C5E003326FB /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				244C6E161E776ACC0074FC74 /* MarginsAndInsets */,
 				24E654761E68F20400A72A8B /* BothEdgesSnapped */,
 				2439CC601E665FDE003326FB /* ChainedLayoutView */,
 				2439CC621E666043003326FB /* MarginsAndPaddingsLeftWidthView */,
@@ -282,6 +287,15 @@
 				249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		244C6E161E776ACC0074FC74 /* MarginsAndInsets */ = {
+			isa = PBXGroup;
+			children = (
+				244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */,
+				244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */,
+			);
+			name = MarginsAndInsets;
 			sourceTree = "<group>";
 		};
 		249EFE361E64FAFE00165E39 = {
@@ -590,6 +604,7 @@
 			files = (
 				2439CC591E665C6B003326FB /* ValidateConflictsViewController.swift in Sources */,
 				2439CC571E665C6B003326FB /* ViewExtensionsPositionningViewController.swift in Sources */,
+				244C6E1A1E776ADB0074FC74 /* MarginsAndInsetsView.swift in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
 				2439CC4E1E665C6B003326FB /* MarginsAndPaddingsLeftRightView.swift in Sources */,
@@ -607,6 +622,7 @@
 				24E654821E69041B00A72A8B /* Expect.swift in Sources */,
 				2439CC581E665C6B003326FB /* ValidateConflictsView.swift in Sources */,
 				2439CC4D1E665C6B003326FB /* ChainedLayoutViewController.swift in Sources */,
+				244C6E1B1E776ADB0074FC74 /* MarginsAndInsetsViewController.swift in Sources */,
 				2439CC511E665C6B003326FB /* MarginsAndPaddingsLeftWidthViewController.swift in Sources */,
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,
 			);

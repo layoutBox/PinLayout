@@ -20,6 +20,9 @@ enum Page: Int {
     case marginsAndPaddingLeftRight
     
     case validateConflicts
+    
+    case marginsAndInsets
+    
     case count
     
     var text: String {
@@ -32,6 +35,7 @@ enum Page: Int {
         case .marginsAndPaddingLeftWidth: return "topLeft & width - Test margings and paddings"
         case .marginsAndPaddingLeftRight: return "topLeft & bottomRight - Test margings and paddings"
         case .validateConflicts:          return "Validate properties conflicts"
+        case .marginsAndInsets:           return "Margins and Insets"
         case .count:                             return "Unknown"
         }
     }
@@ -57,7 +61,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        didSelect(page: .bothEdgesSnapped)
+        didSelect(page: .marginsAndInsets)
     }
 }
 
@@ -83,6 +87,8 @@ extension MenuViewController: MenuViewDelegate {
             controller = MarginsAndPaddingsLeftRightViewController()
         case .validateConflicts:
             controller = ValidateConflictsViewController()
+        case .marginsAndInsets:
+            controller = MarginsAndInsetsViewController()
         default:
             assert(false)
             break

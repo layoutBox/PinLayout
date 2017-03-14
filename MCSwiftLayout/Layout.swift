@@ -247,15 +247,15 @@ public class Layout {
     fileprivate var height: CGFloat?
     fileprivate var fitSize: CGSize?
     
-    fileprivate var topMargin: CGFloat?
-    fileprivate var leftMargin: CGFloat?
-    fileprivate var bottomMargin: CGFloat?
-    fileprivate var rightMargin: CGFloat?
+    fileprivate var marginTop: CGFloat?
+    fileprivate var marginLeft: CGFloat?
+    fileprivate var marginBottom: CGFloat?
+    fileprivate var marginRight: CGFloat?
     
-    fileprivate var topInset: CGFloat?
-    fileprivate var leftInset: CGFloat?
-    fileprivate var bottomInset: CGFloat?
-    fileprivate var rightInset: CGFloat?
+    fileprivate var insetTop: CGFloat?
+    fileprivate var insetLeft: CGFloat?
+    fileprivate var insetBottom: CGFloat?
+    fileprivate var insetRight: CGFloat?
     
     public init (view: UIView) {
         self.view = view
@@ -838,18 +838,7 @@ public class Layout {
         return self
     }
     
-    /*@discardableResult
-    func matchSize(_ view: UIView) -> Layout {
-        self.size = view.size
-        return self
-    }
-    
-    @discardableResult
-    func widthMatch(_ view: UIView) -> Layout {
-        size.width = view.width
-        return self
-    }
-    
+    /*
     @discardableResult
     func widthSpaceBetween(view: UIView, andView: UIView) -> Layout {
         if view.right <= andView.left {
@@ -862,12 +851,6 @@ public class Layout {
             warnings("widthSpaceBetween(view:andView:): The horizontal space between specified are smaller than 0")
         }
         
-        return self
-    }
-    
-    @discardableResult
-    func heightMatch(_ view: UIView) -> Layout {
-        size.height = view.height
         return self
     }
     
@@ -890,35 +873,49 @@ public class Layout {
     // Margins
     //
     @discardableResult
-    public func margins(_ value: CGFloat) -> Layout {
-        topMargin(value)
-        leftMargin(value)
-        bottomMargin(value)
-        rightMargin(value)
+    public func margin(_ value: CGFloat) -> Layout {
+        marginTop = value
+        marginLeft = value
+        marginBottom = value
+        marginRight = value
         return self
     }
     
     @discardableResult
-    public func topMargin(_ value: CGFloat) -> Layout {
-        topMargin = value
+    public func marginHorizontal(_ value: CGFloat) -> Layout {
+        marginLeft = value
+        marginRight = value
+        return self
+    }
+
+    @discardableResult
+    public func marginVertical(_ value: CGFloat) -> Layout {
+        marginTop = value
+        marginBottom = value
+        return self
+    }
+
+    @discardableResult
+    public func marginTop(_ value: CGFloat) -> Layout {
+        marginTop = value
         return self
     }
     
     @discardableResult
-    public func leftMargin(_ value: CGFloat) -> Layout {
-        leftMargin = value
+    public func marginLeft(_ value: CGFloat) -> Layout {
+        marginLeft = value
         return self
     }
     
     @discardableResult
-    public func bottomMargin(_ value: CGFloat) -> Layout {
-        bottomMargin = value
+    public func marginBottom(_ value: CGFloat) -> Layout {
+        marginBottom = value
         return self
     }
     
     @discardableResult
-    public func rightMargin(_ value: CGFloat) -> Layout {
-        rightMargin = value
+    public func marginRight(_ value: CGFloat) -> Layout {
+        marginRight = value
         return self
     }
     
@@ -926,37 +923,55 @@ public class Layout {
     // Insets
     //
     @discardableResult
-    public func insets(_ value: CGFloat) -> Layout {
-        topInset(value)
-        leftInset(value)
-        bottomInset(value)
-        rightInset(value)
+    public func inset(_ value: CGFloat) -> Layout {
+        insetTop(value)
+        insetLeft(value)
+        insetBottom(value)
+        insetRight(value)
         return self
     }
     
     @discardableResult
-    public func topInset(_ value: CGFloat) -> Layout {
-        topInset = value
+    public func insetTop(_ value: CGFloat) -> Layout {
+        insetTop = value
         return self
     }
     
     @discardableResult
-    public func leftInset(_ value: CGFloat) -> Layout {
-        leftInset = value
+    public func insetLeft(_ value: CGFloat) -> Layout {
+        insetLeft = value
         return self
     }
     
     @discardableResult
-    public func bottomInset(_ value: CGFloat) -> Layout {
-        bottomInset = value
+    public func insetBottom(_ value: CGFloat) -> Layout {
+        insetBottom = value
         return self
     }
     
     @discardableResult
-    public func rightInset(_ value: CGFloat) -> Layout {
-        rightInset = value
+    public func insetRight(_ value: CGFloat) -> Layout {
+        insetRight = value
         return self
     }
+    
+    @discardableResult
+    public func insetHorizontal(_ value: CGFloat) -> Layout {
+        insetLeft = value
+        insetRight = value
+        return self
+    }
+    
+    @discardableResult
+    public func insetVertical(_ value: CGFloat) -> Layout {
+        insetTop(value)
+        insetBottom(value)
+        return self
+    }
+    
+//    -
+//    - insetVertical
+//    
     
     fileprivate func apply() {
         //guard let view = view else { return }
@@ -985,7 +1000,7 @@ public class Layout {
         if let top = top {
             if bottom == nil && height == nil {
                 // bottom and Height aren't set => adjust the origin
-                newRect.origin.y = top + (topMargin ?? 0)
+                newRect.origin.y = top + (marginTop ?? 0)
             } else if bottom != nil {
                 // bottom is set => adjust the origin and the height
                 newRect.origin.y = applyMarginsAndInsets(top: top)
@@ -1002,7 +1017,7 @@ public class Layout {
         if !isVerticalPositionApplied, let bottom = bottom {
             if top == nil && height == nil {
                 // top and Height aren't set => Move the view and keeps the current height
-                newRect.origin.y = bottom - newRect.height - (bottomMargin ?? 0)
+                newRect.origin.y = bottom - newRect.height - (marginBottom ?? 0)
             } else if top != nil {
                 // nop, case already handled in the "top" case above
                 assert(false)
@@ -1021,7 +1036,7 @@ public class Layout {
             } else {
                 // height is set => adjust the top and the height
                 newRect.size.height = applyTopBottomInsets(height!)
-                newRect.origin.y = vCenter - (newRect.size.height / 2) + (topMargin ?? 0)
+                newRect.origin.y = vCenter - (newRect.size.height / 2) + (marginTop ?? 0)
             }
             
             isVerticalPositionApplied = true
@@ -1038,11 +1053,11 @@ public class Layout {
         if let left = left {
             if right == nil && width == nil {
                 // right and width aren't set => adjust the origin
-                newRect.origin.x = left + (leftMargin ?? 0)
+                newRect.origin.x = left + (marginLeft ?? 0)
             } else if right != nil {
                 // right is set => adjust the origin and the width
                 newRect.origin.x = applyMarginsAndInsets(left: left)
-                newRect.size.width = applyMarginsAndInsets(right: right!) - newRect.origin.x//! - newRect.origin.x - (rightMargin ?? 0) - (rightInset ?? 0)
+                newRect.size.width = applyMarginsAndInsets(right: right!) - newRect.origin.x//! - newRect.origin.x - (marginRight ?? 0) - (insetRight ?? 0)
             } else if width != nil {
                 // width is set => adjust the origin and the height
                 newRect.origin.x = applyMarginsAndInsets(left: left)
@@ -1055,14 +1070,14 @@ public class Layout {
         if !isHorizontalPositionApplied, let right = right {
             if left == nil && width == nil {
                 // left and width aren't set => Move the view and keeps the current width
-                newRect.origin.x = right - newRect.width - (rightMargin ?? 0)
+                newRect.origin.x = right - newRect.width - (marginRight ?? 0)
             } else if left != nil {
                 // nop, case already handled in the "left" case above
                 assert(false)
             } else if width != nil {
-                // width is set => adjust the origin
-                newRect.origin.x = applyMarginsAndInsets(left: right - width!)
+                // width is set => adjust the origin and the width
                 newRect.size.width = applyLeftRightInsets(width!)
+                newRect.origin.x = applyMarginsAndInsets(right: right) - newRect.size.width
             }
             
             isHorizontalPositionApplied = true
@@ -1074,14 +1089,14 @@ public class Layout {
             } else {
                 // width is set => adjust the right and the width
                 newRect.size.width = applyLeftRightInsets(width!)
-                newRect.origin.x = hCenter - (newRect.size.width / 2) + (leftMargin ?? 0)
+                newRect.origin.x = hCenter - (newRect.size.width / 2) + (marginLeft ?? 0)
             }
 
             isHorizontalPositionApplied = true
         }
         
         if !isHorizontalPositionApplied, let width = width {
-            newRect.size.width = width
+            newRect.size.width = applyLeftRightInsets(width)
         }
         
         view.frame = CGRect(x: ceilFloatToDisplayScale(newRect.origin.x), y: ceilFloatToDisplayScale(newRect.origin.y),
@@ -1348,27 +1363,27 @@ extension Layout {
     }
     
     fileprivate func applyMarginsAndInsets(top: CGFloat) -> CGFloat {
-        return top + (topMargin ?? 0) + (topInset ?? 0)
+        return top + (marginTop ?? 0) + (insetTop ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(bottom: CGFloat) -> CGFloat {
-        return bottom -  (bottomMargin ?? 0) - (bottomInset ?? 0)
+        return bottom -  (marginBottom ?? 0) - (insetBottom ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(left: CGFloat) -> CGFloat {
-        return left + (leftMargin ?? 0) + (leftInset ?? 0)
+        return left + (marginLeft ?? 0) + (insetLeft ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(right: CGFloat) -> CGFloat {
-        return right - (rightMargin ?? 0) - (rightInset ?? 0)
+        return right - (marginRight ?? 0) - (insetRight ?? 0)
     }
     
     fileprivate func applyTopBottomInsets(_ height: CGFloat) -> CGFloat {
-        return height - (topInset ?? 0) - (bottomInset ?? 0)
+        return height - (insetTop ?? 0) - (insetBottom ?? 0)
     }
     
     fileprivate func applyLeftRightInsets(_ width: CGFloat) -> CGFloat {
-        return width - (leftInset ?? 0) - (rightInset ?? 0)
+        return width - (insetLeft ?? 0) - (insetRight ?? 0)
     }
     
     fileprivate func warn(_ text: String, context: Context) {

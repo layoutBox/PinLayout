@@ -69,7 +69,7 @@ class RelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        belowNavBarView.layout.pinTopLeft().size(size).topInset(64)
+        belowNavBarView.layout.pinTopLeft().size(size).insetTop(64)
         
         centerView.width = 200
         centerView.height = 200

@@ -1,7 +1,6 @@
 language: objective-c
 osx_image: xcode8
 xcode_project: MCSwiftLayout.xcodeproj
-# xcode_workspace: <WORKSPACE_PLACEHOLDER>
 xcode_scheme: MCSwiftLayout
 xcode_sdk: iphonesimulator9.3
 env:
@@ -11,9 +10,9 @@ before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   #- brew update
   #- brew outdated carthage || brew upgrade carthage
-  #- pod repo update
+  - pod repo update
+  - pod install
 before_script:
-  #- pod install
   # bootstrap the dependencies for the project
   # you can remove if you don't have dependencies
   #- carthage bootstrap  

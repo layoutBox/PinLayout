@@ -16,7 +16,7 @@ before_deploy:
   #- carthage build --no-skip-current
   #- carthage archive $FRAMEWORK_NAME 
 
-env:
+#env:
   #- ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone 6S'
   
 script:
@@ -26,7 +26,4 @@ script:
     -scheme "MCSwiftLayout" \
     -sdk iphonesimulator \
     -destination 'platform=iOS Simulator,name=iPhone 6' \
-    test \
-  | xcpretty \
-    -r "html" \
-    -o "tests.html"
+    test | xcpretty -r "html" -o "tests.html"

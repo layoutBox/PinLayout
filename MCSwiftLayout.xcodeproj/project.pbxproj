@@ -255,7 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/MCSwiftLayoutSample/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		876430984866C52BFD6C79B8 /* [CP] Copy Pods Resources */ = {
@@ -270,7 +270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/MCSwiftLayoutSample/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD0B0B702D32991A998E967B /* [CP] Check Pods Manifest.lock */ = {
@@ -285,7 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

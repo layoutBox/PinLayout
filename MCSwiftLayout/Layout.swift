@@ -9,25 +9,41 @@ import UIKit
 
 /*
  
+ ===============================================
  QUESTIONS:
  ===============================================
  
      - Names:
-         - view.layout.pinTopLeft(.bottomRight, of: backgroundView).margin(10)
-         - view.layout.pinTopLeft(to: .bottomRight, of: backgroundView).margin(10)
-         - view.layout.pinTopLeft(to: backgroundView, .bottomRight).margin(10)
-         - view.layout.pinTopLeft(backgroundView, .bottomRight).margin(10)
-         - view.layout.pinTopLeft(equal: backgroundView, .bottomRight).margin(10)
+        Attach to a Pin of another
+         - view.layout.topLeft(backgroundView.pin.bottomLeft).margin(10)
+         - view.layout.pinTopLeft(backgroundView.pin.bottomLeft).margin(10)
+         - equivalent to: view.layout.below(of: backgroundView, aligned: .left)
  
-         - view.pin.topLeft(to: .bottomRight, of: backgroundView).margin(10)
-         - view.pin.topLeft(.bottomRight, of: backgroundView).margin(10)
+        Use a CGPoint
+         - view.layout.topLeft(CGPoint(x: 10, y: 20)).margin(10)
+         - view.layout.pinTopLeft(CGPoint(x: 10, y: 20)).margin(10)
  
-         - view.layout.snapTopLeft(.bottomRight, of: backgroundView)
-         - view.layout.snapTopLeft(to: .bottomRight, of: backgroundView).margin(10)
-         - view.layout.snapTopLeft(to: backgroundView, .bottomRight).margin(10)
+        Attach related to its superview
+         - view.layout.topLeft().margin(10)
+         - view.layout.topLeftToSuperview().margin(10)
+         - view.layout.pinTopLeftToSuperview().margin(10)
+ 
+ 
+         - view.layout.pinTopLeft(.bottomLeft, of: backgroundView).margin(10)
+         - view.layout.pinTopLeft(to: .bottomLeft, of: backgroundView).margin(10)
+         - view.layout.pinTopLeft(to: backgroundView, .bottomLeft).margin(10)
+         - view.layout.pinTopLeft(backgroundView, .bottomLeft).margin(10)
+         - view.layout.pinTopLeft(equal: backgroundView, .bottomLeft).margin(10)
+ 
+         - view.pin.topLeft(to: .bottomLeft, of: backgroundView).margin(10)
+         - view.pin.topLeft(.bottomLeft, of: backgroundView).margin(10)
+ 
+         - view.layout.snapTopLeft(.bottomLeft, of: backgroundView)
+         - view.layout.snapTopLeft(to: .bottomLeft, of: backgroundView).margin(10)
+         - view.layout.snapTopLeft(to: backgroundView, .bottomLeft).margin(10)
          - view.layout.snapTop(to: .bottom, of: backgroundView).margin(10)
          
-         - layout.snapTopLeft(to: backgroundView, .bottomRight)
+         - layout.snapTopLeft(to: backgroundView, .bottomLeft)
          
          - layout.top(to: .bottom, of: backgroundView)
 
@@ -36,7 +52,8 @@ import UIKit
          - layout.bottomLeftOfSuperview().margin(10)
 
     - enum Snap ou Pin ou Point?
-
+    - UIView.topLeft, .topRight, ... are not really necessary. Tout peut être accessible avec UIView.pin.point.
+        eg: myView.topLeft -> myView.pin.topLeft.point OR myView.pin.topLeft.x & myView.pin.topLeft.y
  
  TODO:
  ===============================================
@@ -57,6 +74,7 @@ import UIKit
     - insetVertical
     - inset(t:? = nil l:? = nil  b:? = nil  r:? = nil ) ??
     - margin(t:? = nil  l:? = nil  b:? = nil  r:? = nil ) ??
+
  */
 fileprivate typealias Context = () -> String
 
@@ -791,11 +809,7 @@ public class Layout {
     @discardableResult
     public func sizeThatFits(width: CGFloat) -> Layout {
         if isSizeNotSet(context: { return "sizeThatFitsWidth(\(width))" }) {
-            if fitSize == nil {
-                fitSize = CGSize(width: width, height: .greatestFiniteMagnitude)
-            } else {
-                fitSize!.width = width
-            }
+            fitSize = CGSize(width: width, height: .greatestFiniteMagnitude)
         }
         return self
     }
@@ -803,7 +817,7 @@ public class Layout {
     @discardableResult
     public func sizeThatFits(widthOf view: UIView) -> Layout {
         if isSizeNotSet(context: { return "sizeThatFitsWidth(of: \(view))" }) {
-            sizeThatFits(width: view.size.width)
+            fitSize = CGSize(width: view.size.width, height: .greatestFiniteMagnitude)
         }
         return self
     }
@@ -811,11 +825,7 @@ public class Layout {
     @discardableResult
     public func sizeThatFits(height: CGFloat) -> Layout {
         if isSizeNotSet(context: { return "sizeThatFitsHeight(\(height))" }) {
-            if fitSize == nil {
-                fitSize = CGSize(width: .greatestFiniteMagnitude, height: height)
-            } else {
-                fitSize!.height = height
-            }
+            fitSize = CGSize(width: .greatestFiniteMagnitude, height: height)
         }
         return self
     }
@@ -823,7 +833,7 @@ public class Layout {
     @discardableResult
     public func sizeThatFits(heightOf view: UIView) -> Layout {
         if isSizeNotSet(context: { return "sizeThatFitsHeightof: \(view))" }) {
-            sizeThatFits(height: view.size.height)
+            fitSize = CGSize(width: .greatestFiniteMagnitude, height: view.size.height)
         }
         return self
     }
@@ -963,10 +973,15 @@ public class Layout {
         var isVerticalPositionApplied = false
         var isHorizontalPositionApplied = false
         
+        if let fitSize = fitSize {
+            let size = view.sizeThatFits(fitSize)
+            width = size.width
+            height = size.height
+        }
+        
         //
         // Compute vertical position
         //
-        
         if let top = top {
             if bottom == nil && height == nil {
                 // bottom and Height aren't set => adjust the origin

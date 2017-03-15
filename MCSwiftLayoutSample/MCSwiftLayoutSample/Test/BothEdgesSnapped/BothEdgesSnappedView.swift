@@ -110,6 +110,24 @@ class BothEdgesSnappedView: UIView {
         print("\n")
         
         rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        aView.frame = CGRect(x: 100, y: 100, width: 200, height: 160)
+        aViewChild.frame = CGRect(x: 45, y: 50, width: 80, height: 80)
+        bView.frame = CGRect(x: 160, y: 200, width: 40, height: 40)
+        
+//        bView.layout.above(of: aView, aligned: .left)
+        //expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
+        
+//        bView.layout.above(of: aViewChild, aligned: .left)
+//        expect(bView.frame).to(equal(CGRect(x: 145.0, y: 110.0, width: 40.0, height: 40.0)))
+        
+//        bView.layout.above(of: aView, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 180.0, y: 60.0, width: 40.0, height: 40.0)))
+        
+//        bView.layout.above(of: aViewChild, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 165.0, y: 110.0, width: 40.0, height: 40.0)))
+
+        // MARGINS
+        /*rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
         
         aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
         aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
@@ -117,9 +135,9 @@ class BothEdgesSnappedView: UIView {
         bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
         bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
         
-        let label = UILabel()
-        label.text = "clafsdj lfkd asdkjkd lkjlksfjd daljs df flkjdslkjf lksfjlkj jaslkj ljdfaj lkajdsfl k asdlkd jassd adskjfksad laksdj fds;alkj l"
-        label.numberOfLines = 0
+//        let label = UILabel()
+//        label.text = "clafsdj lfkd asdkjkd lkjlksfjd daljs df flkjdslkjf lksfjlkj jaslkj ljdfaj lkajdsfl k asdlkd jassd adskjfksad laksdj fds;alkj l"
+//        label.numberOfLines = 0
 //        let toto = label.sizeThatFits(CGSize(width: 20, height: CGFloat.greatestFiniteMagnitude))
 //        let toto2 = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20))
 //        let toto3 = label.sizeThatFits(CGSize(width: 20, height: 20))
@@ -147,6 +165,7 @@ class BothEdgesSnappedView: UIView {
         
 //        aView.layout.size(of: aViewChild)// CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)
 //        aView.layout.size(CGSize(width: 25, height: 25))//CGRect(x: 140.0, y: 100.0, width: 25.0, height: 25.0)
+        */
         
         //
         // pin coordinate
@@ -258,11 +277,12 @@ class BothEdgesSnappedView: UIView {
 
         printViewFrame(aView, name: "aView")
         printViewFrame(aViewChild, name: "aViewChild")
+        
         printViewFrame(bView, name: "bView")
         printViewFrame(bViewChild, name: "bViewChild")
     }
     
     fileprivate func printViewFrame(_ view: UIView, name: String) {
-        print("\(name): CGRect(x: \(view.frame.origin.x), y: \(view.frame.origin.y), width: \(view.frame.size.width), height: \(view.frame.size.height))")
+        print("expect(\(name).frame).to(equal(CGRect(x: \(view.frame.origin.x), y: \(view.frame.origin.y), width: \(view.frame.size.width), height: \(view.frame.size.height))))")
     }
 }

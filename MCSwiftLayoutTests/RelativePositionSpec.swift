@@ -38,11 +38,11 @@ class RelativePositionSpec: QuickSpec {
             viewController.view.addSubview(rootView)
             
             aView = UIView()
-            aView.frame = CGRect(x: 100, y: 100, width: 100, height: 60)
+            aView.frame = CGRect(x: 100, y: 100, width: 200, height: 160)
             rootView.addSubview(aView)
             
             aViewChild = UIView()
-            aViewChild.frame = CGRect(x: 40, y: 40, width: 40, height: 20)
+            aViewChild.frame = CGRect(x: 45, y: 50, width: 80, height: 80)
             aView.addSubview(aViewChild)
             
             bView = UIView()
@@ -53,15 +53,27 @@ class RelativePositionSpec: QuickSpec {
         //
         // above(of:aligned:)
         //
-        describe("the result of above(of:aligned:)") {
-            it("should adjust the aView position") {
+        describe("the result of above(of:aligned: left)") {
+            it("should adjust the bView position relative to its sibling (aView)") {
                 bView.layout.above(of: aView, aligned: .left)
                 expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
             }
             
-            it("should adjust the aView position") {
+            it("should adjust the bView position relative ot its sibling children (aViewChild)") {
                 bView.layout.above(of: aViewChild, aligned: .left)
-                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
+                expect(bView.frame).to(equal(CGRect(x: 145.0, y: 110.0, width: 40.0, height: 40.0)))
+            }
+        }
+        
+        describe("the result of above(of:aligned: center)") {
+            it("should adjust the bView position relative to its sibling (aView)") {
+                bView.layout.above(of: aView, aligned: .center)
+                expect(bView.frame).to(equal(CGRect(x: 180.0, y: 60.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the bView position relative ot its sibling children (aViewChild)") {
+                bView.layout.above(of: aViewChild, aligned: .center)
+                expect(bView.frame).to(equal(CGRect(x: 165.0, y: 110.0, width: 40.0, height: 40.0)))
             }
         }
         

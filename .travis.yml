@@ -8,7 +8,7 @@ env:
    # - FRAMEWORK_NAME=MCSwiftLayout
 before_install:
   #- ./install_dependencies.sh
-  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  #- gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   - pod repo update
   - pod install
 before_script:

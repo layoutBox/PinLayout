@@ -9,7 +9,7 @@ env:
 before_install:
   #- ./install_dependencies.sh
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-  - pod repo update
+  #- pod repo update
   - gem install xcpretty
   - pod install
 before_script:

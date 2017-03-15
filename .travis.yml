@@ -24,6 +24,5 @@ before_deploy:
   
 script:
   #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty
-  - set -o pipefail && xcodebuild \
-    -workspace MCSwiftLayout.xcworkspace -scheme "MCSwiftLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' test 
-    #| xcpretty -r "html" -o "tests.html"
+  - set -o pipefail && xcodebuild workspace MCSwiftLayout.xcworkspace -scheme "MCSwiftLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' test 
+  #| xcpretty -r "html" -o "tests.html"

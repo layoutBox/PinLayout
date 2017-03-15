@@ -153,7 +153,7 @@ class AdjustSizeSpec: QuickSpec {
             
             it("should ajust the size of aView by calling sizeThatFits(heightOf: UIView) method") {
                 aView.layout.sizeThatFits(heightOf: aViewChild)
-                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0)))
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.3))
             }
             
             it("should warn that sizeThatFits(heightOf:) won't be applied") {

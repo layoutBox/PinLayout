@@ -8,8 +8,8 @@ env:
    # - FRAMEWORK_NAME=MCSwiftLayout
 before_install:
   #- ./install_dependencies.sh
-  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-  #- pod repo update
+  #- gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  - pod repo update
   - gem install xcpretty-travis-formatter
   # - gem install xcpretty
   - pod install

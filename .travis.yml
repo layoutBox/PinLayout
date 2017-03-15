@@ -10,7 +10,8 @@ before_install:
   #- ./install_dependencies.sh
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   #- pod repo update
-  - gem install xcpretty
+  - gem install xcpretty-travis-formatter
+  # - gem install xcpretty
   - pod install
 before_script:
   # bootstrap the dependencies for the project
@@ -25,5 +26,5 @@ before_deploy:
   
 script:
   #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty
-  - set -o pipefail && xcodebuild -workspace MCSwiftLayout.xcworkspace -scheme "MCSwiftLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' test | xcpretty && exit ${PIPESTATUS[0]}
-#xcpretty -r "html" -o "tests.html"
+  - set -o pipefail && xcodebuild -workspace MCSwiftLayout.xcworkspace -scheme "MCSwiftLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' test | xcpretty -f `xcpretty-travis-formatter` && exit ${PIPESTATUS[0]}
+# xcpretty -r "html" -o "tests.html"

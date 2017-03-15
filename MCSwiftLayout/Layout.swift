@@ -59,12 +59,10 @@ import UIKit
  ===============================================
     - implement sizeThatFits
          - Insets should be applied to width and height before calling view.sizeThatFits()
+    - implement sizeThatFits() without parameter that use set width and/or height
  
     - Implement Layout + Layout operator
  
-    - left(of), above(of), below(of), ... devrait fonctionner même si les des view n'ont pas le même parent!
-        comme pour pinTopLeft(of), ...
-    
     - width(percentage: CGFloat, of view: UIView)
     - maxWidth(), minWidth(), maxHeight(), minHeight()
  
@@ -671,13 +669,13 @@ public class Layout {
     }
 
     // RELATIVE POSITION
-    public enum HorizontalAlignment {
+    public enum HorizontalAlignment: String {
         case left
         case center
         case right
     }
     
-    public enum VerticalAlignment {
+    public enum VerticalAlignment: String {
         case top
         case center
         case bottom
@@ -685,65 +683,125 @@ public class Layout {
     
     /// Set the view's bottom coordinate above of the specified view.
     @discardableResult
-    public func above(of view: UIView) -> Layout {
-        setBottom(view.top, context: { return "above(of: \(view))" })
+    public func above(of relativeView: UIView) -> Layout {
+        func context() -> String { return "below(of: \(view))" }
+        if let coordinate = computeCoordinates(forEdge: .top, of: relativeView, context: context) {
+            setBottom(coordinate, context: context)
+        }
         return self
     }
     @discardableResult
-    public func above(of view: UIView, aligned: HorizontalAlignment) -> Layout {
+    public func above(of relativeView: UIView, aligned: HorizontalAlignment) -> Layout {
+        func context() -> String { return "above(of: \(view), aligned: \(aligned))" }
+        
         switch aligned {
-        case .left:   return setBottomLeft(view.topLeft, context: { return "above(of: \(view), aligned: .left)" })
-        case .center: return setBottomCenter(view.topCenter, context: { return "above(of: \(view), aligned: .center)" })
-        case .right:  return setBottomRight(view.topRight, context: { return "above(of: \(view), aligned: .right)" })
+        case .left:
+            if let coordinates = computeCoordinates(forPin: .topLeft, of: relativeView, context: context) {
+                setBottomLeft(coordinates, context: context)
+            }
+        case .center:
+            if let coordinates = computeCoordinates(forPin: .topCenter, of: relativeView, context: context) {
+                setBottomCenter(coordinates, context: context)
+            }
+        case .right:
+            if let coordinates = computeCoordinates(forPin: .topRight, of: relativeView, context: context) {
+                setBottomRight(coordinates, context: context)
+            }
         }
+        return self
     }
     
     /// Set the view's top coordinate below of the specified view.
     @discardableResult
-    public func below(of view: UIView) -> Layout {
-        setTop(view.bottom, context: { return "below(of: \(view))" })
+    public func below(of relativeView: UIView) -> Layout {
+        func context() -> String { return "below(of: \(view))" }
+        if let coordinate = computeCoordinates(forEdge: .bottom, of: relativeView, context: context) {
+            setTop(coordinate, context: context)
+        }
         return self
     }
     
     @discardableResult
-    public func below(of view: UIView, aligned: HorizontalAlignment) -> Layout {
+    public func below(of relativeView: UIView, aligned: HorizontalAlignment) -> Layout {
+        func context() -> String { return "below(of: \(view), aligned: \(aligned))" }
+        
         switch aligned {
-        case .left:   return setTopLeft(view.bottomLeft, context: { return "below(of: \(view), aligned: .left)" })
-        case .center: return setTopCenter(view.bottomCenter, context: { return "below(of: \(view), aligned: .center)" })
-        case .right:  return setTopRight(view.bottomRight, context: { return "below(of: \(view), aligned: .right)" })
+        case .left:
+            if let coordinates = computeCoordinates(forPin: .bottomLeft, of: relativeView, context: context) {
+                setTopLeft(coordinates, context: context)
+            }
+        case .center:
+            if let coordinates = computeCoordinates(forPin: .bottomCenter, of: relativeView, context: context) {
+                setTopCenter(coordinates, context: context)
+            }
+        case .right:
+            if let coordinates = computeCoordinates(forPin: .bottomRight, of: relativeView, context: context) {
+                setTopRight(coordinates, context: context)
+            }
         }
+        return self
     }
     
     /// Set the view's right coordinate left of the specified view.
     @discardableResult
-    public func left(of view: UIView) -> Layout {
-        setRight(view.left, context: { return "left(of: \(view))" })
+    public func left(of relativeView: UIView) -> Layout {
+        func context() -> String { return "left(of: \(view))" }
+        if let coordinate = computeCoordinates(forEdge: .left, of: relativeView, context: context) {
+            setRight(coordinate, context: context)
+        }
         return self
     }
     
     @discardableResult
-    public func left(of view: UIView, aligned: VerticalAlignment) -> Layout {
+    public func left(of relativeView: UIView, aligned: VerticalAlignment) -> Layout {
+        func context() -> String { return "left(of: \(view), aligned: \(aligned))" }
+        
         switch aligned {
-        case .top:    return setTopRight(view.topLeft, context: { return "left(of: \(view), aligned: .top)" })
-        case .center: return setRightCenter(view.leftCenter, context: { return "left(of: \(view), aligned: .center)" })
-        case .bottom: return setBottomRight(view.bottomLeft, context: { return "left(of: \(view), aligned: .bottom)" })
+        case .top:
+            if let coordinates = computeCoordinates(forPin: .topLeft, of: relativeView, context: context) {
+                setTopRight(coordinates, context: context)
+            }
+        case .center:
+            if let coordinates = computeCoordinates(forPin: .leftCenter, of: relativeView, context: context) {
+                setRightCenter(coordinates, context: context)
+            }
+        case .bottom:
+            if let coordinates = computeCoordinates(forPin: .bottomLeft, of: relativeView, context: context) {
+                setBottomRight(coordinates, context: context)
+            }
         }
+        return self
     }
     
     /// Set the view's left coordinate right of the specified view.
     @discardableResult
-    public func right(of view: UIView) -> Layout {
-        setLeft(view.right, context: { return "right(of: \(view))" })
+    public func right(of relativeView: UIView) -> Layout {
+        func context() -> String { return "left(of: \(view))" }
+        if let coordinate = computeCoordinates(forEdge: .right, of: relativeView, context: context) {
+            setLeft(coordinate, context: context)
+        }
         return self
     }
     
     @discardableResult
-    public func right(of view: UIView, aligned: VerticalAlignment) -> Layout {
+    public func right(of relativeView: UIView, aligned: VerticalAlignment) -> Layout {
+        func context() -> String { return "right(of: \(view), aligned: \(aligned))" }
+        
         switch aligned {
-        case .top:    return setTopLeft(view.topRight, context: { return "right(of: \(view), aligned: .top)" })
-        case .center: return setLeftCenter(view.rightCenter, context: { return "right(of: \(view), aligned: .center)" })
-        case .bottom: return setBottomLeft(view.bottomRight, context: { return "right(of: \(view), aligned: .bottom)" })
+        case .top:
+            if let coordinates = computeCoordinates(forPin: .topRight, of: relativeView, context: context) {
+                setTopLeft(coordinates, context: context)
+            }
+        case .center:
+            if let coordinates = computeCoordinates(forPin: .rightCenter, of: relativeView, context: context) {
+                setLeftCenter(coordinates, context: context)
+            }
+        case .bottom:
+            if let coordinates = computeCoordinates(forPin: .bottomRight, of: relativeView, context: context) {
+                setBottomLeft(coordinates, context: context)
+            }
         }
+        return self
     }
     
     //
@@ -1041,8 +1099,8 @@ public class Layout {
                 assert(false)
             } else if height != nil {
                 // height is set => adjust the top and the height
-                newRect.origin.y = applyMarginsAndInsets(top: bottom - height!)
                 newRect.size.height = applyTopBottomInsets(height!)
+                newRect.origin.y = applyMarginsAndInsets(bottom: bottom) - newRect.size.height
             }
             
             isVerticalPositionApplied = true
@@ -1061,7 +1119,7 @@ public class Layout {
         }
         
         if !isVerticalPositionApplied, let height = height {
-            newRect.size.height = height
+            newRect.size.height = applyTopBottomInsets(height)
         }
         
         //
@@ -1385,7 +1443,7 @@ extension Layout {
     }
     
     fileprivate func applyMarginsAndInsets(bottom: CGFloat) -> CGFloat {
-        return bottom -  (marginBottom ?? 0) - (insetBottom ?? 0)
+        return bottom - (marginBottom ?? 0) - (insetBottom ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(left: CGFloat) -> CGFloat {

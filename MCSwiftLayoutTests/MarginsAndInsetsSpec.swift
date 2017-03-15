@@ -240,193 +240,193 @@ class MarginsAndInsetsSpec: QuickSpec {
         describe("the result of top&bottom margins and top&bottom insets when only the height is specified") {
             it("should adjust the aView") {
                 aView.layout.height(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.height(100).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.height(100).insetTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 90)))
             }
             
             it("should adjust the aView") {
                 aView.layout.height(100).insetTop(10).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.height(100).insetVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.height(100).margin(10).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
             }
         }
         
         describe("the result of top&bottom margins and top&bottom insets when the top coordinate and the height are specified") {
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).insetTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).insetTop(10).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).insetVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).margin(10).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 160.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).marginBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).height(100).marginVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 100.0)))
             }
         }
         
         describe("the result of top&bottom margins and top&bottom insets when the bottom coordinate and the height are specified") {
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 30.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).insetTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).margin(10).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).insetTop(10).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).insetVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).marginBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 30.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.bottom(140).height(100).marginVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 100.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 30.0, width: 200.0, height: 100.0)))
             }
         }
         
         describe("the result of top&bottom margins and top&bottom insets when the top and bottom coordinate are specified") {
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).insetTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).insetTop(10).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).insetVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).margin(10).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 60.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 160.0, width: 200.0, height: 60.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).marginBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).marginTop(10).marginBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
                 aView.layout.top(140).bottom(240).marginVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
         }
     }

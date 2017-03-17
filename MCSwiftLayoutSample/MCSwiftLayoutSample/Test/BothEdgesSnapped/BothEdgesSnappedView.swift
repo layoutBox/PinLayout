@@ -115,25 +115,100 @@ class BothEdgesSnappedView: UIView {
         bView.frame = CGRect(x: 160, y: 200, width: 40, height: 40)
         
 //        bView.layout.above(of: aView, aligned: .left)
-        //expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
-        
+//        expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
 //        bView.layout.above(of: aViewChild, aligned: .left)
 //        expect(bView.frame).to(equal(CGRect(x: 145.0, y: 110.0, width: 40.0, height: 40.0)))
         
 //        bView.layout.above(of: aView, aligned: .center)
 //        expect(bView.frame).to(equal(CGRect(x: 180.0, y: 60.0, width: 40.0, height: 40.0)))
-        
 //        bView.layout.above(of: aViewChild, aligned: .center)
 //        expect(bView.frame).to(equal(CGRect(x: 165.0, y: 110.0, width: 40.0, height: 40.0)))
 
+//        bView.layout.above(of: aView, aligned: .right)
+//        expect(bView.frame).to(equal(CGRect(x: 260.0, y: 60.0, width: 40.0, height: 40.0)))
+//        bView.layout.above(of: aViewChild, aligned: .right)
+//        expect(bView.frame).to(equal(CGRect(x: 185.0, y: 110.0, width: 40.0, height: 40.0)))
+
+        
+//        bView.layout.right(of: aView, aligned: .top)
+//        expect(bView.frame).to(equal(CGRect(x: 300.0, y: 100.0, width: 40.0, height: 40.0)))
+//        bView.layout.right(of: aViewChild, aligned: .top)
+//        expect(bView.frame).to(equal(CGRect(x: 225.0, y: 150.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.right(of: aView, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 300.0, y: 160.0, width: 40.0, height: 40.0)))
+//        bView.layout.right(of: aViewChild, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 225.0, y: 170.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.right(of: aView, aligned: .bottom)
+//        expect(bView.frame).to(equal(CGRect(x: 300.0, y: 220.0, width: 40.0, height: 40.0)))
+//        bView.layout.right(of: aViewChild, aligned: .bottom)
+//        expect(bView.frame).to(equal(CGRect(x: 225.0, y: 190.0, width: 40.0, height: 40.0)))
+
+        
+//        bView.layout.below(of: aView, aligned: .left)
+//        expect(bView.frame).to(equal(CGRect(x: 100.0, y: 260.0, width: 40.0, height: 40.0)))
+//        bView.layout.below(of: aViewChild, aligned: .left)
+//        expect(bView.frame).to(equal(CGRect(x: 145.0, y: 230.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.below(of: aView, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 180.0, y: 260.0, width: 40.0, height: 40.0)))
+//        bView.layout.below(of: aViewChild, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 165.0, y: 230.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.below(of: aView, aligned: .right)
+//        expect(bView.frame).to(equal(CGRect(x: 260.0, y: 260.0, width: 40.0, height: 40.0)))
+//        bView.layout.below(of: aViewChild, aligned: .right)
+//        expect(bView.frame).to(equal(CGRect(x: 185.0, y: 230.0, width: 40.0, height: 40.0)))
+
+
+//        bView.layout.left(of: aView, aligned: .top)
+//        expect(bView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 40.0, height: 40.0)))
+//        bView.layout.left(of: aViewChild, aligned: .top)
+//        expect(bView.frame).to(equal(CGRect(x: 105.0, y: 150.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.left(of: aView, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 60.0, y: 160.0, width: 40.0, height: 40.0)))
+//        bView.layout.left(of: aViewChild, aligned: .center)
+//        expect(bView.frame).to(equal(CGRect(x: 105.0, y: 170.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.left(of: aView, aligned: .bottom)
+//        expect(bView.frame).to(equal(CGRect(x: 60.0, y: 220.0, width: 40.0, height: 40.0)))
+//        bView.layout.left(of: aViewChild, aligned: .bottom)
+//        expect(bView.frame).to(equal(CGRect(x: 105.0, y: 190.0, width: 40.0, height: 40.0)))
+
+        
+//        bView.layout.above(of: aView)
+//        expect(bView.frame).to(equal(CGRect(x: 160.0, y: 60.0, width: 40.0, height: 40.0)))
+//        bView.layout.above(of: aViewChild)
+//        expect(bView.frame).to(equal(CGRect(x: 160.0, y: 110.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.left(of: aView)
+//        expect(bView.frame).to(equal(CGRect(x: 60.0, y: 200.0, width: 40.0, height: 40.0)))
+//        bView.layout.left(of: aViewChild)
+//        expect(bView.frame).to(equal(CGRect(x: 105.0, y: 200.0, width: 40.0, height: 40.0)))
+
+
+//        bView.layout.below(of: aView)
+//        expect(bView.frame).to(equal(CGRect(x: 160.0, y: 260.0, width: 40.0, height: 40.0)))
+//        bView.layout.below(of: aViewChild)
+//        expect(bView.frame).to(equal(CGRect(x: 160.0, y: 230.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.right(of: aView)
+//        expect(bView.frame).to(equal(CGRect(x: 300.0, y: 200.0, width: 40.0, height: 40.0)))
+
+//        bView.layout.right(of: aViewChild)
+//        expect(bView.frame).to(equal(CGRect(x: 225.0, y: 200.0, width: 40.0, height: 40.0)))
+
+        
         // MARGINS
-        /*rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-        
-        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
-        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
-        
-        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
-        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
+//        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+//        
+//        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
+//        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+//        
+//        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
+//        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
         
 //        let label = UILabel()
 //        label.text = "clafsdj lfkd asdkjkd lkjlksfjd daljs df flkjdslkjf lksfjlkj jaslkj ljdfaj lkajdsfl k asdlkd jassd adskjfksad laksdj fds;alkj l"
@@ -152,6 +227,30 @@ class BothEdgesSnappedView: UIView {
         // sizeThatFits
         //
         aView.sizeThatFitsExpectedArea = 40 * 40
+        aView.frame = CGRect(x: 140, y: 100, width: 200, height: 160)
+        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+
+        //
+        // sizeToFit
+        //
+//        aView.layout.width(100).sizeToFit()
+//        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
+
+//        aView.layout.width(of: aViewChild).sizeToFit()
+//        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
+
+//        aView.layout.height(100).sizeToFit()
+//        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
+
+//        aView.layout.height(of: aViewChild).sizeToFit()
+//        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0)))
+
+//        aView.layout.size(of: aViewChild).sizeToFit()
+//        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
+
+//        aView.layout.size(CGSize(width: 20, height: 100)).sizeToFit()
+//        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 20.0, height: 80.0)))
+
         
 //        aView.layout.sizeThatFits(size: CGSize(width: 100, height: CGFloat.greatestFiniteMagnitude)) //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)
 //        aView.layout.sizeThatFits(width: 100) // CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)
@@ -165,7 +264,7 @@ class BothEdgesSnappedView: UIView {
         
 //        aView.layout.size(of: aViewChild)// CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)
 //        aView.layout.size(CGSize(width: 25, height: 25))//CGRect(x: 140.0, y: 100.0, width: 25.0, height: 25.0)
-        */
+        
         
         //
         // pin coordinate

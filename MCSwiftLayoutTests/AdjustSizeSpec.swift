@@ -104,6 +104,52 @@ class AdjustSizeSpec: QuickSpec {
             }
         }
         
+        //
+        // sizeToFit
+        //
+        describe("the result of the sizeToFit() method") {
+            it("should ajust the size of aView by calling sizeToFit() method without having specified width and height") {
+                aView.layout.sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should ajust the size of aView by calling sizeToFit() method") {
+                aView.layout.width(100).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
+            }
+        
+            it("should ajust the size of aView by calling sizeToFit() method") {
+                aView.layout.width(of: aViewChild).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
+            }
+        
+            it("should ajust the size of aView by calling sizeToFit() method") {
+                aView.layout.height(100).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
+            }
+        
+            it("should ajust the size of aView by calling sizeToFit() method") {
+                aView.layout.height(of: aViewChild).sizeToFit()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.3))
+            }
+        
+            it("should ajust the size of aView by calling sizeToFit() method") {
+                aView.layout.size(of: aViewChild).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
+            }
+        
+            it("should ajust the size of aView by calling sizeToFit() method") {
+                aView.layout.size(CGSize(width: 20, height: 100)).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 20.0, height: 80.0)))
+            }
+        }
+        
+        
+        
+        
+        
+
+        
         describe("the result of the sizeThatFits(...) methods") {
             
             it("should ajust the size of aView by calling sizeThatFits(size: CGSize) method") {

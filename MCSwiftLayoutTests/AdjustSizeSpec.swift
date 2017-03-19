@@ -135,20 +135,24 @@ class AdjustSizeSpec: QuickSpec {
         
             it("should ajust the size of aView by calling sizeToFit() method") {
                 aView.layout.size(of: aViewChild).sizeToFit()
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)))
             }
         
             it("should ajust the size of aView by calling sizeToFit() method") {
                 aView.layout.size(CGSize(width: 20, height: 100)).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 20.0, height: 80.0)))
             }
+            
+            it("should ajust the size and position the view by calling pinCenter(), height() and sizeToFit()") {
+                aViewChild.layout.pinCenter(.center, of: aView).height(40).sizeToFit()
+                expect(aViewChild.frame).to(equal(CGRect(x: 30.0, y: 10.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should ajust the size and position the view by calling pinCenter(), width() and sizeToFit()") {
+                aViewChild.layout.pinCenter(.center, of: aView).width(20).sizeToFit()
+                expect(aViewChild.frame).to(equal(CGRect(x: 40.0, y: -10.0, width: 20.0, height: 80.0)))
+            }
         }
-        
-        
-        
-        
-        
-
         
         describe("the result of the sizeThatFits(...) methods") {
             

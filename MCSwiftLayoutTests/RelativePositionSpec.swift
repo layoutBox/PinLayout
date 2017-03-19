@@ -205,9 +205,6 @@ class RelativePositionSpec: QuickSpec {
                 expect(bView.frame).to(equal(CGRect(x: 225.0, y: 190.0, width: 40.0, height: 40.0)))
             }
         }
-
-                
-        
         
         //
         // above(of:)

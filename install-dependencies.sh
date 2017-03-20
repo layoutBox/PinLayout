@@ -1,1 +1,1 @@
-carthage bootstrap --use-ssh --platform iOS
+carthage bootstrap --platform iOS

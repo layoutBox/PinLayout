@@ -71,24 +71,31 @@ import UIKit
  
  TODO:
  ===============================================
-    - implement sizeThatFits
-         - Insets should be applied to width and height before calling view.sizeThatFits()
-    - implement sizeThatFits() without parameter that use set width and/or height
+ - Support hCenter + left or right
+ - Support vCenter + top or bottom
  
-    - Implement Layout + Layout operator
+ - implement sizeThatFits
+     - Insets should be applied to width and height before calling view.sizeThatFits()
  
-    - width(percentage: CGFloat, of view: UIView)
-    - maxWidth(), minWidth(), maxHeight(), minHeight()
+ - Est-ce que aView.layout.pinTopLeft(superview.pin.center) fonctionne?
  
-    - Implement this: ??
-         - view.layout.left(backgroundView.edge.left)
-         - view.layout.top(backgroundView.edge.bottom)
- 
-    - inset(t:? = nil l:? = nil  b:? = nil  r:? = nil ) ??
-    - margin(t:? = nil  l:? = nil  b:? = nil  r:? = nil ) ??
- */
-fileprivate typealias Context = () -> String
+ - peut-être enlever tous les UIView.topLeft, UIView.topCenter, ....?
 
+ - Implement this: ??
+ - view.layout.left(backgroundView.edge.left)
+ - view.layout.top(backgroundView.edge.bottom)
+ 
+ - Implement Layout + Layout operator
+ 
+ - width(percentage: CGFloat, of view: UIView)
+ - maxWidth(), minWidth(), maxHeight(), minHeight()
+ 
+ - inset(t:? = nil l:? = nil  b:? = nil  r:? = nil ) ??
+ - margin(t:? = nil  l:? = nil  b:? = nil  r:? = nil ) ??
+ 
+ - Unit tests TODO:
+     - pinTopLeft(to: Pin, of: UIView), pinTopCenter(to: Pin, of: UIView), ...
+ */
 public extension UIView {
     public var top: CGFloat {
         get { return frame.origin.y }
@@ -257,7 +264,7 @@ public class Layout {
     fileprivate var width: CGFloat?
     fileprivate var height: CGFloat?
     fileprivate var fitSize: CGSize? // needed?
-    fileprivate var fitToSize = false
+    fileprivate var shouldSizeToFit = false
     
     fileprivate var marginTop: CGFloat?
     fileprivate var marginLeft: CGFloat?
@@ -841,6 +848,9 @@ public class Layout {
         return setHeight(view.height, context: { return "height(of: \(view))" })
     }
     
+    //
+    // size, sizeToFit, sizeThatFits
+    //
     @discardableResult
     public func size(_ size: CGSize) -> Layout {
         if isSizeNotSet(context: { return "size(CGSize(width: \(size.width), height: \(size.height)))" }) {
@@ -864,7 +874,11 @@ public class Layout {
     
     @discardableResult
     public func sizeToFit() -> Layout {
-        fitToSize = true
+        if let _ = fitSize {
+            warn("Call to sizeToFit() conflict with a previous call of sizeThatFit(). sizeToFit() won't be applied", context: { return "sizeToFit()" })
+        } else {
+            shouldSizeToFit = true
+        }
         return self
     }
     
@@ -915,37 +929,6 @@ public class Layout {
         }
         return self
     }
-    
-    /*
-    @discardableResult
-    func widthSpaceBetween(view: UIView, andView: UIView) -> Layout {
-        if view.right <= andView.left {
-            // first view is on the left of the second view
-            size.width = andView.left - view.right
-        } else if view.right > andView.right {
-            // first view is on the right of the second view
-            size.width = view.left - andView.right
-        } else {
-            warnings("widthSpaceBetween(view:andView:): The horizontal space between specified are smaller than 0")
-        }
-        
-        return self
-    }
-    
-    @discardableResult
-    func heightSpaceBetween(view: UIView, andView: UIView) -> Layout {
-        if view.bottom <= andView.top {
-            // first view is above the second view
-            size.height = andView.top - view.bottom
-        } else if view.top > andView.bottom {
-            // first view is below the second view
-            size.width = view.top - andView.bottom
-        } else {
-            warnings("widthSpaceBetween(view:andView:): The horizontal space between specified are smaller than 0")
-        }
-        
-        return self
-    }*/
     
     //
     // Margins
@@ -1046,164 +1029,14 @@ public class Layout {
         insetBottom(value)
         return self
     }
-    
-//    -
-//    - insetVertical
-//    
-    
-    fileprivate func apply() {
-        //guard let view = view else { return }
-        apply(onView: view)
-    }
-    
-    public func apply(onView view: UIView) {
-//        assert(width != nil && (right == nil || left == nil), "width and right+left shouldn't be set simultaneously")
-//        assert(height != nil || (top == nil || bottom == nil), "height and top+bottom shouldn't be set simultaneously")
-//        assert(hCenter == nil || (left == nil && right == nil), "hCenter and right+left shouldn't be set simultaneously")
-//        assert(vCenter == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
-//        assert(fitSize == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
-        
-        let currentFrame = view.frame
-        var newX: CGFloat?
-        var newY: CGFloat?
-        var newWidth: CGFloat?
-        var newHeight: CGFloat?
-        
-        var isVerticalPositionApplied = false
-        var isHorizontalPositionApplied = false
-        
-        if let fitSize = fitSize {
-            let size = view.sizeThatFits(fitSize)
-            width = size.width
-            height = size.height
-        }
-        
-        //
-        // Compute vertical position
-        //
-        if let top = top {
-            if bottom == nil && height == nil {
-                // bottom and Height aren't set => adjust the origin
-                newY = top + (marginTop ?? 0)
-            } else if bottom != nil {
-                // bottom is set => adjust the origin and the height
-                newY = applyMarginsAndInsets(top: top)
-                newHeight = applyMarginsAndInsets(bottom: bottom! - newY!)
-            } else if height != nil {
-                // height is set => adjust the origin and the height
-                newY = applyMarginsAndInsets(top: top)
-                newHeight = applyTopBottomInsets(height!)
-            }
-            
-            isVerticalPositionApplied = true
-        }
-        
-        if !isVerticalPositionApplied, let bottom = bottom {
-            if top == nil && height == nil {
-                // top and Height aren't set => Move the view and keeps the current height
-                newY = bottom - currentFrame.height - (marginBottom ?? 0)
-            } else if top != nil {
-                // nop, case already handled in the "top" case above
-                assert(false)
-            } else if height != nil {
-                // height is set => adjust the top and the height
-                newHeight = applyTopBottomInsets(height!)
-                newY = applyMarginsAndInsets(bottom: bottom) - newHeight!
-            }
-            
-            isVerticalPositionApplied = true
-        }
-        
-        if !isVerticalPositionApplied, let vCenter = vCenter {
-            if height == nil {
-                newY = vCenter - (currentFrame.height / 2)
-            } else {
-                // height is set => adjust the top and the height
-                newHeight = applyTopBottomInsets(height!)
-                newY = vCenter - (newHeight! / 2) + (marginTop ?? 0)
-            }
-            
-            isVerticalPositionApplied = true
-        }
-        
-        if !isVerticalPositionApplied, let height = height {
-            newHeight = applyTopBottomInsets(height)
-        }
-        
-        //
-        // Compute horizontal position
-        //
-
-        if let left = left {
-            if right == nil && width == nil {
-                // right and width aren't set => adjust the origin
-                newX = left + (marginLeft ?? 0)
-            } else if right != nil {
-                // right is set => adjust the origin and the width
-                newX = applyMarginsAndInsets(left: left)
-                newWidth = applyMarginsAndInsets(right: right!) - newX!
-            } else if width != nil {
-                // width is set => adjust the origin and the height
-                newX = applyMarginsAndInsets(left: left)
-                newWidth = applyLeftRightInsets(width!)
-            }
-            
-            isHorizontalPositionApplied = true
-        }
-        
-        if !isHorizontalPositionApplied, let right = right {
-            if left == nil && width == nil {
-                // left and width aren't set => Move the view and keeps the current width
-                newX = right - currentFrame.width - (marginRight ?? 0)
-            } else if left != nil {
-                // nop, case already handled in the "left" case above
-                assert(false)
-            } else if width != nil {
-                // width is set => adjust the origin and the width
-                newWidth = applyLeftRightInsets(width!)
-                newX = applyMarginsAndInsets(right: right) - newWidth!
-            }
-            
-            isHorizontalPositionApplied = true
-        }
-        
-        if !isHorizontalPositionApplied, let hCenter = hCenter {
-            if width == nil {
-                newX = hCenter - (currentFrame.width / 2)
-            } else {
-                // width is set => adjust the right and the width
-                newWidth = applyLeftRightInsets(width!)
-                newX = hCenter - (newWidth! / 2) + (marginLeft ?? 0)
-            }
-
-            isHorizontalPositionApplied = true
-        }
-        
-        if !isHorizontalPositionApplied, let width = width {
-            newWidth = applyLeftRightInsets(width)
-        }
-        
-        if fitToSize {
-            if newWidth == nil && newHeight == nil {
-                warn("sizeToFit() could not be applied. The width nor the height can't be determined using the layout properties", context: { return "sizeToFit()" })
-            } else {
-                let size = CGSize(width: newWidth ?? .greatestFiniteMagnitude,
-                                  height: newHeight ?? .greatestFiniteMagnitude)
-                let sizeThatFits = view.sizeThatFits(size)
-                newWidth = sizeThatFits.width
-                newHeight = sizeThatFits.height
-            }
-        }
-        
-        view.frame = CGRect(x: ceilFloatToDisplayScale(newX ?? currentFrame.origin.x),
-                            y: ceilFloatToDisplayScale(newY ?? currentFrame.origin.y),
-                            width: ceilFloatToDisplayScale(newWidth ?? currentFrame.width),
-                            height: ceilFloatToDisplayScale(newHeight ?? currentFrame.height))
-    }
 }
 
-
+//
 // MARK: Private methods
+//
+fileprivate typealias Context = () -> String
+fileprivate typealias ComputedSize = (width: CGFloat?, height: CGFloat?)
+
 extension Layout {
     fileprivate func setTop(_ value: CGFloat, context: Context) {
         if bottom != nil && height != nil {
@@ -1460,6 +1293,135 @@ extension Layout {
         }
     }
     
+    fileprivate func apply() {
+        //guard let view = view else { return }
+        apply(onView: view)
+    }
+    
+    public func apply(onView view: UIView) {
+        //        assert(width != nil && (right == nil || left == nil), "width and right+left shouldn't be set simultaneously")
+        //        assert(height != nil || (top == nil || bottom == nil), "height and top+bottom shouldn't be set simultaneously")
+        //        assert(hCenter == nil || (left == nil && right == nil), "hCenter and right+left shouldn't be set simultaneously")
+        //        assert(vCenter == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
+        //        assert(fitSize == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
+        
+        var newRect = view.frame
+        let newSize = computeSize()
+        
+        // Compute horizontal position
+        if let left = left, let right = right {
+            // left & right is set
+            newRect.origin.x = applyMarginsAndInsets(left: left)
+            newRect.size.width = applyMarginsAndInsets(right: right) - newRect.origin.x
+        } else if let left = left, let width = newSize.width {
+            // left & width is set
+            newRect.origin.x = applyMarginsAndInsets(left: left)
+            newRect.size.width = width
+        } else if let right = right, let width = newSize.width {
+            // right & width is set
+            newRect.size.width = width
+            newRect.origin.x = applyMarginsAndInsets(right: right) - width
+        } else if let hCenter = hCenter, let width = newSize.width {
+            // hCenter & width is set
+            newRect.size.width = width
+            newRect.origin.x = hCenter - (width / 2) + (marginLeft ?? 0)
+        } else if let left = left {
+            // Only left is set
+            newRect.origin.x = left + (marginLeft ?? 0)
+        } else if let right = right {
+            // Only right is set
+            newRect.origin.x = right - view.frame.width - (marginRight ?? 0)
+        } else if let hCenter = hCenter {
+            // Only hCenter is set
+            newRect.origin.x = hCenter - (view.frame.width / 2)
+        } else if let width = newSize.width {
+            // Only widht is set
+            newRect.size.width = width
+        }
+        
+        // Compute vertical position
+        if let top = top, let bottom = bottom {
+            // top & bottom is set
+            newRect.origin.y = applyMarginsAndInsets(top: top)
+            newRect.size.height = applyMarginsAndInsets(bottom: bottom) - newRect.origin.y
+        } else if let top = top, let height = newSize.height {
+            // top & height is set
+            newRect.origin.y = applyMarginsAndInsets(top: top)
+            newRect.size.height = height
+        } else if let bottom = bottom, let height = newSize.height {
+            // bottom & height is set
+            newRect.size.height = height
+            newRect.origin.y = applyMarginsAndInsets(bottom: bottom) - height
+        } else if let vCenter = vCenter, let height = newSize.height {
+            // vCenter & height is set
+            newRect.size.height = height
+            newRect.origin.y = vCenter - (newRect.size.height / 2) + (marginTop ?? 0)
+        } else if let top = top {
+            // Only top is set
+            newRect.origin.y = top + (marginTop ?? 0)
+        } else if let bottom = bottom {
+            // Only bottom is set
+            newRect.origin.y = bottom - view.frame.height - (marginBottom ?? 0)
+        } else if let vCenter = vCenter {
+            // Only vCenter is set
+            newRect.origin.y = vCenter - (view.frame.height / 2)
+        } else if let height = newSize.height {
+            // Only height is set
+            newRect.size.height = height
+        }
+        
+        view.frame = CGRect(x: ceilFloatToDisplayScale(newRect.origin.x), y: ceilFloatToDisplayScale(newRect.origin.y),
+                            width: ceilFloatToDisplayScale(newRect.size.width), height: ceilFloatToDisplayScale(newRect.size.height))
+    }
+    
+    fileprivate func computeSize() -> ComputedSize {
+        var newWidth = computeWidth()
+        var newHeight = computeHeight()
+        
+        if shouldSizeToFit && (newWidth != nil || newHeight != nil) {
+            fitSize = CGSize(width: newWidth ?? .greatestFiniteMagnitude,
+                             height: newHeight ?? .greatestFiniteMagnitude)
+        }
+        
+        if let fitSize = fitSize {
+            let sizeThatFits = view.sizeThatFits(fitSize)
+            
+            if fitSize.width != .greatestFiniteMagnitude && sizeThatFits.width > fitSize.width {
+                newWidth = fitSize.width
+            } else {
+                newWidth = sizeThatFits.width
+            }
+            
+            if fitSize.height != .greatestFiniteMagnitude && sizeThatFits.height > fitSize.height {
+                newHeight = fitSize.height
+            } else {
+                newHeight = sizeThatFits.height
+            }
+        }
+        
+        return (newWidth, newHeight)
+    }
+    
+    fileprivate func computeWidth() -> CGFloat? {
+        if let _ = left, let right = right {
+            return applyMarginsAndInsets(right: right)
+        } else if let width = width {
+            return applyLeftRightInsets(width: width)
+        } else {
+            return nil
+        }
+    }
+    
+    fileprivate func computeHeight() -> CGFloat? {
+        if let _ = top, let bottom = bottom {
+            return applyMarginsAndInsets(bottom: bottom)
+        } else if let height = height {
+            return applyTopBottomInsets(height: height)
+        } else {
+            return nil
+        }
+    }
+    
     fileprivate func applyMarginsAndInsets(top: CGFloat) -> CGFloat {
         return top + (marginTop ?? 0) + (insetTop ?? 0)
     }
@@ -1476,31 +1438,31 @@ extension Layout {
         return right - (marginRight ?? 0) - (insetRight ?? 0)
     }
     
-    fileprivate func applyTopBottomInsets(_ height: CGFloat) -> CGFloat {
+    fileprivate func applyTopBottomInsets(height: CGFloat) -> CGFloat {
         return height - (insetTop ?? 0) - (insetBottom ?? 0)
     }
     
-    fileprivate func applyLeftRightInsets(_ width: CGFloat) -> CGFloat {
+    fileprivate func applyLeftRightInsets(width: CGFloat) -> CGFloat {
         return width - (insetLeft ?? 0) - (insetRight ?? 0)
     }
     
     fileprivate func warn(_ text: String, context: Context) {
         guard Layout.logConflicts else { return }
-        print("\n\(text) (\(context()))\n")
+        print("\n👉 \(text) (\(context()))\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, context: Context) {
         guard Layout.logConflicts else { return }
-        print("\nLayou2: The \(propertyName) property has already been set to \(propertyValue). (\(context()))\n")
+        print("\n👉 The \(propertyName) property has already been set to \(propertyValue). (\(context()))\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, context: Context) {
-        print("\nLayou2: The \(propertyName) property has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)). (\(context()))\n")
+        print("\n👉 The \(propertyName) property has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)). (\(context()))\n")
     }
     
     fileprivate func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
         guard Layout.logConflicts else { return }
-        var warning = "\nLayout Conflict: '\(context())' won't be applied since it conflicts with the following already set properties:\n"
+        var warning = "\n👉 Layout Conflict: '\(context())' won't be applied since it conflicts with the following already set properties:\n"
         properties.forEach { (key, value) in
             warning += " \(key): \(value)\n"
         }
@@ -1508,7 +1470,6 @@ extension Layout {
         print(warning)
     }
 }
-
 
 fileprivate let displayScale = UIScreen.main.scale
 

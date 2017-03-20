@@ -4,7 +4,8 @@
 build/
 DerivedData/
 Pods/
-Carthage/Build
+Carthage/
 MCSwiftLayoutSample/Pods
 xcuserdata
 *.xcworkspace
+data/

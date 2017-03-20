@@ -1,6 +1,6 @@
 use_frameworks!
 
 target 'MCSwiftLayoutTests' do
-    pod 'Quick'
+    pod 'Quick', '1.0'
     pod 'Nimble'
 end

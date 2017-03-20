@@ -71,10 +71,12 @@ import UIKit
  
  TODO:
  ===============================================
+ - Support hCenter + left or right
+ - Support vCenter + top or bottom
+ 
  - implement sizeThatFits
      - Insets should be applied to width and height before calling view.sizeThatFits()
- - implement sizeThatFits() without parameter that use set width and/or height
-
+ 
  - Est-ce que aView.layout.pinTopLeft(superview.pin.center) fonctionne?
  
  - peut-être enlever tous les UIView.topLeft, UIView.topCenter, ....?

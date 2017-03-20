@@ -5,6 +5,7 @@ xcode_scheme: MCSwiftLayout
 xcode_sdk: iphonesimulator9.3
 env:
   global: 
+  - GITHUB_ACCESS_TOKEN=39b269258238a23675431db7ddb1b43bcd6893ef
    # - FRAMEWORK_NAME=MCSwiftLayout
 before_install:
   #- ./install_dependencies.sh

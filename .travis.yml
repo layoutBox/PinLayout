@@ -6,8 +6,8 @@ xcode_sdk: iphonesimulator9.3
 env:
   global: 
 before_install:
-  - gem install xcpretty-travis-formatter
-  - gem install xcpretty
+  #- gem install xcpretty-travis-formatter
+  #- gem install xcpretty
   - carthage bootstrap --platform iOS
   #- ./install-dependencies.sh
 before_script:

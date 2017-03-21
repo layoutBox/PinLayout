@@ -9,9 +9,8 @@ before_install:
   - brew update
   - brew install tailor
   - gem install xcpretty-travis-formatter
-  #- gem install xcpretty
-  - carthage bootstrap --platform iOS
-  #- ./install-dependencies.sh
+  #- carthage bootstrap --platform iOS
+  - ./install-dependencies.sh
 before_script:
   # bootstrap the dependencies for the project
   # you can remove if you don't have dependencies

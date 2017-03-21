@@ -1,0 +1,16 @@
+include:
+    - MCSwiftLayout
+
+exclude:
+    - MCSwiftLayoutTests
+    - MCSwiftLayoutSample
+    - Carthage
+    - Source/Pods
+    - data
+    - scripts
+
+except:
+    - trailing-whitespace
+    - brace-style
+    - function-whitespace
+    - terminating-semicolon

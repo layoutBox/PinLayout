@@ -75,13 +75,15 @@ class ChainedLayoutView: UIView {
         //        topRightView.bottomRight = centerView.topRight
 
         //bottomLeftView.layout2.topLeft(centerView.bottomLeft).margins(10)
-        bottomLeftView.layout.pinTopLeft(to: centerView.bottomLeft).height(50).marginTop(10).marginBottom(10)
-        bottomCenterView.layout.pinCenter(to: centerView.bottomCenter).height(50).marginTop(10).marginBottom(10)
-        bottomRightView.layout.pinTopRight(to: centerView.bottomRight).height(50).marginTop(10).marginBottom(10)
-        
-        rightTopView.layout.pinTopLeft(to: centerView.topRight).width(50).marginLeft(10).marginRight(10)
-        rightCenterView.layout.pinLeftCenter(to: centerView.rightCenter).height(50).marginLeft(10).marginRight(10)
-        rightBottomView.layout.pinBottomLeft(to: centerView.bottomRight).height(50).marginLeft(10).marginRight(10)
+//        bottomLeftView.layout.pinTopLeft(<#T##pin: Pin##Pin#>, of: <#T##UIView#>)
+//
+//        pinTopLeft(to: centerView.pin.bottomLeft).height(50).marginTop(10).marginBottom(10)
+//        bottomCenterView.layout.pinCenter(to: centerView.bottomCenter).height(50).marginTop(10).marginBottom(10)
+//        bottomRightView.layout.pinTopRight(to: centerView.bottomRight).height(50).marginTop(10).marginBottom(10)
+//        
+//        rightTopView.layout.pinTopLeft(to: centerView.topRight).width(50).marginLeft(10).marginRight(10)
+//        rightCenterView.layout.pinLeftCenter(to: centerView.rightCenter).height(50).marginLeft(10).marginRight(10)
+//        rightBottomView.layout.pinBottomLeft(to: centerView.bottomRight).height(50).marginLeft(10).marginRight(10)
         
 //
 //        leftTopView.topRight = centerView.topLeft

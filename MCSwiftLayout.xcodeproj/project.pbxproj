@@ -22,7 +22,6 @@
 		249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */; };
 		249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		896ADBDE75C14EE32A4C5D76 /* Pods_MCSwiftLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E4FD7DB882853F18D8901F /* Pods_MCSwiftLayoutTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +65,6 @@
 		249EFE831E64FB4C00165E39 /* MCSwiftLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSwiftLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSwiftLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45C948B57F24F8D864F1980F /* Pods-MCSwiftLayoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutTests.release.xcconfig"; path = "MCSwiftLayoutSample/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests.release.xcconfig"; sourceTree = "<group>"; };
-		985120301822BDFCFF1CE252 /* Pods-MCSwiftLayoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutTests.debug.xcconfig"; path = "MCSwiftLayoutSample/Pods/Target Support Files/Pods-MCSwiftLayoutTests/Pods-MCSwiftLayoutTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D1E4FD7DB882853F18D8901F /* Pods_MCSwiftLayoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCSwiftLayoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +82,6 @@
 				249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */,
 				241962391E7F582C00A0466C /* Nimble.framework in Frameworks */,
 				2419623A1E7F582C00A0466C /* Quick.framework in Frameworks */,
-				896ADBDE75C14EE32A4C5D76 /* Pods_MCSwiftLayoutTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +93,6 @@
 			children = (
 				241962371E7F582C00A0466C /* Nimble.framework */,
 				241962381E7F582C00A0466C /* Quick.framework */,
-				D1E4FD7DB882853F18D8901F /* Pods_MCSwiftLayoutTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,7 +104,6 @@
 				249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
 				138A1F602470415292B7194B /* Frameworks */,
-				953D26A31D6BF96A815F396B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,15 +140,6 @@
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
 			);
 			path = MCSwiftLayoutTests;
-			sourceTree = "<group>";
-		};
-		953D26A31D6BF96A815F396B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				985120301822BDFCFF1CE252 /* Pods-MCSwiftLayoutTests.debug.xcconfig */,
-				45C948B57F24F8D864F1980F /* Pods-MCSwiftLayoutTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,7 +430,6 @@
 		};
 		249EFE921E64FB4C00165E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 985120301822BDFCFF1CE252 /* Pods-MCSwiftLayoutTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
@@ -464,7 +447,6 @@
 		};
 		249EFE931E64FB4C00165E39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45C948B57F24F8D864F1980F /* Pods-MCSwiftLayoutTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;

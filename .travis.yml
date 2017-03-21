@@ -29,7 +29,7 @@ script: xcodebuild
   -destination 'platform=iOS Simulator,name=iPhone 6'
   -enableCodeCoverage YES 
   test
-# | xcpretty -f `xcpretty-travis-formatter`
+ | xcpretty -f `xcpretty-travis-formatter`
 
 #script:
   #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty

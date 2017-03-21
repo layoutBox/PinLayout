@@ -6,6 +6,8 @@ xcode_sdk: iphonesimulator9.3
 env:
   global: 
 before_install:
+  #- brew update
+  #- brew install tailor
   #- gem install xcpretty-travis-formatter
   #- gem install xcpretty
   - carthage bootstrap --platform iOS
@@ -22,4 +24,5 @@ before_deploy:
   
 script:
   #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty
-  - set -o pipefail && set -o pipefail && xcodebuild -project  MCSwiftLayout.xcodeproj     -scheme "MCSwiftLayout"     -sdk iphonesimulator     -destination 'platform=iOS Simulator,name=iPhone 6'     test | xcpretty -r "html" -o "tests.html"
+  - set -o pipefail && set -o pipefail && xcodebuild -project  MCSwiftLayout.xcodeproj     -scheme "MCSwiftLayout"     -sdk iphonesimulator     -destination 'platform=iOS Simulator,name=iPhone 6'     test 
+  #| xcpretty -r "html" -o "tests.html"

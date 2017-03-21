@@ -8,8 +8,8 @@ env:
 before_install:
   - gem install xcpretty-travis-formatter
   - gem install xcpretty
-  #- carthage bootstrap --platform iOS
-  - ./install-dependencies.sh
+  - carthage bootstrap --platform iOS
+  #- ./install-dependencies.sh
 before_script:
   # bootstrap the dependencies for the project
   # you can remove if you don't have dependencies
@@ -17,9 +17,9 @@ before_deploy:
   #- carthage build --no-skip-current
   #- carthage archive $FRAMEWORK_NAME 
 
-env:
-  - ACTION=test  PLATFORM=iOS  DESTINATION='platform=iOS Simulator,name=iPhone 6'
+#env:
+  #- ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone 6S'
   
 script:
   #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty
-  - set -o pipefail && set -o pipefail && xcodebuild -project  MCSwiftLayout.xcodeproj -scheme "MCSwiftLayout" -sdk iphonesimulator -destination "$DESTINATION" $ACTION | xcpretty -r "html" -o "tests.html"
+  - set -o pipefail && set -o pipefail && xcodebuild -project  MCSwiftLayout.xcodeproj     -scheme "MCSwiftLayout"     -sdk iphonesimulator     -destination 'platform=iOS Simulator,name=iPhone 6'     test | xcpretty -r "html" -o "tests.html"

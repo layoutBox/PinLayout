@@ -1,6 +1,6 @@
 use_frameworks!
 
-workspace 'path/to/Workspace.xcworkspace'
+workspace 'MCSwiftLayoutSample.xcworkspace'
 
 target 'MCSwiftLayoutSample' do
   project 'MCSwiftLayoutSample.xcodeproj'

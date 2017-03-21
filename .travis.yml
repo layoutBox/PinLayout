@@ -5,27 +5,17 @@ xcode_scheme: MCSwiftLayout
 xcode_sdk: iphonesimulator9.3
 env:
   global: 
-  #- GITHUB_ACCESS_TOKEN=39b269258238a23675431db7ddb1b43bcd6893ef
-  # - FRAMEWORK_NAME=MCSwiftLayout
 before_install:
-  #- ./install_dependencies.sh
-  #- gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-  #- pod repo update
-  #- gem install xcpretty-travis-formatter
-  # - gem install xcpretty
-  #- carthage bootstrap --use-ssh --platform iOS
-  - carthage bootstrap --platform iOS
-before_script:
-  # bootstrap the dependencies for the project
-  # you can remove if you don't have dependencies
-  #- carthage bootstrap  
-before_deploy:
-  #- carthage build --no-skip-current
-  #- carthage archive $FRAMEWORK_NAME 
-
-#env:
-  #- ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone 6S'
+  #- brew update
+  #- brew install tailor
+  - gem install xcpretty-travis-formatter
+  - ./install-dependencies.sh
   
-script:
-  #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty
-  - set -o pipefail && set -o pipefail && xcodebuild -project  MCSwiftLayout.xcodeproj     -scheme "MCSwiftLayout"     -sdk iphonesimulator     -destination 'platform=iOS Simulator,name=iPhone 6'     test | xcpretty -r "html" -o "tests.html"
+script: xcodebuild
+  -project  MCSwiftLayout.xcodeproj
+  -scheme "MCSwiftLayout"
+  -sdk iphonesimulator
+  -destination 'platform=iOS Simulator,name=iPhone 6'
+  -enableCodeCoverage YES 
+  test
+ | xcpretty -f `xcpretty-travis-formatter`

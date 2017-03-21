@@ -70,20 +70,20 @@ class ViewExtensionsPositionningView: UIView {
         centerView.center = CGPoint(x: 200, y: 300)
         print("topCenterView: \(topCenterView.frame)")
         
-        topLeftView.bottomLeft = centerView.topLeft
-        topCenterView.bottomCenter = centerView.topCenter
-        topRightView.bottomRight = centerView.topRight
-        
-        leftTopView.topRight = centerView.topLeft
-        leftCenterView.rightCenter = centerView.leftCenter
-        leftBottomView.bottomRight = centerView.bottomLeft
-        
-        bottomLeftView.topLeft = centerView.bottomLeft
-        bottomCenterView.topCenter = centerView.bottomCenter
-        bottomRightView.topRight = centerView.bottomRight
-        
-        rightTopView.topLeft = centerView.topRight
-        rightCenterView.leftCenter = centerView.rightCenter
-        rightBottomView.bottomLeft = centerView.bottomRight
+//        topLeftView.bottomLeft = centerView.topLeft
+//        topCenterView.bottomCenter = centerView.topCenter
+//        topRightView.bottomRight = centerView.topRight
+//        
+//        leftTopView.topRight = centerView.topLeft
+//        leftCenterView.rightCenter = centerView.leftCenter
+//        leftBottomView.bottomRight = centerView.bottomLeft
+//        
+//        bottomLeftView.topLeft = centerView.bottomLeft
+//        bottomCenterView.topCenter = centerView.bottomCenter
+//        bottomRightView.topRight = centerView.bottomRight
+//        
+//        rightTopView.topLeft = centerView.topRight
+//        rightCenterView.leftCenter = centerView.rightCenter
+//        rightBottomView.bottomLeft = centerView.bottomRight
     }
 }

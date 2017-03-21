@@ -71,6 +71,8 @@ import UIKit
  
  TODO:
  ===============================================
+ - dans le calcul des coordonné, ajouter un relativeView is superview then ...
+    optimisation
  - Support hCenter + left or right
  - Support vCenter + top or bottom
  
@@ -95,7 +97,18 @@ import UIKit
  
  - Unit tests TODO:
      - pinTopLeft(to: Pin, of: UIView), pinTopCenter(to: Pin, of: UIView), ...
- */
+ 
+ - With SwiftyAttributes, you can write the same thing like this:
+
+        let fancyString = "Hello World!".withTextColor(.blue).withUnderlineStyle(.styleSingle)
+    Alternatively, SwiftyAttributes provides an Attribute enum:
+        let fancyString = "Hello World!".withAttributes([
+            .backgroundColor(.magenta),
+            .strokeColor(.orange),
+            .strokeWidth(1),
+            .baselineOffset(5.2)
+        ])
+*/
 public extension UIView {
     public var top: CGFloat {
         get { return frame.origin.y }
@@ -127,7 +140,7 @@ public extension UIView {
         set { top = newValue - (height / 2) }
     }
     
-    public var topLeft: CGPoint {
+    /*public var topLeft: CGPoint {
         get { return CGPoint(x: left, y: top) }
         set {
             left = newValue.x
@@ -197,7 +210,7 @@ public extension UIView {
             left = newValue.x - width
             top = newValue.y - height
         }
-    }
+    }*/
     
     public var size: CGSize {
         get { return CGSize(width: width, height: height) }
@@ -882,54 +895,6 @@ public class Layout {
         return self
     }
     
-    @discardableResult
-    public func sizeThatFits(size: CGSize) -> Layout {
-        if isSizeNotSet(context: { return "sizeThatFits(CGSize(width: \(size.width), height: \(size.height)))" }) {
-            fitSize = size
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func sizeThatFits(sizeOf view: UIView) -> Layout {
-        if isSizeNotSet(context: { return "sizeThatFitsViewSize(\(view))" }) {
-            fitSize = view.size
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func sizeThatFits(width: CGFloat) -> Layout {
-        if isSizeNotSet(context: { return "sizeThatFitsWidth(\(width))" }) {
-            fitSize = CGSize(width: width, height: .greatestFiniteMagnitude)
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func sizeThatFits(widthOf view: UIView) -> Layout {
-        if isSizeNotSet(context: { return "sizeThatFitsWidth(of: \(view))" }) {
-            fitSize = CGSize(width: view.size.width, height: .greatestFiniteMagnitude)
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func sizeThatFits(height: CGFloat) -> Layout {
-        if isSizeNotSet(context: { return "sizeThatFitsHeight(\(height))" }) {
-            fitSize = CGSize(width: .greatestFiniteMagnitude, height: height)
-        }
-        return self
-    }
-    
-    @discardableResult
-    public func sizeThatFits(heightOf view: UIView) -> Layout {
-        if isSizeNotSet(context: { return "sizeThatFitsHeightof: \(view))" }) {
-            fitSize = CGSize(width: .greatestFiniteMagnitude, height: view.size.height)
-        }
-        return self
-    }
-    
     //
     // Margins
     //
@@ -1243,16 +1208,17 @@ extension Layout {
     }
     
     fileprivate func point(forPin pin: Pin, of view: UIView) -> CGPoint {
+        // TODO: Cleanup to not use UIView.left, UIView.top, ...
         switch pin {
-        case .topLeft: return view.topLeft
-        case .topCenter: return view.topCenter
-        case .topRight: return view.topRight
-        case .leftCenter: return view.leftCenter
-        case .center: return view.center
-        case .rightCenter: return view.rightCenter
-        case .bottomLeft: return view.bottomLeft
-        case .bottomCenter: return view.bottomCenter
-        case .bottomRight: return view.bottomRight
+        case .topLeft: return CGPoint(x: view.left, y: view.top)//return view.topLeft
+        case .topCenter: return CGPoint(x: view.hCenter, y: view.top)//view.topCenter
+        case .topRight: return CGPoint(x: view.left + view.width, y: view.top)//view.topRight
+        case .leftCenter: return CGPoint(x: view.left, y: view.vCenter)//view.leftCenter
+        case .center: return CGPoint(x: view.hCenter, y: view.vCenter)//view.center
+        case .rightCenter: return CGPoint(x: view.left + view.width, y: view.vCenter)//view.rightCenter
+        case .bottomLeft: return CGPoint(x: view.left, y: view.top + view.height)//view.bottomLeft
+        case .bottomCenter: return CGPoint(x: view.hCenter, y: view.top + view.height)//view.bottomCenter
+        case .bottomRight: return CGPoint(x: view.left + view.width, y: view.top + view.height)//view.bottomRight
         }
     }
     

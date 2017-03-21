@@ -109,7 +109,7 @@ class MarginsAndPaddingsLeftWidthView: UIView {
         descriptionLabel.layout.pinTopLeft(to: CGPoint(x: leftPosition, y: 10))
         
         // No margins
-        noMarginsNoPaddings.layout.pinTopLeft(to: descriptionLabel.bottomLeft).marginTop(5)
+        noMarginsNoPaddings.layout.pinTopLeft(.bottomLeft, of: descriptionLabel).marginTop(5)
         noMarginsLeftInsetView.layout.top(noMarginsNoPaddings.bottom).left(leftPosition).width(70).insetLeft(10)
         noMarginsRightInsetView.layout.top(noMarginsLeftInsetView.bottom).left(leftPosition).width(70).insetRight(10)
         noMarginsLeftRightInsetView.layout.top(noMarginsRightInsetView.bottom).left(leftPosition).width(70).insetLeft(10).insetRight(10)

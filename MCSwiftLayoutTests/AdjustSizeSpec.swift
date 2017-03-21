@@ -157,68 +157,68 @@ class AdjustSizeSpec: QuickSpec {
         describe("the result of the sizeThatFits(...) methods") {
             
             it("should ajust the size of aView by calling sizeThatFits(size: CGSize) method") {
-                aView.layout.sizeThatFits(size: CGSize(width: 100, height: CGFloat.greatestFiniteMagnitude))
+                aView.layout.width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(size) method") {
-                aView.layout.sizeThatFits(size: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 100))
+                aView.layout.height(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
             }
             
             it("should warn that sizeThatFits(size:) won't be applied") {
-                aView.layout.top(0).bottom(70).sizeThatFits(size: CGSize(width: 100, height: CGFloat.greatestFiniteMagnitude))
+                aView.layout.top(0).bottom(70).width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 0.0, width: 100.0, height: 70.0)))
             }
 
             it("should ajust the size of aView by calling sizeThatFits(width: CGFloat) method") {
-                aView.layout.sizeThatFits(width: 100)
+                aView.layout.width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
             
             it("should warn that sizeThatFits(width:) won't be applied") {
-                aView.layout.height(90).sizeThatFits(width: 100)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 90.0)))
+                aView.layout.height(90).width(100).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(widthOf: UIView) method") {
-                aView.layout.sizeThatFits(widthOf: aViewChild)
+                aView.layout.width(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
             }
             
             it("should warn that sizeThatFits(widthOf:) won't be applied") {
-                aView.layout.sizeThatFits(width: 80).sizeThatFits(widthOf: aViewChild)
+                aView.layout.width(80).width(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 20.0)))
             }
 
             it("should ajust the size of aView by calling sizeThatFits(height: CGFloat) method") {
-                aView.layout.sizeThatFits(height: 100)
+                aView.layout.height(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
             }
             
             it("should warn that sizeThatFits(height:) won't be applied") {
-                aView.layout.width(90).sizeThatFits(height: 100)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                aView.layout.width(90).height(100).sizeToFit()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(heightOf: UIView) method") {
-                aView.layout.sizeThatFits(heightOf: aViewChild)
-                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.3))
+                aView.layout.height(of: aViewChild).sizeToFit()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.4))
             }
             
             it("should warn that sizeThatFits(heightOf:) won't be applied") {
-                aView.layout.width(90).sizeThatFits(heightOf: aViewChild)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                aView.layout.width(90).height(of: aViewChild).sizeToFit()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(sizeOf: UIView) method") {
-                aView.layout.sizeThatFits(sizeOf: aViewChild)
+                aView.layout.size(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)))
             }
             
             it("should warn that sizeThatFits(sizeOf:) won't be applied") {
-                aView.layout.width(90).sizeThatFits(sizeOf: aViewChild)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                aView.layout.width(90).size(of: aViewChild).sizeToFit()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
         }
     }

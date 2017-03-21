@@ -198,17 +198,17 @@ class AdjustSizeSpec: QuickSpec {
             
             it("should warn that sizeThatFits(height:) won't be applied") {
                 aView.layout.width(90).height(100).sizeToFit()
-                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.3))
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(heightOf: UIView) method") {
                 aView.layout.height(of: aViewChild).sizeToFit()
-                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.3))
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.4))
             }
             
             it("should warn that sizeThatFits(heightOf:) won't be applied") {
                 aView.layout.width(90).height(of: aViewChild).sizeToFit()
-                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.3))
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(sizeOf: UIView) method") {
@@ -218,7 +218,7 @@ class AdjustSizeSpec: QuickSpec {
             
             it("should warn that sizeThatFits(sizeOf:) won't be applied") {
                 aView.layout.width(90).size(of: aViewChild).sizeToFit()
-                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.3))
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
         }
     }

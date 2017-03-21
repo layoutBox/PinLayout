@@ -26,8 +26,7 @@ script: xcodebuild
   -project  MCSwiftLayout.xcodeproj
   -scheme "MCSwiftLayout"
   -sdk iphonesimulator
-  -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.1'
-  -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'
+  -destination 'platform=iOS Simulator,name=iPhone 6'
   -enableCodeCoverage YES 
   test
 # | xcpretty -f `xcpretty-travis-formatter`
@@ -36,3 +35,7 @@ script:
   #- set -o pipefail && xcodebuild -scheme MCSwiftLayout -destination "$DESTINATION" $ACTION | xcpretty
   #- set -o pipefail && set -o pipefail && xcodebuild -project  MCSwiftLayout.xcodeproj     -scheme "MCSwiftLayout"     -sdk iphonesimulator     -destination 'platform=iOS Simulator,name=iPhone 6'     test | xcpretty -f `xcpretty-travis-formatter`
   #| xcpretty -r "html" -o "tests.html"
+
+addons:
+    code_climate:
+        repo_token: 25d93f63f0805f1db40ed5ff870385cdb57c11e7

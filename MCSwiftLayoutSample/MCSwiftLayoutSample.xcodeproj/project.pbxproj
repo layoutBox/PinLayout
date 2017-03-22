@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2439CC281E6658C3003326FB /* MCSwiftLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* MCSwiftLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2439CC2B1E6658CC003326FB /* MCSwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* MCSwiftLayout.framework */; };
+		2439CC281E6658C3003326FB /* ReferenceProxy in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* MCSwiftLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2439CC2B1E6658CC003326FB /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* MCSwiftLayout.framework */; };
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
 		2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC341E665BF6003326FB /* MenuViewController.swift */; };
 		2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC381E665C6B003326FB /* BasicView.swift */; };
@@ -31,7 +31,6 @@
 		249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE421E64FAFE00165E39 /* AppDelegate.swift */; };
 		249EFE4A1E64FAFE00165E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE491E64FAFE00165E39 /* Assets.xcassets */; };
 		249EFE4D1E64FAFE00165E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */; };
-		249EFE631E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE621E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.swift */; };
 		24E6547A1E68F27D00A72A8B /* BothEdgesSnappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654781E68F27D00A72A8B /* BothEdgesSnappedView.swift */; };
 		24E6547B1E68F27D00A72A8B /* BothEdgesSnappedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654791E68F27D00A72A8B /* BothEdgesSnappedViewController.swift */; };
 		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
@@ -60,20 +59,6 @@
 			remoteGlobalIDString = 249EFE791E64FB4C00165E39;
 			remoteInfo = MCSwiftLayout;
 		};
-		249EFE541E64FAFE00165E39 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 249EFE371E64FAFE00165E39 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 249EFE3E1E64FAFE00165E39;
-			remoteInfo = MCSwiftLayoutSample;
-		};
-		249EFE5F1E64FAFE00165E39 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 249EFE371E64FAFE00165E39 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 249EFE3E1E64FAFE00165E39;
-			remoteInfo = MCSwiftLayoutSample;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,7 +68,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2439CC281E6658C3003326FB /* MCSwiftLayout.framework in Embed Frameworks */,
+				2439CC281E6658C3003326FB /* ReferenceProxy in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,21 +94,16 @@
 		2439CC441E665C6B003326FB /* ViewExtensionsPositionningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensionsPositionningViewController.swift; sourceTree = "<group>"; };
 		2439CC451E665C6B003326FB /* ValidateConflictsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateConflictsView.swift; sourceTree = "<group>"; };
 		2439CC461E665C6B003326FB /* ValidateConflictsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateConflictsViewController.swift; sourceTree = "<group>"; };
-		244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginsAndInsetsView.swift; path = Test/MarginsAndInsets/MarginsAndInsetsView.swift; sourceTree = "<group>"; };
-		244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarginsAndInsetsViewController.swift; path = Test/MarginsAndInsets/MarginsAndInsetsViewController.swift; sourceTree = "<group>"; };
+		244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsAndInsetsView.swift; sourceTree = "<group>"; };
+		244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsAndInsetsViewController.swift; sourceTree = "<group>"; };
 		249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCSwiftLayoutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE421E64FAFE00165E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		249EFE491E64FAFE00165E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		249EFE4C1E64FAFE00165E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		249EFE4E1E64FAFE00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		249EFE531E64FAFE00165E39 /* MCSwiftLayoutSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSwiftLayoutSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		249EFE591E64FAFE00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		249EFE5E1E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSwiftLayoutSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		249EFE621E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSwiftLayoutSampleUITests.swift; sourceTree = "<group>"; };
-		249EFE641E64FAFE00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24E654781E68F27D00A72A8B /* BothEdgesSnappedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BothEdgesSnappedView.swift; path = Test/BothEdgesSnapped/BothEdgesSnappedView.swift; sourceTree = "<group>"; };
-		24E654791E68F27D00A72A8B /* BothEdgesSnappedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BothEdgesSnappedViewController.swift; path = Test/BothEdgesSnapped/BothEdgesSnappedViewController.swift; sourceTree = "<group>"; };
-		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expect.swift; path = Domain/Expect.swift; sourceTree = "<group>"; };
+		24E654781E68F27D00A72A8B /* BothEdgesSnappedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothEdgesSnappedView.swift; sourceTree = "<group>"; };
+		24E654791E68F27D00A72A8B /* BothEdgesSnappedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothEdgesSnappedViewController.swift; sourceTree = "<group>"; };
+		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
 		AAD69688AA2A3F0994F3074E /* Pods_MCSwiftLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCSwiftLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F121E291CADD796B007C04BB /* Pods-MCSwiftLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCSwiftLayoutSample/Pods-MCSwiftLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
 		F1ACB0EACBD84B57B50D472D /* Pods-MCSwiftLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCSwiftLayoutSample/Pods-MCSwiftLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,22 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2439CC2B1E6658CC003326FB /* MCSwiftLayout.framework in Frameworks */,
+				2439CC2B1E6658CC003326FB /* ReferenceProxy in Frameworks */,
 				DE6C3D736B571B80E207DF6A /* Pods_MCSwiftLayoutSample.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		249EFE501E64FAFE00165E39 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		249EFE5B1E64FAFE00165E39 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,25 +144,26 @@
 			children = (
 				2439CC5E1E665C71003326FB /* Common */,
 				2439CC661E666128003326FB /* Main */,
-				2439CC371E665C5E003326FB /* Test */,
+				2439CC371E665C5E003326FB /* Tests */,
 			);
-			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		2439CC371E665C5E003326FB /* Test */ = {
+		2439CC371E665C5E003326FB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				244C6E161E776ACC0074FC74 /* MarginsAndInsets */,
 				24E654761E68F20400A72A8B /* BothEdgesSnapped */,
 				2439CC601E665FDE003326FB /* ChainedLayoutView */,
-				2439CC621E666043003326FB /* MarginsAndPaddingsLeftWidthView */,
+				244C6E161E776ACC0074FC74 /* MarginsAndInsets */,
 				2439CC611E665FFD003326FB /* MarginsAndPaddingsLeftRightView */,
+				2439CC621E666043003326FB /* MarginsAndPaddingsLeftWidthView */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
 				2439CC651E66610F003326FB /* ValidateConflictsView */,
 				2439CC641E6660E6003326FB /* ViewExtensionsPositionningView */,
 			);
-			name = Test;
+			name = Tests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		2439CC5E1E665C71003326FB /* Common */ = {
@@ -204,7 +171,7 @@
 			children = (
 				2439CC381E665C6B003326FB /* BasicView.swift */,
 			);
-			name = Common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		2439CC5F1E665F66003326FB /* MultiRelativeView */ = {
@@ -213,7 +180,7 @@
 				2439CC3F1E665C6B003326FB /* MultiRelativeView.swift */,
 				2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */,
 			);
-			name = MultiRelativeView;
+			path = MultiRelativeView;
 			sourceTree = "<group>";
 		};
 		2439CC601E665FDE003326FB /* ChainedLayoutView */ = {
@@ -222,7 +189,7 @@
 				2439CC391E665C6B003326FB /* ChainedLayoutView.swift */,
 				2439CC3A1E665C6B003326FB /* ChainedLayoutViewController.swift */,
 			);
-			name = ChainedLayoutView;
+			path = ChainedLayoutView;
 			sourceTree = "<group>";
 		};
 		2439CC611E665FFD003326FB /* MarginsAndPaddingsLeftRightView */ = {
@@ -231,7 +198,7 @@
 				2439CC3B1E665C6B003326FB /* MarginsAndPaddingsLeftRightView.swift */,
 				2439CC3C1E665C6B003326FB /* MarginsAndPaddingsLeftRightViewController.swift */,
 			);
-			name = MarginsAndPaddingsLeftRightView;
+			path = MarginsAndPaddingsLeftRightView;
 			sourceTree = "<group>";
 		};
 		2439CC621E666043003326FB /* MarginsAndPaddingsLeftWidthView */ = {
@@ -240,7 +207,7 @@
 				2439CC3D1E665C6B003326FB /* MarginsAndPaddingsLeftWidthView.swift */,
 				2439CC3E1E665C6B003326FB /* MarginsAndPaddingsLeftWidthViewController.swift */,
 			);
-			name = MarginsAndPaddingsLeftWidthView;
+			path = MarginsAndPaddingsLeftWidthView;
 			sourceTree = "<group>";
 		};
 		2439CC631E66606D003326FB /* RelativeView */ = {
@@ -249,7 +216,7 @@
 				2439CC411E665C6B003326FB /* RelativeView.swift */,
 				2439CC421E665C6B003326FB /* RelativeViewController.swift */,
 			);
-			name = RelativeView;
+			path = RelativeView;
 			sourceTree = "<group>";
 		};
 		2439CC641E6660E6003326FB /* ViewExtensionsPositionningView */ = {
@@ -258,7 +225,7 @@
 				2439CC431E665C6B003326FB /* ViewExtensionsPositionningView.swift */,
 				2439CC441E665C6B003326FB /* ViewExtensionsPositionningViewController.swift */,
 			);
-			name = ViewExtensionsPositionningView;
+			path = ViewExtensionsPositionningView;
 			sourceTree = "<group>";
 		};
 		2439CC651E66610F003326FB /* ValidateConflictsView */ = {
@@ -267,7 +234,7 @@
 				2439CC451E665C6B003326FB /* ValidateConflictsView.swift */,
 				2439CC461E665C6B003326FB /* ValidateConflictsViewController.swift */,
 			);
-			name = ValidateConflictsView;
+			path = ValidateConflictsView;
 			sourceTree = "<group>";
 		};
 		2439CC661E666128003326FB /* Main */ = {
@@ -276,7 +243,7 @@
 				2439CC331E665BF6003326FB /* MenuView.swift */,
 				2439CC341E665BF6003326FB /* MenuViewController.swift */,
 			);
-			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		2439CC671E66614D003326FB /* Supporting Files */ = {
@@ -286,7 +253,7 @@
 				249EFE4E1E64FAFE00165E39 /* Info.plist */,
 				249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		244C6E161E776ACC0074FC74 /* MarginsAndInsets */ = {
@@ -295,19 +262,17 @@
 				244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */,
 				244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */,
 			);
-			name = MarginsAndInsets;
+			path = MarginsAndInsets;
 			sourceTree = "<group>";
 		};
 		249EFE361E64FAFE00165E39 = {
 			isa = PBXGroup;
 			children = (
-				2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */,
-				249EFE411E64FAFE00165E39 /* MCSwiftLayoutSample */,
-				249EFE561E64FAFE00165E39 /* MCSwiftLayoutSampleTests */,
-				249EFE611E64FAFE00165E39 /* MCSwiftLayoutSampleUITests */,
-				249EFE401E64FAFE00165E39 /* Products */,
-				F143180314A617EFD07C5709 /* Pods */,
 				160FB83905049FCEDD18DC8A /* Frameworks */,
+				249EFE411E64FAFE00165E39 /* MCSwiftLayoutSample */,
+				F143180314A617EFD07C5709 /* Pods */,
+				249EFE401E64FAFE00165E39 /* Products */,
+				2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -315,8 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */,
-				249EFE531E64FAFE00165E39 /* MCSwiftLayoutSampleTests.xctest */,
-				249EFE5E1E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,28 +288,11 @@
 			isa = PBXGroup;
 			children = (
 				24E654801E69040000A72A8B /* Domain */,
-				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
-				2439CC321E665BE3003326FB /* UI */,
 				2439CC671E66614D003326FB /* Supporting Files */,
+				2439CC321E665BE3003326FB /* UI */,
+				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
 			);
 			path = MCSwiftLayoutSample;
-			sourceTree = "<group>";
-		};
-		249EFE561E64FAFE00165E39 /* MCSwiftLayoutSampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				249EFE591E64FAFE00165E39 /* Info.plist */,
-			);
-			path = MCSwiftLayoutSampleTests;
-			sourceTree = "<group>";
-		};
-		249EFE611E64FAFE00165E39 /* MCSwiftLayoutSampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				249EFE621E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.swift */,
-				249EFE641E64FAFE00165E39 /* Info.plist */,
-			);
-			path = MCSwiftLayoutSampleUITests;
 			sourceTree = "<group>";
 		};
 		24E654761E68F20400A72A8B /* BothEdgesSnapped */ = {
@@ -355,7 +301,7 @@
 				24E654781E68F27D00A72A8B /* BothEdgesSnappedView.swift */,
 				24E654791E68F27D00A72A8B /* BothEdgesSnappedViewController.swift */,
 			);
-			name = BothEdgesSnapped;
+			path = BothEdgesSnapped;
 			sourceTree = "<group>";
 		};
 		24E654801E69040000A72A8B /* Domain */ = {
@@ -363,7 +309,7 @@
 			children = (
 				24E654811E69041B00A72A8B /* Expect.swift */,
 			);
-			name = Domain;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		F143180314A617EFD07C5709 /* Pods */ = {
@@ -401,42 +347,6 @@
 			productReference = 249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		249EFE521E64FAFE00165E39 /* MCSwiftLayoutSampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 249EFE6A1E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutSampleTests" */;
-			buildPhases = (
-				249EFE4F1E64FAFE00165E39 /* Sources */,
-				249EFE501E64FAFE00165E39 /* Frameworks */,
-				249EFE511E64FAFE00165E39 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				249EFE551E64FAFE00165E39 /* PBXTargetDependency */,
-			);
-			name = MCSwiftLayoutSampleTests;
-			productName = MCSwiftLayoutSampleTests;
-			productReference = 249EFE531E64FAFE00165E39 /* MCSwiftLayoutSampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		249EFE5D1E64FAFE00165E39 /* MCSwiftLayoutSampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 249EFE6D1E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutSampleUITests" */;
-			buildPhases = (
-				249EFE5A1E64FAFE00165E39 /* Sources */,
-				249EFE5B1E64FAFE00165E39 /* Frameworks */,
-				249EFE5C1E64FAFE00165E39 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				249EFE601E64FAFE00165E39 /* PBXTargetDependency */,
-			);
-			name = MCSwiftLayoutSampleUITests;
-			productName = MCSwiftLayoutSampleUITests;
-			productReference = 249EFE5E1E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -451,18 +361,6 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4Q596JWQC5;
 						ProvisioningStyle = Automatic;
-					};
-					249EFE521E64FAFE00165E39 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q596JWQC5;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 249EFE3E1E64FAFE00165E39;
-					};
-					249EFE5D1E64FAFE00165E39 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q596JWQC5;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 249EFE3E1E64FAFE00165E39;
 					};
 				};
 			};
@@ -486,8 +384,6 @@
 			projectRoot = "";
 			targets = (
 				249EFE3E1E64FAFE00165E39 /* MCSwiftLayoutSample */,
-				249EFE521E64FAFE00165E39 /* MCSwiftLayoutSampleTests */,
-				249EFE5D1E64FAFE00165E39 /* MCSwiftLayoutSampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -516,20 +412,6 @@
 			files = (
 				249EFE4D1E64FAFE00165E39 /* LaunchScreen.storyboard in Resources */,
 				249EFE4A1E64FAFE00165E39 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		249EFE511E64FAFE00165E39 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		249EFE5C1E64FAFE00165E39 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,21 +510,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		249EFE4F1E64FAFE00165E39 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		249EFE5A1E64FAFE00165E39 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				249EFE631E64FAFE00165E39 /* MCSwiftLayoutSampleUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -650,16 +517,6 @@
 			isa = PBXTargetDependency;
 			name = MCSwiftLayout;
 			targetProxy = 2439CC291E6658C3003326FB /* PBXContainerItemProxy */;
-		};
-		249EFE551E64FAFE00165E39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 249EFE3E1E64FAFE00165E39 /* MCSwiftLayoutSample */;
-			targetProxy = 249EFE541E64FAFE00165E39 /* PBXContainerItemProxy */;
-		};
-		249EFE601E64FAFE00165E39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 249EFE3E1E64FAFE00165E39 /* MCSwiftLayoutSample */;
-			targetProxy = 249EFE5F1E64FAFE00165E39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -670,6 +527,7 @@
 				249EFE4C1E64FAFE00165E39 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -775,7 +633,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = MCSwiftLayoutSample/Info.plist;
+				INFOPLIST_FILE = "MCSwiftLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -790,69 +648,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = MCSwiftLayoutSample/Info.plist;
+				INFOPLIST_FILE = "MCSwiftLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		249EFE6B1E64FAFE00165E39 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = MCSwiftLayoutSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MCSwiftLayoutSample.app/MCSwiftLayoutSample";
-			};
-			name = Debug;
-		};
-		249EFE6C1E64FAFE00165E39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = MCSwiftLayoutSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MCSwiftLayoutSample.app/MCSwiftLayoutSample";
-			};
-			name = Release;
-		};
-		249EFE6E1E64FAFE00165E39 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = MCSwiftLayoutSampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = MCSwiftLayoutSample;
-			};
-			name = Debug;
-		};
-		249EFE6F1E64FAFE00165E39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = MCSwiftLayoutSampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = MCSwiftLayoutSample;
 			};
 			name = Release;
 		};
@@ -873,24 +673,6 @@
 			buildConfigurations = (
 				249EFE681E64FAFE00165E39 /* Debug */,
 				249EFE691E64FAFE00165E39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		249EFE6A1E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutSampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				249EFE6B1E64FAFE00165E39 /* Debug */,
-				249EFE6C1E64FAFE00165E39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		249EFE6D1E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutSampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				249EFE6E1E64FAFE00165E39 /* Debug */,
-				249EFE6F1E64FAFE00165E39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

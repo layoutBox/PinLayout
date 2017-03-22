@@ -11,8 +11,8 @@ target 'MCSwiftLayoutSample' do
     pod 'SwiftLint'
 end
 
-target 'MCSwiftLayoutTests' do
-    project '../MCSwiftLayout.xcodeproj'
-    pod 'Quick'
-    pod 'Nimble'
-end
+#target 'MCSwiftLayoutTests' do
+#    project '../MCSwiftLayout.xcodeproj'
+#    pod 'Quick'
+#    pod 'Nimble'
+#end

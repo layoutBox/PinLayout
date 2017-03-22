@@ -22,6 +22,8 @@ enum Page: Int {
     case validateConflicts
     
     case marginsAndInsets
+
+    case scrollingPin
     
     case count
     
@@ -36,6 +38,7 @@ enum Page: Int {
         case .marginsAndPaddingLeftRight: return "topLeft & bottomRight - Test margings and paddings"
         case .validateConflicts:          return "Validate properties conflicts"
         case .marginsAndInsets:           return "Margins and Insets"
+        case .scrollingPin:               return "Pin to UIScrollView"
         case .count:                             return "Unknown"
         }
     }
@@ -61,7 +64,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        didSelect(page: .bothEdgesSnapped)
+//        didSelect(page: .bothEdgesSnapped)
     }
 }
 
@@ -89,6 +92,8 @@ extension MenuViewController: MenuViewDelegate {
             controller = ValidateConflictsViewController()
         case .marginsAndInsets:
             controller = MarginsAndInsetsViewController()
+//        case .scrollingPin:
+//            controller = 
         default:
             assert(false)
             break

@@ -177,7 +177,6 @@ class BothEdgesSnappedView: UIView {
 //        bView.layout.left(of: aViewChild, aligned: .bottom)
 //        expect(bView.frame).to(equal(CGRect(x: 105.0, y: 190.0, width: 40.0, height: 40.0)))
 
-        
 //        bView.layout.above(of: aView)
 //        expect(bView.frame).to(equal(CGRect(x: 160.0, y: 60.0, width: 40.0, height: 40.0)))
 //        bView.layout.above(of: aViewChild)
@@ -187,7 +186,6 @@ class BothEdgesSnappedView: UIView {
 //        expect(bView.frame).to(equal(CGRect(x: 60.0, y: 200.0, width: 40.0, height: 40.0)))
 //        bView.layout.left(of: aViewChild)
 //        expect(bView.frame).to(equal(CGRect(x: 105.0, y: 200.0, width: 40.0, height: 40.0)))
-
 
 //        bView.layout.below(of: aView)
 //        expect(bView.frame).to(equal(CGRect(x: 160.0, y: 260.0, width: 40.0, height: 40.0)))
@@ -200,7 +198,6 @@ class BothEdgesSnappedView: UIView {
 //        bView.layout.right(of: aViewChild)
 //        expect(bView.frame).to(equal(CGRect(x: 225.0, y: 200.0, width: 40.0, height: 40.0)))
 
-        
         // MARGINS
 //        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
 //        
@@ -265,15 +262,13 @@ class BothEdgesSnappedView: UIView {
 //        aViewChild.layout.pinCenter(to: aView)
 //        expect(aViewChild.frame).to(equal(CGRect(x: 30.0, y: 10.0, width: 40.0, height: 40.0)))
 
-        aViewChild.layout.pinCenter(.center, of: aView).width(20).sizeToFit()
+        aViewChild.layout.pinCenter(to: aView.pin.center).width(20).sizeToFit()
 //        expect(aViewChild.frame).to(equal(CGRect(x: 40.0, y: -10.0, width: 20.0, height: 80.0)))
         // SHOULD EQUAL THESE 2 LINES:
         //aViewChild.layout.width(20).height(80)
         //aViewChild.layout.pinCenter(to: aView)
         //expect(aViewChild.frame).to(equal(CGRect(x: 40.0, y: -10.0, width: 20.0, height: 80.0)))
 
-
-        
 //        aViewChild.layout.pinTopLeft(.topLeft, of: bView).height(40).sizeToFit()
 //        aViewChild.layout.pinTopLeft(.topLeft, of: aView).height(40).sizeToFit()
 //        bView.layout.pinTopLeft(.topLeft, of: aViewChild).height(40).sizeToFit()
@@ -296,7 +291,7 @@ class BothEdgesSnappedView: UIView {
         //
 //        aViewChild.layout.pinTop(.top, of: aView) //CGRect(x: 10.0, y: 0.0, width: 50.0, height: 30.0)
 //        aViewChild.layout.pinTop(.top, of: bView)      // CGRect(x: 10.0, y: 100.0, width: 50.0, height: 30.0)
-        aViewChild.layout.topLeft(bView.pin.bottomRight)
+        aViewChild.layout.pinTopLeft(to: bView.pin.bottomRight)
 //        bViewChild.layout.pinTop(.top, of: aViewChild) //CGRect(x: 40.0, y: -80.0, width: 60.0, height: 20.0)
 
 //        aViewChild.layout.pinTop(.bottom, of: aView)      //CGRect(x: 10.0, y: 60.0, width: 50.0, height: 30.0)

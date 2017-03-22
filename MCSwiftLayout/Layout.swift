@@ -9,7 +9,7 @@ import UIKit
 
 /*
  ===============================================
- QUESTIONS: 
+ QUESTIONS:
  ===============================================
 
      - Names:
@@ -68,8 +68,16 @@ import UIKit
     - UIView.topLeft, .topRight, ... are not really necessary. Tout peut être accessible avec UIView.pin.point.
         eg: myView.topLeft -> myView.pin.topLeft.point OR myView.pin.topLeft.x & myView.pin.topLeft.y
  
+ ===============================================
  TODO:
  ===============================================
+ - Faire sample avec un scrollview qui contient une viewA et:
+    1- pin une view ne faisant pas parti de la scrollview à viewA
+    2- pin une view à un coin de viewA et un autre coin de cette view à un coin qui ne bouge pas.
+ - Faire un sample avec A pinner à droite avec une largeur de 30. Et pinner viewB.left à gauche de la superview
+    et viewB.right à la viewA. Comme ça lorsque la taille de l'écran change uniquement viewB va changer de taille.
+
+
  - sizeToFit() devrait prendre un parametre indiquant si on doit caster les nouvelles valeur
      de width et de height (forceSize, castSize, ...?)
  

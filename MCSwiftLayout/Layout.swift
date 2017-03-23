@@ -106,7 +106,8 @@ import UIKit
  - margin(t:? = nil  l:? = nil  b:? = nil  r:? = nil ) ??
  
  - Unit tests TODO:
-     - pinTopLeft(to: Pin, of: UIView), pinTopCenter(to: Pin, of: UIView), ...
+    - pinTopLeft(to: Pin, of: UIView), pinTopCenter(to: Pin, of: UIView), ...
+    - margins and insets negatifs
  
  - With SwiftyAttributes, you can write the same thing like this:
 
@@ -119,244 +120,8 @@ import UIKit
             .baselineOffset(5.2)
         ])
 */
-public extension UIView {
-    public var top: CGFloat {
-        get { return frame.origin.y }
-        set { frame = CGRect(x: left, y: roundFloatToDisplayScale(newValue), width: width, height: height) }
-    }
-        
-    public var left: CGFloat {
-        get { return frame.origin.x }
-        set { frame = CGRect(x: roundFloatToDisplayScale(newValue), y: top, width: width, height: height) }
-    }
-    
-    public var bottom: CGFloat {
-        get { return frame.maxY }
-        set { height = roundFloatToDisplayScale(newValue - top) }
-    }
-    
-    public var right: CGFloat {
-        get { return frame.maxX }
-        set { width = roundFloatToDisplayScale(newValue - left) }
-    }
-
-    public var hCenter: CGFloat {
-        get { return left + (width / 2) }
-        set { left = newValue - (width / 2) }
-    }
-    
-    public var vCenter: CGFloat {
-        get { return top + (height / 2) }
-        set { top = newValue - (height / 2) }
-    }
-    
-    /* public var topLeft: CGPoint {
-        get { return CGPoint(x: left, y: top) }
-        set {
-            left = newValue.x
-            top = newValue.y
-        }
-    }
-    
-    public var topCenter: CGPoint {
-        get { return CGPoint(x: hCenter, y: top) }
-        set {
-            left = newValue.x - (width / 2)
-            top = newValue.y
-        }
-    }
-    
-    public var topRight: CGPoint {
-        get { return CGPoint(x: left + width, y: top) }
-        set {
-            left = newValue.x - width
-            top = newValue.y
-        }
-    }
-    
-    public var rightCenter: CGPoint {
-        get { return CGPoint(x: left + width, y: vCenter) }
-        set {
-            left = newValue.x - width
-            top = newValue.y - (width / 2)
-        }
-    }
-    
-    public var centers: CGPoint {
-        get { return CGPoint(x: hCenter, y: vCenter) }
-        set {
-            left = newValue.x - (width / 2)
-            top = newValue.y - (width / 2)
-        }
-    }
-    
-    public var leftCenter: CGPoint {
-        get { return CGPoint(x: left, y: vCenter) }
-        set {
-            left = newValue.x
-            top = newValue.y - (width / 2)
-        }
-    }
-    
-    public var bottomLeft: CGPoint {
-        get { return CGPoint(x: left, y: top + height) }
-        set {
-            left = newValue.x
-            top = newValue.y - height
-        }
-    }
-    
-    public var bottomCenter: CGPoint {
-        get { return CGPoint(x: hCenter, y: top + height) }
-        set {
-            left = newValue.x - (width / 2)
-            top = newValue.y - height
-        }
-    }
-    
-    public var bottomRight: CGPoint {
-        get { return CGPoint(x: left + width, y: top + height) }
-        set {
-            left = newValue.x - width
-            top = newValue.y - height
-        }
-    } */
-    
-    public var size: CGSize {
-        get { return CGSize(width: width, height: height) }
-        set { frame = CGRect(x: left, y: top, width: ceilFloatToDisplayScale(newValue.width), height: ceilFloatToDisplayScale(newValue.height)) }
-    }
-    
-    public var width: CGFloat {
-        get { return frame.size.width }
-        set { frame = CGRect(x: left, y: top, width: ceilFloatToDisplayScale(newValue), height: height) }
-    }
-    
-    public var height: CGFloat {
-        get { return frame.size.height }
-        set { frame = CGRect(x: left, y: top, width: width, height: ceilFloatToDisplayScale(newValue)) }
-    }
-}
-
-public extension UIView {
-    public var layout: Layout {
-        return Layout(view: self)
-    }
-
-    public var pin: PinList {
-        return PinList(view: self)
-    }
-
-    public var edge: EdgeList {
-        return EdgeList(view: self)
-    }
-    
-//    func layout(with layout: Layout) {
-//        layout.apply(onView: self)
-//    }
-}
-
-public class EdgeList {
-    fileprivate let view: UIView
-
-    init(view: UIView) {
-        self.view = view
-    }
-
-    public var top: VerticalEdge { return VerticalEdge(view: view, edgeType: .top) }
-    public var left: HorizontalEdge { return HorizontalEdge(view: view, edgeType: .left) }
-    public var bottom: VerticalEdge { return VerticalEdge(view: view, edgeType: .bottom) }
-    public var right: HorizontalEdge { return HorizontalEdge(view: view, edgeType: .right) }
-}
-
-fileprivate enum EdgeType: String {
-    case top
-    case left
-    case bottom
-    case right
-}
-
-public class HorizontalEdge {
-    fileprivate let view: UIView
-    fileprivate let edgeType: EdgeType
-
-    fileprivate init(view: UIView, edgeType: EdgeType) {
-        self.view = view
-        self.edgeType = edgeType
-    }
-}
-
-public class VerticalEdge {
-    fileprivate let view: UIView
-    fileprivate let edgeType: EdgeType
-
-    fileprivate init(view: UIView, edgeType: EdgeType) {
-        self.view = view
-        self.edgeType = edgeType
-    }
-}
-
-public class PinList {
-    fileprivate let view: UIView
-
-    init(view: UIView) {
-        self.view = view
-    }
-
-    public var topLeft: Pin { return Pin(view: view, pinType: .topLeft) }
-    public var topCenter: Pin { return Pin(view: view, pinType: .topCenter) }
-    public var topRight: Pin { return Pin(view: view, pinType: .topRight) }
-    public var leftCenter: Pin { return Pin(view: view, pinType: .leftCenter) }
-    public var center: Pin { return Pin(view: view, pinType: .center) }
-    public var rightCenter: Pin { return Pin(view: view, pinType: .rightCenter) }
-    public var bottomLeft: Pin { return Pin(view: view, pinType: .bottomLeft) }
-    public var bottomCenter: Pin { return Pin(view: view, pinType: .bottomCenter) }
-    public var bottomRight: Pin { return Pin(view: view, pinType: .bottomRight) }
-}
-
-fileprivate enum PinType: String {
-    case topLeft
-    case topCenter
-    case topRight
-    case leftCenter
-    case center
-    case rightCenter
-    case bottomLeft
-    case bottomCenter
-    case bottomRight
-}
-
-public class Pin {
-    fileprivate let view: UIView
-    fileprivate let pinType: PinType
-    
-    /* var x: CGFloat {
-        return point.x
-    }
-    
-    var y: CGFloat {
-        return point.y
-    }*/
-    
-    /*var point: CGPoint {
-        switch pinType {
-        case .topLeft: return view.topLeft
-        case .topCenter: return view.topCenter
-        case .topRight: return view.topRight
-        case .leftCenter: return view.leftCenter
-        case .center: return view.center
-        case .rightCenter: return view.rightCenter
-        case .bottomLeft: return view.bottomLeft
-        case .bottomCenter: return view.bottomCenter
-        case .bottomRight: return view.bottomRight
-        }
-    }*/
-    
-    fileprivate init(view: UIView, pinType: PinType) {
-        self.view = view
-        self.pinType = pinType
-    }
-}
+fileprivate typealias Context = () -> String
+fileprivate typealias Size = (width: CGFloat?, height: CGFloat?)
 
 public class Layout {
     static var logConflicts = true
@@ -374,8 +139,7 @@ public class Layout {
     
     fileprivate var width: CGFloat?
     fileprivate var height: CGFloat?
-    fileprivate var shouldSizeToFit = false
-    
+
     fileprivate var marginTop: CGFloat?
     fileprivate var marginLeft: CGFloat?
     fileprivate var marginBottom: CGFloat?
@@ -385,7 +149,9 @@ public class Layout {
     fileprivate var insetLeft: CGFloat?
     fileprivate var insetBottom: CGFloat?
     fileprivate var insetRight: CGFloat?
-    
+
+    fileprivate var shouldSizeToFit = false
+
     public init(view: UIView) {
         self.view = view
     }
@@ -945,7 +711,7 @@ public class Layout {
     
     @discardableResult
     public func width(of view: UIView) -> Layout {
-        return setWidth(view.width, context: { return "width(of: \(view))" })
+        return setWidth(View.width(view), context: { return "width(of: \(view))" })
     }
     
     @discardableResult
@@ -955,7 +721,7 @@ public class Layout {
     
     @discardableResult
     public func height(of view: UIView) -> Layout {
-        return setHeight(view.height, context: { return "height(of: \(view))" })
+        return setHeight(View.height(view), context: { return "height(of: \(view))" })
     }
     
     //
@@ -977,7 +743,7 @@ public class Layout {
         
         if isSizeNotSet(context: context) {
             setWidth(viewSize.width, context: context)
-            setHeight(view.height, context: context)
+            setHeight(View.height(view), context: context)
         }
         return self
     }
@@ -1092,9 +858,6 @@ public class Layout {
 //
 // MARK: Private methods
 //
-fileprivate typealias Context = () -> String
-fileprivate typealias ComputedSize = (width: CGFloat?, height: CGFloat?)
-
 extension Layout {
     fileprivate func setTop(_ value: CGFloat, context: Context) {
         if bottom != nil && height != nil {
@@ -1282,7 +1045,7 @@ extension Layout {
         guard let layoutSuperview = validateLayoutSuperview(context: context) else { return nil }
         guard let relativeSuperview = relativeView.superview else { warn("relative view's superview is nil", context: context); return nil }
         
-        return computeCoordinates(point(forPin: pin, of: relativeView), layoutSuperview, relativeView, relativeSuperview)
+        return computeCoordinates(View.point(forPin: pin, of: relativeView), layoutSuperview, relativeView, relativeSuperview)
     }
     
     fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ relativeView: UIView, _ relativeSuperview: UIView) -> CGPoint {
@@ -1292,38 +1055,14 @@ extension Layout {
             return relativeSuperview.convert(point, to: layoutSuperview)
         }
     }
-    
-    fileprivate func point(forPin pin: PinType, of view: UIView) -> CGPoint {
-        // TODO: Cleanup to not use UIView.left, UIView.top, ...
-        switch pin {
-        case .topLeft: return CGPoint(x: view.left, y: view.top)// return view.topLeft
-        case .topCenter: return CGPoint(x: view.hCenter, y: view.top)// view.topCenter
-        case .topRight: return CGPoint(x: view.left + view.width, y: view.top)// view.topRight
-        case .leftCenter: return CGPoint(x: view.left, y: view.vCenter)// view.leftCenter
-        case .center: return CGPoint(x: view.hCenter, y: view.vCenter)// view.center
-        case .rightCenter: return CGPoint(x: view.left + view.width, y: view.vCenter)// view.rightCenter
-        case .bottomLeft: return CGPoint(x: view.left, y: view.top + view.height)// view.bottomLeft
-        case .bottomCenter: return CGPoint(x: view.hCenter, y: view.top + view.height)// view.bottomCenter
-        case .bottomRight: return CGPoint(x: view.left + view.width, y: view.top + view.height)// view.bottomRight
-        }
-    }
-    
+
     fileprivate func computeCoordinates(forEdge edge: EdgeType, of relativeView: UIView, context: Context) -> CGPoint? {
         guard let layoutSuperview = validateLayoutSuperview(context: context) else { return nil }
         guard let relativeSuperview = relativeView.superview else { warn("relative view's superview is nil", context: context); return nil }
         
-        return computeCoordinates(coordinate(forEdge: edge, of: relativeView), layoutSuperview, relativeView, relativeSuperview)
+        return computeCoordinates(View.coordinate(forEdge: edge, of: relativeView), layoutSuperview, relativeView, relativeSuperview)
     }
-    
-    fileprivate func coordinate(forEdge edge: EdgeType, of view: UIView) -> CGPoint {
-        switch edge {
-        case .top: return CGPoint(x: 0, y: view.top)
-        case .left: return CGPoint(x: view.left, y: 0)
-        case .bottom: return CGPoint(x: 0, y: view.bottom)
-        case .right: return CGPoint(x: view.right, y: 0)
-        }
-    }
-    
+
     fileprivate func validateLayoutSuperview(context: Context) -> UIView? {
         if let parentView = view.superview {
             return parentView
@@ -1409,12 +1148,11 @@ extension Layout {
             // Only height is set
             newRect.size.height = height
         }
-        
-        view.frame = CGRect(x: ceilFloatToDisplayScale(newRect.origin.x), y: ceilFloatToDisplayScale(newRect.origin.y),
-                            width: ceilFloatToDisplayScale(newRect.size.width), height: ceilFloatToDisplayScale(newRect.size.height))
+
+        view.frame = View.adjustRectToDisplayScale(newRect)
     }
     
-    fileprivate func computeSize() -> ComputedSize {
+    fileprivate func computeSize() -> Size {
         var newWidth = computeWidth()
         var newHeight = computeHeight()
         
@@ -1507,14 +1245,4 @@ extension Layout {
         
         print(warning)
     }
-}
-
-fileprivate let displayScale = UIScreen.main.scale
-
-fileprivate func roundFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
-    return (round(pointValue * displayScale) / displayScale)
-}
-
-fileprivate func ceilFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
-    return (round(pointValue * displayScale) / displayScale)
 }

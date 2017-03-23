@@ -711,7 +711,7 @@ public class Layout {
     
     @discardableResult
     public func width(of view: UIView) -> Layout {
-        return setWidth(View.width(view), context: { return "width(of: \(view))" })
+        return setWidth(view.frame.size.width, context: { return "width(of: \(view))" })
     }
     
     @discardableResult
@@ -721,7 +721,7 @@ public class Layout {
     
     @discardableResult
     public func height(of view: UIView) -> Layout {
-        return setHeight(View.height(view), context: { return "height(of: \(view))" })
+        return setHeight(view.frame.size.height, context: { return "height(of: \(view))" })
     }
     
     //
@@ -743,7 +743,7 @@ public class Layout {
         
         if isSizeNotSet(context: context) {
             setWidth(viewSize.width, context: context)
-            setHeight(View.height(view), context: context)
+            setHeight(viewSize.height, context: context)
         }
         return self
     }
@@ -1045,7 +1045,7 @@ extension Layout {
         guard let layoutSuperview = validateLayoutSuperview(context: context) else { return nil }
         guard let relativeSuperview = relativeView.superview else { warn("relative view's superview is nil", context: context); return nil }
         
-        return computeCoordinates(View.point(forPin: pin, of: relativeView), layoutSuperview, relativeView, relativeSuperview)
+        return computeCoordinates(pin.point(for: relativeView), layoutSuperview, relativeView, relativeSuperview)
     }
     
     fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ relativeView: UIView, _ relativeSuperview: UIView) -> CGPoint {
@@ -1060,7 +1060,7 @@ extension Layout {
         guard let layoutSuperview = validateLayoutSuperview(context: context) else { return nil }
         guard let relativeSuperview = relativeView.superview else { warn("relative view's superview is nil", context: context); return nil }
         
-        return computeCoordinates(View.coordinate(forEdge: edge, of: relativeView), layoutSuperview, relativeView, relativeSuperview)
+        return computeCoordinates(edge.point(for: relativeView), layoutSuperview, relativeView, relativeSuperview)
     }
 
     fileprivate func validateLayoutSuperview(context: Context) -> UIView? {
@@ -1149,7 +1149,7 @@ extension Layout {
             newRect.size.height = height
         }
 
-        view.frame = View.adjustRectToDisplayScale(newRect)
+        view.frame = Coordinates.adjustRectToDisplayScale(newRect)
     }
     
     fileprivate func computeSize() -> Size {

@@ -8,14 +8,14 @@
 
 import Foundation
 
-internal class View {
-    static func top(_ view: UIView) -> CGFloat {
-        return view.frame.origin.y
-    }
-
-    static func left(_ view: UIView) -> CGFloat {
-        return view.frame.origin.x
-    }
+internal class Coordinates {
+//    static func top(_ view: UIView) -> CGFloat {
+//        return view.frame.origin.y
+//    }
+//
+//    static func left(_ view: UIView) -> CGFloat {
+//        return view.frame.origin.x
+//    }
 
     static func bottom(_ view: UIView) -> CGFloat {
         return view.frame.maxY
@@ -33,17 +33,16 @@ internal class View {
         return view.frame.origin.y + (view.frame.size.height / 2)
     }
 
-    static func size(_ view: UIView) -> CGSize {
-        return view.frame.size
-    }
-
-    static func width(_ view: UIView) -> CGFloat {
-        return view.frame.size.width
-    }
-
-    static func height(_ view: UIView) -> CGFloat {
-        return view.frame.size.height
-    }
+//    static func size(_ view: UIView) -> CGSize {
+//        return view.frame.size
+//    }
+//    static func width(_ view: UIView) -> CGFloat {
+//        return view.frame.size.width
+//    }
+//
+//    static func height(_ view: UIView) -> CGFloat {
+//        return view.frame.size.height
+//    }
 
     static func topLeft(_ view: UIView) ->  CGPoint {
         return CGPoint(x: view.frame.origin.x, y: view.frame.origin.y)
@@ -79,29 +78,6 @@ internal class View {
 
     static func bottomRight(_ view: UIView) ->  CGPoint {
         return CGPoint(x: view.frame.origin.x + view.frame.size.width, y: view.frame.origin.y + view.frame.size.height)
-    }
-
-    static func coordinate(forEdge edge: EdgeType, of view: UIView) -> CGPoint {
-        switch edge {
-        case .top: return CGPoint(x: 0, y: view.frame.origin.y)
-        case .left: return CGPoint(x: view.frame.origin.x, y: 0)
-        case .bottom: return CGPoint(x: 0, y: bottom(view))
-        case .right: return CGPoint(x: right(view), y: 0)
-        }
-    }
-
-    static func point(forPin pin: PinType, of view: UIView) -> CGPoint {
-        switch pin {
-        case .topLeft: return topLeft(view)
-        case .topCenter: return topCenter(view)
-        case .topRight: return topRight(view)
-        case .leftCenter: return leftCenter(view)
-        case .center: return center(view)
-        case .rightCenter: return rightCenter(view)
-        case .bottomLeft: return bottomLeft(view)
-        case .bottomCenter: return bottomCenter(view)
-        case .bottomRight: return bottomRight(view)
-        }
     }
 
     static let displayScale = UIScreen.main.scale

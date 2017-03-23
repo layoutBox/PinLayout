@@ -26,6 +26,15 @@ public enum EdgeType: String {
     case left
     case bottom
     case right
+
+    func point(for view: UIView) -> CGPoint {
+        switch self {
+        case .top: return CGPoint(x: 0, y: view.frame.origin.y)
+        case .left: return CGPoint(x: view.frame.origin.x, y: 0)
+        case .bottom: return CGPoint(x: 0, y: Coordinates.bottom(view))
+        case .right: return CGPoint(x: Coordinates.right(view), y: 0)
+        }
+    }
 }
 
 public class HorizontalEdge {
@@ -76,6 +85,20 @@ enum PinType: String {
     case bottomLeft
     case bottomCenter
     case bottomRight
+
+    func point(for view: UIView) -> CGPoint {
+        switch self {
+        case .topLeft: return Coordinates.topLeft(view)
+        case .topCenter: return Coordinates.topCenter(view)
+        case .topRight: return Coordinates.topRight(view)
+        case .leftCenter: return Coordinates.leftCenter(view)
+        case .center: return Coordinates.center(view)
+        case .rightCenter: return Coordinates.rightCenter(view)
+        case .bottomLeft: return Coordinates.bottomLeft(view)
+        case .bottomCenter: return Coordinates.bottomCenter(view)
+        case .bottomRight: return Coordinates.bottomRight(view)
+        }
+    }
 }
 
 public class Pin {

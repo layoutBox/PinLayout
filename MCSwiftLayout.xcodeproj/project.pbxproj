@@ -63,14 +63,14 @@
 		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionSpec.swift; sourceTree = "<group>"; };
 		249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCSwiftLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCSwiftLayout.h; path = MCSwiftLayout/MCSwiftLayout.h; sourceTree = "<group>"; };
-		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MCSwiftLayout/Info.plist; sourceTree = "<group>"; };
+		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSwiftLayout.h; sourceTree = "<group>"; };
+		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249EFE831E64FB4C00165E39 /* MCSwiftLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSwiftLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSwiftLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF11A3701E833F03008B33E5 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
-		DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+PinLayout.swift"; path = "Extensions/UIView+PinLayout.swift"; sourceTree = "<group>"; };
-		DF11A3791E834B3F008B33E5 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinates.swift; path = Helpers/Coordinates.swift; sourceTree = "<group>"; };
+		DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PinLayout.swift"; sourceTree = "<group>"; };
+		DF11A3791E834B3F008B33E5 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +108,8 @@
 			children = (
 				249EFE7C1E64FB4C00165E39 /* MCSwiftLayout */,
 				249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */,
-				DF11A3741E834181008B33E5 /* Supporting Files */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
+				DF11A3741E834181008B33E5 /* Supporting Files */,
 				138A1F602470415292B7194B /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -137,15 +137,15 @@
 		249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				2469C5011E75D88500073BEE /* BasicView.swift */,
-				249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */,
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
-				244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */,
-				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
-				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
-				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
-				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
+				2469C5011E75D88500073BEE /* BasicView.swift */,
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
+				249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */,
+				244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */,
+				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
+				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
+				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
+				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 			);
 			path = MCSwiftLayoutTests;
 			sourceTree = "<group>";
@@ -153,10 +153,10 @@
 		DF11A3741E834181008B33E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */,
 				249EFE7E1E64FB4C00165E39 /* Info.plist */,
+				249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		DF11A3751E834194008B33E5 /* Extensions */ = {
@@ -164,7 +164,7 @@
 			children = (
 				DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DF11A3761E8341A2008B33E5 /* Helpers */ = {
@@ -172,7 +172,7 @@
 			children = (
 				DF11A3791E834B3F008B33E5 /* Coordinates.swift */,
 			);
-			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +449,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MCSwiftLayout/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -471,7 +471,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MCSwiftLayout/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

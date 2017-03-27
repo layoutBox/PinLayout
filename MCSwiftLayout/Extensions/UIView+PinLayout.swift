@@ -17,6 +17,10 @@ public extension UIView {
         return PinList(view: self)
     }
 
+//    public var pin: Layout {
+//        return Layout(view: self)
+//    }
+
     public var edge: EdgeList {
         return EdgeList(view: self)
     }
@@ -26,26 +30,26 @@ public extension UIView {
     //    }
 }
 
-// Could be part of another GitHub repo
-//public extension UIView {
-    /*public var top: CGFloat {
+// Could be part of another GitHub repo?
+public extension UIView {
+    public var top: CGFloat {
         get { return frame.origin.y }
-        set { frame = CGRect(x: left, y: roundFloatToDisplayScale(newValue), width: width, height: height) }
+        set { frame = CGRect(x: left, y: Coordinates.roundFloatToDisplayScale(newValue), width: width, height: height) }
     }
         
     public var left: CGFloat {
         get { return frame.origin.x }
-        set { frame = CGRect(x: roundFloatToDisplayScale(newValue), y: top, width: width, height: height) }
+        set { frame = CGRect(x: Coordinates.roundFloatToDisplayScale(newValue), y: top, width: width, height: height) }
     }
     
     public var bottom: CGFloat {
         get { return frame.maxY }
-        set { height = roundFloatToDisplayScale(newValue - top) }
+        set { height = Coordinates.roundFloatToDisplayScale(newValue - top) }
     }
     
     public var right: CGFloat {
         get { return frame.maxX }
-        set { width = roundFloatToDisplayScale(newValue - left) }
+        set { width = Coordinates.roundFloatToDisplayScale(newValue - left) }
     }
 
     public var hCenter: CGFloat {
@@ -56,7 +60,7 @@ public extension UIView {
     public var vCenter: CGFloat {
         get { return top + (height / 2) }
         set { top = newValue - (height / 2) }
-    }*/
+    }
     
     /* public var topLeft: CGPoint {
         get { return CGPoint(x: left, y: top) }
@@ -130,18 +134,22 @@ public extension UIView {
         }
     } */
     
-//    public var size: CGSize {
-//        get { return CGSize(width: width, height: height) }
-//        set { frame = CGRect(x: left, y: top, width: ceilFloatToDisplayScale(newValue.width), height: ceilFloatToDisplayScale(newValue.height)) }
-//    }
-//    
-//    public var width: CGFloat {
-//        get { return frame.size.width }
-//        set { frame = CGRect(x: left, y: top, width: ceilFloatToDisplayScale(newValue), height: height) }
-//    }
-//    
-//    public var height: CGFloat {
-//        get { return frame.size.height }
-//        set { frame = CGRect(x: left, y: top, width: width, height: ceilFloatToDisplayScale(newValue)) }
-//    }
-//}
+    public var size: CGSize {
+        get { return CGSize(width: frame.size.width, height: frame.size.height) }
+        set { frame = CGRect(x: frame.origin.x, y: frame.origin.y,
+                             width: Coordinates.ceilFloatToDisplayScale(newValue.width),
+                             height: Coordinates.ceilFloatToDisplayScale(newValue.height)) }
+    }
+
+    public var width: CGFloat {
+        get { return frame.size.width }
+        set { frame = CGRect(x: frame.origin.x, y: frame.origin.y,
+                             width: Coordinates.ceilFloatToDisplayScale(newValue), height: height) }
+    }
+    
+    public var height: CGFloat {
+        get { return frame.size.height }
+        set { frame = CGRect(x: frame.origin.x, y: frame.origin.y,
+                             width: width, height: Coordinates.ceilFloatToDisplayScale(newValue)) }
+    }
+}

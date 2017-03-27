@@ -62,8 +62,7 @@ class RelativeView: UIView {
     
     fileprivate func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
-        view.width = 50
-        view.height = 50
+        view.layout.width(50).height(50)
         addSubview(view)
     }
     

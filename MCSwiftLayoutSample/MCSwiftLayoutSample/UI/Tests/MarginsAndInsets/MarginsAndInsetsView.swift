@@ -98,7 +98,6 @@ class MarginsAndInsetsView: UIView {
         
         // TODO: Test using sizeThatFits
         
-
         //
         // sizeThatFits
         //

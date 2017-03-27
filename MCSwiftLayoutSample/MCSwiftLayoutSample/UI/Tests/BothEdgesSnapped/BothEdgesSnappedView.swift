@@ -95,11 +95,11 @@ class BothEdgesSnappedView: UIView {
 //        addView(leftRightMarginsLeftRightInsetView)
     }
     
-    fileprivate func addView(_ view: BasicView) {
-        view.layout.height(30).width(70)
-        contentScrollView.addSubview(view)
-    }
-    
+//    fileprivate func addView(_ view: BasicView) {
+//        view.layout.height(30).width(70)
+//        contentScrollView.addSubview(view)
+//    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -129,7 +129,6 @@ class BothEdgesSnappedView: UIView {
 //        bView.layout.above(of: aViewChild, aligned: .right)
 //        expect(bView.frame).to(equal(CGRect(x: 185.0, y: 110.0, width: 40.0, height: 40.0)))
 
-        
 //        bView.layout.right(of: aView, aligned: .top)
 //        expect(bView.frame).to(equal(CGRect(x: 300.0, y: 100.0, width: 40.0, height: 40.0)))
 //        bView.layout.right(of: aViewChild, aligned: .top)
@@ -145,7 +144,6 @@ class BothEdgesSnappedView: UIView {
 //        bView.layout.right(of: aViewChild, aligned: .bottom)
 //        expect(bView.frame).to(equal(CGRect(x: 225.0, y: 190.0, width: 40.0, height: 40.0)))
 
-        
 //        bView.layout.below(of: aView, aligned: .left)
 //        expect(bView.frame).to(equal(CGRect(x: 100.0, y: 260.0, width: 40.0, height: 40.0)))
 //        bView.layout.below(of: aViewChild, aligned: .left)
@@ -160,7 +158,6 @@ class BothEdgesSnappedView: UIView {
 //        expect(bView.frame).to(equal(CGRect(x: 260.0, y: 260.0, width: 40.0, height: 40.0)))
 //        bView.layout.below(of: aViewChild, aligned: .right)
 //        expect(bView.frame).to(equal(CGRect(x: 185.0, y: 230.0, width: 40.0, height: 40.0)))
-
 
 //        bView.layout.left(of: aView, aligned: .top)
 //        expect(bView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 40.0, height: 40.0)))

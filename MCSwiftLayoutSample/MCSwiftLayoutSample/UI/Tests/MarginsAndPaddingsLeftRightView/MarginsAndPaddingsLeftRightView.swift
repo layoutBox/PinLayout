@@ -81,7 +81,7 @@ class MarginsAndPaddingsLeftRightView: UIView {
     }
     
     fileprivate func addView(_ view: BasicView) {
-        view.layout.height(viewHeight).width(70)
+        view.pin.height(viewHeight).width(70)
         contentScrollView.addSubview(view)
     }
     
@@ -94,82 +94,82 @@ class MarginsAndPaddingsLeftRightView: UIView {
         
         let leftPosition: CGFloat = 0
         
-        contentScrollView.layout.pinTopLeft().width(width).height(height).insetTop(64)
+        contentScrollView.pin.topLeft().width(width).height(height).insetTop(64)
         
         descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-        descriptionLabel.layout.pinTopLeft(to: CGPoint(x: leftPosition, y: 10))
+        descriptionLabel.pin.topLeft(to: CGPoint(x: leftPosition, y: 10))
         
         // No margins
         let rightPosition: CGFloat = 70
         var topPosition = descriptionLabel.bottom + 10
         
-        noMarginsNoPaddings.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition)
+        noMarginsNoPaddings.pin.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition)
         expect(view: noMarginsNoPaddings, toMatchRect: CGRect(x: 0, y: 63, width: 70, height: 40))
         topPosition += viewHeight
         
-        noMarginsLeftInsetView.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).insetLeft(10)
+        noMarginsLeftInsetView.pin.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).insetLeft(10)
         expect(view: noMarginsLeftInsetView, toMatchRect: CGRect(x: 10, y: 103, width: 60, height: 40))
         topPosition += viewHeight
         
-        noMarginsRightInsetView.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).insetRight(10)
+        noMarginsRightInsetView.pin.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).insetRight(10)
         expect(view: noMarginsRightInsetView, toMatchRect: CGRect(x: 0, y: 143, width: 60, height: 40))
         topPosition += viewHeight
         
-        noMarginsLeftRightInsetView.layout.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).insetLeft(10).insetRight(10)
+        noMarginsLeftRightInsetView.pin.top(topPosition).left(0).bottom(topPosition + viewHeight).right(rightPosition).insetLeft(10).insetRight(10)
         expect(view: noMarginsLeftRightInsetView, toMatchRect: CGRect(x: 10, y: 183, width: 50, height: 40))
         topPosition += viewHeight
         
         // Left margin
         topPosition += 5
-        leftMarginView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10)
+        leftMarginView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10)
         expect(view: leftMarginView, toMatchRect: CGRect(x: 10, y: 228, width: 60, height: 40))
         topPosition += viewHeight
         
-        leftMarginLeftInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).insetLeft(10)
+        leftMarginLeftInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).insetLeft(10)
         expect(view: leftMarginLeftInsetView, toMatchRect: CGRect(x: 20, y: 268, width: 50, height: 40))
         topPosition += viewHeight
         
-        leftMarginRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).insetRight(10)
+        leftMarginRightInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).insetRight(10)
         expect(view: leftMarginRightInsetView, toMatchRect: CGRect(x: 10, y: 308, width: 50, height: 40))
         topPosition += viewHeight
         
-        leftMarginLeftRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).insetLeft(10).insetRight(10)
+        leftMarginLeftRightInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).insetLeft(10).insetRight(10)
         expect(view: leftMarginLeftRightInsetView, toMatchRect: CGRect(x: 20, y: 348, width: 40, height: 40))
         topPosition += viewHeight
         
         // Right margin
         topPosition += 5
-        rigthMarginView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10)
+        rigthMarginView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10)
         expect(view: rigthMarginView, toMatchRect: CGRect(x: 0, y: 393, width: 60, height: 40))
         topPosition += viewHeight
         
-        rigthMarginLeftInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10).insetLeft(10)
+        rigthMarginLeftInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10).insetLeft(10)
         expect(view: rigthMarginLeftInsetView, toMatchRect: CGRect(x: 10, y: 433, width: 50, height: 40))
         topPosition += viewHeight
         
-        rigthMarginRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10).insetRight(10)
+        rigthMarginRightInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10).insetRight(10)
         expect(view: rigthMarginRightInsetView, toMatchRect: CGRect(x: 0, y: 473, width: 50, height: 40))
         topPosition += viewHeight
         
-        rigthMarginLeftRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10).insetLeft(10).insetRight(10)
+        rigthMarginLeftRightInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginRight(10).insetLeft(10).insetRight(10)
         expect(view: rigthMarginLeftRightInsetView, toMatchRect: CGRect(x: 10, y: 513, width: 40, height: 40))
         topPosition += viewHeight
         
         // Left and right margins
         topPosition += 5
-        leftRightMarginsView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10)
+        leftRightMarginsView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10)
         expect(view: leftRightMarginsView, toMatchRect: CGRect(x: 10, y: 558, width: 50, height: 40))
         topPosition += viewHeight
         
-        leftRightMarginsLeftInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10).insetLeft(10)
+        leftRightMarginsLeftInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10).insetLeft(10)
         expect(view: leftRightMarginsLeftInsetView, toMatchRect: CGRect(x: 20, y: 598, width: 40, height: 40))
         topPosition += viewHeight
         
-        leftRightMarginsRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10).insetRight(10)
+        leftRightMarginsRightInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10).insetRight(10)
         expect(view: leftRightMarginsRightInsetView, toMatchRect: CGRect(x: 10, y: 638, width: 40, height: 40))
         topPosition += viewHeight
 
-        leftRightMarginsLeftRightInsetView.layout.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10).insetLeft(10).insetRight(10)
+        leftRightMarginsLeftRightInsetView.pin.top(topPosition).left(leftPosition).bottom(topPosition + viewHeight).right(rightPosition).marginLeft(10).marginRight(10).insetLeft(10).insetRight(10)
         expect(view: leftRightMarginsLeftRightInsetView, toMatchRect: CGRect(x: 20, y: 678, width: 30, height: 40))
         topPosition += viewHeight
 

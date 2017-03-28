@@ -62,7 +62,7 @@ class RelativeView: UIView {
     
     fileprivate func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
-        view.layout.width(50).height(50)
+        view.pin.width(50).height(50)
         addSubview(view)
     }
     
@@ -73,7 +73,7 @@ class RelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        belowNavBarView.layout.pinTopLeft().size(size).insetTop(64)
+        belowNavBarView.pin.topLeft().size(size).insetTop(64)
         
         rootView.frame = CGRect(x: 20, y: 20, width: 400, height: 400)
         centerView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
@@ -82,20 +82,20 @@ class RelativeView: UIView {
 //        centerView.height = 200
 //        centerView.center = CGPoint(x: 200, y: 300)
         
-        topLeftView.layout.above(of: centerView, aligned: .left)
-        topCenterView.layout.above(of: centerView, aligned: .center)
-        topRightView.layout.above(of: centerView, aligned: .right)
+        topLeftView.pin.above(of: centerView, aligned: .left)
+        topCenterView.pin.above(of: centerView, aligned: .center)
+        topRightView.pin.above(of: centerView, aligned: .right)
         
-        leftTopView.layout.left(of: centerView, aligned: .top)
-        leftCenterView.layout.left(of: centerView, aligned: .center)
-        leftBottomView.layout.left(of: centerView, aligned: .bottom)
+        leftTopView.pin.left(of: centerView, aligned: .top)
+        leftCenterView.pin.left(of: centerView, aligned: .center)
+        leftBottomView.pin.left(of: centerView, aligned: .bottom)
         
-        bottomLeftView.layout.below(of: centerView, aligned: .left)
-        bottomCenterView.layout.below(of: centerView, aligned: .center)
-        bottomRightView.layout.below(of: centerView, aligned: .right)
+        bottomLeftView.pin.below(of: centerView, aligned: .left)
+        bottomCenterView.pin.below(of: centerView, aligned: .center)
+        bottomRightView.pin.below(of: centerView, aligned: .right)
 
-        rightTopView.layout.right(of: centerView, aligned: .top)
-        rightCenterView.layout.right(of: centerView, aligned: .center)
-        rightBottomView.layout.right(of: centerView, aligned: .bottom)
+        rightTopView.pin.right(of: centerView, aligned: .top)
+        rightCenterView.pin.right(of: centerView, aligned: .center)
+        rightBottomView.pin.right(of: centerView, aligned: .bottom)
     }
 }

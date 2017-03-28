@@ -35,7 +35,7 @@ class MenuView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        tableView.layout.size(size)
+        tableView.pin.size(size)
     }
 }
 

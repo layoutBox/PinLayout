@@ -24,13 +24,13 @@ class ValidateConflictsView: UIView {
     
     fileprivate func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
-        view.layout.width(50).height(50)
+        view.pin.width(50).height(50)
         addSubview(view)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        topLeftView.layout.right(10).width(20).top(10).left(10).left(10)
+        topLeftView.pin.right(10).width(20).top(10).left(10).left(10)
      }
 }

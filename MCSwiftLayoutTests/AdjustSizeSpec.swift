@@ -59,71 +59,71 @@ class AdjustSizeSpec: QuickSpec {
 
         describe("the result of the width(...) methods") {
             it("should ajust the width of aView") {
-                aView.layout.width(35)
+                aView.pin.width(35)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 35, height: 60.0)))
             }
 
             it("should not ajust the width of aView") {
-                aView.layout.width(-20)
+                aView.pin.width(-20)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100, height: 60.0)))
             }
 
             it("should ajust the width(percent: CGFloat) of aView") {
-                aView.layout.width(percent: 50)
+                aView.pin.width(percent: 50)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 200, height: 60)))
             }
 
             it("should ajust the width(percent: CGFloat) of aView") {
-                aView.layout.width(percent: 200)
+                aView.pin.width(percent: 200)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 800, height: 60)))
             }
 
             it("should not adjust the width(percent: CGFloat) of aView") {
-                aView.layout.width(percent: -20)
+                aView.pin.width(percent: -20)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 100, height: 60)))
             }
 
             it("should ajust the width(percent: CGFloat) of aView") {
                 let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
-                unAttachedView.layout.width(percent: 50)
+                unAttachedView.pin.width(percent: 50)
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 20, height: 30)))
             }
 
             it("should ajust the width of aView") {
-                aView.layout.width(of: aViewChild)
+                aView.pin.width(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 60.0)))
             }
         }
         
         describe("the result of the height(...) methods") {
             it("should ajust the height of aView") {
-                aView.layout.height(35)
+                aView.pin.height(35)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 35.0)))
             }
 
             it("should not ajust the height of aView") {
-                aView.layout.height(-20)
+                aView.pin.height(-20)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
             }
 
             it("should ajust the width(percent: CGFloat) of aView") {
-                aView.layout.height(percent: 50)
+                aView.pin.height(percent: 50)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 100, height: 200)))
             }
 
             it("should ajust the width(percent: CGFloat) of aView") {
-                aView.layout.height(percent: 200)
+                aView.pin.height(percent: 200)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 100, height: 800)))
             }
 
             it("should ajust the width(percent: CGFloat) of aView") {
                 let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
-                unAttachedView.layout.height(percent: 50)
+                unAttachedView.pin.height(percent: 50)
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 20, height: 30)))
             }
 
             it("should ajust the height of aView") {
-                aView.layout.height(of: aViewChild)
+                aView.pin.height(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 30.0)))
             }
         }
@@ -131,22 +131,22 @@ class AdjustSizeSpec: QuickSpec {
         describe("the result of the size(...) methods") {
         
             it("should ajust the size of aView") {
-                aView.layout.size(CGSize(width: 25, height: 25))
+                aView.pin.size(CGSize(width: 25, height: 25))
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 25.0, height: 25.0)))
             }
             
             it("should warn that size() won't be applied") {
-                aView.layout.width(90).size(CGSize(width: 25, height: 25))
+                aView.pin.width(90).size(CGSize(width: 25, height: 25))
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
             }
             
             it("should ajust the size of aView by calling a size(...) method") {
-                aView.layout.size(of: aViewChild)
+                aView.pin.size(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)))
             }
         
             it("should warn that size(of) won't be applied") {
-                aView.layout.width(90).size(of: aViewChild)
+                aView.pin.width(90).size(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
             }
         }
@@ -156,49 +156,49 @@ class AdjustSizeSpec: QuickSpec {
         //
         describe("the result of the sizeToFit() method") {
             it("should ajust the size of aView by calling sizeToFit() method without having specified width and height") {
-                aView.layout.sizeToFit()
+                aView.pin.sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
             }
             
             it("should ajust the size of aView by calling sizeToFit() method") {
-                aView.layout.width(100).sizeToFit()
+                aView.pin.width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
         
             it("should ajust the size of aView by calling sizeToFit() method") {
-                aView.layout.width(of: aViewChild).sizeToFit()
+                aView.pin.width(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
             }
         
             it("should ajust the size of aView by calling sizeToFit() method") {
-                aView.layout.height(100).sizeToFit()
+                aView.pin.height(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
             }
         
             it("should ajust the size of aView by calling sizeToFit() method") {
-                aView.layout.height(of: aViewChild).sizeToFit()
+                aView.pin.height(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.3))
             }
         
             it("should ajust the size of aView by calling sizeToFit() method") {
-                aView.layout.size(of: aViewChild).sizeToFit()
+                aView.pin.size(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)))
             }
         
             it("should ajust the size of aView by calling sizeToFit() method") {
-                aView.layout.size(CGSize(width: 20, height: 100)).sizeToFit()
+                aView.pin.size(CGSize(width: 20, height: 100)).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 20.0, height: 80.0)))
             }
             
-            it("should ajust the size and position the view by calling pinCenter(), height() and sizeToFit()") {
-//                aViewChild.layout.pinCenter(.center, of: aView).height(40).sizeToFit()
-                aViewChild.layout.pinCenter(to: aView.pin.center).height(40).sizeToFit()
+            it("should ajust the size and position the view by calling center(), height() and sizeToFit()") {
+//                aViewChild.pin.center(.center, of: aView).height(40).sizeToFit()
+                aViewChild.pin.center(to: aView.anchor.center).height(40).sizeToFit()
                 expect(aViewChild.frame).to(equal(CGRect(x: 30.0, y: 10.0, width: 40.0, height: 40.0)))
             }
             
-            it("should ajust the size and position the view by calling pinCenter(), width() and sizeToFit()") {
-//                aViewChild.layout.pinCenter(.center, of: aView).width(20).sizeToFit()
-                aViewChild.layout.pinCenter(to: aView.pin.center).width(20).sizeToFit()
+            it("should ajust the size and position the view by calling center(), width() and sizeToFit()") {
+//                aViewChild.pin.center(.center, of: aView).width(20).sizeToFit()
+                aViewChild.pin.center(to: aView.anchor.center).width(20).sizeToFit()
                 expect(aViewChild.frame).to(equal(CGRect(x: 40.0, y: -10.0, width: 20.0, height: 80.0)))
             }
         }
@@ -206,67 +206,67 @@ class AdjustSizeSpec: QuickSpec {
         describe("the result of the sizeThatFits(...) methods") {
             
             it("should ajust the size of aView by calling sizeThatFits(size: CGSize) method") {
-                aView.layout.width(100).sizeToFit()
+                aView.pin.width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(size) method") {
-                aView.layout.height(100).sizeToFit()
+                aView.pin.height(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
             }
             
             it("should warn that sizeThatFits(size:) won't be applied") {
-                aView.layout.top(0).bottom(70).width(100).sizeToFit()
+                aView.pin.top(0).bottom(70).width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 0.0, width: 100.0, height: 70.0)))
             }
 
             it("should ajust the size of aView by calling sizeThatFits(width: CGFloat) method") {
-                aView.layout.width(100).sizeToFit()
+                aView.pin.width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
             
             it("should warn that sizeThatFits(width:) won't be applied") {
-                aView.layout.height(90).width(100).sizeToFit()
+                aView.pin.height(90).width(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(widthOf: UIView) method") {
-                aView.layout.width(of: aViewChild).sizeToFit()
+                aView.pin.width(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0)))
             }
             
             it("should warn that sizeThatFits(widthOf:) won't be applied") {
-                aView.layout.width(80).width(of: aViewChild).sizeToFit()
+                aView.pin.width(80).width(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 20.0)))
             }
 
             it("should ajust the size of aView by calling sizeThatFits(height: CGFloat) method") {
-                aView.layout.height(100).sizeToFit()
+                aView.pin.height(100).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
             }
             
             it("should warn that sizeThatFits(height:) won't be applied") {
-                aView.layout.width(90).height(100).sizeToFit()
+                aView.pin.width(90).height(100).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(heightOf: UIView) method") {
-                aView.layout.height(of: aViewChild).sizeToFit()
+                aView.pin.height(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 53.3333333333333, height: 30.0), within: 0.4))
             }
             
             it("should warn that sizeThatFits(heightOf:) won't be applied") {
-                aView.layout.width(90).height(of: aViewChild).sizeToFit()
+                aView.pin.width(90).height(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
             
             it("should ajust the size of aView by calling sizeThatFits(sizeOf: UIView) method") {
-                aView.layout.size(of: aViewChild).sizeToFit()
+                aView.pin.size(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)))
             }
             
             it("should warn that sizeThatFits(sizeOf:) won't be applied") {
-                aView.layout.width(90).size(of: aViewChild).sizeToFit()
+                aView.pin.width(90).size(of: aViewChild).sizeToFit()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 17.6), within: 0.4))
             }
         }

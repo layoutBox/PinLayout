@@ -53,7 +53,7 @@ class ChainedLayoutView: UIView {
     
     fileprivate func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
-        view.layout.height(50).width(50)
+        view.pin.height(50).width(50)
         addSubview(view)
     }
     
@@ -64,7 +64,7 @@ class ChainedLayoutView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        centerView.layout.width(200).height(200)
+        centerView.pin.width(200).height(200)
         centerView.center = CGPoint(x: 200, y: 300)
         print("topCenterView: \(topCenterView.frame)")
         
@@ -74,15 +74,15 @@ class ChainedLayoutView: UIView {
         //        topRightView.bottomRight = centerView.topRight
 
         //bottomLeftView.layout2.topLeft(centerView.bottomLeft).margins(10)
-//        bottomLeftView.layout.pinTopLeft(<#T##pin: Pin##Pin#>, of: <#T##UIView#>)
+//        bottomLeftView.pin.topLeft<#T##pin: Pin##Pin#>, of: <#T##UIView#>)
 //
-//        pinTopLeft(to: centerView.pin.bottomLeft).height(50).marginTop(10).marginBottom(10)
-//        bottomCenterView.layout.pinCenter(to: centerView.bottomCenter).height(50).marginTop(10).marginBottom(10)
-//        bottomRightView.layout.pinTopRight(to: centerView.bottomRight).height(50).marginTop(10).marginBottom(10)
+//        topLeft(to: centerView.pin.bottomLeft).height(50).marginTop(10).marginBottom(10)
+//        bottomCenterView.pin.center(to: centerView.bottomCenter).height(50).marginTop(10).marginBottom(10)
+//        bottomRightView.pin.topRight(to: centerView.bottomRight).height(50).marginTop(10).marginBottom(10)
 //        
-//        rightTopView.layout.pinTopLeft(to: centerView.topRight).width(50).marginLeft(10).marginRight(10)
-//        rightCenterView.layout.pinLeftCenter(to: centerView.rightCenter).height(50).marginLeft(10).marginRight(10)
-//        rightBottomView.layout.pinBottomLeft(to: centerView.bottomRight).height(50).marginLeft(10).marginRight(10)
+//        rightTopView.pin.topLeftto: centerView.topRight).width(50).marginLeft(10).marginRight(10)
+//        rightCenterView.pin.leftCenter(to: centerView.rightCenter).height(50).marginLeft(10).marginRight(10)
+//        rightBottomView.pin.bottomLeft(to: centerView.bottomRight).height(50).marginLeft(10).marginRight(10)
         
 //
 //        leftTopView.topRight = centerView.topLeft

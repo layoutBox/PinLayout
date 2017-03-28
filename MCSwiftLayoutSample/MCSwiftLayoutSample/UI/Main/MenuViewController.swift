@@ -80,7 +80,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        didSelect(page: .bothEdgesSnapped)
+        didSelect(page: .bothEdgesSnapped)
     }
 }
 

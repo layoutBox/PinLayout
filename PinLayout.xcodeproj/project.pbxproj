@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				249EFE7C1E64FB4C00165E39 /* PinLayout */,
-				249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */,
+				249EFE871E64FB4C00165E39 /* PinLayoutTests */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
 				138A1F602470415292B7194B /* Frameworks */,
@@ -137,7 +137,7 @@
 			path = PinLayout;
 			sourceTree = "<group>";
 		};
-		249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */ = {
+		249EFE871E64FB4C00165E39 /* PinLayoutTests */ = {
 			isa = PBXGroup;
 			children = (
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
@@ -150,7 +150,8 @@
 				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 			);
-			path = MCSwiftLayoutTests;
+			name = PinLayoutTests;
+			path = PinLayoutTests;
 			sourceTree = "<group>";
 		};
 		DF11A3741E834181008B33E5 /* Supporting Files */ = {
@@ -495,7 +496,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MCSwiftLayoutTests/Info.plist;
+				INFOPLIST_FILE = PinLayoutTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,7 +513,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = MCSwiftLayoutTests/Info.plist;
+				INFOPLIST_FILE = PinLayoutTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

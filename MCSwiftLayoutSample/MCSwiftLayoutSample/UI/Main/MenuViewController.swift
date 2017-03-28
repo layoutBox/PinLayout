@@ -39,7 +39,23 @@ enum Page: Int {
         case .validateConflicts:          return "Validate properties conflicts"
         case .marginsAndInsets:           return "Margins and Insets"
         case .scrollingPin:               return "Pin to UIScrollView"
-        case .count:                             return "Unknown"
+        case .count:                      return "Unknown"
+        }
+    }
+
+    var viewController: UIViewController {
+        switch self {
+        case .viewExtensionsPositionning: return ViewExtensionsPositionningViewController()
+        case .relativePositions:          return RelativeViewController()
+        case .multiRelativePositions:     return MultiRelativeViewController()
+        case .chainedLayout:              return ChainedLayoutViewController()
+        case .bothEdgesSnapped:           return BothEdgesSnappedViewController()
+        case .marginsAndPaddingLeftWidth: return MarginsAndPaddingsLeftWidthViewController()
+        case .marginsAndPaddingLeftRight: return MarginsAndPaddingsLeftRightViewController()
+        case .validateConflicts:          return ValidateConflictsViewController()
+        case .marginsAndInsets:           return MarginsAndInsetsViewController()
+        case .scrollingPin:               return PinScrollingViewController()
+        case .count:                      return UIViewController()
         }
     }
 }
@@ -71,36 +87,6 @@ class MenuViewController: UIViewController {
 // MARK: MenuViewDelegate
 extension MenuViewController: MenuViewDelegate {
     func didSelect(page: Page) {
-        var controller: UIViewController?
-        
-        switch page {
-        case .viewExtensionsPositionning:
-            controller = ViewExtensionsPositionningViewController()
-        case .relativePositions:
-            controller = RelativeViewController()
-        case .multiRelativePositions:
-            controller = MultiRelativeViewController()
-        case .chainedLayout:
-            controller = ChainedLayoutViewController()
-        case .bothEdgesSnapped:
-            controller = BothEdgesSnappedViewController()
-        case .marginsAndPaddingLeftWidth:
-            controller = MarginsAndPaddingsLeftWidthViewController()
-        case .marginsAndPaddingLeftRight:
-            controller = MarginsAndPaddingsLeftRightViewController()
-        case .validateConflicts:
-            controller = ValidateConflictsViewController()
-        case .marginsAndInsets:
-            controller = MarginsAndInsetsViewController()
-//        case .scrollingPin:
-//            controller = 
-        default:
-            assert(false)
-            break
-        }
-        
-        if let controller = controller {
-            navigationController?.pushViewController(controller, animated: true)
-        }
+        navigationController?.pushViewController(page.viewController, animated: true)
     }
 }

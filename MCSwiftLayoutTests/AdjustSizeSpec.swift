@@ -62,7 +62,33 @@ class AdjustSizeSpec: QuickSpec {
                 aView.layout.width(35)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 35, height: 60.0)))
             }
-            
+
+            it("should not ajust the width of aView") {
+                aView.layout.width(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100, height: 60.0)))
+            }
+
+            it("should ajust the width(percent: CGFloat) of aView") {
+                aView.layout.width(percent: 50)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 200, height: 60)))
+            }
+
+            it("should ajust the width(percent: CGFloat) of aView") {
+                aView.layout.width(percent: 200)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 800, height: 60)))
+            }
+
+            it("should not adjust the width(percent: CGFloat) of aView") {
+                aView.layout.width(percent: -20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 100, height: 60)))
+            }
+
+            it("should ajust the width(percent: CGFloat) of aView") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
+                unAttachedView.layout.width(percent: 50)
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 20, height: 30)))
+            }
+
             it("should ajust the width of aView") {
                 aView.layout.width(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 60.0)))
@@ -74,7 +100,28 @@ class AdjustSizeSpec: QuickSpec {
                 aView.layout.height(35)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 35.0)))
             }
-            
+
+            it("should not ajust the height of aView") {
+                aView.layout.height(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+
+            it("should ajust the width(percent: CGFloat) of aView") {
+                aView.layout.height(percent: 50)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 100, height: 200)))
+            }
+
+            it("should ajust the width(percent: CGFloat) of aView") {
+                aView.layout.height(percent: 200)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100, width: 100, height: 800)))
+            }
+
+            it("should ajust the width(percent: CGFloat) of aView") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
+                unAttachedView.layout.height(percent: 50)
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 20, height: 30)))
+            }
+
             it("should ajust the height of aView") {
                 aView.layout.height(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 30.0)))
@@ -103,7 +150,7 @@ class AdjustSizeSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
             }
         }
-        
+
         //
         // sizeToFit
         //

@@ -64,8 +64,7 @@ class ChainedLayoutView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        centerView.width = 200
-        centerView.height = 200
+        centerView.layout.width(200).height(200)
         centerView.center = CGPoint(x: 200, y: 300)
         print("topCenterView: \(topCenterView.frame)")
         

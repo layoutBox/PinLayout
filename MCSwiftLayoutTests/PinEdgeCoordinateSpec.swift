@@ -7,7 +7,7 @@
 //
 import Quick
 import Nimble
-import MCSwiftLayout
+import PinLayout
 
 class PinEdgeCoordinateSpec: QuickSpec {
     override func spec() {

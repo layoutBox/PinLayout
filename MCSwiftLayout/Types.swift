@@ -6,7 +6,7 @@
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)

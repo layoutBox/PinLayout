@@ -7,7 +7,7 @@
 //
 import Quick
 import Nimble
-import MCSwiftLayout
+import PinLayout
 
 class RelativePositionSpec: QuickSpec {
     override func spec() {

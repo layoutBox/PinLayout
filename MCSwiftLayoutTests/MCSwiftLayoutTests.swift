@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import MCSwiftLayout
+@testable import PinLayout
 
 class MCSwiftLayoutTests: XCTestCase {
     var viewController: UIViewController!

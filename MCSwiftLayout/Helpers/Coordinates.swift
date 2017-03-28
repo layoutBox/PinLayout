@@ -6,7 +6,7 @@
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 internal class Coordinates {
 //    static func top(_ view: UIView) -> CGFloat {

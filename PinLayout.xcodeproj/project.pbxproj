@@ -18,7 +18,7 @@
 		2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
 		246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
-		249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */; };
+		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */; };
 		249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF11A3711E833F03008B33E5 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* Types.swift */; };
@@ -62,10 +62,10 @@
 		2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectNimbleMatcher.swift; sourceTree = "<group>"; };
 		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionSpec.swift; sourceTree = "<group>"; };
-		249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCSwiftLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		249EFE7A1E64FB4C00165E39 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSwiftLayout.h; sourceTree = "<group>"; };
 		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		249EFE831E64FB4C00165E39 /* MCSwiftLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCSwiftLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSwiftLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF11A3701E833F03008B33E5 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				249EFE841E64FB4C00165E39 /* MCSwiftLayout.framework in Frameworks */,
+				249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */,
 				241962391E7F582C00A0466C /* Nimble.framework in Frameworks */,
 				2419623A1E7F582C00A0466C /* Quick.framework in Frameworks */,
 			);
@@ -119,8 +119,8 @@
 		249EFE7B1E64FB4C00165E39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */,
-				249EFE831E64FB4C00165E39 /* MCSwiftLayoutTests.xctest */,
+				249EFE7A1E64FB4C00165E39 /* PinLayout.framework */,
+				249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,9 +192,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		249EFE791E64FB4C00165E39 /* MCSwiftLayout */ = {
+		249EFE791E64FB4C00165E39 /* PinLayout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 249EFE8E1E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayout" */;
+			buildConfigurationList = 249EFE8E1E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "PinLayout" */;
 			buildPhases = (
 				249EFE751E64FB4C00165E39 /* Sources */,
 				249EFE761E64FB4C00165E39 /* Frameworks */,
@@ -206,14 +206,14 @@
 			);
 			dependencies = (
 			);
-			name = MCSwiftLayout;
+			name = PinLayout;
 			productName = MCSwiftLayout;
-			productReference = 249EFE7A1E64FB4C00165E39 /* MCSwiftLayout.framework */;
+			productReference = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		249EFE821E64FB4C00165E39 /* MCSwiftLayoutTests */ = {
+		249EFE821E64FB4C00165E39 /* PinLayoutTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 249EFE911E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutTests" */;
+			buildConfigurationList = 249EFE911E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "PinLayoutTests" */;
 			buildPhases = (
 				249EFE7F1E64FB4C00165E39 /* Sources */,
 				249EFE801E64FB4C00165E39 /* Frameworks */,
@@ -225,9 +225,9 @@
 			dependencies = (
 				249EFE861E64FB4C00165E39 /* PBXTargetDependency */,
 			);
-			name = MCSwiftLayoutTests;
+			name = PinLayoutTests;
 			productName = MCSwiftLayoutTests;
-			productReference = 249EFE831E64FB4C00165E39 /* MCSwiftLayoutTests.xctest */;
+			productReference = 249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -253,7 +253,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 249EFE741E64FB4C00165E39 /* Build configuration list for PBXProject "MCSwiftLayout" */;
+			buildConfigurationList = 249EFE741E64FB4C00165E39 /* Build configuration list for PBXProject "PinLayout" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -265,8 +265,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				249EFE791E64FB4C00165E39 /* MCSwiftLayout */,
-				249EFE821E64FB4C00165E39 /* MCSwiftLayoutTests */,
+				249EFE791E64FB4C00165E39 /* PinLayout */,
+				249EFE821E64FB4C00165E39 /* PinLayoutTests */,
 			);
 		};
 /* End PBXProject section */
@@ -338,7 +338,7 @@
 /* Begin PBXTargetDependency section */
 		249EFE861E64FB4C00165E39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 249EFE791E64FB4C00165E39 /* MCSwiftLayout */;
+			target = 249EFE791E64FB4C00165E39 /* PinLayout */;
 			targetProxy = 249EFE851E64FB4C00165E39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -523,7 +523,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		249EFE741E64FB4C00165E39 /* Build configuration list for PBXProject "MCSwiftLayout" */ = {
+		249EFE741E64FB4C00165E39 /* Build configuration list for PBXProject "PinLayout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				249EFE8C1E64FB4C00165E39 /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		249EFE8E1E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayout" */ = {
+		249EFE8E1E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "PinLayout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				249EFE8F1E64FB4C00165E39 /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		249EFE911E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutTests" */ = {
+		249EFE911E64FB4C00165E39 /* Build configuration list for PBXNativeTarget "PinLayoutTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				249EFE921E64FB4C00165E39 /* Debug */,

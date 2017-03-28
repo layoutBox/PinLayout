@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-               BuildableName = "MCSwiftLayout.framework"
-               BlueprintName = "MCSwiftLayout"
-               ReferencedContainer = "container:MCSwiftLayout.xcodeproj">
+               BuildableName = "PinLayout.framework"
+               BlueprintName = "PinLayout"
+               ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "249EFE821E64FB4C00165E39"
-               BuildableName = "MCSwiftLayoutTests.xctest"
-               BlueprintName = "MCSwiftLayoutTests"
-               ReferencedContainer = "container:MCSwiftLayout.xcodeproj">
+               BuildableName = "PinLayoutTests.xctest"
+               BlueprintName = "PinLayoutTests"
+               ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-            BuildableName = "MCSwiftLayout.framework"
-            BlueprintName = "MCSwiftLayout"
-            ReferencedContainer = "container:MCSwiftLayout.xcodeproj">
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-            BuildableName = "MCSwiftLayout.framework"
-            BlueprintName = "MCSwiftLayout"
-            ReferencedContainer = "container:MCSwiftLayout.xcodeproj">
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -84,9 +84,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-            BuildableName = "MCSwiftLayout.framework"
-            BlueprintName = "MCSwiftLayout"
-            ReferencedContainer = "container:MCSwiftLayout.xcodeproj">
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

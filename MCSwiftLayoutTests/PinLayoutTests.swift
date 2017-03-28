@@ -1,6 +1,6 @@
 //
-//  MCSwiftLayoutTests.swift
-//  MCSwiftLayoutTests
+//  PinLayout.swift
+//  PinLayoutTests
 //
 //  Created by DION, Luc (MTL) on 2017-02-27.
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import PinLayout
 
-class MCSwiftLayoutTests: XCTestCase {
+class PinLayoutTests: XCTestCase {
     var viewController: UIViewController!
     var rootView: UIView!
     

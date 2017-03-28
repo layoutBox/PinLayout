@@ -1,6 +1,6 @@
 //
 //  PinLayout.swift
-//  MCSwiftLayout
+//  PinLayout
 //
 //  Created by Luc Dion on 2017-03-28.
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.

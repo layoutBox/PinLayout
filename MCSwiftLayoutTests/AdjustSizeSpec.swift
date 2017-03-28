@@ -1,6 +1,6 @@
 //
 //  AdjustSizeSpec.swift
-//  MCSwiftLayout
+//  PinLayout
 //
 //  Created by DION, Luc (MTL) on 2017-03-05.
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  UIView+PinLayout.swift
-//  MCSwiftLayout
+//  PinLayout
 //
 //  Created by Luc Dion on 2017-03-22.
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.

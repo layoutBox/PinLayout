@@ -19,7 +19,7 @@
 		246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
 		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
-		249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */; };
+		249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */; };
 		249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF11A3711E833F03008B33E5 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* Types.swift */; };
 		DF11A3781E834B32008B33E5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */; };
@@ -66,7 +66,7 @@
 		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSwiftLayout.h; sourceTree = "<group>"; };
 		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSwiftLayoutTests.swift; sourceTree = "<group>"; };
+		249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF11A3701E833F03008B33E5 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PinLayout.swift"; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		249EFE701E64FB4C00165E39 = {
 			isa = PBXGroup;
 			children = (
-				249EFE7C1E64FB4C00165E39 /* MCSwiftLayout */,
+				249EFE7C1E64FB4C00165E39 /* PinLayout */,
 				249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
@@ -125,7 +125,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		249EFE7C1E64FB4C00165E39 /* MCSwiftLayout */ = {
+		249EFE7C1E64FB4C00165E39 /* PinLayout */ = {
 			isa = PBXGroup;
 			children = (
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
@@ -134,7 +134,7 @@
 				DF11A3751E834194008B33E5 /* Extensions */,
 				DF11A3761E8341A2008B33E5 /* Helpers */,
 			);
-			path = MCSwiftLayout;
+			path = PinLayout;
 			sourceTree = "<group>";
 		};
 		249EFE871E64FB4C00165E39 /* MCSwiftLayoutTests */ = {
@@ -143,7 +143,7 @@
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
 				2469C5011E75D88500073BEE /* BasicView.swift */,
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
-				249EFE881E64FB4C00165E39 /* MCSwiftLayoutTests.swift */,
+				249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */,
 				244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */,
 				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
 				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
@@ -329,7 +329,7 @@
 				2469C5021E75D88500073BEE /* BasicView.swift in Sources */,
 				246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */,
 				244C6E151E776A0C0074FC74 /* MarginsAndInsetsSpec.swift in Sources */,
-				249EFE891E64FB4C00165E39 /* MCSwiftLayoutTests.swift in Sources */,
+				249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +457,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayout;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -479,7 +479,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayout;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;

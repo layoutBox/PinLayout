@@ -8,6 +8,9 @@
 
 import Foundation
 
+typealias Context = () -> String
+typealias Size = (width: CGFloat?, height: CGFloat?)
+
 public class EdgeList {
     internal  let view: UIView
 
@@ -102,8 +105,8 @@ enum PinType: String {
 }
 
 public class Pin {
-    internal  let view: UIView
-    internal  let pinType: PinType
+    let view: UIView
+    let pinType: PinType
 
     /* var x: CGFloat {
      return point.x
@@ -127,7 +130,7 @@ public class Pin {
      }
      }*/
 
-    fileprivate init(view: UIView, pinType: PinType) {
+    init(view: UIView, pinType: PinType) {
         self.view = view
         self.pinType = pinType
     }

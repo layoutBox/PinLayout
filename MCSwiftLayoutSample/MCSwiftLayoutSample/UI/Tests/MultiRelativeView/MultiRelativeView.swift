@@ -32,9 +32,9 @@ class MultiRelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        view1.layout.top(64).left(10).width(100).height(100)
-        view2.layout.right(of: view1, aligned: .top).marginLeft(150).width(100).height(100)
+        view1.pin.top(64).left(10).width(100).height(100)
+        view2.pin.right(of: view1, aligned: .top).marginLeft(150).width(100).height(100)
         
-        view.layout.right(of: view1, aligned: .top).left(of: view2).height(75).insetLeft(10).insetRight(10)
+        view.pin.right(of: view1, aligned: .top).left(of: view2).height(75).insetLeft(10).insetRight(10)
     }
 }

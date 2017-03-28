@@ -90,7 +90,7 @@ class MarginsAndPaddingsLeftWidthView: UIView {
     }
     
     fileprivate func addView(_ view: BasicView) {
-        view.layout.height(30).width(70)
+        view.pin.height(30).width(70)
         contentScrollView.addSubview(view)
     }
     
@@ -103,34 +103,34 @@ class MarginsAndPaddingsLeftWidthView: UIView {
         
         let leftPosition: CGFloat = 0
         
-        contentScrollView.layout.pinTopLeft().width(width).height(height).insetTop(64)
+        contentScrollView.pin.topLeft().width(width).height(height).insetTop(64)
         
         descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-        descriptionLabel.layout.pinTopLeft(to: CGPoint(x: leftPosition, y: 10))
+        descriptionLabel.pin.topLeft(to: CGPoint(x: leftPosition, y: 10))
         
         // No margins
-        noMarginsNoPaddings.layout.pinTopLeft(to: descriptionLabel.pin.bottomLeft).marginTop(5)
-        noMarginsLeftInsetView.layout.top(noMarginsNoPaddings.bottom).left(leftPosition).width(70).insetLeft(10)
-        noMarginsRightInsetView.layout.top(noMarginsLeftInsetView.bottom).left(leftPosition).width(70).insetRight(10)
-        noMarginsLeftRightInsetView.layout.top(noMarginsRightInsetView.bottom).left(leftPosition).width(70).insetLeft(10).insetRight(10)
+        noMarginsNoPaddings.pin.topLeft(to: descriptionLabel.anchor.bottomLeft).marginTop(5)
+        noMarginsLeftInsetView.pin.top(noMarginsNoPaddings.bottom).left(leftPosition).width(70).insetLeft(10)
+        noMarginsRightInsetView.pin.top(noMarginsLeftInsetView.bottom).left(leftPosition).width(70).insetRight(10)
+        noMarginsLeftRightInsetView.pin.top(noMarginsRightInsetView.bottom).left(leftPosition).width(70).insetLeft(10).insetRight(10)
         
         // Left margin
-        leftMarginView.layout.top(noMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10)
-        leftMarginLeftInsetView.layout.top(leftMarginView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10)
-        leftMarginRightInsetView.layout.top(leftMarginLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetRight(10)
-        leftMarginLeftRightInsetView.layout.top(leftMarginRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10).insetRight(10)
+        leftMarginView.pin.top(noMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10)
+        leftMarginLeftInsetView.pin.top(leftMarginView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10)
+        leftMarginRightInsetView.pin.top(leftMarginLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetRight(10)
+        leftMarginLeftRightInsetView.pin.top(leftMarginRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10).insetRight(10)
         
         // Right margin
-        rigthMarginView.layout.top(leftMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginRight(10)
-        rigthMarginLeftInsetView.layout.top(rigthMarginView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10)
-        rigthMarginRightInsetView.layout.top(rigthMarginLeftInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetRight(10)
-        rigthMarginLeftRightInsetView.layout.top(rigthMarginRightInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10).insetRight(10)
+        rigthMarginView.pin.top(leftMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginRight(10)
+        rigthMarginLeftInsetView.pin.top(rigthMarginView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10)
+        rigthMarginRightInsetView.pin.top(rigthMarginLeftInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetRight(10)
+        rigthMarginLeftRightInsetView.pin.top(rigthMarginRightInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10).insetRight(10)
         
         // Left and right margins
-        leftRightMarginsView.layout.top(rigthMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10).marginRight(10)
-        leftRightMarginsLeftInsetView.layout.top(leftRightMarginsView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10)
-        leftRightMarginsRightInsetView.layout.top(leftRightMarginsLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetRight(10)
-        leftRightMarginsLeftRightInsetView.layout.top(leftRightMarginsRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10).insetRight(10)
+        leftRightMarginsView.pin.top(rigthMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10).marginRight(10)
+        leftRightMarginsLeftInsetView.pin.top(leftRightMarginsView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10)
+        leftRightMarginsRightInsetView.pin.top(leftRightMarginsLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetRight(10)
+        leftRightMarginsLeftRightInsetView.pin.top(leftRightMarginsRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10).insetRight(10)
         
         // Top Margin
 //        noMarginsNoPaddings2.layout2.top(leftRightMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).height(30)

@@ -30,7 +30,7 @@ class MCSwiftLayoutTests: XCTestCase {
 //        pin(rootView).topLeft(to: child1.pin.center)
 //        rootView.pin.topLeft(to: child1.pin.center)
         
-//        child1.layout.pinCenter(of: rootView)
+//        child1.pin.pinCenter(of: rootView)
 //        print("child1.frame: \(child1.frame)")
     }
     

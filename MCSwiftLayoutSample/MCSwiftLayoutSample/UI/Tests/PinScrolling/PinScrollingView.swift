@@ -45,18 +45,18 @@ class PinScrollingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentScrollView.layout.pinTopLeft().width(width).height(height).insetTop(64)
+        contentScrollView.pin.topLeft().width(width).height(height).insetTop(64)
         contentScrollView.contentSize = CGSize(width: width, height: height * 4)
 
-        aView.layout.top(20).left(0).right(width).height(40).margin(10)
+        aView.pin.top(20).left(0).right(width).height(40).margin(10)
         layoutBView()
 
-        cView.layout.below(of: aView, aligned: .right).width(100).height(50).marginTop(10)
-        dView.layout.below(of: aView, aligned: .left).left(of: cView).height(of: cView).marginTop(10).marginRight(10)
+        cView.pin.below(of: aView, aligned: .right).width(100).height(50).marginTop(10)
+        dView.pin.below(of: aView, aligned: .left).left(of: cView).height(of: cView).marginTop(10).marginRight(10)
     }
 
     fileprivate func layoutBView() {
-        bView.layout.pinTopLeft(to: aView.pin.topLeft).pinBottomRight(to: aView.pin.bottomCenter)
+        bView.pin.topLeft(to: aView.anchor.topLeft).bottomRight(to: aView.anchor.bottomCenter)
     }
 }
 

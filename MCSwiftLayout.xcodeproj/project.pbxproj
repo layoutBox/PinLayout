@@ -11,7 +11,6 @@
 		2419623A1E7F582C00A0466C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241962381E7F582C00A0466C /* Quick.framework */; };
 		2419623C1E7F592800A0466C /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 241962371E7F582C00A0466C /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2419623D1E7F592800A0466C /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 241962381E7F582C00A0466C /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2439CC311E6659FA003326FB /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC301E6659FA003326FB /* Layout.swift */; };
 		244C6E151E776A0C0074FC74 /* MarginsAndInsetsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */; };
 		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
 		2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
@@ -25,6 +24,8 @@
 		DF11A3711E833F03008B33E5 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* Types.swift */; };
 		DF11A3781E834B32008B33E5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */; };
 		DF11A37A1E834B3F008B33E5 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3791E834B3F008B33E5 /* Coordinates.swift */; };
+		DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */; };
+		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,6 @@
 /* Begin PBXFileReference section */
 		241962371E7F582C00A0466C /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		241962381E7F582C00A0466C /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		2439CC301E6659FA003326FB /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		244C6E141E776A0C0074FC74 /* MarginsAndInsetsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsAndInsetsSpec.swift; sourceTree = "<group>"; };
 		2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgeCoordinateSpec.swift; sourceTree = "<group>"; };
 		2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustSizeSpec.swift; sourceTree = "<group>"; };
@@ -71,6 +71,8 @@
 		DF11A3701E833F03008B33E5 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+PinLayout.swift"; sourceTree = "<group>"; };
 		DF11A3791E834B3F008B33E5 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutImpl.swift; sourceTree = "<group>"; };
+		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,10 +128,11 @@
 		249EFE7C1E64FB4C00165E39 /* MCSwiftLayout */ = {
 			isa = PBXGroup;
 			children = (
+				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
+				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
+				DF11A3701E833F03008B33E5 /* Types.swift */,
 				DF11A3751E834194008B33E5 /* Extensions */,
 				DF11A3761E8341A2008B33E5 /* Helpers */,
-				2439CC301E6659FA003326FB /* Layout.swift */,
-				DF11A3701E833F03008B33E5 /* Types.swift */,
 			);
 			path = MCSwiftLayout;
 			sourceTree = "<group>";
@@ -309,8 +312,9 @@
 			files = (
 				DF11A3711E833F03008B33E5 /* Types.swift in Sources */,
 				DF11A3781E834B32008B33E5 /* UIView+PinLayout.swift in Sources */,
-				2439CC311E6659FA003326FB /* Layout.swift in Sources */,
 				DF11A37A1E834B3F008B33E5 /* Coordinates.swift in Sources */,
+				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
+				DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

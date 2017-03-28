@@ -53,7 +53,7 @@ class ViewExtensionsPositionningView: UIView {
     
     fileprivate func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
-        view.layout.width(50).height(50)
+        view.pin.width(50).height(50)
         addSubview(view)
     }
     
@@ -64,7 +64,7 @@ class ViewExtensionsPositionningView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        centerView.layout.width(200).height(200)
+        centerView.pin.width(200).height(200)
         centerView.center = CGPoint(x: 200, y: 300)
         print("topCenterView: \(topCenterView.frame)")
         

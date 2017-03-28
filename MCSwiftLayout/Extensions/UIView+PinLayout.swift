@@ -8,28 +8,6 @@
 
 import UIKit
 
-public extension UIView {
-    public var layout: Layout {
-        return Layout(view: self)
-    }
-
-    public var pin: PinList {
-        return PinList(view: self)
-    }
-
-//    public var pin: Layout {
-//        return Layout(view: self)
-//    }
-
-    public var edge: EdgeList {
-        return EdgeList(view: self)
-    }
-
-    //    func layout(with layout: Layout) {
-    //        layout.apply(onView: self)
-    //    }
-}
-
 // Could be part of another GitHub repo?
 public extension UIView {
     public var top: CGFloat {

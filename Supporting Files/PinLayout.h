@@ -14,6 +14,6 @@ FOUNDATION_EXPORT double PinLayoutVersionNumber;
 //! Project version string for PinLayout.
 FOUNDATION_EXPORT const unsigned char PinLayoutVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <MCSwiftLayout/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <PinLayout/PublicHeader.h>
 
 

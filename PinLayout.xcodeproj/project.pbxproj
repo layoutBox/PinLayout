@@ -20,7 +20,7 @@
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
 		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */; };
-		249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		249EFE8B1E64FB4C00165E39 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF11A3711E833F03008B33E5 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* Types.swift */; };
 		DF11A3781E834B32008B33E5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3771E834B32008B33E5 /* UIView+PinLayout.swift */; };
 		DF11A37A1E834B3F008B33E5 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3791E834B3F008B33E5 /* Coordinates.swift */; };
@@ -34,7 +34,7 @@
 			containerPortal = 249EFE711E64FB4C00165E39 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 249EFE791E64FB4C00165E39;
-			remoteInfo = MCSwiftLayout;
+			remoteInfo = PinLayout;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -63,7 +63,7 @@
 		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionSpec.swift; sourceTree = "<group>"; };
 		249EFE7A1E64FB4C00165E39 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCSwiftLayout.h; sourceTree = "<group>"; };
+		249EFE7D1E64FB4C00165E39 /* PinLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinLayout.h; sourceTree = "<group>"; };
 		249EFE7E1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTests.swift; sourceTree = "<group>"; };
@@ -150,7 +150,6 @@
 				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 			);
-			name = PinLayoutTests;
 			path = PinLayoutTests;
 			sourceTree = "<group>";
 		};
@@ -158,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				249EFE7E1E64FB4C00165E39 /* Info.plist */,
-				249EFE7D1E64FB4C00165E39 /* MCSwiftLayout.h */,
+				249EFE7D1E64FB4C00165E39 /* PinLayout.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,7 +185,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				249EFE8B1E64FB4C00165E39 /* MCSwiftLayout.h in Headers */,
+				249EFE8B1E64FB4C00165E39 /* PinLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +207,7 @@
 			dependencies = (
 			);
 			name = PinLayout;
-			productName = MCSwiftLayout;
+			productName = PinLayout;
 			productReference = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -227,7 +226,7 @@
 				249EFE861E64FB4C00165E39 /* PBXTargetDependency */,
 			);
 			name = PinLayoutTests;
-			productName = MCSwiftLayoutTests;
+			productName = PinLayoutTests;
 			productReference = 249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -498,7 +497,7 @@
 				);
 				INFOPLIST_FILE = PinLayoutTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -515,7 +514,7 @@
 				);
 				INFOPLIST_FILE = PinLayoutTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

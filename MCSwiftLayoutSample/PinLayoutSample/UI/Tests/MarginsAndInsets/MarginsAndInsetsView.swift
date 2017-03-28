@@ -6,7 +6,7 @@
 //  Copyright (c) 2017 Mirego. All rights reserved.
 //
 import UIKit
-import MCSwiftLayout
+import PinLayout
 
 class MarginsAndInsetsView: UIView {
     private let contentScrollView = UIScrollView()

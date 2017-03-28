@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode8
-xcode_project: MCSwiftLayout.xcodeproj
-xcode_scheme: MCSwiftLayout
+xcode_project: PinLayout.xcodeproj
+xcode_scheme: PinLayout
 xcode_sdk: iphonesimulator9.3
 env:
   global: 
@@ -12,8 +12,8 @@ before_install:
   - ./install-dependencies.sh
   
 script: xcodebuild
-  -project  MCSwiftLayout.xcodeproj
-  -scheme "MCSwiftLayout"
+  -project  PinLayout.xcodeproj
+  -scheme "PinLayout"
   -sdk iphonesimulator
   -destination 'platform=iOS Simulator,name=iPhone 6'
   -enableCodeCoverage YES 

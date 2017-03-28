@@ -1,13 +1,13 @@
 //
 //  AppDelegate.swift
-//  MCSwiftLayoutSample
+//  PinLayoutSample
 //
 //  Created by DION, Luc (MTL) on 2017-02-27.
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.
 //
 
 import UIKit
-import MCSwiftLayout
+import PinLayout
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

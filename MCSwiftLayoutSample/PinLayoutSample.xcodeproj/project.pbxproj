@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2439CC281E6658C3003326FB /* MCSwiftLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* MCSwiftLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2439CC2B1E6658CC003326FB /* MCSwiftLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* MCSwiftLayout.framework */; };
+		2439CC281E6658C3003326FB /* ReferenceProxy in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2439CC2B1E6658CC003326FB /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; };
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
 		2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC341E665BF6003326FB /* MenuViewController.swift */; };
 		2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC381E665C6B003326FB /* BasicView.swift */; };
@@ -34,7 +34,7 @@
 		24E6547A1E68F27D00A72A8B /* BothEdgesSnappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654781E68F27D00A72A8B /* BothEdgesSnappedView.swift */; };
 		24E6547B1E68F27D00A72A8B /* BothEdgesSnappedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654791E68F27D00A72A8B /* BothEdgesSnappedViewController.swift */; };
 		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
-		DE6C3D736B571B80E207DF6A /* Pods_MCSwiftLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_MCSwiftLayoutSample.framework */; };
+		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
 		DF66F9DA1E8493E000ADB8D5 /* PinScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */; };
 		DF66F9DB1E8493E000ADB8D5 /* PinScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,24 +42,24 @@
 /* Begin PBXContainerItemProxy section */
 		2439CC231E665858003326FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */;
+			containerPortal = 2439CC1E1E665858003326FB /* PinLayout.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 249EFE7A1E64FB4C00165E39;
-			remoteInfo = MCSwiftLayout;
+			remoteInfo = PinLayout;
 		};
 		2439CC251E665858003326FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */;
+			containerPortal = 2439CC1E1E665858003326FB /* PinLayout.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 249EFE831E64FB4C00165E39;
-			remoteInfo = MCSwiftLayoutTests;
+			remoteInfo = PinLayoutTests;
 		};
 		2439CC291E6658C3003326FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */;
+			containerPortal = 2439CC1E1E665858003326FB /* PinLayout.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 249EFE791E64FB4C00165E39;
-			remoteInfo = MCSwiftLayout;
+			remoteInfo = PinLayout;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -70,7 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2439CC281E6658C3003326FB /* MCSwiftLayout.framework in Embed Frameworks */,
+				2439CC281E6658C3003326FB /* ReferenceProxy in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,7 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCSwiftLayout.xcodeproj; path = ../MCSwiftLayout.xcodeproj; sourceTree = "<group>"; };
+		2439CC1E1E665858003326FB /* PinLayout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PinLayout.xcodeproj; path = ../PinLayout.xcodeproj; sourceTree = "<group>"; };
 		2439CC331E665BF6003326FB /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2439CC341E665BF6003326FB /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2439CC381E665C6B003326FB /* BasicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		2439CC461E665C6B003326FB /* ValidateConflictsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateConflictsViewController.swift; sourceTree = "<group>"; };
 		244C6E181E776ADB0074FC74 /* MarginsAndInsetsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsAndInsetsView.swift; sourceTree = "<group>"; };
 		244C6E191E776ADB0074FC74 /* MarginsAndInsetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsAndInsetsViewController.swift; sourceTree = "<group>"; };
-		249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCSwiftLayoutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		249EFE3F1E64FAFE00165E39 /* PinLayoutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinLayoutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE421E64FAFE00165E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		249EFE491E64FAFE00165E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		249EFE4C1E64FAFE00165E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,11 +106,11 @@
 		24E654781E68F27D00A72A8B /* BothEdgesSnappedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothEdgesSnappedView.swift; sourceTree = "<group>"; };
 		24E654791E68F27D00A72A8B /* BothEdgesSnappedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothEdgesSnappedViewController.swift; sourceTree = "<group>"; };
 		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
-		AAD69688AA2A3F0994F3074E /* Pods_MCSwiftLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCSwiftLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinScrollingView.swift; path = PinScrolling/PinScrollingView.swift; sourceTree = "<group>"; };
 		DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinScrollingViewController.swift; path = PinScrolling/PinScrollingViewController.swift; sourceTree = "<group>"; };
-		F121E291CADD796B007C04BB /* Pods-MCSwiftLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCSwiftLayoutSample/Pods-MCSwiftLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
-		F1ACB0EACBD84B57B50D472D /* Pods-MCSwiftLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCSwiftLayoutSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCSwiftLayoutSample/Pods-MCSwiftLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
+		F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
+		F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2439CC2B1E6658CC003326FB /* MCSwiftLayout.framework in Frameworks */,
-				DE6C3D736B571B80E207DF6A /* Pods_MCSwiftLayoutSample.framework in Frameworks */,
+				2439CC2B1E6658CC003326FB /* ReferenceProxy in Frameworks */,
+				DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,7 @@
 		160FB83905049FCEDD18DC8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AAD69688AA2A3F0994F3074E /* Pods_MCSwiftLayoutSample.framework */,
+				AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,8 +137,8 @@
 		2439CC1F1E665858003326FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2439CC241E665858003326FB /* MCSwiftLayout.framework */,
-				2439CC261E665858003326FB /* MCSwiftLayoutTests.xctest */,
+				2439CC241E665858003326FB /* PinLayout.framework */,
+				2439CC261E665858003326FB /* PinLayoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,22 +273,22 @@
 			isa = PBXGroup;
 			children = (
 				160FB83905049FCEDD18DC8A /* Frameworks */,
-				249EFE411E64FAFE00165E39 /* MCSwiftLayoutSample */,
+				249EFE411E64FAFE00165E39 /* PinLayoutSample */,
 				F143180314A617EFD07C5709 /* Pods */,
 				249EFE401E64FAFE00165E39 /* Products */,
-				2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */,
+				2439CC1E1E665858003326FB /* PinLayout.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
 		249EFE401E64FAFE00165E39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */,
+				249EFE3F1E64FAFE00165E39 /* PinLayoutSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		249EFE411E64FAFE00165E39 /* MCSwiftLayoutSample */ = {
+		249EFE411E64FAFE00165E39 /* PinLayoutSample */ = {
 			isa = PBXGroup;
 			children = (
 				24E654801E69040000A72A8B /* Domain */,
@@ -296,7 +296,7 @@
 				2439CC321E665BE3003326FB /* UI */,
 				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
 			);
-			path = MCSwiftLayoutSample;
+			path = PinLayoutSample;
 			sourceTree = "<group>";
 		};
 		24E654761E68F20400A72A8B /* BothEdgesSnapped */ = {
@@ -328,8 +328,8 @@
 		F143180314A617EFD07C5709 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F1ACB0EACBD84B57B50D472D /* Pods-MCSwiftLayoutSample.debug.xcconfig */,
-				F121E291CADD796B007C04BB /* Pods-MCSwiftLayoutSample.release.xcconfig */,
+				F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */,
+				F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -337,9 +337,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		249EFE3E1E64FAFE00165E39 /* MCSwiftLayoutSample */ = {
+		249EFE3E1E64FAFE00165E39 /* PinLayoutSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 249EFE671E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutSample" */;
+			buildConfigurationList = 249EFE671E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "PinLayoutSample" */;
 			buildPhases = (
 				DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */,
 				249EFE3B1E64FAFE00165E39 /* Sources */,
@@ -355,9 +355,9 @@
 			dependencies = (
 				2439CC2A1E6658C3003326FB /* PBXTargetDependency */,
 			);
-			name = MCSwiftLayoutSample;
-			productName = MCSwiftLayoutSample;
-			productReference = 249EFE3F1E64FAFE00165E39 /* MCSwiftLayoutSample.app */;
+			name = PinLayoutSample;
+			productName = PinLayoutSample;
+			productReference = 249EFE3F1E64FAFE00165E39 /* PinLayoutSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -377,7 +377,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 249EFE3A1E64FAFE00165E39 /* Build configuration list for PBXProject "MCSwiftLayoutSample" */;
+			buildConfigurationList = 249EFE3A1E64FAFE00165E39 /* Build configuration list for PBXProject "PinLayoutSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -391,28 +391,28 @@
 			projectReferences = (
 				{
 					ProductGroup = 2439CC1F1E665858003326FB /* Products */;
-					ProjectRef = 2439CC1E1E665858003326FB /* MCSwiftLayout.xcodeproj */;
+					ProjectRef = 2439CC1E1E665858003326FB /* PinLayout.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				249EFE3E1E64FAFE00165E39 /* MCSwiftLayoutSample */,
+				249EFE3E1E64FAFE00165E39 /* PinLayoutSample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2439CC241E665858003326FB /* MCSwiftLayout.framework */ = {
+		2439CC241E665858003326FB /* PinLayout.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = MCSwiftLayout.framework;
+			path = PinLayout.framework;
 			remoteRef = 2439CC231E665858003326FB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2439CC261E665858003326FB /* MCSwiftLayoutTests.xctest */ = {
+		2439CC261E665858003326FB /* PinLayoutTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = MCSwiftLayoutTests.xctest;
+			path = PinLayoutTests.xctest;
 			remoteRef = 2439CC251E665858003326FB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -457,7 +457,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MCSwiftLayoutSample/Pods-MCSwiftLayoutSample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */ = {
@@ -472,7 +472,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MCSwiftLayoutSample/Pods-MCSwiftLayoutSample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */ = {
@@ -487,7 +487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -530,7 +530,7 @@
 /* Begin PBXTargetDependency section */
 		2439CC2A1E6658C3003326FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = MCSwiftLayout;
+			name = PinLayout;
 			targetProxy = 2439CC291E6658C3003326FB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -643,14 +643,14 @@
 		};
 		249EFE681E64FAFE00165E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1ACB0EACBD84B57B50D472D /* Pods-MCSwiftLayoutSample.debug.xcconfig */;
+			baseConfigurationReference = F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = "MCSwiftLayoutSample/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "PinLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -658,14 +658,14 @@
 		};
 		249EFE691E64FAFE00165E39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F121E291CADD796B007C04BB /* Pods-MCSwiftLayoutSample.release.xcconfig */;
+			baseConfigurationReference = F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
-				INFOPLIST_FILE = "MCSwiftLayoutSample/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "PinLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.MCSwiftLayoutSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -674,7 +674,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		249EFE3A1E64FAFE00165E39 /* Build configuration list for PBXProject "MCSwiftLayoutSample" */ = {
+		249EFE3A1E64FAFE00165E39 /* Build configuration list for PBXProject "PinLayoutSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				249EFE651E64FAFE00165E39 /* Debug */,
@@ -683,7 +683,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		249EFE671E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "MCSwiftLayoutSample" */ = {
+		249EFE671E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "PinLayoutSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				249EFE681E64FAFE00165E39 /* Debug */,

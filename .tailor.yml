@@ -1,8 +1,8 @@
 include:
-    - MCSwiftLayout
+    - PinLayout
 
 exclude:
-    - MCSwiftLayoutTests
+    - PinLayoutTests
     - MCSwiftLayoutSample
     - Carthage
     - Source/Pods

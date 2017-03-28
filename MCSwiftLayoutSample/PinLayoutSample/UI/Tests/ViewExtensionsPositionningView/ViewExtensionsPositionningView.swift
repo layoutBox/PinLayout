@@ -6,6 +6,7 @@
 //  Copyright (c) 2017 Mirego. All rights reserved.
 //
 import UIKit
+import PinLayout
 
 class ViewExtensionsPositionningView: UIView {
     private let centerView = UIView()

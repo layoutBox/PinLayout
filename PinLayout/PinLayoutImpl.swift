@@ -114,7 +114,7 @@ import UIKit
  - sizeToFit() devrait prendre un parametre indiquant si on doit caster les nouvelles valeur
      de width et de height (forceSize, castSize, ...?)
  
- - dans le calcul des coordonné, ajouter un relativeView is superview then ...
+ - dans le calcul des coordonné, ajouter un referenceView is superview then ...
     optimisation
 
  - Support hCenter + left or right
@@ -209,25 +209,25 @@ class PinLayoutImpl: PinLayout {
     //
     @discardableResult
     func top(_ value: CGFloat) -> PinLayout {
-        setTop(value, context: { return "top(\(value))" })
+        setTop(value, { return "top(\(value))" })
         return self
     }
     
     @discardableResult
     func left(_ value: CGFloat) -> PinLayout {
-        setLeft(value, context: { return "left(\(value))" })
+        setLeft(value, { return "left(\(value))" })
         return self
     }
     
     @discardableResult
     func bottom(_ value: CGFloat) -> PinLayout {
-        setBottom(value, context: { return "bottom(\(value))" })
+        setBottom(value, { return "bottom(\(value))" })
         return self
     }
     
     @discardableResult
     func right(_ value: CGFloat) -> PinLayout {
-        setRight(value, context: { return "right(\(value))" })
+        setRight(value, { return "right(\(value))" })
         return self
     }
 
@@ -236,36 +236,36 @@ class PinLayoutImpl: PinLayout {
     //
     @discardableResult
     func top(to edge: VerticalEdge) -> PinLayout {
-        func context() -> String { return "top(to: \(edge.edgeType.rawValue), of: \(edge.view))" }
-        if let coordinate = computeCoordinates(forEdge: edge.edgeType, of: edge.view, context: context) {
-            setTop(coordinate.y, context: context)
+        func context() -> String { return "top(to: \(edge.type.rawValue), of: \(edge.view))" }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setTop(coordinate, context)
         }
         return self
     }
     
     @discardableResult
     func left(to edge: HorizontalEdge) -> PinLayout {
-        func context() -> String { return "left(to: \(edge.edgeType.rawValue), of: \(edge.view))" }
-        if let coordinate = computeCoordinates(forEdge: edge.edgeType, of: edge.view, context: context) {
-            setLeft(coordinate.x, context: context)
+        func context() -> String { return "left(to: \(edge.type.rawValue), of: \(edge.view))" }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setLeft(coordinate, context)
         }
         return self
     }
     
     @discardableResult
     func bottom(to edge: VerticalEdge) -> PinLayout {
-        func context() -> String { return "bottom(to: \(edge.edgeType.rawValue), of: \(edge.view))" }
-        if let coordinate = computeCoordinates(forEdge: edge.edgeType, of: edge.view, context: context) {
-            setBottom(coordinate.y, context: context)
+        func context() -> String { return "bottom(to: \(edge.type.rawValue), of: \(edge.view))" }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setBottom(coordinate, context)
         }
         return self
     }
     
     @discardableResult
     func right(to edge: HorizontalEdge) -> PinLayout {
-        func context() -> String { return "right(to: \(edge.edgeType.rawValue), of: \(edge.view))" }
-        if let coordinate = computeCoordinates(forEdge: edge.edgeType, of: edge.view, context: context) {
-            setRight(coordinate.x, context: context)
+        func context() -> String { return "right(to: \(edge.type.rawValue), of: \(edge.view))" }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setRight(coordinate, context)
         }
         return self
     }
@@ -279,15 +279,15 @@ class PinLayoutImpl: PinLayout {
     //
     @discardableResult
     func topLeft(to point: CGPoint) -> PinLayout {
-        return setTopLeft(point, context: { return "topLeft(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setTopLeft(point, { return "topLeft(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the topLeft on the specified view's pin.
     @discardableResult
-    func topLeft(to pin: Pin) -> PinLayout {
-        func context() -> String { return "topLeft(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setTopLeft(coordinates, context: context)
+    func topLeft(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "topLeft(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setTopLeft(coordinates, context)
         }
         return self
     }
@@ -296,9 +296,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topLeft() -> PinLayout {
         func context() -> String { return "topLeft()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .topLeft, of: layoutSuperview, context: context) {
-                setTopLeft(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.topLeft, context) {
+                setTopLeft(coordinates, context)
             }
         }
         return self
@@ -306,15 +306,15 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func topCenter(to point: CGPoint) -> PinLayout {
-        return setTopCenter(point, context: { return "topCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setTopCenter(point, { return "topCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the topCenter on the specified view's pin.
     @discardableResult
-    func topCenter(to pin: Pin) -> PinLayout {
-        func context() -> String { return "topCenter(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setTopCenter(coordinates, context: context)
+    func topCenter(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "topCenter(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setTopCenter(coordinates, context)
         }
         return self
     }
@@ -323,9 +323,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topCenter() -> PinLayout {
         func context() -> String { return "topCenter()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .topCenter, of: layoutSuperview, context: context) {
-                setTopCenter(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.topCenter, context) {
+                setTopCenter(coordinates, context)
             }
         }
         return self
@@ -333,15 +333,15 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func topRight(to point: CGPoint) -> PinLayout {
-        return setTopRight(point, context: { return "topRight(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setTopRight(point, { return "topRight(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the topRight on the specified view's pin.
     @discardableResult
-    func topRight(to pin: Pin) -> PinLayout {
-        func context() -> String { return "topRight(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setTopRight(coordinates, context: context)
+    func topRight(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "topRight(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setTopRight(coordinates, context)
         }
         return self
     }
@@ -350,9 +350,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topRight() -> PinLayout {
         func context() -> String { return "topRight()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .topRight, of: layoutSuperview, context: context) {
-                setTopRight(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.topRight, context) {
+                setTopRight(coordinates, context)
             }
         }
         return self
@@ -360,15 +360,15 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func leftCenter(to point: CGPoint) -> PinLayout {
-        return setLeftCenter(point, context: { return "leftCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setLeftCenter(point, { return "leftCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the leftCenter on the specified view's pin.
     @discardableResult
-    func leftCenter(to pin: Pin) -> PinLayout {
-        func context() -> String { return "leftCenter(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setLeftCenter(coordinates, context: context)
+    func leftCenter(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "leftCenter(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setLeftCenter(coordinates, context)
         }
         return self
     }
@@ -377,9 +377,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func leftCenter() -> PinLayout {
         func context() -> String { return "leftCenter()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .leftCenter, of: layoutSuperview, context: context) {
-                setLeftCenter(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.leftCenter, context) {
+                setLeftCenter(coordinates, context)
             }
         }
         return self
@@ -387,15 +387,15 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func center(to point: CGPoint) -> PinLayout {
-        return setCenter(point, context: { return "center(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setCenter(point, { return "center(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the centers on the specified view's pin.
     @discardableResult
-    func center(to pin: Pin) -> PinLayout {
-        func context() -> String { return "center(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setCenter(coordinates, context: context)
+    func center(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "center(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setCenter(coordinates, context)
         }
         return self
     }
@@ -403,9 +403,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func center() -> PinLayout {
         func context() -> String { return "center()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .center, of: layoutSuperview, context: context) {
-                setCenter(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.center, context) {
+                setCenter(coordinates, context)
             }
         }
         return self
@@ -413,15 +413,15 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func rightCenter(to point: CGPoint) -> PinLayout {
-        return setRightCenter(point, context: { return "rightCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setRightCenter(point, { return "rightCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the rightCenter on the specified view's pin.
     @discardableResult
-    func rightCenter(to pin: Pin) -> PinLayout {
-        func context() -> String { return "rightCenter(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setRightCenter(coordinates, context: context)
+    func rightCenter(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "rightCenter(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setRightCenter(coordinates, context)
         }
         return self
     }
@@ -430,9 +430,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func rightCenter() -> PinLayout {
         func context() -> String { return "rightCenter()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .rightCenter, of: layoutSuperview, context: context) {
-                setRightCenter(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.rightCenter, context) {
+                setRightCenter(coordinates, context)
             }
         }
         return self
@@ -440,15 +440,15 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func bottomLeft(to point: CGPoint) -> PinLayout {
-        return setBottomLeft(point, context: { return "bottomLeft(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setBottomLeft(point, { return "bottomLeft(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the bottomLeft on the specified view's pin.
     @discardableResult
-    func bottomLeft(to pin: Pin) -> PinLayout {
-        func context() -> String { return "bottomLeft(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setBottomLeft(coordinates, context: context)
+    func bottomLeft(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "bottomLeft(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setBottomLeft(coordinates, context)
         }
         return self
     }
@@ -457,9 +457,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomLeft() -> PinLayout {
         func context() -> String { return "bottomLeft()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .bottomLeft, of: layoutSuperview, context: context) {
-                setBottomLeft(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.bottomLeft, context) {
+                setBottomLeft(coordinates, context)
             }
         }
         return self
@@ -467,15 +467,15 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func bottomCenter(to point: CGPoint) -> PinLayout {
-        return setBottomCenter(point, context: { return "bottomCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setBottomCenter(point, { return "bottomCenter(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the bottomCenter on the specified view's pin.
     @discardableResult
-    func bottomCenter(to pin: Pin) -> PinLayout {
-        func context() -> String { return "bottomCenter(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setBottomCenter(coordinates, context: context)
+    func bottomCenter(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "bottomCenter(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setBottomCenter(coordinates, context)
         }
         return self
     }
@@ -484,9 +484,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomCenter() -> PinLayout {
         func context() -> String { return "bottomCenter()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .bottomCenter, of: layoutSuperview, context: context) {
-                setBottomCenter(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.bottomCenter, context) {
+                setBottomCenter(coordinates, context)
             }
         }
         return self
@@ -494,15 +494,15 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func bottomRight(to point: CGPoint) -> PinLayout {
-        return setBottomRight(point, context: { return "bottomRight(to: CGPoint(x: \(point.x), y: \(point.y)))" })
+        return setBottomRight(point, { return "bottomRight(to: CGPoint(x: \(point.x), y: \(point.y)))" })
     }
     
     /// Position the bottomRight on the specified view's pin.
     @discardableResult
-    func bottomRight(to pin: Pin) -> PinLayout {
-        func context() -> String { return "bottomRight(to: \(pin.pinType.rawValue), of: \(view))" }
-        if let coordinates = computeCoordinates(forPin: pin.pinType, of: pin.view, context: context) {
-            setBottomRight(coordinates, context: context)
+    func bottomRight(to anchor: Anchor) -> PinLayout {
+        func context() -> String { return "bottomRight(to: \(anchor.type.rawValue), of: \(view))" }
+        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
+            setBottomRight(coordinates, context)
         }
         return self
     }
@@ -511,9 +511,9 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomRight() -> PinLayout {
         func context() -> String { return "bottomRight()" }
-        if let layoutSuperview = validateLayoutSuperview(context: context) {
-            if let coordinates = computeCoordinates(forPin: .bottomRight, of: layoutSuperview, context: context) {
-                setBottomRight(coordinates, context: context)
+        if let layoutSuperview = validateLayoutSuperview(context) {
+            if let coordinates = computeCoordinates(forAnchor: layoutSuperview.anchor.bottomRight, context) {
+                setBottomRight(coordinates, context)
             }
         }
         return self
@@ -521,30 +521,30 @@ class PinLayoutImpl: PinLayout {
 
     /// Set the view's bottom coordinate above of the specified view.
     @discardableResult
-    func above(of relativeView: UIView) -> PinLayout {
+    func above(of referenceView: UIView) -> PinLayout {
         func context() -> String { return "below(of: \(view))" }
-        if let coordinate = computeCoordinates(forEdge: .top, of: relativeView, context: context) {
-            setBottom(coordinate.y, context: context)
+        if let coordinate = computeCoordinate(forEdge: referenceView.edge.top, context) {
+            setBottom(coordinate, context)
         }
         return self
     }
     
     @discardableResult
-    func above(of relativeView: UIView, aligned: HorizontalAlignment) -> PinLayout {
+    func above(of referenceView: UIView, aligned: HorizontalAlignment) -> PinLayout {
         func context() -> String { return "above(of: \(view), aligned: \(aligned))" }
         
         switch aligned {
         case .left:
-            if let coordinates = computeCoordinates(forPin: .topLeft, of: relativeView, context: context) {
-                setBottomLeft(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topLeft, context) {
+                setBottomLeft(coordinates, context)
             }
         case .center:
-            if let coordinates = computeCoordinates(forPin: .topCenter, of: relativeView, context: context) {
-                setBottomCenter(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topCenter, context) {
+                setBottomCenter(coordinates, context)
             }
         case .right:
-            if let coordinates = computeCoordinates(forPin: .topRight, of: relativeView, context: context) {
-                setBottomRight(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topRight, context) {
+                setBottomRight(coordinates, context)
             }
         }
         return self
@@ -552,30 +552,30 @@ class PinLayoutImpl: PinLayout {
     
     /// Set the view's top coordinate below of the specified view.
     @discardableResult
-    func below(of relativeView: UIView) -> PinLayout {
+    func below(of referenceView: UIView) -> PinLayout {
         func context() -> String { return "below(of: \(view))" }
-        if let coordinate = computeCoordinates(forEdge: .bottom, of: relativeView, context: context) {
-            setTop(coordinate.y, context: context)
+        if let coordinate = computeCoordinate(forEdge: referenceView.edge.bottom, context) {
+            setTop(coordinate, context)
         }
         return self
     }
     
     @discardableResult
-    func below(of relativeView: UIView, aligned: HorizontalAlignment) -> PinLayout {
+    func below(of referenceView: UIView, aligned: HorizontalAlignment) -> PinLayout {
         func context() -> String { return "below(of: \(view), aligned: \(aligned))" }
         
         switch aligned {
         case .left:
-            if let coordinates = computeCoordinates(forPin: .bottomLeft, of: relativeView, context: context) {
-                setTopLeft(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomLeft, context) {
+                setTopLeft(coordinates, context)
             }
         case .center:
-            if let coordinates = computeCoordinates(forPin: .bottomCenter, of: relativeView, context: context) {
-                setTopCenter(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomCenter, context) {
+                setTopCenter(coordinates, context)
             }
         case .right:
-            if let coordinates = computeCoordinates(forPin: .bottomRight, of: relativeView, context: context) {
-                setTopRight(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomRight, context) {
+                setTopRight(coordinates, context)
             }
         }
         return self
@@ -583,30 +583,30 @@ class PinLayoutImpl: PinLayout {
     
     /// Set the view's right coordinate left of the specified view.
     @discardableResult
-    func left(of relativeView: UIView) -> PinLayout {
+    func left(of referenceView: UIView) -> PinLayout {
         func context() -> String { return "left(of: \(view))" }
-        if let coordinate = computeCoordinates(forEdge: .left, of: relativeView, context: context) {
-            setRight(coordinate.x, context: context)
+        if let coordinate =  computeCoordinate(forEdge: referenceView.edge.left, context) {
+            setRight(coordinate, context)
         }
         return self
     }
     
     @discardableResult
-    func left(of relativeView: UIView, aligned: VerticalAlignment) -> PinLayout {
+    func left(of referenceView: UIView, aligned: VerticalAlignment) -> PinLayout {
         func context() -> String { return "left(of: \(view), aligned: \(aligned))" }
         
         switch aligned {
         case .top:
-            if let coordinates = computeCoordinates(forPin: .topLeft, of: relativeView, context: context) {
-                setTopRight(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topLeft, context) {
+                setTopRight(coordinates, context)
             }
         case .center:
-            if let coordinates = computeCoordinates(forPin: .leftCenter, of: relativeView, context: context) {
-                setRightCenter(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.leftCenter, context) {
+                setRightCenter(coordinates, context)
             }
         case .bottom:
-            if let coordinates = computeCoordinates(forPin: .bottomLeft, of: relativeView, context: context) {
-                setBottomRight(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomLeft, context) {
+                setBottomRight(coordinates, context)
             }
         }
         return self
@@ -614,30 +614,30 @@ class PinLayoutImpl: PinLayout {
     
     /// Set the view's left coordinate right of the specified view.
     @discardableResult
-    func right(of relativeView: UIView) -> PinLayout {
+    func right(of referenceView: UIView) -> PinLayout {
         func context() -> String { return "left(of: \(view))" }
-        if let coordinate = computeCoordinates(forEdge: .right, of: relativeView, context: context) {
-            setLeft(coordinate.x, context: context)
+        if let coordinate = computeCoordinate(forEdge: referenceView.edge.right, context) {
+            setLeft(coordinate, context)
         }
         return self
     }
     
     @discardableResult
-    func right(of relativeView: UIView, aligned: VerticalAlignment) -> PinLayout {
+    func right(of referenceView: UIView, aligned: VerticalAlignment) -> PinLayout {
         func context() -> String { return "right(of: \(view), aligned: \(aligned))" }
         
         switch aligned {
         case .top:
-            if let coordinates = computeCoordinates(forPin: .topRight, of: relativeView, context: context) {
-                setTopLeft(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topRight, context) {
+                setTopLeft(coordinates, context)
             }
         case .center:
-            if let coordinates = computeCoordinates(forPin: .rightCenter, of: relativeView, context: context) {
-                setLeftCenter(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.rightCenter, context) {
+                setLeftCenter(coordinates, context)
             }
         case .bottom:
-            if let coordinates = computeCoordinates(forPin: .bottomRight, of: relativeView, context: context) {
-                setBottomLeft(coordinates, context: context)
+            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomRight, context) {
+                setBottomLeft(coordinates, context)
             }
         }
         return self
@@ -648,36 +648,36 @@ class PinLayoutImpl: PinLayout {
     //
     @discardableResult
     func width(_ width: CGFloat) -> PinLayout {
-        return setWidth(width, context: { return "width(\(width))" })
+        return setWidth(width, { return "width(\(width))" })
     }
     
     @discardableResult
     func width(percent: CGFloat) -> PinLayout {
         func context() -> String { return "width(percent: \(percent)%)" }
-        guard let layoutSuperview = validateLayoutSuperview(context: context) else { return self }
-        return setWidth(layoutSuperview.frame.width * percent / 100, context: context)
+        guard let layoutSuperview = validateLayoutSuperview(context) else { return self }
+        return setWidth(layoutSuperview.frame.width * percent / 100, context)
     }
 
     @discardableResult
     func width(of view: UIView) -> PinLayout {
-        return setWidth(view.frame.size.width, context: { return "width(of: \(view))" })
+        return setWidth(view.frame.size.width, { return "width(of: \(view))" })
     }
 
     @discardableResult
     func height(_ height: CGFloat) -> PinLayout {
-        return setHeight(height, context: { return "height(\(height))" })
+        return setHeight(height, { return "height(\(height))" })
     }
     
     @discardableResult
     func height(percent: CGFloat) -> PinLayout {
         func context() -> String { return "height(percent: \(percent)%)" }
-        guard let layoutSuperview = validateLayoutSuperview(context: context) else { return self }
-        return setHeight(layoutSuperview.frame.height * percent / 100, context: context)
+        guard let layoutSuperview = validateLayoutSuperview(context) else { return self }
+        return setHeight(layoutSuperview.frame.height * percent / 100, context)
     }
 
     @discardableResult
     func height(of view: UIView) -> PinLayout {
-        return setHeight(view.frame.size.height, context: { return "height(of: \(view))" })
+        return setHeight(view.frame.size.height, { return "height(of: \(view))" })
     }
     
     //
@@ -685,7 +685,7 @@ class PinLayoutImpl: PinLayout {
     //
     @discardableResult
     func size(_ size: CGSize) -> PinLayout {
-        if isSizeNotSet(context: { return "size(CGSize(width: \(size.width), height: \(size.height)))" }) {
+        if isSizeNotSet({ return "size(CGSize(width: \(size.width), height: \(size.height)))" }) {
             width(size.width)
             height(size.height)
         }
@@ -697,9 +697,9 @@ class PinLayoutImpl: PinLayout {
         func context() -> String { return "size(of \(view))" }
         let viewSize = view.frame.size
         
-        if isSizeNotSet(context: context) {
-            setWidth(viewSize.width, context: context)
-            setHeight(viewSize.height, context: context)
+        if isSizeNotSet(context) {
+            setWidth(viewSize.width, context)
+            setHeight(viewSize.height, context)
         }
         return self
     }
@@ -823,151 +823,151 @@ class PinLayoutImpl: PinLayout {
 // MARK: Private methods
 //
 extension PinLayoutImpl {
-    fileprivate func setTop(_ value: CGFloat, context: Context) {
+    fileprivate func setTop(_ value: CGFloat, _ context: Context) {
         if bottom != nil && height != nil {
             warnConflict(context, ["bottom": bottom!, "height": height!])
         } else if vCenter != nil {
             warnConflict(context, ["Vertical Center": vCenter!])
         } else if top != nil && top! != value {
-            warnPropertyAlreadySet("top", propertyValue: top!, context: context)
+            warnPropertyAlreadySet("top", propertyValue: top!, context)
         } else {
             top = value
         }
     }
     
-    fileprivate func setLeft(_ value: CGFloat, context: Context) {
+    fileprivate func setLeft(_ value: CGFloat, _ context: Context) {
         if right != nil && width != nil  {
             warnConflict(context, ["right": right!, "width": width!])
         } else if hCenter != nil {
             warnConflict(context, ["Horizontal Center": hCenter!])
         } else if left != nil && left! != value {
-            warnPropertyAlreadySet("left", propertyValue: left!, context: context)
+            warnPropertyAlreadySet("left", propertyValue: left!, context)
         } else {
             left = value
         }
     }
     
-    fileprivate func setRight(_ value: CGFloat, context: Context) {
+    fileprivate func setRight(_ value: CGFloat, _ context: Context) {
         if left != nil && width != nil  {
             warnConflict(context, ["left": left!, "width": width!])
         } else if hCenter != nil {
             warnConflict(context, ["Horizontal Center": hCenter!])
         } else if right != nil && right! != value {
-            warnPropertyAlreadySet("right", propertyValue: right!, context: context)
+            warnPropertyAlreadySet("right", propertyValue: right!, context)
         } else {
             right = value
         }
     }
     
-    fileprivate func setBottom(_ value: CGFloat, context: Context) {
+    fileprivate func setBottom(_ value: CGFloat, _ context: Context) {
         if top != nil && height != nil {
             warnConflict(context, ["top": top!, "height": height!])
         } else if vCenter != nil {
             warnConflict(context, ["Vertical Center": vCenter!])
         } else if bottom != nil && bottom! != value {
-            warnPropertyAlreadySet("bottom", propertyValue: bottom!, context: context)
+            warnPropertyAlreadySet("bottom", propertyValue: bottom!, context)
         } else {
             bottom = value
         }
     }
     
-    fileprivate func setHorizontalCenter(_ value: CGFloat, context: Context) {
+    fileprivate func setHorizontalCenter(_ value: CGFloat, _ context: Context) {
         if left != nil {
             warnConflict(context, ["left": left!])
         } else if right != nil {
             warnConflict(context, ["right": right!])
         } else if hCenter != nil && hCenter! != value {
-            warnPropertyAlreadySet("Horizontal Center", propertyValue: hCenter!, context: context)
+            warnPropertyAlreadySet("Horizontal Center", propertyValue: hCenter!, context)
         } else {
             hCenter = value
         }
     }
     
-    fileprivate func setVerticalCenter(_ value: CGFloat, context: Context) {
+    fileprivate func setVerticalCenter(_ value: CGFloat, _ context: Context) {
         if top != nil {
             warnConflict(context, ["top": top!])
         } else if bottom != nil {
             warnConflict(context, ["bottom": bottom!])
         } else if vCenter != nil && vCenter! != value {
-            warnPropertyAlreadySet("Vertical Center", propertyValue: vCenter!, context: context)
+            warnPropertyAlreadySet("Vertical Center", propertyValue: vCenter!, context)
         } else {
             vCenter = value
         }
     }
     
     @discardableResult
-    fileprivate func setTopLeft(_ point: CGPoint, context: Context) -> PinLayout {
-        setLeft(point.x, context: context)
-        setTop(point.y, context: context)
+    fileprivate func setTopLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setLeft(point.x, context)
+        setTop(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setTopCenter(_ point: CGPoint, context: Context) -> PinLayout {
-        setHorizontalCenter(point.x, context: context)
-        setTop(point.y, context: context)
+    fileprivate func setTopCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setHorizontalCenter(point.x, context)
+        setTop(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setTopRight(_ point: CGPoint, context: Context) -> PinLayout {
-        setRight(point.x, context: context)
-        setTop(point.y, context: context)
+    fileprivate func setTopRight(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setRight(point.x, context)
+        setTop(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setLeftCenter(_ point: CGPoint, context: Context) -> PinLayout {
-        setLeft(point.x, context: context)
-        setVerticalCenter(point.y, context: context)
+    fileprivate func setLeftCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setLeft(point.x, context)
+        setVerticalCenter(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setCenter(_ point: CGPoint, context: Context) -> PinLayout {
-        setHorizontalCenter(point.x, context: context)
-        setVerticalCenter(point.y, context: context)
+    fileprivate func setCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setHorizontalCenter(point.x, context)
+        setVerticalCenter(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setRightCenter(_ point: CGPoint, context: Context) -> PinLayout {
-        setRight(point.x, context: context)
-        setVerticalCenter(point.y, context: context)
+    fileprivate func setRightCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setRight(point.x, context)
+        setVerticalCenter(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setBottomLeft(_ point: CGPoint, context: Context) -> PinLayout {
-        setLeft(point.x, context: context)
-        setBottom(point.y, context: context)
+    fileprivate func setBottomLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setLeft(point.x, context)
+        setBottom(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setBottomCenter(_ point: CGPoint, context: Context) -> PinLayout {
-        setHorizontalCenter(point.x, context: context)
-        setBottom(point.y, context: context)
+    fileprivate func setBottomCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setHorizontalCenter(point.x, context)
+        setBottom(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setBottomRight(_ point: CGPoint, context: Context) -> PinLayout {
-        setRight(point.x, context: context)
-        setBottom(point.y, context: context)
+    fileprivate func setBottomRight(_ point: CGPoint, _ context: Context) -> PinLayout {
+        setRight(point.x, context)
+        setBottom(point.y, context)
         return self
     }
     
     @discardableResult
-    fileprivate func setWidth(_ value: CGFloat, context: Context) -> PinLayout {
+    fileprivate func setWidth(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard value >= 0 else {
-            warn("The width (\(value)) must be greater or equal to 0.", context: context); return self
+            warn("The width (\(value)) must be greater or equal to 0.", context); return self
         }
         
         if left != nil && right != nil {
             warnConflict(context, ["left": left!, "right": right!])
         } else if width != nil {
-            warnPropertyAlreadySet("width", propertyValue: width!, context: context)
+            warnPropertyAlreadySet("width", propertyValue: width!, context)
         } else {
             width = value
         }
@@ -975,22 +975,22 @@ extension PinLayoutImpl {
     }
     
     @discardableResult
-    fileprivate func setHeight(_ value: CGFloat, context: Context) -> PinLayout {
+    fileprivate func setHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard value >= 0 else {
-            warn("The height (\(value)) must be greater or equal to 0.", context: context); return self
+            warn("The height (\(value)) must be greater or equal to 0.", context); return self
         }
         
         if top != nil && bottom != nil {
             warnConflict(context, ["top": top!, "bottom": bottom!])
         } else if height != nil {
-            warnPropertyAlreadySet("height", propertyValue: height!, context: context)
+            warnPropertyAlreadySet("height", propertyValue: height!, context)
         } else {
             height = value
         }
         return self
     }
     
-    fileprivate func isSizeNotSet(context: Context) -> Bool {
+    fileprivate func isSizeNotSet(_ context: Context) -> Bool {
         if top != nil && bottom != nil {
             warnConflict(context, ["top": top!, "bottom": bottom!])
             return false
@@ -1005,43 +1005,61 @@ extension PinLayoutImpl {
         }
     }
     
-    fileprivate func computeCoordinates(forPin pin: PinType, of relativeView: UIView, context: Context) -> CGPoint? {
-        guard let layoutSuperview = validateLayoutSuperview(context: context) else { return nil }
-        guard let relativeSuperview = relativeView.superview else { warn("relative view's superview is nil", context: context); return nil }
-        
-        return computeCoordinates(pin.point(for: relativeView), layoutSuperview, relativeView, relativeSuperview)
-    }
-    
-    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ relativeView: UIView, _ relativeSuperview: UIView) -> CGPoint {
-        if layoutSuperview == relativeSuperview {
+    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ referenceView: UIView, _ referenceSuperview: UIView) -> CGPoint {
+        if layoutSuperview == referenceSuperview {
             return point   // same parent => no coordinates conversion required.
         } else {
-            return relativeSuperview.convert(point, to: layoutSuperview)
+            return referenceSuperview.convert(point, to: layoutSuperview)
         }
     }
 
-    fileprivate func computeCoordinates(forEdge edge: EdgeType, of relativeView: UIView, context: Context) -> CGPoint? {
-        guard let layoutSuperview = validateLayoutSuperview(context: context) else { return nil }
-        guard let relativeSuperview = relativeView.superview else { warn("The view must be added to a UIView before being used as a reference.", context: context); return nil }
+    fileprivate func computeCoordinates(forAnchor anchor: Anchor, _ context: Context) -> CGPoint? {
+        let referenceView = anchor.view
+        guard let layoutSuperview = validateLayoutSuperview(context) else { return nil }
+        guard let referenceSuperview = validateReferenceSuperview(referenceView, context) else { return nil }
         
-        return computeCoordinates(edge.point(for: relativeView), layoutSuperview, relativeView, relativeSuperview)
+        return computeCoordinates(anchor.point, layoutSuperview, referenceView, referenceSuperview)
+    }
+    
+    fileprivate func computeCoordinate(forEdge edge: HorizontalEdge, _ context: Context) -> CGFloat? {
+        let referenceView = edge.view
+        guard let layoutSuperview = validateLayoutSuperview(context) else { return nil }
+        guard let referenceSuperview = validateReferenceSuperview(referenceView, context) else { return nil }
+        
+        return computeCoordinates(CGPoint(x: edge.value, y: 0), layoutSuperview, referenceView, referenceSuperview).x
     }
 
-    fileprivate func validateLayoutSuperview(context: Context) -> UIView? {
+    fileprivate func computeCoordinate(forEdge edge: VerticalEdge, _ context: Context) -> CGFloat? {
+        let referenceView = edge.view
+        guard let layoutSuperview = validateLayoutSuperview(context) else { return nil }
+        guard let referenceSuperview = validateReferenceSuperview(referenceView, context) else { return nil }
+
+        return computeCoordinates(CGPoint(x: 0, y: edge.value), layoutSuperview, referenceView, referenceSuperview).y
+    }
+
+    fileprivate func validateLayoutSuperview(_ context: Context) -> UIView? {
         if let parentView = view.superview {
             return parentView
         } else {
-            warn("The view must be added to a UIView before being layouted using this method.", context: context)
+            warn("The view must be added to a UIView before being layouted using this method.", context)
+            return nil
+        }
+    }
+
+    fileprivate func validateReferenceSuperview(_ referenceView: UIView, _ context: Context) -> UIView? {
+        if let parentView = referenceView.superview {
+            return parentView
+        } else {
+            warn("The view must be added to a UIView before being used as a reference.", context)
             return nil
         }
     }
     
     fileprivate func apply() {
-        // guard let view = view else { return }
         apply(onView: view)
     }
     
-    func apply(onView view: UIView) {
+    fileprivate func apply(onView view: UIView) {
         var newRect = view.frame
         let newSize = computeSize()
         
@@ -1180,17 +1198,17 @@ extension PinLayoutImpl {
         return width - (insetLeft ?? 0) - (insetRight ?? 0)
     }
     
-    fileprivate func warn(_ text: String, context: Context) {
+    fileprivate func warn(_ text: String, _ context: Context) {
         guard PinLayoutImpl.logConflicts else { return }
         print("\n👉 Layout Warning: \(context()). \(text)\n")
     }
     
-    fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, context: Context) {
+    fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard PinLayoutImpl.logConflicts else { return }
         print("\n👉 Layout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
     }
     
-    fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, context: Context) {
+    fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
         guard PinLayoutImpl.logConflicts else { return }
         print("\n👉 Layout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
     }

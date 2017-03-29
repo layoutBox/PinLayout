@@ -30,6 +30,16 @@ import UIKit
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)
 
+public enum HorizontalEdgeType: String {
+    case left
+    case right
+}
+
+public enum VerticalEdgeType: String {
+    case top
+    case bottom
+}
+
 public class EdgeList {
     internal  let view: UIView
 
@@ -37,67 +47,65 @@ public class EdgeList {
         self.view = view
     }
 
-    public var top: VerticalEdge { return VerticalEdge(view: view, edgeType: .top) }
-    public var left: HorizontalEdge { return HorizontalEdge(view: view, edgeType: .left) }
-    public var bottom: VerticalEdge { return VerticalEdge(view: view, edgeType: .bottom) }
-    public var right: HorizontalEdge { return HorizontalEdge(view: view, edgeType: .right) }
-}
-
-public enum EdgeType: String {
-    case top
-    case left
-    case bottom
-    case right
-
-    func point(for view: UIView) -> CGPoint {
-        switch self {
-        case .top: return CGPoint(x: 0, y: view.frame.origin.y)
-        case .left: return CGPoint(x: view.frame.origin.x, y: 0)
-        case .bottom: return CGPoint(x: 0, y: Coordinates.bottom(view))
-        case .right: return CGPoint(x: Coordinates.right(view), y: 0)
-        }
-    }
+    public var top: VerticalEdge { return VerticalEdge(view: view, type: .top) }
+    public var left: HorizontalEdge { return HorizontalEdge(view: view, type: .left) }
+    public var bottom: VerticalEdge { return VerticalEdge(view: view, type: .bottom) }
+    public var right: HorizontalEdge { return HorizontalEdge(view: view, type: .right) }
 }
 
 public class HorizontalEdge {
     internal let view: UIView
-    internal let edgeType: EdgeType
+    internal let type: HorizontalEdgeType
 
-    fileprivate init(view: UIView, edgeType: EdgeType) {
+    var value: CGFloat {
+        switch type {
+        case .left: return view.frame.origin.x
+        case .right: return Coordinates.right(view)
+        }
+    }
+
+    internal init(view: UIView, type: HorizontalEdgeType) {
         self.view = view
-        self.edgeType = edgeType
+        self.type = type
     }
 }
 
 public class VerticalEdge {
     internal let view: UIView
-    internal let edgeType: EdgeType
+    internal let type: VerticalEdgeType
 
-    fileprivate init(view: UIView, edgeType: EdgeType) {
+    var value: CGFloat {
+        switch type {
+        case .top: return view.frame.origin.y
+        case .bottom: return Coordinates.bottom(view)
+        }
+    }
+
+    internal init(view: UIView, type: VerticalEdgeType) {
         self.view = view
-        self.edgeType = edgeType
+        self.type = type
     }
 }
 
-public class PinList {
+public class AnchorList {
     internal let view: UIView
 
-    init(view: UIView) {
+    internal init(view: UIView) {
         self.view = view
     }
 
-    public var topLeft: Pin { return Pin(view: view, pinType: .topLeft) }
-    public var topCenter: Pin { return Pin(view: view, pinType: .topCenter) }
-    public var topRight: Pin { return Pin(view: view, pinType: .topRight) }
-    public var leftCenter: Pin { return Pin(view: view, pinType: .leftCenter) }
-    public var center: Pin { return Pin(view: view, pinType: .center) }
-    public var rightCenter: Pin { return Pin(view: view, pinType: .rightCenter) }
-    public var bottomLeft: Pin { return Pin(view: view, pinType: .bottomLeft) }
-    public var bottomCenter: Pin { return Pin(view: view, pinType: .bottomCenter) }
-    public var bottomRight: Pin { return Pin(view: view, pinType: .bottomRight) }
+    public var topLeft: Anchor { return Anchor(view: view, type: .topLeft) }
+    public var topCenter: Anchor { return Anchor(view: view, type: .topCenter) }
+    public var topRight: Anchor { return Anchor(view: view, type: .topRight) }
+    public var leftCenter: Anchor { return Anchor(view: view, type: .leftCenter) }
+    public var center: Anchor { return Anchor(view: view, type: .center) }
+    public var rightCenter: Anchor { return Anchor(view: view, type: .rightCenter) }
+    public var bottomLeft: Anchor { return Anchor(view: view, type: .bottomLeft) }
+    public var bottomCenter: Anchor { return Anchor(view: view, type: .bottomCenter) }
+    public var bottomRight: Anchor { return Anchor(view: view, type: .bottomRight) }
 }
 
-enum PinType: String {
+enum AnchorType: String {
     case topLeft
     case topCenter
     case topRight
@@ -107,9 +115,14 @@ enum PinType: String {
     case bottomLeft
     case bottomCenter
     case bottomRight
+}
 
-    func point(for view: UIView) -> CGPoint {
-        switch self {
+public class Anchor {
+    let view: UIView
+    let type: AnchorType
+
+    var point: CGPoint {
+        switch type {
         case .topLeft: return Coordinates.topLeft(view)
         case .topCenter: return Coordinates.topCenter(view)
         case .topRight: return Coordinates.topRight(view)
@@ -121,36 +134,9 @@ enum PinType: String {
         case .bottomRight: return Coordinates.bottomRight(view)
         }
     }
-}
 
-public class Pin {
-    let view: UIView
-    let pinType: PinType
-
-    /* var x: CGFloat {
-     return point.x
-     }
-
-     var y: CGFloat {
-     return point.y
-     }*/
-
-    /*var point: CGPoint {
-     switch pinType {
-     case .topLeft: return view.topLeft
-     case .topCenter: return view.topCenter
-     case .topRight: return view.topRight
-     case .leftCenter: return view.leftCenter
-     case .center: return view.center
-     case .rightCenter: return view.rightCenter
-     case .bottomLeft: return view.bottomLeft
-     case .bottomCenter: return view.bottomCenter
-     case .bottomRight: return view.bottomRight
-     }
-     }*/
-
-    init(view: UIView, pinType: PinType) {
+    fileprivate init(view: UIView, type: AnchorType) {
         self.view = view
-        self.pinType = pinType
+        self.type = type
     }
 }

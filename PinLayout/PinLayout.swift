@@ -32,8 +32,8 @@ public extension UIView {
         return PinLayoutImpl(view: self)
     }
 
-    public var anchor: PinList {
-        return PinList(view: self)
+    public var anchor: AnchorList {
+        return AnchorList(view: self)
     }
 
     public var edge: EdgeList {
@@ -53,39 +53,39 @@ public protocol PinLayout {
     @discardableResult func right(to edge: HorizontalEdge) -> PinLayout
     
     @discardableResult func topLeft(to point: CGPoint) -> PinLayout
-    @discardableResult func topLeft(to pin: Pin) -> PinLayout
+    @discardableResult func topLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func topLeft() -> PinLayout
 
     @discardableResult func topCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func topCenter(to pin: Pin) -> PinLayout
+    @discardableResult func topCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func topCenter() -> PinLayout
 
     @discardableResult func topRight(to point: CGPoint) -> PinLayout
-    @discardableResult func topRight(to pin: Pin) -> PinLayout
+    @discardableResult func topRight(to anchor: Anchor) -> PinLayout
     @discardableResult func topRight() -> PinLayout
 
     @discardableResult func leftCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func leftCenter(to pin: Pin) -> PinLayout
+    @discardableResult func leftCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func leftCenter() -> PinLayout
 
     @discardableResult func center(to point: CGPoint) -> PinLayout
-    @discardableResult func center(to pin: Pin) -> PinLayout
+    @discardableResult func center(to anchor: Anchor) -> PinLayout
     @discardableResult func center() -> PinLayout
 
     @discardableResult func rightCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func rightCenter(to pin: Pin) -> PinLayout
+    @discardableResult func rightCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func rightCenter() -> PinLayout
 
     @discardableResult func bottomLeft(to point: CGPoint) -> PinLayout
-    @discardableResult func bottomLeft(to pin: Pin) -> PinLayout
+    @discardableResult func bottomLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomLeft() -> PinLayout
 
     @discardableResult func bottomCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func bottomCenter(to pin: Pin) -> PinLayout
+    @discardableResult func bottomCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomCenter() -> PinLayout
 
     @discardableResult func bottomRight(to point: CGPoint) -> PinLayout
-    @discardableResult func bottomRight(to pin: Pin) -> PinLayout
+    @discardableResult func bottomRight(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomRight() -> PinLayout
 
     @discardableResult func above(of relativeView: UIView) -> PinLayout

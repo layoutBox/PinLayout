@@ -104,6 +104,7 @@ import UIKit
         - right/bottom: negative value and percentage is applyed 
                 right: -20px  increase the width by an extra 20 pixels
                 right: -50%   increase the width by an extra 50% (width = parent's width * 1.50)
+        - negative margins affect the top, left, bottom, right. pixel or percent
 
  
  - Faire sample avec un scrollview qui contient une viewA et:

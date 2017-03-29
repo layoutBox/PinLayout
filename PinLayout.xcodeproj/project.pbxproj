@@ -129,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
-				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
 				DF11A3701E833F03008B33E5 /* Types.swift */,
+				DFA06B031E8B38B300B6D5E7 /* Impl */,
 				DF11A3751E834194008B33E5 /* Extensions */,
 				DF11A3761E8341A2008B33E5 /* Helpers */,
 			);
@@ -176,6 +176,14 @@
 				DF11A3791E834B3F008B33E5 /* Coordinates.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DFA06B031E8B38B300B6D5E7 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
+			);
+			name = Impl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

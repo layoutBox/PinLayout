@@ -1,9 +1,9 @@
 include:
-    - MCSwiftLayout
+    - PinLayout
 
 exclude:
-    - MCSwiftLayoutTests
-    - MCSwiftLayoutSample
+    - PinLayoutTests
+    - PinLayoutSample
     - Carthage
     - Source/Pods
     - data

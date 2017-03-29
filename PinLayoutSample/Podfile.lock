@@ -1,0 +1,15 @@
+PODS:
+  - Reveal-SDK (7)
+  - SwiftLint (0.16.1)
+
+DEPENDENCIES:
+  - Reveal-SDK
+  - SwiftLint
+
+SPEC CHECKSUMS:
+  Reveal-SDK: 564657bc66c93d2718b1c0121cdebe99d354ddab
+  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
+
+PODFILE CHECKSUM: 59a9a3ad8ae4f0bb64a6dadf661a354de61b0d83
+
+COCOAPODS: 1.1.1

@@ -5,7 +5,7 @@ build/
 DerivedData/
 Pods/
 Carthage/
-MCSwiftLayoutSample/Pods
+PinLayoutSample/Pods
 xcuserdata
 *.xcworkspace
 data/

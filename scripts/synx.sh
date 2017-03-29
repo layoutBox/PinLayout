@@ -1,2 +1,2 @@
 #!/bin/bash
-synx --no-sort-by-name MCSwiftLayout.xcodeproj
+synx --no-sort-by-name PinLayout.xcodeproj

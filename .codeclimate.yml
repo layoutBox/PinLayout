@@ -7,8 +7,8 @@ ratings:
   - "**.swift"
 
 exclude_paths:
-    - MCSwiftLayoutTests
-    - MCSwiftLayoutSample
+    - PinLayoutTests
+    - PinLayoutSample
     - Carthage
     - Source/Pods
     - data

@@ -8,7 +8,7 @@ ratings:
 
 exclude_paths:
     - PinLayoutTests
-    - MCSwiftLayoutSample
+    - PinLayoutSample
     - Carthage
     - Source/Pods
     - data

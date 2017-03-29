@@ -1,6 +1,6 @@
 //
 //  Expect.swift
-//  MCSwiftLayoutSample
+//  PinLayoutSample
 //
 //  Created by DION, Luc (MTL) on 2017-03-02.
 //  Copyright © 2017 mcswiftlayyout.mirego.com. All rights reserved.

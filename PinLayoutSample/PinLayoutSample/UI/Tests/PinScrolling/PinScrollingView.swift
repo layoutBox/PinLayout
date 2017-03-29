@@ -1,6 +1,6 @@
 //
 //  PinScrollingView.swift
-//  MCSwiftLayoutSample
+//  PinLayoutSample
 //
 //  Created by Luc Dion on 2017-03-23.
 //  Copyright (c) 2017 mcswiftlayyout.mirego.com. All rights reserved.

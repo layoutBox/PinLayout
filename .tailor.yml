@@ -3,7 +3,7 @@ include:
 
 exclude:
     - PinLayoutTests
-    - MCSwiftLayoutSample
+    - PinLayoutSample
     - Carthage
     - Source/Pods
     - data

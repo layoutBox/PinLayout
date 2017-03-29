@@ -98,11 +98,13 @@ import UIKit
  - frame()
  
  - right(percent: CGFloat), left(percent: CGFloat), ...
+
  - In CSS
         - negative width and height is not applied, alson for percentages
         - right/bottom: negative value and percentage is applyed 
                 right: -20px  increase the width by an extra 20 pixels
                 right: -50%   increase the width by an extra 50% (width = parent's width * 1.50)
+        - negative margins affect the top, left, bottom, right. pixel or percent
 
  
  - Faire sample avec un scrollview qui contient une viewA et:
@@ -114,6 +116,7 @@ import UIKit
  
  - dans le calcul des coordonné, ajouter un relativeView is superview then ...
     optimisation
+
  - Support hCenter + left or right
  - Support vCenter + top or bottom
  
@@ -124,11 +127,12 @@ import UIKit
  - maxWidth(), minWidth(), maxHeight(), minHeight()
  
  - inset(t:? = nil l:? = nil  b:? = nil  r:? = nil ) ??
- - margin(t:? = nil  l:? = nil  b:? = nil  r:? = nil ) ??
- 
+
  - Unit tests TODO:
     - pinTopLeft(to: Pin, of: UIView), topCenter(to: Pin, of: UIView), ...
     - margins and insets negatifs
+    - margin(t: l: b: r:)
+
  
  - With SwiftyAttributes, you can write the same thing like this:
 
@@ -152,10 +156,6 @@ import UIKit
  //    button1.right == button2.left - 12
  //}
 */
-
-//func pin(_ view: UIView) -> PinLayout {
-//    return Layout(view: view)
-//}
 
 class PinLayoutImpl: PinLayout {
     #if DEBUG
@@ -190,6 +190,11 @@ class PinLayoutImpl: PinLayout {
     fileprivate var insetRight: CGFloat?
 
     fileprivate var shouldSizeToFit = false
+
+    fileprivate var _marginTop: CGFloat { return marginTop ?? 0  }
+    fileprivate var _marginLeft: CGFloat { return marginLeft ?? 0 }
+    fileprivate var _marginBottom: CGFloat { return marginBottom ?? 0 }
+    fileprivate var _marginRight: CGFloat { return marginRight ?? 0 }
 
     init(view: UIView) {
         self.view = view
@@ -716,8 +721,16 @@ class PinLayoutImpl: PinLayout {
         marginRight = value
         return self
     }
-    
+
     @discardableResult
+    func margin(t top: CGFloat, l left: CGFloat, b bottom: CGFloat, r right: CGFloat) -> PinLayout {
+        marginTop = top
+        marginLeft = left
+        marginBottom = bottom
+        marginRight = right
+        return self
+    }
+
     func marginHorizontal(_ value: CGFloat) -> PinLayout {
         marginLeft = value
         marginRight = value
@@ -1029,12 +1042,6 @@ extension PinLayoutImpl {
     }
     
     func apply(onView view: UIView) {
-        //        assert(width != nil && (right == nil || left == nil), "width and right+left shouldn't be set simultaneously")
-        //        assert(height != nil || (top == nil || bottom == nil), "height and top+bottom shouldn't be set simultaneously")
-        //        assert(hCenter == nil || (left == nil && right == nil), "hCenter and right+left shouldn't be set simultaneously")
-        //        assert(vCenter == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
-        //        assert(fitSize == nil || (top == nil && bottom == nil), "vCenter and top+bottom shouldn't be set simultaneously")
-        
         var newRect = view.frame
         let newSize = computeSize()
         
@@ -1054,13 +1061,13 @@ extension PinLayoutImpl {
         } else if let hCenter = hCenter, let width = newSize.width {
             // hCenter & width is set
             newRect.size.width = width
-            newRect.origin.x = hCenter - (width / 2) + (marginLeft ?? 0)
+            newRect.origin.x = hCenter - (width / 2) + _marginLeft
         } else if let left = left {
             // Only left is set
-            newRect.origin.x = left + (marginLeft ?? 0)
+            newRect.origin.x = left + _marginLeft
         } else if let right = right {
             // Only right is set
-            newRect.origin.x = right - view.frame.width - (marginRight ?? 0)
+            newRect.origin.x = right - view.frame.width - _marginRight
         } else if let hCenter = hCenter {
             // Only hCenter is set
             newRect.origin.x = hCenter - (view.frame.width / 2)
@@ -1085,13 +1092,13 @@ extension PinLayoutImpl {
         } else if let vCenter = vCenter, let height = newSize.height {
             // vCenter & height is set
             newRect.size.height = height
-            newRect.origin.y = vCenter - (newRect.size.height / 2) + (marginTop ?? 0)
+            newRect.origin.y = vCenter - (newRect.size.height / 2) + _marginTop
         } else if let top = top {
             // Only top is set
-            newRect.origin.y = top + (marginTop ?? 0)
+            newRect.origin.y = top + _marginTop
         } else if let bottom = bottom {
             // Only bottom is set
-            newRect.origin.y = bottom - view.frame.height - (marginBottom ?? 0)
+            newRect.origin.y = bottom - view.frame.height - _marginBottom
         } else if let vCenter = vCenter {
             // Only vCenter is set
             newRect.origin.y = vCenter - (view.frame.height / 2)
@@ -1148,21 +1155,21 @@ extension PinLayoutImpl {
             return nil
         }
     }
-    
+
     fileprivate func applyMarginsAndInsets(top: CGFloat) -> CGFloat {
-        return top + (marginTop ?? 0) + (insetTop ?? 0)
+        return top + _marginTop + (insetTop ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(bottom: CGFloat) -> CGFloat {
-        return bottom - (marginBottom ?? 0) - (insetBottom ?? 0)
+        return bottom - _marginBottom - (insetBottom ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(left: CGFloat) -> CGFloat {
-        return left + (marginLeft ?? 0) + (insetLeft ?? 0)
+        return left + _marginLeft + (insetLeft ?? 0)
     }
     
     fileprivate func applyMarginsAndInsets(right: CGFloat) -> CGFloat {
-        return right - (marginRight ?? 0) - (insetRight ?? 0)
+        return right - _marginRight - (insetRight ?? 0)
     }
     
     fileprivate func applyTopBottomInsets(height: CGFloat) -> CGFloat {

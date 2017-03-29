@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2439CC281E6658C3003326FB /* ReferenceProxy in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2439CC2B1E6658CC003326FB /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; };
+		2439CC281E6658C3003326FB /* PinLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2439CC2B1E6658CC003326FB /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; };
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
 		2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC341E665BF6003326FB /* MenuViewController.swift */; };
 		2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC381E665C6B003326FB /* BasicView.swift */; };
@@ -70,7 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2439CC281E6658C3003326FB /* ReferenceProxy in Embed Frameworks */,
+				2439CC281E6658C3003326FB /* PinLayout.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2439CC2B1E6658CC003326FB /* ReferenceProxy in Frameworks */,
+				2439CC2B1E6658CC003326FB /* PinLayout.framework in Frameworks */,
 				DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,11 +272,11 @@
 		249EFE361E64FAFE00165E39 = {
 			isa = PBXGroup;
 			children = (
+				2439CC1E1E665858003326FB /* PinLayout.xcodeproj */,
 				160FB83905049FCEDD18DC8A /* Frameworks */,
 				249EFE411E64FAFE00165E39 /* PinLayoutSample */,
 				F143180314A617EFD07C5709 /* Pods */,
 				249EFE401E64FAFE00165E39 /* Products */,
-				2439CC1E1E665858003326FB /* PinLayout.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,8 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				24E654801E69040000A72A8B /* Domain */,
-				2439CC671E66614D003326FB /* Supporting Files */,
 				2439CC321E665BE3003326FB /* UI */,
+				2439CC671E66614D003326FB /* Supporting Files */,
 				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
 			);
 			path = PinLayoutSample;

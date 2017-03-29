@@ -108,6 +108,7 @@ public protocol PinLayout {
     @discardableResult func sizeToFit() -> PinLayout
 
     @discardableResult func margin(_ value: CGFloat) -> PinLayout
+    @discardableResult func margin(t top: CGFloat, l left: CGFloat, b bottom: CGFloat, r right: CGFloat) -> PinLayout
     @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
     @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
     @discardableResult func marginTop(_ value: CGFloat) -> PinLayout

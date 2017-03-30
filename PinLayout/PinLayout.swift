@@ -27,20 +27,59 @@
 
 import UIKit
 
+// MARK: - PinLayout UIView's extension
 public extension UIView {
     public var pin: PinLayout {
         return PinLayoutImpl(view: self)
     }
 
     public var anchor: AnchorList {
-        return AnchorList(view: self)
+        return AnchorListImpl(view: self)
     }
 
     public var edge: EdgeList {
-        return EdgeList(view: self)
+        return EdgeListImpl(view: self)
     }
 }
 
+/// UIViews's anchor definition
+public protocol Anchor {
+    var point: CGPoint { get }
+}
+
+/// UIViews's list of anchors.
+public protocol AnchorList {
+    var topLeft: Anchor { get }
+    var topCenter: Anchor { get }
+    var topRight: Anchor { get }
+    var leftCenter: Anchor { get }
+    var center: Anchor { get }
+    var rightCenter: Anchor { get }
+    var bottomLeft: Anchor { get }
+    var bottomCenter: Anchor { get }
+    var bottomRight: Anchor { get }
+}
+
+/// UIView's horizontal edges (left/right) definition
+public protocol HorizontalEdge {
+    var x: CGFloat { get }
+}
+
+/// UIView's vertical edges (top/bottom) definition
+public protocol VerticalEdge {
+    var y: CGFloat { get }
+}
+
+/// UIViews's list of edges
+public protocol EdgeList {
+    var top: VerticalEdge { get }
+    var left: HorizontalEdge { get }
+    var bottom: VerticalEdge { get }
+    var right: HorizontalEdge { get }
+}
+
+
+/// PinLayout interface
 public protocol PinLayout {
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
@@ -125,17 +164,25 @@ public protocol PinLayout {
     @discardableResult func insetVertical(_ value: CGFloat) -> PinLayout
 }
 
-// RELATIVE POSITION
+/// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)
+///
+/// - left: left aligned
+/// - center: center aligned
+/// - right: right aligned
 public enum HorizontalAlignment: String {
     case left
     case center
     case right
 }
 
+/// Vertical alignment used with relative positionning methods: left(of relativeView:, aligned:), right(of relativeView:, aligned:)
+///
+/// - top: top aligned
+/// - center: center aligned
+/// - bottom: bottom aligned
 public enum VerticalAlignment: String {
     case top
     case center
     case bottom
 }
-
 

@@ -30,79 +30,80 @@ import UIKit
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)
 
-public enum HorizontalEdgeType: String {
-    case left
-    case right
-}
 
-public enum VerticalEdgeType: String {
-    case top
-    case bottom
-}
-
-public class EdgeList {
-    internal  let view: UIView
+class EdgeListImpl: EdgeList {
+    internal let view: UIView
 
     init(view: UIView) {
         self.view = view
     }
 
-    public var top: VerticalEdge { return VerticalEdge(view: view, type: .top) }
-    public var left: HorizontalEdge { return HorizontalEdge(view: view, type: .left) }
-    public var bottom: VerticalEdge { return VerticalEdge(view: view, type: .bottom) }
-    public var right: HorizontalEdge { return HorizontalEdge(view: view, type: .right) }
+    var top: VerticalEdge { return VerticalEdgeImpl(view: view, type: .top) }
+    var left: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .left) }
+    var bottom: VerticalEdge { return VerticalEdgeImpl(view: view, type: .bottom) }
+    var right: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .right) }
 }
 
-public class HorizontalEdge {
-    internal let view: UIView
-    internal let type: HorizontalEdgeType
+class HorizontalEdgeImpl: HorizontalEdge {
+    enum EdgeType: String {
+        case left
+        case right
+    }
 
-    var value: CGFloat {
+    let view: UIView
+    let type: EdgeType
+
+    var x: CGFloat {
         switch type {
         case .left: return view.frame.origin.x
         case .right: return Coordinates.right(view)
         }
     }
 
-    internal init(view: UIView, type: HorizontalEdgeType) {
+    internal init(view: UIView, type: EdgeType) {
         self.view = view
         self.type = type
     }
 }
 
-public class VerticalEdge {
+class VerticalEdgeImpl: VerticalEdge {
+    enum EdgeType: String {
+        case top
+        case bottom
+    }
+    
     internal let view: UIView
-    internal let type: VerticalEdgeType
+    internal let type: EdgeType
 
-    var value: CGFloat {
+    var y: CGFloat {
         switch type {
         case .top: return view.frame.origin.y
         case .bottom: return Coordinates.bottom(view)
         }
     }
 
-    internal init(view: UIView, type: VerticalEdgeType) {
+    internal init(view: UIView, type: EdgeType) {
         self.view = view
         self.type = type
     }
 }
 
-public class AnchorList {
+class AnchorListImpl: AnchorList {
     internal let view: UIView
 
     internal init(view: UIView) {
         self.view = view
     }
 
-    public var topLeft: Anchor { return Anchor(view: view, type: .topLeft) }
-    public var topCenter: Anchor { return Anchor(view: view, type: .topCenter) }
-    public var topRight: Anchor { return Anchor(view: view, type: .topRight) }
-    public var leftCenter: Anchor { return Anchor(view: view, type: .leftCenter) }
-    public var center: Anchor { return Anchor(view: view, type: .center) }
-    public var rightCenter: Anchor { return Anchor(view: view, type: .rightCenter) }
-    public var bottomLeft: Anchor { return Anchor(view: view, type: .bottomLeft) }
-    public var bottomCenter: Anchor { return Anchor(view: view, type: .bottomCenter) }
-    public var bottomRight: Anchor { return Anchor(view: view, type: .bottomRight) }
+    var topLeft: Anchor { return AnchorImpl(view: view, type: .topLeft) }
+    var topCenter: Anchor { return AnchorImpl(view: view, type: .topCenter) }
+    var topRight: Anchor { return AnchorImpl(view: view, type: .topRight) }
+    var leftCenter: Anchor { return AnchorImpl(view: view, type: .leftCenter) }
+    var center: Anchor { return AnchorImpl(view: view, type: .center) }
+    var rightCenter: Anchor { return AnchorImpl(view: view, type: .rightCenter) }
+    var bottomLeft: Anchor { return AnchorImpl(view: view, type: .bottomLeft) }
+    var bottomCenter: Anchor { return AnchorImpl(view: view, type: .bottomCenter) }
+    var bottomRight: Anchor { return AnchorImpl(view: view, type: .bottomRight) }
 }
 
 enum AnchorType: String {
@@ -117,7 +118,7 @@ enum AnchorType: String {
     case bottomRight
 }
 
-public class Anchor {
+class AnchorImpl: Anchor {
     let view: UIView
     let type: AnchorType
 

@@ -41,6 +41,29 @@ public extension UIView {
         return EdgeListImpl(view: self)
     }
 }
+/*
+ UIView's anchors point
+ ======================
+
+         topLeft      topCenter       topRight
+            o-------------o--------------o
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |           center           |
+ leftCenter o             o              o rightCenter
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            o-------------o--------------o
+       bottomLeft    bottomCenter     bottomLeft
+
+ */
 
 /// UIViews's anchor definition
 public protocol Anchor {
@@ -59,6 +82,23 @@ public protocol AnchorList {
     var bottomCenter: Anchor { get }
     var bottomRight: Anchor { get }
 }
+
+/*
+ UIView's Edges
+ ======================
+                   top
+          +-------------------+
+          |                   |
+          |                   |
+          |                   |
+     left |                   | right
+          |                   |
+          |                   |
+          |                   |
+          |                   |
+          +-------------------+
+                  bottom
+*/
 
 /// UIView's horizontal edges (left/right) definition
 public protocol HorizontalEdge {
@@ -185,4 +225,3 @@ public enum VerticalAlignment: String {
     case center
     case bottom
 }
-

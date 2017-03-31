@@ -14,3 +14,6 @@ except:
     - brace-style
     - function-whitespace
     - terminating-semicolon
+    - lower-camel-case
+    - trailing-closure
+    - forced-type-cast

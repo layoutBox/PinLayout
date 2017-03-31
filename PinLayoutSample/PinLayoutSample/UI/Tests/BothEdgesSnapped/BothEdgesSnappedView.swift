@@ -60,7 +60,11 @@ class BothEdgesSnappedView: UIView {
     
     var bView: BasicView!
     var bViewChild: BasicView!
-    
+
+    var index = 0
+    var anchorsList: [(String, Anchor)] = []
+
+
     init() {
         super.init(frame: .zero)
         
@@ -80,7 +84,13 @@ class BothEdgesSnappedView: UIView {
         
         bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
         bView.addSubview(bViewChild)
-        
+
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
+
+        anchorsList = getAnchorList(forView: bView)
+        index = anchorsList.count - 1
+        setNeedsLayout()
+
 //        contentScrollView.backgroundColor = .yellow
 //        addSubview(contentScrollView)
 //        
@@ -114,11 +124,16 @@ class BothEdgesSnappedView: UIView {
 //        addView(leftRightMarginsRightInsetView)
 //        addView(leftRightMarginsLeftRightInsetView)
     }
-    
-//    fileprivate func addView(_ view: BasicView) {
-//        view.pin.height(30).width(70)
-//        contentScrollView.addSubview(view)
-//    }
+
+    func didTap() {
+        index += 1
+
+        if index >= anchorsList.count {
+            index = 0
+        }
+
+        setNeedsLayout()
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -127,14 +142,210 @@ class BothEdgesSnappedView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        print("\n")
+        //print("\n")
         
-        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-        aView.frame = CGRect(x: 100, y: 100, width: 200, height: 160)
-        aViewChild.frame = CGRect(x: 45, y: 50, width: 80, height: 80)
-        bView.frame = CGRect(x: 160, y: 200, width: 40, height: 40)
+//        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+//        aView.frame = CGRect(x: 100, y: 100, width: 200, height: 160)
+//        aViewChild.frame = CGRect(x: 45, y: 50, width: 80, height: 80)
+//        bView.frame = CGRect(x: 160, y: 200, width: 40, height: 40)
 
-        aView.pin.margin(t: 0, l: 0, b: 0, r: 0)
+        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
+        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
+        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
+
+        let name = anchorsList[index].0
+        let anchor = anchorsList[index].1
+        print("aViewChild.pin.topCenter(to: bView.anchor.\(name))")
+
+        aViewChild.pin.topCenter(to: anchor)
+        printViewFrame(aViewChild, name: "aViewChild")
+
+//         topLeft
+//        aViewChild.pin.topLeft(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 180.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 180.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topLeft(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 180.0, width: 50.0, height: 30.0)))
+
+//        topCenter
+//        aViewChild.pin.topCenter(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 180.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 180.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topCenter(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 180.0, width: 50.0, height: 30.0)))
+
+//        topRight
+//        aViewChild.pin.topRight(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 140.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 180.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 180.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.topRight(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 180.0, width: 50.0, height: 30.0)))
+
+//        leftCenter
+//        aViewChild.pin.leftCenter(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 165.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 165.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.leftCenter(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 165.0, width: 50.0, height: 30.0)))
+
+//        center
+//        aViewChild.pin.center(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 165.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 165.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.center(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 165.0, width: 50.0, height: 30.0)))
+
+//        rightCenter
+//        aViewChild.pin.rightCenter(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 85.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 125.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 165.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 165.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.rightCenter(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 165.0, width: 50.0, height: 30.0)))
+
+//        bottomLeft
+//        aViewChild.pin.bottomLeft(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 150.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 75.0, y: 150.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomLeft(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 150.0, width: 50.0, height: 30.0)))
+
+//        bottomCenter
+//        aViewChild.pin.bottomCenter(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -5.0, y: 150.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 150.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomCenter(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 105.0, y: 150.0, width: 50.0, height: 30.0)))
+
+//        bottomRight
+//        aViewChild.pin.bottomRight(to: bView.anchor.topLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.topCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.topRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 70.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.leftCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.center)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.rightCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 110.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.bottomLeft)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 150.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.bottomCenter)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 25.0, y: 150.0, width: 50.0, height: 30.0)))
+//        aViewChild.pin.bottomRight(to: bView.anchor.bottomRight)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 150.0, width: 50.0, height: 30.0)))
+
+
+
+
+//        aView.pin.margin(t: 0, l: 0, b: 0, r: 0)
 
 //        bView.pin.above(of: aView, aligned: .left)
 //        expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
@@ -242,11 +453,11 @@ class BothEdgesSnappedView: UIView {
         //
         // sizeThatFits
         //
-        aView.sizeThatFitsExpectedArea = 40 * 40
-        aView.frame = CGRect(x: 140, y: 100, width: 200, height: 160)
-        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
-        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
-        
+//        aView.sizeThatFitsExpectedArea = 40 * 40
+//        aView.frame = CGRect(x: 140, y: 100, width: 200, height: 160)
+//        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+//        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
+//        
         //
         // sizeToFit
         //
@@ -268,12 +479,12 @@ class BothEdgesSnappedView: UIView {
 //        aView.pin.size(CGSize(width: 20, height: 100)).sizeToFit()
 //        expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 20.0, height: 80.0)))
 
-        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
-        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
-        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
-        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
-        
+//        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+//        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
+//        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+//        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
+//        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
+
 //        aViewChild.pin.center(.center, of: aView).height(40).sizeToFit()
 //        expect(aViewChild.frame).to(equal(CGRect(x: 30.0, y: 10.0, width: 40.0, height: 40.0)))
         // SHOULD EQUAL THESE 2 LINES:
@@ -281,7 +492,7 @@ class BothEdgesSnappedView: UIView {
 //        aViewChild.pin.center(to: aView)
 //        expect(aViewChild.frame).to(equal(CGRect(x: 30.0, y: 10.0, width: 40.0, height: 40.0)))
 
-        aViewChild.pin.center(to: aView.anchor.center).width(20).sizeToFit()
+//        aViewChild.pin.center(to: aView.anchor.center).width(20).sizeToFit()
 //        expect(aViewChild.frame).to(equal(CGRect(x: 40.0, y: -10.0, width: 20.0, height: 80.0)))
         // SHOULD EQUAL THESE 2 LINES:
         //aViewChild.pin.width(20).height(80)
@@ -310,7 +521,7 @@ class BothEdgesSnappedView: UIView {
         //
 //        aViewChild.pin.top(.top, of: aView) //CGRect(x: 10.0, y: 0.0, width: 50.0, height: 30.0)
 //        aViewChild.pin.top(.top, of: bView)      // CGRect(x: 10.0, y: 100.0, width: 50.0, height: 30.0)
-        aViewChild.pin.topLeft(to: bView.anchor.bottomRight)
+//        aViewChild.pin.topLeft(to: bView.anchor.bottomRight)
 //        bViewChild.pin.top(.top, of: aViewChild) //CGRect(x: 40.0, y: -80.0, width: 60.0, height: 20.0)
 
 //        aViewChild.pin.top(.bottom, of: aView)      //CGRect(x: 10.0, y: 60.0, width: 50.0, height: 30.0)
@@ -388,8 +599,27 @@ class BothEdgesSnappedView: UIView {
 //        bViewChild.pin.leftCenter(to: aViewChild)
 //        expect(bViewChild.frame).to(equal(CGRect(x: -10.0, y: -75.0, width: 60.0, height: 20.0)))
 
+//        let aViewAnchors = getAnchorList(forView: aView)
+//        aViewAnchors.forEach { (tuples) in
+//            aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+//
+//            let name = tuples.0
+//            let anchor = tuples.1
+//            print("aViewChild.pin.topLeft(to: aView.anchor.\(name))")
+//
+//            aViewChild.pin.topLeft(to: anchor)
+//            printViewFrame(aViewChild, name: "aViewChild")
+//        }
+
         // center
 //        aView.pin.center()
+//        aViewChild.pin.center(to: aView.anchor.center)
+//        aViewChild.pin.center(to: bView.anchor.center)
+//        bView.pin.center(to: aViewChild.anchor.center)
+//        bViewChild.pin.center(to: aViewChild.anchor.center)
+
+//        aView.pin.center()
+//        expect(aView.frame).to(equal(CGRect(x: 150.0, y: 170.0, width: 100.0, height: 60.0)))
 //        aViewChild.pin.center(to: aView)
 //        aViewChild.pin.center(to: bView)
 //        bView.pin.center(to: aViewChild)
@@ -423,14 +653,28 @@ class BothEdgesSnappedView: UIView {
 //        bView.pin.bottomRight(of: aViewChild)
 //        bViewChild.pin.bottomRight(of: aViewChild) 
 
-        printViewFrame(aView, name: "aView")
-        printViewFrame(aViewChild, name: "aViewChild")
-        
-        printViewFrame(bView, name: "bView")
-        printViewFrame(bViewChild, name: "bViewChild")
+//        printViewFrame(aView, name: "aView")
+//        printViewFrame(aViewChild, name: "aViewChild")
+//        
+//        printViewFrame(bView, name: "bView")
+//        printViewFrame(bViewChild, name: "bViewChild")
     }
     
     fileprivate func printViewFrame(_ view: UIView, name: String) {
         print("expect(\(name).frame).to(equal(CGRect(x: \(view.frame.origin.x), y: \(view.frame.origin.y), width: \(view.frame.size.width), height: \(view.frame.size.height))))")
+    }
+
+    fileprivate func getAnchorList(forView view: UIView) -> [(String, Anchor)] {
+        return [
+            ("topLeft", view.anchor.topLeft),
+            ("topCenter", view.anchor.topCenter),
+            ("topRight", view.anchor.topRight),
+            ("leftCenter", view.anchor.leftCenter),
+            ("center", view.anchor.center),
+            ("rightCenter", view.anchor.rightCenter),
+            ("bottomLeft", view.anchor.bottomLeft),
+            ("bottomCenter", view.anchor.bottomCenter),
+            ("bottomRight", view.anchor.bottomRight)
+        ]
     }
 }

@@ -27,20 +27,99 @@
 
 import UIKit
 
+// MARK: - PinLayout UIView's extension
 public extension UIView {
     public var pin: PinLayout {
         return PinLayoutImpl(view: self)
     }
 
-    public var anchor: PinList {
-        return PinList(view: self)
+    public var anchor: AnchorList {
+        return AnchorListImpl(view: self)
     }
 
     public var edge: EdgeList {
-        return EdgeList(view: self)
+        return EdgeListImpl(view: self)
     }
 }
+/*
+ UIView's anchors point
+ ======================
 
+         topLeft      topCenter       topRight
+            o-------------o--------------o
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |           center           |
+ leftCenter o             o              o rightCenter
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            |                            |
+            o-------------o--------------o
+       bottomLeft    bottomCenter     bottomLeft
+
+ */
+
+/// UIViews's anchor definition
+public protocol Anchor {
+    var point: CGPoint { get }
+}
+
+/// UIViews's list of anchors.
+public protocol AnchorList {
+    var topLeft: Anchor { get }
+    var topCenter: Anchor { get }
+    var topRight: Anchor { get }
+    var leftCenter: Anchor { get }
+    var center: Anchor { get }
+    var rightCenter: Anchor { get }
+    var bottomLeft: Anchor { get }
+    var bottomCenter: Anchor { get }
+    var bottomRight: Anchor { get }
+}
+
+/*
+ UIView's Edges
+ ======================
+                   top
+          +-------------------+
+          |                   |
+          |                   |
+          |                   |
+     left |                   | right
+          |                   |
+          |                   |
+          |                   |
+          |                   |
+          +-------------------+
+                  bottom
+*/
+
+/// UIView's horizontal edges (left/right) definition
+public protocol HorizontalEdge {
+    var x: CGFloat { get }
+}
+
+/// UIView's vertical edges (top/bottom) definition
+public protocol VerticalEdge {
+    var y: CGFloat { get }
+}
+
+/// UIViews's list of edges
+public protocol EdgeList {
+    var top: VerticalEdge { get }
+    var left: HorizontalEdge { get }
+    var bottom: VerticalEdge { get }
+    var right: HorizontalEdge { get }
+}
+
+
+/// PinLayout interface
 public protocol PinLayout {
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
@@ -53,39 +132,39 @@ public protocol PinLayout {
     @discardableResult func right(to edge: HorizontalEdge) -> PinLayout
     
     @discardableResult func topLeft(to point: CGPoint) -> PinLayout
-    @discardableResult func topLeft(to pin: Pin) -> PinLayout
+    @discardableResult func topLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func topLeft() -> PinLayout
 
     @discardableResult func topCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func topCenter(to pin: Pin) -> PinLayout
+    @discardableResult func topCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func topCenter() -> PinLayout
 
     @discardableResult func topRight(to point: CGPoint) -> PinLayout
-    @discardableResult func topRight(to pin: Pin) -> PinLayout
+    @discardableResult func topRight(to anchor: Anchor) -> PinLayout
     @discardableResult func topRight() -> PinLayout
 
     @discardableResult func leftCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func leftCenter(to pin: Pin) -> PinLayout
+    @discardableResult func leftCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func leftCenter() -> PinLayout
 
     @discardableResult func center(to point: CGPoint) -> PinLayout
-    @discardableResult func center(to pin: Pin) -> PinLayout
+    @discardableResult func center(to anchor: Anchor) -> PinLayout
     @discardableResult func center() -> PinLayout
 
     @discardableResult func rightCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func rightCenter(to pin: Pin) -> PinLayout
+    @discardableResult func rightCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func rightCenter() -> PinLayout
 
     @discardableResult func bottomLeft(to point: CGPoint) -> PinLayout
-    @discardableResult func bottomLeft(to pin: Pin) -> PinLayout
+    @discardableResult func bottomLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomLeft() -> PinLayout
 
     @discardableResult func bottomCenter(to point: CGPoint) -> PinLayout
-    @discardableResult func bottomCenter(to pin: Pin) -> PinLayout
+    @discardableResult func bottomCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomCenter() -> PinLayout
 
     @discardableResult func bottomRight(to point: CGPoint) -> PinLayout
-    @discardableResult func bottomRight(to pin: Pin) -> PinLayout
+    @discardableResult func bottomRight(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomRight() -> PinLayout
 
     @discardableResult func above(of relativeView: UIView) -> PinLayout
@@ -125,17 +204,24 @@ public protocol PinLayout {
     @discardableResult func insetVertical(_ value: CGFloat) -> PinLayout
 }
 
-// RELATIVE POSITION
+/// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)
+///
+/// - left: left aligned
+/// - center: center aligned
+/// - right: right aligned
 public enum HorizontalAlignment: String {
     case left
     case center
     case right
 }
 
+/// Vertical alignment used with relative positionning methods: left(of relativeView:, aligned:), right(of relativeView:, aligned:)
+///
+/// - top: top aligned
+/// - center: center aligned
+/// - bottom: bottom aligned
 public enum VerticalAlignment: String {
     case top
     case center
     case bottom
 }
-
-

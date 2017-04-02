@@ -235,9 +235,9 @@ class AdjustSizeSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 16.0, height: 100.0)))
             }
             
-            it("should warn that sizeThatFits(size:) won't be applied") {
-                aView.pin.top(0).bottom(70).width(100).sizeToFit()
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 0.0, width: 100.0, height: 70.0)))
+            it("should ajust the size of aView by calling sizeThatFits") {
+                aView.pin.top(0).height(70).width(100).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 0.0, width: 100.0, height: 16.0)))
             }
 
             it("should ajust the size of aView by calling sizeThatFits(width: CGFloat) method") {

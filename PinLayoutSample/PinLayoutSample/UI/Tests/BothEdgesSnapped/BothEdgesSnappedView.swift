@@ -64,7 +64,6 @@ class BothEdgesSnappedView: UIView {
     var index = 0
     var anchorsList: [(String, Anchor)] = []
 
-
     init() {
         super.init(frame: .zero)
         
@@ -155,12 +154,16 @@ class BothEdgesSnappedView: UIView {
         bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
         bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
 
-        let name = anchorsList[index].0
-        let anchor = anchorsList[index].1
-        print("aViewChild.pin.topCenter(to: bView.anchor.\(name))")
+//        let name = anchorsList[index].0
+//        let anchor = anchorsList[index].1
+//        print("aViewChild.pin.topCenter(to: bView.anchor.\(name))")
+//        aViewChild.pin.topCenter(to: anchor)
+//        printViewFrame(aViewChild, name: "aViewChild")
 
-        aViewChild.pin.topCenter(to: anchor)
-        printViewFrame(aViewChild, name: "aViewChild")
+//        aView.pin.left(0).right(0).top(0).bottom(0).margin(10)
+//        expect(aView.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 380.0, height: 380.0)))
+
+        aView.pin.topLeft(to: .zero).bottomRight(to: .zero).margin(10)
 
 //         topLeft
 //        aViewChild.pin.topLeft(to: bView.anchor.topLeft)
@@ -653,7 +656,7 @@ class BothEdgesSnappedView: UIView {
 //        bView.pin.bottomRight(of: aViewChild)
 //        bViewChild.pin.bottomRight(of: aViewChild) 
 
-//        printViewFrame(aView, name: "aView")
+        printViewFrame(aView, name: "aView")
 //        printViewFrame(aViewChild, name: "aViewChild")
 //        
 //        printViewFrame(bView, name: "bView")

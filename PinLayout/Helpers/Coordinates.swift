@@ -29,11 +29,11 @@ import UIKit
 
 internal class Coordinates {
     static func top(_ view: UIView) -> CGFloat {
-        return view.frame.origin.y
+        return view.frame.minY
     }
 
     static func left(_ view: UIView) -> CGFloat {
-        return view.frame.origin.x
+        return view.frame.minX
     }
 
     static func bottom(_ view: UIView) -> CGFloat {
@@ -45,38 +45,38 @@ internal class Coordinates {
     }
 
     static func hCenter(_ view: UIView) -> CGFloat {
-        return view.frame.origin.x + (view.frame.size.width / 2)
+        return view.frame.minX + (view.frame.width / 2)
     }
 
     static func vCenter(_ view: UIView) -> CGFloat {
-        return view.frame.origin.y + (view.frame.size.height / 2)
+        return view.frame.minY + (view.frame.height / 2)
     }
 
 //    static func size(_ view: UIView) -> CGSize {
 //        return view.frame.size
 //    }
 //    static func width(_ view: UIView) -> CGFloat {
-//        return view.frame.size.width
+//        return view.frame.width
 //    }
 //
 //    static func height(_ view: UIView) -> CGFloat {
-//        return view.frame.size.height
+//        return view.frame.height
 //    }
 
     static func topLeft(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.origin.x, y: view.frame.origin.y)
+        return CGPoint(x: view.frame.minX, y: view.frame.minY)
     }
 
     static func topCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: hCenter(view), y: view.frame.origin.y)
+        return CGPoint(x: hCenter(view), y: view.frame.minY)
     }
 
     static func topRight(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.origin.x + view.frame.size.width, y: view.frame.origin.y)
+        return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY)
     }
 
     static func rightCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.origin.x + view.frame.size.width, y: vCenter(view))
+        return CGPoint(x: view.frame.minX + view.frame.width, y: vCenter(view))
     }
 
     static func center(_ view: UIView) -> CGPoint {
@@ -84,19 +84,19 @@ internal class Coordinates {
     }
 
     static func leftCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.origin.x, y: vCenter(view))
+        return CGPoint(x: view.frame.minX, y: vCenter(view))
     }
 
     static func bottomLeft(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.origin.x, y: view.frame.origin.y + view.frame.size.height)
+        return CGPoint(x: view.frame.minX, y: view.frame.minY + view.frame.height)
     }
 
     static func bottomCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: hCenter(view), y: view.frame.origin.y + view.frame.size.height)
+        return CGPoint(x: hCenter(view), y: view.frame.minY + view.frame.height)
     }
 
     static func bottomRight(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.origin.x + view.frame.size.width, y: view.frame.origin.y + view.frame.size.height)
+        return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY + view.frame.height)
     }
 
     static let displayScale = UIScreen.main.scale

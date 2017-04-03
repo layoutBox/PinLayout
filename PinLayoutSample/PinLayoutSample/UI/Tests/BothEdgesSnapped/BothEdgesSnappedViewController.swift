@@ -43,10 +43,4 @@ class BothEdgesSnappedViewController: UIViewController {
     override func loadView() {
         view = BothEdgesSnappedView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        navigationController?.isNavigationBarHidden = true
-    }
 }

@@ -163,6 +163,7 @@
 				2439CC611E665FFD003326FB /* MarginsAndPaddingsLeftRightView */,
 				2439CC621E666043003326FB /* MarginsAndPaddingsLeftWidthView */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
+				2439CC631E66606D003326FB /* RelativeView */,
 				2439CC651E66610F003326FB /* ValidateConflictsView */,
 				2439CC641E6660E6003326FB /* ViewExtensionsPositionningView */,
 			);
@@ -180,7 +181,6 @@
 		2439CC5F1E665F66003326FB /* MultiRelativeView */ = {
 			isa = PBXGroup;
 			children = (
-				2439CC631E66606D003326FB /* RelativeView */,
 				2439CC3F1E665C6B003326FB /* MultiRelativeView.swift */,
 				2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */,
 			);
@@ -220,8 +220,7 @@
 				2439CC411E665C6B003326FB /* RelativeView.swift */,
 				2439CC421E665C6B003326FB /* RelativeViewController.swift */,
 			);
-			name = RelativeView;
-			path = ../RelativeView;
+			path = RelativeView;
 			sourceTree = "<group>";
 		};
 		2439CC641E6660E6003326FB /* ViewExtensionsPositionningView */ = {

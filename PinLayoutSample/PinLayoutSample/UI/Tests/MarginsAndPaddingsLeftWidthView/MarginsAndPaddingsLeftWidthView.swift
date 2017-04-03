@@ -123,35 +123,35 @@ class MarginsAndPaddingsLeftWidthView: UIView {
         
         let leftPosition: CGFloat = 0
         
-        contentScrollView.pin.topLeft().width(width).height(height).insetTop(64)
-        
-        descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-        descriptionLabel.pin.topLeft(to: CGPoint(x: leftPosition, y: 10))
-        
-        // No margins
-        noMarginsNoPaddings.pin.topLeft(to: descriptionLabel.anchor.bottomLeft).marginTop(5)
-        noMarginsLeftInsetView.pin.top(noMarginsNoPaddings.bottom).left(leftPosition).width(70).insetLeft(10)
-        noMarginsRightInsetView.pin.top(noMarginsLeftInsetView.bottom).left(leftPosition).width(70).insetRight(10)
-        noMarginsLeftRightInsetView.pin.top(noMarginsRightInsetView.bottom).left(leftPosition).width(70).insetLeft(10).insetRight(10)
-        
-        // Left margin
-        leftMarginView.pin.top(noMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10)
-        leftMarginLeftInsetView.pin.top(leftMarginView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10)
-        leftMarginRightInsetView.pin.top(leftMarginLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetRight(10)
-        leftMarginLeftRightInsetView.pin.top(leftMarginRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10).insetRight(10)
-        
-        // Right margin
-        rigthMarginView.pin.top(leftMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginRight(10)
-        rigthMarginLeftInsetView.pin.top(rigthMarginView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10)
-        rigthMarginRightInsetView.pin.top(rigthMarginLeftInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetRight(10)
-        rigthMarginLeftRightInsetView.pin.top(rigthMarginRightInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10).insetRight(10)
-        
-        // Left and right margins
-        leftRightMarginsView.pin.top(rigthMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10).marginRight(10)
-        leftRightMarginsLeftInsetView.pin.top(leftRightMarginsView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10)
-        leftRightMarginsRightInsetView.pin.top(leftRightMarginsLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetRight(10)
-        leftRightMarginsLeftRightInsetView.pin.top(leftRightMarginsRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10).insetRight(10)
-        
+//        contentScrollView.pin.topLeft().width(width).height(height).insetTop(64)
+//        
+//        descriptionLabel.size = descriptionLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
+//        descriptionLabel.pin.topLeft(to: CGPoint(x: leftPosition, y: 10))
+//        
+//        // No margins
+//        noMarginsNoPaddings.pin.topLeft(to: descriptionLabel.anchor.bottomLeft).marginTop(5)
+//        noMarginsLeftInsetView.pin.top(noMarginsNoPaddings.bottom).left(leftPosition).width(70).insetLeft(10)
+//        noMarginsRightInsetView.pin.top(noMarginsLeftInsetView.bottom).left(leftPosition).width(70).insetRight(10)
+//        noMarginsLeftRightInsetView.pin.top(noMarginsRightInsetView.bottom).left(leftPosition).width(70).insetLeft(10).insetRight(10)
+//        
+//        // Left margin
+//        leftMarginView.pin.top(noMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10)
+//        leftMarginLeftInsetView.pin.top(leftMarginView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10)
+//        leftMarginRightInsetView.pin.top(leftMarginLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetRight(10)
+//        leftMarginLeftRightInsetView.pin.top(leftMarginRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).insetLeft(10).insetRight(10)
+//        
+//        // Right margin
+//        rigthMarginView.pin.top(leftMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginRight(10)
+//        rigthMarginLeftInsetView.pin.top(rigthMarginView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10)
+//        rigthMarginRightInsetView.pin.top(rigthMarginLeftInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetRight(10)
+//        rigthMarginLeftRightInsetView.pin.top(rigthMarginRightInsetView.bottom).left(leftPosition).width(70).marginRight(10).insetLeft(10).insetRight(10)
+//        
+//        // Left and right margins
+//        leftRightMarginsView.pin.top(rigthMarginLeftRightInsetView.bottom + 5).left(leftPosition).width(70).marginLeft(10).marginRight(10)
+//        leftRightMarginsLeftInsetView.pin.top(leftRightMarginsView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10)
+//        leftRightMarginsRightInsetView.pin.top(leftRightMarginsLeftInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetRight(10)
+//        leftRightMarginsLeftRightInsetView.pin.top(leftRightMarginsRightInsetView.bottom).left(leftPosition).width(70).marginLeft(10).marginRight(10).insetLeft(10).insetRight(10)
+//        
         // Top Margin
 //        noMarginsNoPaddings2.layout2.top(leftRightMarginsLeftRightInsetView.bottom + 5).left(leftPosition).width(70).height(30)
 //        topMarginView.layout2.top(noMarginsNoPaddings2.top).left(noMarginsNoPaddings2.right).width(70).height(30).marginTop(10)

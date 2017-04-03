@@ -94,9 +94,9 @@ class RelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        belowNavBarView.pin.topLeft().size(size).insetTop(64)
+        belowNavBarView.pin.topLeft().bottomRight().marginTop(64)
         
-        rootView.frame = CGRect(x: 20, y: 20, width: 400, height: 400)
+        rootView.frame = CGRect(x: 0, y: 64, width: 400, height: 400)
         centerView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
         
 //        centerView.width = 200

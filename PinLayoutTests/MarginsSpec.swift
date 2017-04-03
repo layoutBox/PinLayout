@@ -29,7 +29,7 @@ import Quick
 import Nimble
 import PinLayout
 
-class MarginsAndInsetsSpec: QuickSpec {
+class MarginsSpec: QuickSpec {
     override func spec() {
         var viewController: UIViewController!
         
@@ -57,74 +57,69 @@ class MarginsAndInsetsSpec: QuickSpec {
         }
 
         //
-        // left&right margins and left&right insets
+        // left&right margins
         //
-        describe("the result of left&right margins and left&right insets when only the width is specified") {
+        describe("the result of left&right margins when only the width is specified") {
             it("should adjust the aView") {
                 aView.pin.width(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 120.0)))
             }
-            
-            it("should adjust the aView") {
-                aView.pin.width(100).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.width(100).insetLeft(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.width(100).insetLeft(10).insetRight(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.width(100).insetHorizontal(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.width(100).margin(10).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-            }
+
+//            it("should adjust the aView") {
+//                aView.pin.width(100 - 20)//.inset(10)
+//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+//            }
+//
+//            it("should adjust the aView") {
+//                aView.pin.width(100 - 10)//.insetLeft(10)
+//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
+//            }
+
+//            it("should adjust the aView") {
+//                aView.pin.width(100).insetLeft(10).insetRight(10)
+//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+//            }
+
+//            it("should adjust the aView") {
+//                aView.pin.width(100).insetHorizontal(10)
+//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+//            }
+
+//            it("should adjust the aView") {
+//                aView.pin.width(100).margin(10).inset(10)
+//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
+//            }
         }
         
-        describe("the result of left&right margins and left&right insets when the left coordinate and the width are specified") {
+        describe("the result of left&right margins when the left coordinate and the width are specified") {
             it("should adjust the aView") {
                 aView.pin.left(140).width(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 100.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).width(100).inset(10)
+                aView.pin.left(140).width(100).pinEdges().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).width(100).insetLeft(10)
+                aView.pin.left(140).width(100).pinEdges().marginLeft(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 90.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).width(100).insetRight(10)
+                aView.pin.left(140).width(100).pinEdges().marginRight(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).width(100).insetLeft(10).insetRight(10)
+                aView.pin.left(140).width(100).pinEdges().marginLeft(10).marginRight(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).width(100).insetHorizontal(10)
+                aView.pin.left(140).width(100).pinEdges().marginHorizontal(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.left(140).width(100).margin(10).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
@@ -143,42 +138,42 @@ class MarginsAndInsetsSpec: QuickSpec {
             }
         }
         
-        describe("the result of left&right margins and left&right insets when the right coordinate and the width are specified") {
+        describe("the result of left&right margins when the right coordinate and the width are specified") {
             it("should adjust the aView") {
                 aView.pin.right(140).width(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 100.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.right(140).width(100).inset(10)
+                aView.pin.right(140).width(100).pinEdges().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 170.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.right(140).width(100).insetLeft(10)
+                aView.pin.right(140).width(100).pinEdges().marginLeft(10)
                 expect(aView.frame).to(equal(CGRect(x: 170.0, y: 100.0, width: 90.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.right(140).width(100).margin(10).inset(10)
+                aView.pin.right(140).width(100).pinEdges().marginRight(20)
                 expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 80.0, height: 120.0)))
             }
-            
+
             it("should adjust the aView") {
-                aView.pin.right(140).width(100).insetRight(10)
+                aView.pin.right(140).width(100).pinEdges().marginRight(10)
                 expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 90.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.right(140).width(100).insetLeft(10).insetRight(10)
+                aView.pin.right(140).width(100).pinEdges().marginLeft(10).marginRight(10)
                 expect(aView.frame).to(equal(CGRect(x: 170.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.right(140).width(100).insetHorizontal(10)
+                aView.pin.right(140).width(100).pinEdges().marginHorizontal(10)
                 expect(aView.frame).to(equal(CGRect(x: 170.0, y: 100.0, width: 80.0, height: 120.0)))
             }
-            
+
             it("should adjust the aView") {
                 aView.pin.right(140).width(100).marginLeft(10)
                 expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 100.0, height: 120.0)))
@@ -195,42 +190,42 @@ class MarginsAndInsetsSpec: QuickSpec {
             }
         }
 
-        describe("the result of left&right margins and left&right insets when the left and right coordinate are specified") {
+        describe("the result of left&right margins when the left and right coordinate are specified") {
             it("should adjust the aView") {
                 aView.pin.left(140).right(160).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).right(160).inset(10)
+                aView.pin.left(140).right(160).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
-            
+
             it("should adjust the aView") {
-                aView.pin.left(140).right(160).insetLeft(10)
+                aView.pin.left(140).right(160).marginLeft(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 90.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).right(160).insetRight(10)
+                aView.pin.left(140).right(160).marginRight(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).right(160).insetLeft(10).insetRight(10)
+                aView.pin.left(140).right(160).marginLeft(10).marginRight(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).right(160).insetHorizontal(10)
+                aView.pin.left(140).right(160).marginHorizontal(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.left(140).right(160).margin(10).inset(10)
+                aView.pin.left(140).right(160).margin(20)
                 expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 60.0, height: 120.0)))
             }
-            
+
             it("should adjust the aView") {
                 aView.pin.left(140).right(160).marginLeft(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 90.0, height: 120.0)))
@@ -254,77 +249,57 @@ class MarginsAndInsetsSpec: QuickSpec {
         
        
         //
-        // top&bottom margins and top&bottom insets
+        // top&bottom margins
         //
         // TODO: DO top and bottom !!! duplicate everything above!
-        describe("the result of top&bottom margins and top&bottom insets when only the height is specified") {
+        describe("the result of top&bottom margins when only the height is specified") {
             it("should adjust the aView") {
                 aView.pin.height(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.height(100).inset(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.height(100).insetTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 90)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.height(100).insetTop(10).insetBottom(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.height(100).insetVertical(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.height(100).margin(10).inset(10)
+                aView.pin.height(100 - 20)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 80.0)))
             }
         }
         
-        describe("the result of top&bottom margins and top&bottom insets when the top coordinate and the height are specified") {
+        describe("the result of top&bottom margins when the top coordinate and the height are specified") {
             it("should adjust the aView") {
                 aView.pin.top(140).height(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).height(100).inset(10)
+                aView.pin.top(140).height(100).pinEdges().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).height(100).insetTop(10)
+                aView.pin.top(140).height(100).pinEdges().marginTop(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).height(100).insetBottom(10)
+                aView.pin.top(140).height(100).pinEdges().marginBottom(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).height(100).insetTop(10).insetBottom(10)
+                aView.pin.top(140).height(100).pinEdges().marginTop(10).marginBottom(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).height(100).insetVertical(10)
+                aView.pin.top(140).height(100).pinEdges().marginVertical(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).height(100).margin(10).inset(10)
+                aView.pin.top(140).height(100).pinEdges().marginTop(20)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 160.0, width: 200.0, height: 80.0)))
             }
-            
+
             it("should adjust the aView") {
                 aView.pin.top(140).height(100).marginTop(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 100.0)))
@@ -341,42 +316,42 @@ class MarginsAndInsetsSpec: QuickSpec {
             }
         }
         
-        describe("the result of top&bottom margins and top&bottom insets when the bottom coordinate and the height are specified") {
+        describe("the result of top&bottom margins when the bottom coordinate and the height are specified") {
             it("should adjust the aView") {
                 aView.pin.bottom(260).height(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 30.0, width: 200.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(260).height(100).inset(10)
+                aView.pin.bottom(260).height(100).pinEdges().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(260).height(100).insetTop(10)
+                aView.pin.bottom(260).height(100).pinEdges().marginTop(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(260).height(100).margin(10).inset(10)
+                aView.pin.bottom(260).height(100).pinEdges().marginBottom(20)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(260).height(100).insetBottom(10)
+                aView.pin.bottom(260).height(100).pinEdges().marginBottom(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(260).height(100).insetTop(10).insetBottom(10)
+                aView.pin.bottom(260).height(100).pinEdges().marginTop(10).marginBottom(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(260).height(100).insetVertical(10)
+                aView.pin.bottom(260).height(100).pinEdges().marginVertical(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 80.0)))
             }
-            
+
             it("should adjust the aView") {
                 aView.pin.bottom(260).height(100).marginTop(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 100.0)))
@@ -393,42 +368,51 @@ class MarginsAndInsetsSpec: QuickSpec {
             }
         }
         
-        describe("the result of top&bottom margins and top&bottom insets when the top and bottom coordinate are specified") {
+        describe("the result of top&bottom margins when the top and bottom coordinate are specified") {
             it("should adjust the aView") {
                 aView.pin.top(140).bottom(160).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).bottom(160).inset(10)
+                aView.pin.top(140).bottom(160).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
+            }
+
+            it("should obtain the same result with or without pinEdges()") {
+                aView.pin.top(140).bottom(160).margin(10)
+                let frameWithoutPinEdgest = aView.frame
+
+                aView.pin.top(140).bottom(160).pinEdges().margin(10)
+
+                expect(aView.frame).to(equal(frameWithoutPinEdgest))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).bottom(160).insetTop(10)
+                aView.pin.top(140).bottom(160).marginTop(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).bottom(160).insetBottom(10)
+                aView.pin.top(140).bottom(160).marginBottom(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 90.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).bottom(160).insetTop(10).insetBottom(10)
+                aView.pin.top(140).bottom(160).marginTop(10).marginBottom(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).bottom(160).insetVertical(10)
+                aView.pin.top(140).bottom(160).pinEdges().marginVertical(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top(140).bottom(160).margin(10).inset(10)
+                aView.pin.top(140).bottom(160).pinEdges().marginTop(20).marginBottom(20)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 160.0, width: 200.0, height: 60.0)))
             }
-            
+
             it("should adjust the aView") {
                 aView.pin.top(140).bottom(160).marginTop(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 90.0)))

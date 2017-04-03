@@ -121,9 +121,13 @@ public protocol EdgeList {
 
 /// PinLayout interface
 public protocol PinLayout {
+    @discardableResult func top() -> PinLayout
     @discardableResult func top(_ value: CGFloat) -> PinLayout
+    @discardableResult func left() -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
+    @discardableResult func bottom() -> PinLayout
     @discardableResult func bottom(_ value: CGFloat) -> PinLayout
+    @discardableResult func right() -> PinLayout
     @discardableResult func right(_ value: CGFloat) -> PinLayout
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayout
     @discardableResult func vCenter(_ value: CGFloat) -> PinLayout
@@ -188,13 +192,13 @@ public protocol PinLayout {
     @discardableResult func marginBottom(_ value: CGFloat) -> PinLayout
     @discardableResult func marginRight(_ value: CGFloat) -> PinLayout
 
-    @discardableResult func inset(_ value: CGFloat) -> PinLayout
-    @discardableResult func insetTop(_ value: CGFloat) -> PinLayout
-    @discardableResult func insetLeft(_ value: CGFloat) -> PinLayout
-    @discardableResult func insetBottom(_ value: CGFloat) -> PinLayout
-    @discardableResult func insetRight(_ value: CGFloat) -> PinLayout
-    @discardableResult func insetHorizontal(_ value: CGFloat) -> PinLayout
-    @discardableResult func insetVertical(_ value: CGFloat) -> PinLayout
+    /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.
+    /// This is also true even if the width has been set.
+    /// Calling pinEdges() will force PinLayout to pin the four edges and then apply left and/or right margins, and this without
+    /// moving the view.
+    ///
+    /// - Returns: PinLayout
+    @discardableResult func pinEdges() -> PinLayout
 }
 
 /// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)

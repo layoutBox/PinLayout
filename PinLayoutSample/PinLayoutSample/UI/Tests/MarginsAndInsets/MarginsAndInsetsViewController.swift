@@ -43,10 +43,4 @@ class MarginsAndInsetsViewController: UIViewController {
     override func loadView() {
         view = MarginsAndInsetsView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        navigationController?.isNavigationBarHidden = true
-    }
 }

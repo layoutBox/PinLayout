@@ -43,10 +43,4 @@ class RelativeViewController: UIViewController {
     override func loadView() {
         view = RelativeView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        navigationController?.isNavigationBarHidden = true
-    }
 }

@@ -36,6 +36,24 @@ class PinScrollingView: UIView {
     var cView: BasicView!
     var dView: BasicView!
 
+    var row1 = BasicView(text: "", color: UIColor.lightGray)
+    var row1Item1 = BasicView(text: "50px", color: UIColor.blue)
+    var row1Item2 = BasicView(text: "Remaining space", color: UIColor.red)
+
+    var row2 = BasicView(text: "", color: UIColor.lightGray)
+    var row2Item1 = BasicView(text: "50px", color: UIColor.blue)
+    var row2Item2 = BasicView(text: "Remaining space", color: UIColor.red)
+
+    var row3 = BasicView(text: "", color: UIColor.lightGray)
+    var row3Item1 = BasicView(text: "50px", color: UIColor.blue)
+    var row3Item2 = BasicView(text: "Remaining space", color: UIColor.red)
+    var row3Item3 = BasicView(text: "Remaining space", color: UIColor.red)
+
+    var row4 = BasicView(text: "", color: UIColor.lightGray)
+    var row4Item1 = BasicView(text: "25%", color: UIColor.red)
+    var row4Item2 = BasicView(text: "50%", color: UIColor.blue)
+    var row4Item3 = BasicView(text: "25%", color: UIColor.red)
+
     init() {
         super.init(frame: .zero)
 
@@ -45,17 +63,35 @@ class PinScrollingView: UIView {
         contentScrollView.delegate = self
         addSubview(contentScrollView)
 
-         aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
-         contentScrollView.addSubview(aView)
+        aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+        contentScrollView.addSubview(aView)
 
-         bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
-         addSubview(bView)
+        bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+        addSubview(bView)
 
         cView = BasicView(text: "View C", color: UIColor.red.withAlphaComponent(0.5))
         contentScrollView.addSubview(cView)
 
         dView = BasicView(text: "View D", color: UIColor.red.withAlphaComponent(0.5))
         contentScrollView.addSubview(dView)
+
+        contentScrollView.addSubview(row1)
+        row1.addSubview(row1Item1)
+        row1.addSubview(row1Item2)
+
+        contentScrollView.addSubview(row2)
+        row2.addSubview(row2Item1)
+        row2.addSubview(row2Item2)
+
+        contentScrollView.addSubview(row3)
+        row3.addSubview(row3Item1)
+        row3.addSubview(row3Item2)
+        row3.addSubview(row3Item3)
+
+        contentScrollView.addSubview(row4)
+        row4.addSubview(row4Item1)
+        row4.addSubview(row4Item2)
+        row4.addSubview(row4Item3)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +110,24 @@ class PinScrollingView: UIView {
 
         cView.pin.below(of: aView, aligned: .right).width(100).height(50).marginTop(10)
         dView.pin.below(of: aView, aligned: .left).left(of: cView).height(of: cView).marginTop(10).marginRight(10)
+
+        row1.pin.below(of: dView, aligned: .left).size(of: aView).marginTop(10)
+        row1Item1.pin.topLeft().bottom().width(50).margin(2)
+        row1Item2.pin.right(of: row1Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
+
+        row2.pin.below(of: row1, aligned: .left).size(of: aView).marginTop(10)
+        row2Item1.pin.topRight().bottom().width(50).margin(2)
+        row2Item2.pin.left(of: row2Item1, aligned: .top).bottomLeft().margin(0, 2, 2, 2)
+
+        row3.pin.below(of: row2, aligned: .left).size(of: aView).marginTop(10)
+        row3Item1.pin.topCenter().width(50).bottom().margin(2)
+        row3Item2.pin.left(of: row3Item1, aligned: .top).bottomLeft().margin(0, 2, 2, 2)
+        row3Item3.pin.right(of: row3Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
+
+        row4.pin.below(of: row3, aligned: .left).size(of: aView).marginTop(10)
+        row4Item1.pin.topLeft().width(percent: 25).bottom().margin(2)
+        row4Item2.pin.right(of: row4Item1, aligned: .top).width(percent: 50).bottom().margin(0, 2, 2, 2)
+        row4Item3.pin.right(of: row4Item2, aligned: .top).bottomRight().margin(0, 2, 2, 2)
     }
 
     fileprivate func layoutBView() {

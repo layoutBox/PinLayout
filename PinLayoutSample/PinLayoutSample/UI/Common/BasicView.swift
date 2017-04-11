@@ -51,7 +51,7 @@ class BasicView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
             
-        label.pin.top(0).left(0)
+        label.pin.top(2).left(2)
     }
     
     var sizeThatFitsExpectedArea: CGFloat = 40 * 40

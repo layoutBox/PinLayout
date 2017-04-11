@@ -64,31 +64,6 @@ class MarginsSpec: QuickSpec {
                 aView.pin.width(100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 120.0)))
             }
-
-//            it("should adjust the aView") {
-//                aView.pin.width(100 - 20)//.inset(10)
-//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-//            }
-//
-//            it("should adjust the aView") {
-//                aView.pin.width(100 - 10)//.insetLeft(10)
-//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 120.0)))
-//            }
-
-//            it("should adjust the aView") {
-//                aView.pin.width(100).insetLeft(10).insetRight(10)
-//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-//            }
-
-//            it("should adjust the aView") {
-//                aView.pin.width(100).insetHorizontal(10)
-//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-//            }
-
-//            it("should adjust the aView") {
-//                aView.pin.width(100).margin(10).inset(10)
-//                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 80.0, height: 120.0)))
-//            }
         }
         
         describe("the result of left&right margins when the left coordinate and the width are specified") {

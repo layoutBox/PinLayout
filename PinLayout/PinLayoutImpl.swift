@@ -162,14 +162,15 @@ import UIKit
  //    button1.right == button2.left - 12
  //}
 */
-class PinLayoutImpl: PinLayout {
-    #if DEBUG
-    static var logConflicts = true
-    #else
-    static var logConflicts = false
-    #endif
+#if DEBUG
+    public var PinLayoutLogConflicts = true
+#else
+    public var PinLayoutLogConflicts = false
+#endif
 
-    fileprivate let view: UIView
+
+class PinLayoutImpl: PinLayout {
+       fileprivate let view: UIView
 
     // TODO: Renamed minX, maxX, minY, maxY? ferait plus de sens avec right et bottom qui maintenant sont relatif a leur parent?
     fileprivate var _top: CGFloat?       // offset from superview's top edge
@@ -189,11 +190,6 @@ class PinLayoutImpl: PinLayout {
     fileprivate var marginRight: CGFloat?
     fileprivate var shouldPinEdges = false
     
-//    fileprivate var insetTop: CGFloat?
-//    fileprivate var insetLeft: CGFloat?
-//    fileprivate var insetBottom: CGFloat?
-//    fileprivate var insetRight: CGFloat?
-
     fileprivate var shouldSizeToFit = false
 
     fileprivate var _marginTop: CGFloat { return marginTop ?? 0  }
@@ -696,20 +692,26 @@ class PinLayoutImpl: PinLayout {
     // Margins
     //
     @discardableResult
-    func margin(_ value: CGFloat) -> PinLayout {
+    func marginTop(_ value: CGFloat) -> PinLayout {
         marginTop = value
-        marginLeft = value
-        marginBottom = value
-        marginRight = value
         return self
     }
 
     @discardableResult
-    func margin(t top: CGFloat, l left: CGFloat, b bottom: CGFloat, r right: CGFloat) -> PinLayout {
-        marginTop = top
-        marginLeft = left
-        marginBottom = bottom
-        marginRight = right
+    func marginLeft(_ value: CGFloat) -> PinLayout {
+        marginLeft = value
+        return self
+    }
+
+    @discardableResult
+    func marginBottom(_ value: CGFloat) -> PinLayout {
+        marginBottom = value
+        return self
+    }
+
+    @discardableResult
+    func marginRight(_ value: CGFloat) -> PinLayout {
+        marginRight = value
         return self
     }
 
@@ -727,26 +729,29 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func marginTop(_ value: CGFloat) -> PinLayout {
+    func margin(_ value: CGFloat) -> PinLayout {
         marginTop = value
-        return self
-    }
-    
-    @discardableResult
-    func marginLeft(_ value: CGFloat) -> PinLayout {
         marginLeft = value
-        return self
-    }
-    
-    @discardableResult
-    func marginBottom(_ value: CGFloat) -> PinLayout {
         marginBottom = value
+        marginRight = value
         return self
     }
-    
+
     @discardableResult
-    func marginRight(_ value: CGFloat) -> PinLayout {
-        marginRight = value
+    func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout {
+        marginTop = top
+        marginLeft = left
+        marginBottom = bottom
+        marginRight = right
+        return self
+    }
+
+
+    @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout {
+        return self
+    }
+
+    @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout {
         return self
     }
 
@@ -1183,22 +1188,22 @@ extension PinLayoutImpl {
     }
 
     fileprivate func warn(_ text: String, _ context: Context) {
-        guard PinLayoutImpl.logConflicts else { return }
+        guard PinLayoutLogConflicts else { return }
         print("\n👉 Layout Warning: \(context()). \(text)\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
-        guard PinLayoutImpl.logConflicts else { return }
+        guard PinLayoutLogConflicts else { return }
         print("\n👉 Layout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
-        guard PinLayoutImpl.logConflicts else { return }
+        guard PinLayoutLogConflicts else { return }
         print("\n👉 Layout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
     }
     
     fileprivate func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
-        guard PinLayoutImpl.logConflicts else { return }
+        guard PinLayoutLogConflicts else { return }
         var warning = "\n👉 Layout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:\n"
         properties.forEach { (key, value) in
             warning += " \(key): \(value)\n"

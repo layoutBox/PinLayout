@@ -41,6 +41,7 @@ public extension UIView {
         return EdgeListImpl(view: self)
     }
 }
+
 /*
  UIView's anchors point
  ======================
@@ -121,6 +122,9 @@ public protocol EdgeList {
 
 /// PinLayout interface
 public protocol PinLayout {
+    //
+    // Layout using distances from superview’s edges
+    //
     @discardableResult func top() -> PinLayout
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func left() -> PinLayout
@@ -132,11 +136,17 @@ public protocol PinLayout {
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayout
     @discardableResult func vCenter(_ value: CGFloat) -> PinLayout
 
+    //
+    // Layout using edges
+    //
     @discardableResult func top(to edge: VerticalEdge) -> PinLayout
     @discardableResult func left(to edge: HorizontalEdge) -> PinLayout
     @discardableResult func bottom(to edge: VerticalEdge) -> PinLayout
     @discardableResult func right(to edge: HorizontalEdge) -> PinLayout
-    
+
+    //
+    // Layout using anchors
+    //
     @discardableResult func topLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func topLeft() -> PinLayout
 
@@ -164,6 +174,9 @@ public protocol PinLayout {
     @discardableResult func bottomRight(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomRight() -> PinLayout
 
+    //
+    // Layout using relative positioning
+    //
     @discardableResult func above(of relativeView: UIView) -> PinLayout
     @discardableResult func above(of relativeView: UIView, aligned: HorizontalAlignment) -> PinLayout
     @discardableResult func below(of relativeView: UIView) -> PinLayout
@@ -173,6 +186,9 @@ public protocol PinLayout {
     @discardableResult func right(of relativeView: UIView) -> PinLayout
     @discardableResult func right(of relativeView: UIView, aligned: VerticalAlignment) -> PinLayout
 
+    //
+    // Width, height and size
+    //
     @discardableResult func width(_ width: CGFloat) -> PinLayout
     @discardableResult func width(percent: CGFloat) -> PinLayout
     @discardableResult func width(of view: UIView) -> PinLayout
@@ -183,14 +199,46 @@ public protocol PinLayout {
     @discardableResult func size(of view: UIView) -> PinLayout
     @discardableResult func sizeToFit() -> PinLayout
 
-    @discardableResult func margin(_ value: CGFloat) -> PinLayout
-    @discardableResult func margin(t top: CGFloat, l left: CGFloat, b bottom: CGFloat, r right: CGFloat) -> PinLayout
-    @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
-    @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
+    //
+    // Margins
+    //
     @discardableResult func marginTop(_ value: CGFloat) -> PinLayout
     @discardableResult func marginLeft(_ value: CGFloat) -> PinLayout
     @discardableResult func marginBottom(_ value: CGFloat) -> PinLayout
     @discardableResult func marginRight(_ value: CGFloat) -> PinLayout
+
+    @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
+    @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
+
+    /// Apply to all four margins (top, left, bottom, right)
+    ///
+    /// - Parameter value: <#value description#>
+    /// - Returns: <#return value description#>
+    @discardableResult func margin(_ value: CGFloat) -> PinLayout
+    /// vertical | horizontal
+    ///
+    /// - Parameters:
+    ///   - vertical: <#vertical description#>
+    ///   - horizontal: <#horizontal description#>
+    /// - Returns: <#return value description#>
+    @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
+    /// top | horizontal | bottom
+    ///
+    /// - Parameters:
+    ///   - top: <#top description#>
+    ///   - horizontal: <#horizontal description#>
+    ///   - bottom: <#bottom description#>
+    /// - Returns: <#return value description#>
+    @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
+    /// top | right | bottom | left
+    ///
+    /// - Parameters:
+    ///   - top: <#top description#>
+    ///   - left: <#left description#>
+    ///   - bottom: <#bottom description#>
+    ///   - right: <#right description#>
+    /// - Returns: <#return value description#>
+    @discardableResult func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout
 
     /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.
     /// This is also true even if the width has been set.

@@ -163,49 +163,65 @@ class PinEdgeCoordinateSpec: QuickSpec {
         describe("the result of the bottom(edge: HorizontalEdge, of: UIView)") {
 
             it("should position the aViewChild's left edge on its parent's left edge") {
-//                aViewChild.pin.bottom(.top, of: aView)
-//                expect(aViewChild.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
+                aViewChild.pin.bottom(to: aView.edge.top)
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: -30.0, width: 50.0, height: 30.0)))
             }
 
             it("should position the aViewChild's left edge on its parent sibling (bView)'s left edge") {
-
-//                expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 20.0, width: 50.0, height: 30.0)))
+                aViewChild.pin.bottom(to: bView.edge.top)
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 70.0, width: 50.0, height: 30.0)))
             }
 
             it("should position the bViewChild's left edge on its sibling's children (aViewChild)'s left edge") {
-
-//                expect(bViewChild.frame).to(equal(CGRect(x: -10.0, y: 10.0, width: 60.0, height: 20.0)))
+                aViewChild.pin.bottom(to: aView.edge.bottom)
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 30.0, width: 50.0, height: 30.0)))
             }
 
             it("should position the aViewChild's left edge on its parent's right edge") {
-
-//                expect(aViewChild.frame).to(equal(CGRect(x: 100.0, y: 20.0, width: 50.0, height: 30.0)))
+                aViewChild.pin.bottom(to: bView.edge.bottom)
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 150.0, width: 50.0, height: 30.0)))
             }
 
             it("should position the aViewChild's left edge on its parent sibling (bView)'s right edge") {
-
-//                expect(aViewChild.frame).to(equal(CGRect(x: 130.0, y: 20.0, width: 50.0, height: 30.0)))
-            }
-
-            it("should position the bViewChild's left edge on its sibling's children (aViewChild)'s right edge") {
-                
-//                expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: 10.0, width: 60.0, height: 20.0)))
+                bViewChild.pin.bottom(to: aViewChild.edge.bottom)
+                expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -70.0, width: 60.0, height: 20.0)))
             }
         }
-        //         //
-        //        aViewChild.pin.bottom(.top, of: bView)      //CGRect(x: 10.0, y: 70.0, width: 50.0, height: 30.0)
-        //        bViewChild.pin.bottom(.top, of: aViewChild) //CGRect(x: 40.0, y: -100.0, width: 60.0, height: 20.0)
+
         //
-        //        aViewChild.pin.bottom(.bottom, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-        //        aViewChild.pin.bottom(.bottom, of: bView)      //CGRect(x: 10.0, y: 150.0, width: 50.0, height: 30.0)
-        //        bViewChild.pin.bottom(.bottom, of: aViewChild) //CGRect(x: 40.0, y: -70.0, width: 60.0, height: 20.0)
-        
-        //        aViewChild.pin.right(.left, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-        //        aViewChild.pin.right(.left, of: bView)      //CGRect(x: -30.0, y: 20.0, width: 50.0, height: 30.0)
-        //        bViewChild.pin.right(.left, of: aViewChild) //CGRect(x: -70.0, y: 10.0, width: 60.0, height: 20.0)
+        // right edge
         //
-        //        aViewChild.pin.right(.right, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-        //        aViewChild.pin.right(.right, of: bView)      //CGRect(x: 80.0, y: 20.0, width: 50.0, height: 30.0)
-        //        bViewChild.pin.right(.right, of: aViewChild) //CGRect(x: -20.0, y: 10.0, width: 60.0, height: 20.0)
+        describe("the result of the right(edge: HorizontalEdge, of: UIView)") {
+
+            it("should position the aViewChild") {
+                aViewChild.pin.right(to: aView.edge.left)
+                expect(aViewChild.frame).to(equal(CGRect(x: -50.0, y: 20.0, width: 50.0, height: 30.0)))
+            }
+
+            it("should position the aViewChild") {
+                aViewChild.pin.right(to: bView.edge.left)
+                expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 20.0, width: 50.0, height: 30.0)))
+            }
+
+            it("should position the aViewChild") {
+                bViewChild.pin.right(to: aViewChild.edge.left)
+                expect(bViewChild.frame).to(equal(CGRect(x: -70.0, y: 10.0, width: 60.0, height: 20.0)))
+            }
+
+            it("should position the aViewChild") {
+                aViewChild.pin.right(to: aView.edge.right)
+                expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 20.0, width: 50.0, height: 30.0)))
+            }
+
+            it("should position the bViewChild") {
+                aViewChild.pin.right(to: bView.edge.right)
+                expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 20.0, width: 50.0, height: 30.0)))
+            }
+
+            it("should position the bViewChild") {
+                bViewChild.pin.right(to: aViewChild.edge.right)
+                expect(bViewChild.frame).to(equal(CGRect(x: -20.0, y: 10.0, width: 60.0, height: 20.0)))
+            }
+        }
     }
 }

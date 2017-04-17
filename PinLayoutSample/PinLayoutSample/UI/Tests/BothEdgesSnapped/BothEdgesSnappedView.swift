@@ -518,7 +518,12 @@ class BothEdgesSnappedView: UIView {
         
 //        aView.pin.size(of: aViewChild)// CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)
 //        aView.pin.size(CGSize(width: 25, height: 25))//CGRect(x: 140.0, y: 100.0, width: 25.0, height: 25.0)
-        
+
+        rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
+        aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
+        bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
+        bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
         //
         // pin coordinate
         //
@@ -531,29 +536,51 @@ class BothEdgesSnappedView: UIView {
 //        aViewChild.pin.top(.bottom, of: bView)      //CGRect(x: 10.0, y: 180.0, width: 50.0, height: 30.0)
 //        bViewChild.pin.top(.bottom, of: aViewChild) //CGRect(x: 40.0, y: -50.0, width: 60.0, height: 20.0)
         
-//        aViewChild.pin.bottom(.top, of: aView) //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-//        aViewChild.pin.bottom(.top, of: bView)      //CGRect(x: 10.0, y: 70.0, width: 50.0, height: 30.0)
-//        bViewChild.pin.bottom(.top, of: aViewChild) //CGRect(x: 40.0, y: -100.0, width: 60.0, height: 20.0)
-//
-//        aViewChild.pin.bottom(.bottom, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-//        aViewChild.pin.bottom(.bottom, of: bView)      //CGRect(x: 10.0, y: 150.0, width: 50.0, height: 30.0)
-//        bViewChild.pin.bottom(.bottom, of: aViewChild) //CGRect(x: 40.0, y: -70.0, width: 60.0, height: 20.0)
+//        aViewChild.pin.bottom(to: aView.edge.top)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: -30.0, width: 50.0, height: 30.0)))
 
-//        aViewChild.pin.left(.left, of: aView) //CGRect(x: 0.0, y: 20.0, width: 50.0, height: 30.0)
-//        aViewChild.pin.left(.left, of: bView)      //CGRect(x: 20.0, y: 20.0, width: 50.0, height: 30.0)
-//        bViewChild.pin.left(.left, of: aViewChild) //CGRect(x: -10.0, y: 10.0, width: 60.0, height: 20.0)
-//
-//        aViewChild.pin.left(.right, of: aView)      //CGRect(x: 100.0, y: 20.0, width: 50.0, height: 30.0)
-//        aViewChild.pin.left(.right, of: bView)      //CGRect(x: 130.0, y: 20.0, width: 50.0, height: 30.0)
-//        bViewChild.pin.left(.right, of: aViewChild) //CGRect(x: 40.0, y: 10.0, width: 60.0, height: 20.0)
+//        aViewChild.pin.bottom(to: bView.edge.top)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 70.0, width: 50.0, height: 30.0)))
 
-//        aViewChild.pin.right(.left, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-//        aViewChild.pin.right(.left, of: bView)      //CGRect(x: -30.0, y: 20.0, width: 50.0, height: 30.0)
-//        bViewChild.pin.right(.left, of: aViewChild) //CGRect(x: -70.0, y: 10.0, width: 60.0, height: 20.0)
+//        bViewChild.pin.bottom(to: aViewChild.edge.top)
+//        expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -100.0, width: 60.0, height: 20.0)))
+
+        // TO DO
+//        aViewChild.pin.bottom(to: aView.edge.bottom)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 30.0, width: 50.0, height: 30.0)))
+
+//        aViewChild.pin.bottom(to: bView.edge.bottom)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 150.0, width: 50.0, height: 30.0)))
+
+//        bViewChild.pin.bottom(to: aViewChild.edge.bottom)
+//        expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -70.0, width: 60.0, height: 20.0)))
+
+//        aViewChild.pin.left(to: aView.edge.left)
+//        aViewChild.pin.left(.left, of: bView)
+//        bViewChild.pin.left(.left, of: aViewChild)
 //
-//        aViewChild.pin.right(.right, of: aView)      //CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)
-//        aViewChild.pin.right(.right, of: bView)      //CGRect(x: 80.0, y: 20.0, width: 50.0, height: 30.0)
-//        bViewChild.pin.right(.right, of: aViewChild) //CGRect(x: -20.0, y: 10.0, width: 60.0, height: 20.0)
+//        aViewChild.pin.left(to: aView.edge.right)
+//        aViewChild.pin.left(.right, of: bView)
+//        bViewChild.pin.left(.right, of: aViewChild)
+
+//        aViewChild.pin.right(to: aView.edge.left)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -50.0, y: 20.0, width: 50.0, height: 30.0)))
+
+//        aViewChild.pin.right(to: bView.edge.left)
+//        expect(aViewChild.frame).to(equal(CGRect(x: -30.0, y: 20.0, width: 50.0, height: 30.0)))
+
+//        bViewChild.pin.right(to: aViewChild.edge.left)
+//        expect(bViewChild.frame).to(equal(CGRect(x: -70.0, y: 10.0, width: 60.0, height: 20.0)))
+
+//        aViewChild.pin.right(to: aView.edge.right)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 50.0, y: 20.0, width: 50.0, height: 30.0)))
+
+//        aViewChild.pin.right(to: bView.edge.right)
+//        expect(aViewChild.frame).to(equal(CGRect(x: 80.0, y: 20.0, width: 50.0, height: 30.0)))
+
+        bViewChild.pin.right(to: aViewChild.edge.right)
+        expect(bViewChild.frame).to(equal(CGRect(x: -20.0, y: 10.0, width: 60.0, height: 20.0)))
+
 
         //
         // pin point
@@ -657,10 +684,10 @@ class BothEdgesSnappedView: UIView {
 //        bViewChild.pin.bottomRight(of: aViewChild) 
 
         printViewFrame(aView, name: "aView")
-//        printViewFrame(aViewChild, name: "aViewChild")
-//        
-//        printViewFrame(bView, name: "bView")
-//        printViewFrame(bViewChild, name: "bViewChild")
+        printViewFrame(aViewChild, name: "aViewChild")
+
+        printViewFrame(bView, name: "bView")
+        printViewFrame(bViewChild, name: "bViewChild")
     }
     
     fileprivate func printViewFrame(_ view: UIView, name: String) {

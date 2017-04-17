@@ -59,12 +59,6 @@ import UIKit
          - view.layout.left(backgroundView.edge.left)
          - view.layout.top(backgroundView.edge.bottom)
  
-         - view.layout.pinTopLeft(.bottomLeft, of: backgroundView).margin(10)
-         - view.layout.pinTopLeft(to: .bottomLeft, of: backgroundView).margin(10)
-         - view.layout.pinTopLeft(to: backgroundView, .bottomLeft).margin(10)
-         - view.layout.pinTopLeft(backgroundView, .bottomLeft).margin(10)
-         - view.layout.pinTopLeft(equal: backgroundView, .bottomLeft).margin(10)
- 
          - view.pin.topLeft(to: .bottomLeft, of: backgroundView).margin(10)
          - view.pin.topLeft(.bottomLeft, of: backgroundView).margin(10)
  
@@ -77,46 +71,28 @@ import UIKit
          
          - layout.top(to: .bottom, of: backgroundView)
  
-    - position related to superview
-         - layout.bottomLeft().margin(10)
-         - layout.bottomLeftOfSuperview().margin(10)
-
     - enum Snap ou Pin ou Point?
- 
-    - Avoir uniquement sizeToFit() et enlever tous les sizeThatFits()?
- 
-    - UIView.topLeft, .topRight, ... are not really necessary. Tout peut être accessible avec UIView.pin.point.
-        eg: myView.topLeft -> myView.pin.topLeft.point OR myView.pin.topLeft.x & myView.pin.topLeft.y
- 
+
  ===============================================
  TODO:
  ===============================================
  - applyMarginsAsInsets, marginsAsInsets, insetsMargins, stickyBounds, pinBounds, pinEdges
  - pinEdgesHorizontal, pinEdgesVertical ??
- 
- - Que se passe-t-il si une des uiview (layout ou reference) a une superview mais pas plus, donc s'il n'y a pas de lien
-    entre les deux views?
- 
- - Verifier ce qui se passe avec UIView lorsque width/height sont négatif. Est-ce que ça devient 0? Appliquer la même
-    règle et enlever le guard du code dans setWidth et setHeight.
+ - Add parameter to sizeToFit indiquant si on doit caster ou pas le résultat
+ - Add minHeight, maxHeight, ...
+ - Add size(_ width: CGFloat, _ height: CGFloat)
  
  - frame(of: UIView)
  - frame()
   
- - right(percent: CGFloat), left(percent: CGFloat), ...
-
  - In CSS
-        - negative width and height is not applied, alson for percentages
+        - negative width and height is not applied, also for percentages
         - right/bottom: negative value and percentage is applyed 
                 right: -20px  increase the width by an extra 20 pixels
                 right: -50%   increase the width by an extra 50% (width = parent's width * 1.50)
         - negative margins affect the top, left, bottom, right. pixel or percent
 
  
- - Faire sample avec un scrollview qui contient une viewA et:
-    1- pin une view ne faisant pas parti de la scrollview à viewA
-    2- pin une view à un coin de viewA et un autre coin de cette view à un coin qui ne bouge pas.
-
  - sizeToFit() devrait prendre un parametre indiquant si on doit caster les nouvelles valeur
      de width et de height (forceSize, castSize, ...?)
  
@@ -126,20 +102,13 @@ import UIKit
  - Support hCenter + left or right
  - Support vCenter + top or bottom
  
- - Est-ce que aView.layout.pinTopLeft(superview.pin.center) fonctionne?
- 
- - peut-être enlever tous les UIView.topLeft, UIView.topCenter, ....?
-
  - maxWidth(), minWidth(), maxHeight(), minHeight()
  
- - inset(t:? = nil l:? = nil  b:? = nil  r:? = nil ) ??
-
  - Unit tests TODO:
     - pinTopLeft(to: Pin, of: UIView), topCenter(to: Pin, of: UIView), ...
     - margins and insets negatifs
     - margin(t: l: b: r:)
 
- 
  - With SwiftyAttributes, you can write the same thing like this:
 
         let fancyString = "Hello World!".withTextColor(.blue).withUnderlineStyle(.styleSingle)
@@ -172,7 +141,6 @@ import UIKit
 class PinLayoutImpl: PinLayout {
        fileprivate let view: UIView
 
-    // TODO: Renamed minX, maxX, minY, maxY? ferait plus de sens avec right et bottom qui maintenant sont relatif a leur parent?
     fileprivate var _top: CGFloat?       // offset from superview's top edge
     fileprivate var _left: CGFloat?      // offset from superview's left edge
     fileprivate var _bottom: CGFloat?    // offset from superview's top edge

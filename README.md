@@ -61,7 +61,7 @@ The value specifies the distance in pixels between the vertical center of the vi
 
 ###### Usage Examples:
 
-```javascript
+```
     view.pin.top(20).left(20)
     view.pin.left(0).right(0)
     view.pin.left(12).vCenter(100)
@@ -71,12 +71,11 @@ The value specifies the distance in pixels between the vertical center of the vi
 >This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
 >![Flowers](Docs/01-example-distance-superview-edge.png)
 
->```javascript
+>```
     viewA.pin.top(10).left(10).bottom(10).right(10)
 ``` 
 >Another possible solution using other PinLayout's methods (more details later):
-
->```javascript
+>```
     view.pin.topLeft().bottomRight().margin(10)
 ```
 

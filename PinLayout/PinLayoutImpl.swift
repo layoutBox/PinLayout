@@ -76,6 +76,15 @@ import UIKit
  ===============================================
  TODO:
  ===============================================
+ - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et
+    UIKit afin de potentiellement être capable de le bridger vers d'autres entitées visuelles qu'une 
+    UIView (exemple: CALayer, NSView, ASDisplayNode, etc). L'engin n'a probablement à dealer qu'avec des 
+    primitives de CoreGraphics.
+
+    Cette abstraction a été fait dans le framework d'animation POP ce qui fait qu'on peut virtuellement animer 
+    n'importe quelle valeur, qu'elle soit liée à une vue ou pas. Ça rend le truc vraiment flexible.
+        https://github.com/facebook/pop
+
  - applyMarginsAsInsets, marginsAsInsets, insetsMargins, stickyBounds, pinBounds, pinEdges
  - pinEdgesHorizontal, pinEdgesVertical ??
  - Add parameter to sizeToFit indiquant si on doit caster ou pas le résultat

@@ -69,8 +69,7 @@ The value specifies the distance in pixels between the vertical center of the vi
 
 ###### Example:
 >This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
->![Flowers](Docs/01-example-distance-superview-edge.png)
-
+>![](Docs/01-example-distance-superview-edge.png)
 >```
     viewA.pin.top(10).left(10).bottom(10).right(10)
 ``` 

@@ -81,7 +81,6 @@ The value specifies the distance in pixels between the vertical center of the vi
 ```
 
 <br/>
----
 ### Layout directly on superview’s edges 
 PinLayout also have shorten version that pin a view’s edge **directly** on its superview corresponding edge.
 

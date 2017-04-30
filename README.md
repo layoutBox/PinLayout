@@ -105,8 +105,8 @@ Position the view right edge directly on its superview top edge. Similar to call
 
 >![](Docs/02-example-superview-edge.png)
 
->```javascript
-	viewA.pin.top().left().bottom().right().margin(10)
+>```
+    viewA.pin.top().left().bottom().right().margin(10)
 ``` 
 
 <br/>

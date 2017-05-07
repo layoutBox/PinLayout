@@ -6,14 +6,14 @@
 Simple layouting without using NSLayoutConstraint.
 
 # Table of Contents
-* [PinLayout principles and philosophy](#PinLayout principles and philosophy)
-* [Installation](#introduction)
-* [Documentation](#installatiion)
+* [PinLayout principles and philosophy](#introduction)
+* [Installation](#installation)
+* [Documentation](#documentation)
     * [Layout using distances from superview’s edges](#Layout using distances from superview’s edges) 	  
     * [Anchors](#anchors)
     * [Edges](#edges)
     * [Relative positionning](#relative_positionning)
-   	* [Width, height and size](#Width, height and size)
+   	* [Width, height and size](#width_height_size)
    	* [Margins](#margins)
    	* [Warnings](#warnings)
 
@@ -45,13 +45,13 @@ A view can be layouted using PinLayout and later with another method.
 * Shorter possible commands to layout views, but keeping english phrasing almost valid.
 
 
-## Installation <a name="installatiion"></a>
+## Installation <a name="installation"></a>
 
 * Carthage
 
 <br/>
 
-# Documentation
+# Documentation <a name="documentation"></a>
 
 ## Layout using distances from superview’s edges
 PinLayout can position a view’s edge relative to its superview edges.
@@ -275,6 +275,7 @@ The following example layout the view B left edge on the view A right edge. It o
 
 <br/>
 ## Relative positionning <a name="relative_positionning"></a>
+
 ### Layout using relative positioning
 ...
 
@@ -282,7 +283,8 @@ The following example layout the view B left edge on the view A right edge. It o
 ...
 
 <br/>
-## Width, height and size
+## Width, height and size <a name="width_height_size"></a>
+
 ### Adjust view width, height and size
 ...
 

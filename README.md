@@ -150,6 +150,7 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 
 <br/>
 ---
+
 ### Layout using anchors
 
 PinLayout can use anchors to position view’s related to other views.
@@ -177,6 +178,7 @@ NOTE: These methods can also pin a view’s anchor to another view that is not a
 ```
 
 ###### Example:
+
 Layout using an anchors. This example pins the view B topLeft anchor on the view A topRight anchor.
 
 ![](Docs/example-anchors.png)
@@ -186,7 +188,9 @@ Layout using an anchors. This example pins the view B topLeft anchor on the view
 ``` 
 
 <br/>
+
 ###### Example:
+
 Layout using multiple anchors.
  
 It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with an horizontal margins of 10px.
@@ -200,6 +204,7 @@ It is also possible to combine two anchors to pin the position and the size of a
 
 <br/>
 ---
+
 ### Layout using superview’s anchors
 
 PinLayout also have shorten version that pin a view's anchor **directly** on its corresponding superview’s anchor.
@@ -234,6 +239,7 @@ This is equivalent to:
 ```
 
 <br/>
+
 ## Edges <a name="edges"></a>
 
 ### PinLayout UIView’s edges
@@ -279,9 +285,11 @@ The following example layout the view B left edge on the view A right edge. It o
 
 
 <br/>
+
 # NOTE: Doc is not completed yet (work in progress...)
 
 <br/>
+
 ## Relative positionning <a name="relative_positionning"></a>
 
 ### Layout using relative positioning
@@ -291,6 +299,7 @@ The following example layout the view B left edge on the view A right edge. It o
 ...
 
 <br/>
+
 ## Width, height and size <a name="width_height_size"></a>
 
 ### Adjust view width, height and size
@@ -314,6 +323,7 @@ The following example layout the view B left edge on the view A right edge. It o
 
 
 <br/>
+
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

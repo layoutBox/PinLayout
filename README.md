@@ -3,9 +3,8 @@
 # Swift PinLayout
 > "No constraints attached"
 
-> Simple layouting without using NSLayoutConstraint.
+Simple layouting without using NSLayoutConstraint.
 
-# Table of Contents
 * [PinLayout principles and philosophy](#introduction)
 * [Installation](#installation)
 * [Documentation](#documentation)
@@ -255,6 +254,7 @@ PinLayout add edges properties to UIViews. These properties are used to referenc
 
 ![](Docs/pinlayout-edges.png)
 
+---
 ### Layout using edges
 
 PinLayout have methods to attach a UIView's edge (top, left, bottom or right edge) to another view’s edge.

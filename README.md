@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
 
 # Swift PinLayout
-"No constraints attached"
+> "No constraints attached"
 
-Simple layouting without using NSLayoutConstraint.
+> Simple layouting without using NSLayoutConstraint.
 
 # Table of Contents
 * [PinLayout principles and philosophy](#introduction)
@@ -149,8 +149,8 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 
 
 <br/>
----
 
+---
 ### Layout using anchors
 
 PinLayout can use anchors to position view’s related to other views.
@@ -203,8 +203,8 @@ It is also possible to combine two anchors to pin the position and the size of a
 ``` 
 
 <br/>
----
 
+---
 ### Layout using superview’s anchors
 
 PinLayout also have shorten version that pin a view's anchor **directly** on its corresponding superview’s anchor.

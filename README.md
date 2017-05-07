@@ -9,7 +9,7 @@ Simple layouting without using NSLayoutConstraint.
 * [PinLayout principles and philosophy](#introduction)
 * [Installation](#installation)
 * [Documentation](#documentation)
-    * [Layout using distances from superview’s edges](#Layout using distances from superview’s edges) 	  
+    * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
     * [Anchors](#anchors)
     * [Edges](#edges)
     * [Relative positionning](#relative_positionning)
@@ -53,7 +53,8 @@ A view can be layouted using PinLayout and later with another method.
 
 # Documentation <a name="documentation"></a>
 
-## Layout using distances from superview’s edges
+## Layout using distances from superview’s edges <a name="distance_from_superview_edge"></a>
+
 PinLayout can position a view’s edge relative to its superview edges.
 
 **Methods**:
@@ -93,7 +94,9 @@ Another possible solution using other PinLayout's methods (more details later):
 ```
 
 <br/>
+
 ### Layout directly on superview’s edges 
+
 PinLayout also have shorten version that pin a view’s edge **directly** on its superview corresponding edge.
 
 **Methods**:
@@ -123,10 +126,11 @@ This example is similar to the previous example, but pin edges directly on super
 ``` 
 
 <br/>
+
 ## Anchors <a name="anchors"></a>
 
-
 ### PinLayout UIView’s anchors
+
 PinLayout add anchors properties to UIViews. These properties are used to reference other view’s anchors.
 
 **PinLayout UIView’s anchors**:
@@ -147,6 +151,7 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 <br/>
 ---
 ### Layout using anchors
+
 PinLayout can use anchors to position view’s related to other views.
 
 Following methods position the corresponding view anchor on another view’s anchor.
@@ -196,6 +201,7 @@ It is also possible to combine two anchors to pin the position and the size of a
 <br/>
 ---
 ### Layout using superview’s anchors
+
 PinLayout also have shorten version that pin a view's anchor **directly** on its corresponding superview’s anchor.
 
 Following methods position the corresponding view anchor on another view’s anchor.
@@ -231,6 +237,7 @@ This is equivalent to:
 ## Edges <a name="edges"></a>
 
 ### PinLayout UIView’s edges
+
 PinLayout add edges properties to UIViews. These properties are used to reference other view’s edges.
 
 **PinLayout UIView’s edges**:
@@ -243,6 +250,7 @@ PinLayout add edges properties to UIViews. These properties are used to referenc
 ![](Docs/pinlayout-edges.png)
 
 ### Layout using edges
+
 PinLayout have methods to attach a UIView's edge (top, left, bottom or right edge) to another view’s edge.
 
 **Methods:**

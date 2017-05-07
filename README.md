@@ -1,12 +1,22 @@
 [![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
 
 # Swift PinLayout
-"No constraints attached"
+> "No constraints attached"
 
 Simple layouting without using NSLayoutConstraint.
 
+* [PinLayout principles and philosophy](#introduction)
+* [Installation](#installation)
+* [Documentation](#documentation)
+    * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
+    * [Anchors](#anchors)
+    * [Edges](#edges)
+    * [Relative positionning](#relative_positionning)
+   	* [Width, height and size](#width_height_size)
+   	* [Margins](#margins)
+   	* [Warnings](#warnings)
 
-## PinLayout principles and philosophy
+## PinLayout principles and philosophy <a name="introduction"></a>
 
 * Layout one view at a time. 
 * Layout most views using a single line
@@ -34,14 +44,16 @@ A view can be layouted using PinLayout and later with another method.
 * Shorter possible commands to layout views, but keeping english phrasing almost valid.
 
 
-## Installation
+## Installation <a name="installation"></a>
+
 * Carthage
 
 <br/>
 
-# Documentation
+# Documentation <a name="documentation"></a>
 
-## Layout using distances from superview’s edges
+## Layout using distances from superview’s edges <a name="distance_from_superview_edge"></a>
+
 PinLayout can position a view’s edge relative to its superview edges.
 
 **Methods**:
@@ -68,20 +80,22 @@ The value specifies the distance in pixels between the vertical center of the vi
 ```
 
 ###### Example:
->This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
+This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
 ![Flowers](Docs/01-example-distance-superview-edge.png)
->
+
 ```javascript
     viewA.pin.top(10).left(10).bottom(10).right(10)
 ``` 
->Another possible solution using other PinLayout's methods (more details later):
->
+Another possible solution using other PinLayout's methods (more details later):
+
 ```javascript
     view.pin.topLeft().bottomRight().margin(10)
 ```
 
 <br/>
+
 ### Layout directly on superview’s edges 
+
 PinLayout also have shorten version that pin a view’s edge **directly** on its superview corresponding edge.
 
 **Methods**:
@@ -102,18 +116,20 @@ Position the view right edge directly on its superview top edge. Similar to call
 ```
 
 ###### Example:
->This example is similar to the previous example, but pin edges directly on superview’s edges. It layout the view A to fit its superview frame with a margin of 10 pixels.
+This example is similar to the previous example, but pin edges directly on superview’s edges. It layout the view A to fit its superview frame with a margin of 10 pixels.
 
->![](Docs/02-example-superview-edge.png)
+![](Docs/02-example-superview-edge.png)
 
->```
+```
     viewA.pin.top().left().bottom().right().margin(10)
 ``` 
 
 <br/>
-## Anchors
+
+## Anchors <a name="anchors"></a>
 
 ### PinLayout UIView’s anchors
+
 PinLayout add anchors properties to UIViews. These properties are used to reference other view’s anchors.
 
 **PinLayout UIView’s anchors**:
@@ -132,8 +148,10 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 
 
 <br/>
+
 ---
 ### Layout using anchors
+
 PinLayout can use anchors to position view’s related to other views.
 
 Following methods position the corresponding view anchor on another view’s anchor.
@@ -159,30 +177,35 @@ NOTE: These methods can also pin a view’s anchor to another view that is not a
 ```
 
 ###### Example:
-> Layout using an anchors. This example pins the view B topLeft anchor on the view A topRight anchor.
 
->![](Docs/example-anchors.png)
+Layout using an anchors. This example pins the view B topLeft anchor on the view A topRight anchor.
 
->```javascript
+![](Docs/example-anchors.png)
+
+```javascript
 	viewB.pin.topLeft(to: viewA.anchor.topRight)
 ``` 
 
 <br/>
+
 ###### Example:
-> Layout using multiple anchors.
+
+Layout using multiple anchors.
  
 It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with an horizontal margins of 10px.
 
->![](Docs/example-multiple-anchors.png)
+![](Docs/example-multiple-anchors.png)
 
->```javascript
+```javascript
 	viewC.pin.topLeft(to: viewA.anchor.topRight)
 	         .bottomRight(to: viewB.anchor.bottomLeft).marginHorizontal(10)
 ``` 
 
 <br/>
+
 ---
 ### Layout using superview’s anchors
+
 PinLayout also have shorten version that pin a view's anchor **directly** on its corresponding superview’s anchor.
 
 Following methods position the corresponding view anchor on another view’s anchor.
@@ -200,24 +223,26 @@ Following methods position the corresponding view anchor on another view’s anc
 * `bottomRight()`
 
 ###### Example:
-> For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor..
+For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor..
 
->![](Docs/example-superview-anchors.png)
+![](Docs/example-superview-anchors.png)
 
->```javascript
+```javascript
 	viewA.pin.topRight()
 ``` 
 
->This is equivalent to:
+This is equivalent to:
 
->```javascript
+```javascript
 	viewA.pin.topRight(to: superview.pin.topRight)
 ```
 
 <br/>
-## Edges
+
+## Edges <a name="edges"></a>
 
 ### PinLayout UIView’s edges
+
 PinLayout add edges properties to UIViews. These properties are used to reference other view’s edges.
 
 **PinLayout UIView’s edges**:
@@ -229,7 +254,9 @@ PinLayout add edges properties to UIViews. These properties are used to referenc
 
 ![](Docs/pinlayout-edges.png)
 
+---
 ### Layout using edges
+
 PinLayout have methods to attach a UIView's edge (top, left, bottom or right edge) to another view’s edge.
 
 **Methods:**
@@ -246,22 +273,25 @@ PinLayout have methods to attach a UIView's edge (top, left, bottom or right edg
 ```
 
 ###### Example:
->Layout using an edge
+Layout using an edge.
 
->The following example layout the view B left edge on the view A right edge. It only change the view B left coordinate
+The following example layout the view B left edge on the view A right edge. It only change the view B left coordinate
 
->![](Docs/example-edges.png)
+![](Docs/example-edges.png)
 
->```javascript
+```javascript
 	viewB.pin.left(to: viewA.edge.right)
 ```
 
 
 <br/>
+
 # NOTE: Doc is not completed yet (work in progress...)
 
 <br/>
-## Relative positionning
+
+## Relative positionning <a name="relative_positionning"></a>
+
 ### Layout using relative positioning
 ...
 
@@ -269,7 +299,9 @@ PinLayout have methods to attach a UIView's edge (top, left, bottom or right edg
 ...
 
 <br/>
-## Width, height and size
+
+## Width, height and size <a name="width_height_size"></a>
+
 ### Adjust view width, height and size
 ...
 
@@ -278,7 +310,7 @@ PinLayout have methods to attach a UIView's edge (top, left, bottom or right edg
 ...
 
 
-## Margins
+## Margins <a name="margins"></a>
 
 ### PinLayout's margins
 ...
@@ -286,11 +318,12 @@ PinLayout have methods to attach a UIView's edge (top, left, bottom or right edg
 ### pinEdges()
 ...
 
-## Warnings
+## Warnings <a name="warnings"></a>
 ### PinLayout's warnings
 
 
 <br/>
+
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

@@ -50,6 +50,7 @@ A view can be layouted using PinLayout and later with another method.
 
 <br/>
 
+
 # Documentation <a name="documentation"></a>
 
 ## Layout using distances from superview’s edges <a name="distance_from_superview_edge"></a>
@@ -145,7 +146,6 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 * `UIView.anchor.bottomRight`
 
 ![](Docs/pinlayout-anchors.png)
-
 
 <br/>
 
@@ -283,44 +283,302 @@ The following example layout the view B left edge on the view A right edge. It o
 	viewB.pin.left(to: viewA.edge.right)
 ```
 
-
-<br/>
-
-# NOTE: Doc is not completed yet (work in progress...)
-
 <br/>
 
 ## Relative positionning <a name="relative_positionning"></a>
 
-### Layout using relative positioning
-...
+### Layout using edges relative positioning
 
-### Layout using relative positioning and alignment
-...
+PinLayout also have method to position relative to another view.
+This is similar to pinning to an edge with a slittly different syntax.
+
+**Methods:**
+
+* `above(of UIView)`  
+Position the view above the specified view. This method is similar to pinning the view’s bottom edge.
+* `below(of UIView)`  
+Position the view below the specified view. This method is similar to pinning the view’s top edge.
+* `left(of UIView)`  
+Position the view left of the specified view. This method is similar to pinning the view’s right edge.
+* `right(of UIView)`  
+Position the view right of the specified view. This method is similar to pinning the view’s left edge.
+
+###### Usage examples:
+```javascript
+	view.pin.above(of: view2)
+	view.pin.left(of: view2, aligned: .top)
+	view.pin.left(of: view1).above(of: view2).below(of: view3).right(of: view4)
+```
+
+###### Example:
+The following example will position the view C between the view A and B with margins of 10px using relative positioning methods.
+
+![](Docs/pinlayout-relative.png)
+
+```javascript
+	viewC.pin.top().left(of: viewA).right(of: viewB).margin(10)
+```
+This is an equivalent solutions using [edges](#edge):
+
+```javascript
+	viewC.pin.top().left(to: viewA.edge.right).right(to: viewB.edge.left).margin(10)
+```
+
+This is also an equivalent solutions using [relative positioning and alignment](#relative_positionning_w_alignment) explained in the next section:
+
+```javascript
+	viewC.pin.top().left(of: viewA, aligned: .top).right(of: viewB, aligned: top).marginHorizontal(10)
+```
+
+
+<br/>
+
+### Layout using relative positioning and alignment <a name="relative_positionning_w_alignment"></a>
+
+PinLayout also have method to position relative to another view but with also the ability of specifying the alignment.
+This is similar to pinning to an anchor with a more natural syntax.
+
+**Methods:**
+
+* `above(of UIView, aligned: HorizontalAlignment)`
+* `below(of UIView, aligned: HorizontalAlignment)`
+* `left(of UIView, aligned: VerticalAlignment)`
+* `right(of UIView, aligned: VerticalAlignment)`
+
+###### Usage examples:
+```javascript
+	view.pin.above(of: view2, aligned: .left)
+	view.pin.above(of: view2, aligned: .right)
+	view.pin.left(of: view2, aligned: .top)
+```
+
+###### Example:
+The following example layout the view B below the view A aligned on its center.
+
+![](Docs/pinlayout-relative-with-alignment.png)
+
+```javascript
+	viewB.pin.below(of: viewA, aligned: .center)
+```
+This is an equivalent solutions using anchors:
+
+```javascript
+	viewB.pin.topCenter(to: viewA.anchor.bottomCenter)
+```
 
 <br/>
 
 ## Width, height and size <a name="width_height_size"></a>
 
 ### Adjust view width, height and size
-...
+PinLayout have methods to set the view’s height and width.
+
+**Methods:**
+
+* `width(_ width: CGFloat)`  
+The value specifies the width of the view in pixels. Value must be non-negative.
+* `width(percent: CGFloat)`  
+The value specifies the width of the view in percent relative to its superview (container). Value must be non-negative.
+* `width(of view: UIView)`  
+Set the view’s width to match the referenced view’s width.
+
+* `height(_ height: CGFloat)`  
+The value specifies the height of the view in pixels.
+* `height(percent: CGFloat)`  
+The value specifies the height of the view in percent relative to its superview (container). Value must be non-negative.
+* `height(of view: UIView)`  
+Set the view’s height to match the referenced view’s height
+
+* `size(_ size: CGSize)`  
+The value specifies the size (width and value) of the view in pixels. Values must be non-negative.
+* `size(of view: UIView)`  
+Set the view’s size to match the referenced view’s size
+
+* `sizeToFit()`
+
+
+###### Usage examples:
+```javascript
+	view.pin.width(100)
+	view.pin.width(of: view1)
+	view.pin.width(percent: 50)
+	
+	view.pin.height(200)
+	view.pin.height(percent: 100)
+	
+	view.pin.size(view1.size)
+	view.pin.size(of: view1)
+```
 
 
 ### sizeToFit()
-...
 
+sizeToFit() is the equivalent of calling sizeThatFits() on the size of the view once PinLayout has computed the size and have applied margins.
+
+###### Usage examples:
+```javascript
+	label.pin.width(200).sizeToFit()
+```
+
+###### Example:
+The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note on the result that the UILabel’s height has changed to fit its content.
+
+![](Docs/pinlayout-sizeToFit.png)
+
+```javascript
+	label.pin.right(of: image, aligned: .top).right().marginHorizontal(10).sizeToFit()
+```
+
+<br/>
 
 ## Margins <a name="margins"></a>
+PinLayout applies margins similar to CSS. 
+
 
 ### PinLayout's margins
-...
+
+PinLayout have methods to apply margin.
+
+**Methods:**
+
+* `marginTop(_ value: CGFloat) `
+* `marginLeft(_ value: CGFloat)`
+* `marginBottom(_ value: CGFloat)`
+* `marginRight(_ value: CGFloat)`
+
+* `marginHorizontal(_ value: CGFloat)`
+* `marginVertical(_ value: CGFloat)`
+
+* `margin(_ value: CGFloat) `
+* `margin(_ vertical: CGFloat, _ horizontal: CGFloat)`
+* `margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`
+* `margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) `
+
+* `pinEdges()`
+
+###### Usage examples:
+```javascript
+	view.pin.topLeft().margin(20)
+	view.pin.bottom().marginBottom(20)
+	view.pin.left().right().marginHorizontal(20)
+	view.pin.topLeft().bottomRight().margin(10, 12, 0, 12)
+```
+
+</br>
+
+### PinLayout margin rules
+The following section explains how CSS/PinLayout margin rules are applied. 
+
+#### When and how horizontal margins are applies in PinLayout?
+
+This table explain how and when **left and right margins** are applied depending of which view’s attribute has been pinned using PinLayout.
+
+| View’s pinned attributes | Left Margin                               | Right Margin                               |
+|--------------------------|:-------------------------------------------:|:--------------------------------------------:|
+| **Left**                     | *Move view right*                           | *-*                                |
+| **Left and Width**           | *Move view right*                           | *-*                                |
+| **Right**                    | *-*                               | *Move view left*                             |
+| **Right and Width**          | *-*                               | *Move view left*                             |
+| **Left and Right**           | *Reduce the width to apply the left margin* | *Reduce the width to apply the right margin* |
+
+NOTE: `-` indicates that the margin is not applied.
+
+</br>
+
+#### When and how does vertical margins are applies in PinLayout?
+
+This table explain how and when **top and bottom margins** are applied depending of which view’s attribute has been pinned using PinLayout.
+
+| View’s pinned attributes | Left Margin                               | Right Margin                               |
+|--------------------------|:-------------------------------------------:|:--------------------------------------------:|
+| **Top**                     | *Move view down*                           | *-*                                |
+| **Top and Height**           | *Move view down*                           | *-*                                |
+| **Bottom**                    | *-*                               | *Move view up*                             |
+| **Bottom and Height**          | *-*                               | *Move view up*                             |
+| **Top and Bottom**           | *Reduce the height to apply the top margin* | *Reduce the height to apply the bottom margin* |
+
+</br>
+
+### Margin examples
+
+###### Example 1:
+In this example, only the **left** margin is applied
+![](Docs/pinlayout-margin-01.png)
+
+```javascript
+	view.pin.left().margin(10)
+```
+
+###### Example 2:
+In this example, only the **right** margin is applied
+![](Docs/pinlayout-margin-02.png)
+
+```javascript
+	view.pin.right().width(100).marginHorizontal(10)
+```
+
+###### Example 3:
+In this example, the **left** and **right** margins are applied
+![](Docs/pinlayout-margin-03.png)
+
+```javascript
+	view.pin.left().right().margin(10)
+```
+
+###### Example 4:
+In this example, **left**, **right** and **top** margins are applied. Note that the view’s width has been reduce to apply left and right margins.
+![](Docs/pinlayout-margin-04.png)
+
+```javascript
+	view.pin.topLeft().right().height(100).margin(10)
+```
+
+###### Example 5:
+In this example, **left**, **right**, **top** and **bottom** margins are applied.
+![](Docs/pinlayout-margin-05.png)
+
+```javascript
+	view.pin.topLeft().bottomRight().margin(10)
+```
+
+</br>
 
 ### pinEdges()
-...
+The `pinEdges()` method pin the four edges (top, left, bottom and right edges) before applying margins. 
+
+This method is useful in situations where the width and/or the height attributes have been pinned.
+This method is a add-on, there is no equivalent in CSS.
+
+###### Example without `pinEdges`
+This example show the different with and without the usage of `pinEdges()`.
+
+Without `pinEdges()` margins rules has been applied and has moved the view to the left.
+
+![](Docs/pinlayout-margin-pinEdges-01.png)
+
+```javascript
+	view.pin.left().width(percent: 100).marginHorizontal(20)
+```
+
+
+###### Example with `pinEdges`
+
+With `pinEdges()` the left and right margins have been applied even if only the left and width has been set. The reason is the call to pinEdges() have pinned the two horizontal edges at their position before applying margins.
+
+![](Docs/pinlayout-margin-pinEdges-02.png)
+
+```javascript
+	view.pin.left().width(percent: 100).pinEdges().marginHorizontal(20)
+```
+
+### TODO: complete the 3rd example!!!
+
+
 
 ## Warnings <a name="warnings"></a>
 ### PinLayout's warnings
 
+### TODO
 
 <br/>
 

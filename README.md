@@ -1,9 +1,14 @@
-[![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
+![](Docs/pinlayout-logo-small.png)
 
-# Swift PinLayout
+# PinLayout
+
+Simple Swift iOS layouting without using NSLayoutConstraint.
+
 > "No constraints attached"
 
-Simple layouting without using NSLayoutConstraint.
+
+[![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
+
 
 * [PinLayout principles and philosophy](#introduction)
 * [Installation](#installation)
@@ -549,9 +554,8 @@ The `pinEdges()` method pin the four edges (top, left, bottom and right edges) b
 This method is useful in situations where the width and/or the height attributes have been pinned.
 This method is a add-on, there is no equivalent in CSS.
 
-###### Example without `pinEdges`
-This example show the different with and without the usage of `pinEdges()`.
 
+###### Example without `pinEdges`
 Without `pinEdges()` margins rules has been applied and has moved the view to the left.
 
 ![](Docs/pinlayout-margin-pinEdges-01.png)
@@ -563,7 +567,7 @@ Without `pinEdges()` margins rules has been applied and has moved the view to th
 
 ###### Example with `pinEdges`
 
-With `pinEdges()` the left and right margins have been applied even if only the left and width has been set. The reason is the call to pinEdges() have pinned the two horizontal edges at their position before applying margins.
+With `pinEdges()` the left and right margins are applied even if only the left and width has been set. The reason is the call to pinEdges() have pinned the two horizontal edges at their position before applying margins.
 
 ![](Docs/pinlayout-margin-pinEdges-02.png)
 
@@ -571,14 +575,49 @@ With `pinEdges()` the left and right margins have been applied even if only the 
 	view.pin.left().width(percent: 100).pinEdges().marginHorizontal(20)
 ```
 
-### TODO: complete the 3rd example!!!
+</br>
 
+NOTE: In that in that particular situation, the same results could have been achieved differently too:
+
+![](Docs/pinlayout-margin-pinEdges-03.png)
+
+```javascript
+	view.pin.left().right().marginHorizontal(20)
+```
+
+
+</br>
 
 
 ## Warnings <a name="warnings"></a>
 ### PinLayout's warnings
+In debug, PinLayout will displays warning when pin rules cannot be applied. 
 
-### TODO
+**Warning reasons**
+
+* The newly pinned attributes conflict with other already pinned attributes.   
+Example:  
+`view.pin.left(10).right(10).width(200)`  
+👉 Layout Conflict: `width(200) won't be applied since it conflicts with the following already set properties: left: 0, right: 10.`  
+* The newly pinned attributes was already set to another value.  
+Example:  
+`view.pin.width(100).width(200)`  
+👉 Layout Conflict: `width(200) won't be applied since it value has already been set to 100.` 
+* The view being layout hasn’t been added yet into a superview  
+Example:  
+`view.pin.width(100)`  
+👉 Layout Warning: `width(100) The view must be added to a UIView before being layouted using this method` 
+* A view is used as a reference, either directly or using its anchors or its edges, but hasn’t been added yet to a superview.   
+Example:  
+`view.pin.left(of: view2)`  
+👉 Layout Warning: `left(of: view2) The view must be added to a UIView before being used as a reference.` 
+* The width and the height must be non negative values.  
+Example:  
+`view.pin.width(-100)`  
+👉 Layout Warning: `The width (-100) must be greater or equal to 0.`
+
+###Disabling warning
+Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogConflicts to false.
 
 <br/>
 

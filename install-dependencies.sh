@@ -1,1 +1,0 @@
-carthage bootstrap --platform iOS

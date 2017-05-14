@@ -20,6 +20,7 @@ Simple Swift iOS layouting without using NSLayoutConstraint.
    	* [Width, height and size](#width_height_size)
    	* [Margins](#margins)
    	* [Warnings](#warnings)
+   	* [More examples](#more_examples)
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
@@ -620,6 +621,63 @@ Example:
 Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogConflicts to false.
 
 <br/>
+
+## More examples<a name="more_examples"></a>
+
+### Adjust to container size
+The following examples show how PinLayout can be used to adjust views size and position to the size of their container, in this case containers are cells.
+
+![](Docs/pinlayout-example-cells.png)
+
+Cell A:
+
+* A1 is left aligned with a fixed width of 50px
+* A2 fill the remaining space
+
+```javascript
+	a1.pin.topLeft().bottom().width(50)
+	a2.pin.right(of: a1, aligned: .top).bottomRight().marginLeft(10)
+```
+
+Cell B:
+
+* B2 is right aligned with a fixed width of 50px
+* B1 fill the remaining space
+
+```javascript
+	b2.pin.topRight().bottom().width(50)
+	b1.pin.left(of: b2, aligned: .top).bottomLeft().marginRight(10)
+```
+
+Cell C:
+
+* C2 is centered with a fixed width of 50px
+* C1 fill the remaining left space
+* C3 fill the remaining right space
+
+```javascript
+	c2.pin.topCenter().width(50).bottom()
+	c1.pin.left(of: c1, aligned: .top).bottomLeft().marginRight(10)
+	c3.pin.right(of: c2, aligned: .top).bottomRight().marginLeft(10)
+```
+
+Cell D:
+
+* D1 takes 25% of its container width
+* D2 takes 50% of its container width
+* D3 fill the remaining space
+
+```javascript
+	d1.pin.topLeft().width(percent: 25).bottom()
+	d2.pin.right(of: d1, aligned: .top).width(percent: 50).bottom().marginLeft(10)
+	d3.pin.right(of: d2, aligned: .top).bottomRight().marginLeft(10)
+```
+
+</br>
+
+### Display a view below the UINavigationBar
+TODO
+
 
 ## Contributing
 1. Fork it!

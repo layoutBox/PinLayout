@@ -639,7 +639,8 @@ Example:
 `view.pin.width(-100)`  
 👉 Layout Warning: `The width (-100) must be greater or equal to 0.`
 
-###Disabling warning
+### Disabling warning
+
 Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogConflicts to false.
 
 <br/>

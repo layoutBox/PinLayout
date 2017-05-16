@@ -75,7 +75,7 @@ To integrate PinLayout into your Xcode project using Carthage, specify it in you
 github "mirego/PinLayout"
 ```
 
-Run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
+Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
 
 </br>
 
@@ -691,8 +691,8 @@ Cell D:
 * D3 fill the remaining space
 
 ```javascript
-	d1.pin.topLeft().width(percent: 25).bottom()
-	d2.pin.right(of: d1, aligned: .top).width(percent: 50).bottom().marginLeft(10)
+	d1.pin.topLeft().bottom().width(percent: 25)
+	d2.pin.right(of: d1, aligned: .top).bottom().width(percent: 50).marginLeft(10)
 	d3.pin.right(of: d2, aligned: .top).bottomRight().marginLeft(10)
 ```
 

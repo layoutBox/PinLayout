@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PinLayout"
-  s.version      = "0.9"
+  s.version      = "0.9.0"
   s.summary      = "Simple iOS Swift layouting without using NSLayoutConstraint."
 
   # This description is used to generate tags and improve search results.
@@ -89,7 +89,7 @@ A view can be layouted using PinLayout and later with another method.
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.0" 
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"

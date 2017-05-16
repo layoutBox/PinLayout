@@ -53,13 +53,31 @@ A view can be layouted using PinLayout and later with another method.
 
 * Shorter possible commands to layout views, but keeping english phrasing almost valid.
 
+</br>
 
 ## Installation <a name="installation"></a>
 
-* Carthage
+### CocoaPods
 
-<br/>
+To integrate PinLayout into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
+```ruby
+    pod 'PinLayout'
+```
+
+Then, run `pod install`.
+
+### Carthage
+
+To integrate PinLayout into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "mirego/PinLayout"
+```
+
+Run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
+
+</br>
 
 # Documentation <a name="documentation"></a>
 

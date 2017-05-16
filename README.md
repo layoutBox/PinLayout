@@ -2,15 +2,16 @@
 
 # PinLayout
 
-Simple Swift iOS layouting without using NSLayoutConstraint.
-
-> "No constraints attached"
-
-
+[![Platform](https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat)](http://cocoadocs.org/docsets/Alamofire)
 [![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/PinLayout.svg)](https://img.shields.io/cocoapods/v/PinLayout.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Platform](https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat)](http://cocoadocs.org/docsets/Alamofire)
+[![GitHub license](https://img.shields.io/badge/license-New%20BSD-blue.svg?style=flat)](https://raw.githubusercontent.com/mirego/PinLayout/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat)](https://github.com/mirego/PinLayout/issues)
+
+Simple Swift iOS layouting without using NSLayoutConstraint.
+
+> "No constraints attached"
 
 
 * [PinLayout principles and philosophy](#introduction)

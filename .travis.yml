@@ -9,7 +9,7 @@ before_install:
   #- brew update
   #- brew install tailor
   - gem install xcpretty-travis-formatter
-  - ./install-dependencies.sh
+  - carthage bootstrap --platform iOS
   
 script: xcodebuild
   -project  PinLayout.xcodeproj

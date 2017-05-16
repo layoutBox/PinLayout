@@ -104,7 +104,7 @@ A view can be layouted using PinLayout and later with another method.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "git@github.com:mirego/PinLayout.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/mirego/PinLayout.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

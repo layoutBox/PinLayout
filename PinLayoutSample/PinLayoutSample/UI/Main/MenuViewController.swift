@@ -28,36 +28,16 @@
 import UIKit
 
 enum Page: Int {
-    case viewExtensionsPositionning
-    
     case relativePositions
     case multiRelativePositions
-    
-    case chainedLayout
-    
-    case bothEdgesSnapped
-    case marginsAndPaddingLeftWidth
-    case marginsAndPaddingLeftRight
-    
-    case validateConflicts
-    
-    case marginsAndInsets
-
     case scrollingPin
     
     case count
     
     var text: String {
         switch self {
-        case .viewExtensionsPositionning: return "UIView's extensions positionning"
-        case .relativePositions:          return "Test Relative"
-        case .multiRelativePositions:     return "Test Multiple Relatives"
-        case .chainedLayout:              return "Chained Layout"
-        case .bothEdgesSnapped:           return "NOT USED YET"
-        case .marginsAndPaddingLeftWidth: return "topLeft & width - Test margings and paddings"
-        case .marginsAndPaddingLeftRight: return "topLeft & bottomRight - Test margings and paddings"
-        case .validateConflicts:          return "Validate properties conflicts"
-        case .marginsAndInsets:           return "Margins and Insets"
+        case .relativePositions:          return "Relative Positionning"
+        case .multiRelativePositions:     return "Multiple Relatives Positionning"
         case .scrollingPin:               return "Pin to UIScrollView"
         case .count:                      return "Unknown"
         }
@@ -65,15 +45,8 @@ enum Page: Int {
 
     var viewController: UIViewController {
         switch self {
-        case .viewExtensionsPositionning: return ViewExtensionsPositionningViewController()
         case .relativePositions:          return RelativeViewController()
         case .multiRelativePositions:     return MultiRelativeViewController()
-        case .chainedLayout:              return ChainedLayoutViewController()
-        case .bothEdgesSnapped:           return BothEdgesSnappedViewController()
-        case .marginsAndPaddingLeftWidth: return MarginsAndPaddingsLeftWidthViewController()
-        case .marginsAndPaddingLeftRight: return MarginsAndPaddingsLeftRightViewController()
-        case .validateConflicts:          return ValidateConflictsViewController()
-        case .marginsAndInsets:           return MarginsAndInsetsViewController()
         case .scrollingPin:               return PinScrollingViewController()
         case .count:                      return UIViewController()
         }
@@ -87,6 +60,7 @@ class MenuViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        title = "PinLayout Samples"
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -100,7 +74,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        didSelect(page: .bothEdgesSnapped)
+        //didSelect(page: .relativePositions)
     }
 }
 

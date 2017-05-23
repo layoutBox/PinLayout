@@ -19,3 +19,6 @@ script: xcodebuild
   -enableCodeCoverage YES 
   test
  | xcpretty -f `xcpretty-travis-formatter`
+
+after_success:
+  -bash <(curl -s https://codecov.io/bash) -J 'PinLayout'

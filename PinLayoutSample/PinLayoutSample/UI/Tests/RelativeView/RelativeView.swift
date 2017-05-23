@@ -99,10 +99,6 @@ class RelativeView: UIView {
         rootView.frame = CGRect(x: 0, y: 64, width: 400, height: 400)
         centerView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
         
-//        centerView.width = 200
-//        centerView.height = 200
-//        centerView.center = CGPoint(x: 200, y: 300)
-        
         topLeftView.pin.above(of: centerView, aligned: .left)
         topCenterView.pin.above(of: centerView, aligned: .center)
         topRightView.pin.above(of: centerView, aligned: .right)

@@ -1,14 +1,14 @@
 PODS:
-  - Reveal-SDK (7)
-  - SwiftLint (0.16.1)
+  - Reveal-SDK (8)
+  - SwiftLint (0.18.1)
 
 DEPENDENCIES:
   - Reveal-SDK
   - SwiftLint
 
 SPEC CHECKSUMS:
-  Reveal-SDK: 564657bc66c93d2718b1c0121cdebe99d354ddab
-  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
+  Reveal-SDK: 43be4e662864e937960d0d04d005135e29c4e53b
+  SwiftLint: b467d08f5b25dc3b3cfed243d8e1b74b91714c67
 
 PODFILE CHECKSUM: 59a9a3ad8ae4f0bb64a6dadf661a354de61b0d83
 

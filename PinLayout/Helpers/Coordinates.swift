@@ -27,7 +27,7 @@
 
 import UIKit
 
-internal class Coordinates {
+class Coordinates {
     static func top(_ view: UIView) -> CGFloat {
         return view.frame.minY
     }
@@ -99,20 +99,24 @@ internal class Coordinates {
         return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY + view.frame.height)
     }
 
-    static let displayScale = UIScreen.main.scale
+    static var displayScale: CGFloat = UIScreen.main.scale
 
     static func adjustRectToDisplayScale(_ rect: CGRect) -> CGRect {
-        return  CGRect(x: ceilFloatToDisplayScale(rect.origin.x),
-                       y: ceilFloatToDisplayScale(rect.origin.y),
+        return  CGRect(x: roundFloatToDisplayScale(rect.origin.x),
+                       y: roundFloatToDisplayScale(rect.origin.y),
                        width: ceilFloatToDisplayScale(rect.size.width),
                        height: ceilFloatToDisplayScale(rect.size.height))
     }
 
     static func roundFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
-        return (round(pointValue * displayScale) / displayScale)
+        return CGFloat(roundf(Float(pointValue * displayScale))) / displayScale
     }
 
     static func ceilFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
-        return (round(pointValue * displayScale) / displayScale)
+        return CGFloat(ceilf(Float(pointValue * displayScale))) / displayScale
+    }
+    
+    static func overwriteDisplayScaleForUnitTest(scale: CGFloat) {
+        displayScale = scale
     }
 }

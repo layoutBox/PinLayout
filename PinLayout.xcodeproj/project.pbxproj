@@ -12,6 +12,7 @@
 		2419623C1E7F592800A0466C /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 241962371E7F582C00A0466C /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2419623D1E7F592800A0466C /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 241962381E7F582C00A0466C /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		244C6E151E776A0C0074FC74 /* MarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsSpec.swift */; };
+		245302071ED05FD000E13F29 /* AccurencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245302061ED05FD000E13F29 /* AccurencyTests.swift */; };
 		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
 		2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
 		2469C5021E75D88500073BEE /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
@@ -57,6 +58,7 @@
 		241962371E7F582C00A0466C /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		241962381E7F582C00A0466C /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		244C6E141E776A0C0074FC74 /* MarginsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsSpec.swift; sourceTree = "<group>"; };
+		245302061ED05FD000E13F29 /* AccurencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurencyTests.swift; sourceTree = "<group>"; };
 		2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgeCoordinateSpec.swift; sourceTree = "<group>"; };
 		2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustSizeSpec.swift; sourceTree = "<group>"; };
 		2469C5011E75D88500073BEE /* BasicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
@@ -141,9 +143,10 @@
 		249EFE871E64FB4C00165E39 /* PinLayoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
-				2469C5011E75D88500073BEE /* BasicView.swift */,
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
+				2469C5011E75D88500073BEE /* BasicView.swift */,
+				245302061ED05FD000E13F29 /* AccurencyTests.swift */,
+				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
 				249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */,
 				244C6E141E776A0C0074FC74 /* MarginsSpec.swift */,
 				DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */,
@@ -336,6 +339,7 @@
 				2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */,
 				2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */,
 				2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */,
+				245302071ED05FD000E13F29 /* AccurencyTests.swift in Sources */,
 				2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */,
 				2469C5021E75D88500073BEE /* BasicView.swift in Sources */,
 				246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */,

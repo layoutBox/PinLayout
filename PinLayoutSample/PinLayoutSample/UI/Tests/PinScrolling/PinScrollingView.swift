@@ -57,7 +57,7 @@ class PinScrollingView: UIView {
     init() {
         super.init(frame: .zero)
 
-        backgroundColor = .black
+        backgroundColor = .white
 
         contentScrollView.backgroundColor = .white
         contentScrollView.delegate = self

@@ -45,6 +45,7 @@ class MenuView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.tableFooterView = UIView()
         addSubview(tableView)
     }
 
@@ -80,9 +81,4 @@ extension MenuView: UITableViewDelegate {
             delegate?.didSelect(page: page)
         }
     }
-
-    /*func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-     {
-     return FavoriteListsTableViewCell.heighForWidth(width)
-     }*/
 }

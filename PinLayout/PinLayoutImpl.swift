@@ -24,131 +24,16 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
-
 import UIKit
 
-/*
- ===============================================
- QUESTIONS:
- ===============================================
-
-     - Names:
-        Attach to a Pin of another view
-         - view.layout.topLeft(backgroundView.pin.bottomLeft).margin(10)
-         - view.layout.pinTopLeft(backgroundView.pin.bottomLeft).margin(10)
-         
-        Attach a coordinate relative to another UIView
-         - view.layout.left(of: UIView).margin(10)
-         - view.layout.left(of: UIView).margin(10)
-         - view.layout.above(of: UIView).margin(10)
- 
-         Q: Une méthode avec paramêtre optionnel OU deux méthodes?
-         - view.layout.left(of: backgroundView, aligned: .top)
-         - view.layout.left(of: backgroundView)
- 
-        Use a CGPoint
-         - view.layout.topLeft(CGPoint(x: 10, y: 20)).margin(10)
-         - view.layout.pinTopLeft(CGPoint(x: 10, y: 20)).margin(10)
- 
-        Attach a point related to its superview
-         - view.layout.topLeft().margin(10)
-         - view.layout.topLeftToSuperview().margin(10)
-         - view.layout.pinTopLeftToSuperview().margin(10)
- 
-         Attach a coordinate relative to another UIView
-         - view.layout.left(backgroundView.edge.left)
-         - view.layout.top(backgroundView.edge.bottom)
- 
-         - view.pin.topLeft(to: .bottomLeft, of: backgroundView).margin(10)
-         - view.pin.topLeft(.bottomLeft, of: backgroundView).margin(10)
- 
-         - view.layout.snapTopLeft(.bottomLeft, of: backgroundView)
-         - view.layout.snapTopLeft(to: .bottomLeft, of: backgroundView).margin(10)
-         - view.layout.snapTopLeft(to: backgroundView, .bottomLeft).margin(10)
-         - view.layout.snapTop(to: .bottom, of: backgroundView).margin(10)
-         
-         - layout.snapTopLeft(to: backgroundView, .bottomLeft)
-         
-         - layout.top(to: .bottom, of: backgroundView)
- 
-    - enum Snap ou Pin ou Point?
-
- ===============================================
- TODO:
- ===============================================
- - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et
-    UIKit afin de potentiellement être capable de le bridger vers d'autres entitées visuelles qu'une 
-    UIView (exemple: CALayer, NSView, ASDisplayNode, etc). L'engin n'a probablement à dealer qu'avec des 
-    primitives de CoreGraphics.
-
-    Cette abstraction a été fait dans le framework d'animation POP ce qui fait qu'on peut virtuellement animer 
-    n'importe quelle valeur, qu'elle soit liée à une vue ou pas. Ça rend le truc vraiment flexible.
-        https://github.com/facebook/pop
-
- - applyMarginsAsInsets, marginsAsInsets, insetsMargins, stickyBounds, pinBounds, pinEdges
- - pinEdgesHorizontal, pinEdgesVertical ??
- - Add parameter to sizeToFit indiquant si on doit caster ou pas le résultat
- - Add minHeight, maxHeight, ...
- - Add size(_ width: CGFloat, _ height: CGFloat)
- 
- - frame(of: UIView)
- - frame()
-  
- - In CSS
-        - negative width and height is not applied, also for percentages
-        - right/bottom: negative value and percentage is applyed 
-                right: -20px  increase the width by an extra 20 pixels
-                right: -50%   increase the width by an extra 50% (width = parent's width * 1.50)
-        - negative margins affect the top, left, bottom, right. pixel or percent
-
- 
- - sizeToFit() devrait prendre un parametre indiquant si on doit caster les nouvelles valeur
-     de width et de height (forceSize, castSize, ...?)
- 
- - dans le calcul des coordonné, ajouter un referenceView is superview then ...
-    optimisation
-
- - Support hCenter + left or right
- - Support vCenter + top or bottom
- 
- - maxWidth(), minWidth(), maxHeight(), minHeight()
- 
- - Unit tests TODO:
-    - pinTopLeft(to: Pin, of: UIView), topCenter(to: Pin, of: UIView), ...
-    - margins and insets negatifs
-    - margin(t: l: b: r:)
-
- - With SwiftyAttributes, you can write the same thing like this:
-
-        let fancyString = "Hello World!".withTextColor(.blue).withUnderlineStyle(.styleSingle)
-    Alternatively, SwiftyAttributes provides an Attribute enum:
-        let fancyString = "Hello World!".withAttributes([
-            .backgroundColor(.magenta),
-            .strokeColor(.orange),
-            .strokeWidth(1),
-            .baselineOffset(5.2)
-        ])
- 
- - Inspired by https://github.com/robb/Cartography
-     // Other possible syntax
-    layout(viewA) { viewA in {
-        viewA.pinTopLeft(to: viewB.pin.topLeft).margin(20)
-        viewA.width(20).height(20)
-    }
- 
- //constrain(button1, button2) { button1, button2 in
- //    button1.right == button2.left - 12
- //}
-*/
 #if DEBUG
     public var PinLayoutLogConflicts = true
 #else
     public var PinLayoutLogConflicts = false
 #endif
 
-
 class PinLayoutImpl: PinLayout {
-       fileprivate let view: UIView
+    fileprivate let view: UIView
 
     fileprivate var _top: CGFloat?       // offset from superview's top edge
     fileprivate var _left: CGFloat?      // offset from superview's left edge

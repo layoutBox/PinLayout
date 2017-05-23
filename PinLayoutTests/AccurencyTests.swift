@@ -54,15 +54,15 @@ class AccurencyTests: QuickSpec {
             rootView.addSubview(aView)
         }
         
-        describe("Test accurency") {
-            it("") {
-                
-                Coordinates.overwriteDisplayScaleForUnitTest(scale: 1)
-                aView.pin.top(1.33).left(1.33).width(1.33).height(1.33)
-//                expect(aView.top).to(equal(2))
-                expect(aView.frame).to(equal(CGRect(x: 2, y: 2, width: 2, height: 2)))
-            }
-        }
+//        describe("Test accurency") {
+//            it("") {
+//                
+//                Coordinates.overwriteDisplayScaleForUnitTest(scale: 1)
+//                aView.pin.top(1.33).left(1.33).width(1.33).height(1.33)
+////                expect(aView.top).to(equal(2))
+//                expect(aView.frame).to(equal(CGRect(x: 2, y: 2, width: 2, height: 2)))
+//            }
+//        }
     }
 }
 /*

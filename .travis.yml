@@ -21,4 +21,4 @@ script: xcodebuild
  | xcpretty -f `xcpretty-travis-formatter`
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'

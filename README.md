@@ -6,7 +6,8 @@ Simple Swift iOS layouting without using NSLayoutConstraint.
 
 > "No constraints attached"
 
-</br>
+Layout most views using a single line without constraints. Stateless, so it can be used with any other Layout frameworks without conflicts. Consise syntax, readable & chainable.
+
 
 [![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
 [![codecov](https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg)](https://codecov.io/gh/mirego/PinLayout)
@@ -36,15 +37,14 @@ Simple Swift iOS layouting without using NSLayoutConstraint.
 	* The layout system doesn’t add any stored properties to UIViews. It simply compute the UIView.frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 
 Each view can use the layout system that better suit it  (PinLayout, constraint, flexbox, grids, …)
-A view can be layouted using PinLayout and later with another method.
-	* REWORK THAT!!! Stateless also means that if a view reference other views, the view should be re-layouted in layoutSubViews()  layouted with PinLayout use other views as referenced view change (size/position) 
+A view can be layouted using PinLayout and later with another method/framework.
 
-* No constraints
-	* Constraints are very verbose and hard for a human brains to understand. Too much information.
+* No constraints/No auto-layout
+	* Constraints are verbose and hard for a human brains to understand when there are many views implicated, even with sugar-syntax frameworks.
 	* PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width match the other view’s width“). 
 	* No priorities, simply layout views in the order that make sense. No priority required.
 
-* Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So it’s possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20))
+* Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So it’s possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20)). This makes PinLayout really animation friendly.
 
 * Minimize as much as possible calculations and constants when layouting views.
 
@@ -55,7 +55,7 @@ A view can be layouted using PinLayout and later with another method.
 
 * Shorter possible commands to layout views, but keeping english phrasing almost valid.
 
-</br>
+<br>
 
 ## Installation <a name="installation"></a>
 
@@ -79,7 +79,7 @@ github "mirego/PinLayout"
 
 Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
 
-</br>
+<br>
 
 # Documentation <a name="documentation"></a>
 
@@ -357,7 +357,7 @@ This is an equivalent solutions using [edges](#edge):
 This is also an equivalent solutions using [relative positioning and alignment](#relative_positionning_w_alignment) explained in the next section:
 
 ```javascript
-	viewC.pin.top().left(of: viewA, aligned: .top).right(of: viewB, aligned: top).marginHorizontal(10)
+	viewC.pin.left(of: viewA, aligned: .top).right(of: viewB, aligned: top).marginHorizontal(10)
 ```
 
 
@@ -494,7 +494,7 @@ PinLayout have methods to apply margin.
 	view.pin.topLeft().bottomRight().margin(10, 12, 0, 12)
 ```
 
-</br>
+<br>
 
 ### PinLayout margin rules
 The following section explains how CSS/PinLayout margin rules are applied. 
@@ -513,7 +513,7 @@ This table explain how and when **left and right margins** are applied depending
 
 NOTE: `-` indicates that the margin is not applied.
 
-</br>
+<br>
 
 #### When and how does vertical margins are applies in PinLayout?
 
@@ -527,7 +527,7 @@ This table explain how and when **top and bottom margins** are applied depending
 | **Bottom and Height**          | *-*                               | *Move view up*                             |
 | **Top and Bottom**           | *Reduce the height to apply the top margin* | *Reduce the height to apply the bottom margin* |
 
-</br>
+<br>
 
 ### Margin examples
 
@@ -571,7 +571,7 @@ In this example, **left**, **right**, **top** and **bottom** margins are applied
 	view.pin.topLeft().bottomRight().margin(10)
 ```
 
-</br>
+<br>
 
 ### pinEdges()
 The `pinEdges()` method pin the four edges (top, left, bottom and right edges) before applying margins. 
@@ -600,7 +600,7 @@ With `pinEdges()` the left and right margins are applied even if only the left a
 	view.pin.left().width(percent: 100).pinEdges().marginHorizontal(20)
 ```
 
-</br>
+<br>
 
 NOTE: In that in that particular situation, the same results could have been achieved differently too:
 
@@ -611,7 +611,7 @@ NOTE: In that in that particular situation, the same results could have been ach
 ```
 
 
-</br>
+<br>
 
 
 ## Warnings <a name="warnings"></a>
@@ -698,10 +698,8 @@ Cell D:
 	d3.pin.right(of: d2, aligned: .top).bottomRight().marginLeft(10)
 ```
 
-</br>
+<br>
 
-### Display a view below the UINavigationBar
-TODO
 
 
 ## Contributing

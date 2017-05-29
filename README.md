@@ -34,8 +34,10 @@ Layout most views using a single line without constraints. Stateless, so it can 
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
+* Manual layouting. No magic, pure code, full control.
 * Layout one view at a time. 
-* Layout most views using a single line
+* Layout most views using a single line.
+
 * Stateless
 	* The layout system doesn’t add any stored properties to UIViews. It simply compute the UIView.frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 

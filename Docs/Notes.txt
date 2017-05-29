@@ -8,6 +8,8 @@
  ===============================================
  TODO:
  ===============================================
+ - Nice introduction https://github.com/stevestreza/Relayout
+ 
  - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et
     UIKit afin de potentiellement être capable de le bridger vers d'autres entitées visuelles qu'une 
     UIView (exemple: CALayer, NSView, ASDisplayNode, etc). L'engin n'a probablement à dealer qu'avec des 

@@ -8,6 +8,7 @@ Simple Swift iOS layouting without using NSLayoutConstraint.
 
 Layout most views using a single line without constraints. Stateless, so it can be used with any other Layout frameworks without conflicts. Consise syntax, readable & chainable.
 
+<br>
 
 [![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
 [![codecov](https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg)](https://codecov.io/gh/mirego/PinLayout)
@@ -28,6 +29,8 @@ Layout most views using a single line without constraints. Stateless, so it can 
    	* [Margins](#margins)
    	* [Warnings](#warnings)
    	* [More examples](#more_examples)
+
+<br>
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
 

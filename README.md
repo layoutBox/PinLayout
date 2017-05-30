@@ -1,22 +1,26 @@
-![](Docs/pinlayout-logo-small.png)
+<p align="center">
+  <a href="https://mirego.github.io/PinLayout/"><img src="Docs/pinlayout-logo-small.png" alt="PinLayout" /></a>
+</p>
 
-# PinLayout
-
-Simple Swift iOS layouting without using NSLayoutConstraint.
-
-> "No constraints attached"
-
-Layout most views using a single line without constraints. Stateless, so it can be used with any other Layout frameworks without conflicts. Consise syntax, readable & chainable.
+<h1 align="center" style="; color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 3em">PinLayout</h1>
+ 
+<p align="center">
+  <a href="https://travis-ci.org/mirego/PinLayout"><img src="https://travis-ci.org/mirego/PinLayout.svg?branch=master" /></a>
+  <a href="https://codecov.io/gh/mirego/PinLayout"><img src="https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg"/></a>
+  <a href='https://img.shields.io/cocoapods/v/PinLayout.svg'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg" /></a>
+  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" /></a>
+  <a href="https://raw.githubusercontent.com/mirego/PinLayout/master/LICENSE"><img src="https://img.shields.io/badge/license-New%20BSD-blue.svg?style=flat" /></a>
+  <a href=""><img src="https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat" /></a>
+  <!--a href="https://github.com/mirego/PinLayout/issues"><img src="https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat" /></a-->
+</p>
 
 <br>
+  
+Layout most views using a single line without constraints. Stateless, so it can be used with any other Layout frameworks without conflicts. Consise syntax, readable & chainable.
 
-[![Build Status](https://travis-ci.org/mirego/PinLayout.svg?branch=master)](https://travis-ci.org/mirego/PinLayout)
-[![codecov](https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg)](https://codecov.io/gh/mirego/PinLayout)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/PinLayout.svg)](https://img.shields.io/cocoapods/v/PinLayout.svg)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![GitHub license](https://img.shields.io/badge/license-New%20BSD-blue.svg?style=flat)](https://raw.githubusercontent.com/mirego/PinLayout/master/LICENSE)
-[![Platform](https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat)](http://cocoadocs.org/docsets/Alamofire)
-[![GitHub issues](https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat)](https://github.com/mirego/PinLayout/issues)
+> "No auto-layout constraints attached"
+
+<br>
 
 * [PinLayout principles and philosophy](#introduction)
 * [Installation](#installation)

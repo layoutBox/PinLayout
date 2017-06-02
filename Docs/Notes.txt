@@ -9,7 +9,13 @@
  TODO:
  ===============================================
  - Nice introduction https://github.com/stevestreza/Relayout
- 
+
+ - Add a doc example using width(40%).height(100%)
+
+ - Add an image showing hCenter and vCenter (see http://doc.qt.io/qt-5/qtquick-positioning-anchors.html)
+
+ - Optimization: Use a bit mask to check rapidly which properties has been set. ex: if propertiesMask & (TOP | BOTTOM) { ... }
+
  - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et
     UIKit afin de potentiellement être capable de le bridger vers d'autres entitées visuelles qu'une 
     UIView (exemple: CALayer, NSView, ASDisplayNode, etc). L'engin n'a probablement à dealer qu'avec des 
@@ -25,18 +31,30 @@
    pin.view.fill(), pin.fillHorizontally(), pin.fillVertically()
    pin.toSuperview()
 
+    * `allEdges()`  
+    Position 
+    * `verticalEdges()`  
+    Position 
+    * `horizontalEdges()`  
+    Position 
+
  - Percentages  (see https://github.com/freshOS/Stevia/blob/master/Source/Stevia%2BPercentage.swift)
     pin.top(5%)
     pin.left(20%)
     pin.bottom(10%)
     pin.right(15%)
-    pin.width(45%)
-    pin.height(100%)
-    pin.size(100%)
-    pin.Height == 47 % button.Width
     
  - Add parameter to sizeToFit indiquant si on doit caster ou pas le résultat
- - Add minHeight, maxHeight, ...
+ 
+ - max/max height/width
+    - minWidth(CGFloat)
+    - minWidth(Percent)
+    - maxWidth(CGFloat)
+    - maxWidth(Percent)
+    - minHeight(CGFloat)
+    - minHeight(Percent)
+    - maxHeight(CGFloat)
+    - maxHeight(Percent)
 
  - Add size(_ width: CGFloat, _ height: CGFloat)
  - Add size(widthAndHeight: CGFloat)

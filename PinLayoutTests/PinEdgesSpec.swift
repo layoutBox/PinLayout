@@ -60,6 +60,7 @@ class PinEdgesSpec: QuickSpec {
         // top
         //
         describe("the result of top(...)") {
+        
             it("should adjust the aView") {
                 aView.pin.top()
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
@@ -76,6 +77,43 @@ class PinEdgesSpec: QuickSpec {
 
                 aView.pin.top(0)
                 expect(aView.frame).to(equal(noParameterFrame))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top(20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 20.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top(20).bottom()
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 20.0, width: 200.0, height: 380.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: -20.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top(-20).bottom()
+                expect(aView.frame).to(equal(CGRect(x: 140, y: -20.0, width: 200.0, height: 420.0)))
+            }
+        
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.top(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top(20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 80.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: -80.0, width: 200.0, height: 100.0)))
             }
         }
 
@@ -100,6 +138,50 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.left(0)
                 expect(aView.frame).to(equal(noParameterFrame))
             }
+            
+            it("should adjust the aView") {
+                aView.pin.left(-20)
+                expect(aView.frame).to(equal(CGRect(x: -20, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left(-20).right()
+                expect(aView.frame).to(equal(CGRect(x: -20, y: 100.0, width: 420.0, height: 100.0)))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.left(20.0%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.left(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left(20%)
+                expect(aView.frame).to(equal(CGRect(x: 80, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left(20%).right()
+                expect(aView.frame).to(equal(CGRect(x: 80, y: 100.0, width: 320.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left(-20%)
+                expect(aView.frame).to(equal(CGRect(x: -80, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left(-20%).right()
+                expect(aView.frame).to(equal(CGRect(x: -80, y: 100.0, width: 480.0, height: 100.0)))
+            }
         }
 
         //
@@ -122,6 +204,43 @@ class PinEdgesSpec: QuickSpec {
 
                 aView.pin.bottom(0)
                 expect(aView.frame).to(equal(noParameterFrame))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 320.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().bottom(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 420.0)))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.bottom(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 220.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().bottom(20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 320.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 380.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().bottom(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 480.0)))
             }
         }
 
@@ -146,6 +265,52 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.right(0)
                 expect(aView.frame).to(equal(noParameterFrame))
             }
+            
+            // CGRect(x: 140, y: 100, width: 200, height: 100)
+            
+            
+            it("should adjust the aView") {
+                aView.pin.right(-20)
+                expect(aView.frame).to(equal(CGRect(x: 220, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left().right(-20)
+                expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 420.0, height: 100.0)))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.right(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.right(20%)
+                expect(aView.frame).to(equal(CGRect(x: 120, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left().right(20%)
+                expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 320.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.right(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 280, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.left().right(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 480.0, height: 100.0)))
+            }
         }
+        
+        
+        // TODO: Test hCenter and vCenter!!!!!!
+        
+        
+        
     }
 }

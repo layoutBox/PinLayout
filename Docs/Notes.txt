@@ -12,6 +12,8 @@
 
  - Add a doc example using width(40%).height(100%)
 
+ - Add an image showing hCenter and vCenter (see http://doc.qt.io/qt-5/qtquick-positioning-anchors.html)
+
  - Optimization: Use a bit mask to check rapidly which properties has been set. ex: if propertiesMask & (TOP | BOTTOM) { ... }
 
  - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et

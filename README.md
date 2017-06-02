@@ -99,17 +99,29 @@ PinLayout can position a view’s edge relative to its superview edges.
 **Methods**:
 
 * `top(_ value: CGFloat)`  
-The value specifies the distance in pixels between the top edge of the view and the top edge of its to superview
+The value specifies the top edge distance from the superview's top edge in pixels.
+* `top(_ percent: Percent)`  
+The value specifies the top edge distance from the superview's top edge in percentage of its superview's height.
 * `left(_ value: CGFloat)`  
-The value specifies the distance in pixels between the left edge of the view and the left edge of its to superview
+The value specifies the left edge distance from the superview's left edge in pixels.
+* `left(_ percent: Percent)`  
+The value specifies the left edge distance from the superview's left edge in percentage of its superview's width.
 * `bottom(_ value: CGFloat)`  
-The value specifies the distance in pixels between the bottom edge of the view and the bottom edge of its to superview.
+The value specifies the bottom edge distance from the superview's bottom edge in pixels.
+* `bottom(_ percent: Percent)`  
+The value specifies the bottom edge distance from the superview's bottom edge in percentage of its superview's height.
 * `right(_ value: CGFloat)`  
-The value specifies the distance in pixels between the right edge of the view and the right edge of its to superview.
+The value specifies the right edge distance from the superview's right edge in pixels.
+* `right(_ percent: Percent)`  
+The value specifies the right edge distance from the superview's right edge in percentage of its superview's width.
 * `hCenter(_ value: CGFloat)`  
-The value specifies the distance in pixels between the horizontal center of the view and the left edge of its to superview.
+The value specifies the horizontal center distance from the superview's left edge in pixels.
+* `hCenter(_ percent: Percent)`  
+The value specifies the horizontal center distance from the superview's left edge in percentage of its superview's width.
 * `vCenter(_ value: CGFloat)`  
-The value specifies the distance in pixels between the vertical center of the view and the top edge of its to superview.  
+The value specifies the vertical center distance from the superview's top edge in pixels.
+* `vCenter(_ percent: Percent)`  
+The value specifies the vertical center distance from the superview's top edge in percentage of its superview's height.
 
 ###### Usage Examples:
 
@@ -148,13 +160,10 @@ Position the view left edge directly on its superview top edge. Similar to calli
 Position the view bottom edge directly on its superview top edge. Similar to calling bottom(0)
 * `right()`  
 Position the view right edge directly on its superview top edge. Similar to calling right(0)
-
-* `allEdges()`  
-Position 
-* `verticalEdges()`  
-Position 
-* `horizontalEdges()`  
-Position 
+* `hCenter()`  
+Position the view horizontal center directly on its superview horizontal center. Similar to calling hCenter(0).
+* `vCenter()`  
+Position the view vertical center directly on its superview vertical center. Similar to calling vCenter(0).
 
 ###### Usage examples:
 ```javascript
@@ -421,24 +430,24 @@ PinLayout have methods to set the view’s height and width.
 
 **Methods:**
 
-* `width(percent: Percent)`  
-The value specifies the width of the view in percent relative to its superview (container). Value must be non-negative.
 * `width(_ width: CGFloat)`  
 The value specifies the width of the view in pixels. Value must be non-negative.
+* `width(percent: Percent)`  
+The value specifies the width of the view in percentage of its superview. Value must be non-negative.
 * `width(of view: UIView)`  
 Set the view’s width to match the referenced view’s width.
 
-* `height(percent: Percent)`  
-The value specifies the height of the view in percent relative to its superview (container). Value must be non-negative.
 * `height(_ height: CGFloat)`  
 The value specifies the height of the view in pixels.
+* `height(percent: Percent)`  
+The value specifies the height of the view in percentage of its superview. Value must be non-negative.
 * `height(of view: UIView)`  
 Set the view’s height to match the referenced view’s height
 
 * `size(_ size: CGSize)`  
 The value specifies the size (width and value) of the view in pixels. Values must be non-negative.
 * `size(_ percent: Percent)`  
-The value specifies the width and the height of the view in percent relative to its superview (container), creating a square view. Values must be non-negative.
+The value specifies the width and the height of the view in percentage of its superview. Values must be non-negative.
 * `size(_ sideLength: CGFloat)`  
 The value specifies the width and the height of the view in pixels, creating a square view. Values must be non-negative.
 * `size(of view: UIView)`  

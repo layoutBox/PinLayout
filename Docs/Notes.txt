@@ -12,6 +12,8 @@
 
  - Add a doc example using width(40%).height(100%)
 
+ - Optimization: Use a bit mask to check rapidly which properties has been set. ex: if propertiesMask & (TOP | BOTTOM) { ... }
+
  - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et
     UIKit afin de potentiellement être capable de le bridger vers d'autres entitées visuelles qu'une 
     UIView (exemple: CALayer, NSView, ASDisplayNode, etc). L'engin n'a probablement à dealer qu'avec des 
@@ -26,6 +28,13 @@
    pin.all(), pin.allHorizontal(), pin.allVertical()
    pin.view.fill(), pin.fillHorizontally(), pin.fillVertically()
    pin.toSuperview()
+
+    * `allEdges()`  
+    Position 
+    * `verticalEdges()`  
+    Position 
+    * `horizontalEdges()`  
+    Position 
 
  - Percentages  (see https://github.com/freshOS/Stevia/blob/master/Source/Stevia%2BPercentage.swift)
     pin.top(5%)

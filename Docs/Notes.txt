@@ -11,6 +11,7 @@
  - Nice introduction https://github.com/stevestreza/Relayout
 
  - Add a doc example using width(40%).height(100%)
+ - Add also an example using view.pin.top(25%).hCenter(0)
 
  - Add an image showing hCenter and vCenter (see http://doc.qt.io/qt-5/qtquick-positioning-anchors.html)
 

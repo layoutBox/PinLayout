@@ -127,7 +127,7 @@ The value specifies the vertical center distance from the superview's top edge i
 
 ```
     view.pin.top(20).left(20)
-    view.pin.left(0).right(0)
+    view.pin.top(25%).hCenter(0)
     view.pin.left(12).vCenter(100)
 ```
 
@@ -169,6 +169,7 @@ Position the view vertical center directly on its superview vertical center. Sim
 ```javascript
 	view.pin.top().left()
 	view.pin.bottom().right()
+	view.pin.hCenter().vCenter()
 ```
 
 ###### Example:

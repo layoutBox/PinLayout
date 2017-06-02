@@ -15,9 +15,9 @@
 </p>
 
 <br>
-  
-Layout most views using a single line without constraints. Stateless, so it can be used with any other Layout frameworks without conflicts. Consise syntax, readable & chainable.
 
+Swift manual views layouting, no magic, pure code, full control. Concise syntax, readable & chainable.
+  
 > "No auto-layout constraints attached"
 
 <br>
@@ -40,7 +40,7 @@ Layout most views using a single line without constraints. Stateless, so it can 
 
 * Manual layouting. No magic, pure code, full control.
 * Layout one view at a time. 
-* Layout most views using a single line.
+* Concise syntax. Layout most views using a single line. 
 
 * Stateless
 	* The layout system doesn’t add any stored properties to UIViews. It simply compute the UIView.frame property, one view at a time.
@@ -148,6 +148,13 @@ Position the view left edge directly on its superview top edge. Similar to calli
 Position the view bottom edge directly on its superview top edge. Similar to calling bottom(0)
 * `right()`  
 Position the view right edge directly on its superview top edge. Similar to calling right(0)
+
+* `allEdges()`  
+Position 
+* `verticalEdges()`  
+Position 
+* `horizontalEdges()`  
+Position 
 
 ###### Usage examples:
 ```javascript
@@ -414,22 +421,26 @@ PinLayout have methods to set the view’s height and width.
 
 **Methods:**
 
+* `width(percent: Percent)`  
+The value specifies the width of the view in percent relative to its superview (container). Value must be non-negative.
 * `width(_ width: CGFloat)`  
 The value specifies the width of the view in pixels. Value must be non-negative.
-* `width(percent: CGFloat)`  
-The value specifies the width of the view in percent relative to its superview (container). Value must be non-negative.
 * `width(of view: UIView)`  
 Set the view’s width to match the referenced view’s width.
 
+* `height(percent: Percent)`  
+The value specifies the height of the view in percent relative to its superview (container). Value must be non-negative.
 * `height(_ height: CGFloat)`  
 The value specifies the height of the view in pixels.
-* `height(percent: CGFloat)`  
-The value specifies the height of the view in percent relative to its superview (container). Value must be non-negative.
 * `height(of view: UIView)`  
 Set the view’s height to match the referenced view’s height
 
 * `size(_ size: CGSize)`  
 The value specifies the size (width and value) of the view in pixels. Values must be non-negative.
+* `size(_ percent: Percent)`  
+The value specifies the width and the height of the view in percent relative to its superview (container), creating a square view. Values must be non-negative.
+* `size(_ sideLength: CGFloat)`  
+The value specifies the width and the height of the view in pixels, creating a square view. Values must be non-negative.
 * `size(of view: UIView)`  
 Set the view’s size to match the referenced view’s size
 
@@ -438,15 +449,16 @@ Set the view’s size to match the referenced view’s size
 
 ###### Usage examples:
 ```javascript
+	view.pin.width(50%)
 	view.pin.width(100)
 	view.pin.width(of: view1)
-	view.pin.width(percent: 50)
 	
+	view.pin.height(100%)
 	view.pin.height(200)
-	view.pin.height(percent: 100)
 	
-	view.pin.size(view1.size)
 	view.pin.size(of: view1)
+	view.pin.size(50%)
+	view.pin.size(250)
 ```
 
 
@@ -640,11 +652,11 @@ Example:
 * The view being layout hasn’t been added yet into a superview  
 Example:  
 `view.pin.width(100)`  
-👉 Layout Warning: `width(100) The view must be added to a UIView before being layouted using this method` 
+👉 Layout Warning: `width(100) won't be applied, the view must be added as a sub-view before being layouted using this method.` 
 * A view is used as a reference, either directly or using its anchors or its edges, but hasn’t been added yet to a superview.   
 Example:  
 `view.pin.left(of: view2)`  
-👉 Layout Warning: `left(of: view2) The view must be added to a UIView before being used as a reference.` 
+👉 Layout Warning: `left(of: view2) won't be applied, the view must be added as a sub-view before being used as a reference.` 
 * The width and the height must be non negative values.  
 Example:  
 `view.pin.width(-100)`  
@@ -665,7 +677,7 @@ The following examples show how PinLayout can be used to adjust views size and p
 
 Cell A:
 
-* A1 is left aligned with a fixed width of 50px
+* A1 is left aligned with a width of 50px
 * A2 fill the remaining space
 
 ```javascript
@@ -702,8 +714,8 @@ Cell D:
 * D3 fill the remaining space
 
 ```javascript
-	d1.pin.topLeft().bottom().width(percent: 25)
-	d2.pin.right(of: d1, aligned: .top).bottom().width(percent: 50).marginLeft(10)
+	d1.pin.topLeft().bottom().width(25%)
+	d2.pin.right(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
 	d3.pin.right(of: d2, aligned: .top).bottomRight().marginLeft(10)
 ```
 

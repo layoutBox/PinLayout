@@ -26,6 +26,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
+import PinLayout
 
 class PinScrollingView: UIView {
 
@@ -102,7 +103,7 @@ class PinScrollingView: UIView {
         super.layoutSubviews()
 
         contentScrollView.pin.topLeft().bottomRight().marginTop(64)
-        contentScrollView.contentSize = CGSize(width: width, height: height * 4)
+        contentScrollView.contentSize = CGSize(width: width, height: height * 2)
         contentScrollView.contentInset = .zero
         
         aView.pin.top(0).left(0).right(0).height(40).margin(10)
@@ -116,7 +117,7 @@ class PinScrollingView: UIView {
         row1Item2.pin.right(of: row1Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
 
         row2.pin.below(of: row1, aligned: .left).size(of: aView).marginTop(10)
-        row2Item1.pin.topRight().bottom().width(50).margin(2)
+        row2Item1.pin.topRight().bottom().width(20).width(25%).margin(2)
         row2Item2.pin.left(of: row2Item1, aligned: .top).bottomLeft().margin(0, 2, 2, 2)
 
         row3.pin.below(of: row2, aligned: .left).size(of: aView).marginTop(10)
@@ -125,8 +126,8 @@ class PinScrollingView: UIView {
         row3Item3.pin.right(of: row3Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
 
         row4.pin.below(of: row3, aligned: .left).size(of: aView).marginTop(10)
-        row4Item1.pin.topLeft().width(percent: 25).bottom().margin(2)
-        row4Item2.pin.right(of: row4Item1, aligned: .top).width(percent: 50).bottom().margin(0, 2, 2, 2)
+        row4Item1.pin.topLeft().width(25%).bottom().margin(2)
+        row4Item2.pin.right(of: row4Item1, aligned: .top).width(50%).bottom().margin(0, 2, 2, 2)
         row4Item3.pin.right(of: row4Item2, aligned: .top).bottomRight().margin(0, 2, 2, 2)
     }
 

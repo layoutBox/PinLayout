@@ -28,22 +28,6 @@
 import UIKit
 
 class Coordinates {
-    static func top(_ view: UIView) -> CGFloat {
-        return view.frame.minY
-    }
-
-    static func left(_ view: UIView) -> CGFloat {
-        return view.frame.minX
-    }
-
-    static func bottom(_ view: UIView) -> CGFloat {
-        return view.frame.maxY
-    }
-
-    static func right(_ view: UIView) -> CGFloat {
-        return view.frame.maxX
-    }
-
     static func hCenter(_ view: UIView) -> CGFloat {
         return view.frame.minX + (view.frame.width / 2)
     }
@@ -51,17 +35,6 @@ class Coordinates {
     static func vCenter(_ view: UIView) -> CGFloat {
         return view.frame.minY + (view.frame.height / 2)
     }
-
-//    static func size(_ view: UIView) -> CGSize {
-//        return view.frame.size
-//    }
-//    static func width(_ view: UIView) -> CGFloat {
-//        return view.frame.width
-//    }
-//
-//    static func height(_ view: UIView) -> CGFloat {
-//        return view.frame.height
-//    }
 
     static func topLeft(_ view: UIView) -> CGPoint {
         return CGPoint(x: view.frame.minX, y: view.frame.minY)
@@ -114,9 +87,5 @@ class Coordinates {
 
     static func ceilFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
         return CGFloat(ceilf(Float(pointValue * displayScale))) / displayScale
-    }
-    
-    static func overwriteDisplayScaleForUnitTest(scale: CGFloat) {
-        displayScale = scale
     }
 }

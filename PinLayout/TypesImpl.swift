@@ -56,7 +56,7 @@ class HorizontalEdgeImpl: HorizontalEdge {
     var x: CGFloat {
         switch type {
         case .left: return view.frame.origin.x
-        case .right: return Coordinates.right(view)
+        case .right: return view.frame.maxX
         }
     }
 
@@ -78,7 +78,7 @@ class VerticalEdgeImpl: VerticalEdge {
     var y: CGFloat {
         switch type {
         case .top: return view.frame.origin.y
-        case .bottom: return Coordinates.bottom(view)
+        case .bottom: return view.frame.maxY
         }
     }
 
@@ -141,3 +141,13 @@ class AnchorImpl: Anchor {
         self.type = type
     }
 }
+
+extension Percent: CustomStringConvertible {
+    func of(_ rhs: CGFloat) -> CGFloat {
+        return rhs * value / 100
+    }
+    public var description: String {
+        return "\(value)%"
+    }
+}
+

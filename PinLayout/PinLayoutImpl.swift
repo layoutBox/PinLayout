@@ -40,8 +40,8 @@ class PinLayoutImpl: PinLayout {
     fileprivate var _bottom: CGFloat?    // offset from superview's top edge
     fileprivate var _right: CGFloat?     // offset from superview's left edge
     
-    fileprivate var hCenter: CGFloat?
-    fileprivate var vCenter: CGFloat?
+    fileprivate var _hCenter: CGFloat?
+    fileprivate var _vCenter: CGFloat?
     
     fileprivate var width: CGFloat?
     fileprivate var height: CGFloat?
@@ -81,6 +81,14 @@ class PinLayoutImpl: PinLayout {
         return self
     }
     
+    @discardableResult
+    func top(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "top(\(percent))" }
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setTop(percent.of(layoutSuperview.frame.height), context)
+        return self
+    }
+    
     @discardableResult func left() -> PinLayout {
         setLeft(0, { return "left()" })
         return self
@@ -89,6 +97,14 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func left(_ value: CGFloat) -> PinLayout {
         setLeft(value, { return "left(\(value))" })
+        return self
+    }
+    
+    @discardableResult
+    func left(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "left(\(percent))" }
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setLeft(percent.of(layoutSuperview.frame.width), context)
         return self
     }
     
@@ -106,6 +122,14 @@ class PinLayoutImpl: PinLayout {
         setBottom(layoutSuperview.frame.height - value, context)
         return self
     }
+    
+    @discardableResult
+    func bottom(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "bottom(\(percent))" }
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setBottom(layoutSuperview.frame.height - percent.of(layoutSuperview.frame.height), context)
+        return self
+    }
 
     @discardableResult func right() -> PinLayout {
         func context() -> String { return "right()" }
@@ -121,18 +145,56 @@ class PinLayoutImpl: PinLayout {
         setRight(layoutSuperview.frame.width - value, context)
         return self
     }
-
+    
     @discardableResult
-    func hCenter(_ value: CGFloat) -> PinLayout {
-        func context() -> String { return "vCenter(\(value))" }
-        setHorizontalCenter(value, context)
+    func right(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "right(\(percent))" }
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width - percent.of(layoutSuperview.frame.width), context)
         return self
     }
 
     @discardableResult
+    func hCenter() -> PinLayout {
+        func context() -> String { return "hCenter()" }
+        setHorizontalCenter(0, context)
+        return self
+    }
+
+    @discardableResult
+    func hCenter(_ value: CGFloat) -> PinLayout {
+        func context() -> String { return "hCenter(\(value))" }
+        setHorizontalCenter(value, context)
+        return self
+    }
+    
+    @discardableResult
+    func hCenter(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "hCenter(\(percent))" }
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setHorizontalCenter(percent.of(layoutSuperview.frame.width), context)
+        return self
+    }
+
+    @discardableResult
+    func vCenter() -> PinLayout {
+        func context() -> String { return "vCenter()" }
+        setVerticalCenter(0, context)
+        return self
+    }
+    
+    @discardableResult
     func vCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "vCenter(\(value))" }
         setVerticalCenter(value, context)
+        return self
+    }
+    
+    @discardableResult
+    func vCenter(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "vCenter(\(percent))" }
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setVerticalCenter(percent.of(layoutSuperview.frame.height), context)
         return self
     }
 
@@ -492,10 +554,10 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func width(percent: CGFloat) -> PinLayout {
-        func context() -> String { return "width(percent: \(percent)%)" }
+    func width(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "width(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setWidth(layoutSuperview.frame.width * percent / 100, context)
+        return setWidth(percent.of(layoutSuperview.frame.width), context)
     }
 
     @discardableResult
@@ -509,10 +571,10 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func height(percent: CGFloat) -> PinLayout {
-        func context() -> String { return "height(percent: \(percent)%)" }
+    func height(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "height(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setHeight(layoutSuperview.frame.height * percent / 100, context)
+        return setHeight(percent.of(layoutSuperview.frame.height), context)
     }
 
     @discardableResult
@@ -528,6 +590,26 @@ class PinLayoutImpl: PinLayout {
         if isSizeNotSet({ return "size(CGSize(width: \(size.width), height: \(size.height)))" }) {
             width(size.width)
             height(size.height)
+        }
+        return self
+    }
+    
+    @discardableResult
+    func size(_ sideLength: CGFloat) -> PinLayout {
+        if isSizeNotSet({ return "size(sideLength: \(sideLength))" }) {
+            width(sideLength)
+            height(sideLength)
+        }
+        return self
+    }
+    
+    @discardableResult
+    func size(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "size(\(percent))" }
+        if isSizeNotSet(context) {
+            guard let layoutSuperview = layoutSuperview(context) else { return self }
+            setWidth(percent.of(layoutSuperview.frame.width), context)
+            setHeight(percent.of(layoutSuperview.frame.height), context)
         }
         return self
     }
@@ -608,12 +690,19 @@ class PinLayoutImpl: PinLayout {
         return self
     }
 
-
     @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout {
+        marginTop = vertical
+        marginLeft = horizontal
+        marginBottom = vertical
+        marginRight = horizontal
         return self
     }
 
     @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout {
+        marginTop = top
+        marginLeft = horizontal
+        marginBottom = bottom
+        marginRight = horizontal
         return self
     }
 
@@ -629,74 +718,74 @@ class PinLayoutImpl: PinLayout {
 //
 extension PinLayoutImpl {
     fileprivate func setTop(_ value: CGFloat, _ context: Context) {
-        if _bottom != nil && height != nil {
-            warnConflict(context, ["bottom": _bottom!, "height": height!])
-        } else if vCenter != nil {
-            warnConflict(context, ["Vertical Center": vCenter!])
-        } else if _top != nil && _top! != value {
-            warnPropertyAlreadySet("top", propertyValue: _top!, context)
+        if let _bottom = _bottom, let height = height {
+            warnConflict(context, ["bottom": _bottom, "height": height])
+        } else if let _vCenter = _vCenter {
+            warnConflict(context, ["Vertical Center": _vCenter])
+        } else if let _top = _top, _top != value {
+            warnPropertyAlreadySet("top", propertyValue: _top, context)
         } else {
             _top = value
         }
     }
     
     fileprivate func setLeft(_ value: CGFloat, _ context: Context) {
-        if _right != nil && width != nil  {
-            warnConflict(context, ["right": _right!, "width": width!])
-        } else if hCenter != nil {
-            warnConflict(context, ["Horizontal Center": hCenter!])
-        } else if _left != nil && _left! != value {
-            warnPropertyAlreadySet("left", propertyValue: _left!, context)
+        if let _right = _right, let width = width  {
+            warnConflict(context, ["right": _right, "width": width])
+        } else if let _hCenter = _hCenter {
+            warnConflict(context, ["Horizontal Center": _hCenter])
+        } else if let _left = _left, _left != value {
+            warnPropertyAlreadySet("left", propertyValue: _left, context)
         } else {
             _left = value
         }
     }
     
     fileprivate func setRight(_ value: CGFloat, _ context: Context) {
-        if _left != nil && width != nil  {
-            warnConflict(context, ["left": _left!, "width": width!])
-        } else if hCenter != nil {
-            warnConflict(context, ["Horizontal Center": hCenter!])
-        } else if _right != nil && _right! != value {
-            warnPropertyAlreadySet("right", propertyValue: _right!, context)
+        if let _left = _left, let width = width  {
+            warnConflict(context, ["left": _left, "width": width])
+        } else if let _hCenter = _hCenter {
+            warnConflict(context, ["Horizontal Center": _hCenter])
+        } else if let _right = _right, _right != value {
+            warnPropertyAlreadySet("right", propertyValue: _right, context)
         } else {
             _right = value
         }
     }
     
     fileprivate func setBottom(_ value: CGFloat, _ context: Context) {
-        if _top != nil && height != nil {
-            warnConflict(context, ["top": _top!, "height": height!])
-        } else if vCenter != nil {
-            warnConflict(context, ["Vertical Center": vCenter!])
-        } else if _bottom != nil && _bottom! != value {
-            warnPropertyAlreadySet("bottom", propertyValue: _bottom!, context)
+        if let _top = _top, let height = height {
+            warnConflict(context, ["top": _top, "height": height])
+        } else if let _vCenter = _vCenter {
+            warnConflict(context, ["Vertical Center": _vCenter])
+        } else if let _bottom = _bottom, _bottom != value {
+            warnPropertyAlreadySet("bottom", propertyValue: _bottom, context)
         } else {
             _bottom = value
         }
     }
 
     fileprivate func setHorizontalCenter(_ value: CGFloat, _ context: Context) {
-        if _left != nil {
-            warnConflict(context, ["left": _left!])
-        } else if _right != nil {
-            warnConflict(context, ["right": _right!])
-        } else if hCenter != nil && hCenter! != value {
-            warnPropertyAlreadySet("Horizontal Center", propertyValue: hCenter!, context)
+        if let _left = _left {
+            warnConflict(context, ["left": _left])
+        } else if let _right = _right {
+            warnConflict(context, ["right": _right])
+        } else if let _hCenter = _hCenter, _hCenter != value {
+            warnPropertyAlreadySet("Horizontal Center", propertyValue: _hCenter, context)
         } else {
-            hCenter = value
+            _hCenter = value
         }
     }
     
     fileprivate func setVerticalCenter(_ value: CGFloat, _ context: Context) {
-        if _top != nil {
-            warnConflict(context, ["top": _top!])
-        } else if _bottom != nil {
-            warnConflict(context, ["bottom": _bottom!])
-        } else if vCenter != nil && vCenter! != value {
-            warnPropertyAlreadySet("Vertical Center", propertyValue: vCenter!, context)
+        if let _top = _top {
+            warnConflict(context, ["top": _top])
+        } else if let _bottom = _bottom {
+            warnConflict(context, ["bottom": _bottom])
+        } else if let _vCenter = _vCenter, _vCenter != value {
+            warnPropertyAlreadySet("Vertical Center", propertyValue: _vCenter, context)
         } else {
-            vCenter = value
+            _vCenter = value
         }
     }
     
@@ -762,17 +851,17 @@ extension PinLayoutImpl {
         setBottom(point.y, context)
         return self
     }
-    
+
     @discardableResult
     fileprivate func setWidth(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard value >= 0 else {
-            warn("The width (\(value)) must be greater or equal to 0.", context); return self
+            warn("the width (\(value)) ust be greater than or equal to zero.", context); return self
         }
         
-        if _left != nil && _right != nil {
-            warnConflict(context, ["left": _left!, "right": _right!])
-        } else if width != nil {
-            warnPropertyAlreadySet("width", propertyValue: width!, context)
+        if let _left = _left, let _right = _right {
+            warnConflict(context, ["left": _left, "right": _right])
+        } else if let width = width {
+            warnPropertyAlreadySet("width", propertyValue: width, context)
         } else {
             width = value
         }
@@ -782,13 +871,13 @@ extension PinLayoutImpl {
     @discardableResult
     fileprivate func setHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard value >= 0 else {
-            warn("The height (\(value)) must be greater or equal to 0.", context); return self
+            warn("the height (\(value)) must be greater than or equal to zero.", context); return self
         }
         
-        if _top != nil && _bottom != nil {
-            warnConflict(context, ["top": _top!, "bottom": _bottom!])
-        } else if height != nil {
-            warnPropertyAlreadySet("height", propertyValue: height!, context)
+        if let _top = _top, let _bottom = _bottom {
+            warnConflict(context, ["top": _top, "bottom": _bottom])
+        } else if let height = height {
+            warnPropertyAlreadySet("height", propertyValue: height, context)
         } else {
             height = value
         }
@@ -796,14 +885,14 @@ extension PinLayoutImpl {
     }
     
     fileprivate func isSizeNotSet(_ context: Context) -> Bool {
-        if _top != nil && _bottom != nil {
-            warnConflict(context, ["top": _top!, "bottom": _bottom!])
+        if let _top = _top, let _bottom = _bottom {
+            warnConflict(context, ["top": _top, "bottom": _bottom])
             return false
-        } else if height != nil {
-            warnConflict(context, ["height": height!])
+        } else if let height = height {
+            warnConflict(context, ["height": height])
             return false
-        } else if width != nil {
-            warnConflict(context, ["width": width!])
+        } else if let width = width {
+            warnConflict(context, ["width": width])
             return false
         } else {
             return true
@@ -846,7 +935,7 @@ extension PinLayoutImpl {
         if let superview = view.superview {
             return superview
         } else {
-            warn("The view must be added to a UIView before being layouted using this method.", context)
+            warn("the view must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }
@@ -855,7 +944,7 @@ extension PinLayoutImpl {
         if let superview = referenceView.superview {
             return superview
         } else {
-            warn("The view must be added to a UIView before being used as a reference.", context)
+            warn("the view must be added as a sub-view before being used as a reference.", context)
             return nil
         }
     }
@@ -867,7 +956,7 @@ extension PinLayoutImpl {
     fileprivate func apply(onView view: UIView) {
         var newRect = view.frame
 
-        handleMarginsAsInsets()
+        handlePinEdges()
 
         let newSize = computeSize()
         
@@ -884,19 +973,19 @@ extension PinLayoutImpl {
             // right & width is set
             newRect.size.width = width
             newRect.origin.x = right - _marginRight - width
-        } else if let hCenter = hCenter, let width = newSize.width {
+        } else if let _hCenter = _hCenter, let width = newSize.width {
             // hCenter & width is set
             newRect.size.width = width
-            newRect.origin.x = hCenter - (width / 2) + _marginLeft
+            newRect.origin.x = _hCenter - (width / 2) + _marginLeft
         } else if let left = _left {
             // Only left is set
             newRect.origin.x = left + _marginLeft
         } else if let right = _right {
             // Only right is set
             newRect.origin.x = right - view.frame.width - _marginRight
-        } else if let hCenter = hCenter {
+        } else if let _hCenter = _hCenter {
             // Only hCenter is set
-            newRect.origin.x = hCenter - (view.frame.width / 2)
+            newRect.origin.x = _hCenter - (view.frame.width / 2)
         } else if let width = newSize.width {
             // Only widht is set
             newRect.size.width = width
@@ -915,19 +1004,19 @@ extension PinLayoutImpl {
             // bottom & height is set
             newRect.size.height = height
             newRect.origin.y = bottom - _marginBottom - height
-        } else if let vCenter = vCenter, let height = newSize.height {
+        } else if let _vCenter = _vCenter, let height = newSize.height {
             // vCenter & height is set
             newRect.size.height = height
-            newRect.origin.y = vCenter - (newRect.size.height / 2) + _marginTop
+            newRect.origin.y = _vCenter - (newRect.size.height / 2) + _marginTop
         } else if let top = _top {
             // Only top is set
             newRect.origin.y = top + _marginTop
         } else if let bottom = _bottom {
             // Only bottom is set
             newRect.origin.y = bottom - view.frame.height - _marginBottom
-        } else if let vCenter = vCenter {
+        } else if let _vCenter = _vCenter {
             // Only vCenter is set
-            newRect.origin.y = vCenter - (view.frame.height / 2)
+            newRect.origin.y = _vCenter - (view.frame.height / 2)
         } else if let height = newSize.height {
             // Only height is set
             newRect.size.height = height
@@ -936,7 +1025,7 @@ extension PinLayoutImpl {
         view.frame = Coordinates.adjustRectToDisplayScale(newRect)
     }
 
-    fileprivate func handleMarginsAsInsets() {
+    fileprivate func handlePinEdges() {
         guard shouldPinEdges else { return }
 
         if let width = width {
@@ -950,13 +1039,13 @@ extension PinLayoutImpl {
                 assert(self._left == nil)
                 self._left = right - width
                 self.width = nil
-            } else if let hCenter = hCenter {
+            } else if let _hCenter = _hCenter {
                 // convert the width & hCenter into a left & right
                 assert(self._left == nil && self._right == nil)
                 let halfWidth = width / 2
-                self._left = hCenter - halfWidth
-                self._right = hCenter + halfWidth
-                self.hCenter = nil
+                self._left = _hCenter - halfWidth
+                self._right = _hCenter + halfWidth
+                self._hCenter = nil
                 self.width = nil
             }
         }
@@ -972,13 +1061,13 @@ extension PinLayoutImpl {
                 assert(self._top == nil)
                 self._top = bottom - height
                 self.height = nil
-            } else if let vCenter = vCenter {
+            } else if let _vCenter = _vCenter {
                 // convert the height & vCenter into a top & bottom
                 assert(self._top == nil && self._bottom == nil)
                 let halfHeight = height / 2
-                self._top = vCenter - halfHeight
-                self._bottom = vCenter + halfHeight
-                self.vCenter = nil
+                self._top = _vCenter - halfHeight
+                self._bottom = _vCenter + halfHeight
+                self._vCenter = nil
                 self.height = nil
             }
         }
@@ -1051,22 +1140,22 @@ extension PinLayoutImpl {
 
     fileprivate func warn(_ text: String, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
-        print("\n👉 Layout Warning: \(context()). \(text)\n")
+        print("\n👉 PinLayout Warning: \(context()) won't be applied, \(text)\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
-        print("\n👉 Layout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
+        print("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
-        print("\n👉 Layout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
+        print("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
     }
     
     fileprivate func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
         guard PinLayoutLogConflicts else { return }
-        var warning = "\n👉 Layout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:\n"
+        var warning = "\n👉 PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:\n"
         properties.forEach { (key, value) in
             warning += " \(key): \(value)\n"
         }

@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PinLayout"
-  s.version      = "1.0.0"
-  s.summary      = "Simple iOS Swift layouting without using NSLayoutConstraint."
+  s.version      = "1.0.1"
+  s.summary      = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?

@@ -16,7 +16,7 @@
 
 <br>
 
-Swift manual views layouting, no magic, pure code, full control. Concise syntax, readable & chainable.
+Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.
   
 > "No auto-layout constraints attached"
 
@@ -739,12 +739,6 @@ Cell D:
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-TODO
-
-## Credits
-TODO
 
 ## License
 BSD 3-Clause License

@@ -146,7 +146,7 @@ Another possible solution using other PinLayout's methods (more details later):
 
 <br/>
 
-### Layout directly on superview’s edges 
+### Position view directly on superview’s edges 
 
 PinLayout also has shorter version that pins a view’s edge **directly** on its superview's corresponding edge.
 
@@ -224,7 +224,7 @@ Following methods position the corresponding view anchor on another view’s anc
 * `bottomCenter(to anchor: Anchor)`
 * `bottomRight(to anchor: Anchor)`
 
-NOTE: These methods can also pin a view’s anchor to another view that is not a direct sibling. It works with any views that have at some point the same ancestor. 
+:pushpin: These methods can pin a view’s anchor to any other view's anchor, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
 
 ###### Usage examples:
 ```javascript
@@ -322,6 +322,8 @@ PinLayout has methods to attach a UIView's edge (top, left, bottom or right edge
 * `bottom(to edge: VerticalEdge)`
 * `right(to: edge: HorizontalEdge)`
 
+:pushpin: These methods can pin a view’s edge to any other view's edge, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
+
 ###### Usage examples:
 ```javascript
 	view.pin.left(to: view1.edge.right)
@@ -358,6 +360,8 @@ Position the view below the specified view. This method is similar to pinning th
 Position the view left of the specified view. This method is similar to pinning the view’s right edge.
 * `right(of UIView)`  
 Position the view right of the specified view. This method is similar to pinning the view’s left edge.
+
+:pushpin: These methods can pin a view’s relative to any views, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
 
 ###### Usage examples:
 ```javascript

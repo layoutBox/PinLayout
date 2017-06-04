@@ -103,7 +103,7 @@ class PinScrollingView: UIView {
         super.layoutSubviews()
 
         contentScrollView.pin.topLeft().bottomRight().marginTop(64)
-        contentScrollView.contentSize = CGSize(width: width, height: height * 2)
+        contentScrollView.contentSize = CGSize(width: frame.width, height: frame.height * 2)
         contentScrollView.contentInset = .zero
         
         aView.pin.top(0).left(0).right(0).height(40).margin(10)

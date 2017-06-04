@@ -43,24 +43,24 @@ Swift manual views layouting, no magic, pure code, full control. Concise syntax,
 * Concise syntax. Layout most views using a single line. 
 
 * Stateless
-	* The layout system doesn’t add any stored properties to UIViews. It simply compute the UIView.frame property, one view at a time.
+	* The layout system doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 
-Each view can use the layout system that better suit it  (PinLayout, constraint, flexbox, grids, …)
+Each view can use the layout system that better suit it  (PinLayout, constraints, flexbox, grids, …)
 A view can be layouted using PinLayout and later with another method/framework.
 
 * No constraints/No auto-layout
 	* Constraints are verbose and hard for a human brains to understand when there are many views implicated, even with sugar-syntax frameworks.
-	* PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width match the other view’s width“). 
-	* No priorities, simply layout views in the order that make sense. No priority required.
+	* PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width matches the other view’s width“). 
+	* No priorities, simply layout views in the order that makes sense. No priorities required.
 
 * Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So it’s possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20)). This makes PinLayout really animation friendly.
 
 * Minimize as much as possible calculations and constants when layouting views.
 
-* Methods matches as much as possible other layouting system, including CSS, flexbox, reactive Flexbox, …
+* Methods match as much as possible other layouting systems, including CSS, flexbox, reactive Flexbox, …
 	* margin, marginHorizontal, marginVertical, marginTop, marginLeft, marginBottom, marginRight
 	* top, left, bottom, right, width, height  
-	* As in CSS and flexbox, right and bottom coordinates are offset from container’s view right and bottom edges.
+	* As in CSS and flexbox, right and bottom coordinates are offset from container view's right and bottom edges.
 
 * Shorter possible commands to layout views, but keeping english phrasing almost valid.
 
@@ -148,7 +148,7 @@ Another possible solution using other PinLayout's methods (more details later):
 
 ### Layout directly on superview’s edges 
 
-PinLayout also have shorten version that pin a view’s edge **directly** on its superview corresponding edge.
+PinLayout also has shorter version that pins a view’s edge **directly** on its superview's corresponding edge.
 
 **Methods**:
 
@@ -173,7 +173,7 @@ Position the view vertical center directly on its superview vertical center. Sim
 ```
 
 ###### Example:
-This example is similar to the previous example, but pin edges directly on superview’s edges. It layout the view A to fit its superview frame with a margin of 10 pixels.
+This example is similar to the previous example, but pins edges directly on superview’s edges. It will layout the view A to fit its superview frame with a margin of 10 pixels.
 
 ![](Docs/02-example-superview-edge.png)
 
@@ -248,7 +248,7 @@ Layout using an anchors. This example pins the view B topLeft anchor on the view
 
 Layout using multiple anchors.
  
-It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with an horizontal margins of 10px.
+It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with horizontal margins of 10px.
 
 ![](Docs/example-multiple-anchors.png)
 
@@ -262,9 +262,9 @@ It is also possible to combine two anchors to pin the position and the size of a
 ---
 ### Layout using superview’s anchors
 
-PinLayout also have shorten version that pin a view's anchor **directly** on its corresponding superview’s anchor.
+PinLayout also has a shorter version that pins a view's anchor **directly** on its corresponding superview’s anchor.
 
-Following methods position the corresponding view anchor on another view’s anchor.
+The following methods position the corresponding view's anchor on another view’s anchor.
 
 **Methods:**
 
@@ -299,7 +299,7 @@ This is equivalent to:
 
 ### PinLayout UIView’s edges
 
-PinLayout add edges properties to UIViews. These properties are used to reference other view’s edges.
+PinLayout adds edges properties to UIViews. These properties are used to reference other view’s edges.
 
 **PinLayout UIView’s edges**:
 
@@ -313,7 +313,7 @@ PinLayout add edges properties to UIViews. These properties are used to referenc
 ---
 ### Layout using edges
 
-PinLayout have methods to attach a UIView's edge (top, left, bottom or right edge) to another view’s edge.
+PinLayout has methods to attach a UIView's edge (top, left, bottom or right edge) to another view’s edge.
 
 **Methods:**
 
@@ -331,7 +331,7 @@ PinLayout have methods to attach a UIView's edge (top, left, bottom or right edg
 ###### Example:
 Layout using an edge.
 
-The following example layout the view B left edge on the view A right edge. It only change the view B left coordinate
+The following example will layout the view B left edge on the view A right edge. It only change the view B left coordinate
 
 ![](Docs/example-edges.png)
 
@@ -345,8 +345,8 @@ The following example layout the view B left edge on the view A right edge. It o
 
 ### Layout using edges relative positioning
 
-PinLayout also have method to position relative to another view.
-This is similar to pinning to an edge with a slittly different syntax.
+PinLayout also has methods to position relative to another view.
+This is similar to pinning to an edge with a slightly different syntax.
 
 **Methods:**
 
@@ -374,13 +374,13 @@ The following example will position the view C between the view A and B with mar
 ```javascript
 	viewC.pin.top().left(of: viewA).right(of: viewB).margin(10)
 ```
-This is an equivalent solutions using [edges](#edge):
+This is an equivalent solution using [edges](#edge):
 
 ```javascript
 	viewC.pin.top().left(to: viewA.edge.right).right(to: viewB.edge.left).margin(10)
 ```
 
-This is also an equivalent solutions using [relative positioning and alignment](#relative_positionning_w_alignment) explained in the next section:
+This is also an equivalent solution using [relative positioning and alignment](#relative_positionning_w_alignment) explained in the next section:
 
 ```javascript
 	viewC.pin.left(of: viewA, aligned: .top).right(of: viewB, aligned: top).marginHorizontal(10)
@@ -391,7 +391,7 @@ This is also an equivalent solutions using [relative positioning and alignment](
 
 ### Layout using relative positioning and alignment <a name="relative_positionning_w_alignment"></a>
 
-PinLayout also have method to position relative to another view but with also the ability of specifying the alignment.
+PinLayout also has methods to position relative to another view but with also the ability of specifying the alignment.
 This is similar to pinning to an anchor with a more natural syntax.
 
 **Methods:**
@@ -427,7 +427,7 @@ This is an equivalent solutions using anchors:
 ## Width, height and size <a name="width_height_size"></a>
 
 ### Adjust view width, height and size
-PinLayout have methods to set the view’s height and width.
+PinLayout has methods to set the view’s height and width.
 
 **Methods:**
 
@@ -474,7 +474,7 @@ Set the view’s size to match the referenced view’s size
 
 ### sizeToFit()
 
-sizeToFit() is the equivalent of calling sizeThatFits() on the size of the view once PinLayout has computed the size and have applied margins.
+sizeToFit() is the equivalent of calling sizeThatFits() on the size of the view once PinLayout has computed the size and has applied margins.
 
 ###### Usage examples:
 ```javascript
@@ -498,7 +498,7 @@ PinLayout applies margins similar to CSS.
 
 ### PinLayout's margins
 
-PinLayout have methods to apply margin.
+PinLayout has methods to apply margins.
 
 **Methods:**
 
@@ -530,9 +530,9 @@ PinLayout have methods to apply margin.
 ### PinLayout margin rules
 The following section explains how CSS/PinLayout margin rules are applied. 
 
-#### When and how horizontal margins are applies in PinLayout?
+#### When and how horizontal margins are applied in PinLayout?
 
-This table explain how and when **left and right margins** are applied depending of which view’s attribute has been pinned using PinLayout.
+This table explains how and when **left and right margins** are applied depending on which view’s attribute has been pinned using PinLayout.
 
 | View’s pinned attributes | Left Margin                               | Right Margin                               |
 |--------------------------|:-------------------------------------------:|:--------------------------------------------:|
@@ -548,7 +548,7 @@ NOTE: `-` indicates that the margin is not applied.
 
 #### When and how does vertical margins are applies in PinLayout?
 
-This table explain how and when **top and bottom margins** are applied depending of which view’s attribute has been pinned using PinLayout.
+This table explains how and when **top and bottom margins** are applied depending on which view’s attribute has been pinned using PinLayout.
 
 | View’s pinned attributes | Left Margin                               | Right Margin                               |
 |--------------------------|:-------------------------------------------:|:--------------------------------------------:|
@@ -587,7 +587,7 @@ In this example, the **left** and **right** margins are applied
 ```
 
 ###### Example 4:
-In this example, **left**, **right** and **top** margins are applied. Note that the view’s width has been reduce to apply left and right margins.
+In this example, **left**, **right** and **top** margins are applied. Note that the view’s width has been reduced to apply left and right margins.
 ![](Docs/pinlayout-margin-04.png)
 
 ```javascript
@@ -605,14 +605,14 @@ In this example, **left**, **right**, **top** and **bottom** margins are applied
 <br>
 
 ### pinEdges()
-The `pinEdges()` method pin the four edges (top, left, bottom and right edges) before applying margins. 
+The `pinEdges()` method pins the four edges (top, left, bottom and right edges) before applying margins. 
 
 This method is useful in situations where the width and/or the height attributes have been pinned.
-This method is a add-on, there is no equivalent in CSS.
+This method is an add-on, there is no equivalent in CSS.
 
 
 ###### Example without `pinEdges`
-Without `pinEdges()` margins rules has been applied and has moved the view to the left.
+Without `pinEdges()` margins rules would be applied and the view would be moved to the left.
 
 ![](Docs/pinlayout-margin-pinEdges-01.png)
 
@@ -623,7 +623,7 @@ Without `pinEdges()` margins rules has been applied and has moved the view to th
 
 ###### Example with `pinEdges`
 
-With `pinEdges()` the left and right margins are applied even if only the left and width has been set. The reason is the call to pinEdges() have pinned the two horizontal edges at their position before applying margins.
+With `pinEdges()` the left and right margins are applied even if only the left and width has been set. The reason is the call to pinEdges() has pinned the two horizontal edges at their position before applying margins.
 
 ![](Docs/pinlayout-margin-pinEdges-02.png)
 
@@ -647,7 +647,7 @@ NOTE: In that in that particular situation, the same results could have been ach
 
 ## Warnings <a name="warnings"></a>
 ### PinLayout's warnings
-In debug, PinLayout will displays warning when pin rules cannot be applied. 
+In debug, PinLayout will display warnings when pin rules cannot be applied. 
 
 **Warning reasons**
 
@@ -655,7 +655,7 @@ In debug, PinLayout will displays warning when pin rules cannot be applied.
 Example:  
 `view.pin.left(10).right(10).width(200)`  
 👉 Layout Conflict: `width(200) won't be applied since it conflicts with the following already set properties: left: 0, right: 10.`  
-* The newly pinned attributes was already set to another value.  
+* The newly pinned attributes have already been set to another value.  
 Example:  
 `view.pin.width(100).width(200)`  
 👉 Layout Conflict: `width(200) won't be applied since it value has already been set to 100.` 
@@ -672,7 +672,7 @@ Example:
 `view.pin.width(-100)`  
 👉 Layout Warning: `The width (-100) must be greater or equal to 0.`
 
-### Disabling warning
+### Disabling warnings
 
 Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogConflicts to false.
 
@@ -681,14 +681,14 @@ Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogCo
 ## More examples<a name="more_examples"></a>
 
 ### Adjust to container size
-The following examples show how PinLayout can be used to adjust views size and position to the size of their container, in this case containers are cells.
+The following examples show how PinLayout can be used to adjust views size and position to the size of their container. in this case containers are cells.
 
 ![](Docs/pinlayout-example-cells.png)
 
 Cell A:
 
 * A1 is left aligned with a width of 50px
-* A2 fill the remaining space
+* A2 fills the remaining space
 
 ```javascript
 	a1.pin.topLeft().bottom().width(50)
@@ -698,7 +698,7 @@ Cell A:
 Cell B:
 
 * B2 is right aligned with a fixed width of 50px
-* B1 fill the remaining space
+* B1 fills the remaining space
 
 ```javascript
 	b2.pin.topRight().bottom().width(50)
@@ -708,8 +708,8 @@ Cell B:
 Cell C:
 
 * C2 is centered with a fixed width of 50px
-* C1 fill the remaining left space
-* C3 fill the remaining right space
+* C1 fills the remaining left space
+* C3 fills the remaining right space
 
 ```javascript
 	c2.pin.topCenter().width(50).bottom()
@@ -721,7 +721,7 @@ Cell D:
 
 * D1 takes 25% of its container width
 * D2 takes 50% of its container width
-* D3 fill the remaining space
+* D3 fills the remaining space
 
 ```javascript
 	d1.pin.topLeft().bottom().width(25%)

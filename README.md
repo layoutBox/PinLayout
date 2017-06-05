@@ -90,6 +90,37 @@ Then, run `carthage update` to build the framework and drag the built `PinLayout
 
 <br>
 
+# Usage sample
+###### Example:
+This example layout an image, a UISegmentedControl and a label.
+
+* Logo image:
+   * Its size is set to 100x100 
+   * The logo is layouted below the UINavigationBar with a margin of 10 pixels all around.
+* UISegmentedControl 
+  * Layout it at the right of the logo
+  * Use the remaining horizontal space with a left and right margin of 20 pixels.
+* UILabel
+  * Layout the label below the UISegmentedControl with a top margin of 10 pixels.
+  * Adjust the label's width to match the UISegmentedControl's width.
+  * Adjust the label's height to fit its new width. (calls internally UILabel's sizeThatFits() method)
+
+
+![Flowers](Docs/IntroSample-padded.png)
+
+```javascript
+override func layoutSubviews() {
+   super.layoutSubviews() 
+    
+   logo.pin.topLeft().size(100).margin(74, 10, 10)
+   segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(20)
+   textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
+}
+``` 
+
+<br/>
+
+
 # Documentation <a name="documentation"></a>
 
 ## Layout using distances from superview’s edges <a name="distance_from_superview_edge"></a>

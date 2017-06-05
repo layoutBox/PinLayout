@@ -961,14 +961,14 @@ extension PinLayoutImpl {
         let newSize = computeSize()
         
         // Compute horizontal position
-        if let left = _left, let right = _right {
-            // left & right is set
-            newRect.origin.x = left + _marginLeft
-            newRect.size.width = right - _marginRight - newRect.origin.x
-        } else if let left = _left, let width = newSize.width {
+        if let left = _left, let width = newSize.width {
             // left & width is set
             newRect.origin.x = left + _marginLeft
             newRect.size.width = width
+        } else if let left = _left, let right = _right {
+            // left & right is set
+            newRect.origin.x = left + _marginLeft
+            newRect.size.width = right - _marginRight - newRect.origin.x
         } else if let right = _right, let width = newSize.width {
             // right & width is set
             newRect.size.width = width
@@ -987,19 +987,19 @@ extension PinLayoutImpl {
             // Only hCenter is set
             newRect.origin.x = _hCenter - (view.frame.width / 2)
         } else if let width = newSize.width {
-            // Only widht is set
+            // Only width is set
             newRect.size.width = width
         }
         
         // Compute vertical position
-        if let top = _top, let bottom = _bottom {
-            // top & bottom is set
-            newRect.origin.y = top + _marginTop
-            newRect.size.height = bottom - _marginBottom - newRect.origin.y
-        } else if let top = _top, let height = newSize.height {
+        if let top = _top, let height = newSize.height {
             // top & height is set
             newRect.origin.y = top + _marginTop
             newRect.size.height = height
+        } else if let top = _top, let bottom = _bottom {
+            // top & bottom is set
+            newRect.origin.y = top + _marginTop
+            newRect.size.height = bottom - _marginBottom - newRect.origin.y
         } else if let bottom = _bottom, let height = newSize.height {
             // bottom & height is set
             newRect.size.height = height
@@ -1083,6 +1083,34 @@ extension PinLayoutImpl {
 
             let sizeThatFits = view.sizeThatFits(fitSize)
 
+            if newWidth != nil && newWidth! != sizeThatFits.width {
+                let marginToDistribute = newWidth! - sizeThatFits.width
+                
+                // Distribute the width change to Margins
+                if let _ = _left, let _ = _right {
+                    marginLeft = (marginLeft ?? 0) + (marginToDistribute / 2)
+                    marginRight = (marginRight ?? 0) + (marginToDistribute / 2)
+                } else if let _ = _left {
+                    marginRight = (marginRight ?? 0) + marginToDistribute
+                } else if let _ = _right {
+                    marginLeft = (marginLeft ?? 0) + marginToDistribute
+                }
+            }
+            
+            if newHeight != nil && newHeight! != sizeThatFits.height {
+                let marginToDistribute = newHeight! - sizeThatFits.height
+                
+                // Distribute the height change to Margins
+                if let _ = _top, let _ = _bottom {
+                    marginTop = (marginTop ?? 0) + (marginToDistribute / 2)
+                    marginBottom = (marginBottom ?? 0) + (marginToDistribute / 2)
+                } else if let _ = _top {
+                    marginBottom = (marginBottom ?? 0) + marginToDistribute
+                } else if let _ = _bottom {
+                    marginTop = (marginTop ?? 0) + marginToDistribute
+                }
+            }
+            
             if fitSize.width != .greatestFiniteMagnitude && sizeThatFits.width > fitSize.width {
                 newWidth = fitSize.width
             } else {
@@ -1100,8 +1128,8 @@ extension PinLayoutImpl {
     }
     
     fileprivate func computeWidth() -> CGFloat? {
-        if let _ = _left, let right = _right {
-            return right - _marginRight
+        if let left = _left, let right = _right {
+            return right - left - _marginLeft - _marginRight
         } else if let width = width {
             return width
         } else {
@@ -1110,8 +1138,8 @@ extension PinLayoutImpl {
     }
     
     fileprivate func computeHeight() -> CGFloat? {
-        if let _ = _top, let bottom = _bottom {
-            return bottom - _marginBottom
+        if let top = _top, let bottom = _bottom {
+            return bottom - top - _marginTop - _marginBottom
         } else if let height = height {
             return height
         } else {

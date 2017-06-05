@@ -28,6 +28,7 @@
 import UIKit
 
 enum Page: Int {
+    case intro
     case relativePositions
     case multiRelativePositions
     case scrollingPin
@@ -36,6 +37,7 @@ enum Page: Int {
     
     var text: String {
         switch self {
+        case .intro:                      return "PinLayout's Intro"
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
         case .scrollingPin:               return "Pin to UIScrollView"
@@ -45,6 +47,7 @@ enum Page: Int {
 
     var viewController: UIViewController {
         switch self {
+        case .intro:                      return IntroViewController()
         case .relativePositions:          return RelativeViewController()
         case .multiRelativePositions:     return MultiRelativeViewController()
         case .scrollingPin:               return PinScrollingViewController()
@@ -72,10 +75,10 @@ class MenuViewController: UIViewController {
         mainView.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        //didSelect(page: .relativePositions)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        didSelect(page: .intro)
+//    }
 }
 
 // MARK: MenuViewDelegate

@@ -745,7 +745,10 @@ Cell D:
 
 <br>
 
+## Comments, ideas, suggestions, issues, ....
+For any (I really meant it) **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
+<br>
 
 ## Contributing
 1. Fork it!

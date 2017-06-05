@@ -110,11 +110,11 @@ This example layout an image, a UISegmentedControl and a label.
 
 ```javascript
 override func layoutSubviews() {
-    super.layoutSubviews() 
+   super.layoutSubviews() 
     
-	logo.pin.topLeft().size(100).margin(74, 10, 10)
-	segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(20)
-	textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
+   logo.pin.topLeft().size(100).margin(74, 10, 10)
+   segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(20)
+   textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
 }
 ``` 
 

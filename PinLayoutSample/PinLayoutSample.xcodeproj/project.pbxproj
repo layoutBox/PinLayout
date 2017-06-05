@@ -20,6 +20,8 @@
 		249EFE4A1E64FAFE00165E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE491E64FAFE00165E39 /* Assets.xcassets */; };
 		249EFE4D1E64FAFE00165E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */; };
 		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
+		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
+		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
 		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
 		DF66F9DA1E8493E000ADB8D5 /* PinScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */; };
 		DF66F9DB1E8493E000ADB8D5 /* PinScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */; };
@@ -78,6 +80,8 @@
 		249EFE4C1E64FAFE00165E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		249EFE4E1E64FAFE00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
+		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = Intro/IntroView.swift; sourceTree = "<group>"; };
+		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = Intro/IntroViewController.swift; sourceTree = "<group>"; };
 		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinScrollingView.swift; path = PinScrolling/PinScrollingView.swift; sourceTree = "<group>"; };
 		DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinScrollingViewController.swift; path = PinScrolling/PinScrollingViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 		2439CC371E665C5E003326FB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				24F75B581EE5642C008DB567 /* Intro */,
 				DF66F9D61E8493D400ADB8D5 /* PinScrolling */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
@@ -216,6 +221,15 @@
 				24E654811E69041B00A72A8B /* Expect.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		24F75B581EE5642C008DB567 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				24F75B591EE5644E008DB567 /* IntroView.swift */,
+				24F75B5A1EE5644E008DB567 /* IntroViewController.swift */,
+			);
+			name = Intro;
 			sourceTree = "<group>";
 		};
 		DF66F9D61E8493D400ADB8D5 /* PinScrolling */ = {
@@ -400,10 +414,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF66F9DA1E8493E000ADB8D5 /* PinScrollingView.swift in Sources */,
+				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
 				2439CC351E665BF6003326FB /* MenuView.swift in Sources */,
 				2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */,
+				24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */,
 				249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,

@@ -458,8 +458,6 @@ The value specifies the width and the height of the view in pixels, creating a s
 * `size(of view: UIView)`  
 Set the view’s size to match the referenced view’s size
 
-* `sizeToFit()`
-
 
 ###### Usage examples:
 ```javascript
@@ -473,25 +471,6 @@ Set the view’s size to match the referenced view’s size
 	view.pin.size(of: view1)
 	view.pin.size(50%)
 	view.pin.size(250)
-```
-
-
-### sizeToFit()
-
-sizeToFit() is the equivalent of calling sizeThatFits() on the size of the view once PinLayout has computed the size and has applied margins.
-
-###### Usage examples:
-```javascript
-	label.pin.width(200).sizeToFit()
-```
-
-###### Example:
-The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note on the result that the UILabel’s height has changed to fit its content.
-
-![](Docs/pinlayout-sizeToFit.png)
-
-```javascript
-	label.pin.right(of: image, aligned: .top).right().marginHorizontal(10).sizeToFit()
 ```
 
 <br/>

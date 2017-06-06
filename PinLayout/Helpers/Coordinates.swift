@@ -72,7 +72,7 @@ class Coordinates {
         return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY + view.frame.height)
     }
 
-    static var displayScale: CGFloat = UIScreen.main.scale
+    fileprivate static var displayScale: CGFloat = UIScreen.main.scale
 
     static func adjustRectToDisplayScale(_ rect: CGRect) -> CGRect {
         return  CGRect(x: roundFloatToDisplayScale(rect.origin.x),
@@ -88,4 +88,8 @@ class Coordinates {
     static func ceilFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
         return CGFloat(ceilf(Float(pointValue * displayScale))) / displayScale
     }
+}
+
+public func setUnitTest(displayScale: CGFloat) {
+    Coordinates.displayScale = displayScale
 }

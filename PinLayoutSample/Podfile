@@ -4,15 +4,8 @@ workspace 'PinLayoutSample.xcworkspace'
 
 target 'PinLayoutSample' do
   project 'PinLayoutSample.xcodeproj'
-  #pod 'YogaKit', '~> 1.1'
 
   # Debug only
-    pod 'Reveal-SDK', :configurations => ['Debug']
-    pod 'SwiftLint'
+  pod 'Reveal-SDK', :configurations => ['Debug']
+  pod 'SwiftLint'
 end
-
-#target 'PinLayoutTests' do
-#    project '../PinLayout.xcodeproj'
-#    pod 'Quick'
-#    pod 'Nimble'
-#end

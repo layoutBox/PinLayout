@@ -780,7 +780,8 @@ Cell D:
 
 ## Coming soon <a name="coming_soon"></a>
 * minWidth/maxWidth, minHeight/maxHeight
-* 
+* CALayer support
+* ...
 
 
 ## FAQ <a name="faq"></a>

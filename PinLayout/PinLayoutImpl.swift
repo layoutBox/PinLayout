@@ -157,7 +157,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func hCenter() -> PinLayout {
         func context() -> String { return "hCenter()" }
-        setHorizontalCenter(0, context)
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setHorizontalCenter(layoutSuperview.frame.width / 2, context)
         return self
     }
 
@@ -179,7 +180,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func vCenter() -> PinLayout {
         func context() -> String { return "vCenter()" }
-        setVerticalCenter(0, context)
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setVerticalCenter(layoutSuperview.frame.height / 2, context)
         return self
     }
     

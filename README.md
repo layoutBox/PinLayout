@@ -193,17 +193,17 @@ PinLayout also has shorter version that pins a view’s edge **directly** on its
 **Methods**:
 
 * `top()`  
-Position the view top edge directly on its superview top edge. Similar to calling top(0)
+Position the view top edge directly on its superview top edge. Similar to calling `top(0)`.
 * `left()`  
-Position the view left edge directly on its superview top edge. Similar to calling left(0)
+Position the view left edge directly on its superview top edge. Similar to calling `left(0)`.
 * `bottom()`  
-Position the view bottom edge directly on its superview top edge. Similar to calling bottom(0)
+Position the view bottom edge directly on its superview top edge. Similar to calling `bottom(0)`.
 * `right()`  
-Position the view right edge directly on its superview top edge. Similar to calling right(0)
+Position the view right edge directly on its superview top edge. Similar to calling `right(0)`.
 * `hCenter()`  
-Position the view horizontal center directly on its superview horizontal center. Similar to calling hCenter(0).
+Position the view horizontal center directly on its superview horizontal center. Similar to calling `hCenter(superview.frame.width / 2)`.
 * `vCenter()`  
-Position the view vertical center directly on its superview vertical center. Similar to calling vCenter(0).
+Position the view vertical center directly on its superview vertical center. Similar to calling `hCenter(superview.frame.height / 2)`.
 
 ###### Usage examples:
 ```javascript
@@ -777,6 +777,10 @@ Cell D:
 ```
 
 <br>
+
+## Coming soon <a name="coming_soon"></a>
+* minWidth/maxWidth, minHeight/maxHeight
+* 
 
 
 ## FAQ <a name="faq"></a>

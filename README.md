@@ -34,6 +34,9 @@ Swift manual views layouting without auto layout, no magic, pure code, full cont
    	* [Warnings](#warnings)
    	* [More examples](#more_examples)
 
+* [FAQ](#faq)
+* [Comments, ideas, suggestions, issues, ....](#comments)
+
 <br>
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
@@ -121,6 +124,8 @@ override func layoutSubviews() {
 ``` 
 
 :pushpin: This example and some other examples are available in the **PinLayoutSample** project. Please note that you must do a `pod install` before running the sample project. 
+
+:pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
 
 <br/>
 
@@ -773,7 +778,22 @@ Cell D:
 
 <br>
 
-## Comments, ideas, suggestions, issues, ....
+
+## FAQ <a name="faq"></a>
+
+*  **Q: When the device rotation change, the layout is not updated.**  
+   **R:** PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask.
+   
+* **Q: How to apply percentage from a CGFloat, a Float or a Int value?**  
+  **R:** Many PinLayout's method has a parameter of type `Percent`. You can easily specify this type of parameter simply by adding the `%` operator to your value (eg: `view.pin.left(10%).width(50%)`. It is similar if you have a value of type  CGFloat, Float or Int, simply adds the `%` operator:  
+  
+	``` 
+	let percentageValue: CGFloat = 50
+	view.pin.width(percentageValue%)
+	``` 
+<br>
+
+## Comments, ideas, suggestions, issues, .... <a name="comments"></a>
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
 <br>

@@ -1087,10 +1087,7 @@ extension PinLayoutImpl {
                 let marginToDistribute = newWidth! - sizeThatFits.width
                 
                 // Distribute the width change to Margins
-                if let _ = _left, let _ = _right {
-                    marginLeft = (marginLeft ?? 0) + (marginToDistribute / 2)
-                    marginRight = (marginRight ?? 0) + (marginToDistribute / 2)
-                } else if let _ = _left {
+                if let _ = _left {
                     marginRight = (marginRight ?? 0) + marginToDistribute
                 } else if let _ = _right {
                     marginLeft = (marginLeft ?? 0) + marginToDistribute
@@ -1101,10 +1098,7 @@ extension PinLayoutImpl {
                 let marginToDistribute = newHeight! - sizeThatFits.height
                 
                 // Distribute the height change to Margins
-                if let _ = _top, let _ = _bottom {
-                    marginTop = (marginTop ?? 0) + (marginToDistribute / 2)
-                    marginBottom = (marginBottom ?? 0) + (marginToDistribute / 2)
-                } else if let _ = _top {
+                if let _ = _top {
                     marginBottom = (marginBottom ?? 0) + marginToDistribute
                 } else if let _ = _bottom {
                     marginTop = (marginTop ?? 0) + marginToDistribute

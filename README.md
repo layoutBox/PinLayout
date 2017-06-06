@@ -43,7 +43,7 @@ Swift manual views layouting without auto layout, no magic, pure code, full cont
 * Concise syntax. Layout most views using a single line. 
 
 * Stateless
-	* The layout system doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
+	* PinLayout doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 
 Each view can use the layout system that better suit it  (PinLayout, constraints, flexbox, grids, …)
 A view can be layouted using PinLayout and later with another method/framework.
@@ -54,6 +54,8 @@ A view can be layouted using PinLayout and later with another method/framework.
 	* No priorities, simply layout views in the order that makes sense. No priorities required.
 
 * Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So it’s possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20)). This makes PinLayout really animation friendly.
+
+* Not too intrusive. PinLayout only adds three properties to existing iOS classes: `UIView.pin`, `UIView.anchor` and `UIView.edge`
 
 * Minimize as much as possible calculations and constants when layouting views.
 
@@ -117,6 +119,8 @@ override func layoutSubviews() {
    textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
 }
 ``` 
+
+:pushpin: This example and some other examples are available in the **PinLayoutSample** project. Please note that you must do a `pod install` before running the sample project. 
 
 <br/>
 
@@ -692,6 +696,30 @@ Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogCo
 
 <br/>
 
+## PinLayout style guide
+
+* You should always specifies methods in the same order, it makes layout lines easier to understand. Here is our prefered ordering:  
+`view.pin.[EDGE|ANCHOR|RELATIVE].[WIDTH|HEIGHT|SIZE].[pinEdges()].[MARGINS].[sizeToFit()]`  
+
+   This order reflect the logic inside PinLayout. `pinEdges()` is applied before margins and margins are applied before `sizeToFit()`.    
+
+	```javascript
+	view.pin.top().left(10%).margin(10, 12, 10, 12)
+	view.pin.left().width(100%).pinEdges().marginHorizontal(12)
+	view.pin.left().right().margin(0, 12).sizeToFit()
+	view.pin.width(100).height(100%)
+	```
+
+* If the layout line is too long, you can split in multiple lines:  
+
+	```
+	textLabel.pin.below(of: titleLabel)
+	   .right(of: statusIcon).left(of: accessoryView)
+	   .above(of: button).marginHorizontal(10)
+	```
+
+<br/>
+
 ## More examples<a name="more_examples"></a>
 
 ### Adjust to container size
@@ -746,7 +774,7 @@ Cell D:
 <br>
 
 ## Comments, ideas, suggestions, issues, ....
-For any (I really meant it) **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
+For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
 <br>
 

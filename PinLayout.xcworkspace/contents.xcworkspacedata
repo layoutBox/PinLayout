@@ -5,9 +5,9 @@
       location = "group:PinLayout.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Sample/PinLayoutSample.xcodeproj">
+      location = "group:Example/PinLayoutSample.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Sample/Pods/Pods.xcodeproj">
+      location = "group:Example/Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

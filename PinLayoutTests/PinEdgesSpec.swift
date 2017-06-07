@@ -54,6 +54,8 @@ class PinEdgesSpec: QuickSpec {
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
             aView.frame = CGRect(x: 140, y: 100, width: 200, height: 100)
             rootView.addSubview(aView)
+            
+            unitTestLastWarning = nil
         }
 
         //
@@ -266,9 +268,6 @@ class PinEdgesSpec: QuickSpec {
                 expect(aView.frame).to(equal(noParameterFrame))
             }
             
-            // CGRect(x: 140, y: 100, width: 200, height: 100)
-            
-            
             it("should adjust the aView") {
                 aView.pin.right(-20)
                 expect(aView.frame).to(equal(CGRect(x: 220, y: 100.0, width: 200.0, height: 100.0)))
@@ -307,10 +306,113 @@ class PinEdgesSpec: QuickSpec {
             }
         }
         
+        //
+        // hCenter
+        //
+        describe("the result of hCenter(...)") {
+            it("should adjust the aView") {
+                aView.pin.hCenter()
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(0)
+                expect(aView.frame).to(equal(CGRect(x: -100, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should have the same position without or with a 0 parameter value") {
+                aView.pin.hCenter()
+                let noParameterFrame = aView.frame
+                
+                aView.pin.hCenter(aView.superview!.frame.width / 2)
+                expect(aView.frame).to(equal(noParameterFrame))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(-20)
+                expect(aView.frame).to(equal(CGRect(x: -120, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should not apply hCenter") {
+                aView.pin.left().hCenter(-20)
+                expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 200.0, height: 100.0)))
+                expect(unitTestLastWarning).to(contain(["hCenter", "won't be applied", "left"]))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.hCenter(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(40%)
+                expect(aView.frame).to(equal(CGRect(x: 60, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(-20%)
+                expect(aView.frame).to(equal(CGRect(x: -180, y: 100.0, width: 200.0, height: 100.0)))
+            }
+        }
         
-        // TODO: Test hCenter and vCenter!!!!!!
-        
-        
-        
+        //
+        // vCenter
+        //
+        describe("the result of vCenter(...)") {
+            it("should adjust the aView") {
+                aView.pin.vCenter()
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 150.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(0)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: -50.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should have the same position without or with a 0 parameter value") {
+                aView.pin.vCenter()
+                let noParameterFrame = aView.frame
+                
+                aView.pin.vCenter(aView.superview!.frame.height / 2)
+                expect(aView.frame).to(equal(noParameterFrame))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: -70.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().vCenter(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
+                expect(unitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 200.0, height: 10))
+                unAttachedView.pin.vCenter(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 200.0, height: 10)))
+                expect(unitTestLastWarning).to(contain(["vCenter", "won't be applied", "view must be added"]))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 30.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: -130.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().vCenter(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
+                expect(unitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+            }
+        }
     }
 }

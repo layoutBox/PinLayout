@@ -26,6 +26,8 @@
 // POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 
+public var unitTestLastWarning: String?
+
 #if DEBUG
     public var PinLayoutLogConflicts = true
 #else
@@ -1164,17 +1166,17 @@ extension PinLayoutImpl {
 
     fileprivate func warn(_ text: String, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
-        print("\n👉 PinLayout Warning: \(context()) won't be applied, \(text)\n")
+        displayWarning("\n👉 PinLayout Warning: \(context()) won't be applied, \(text)\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
-        print("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
+        displayWarning("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
     }
     
     fileprivate func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
-        print("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
+        displayWarning("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
     }
     
     fileprivate func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
@@ -1184,6 +1186,12 @@ extension PinLayoutImpl {
             warning += " \(key): \(value)\n"
         }
         
-        print(warning)
+        displayWarning(warning)
+    }
+    
+    fileprivate func displayWarning(_ text: String) {
+        print(text)
+        unitTestLastWarning = text
     }
 }
+    

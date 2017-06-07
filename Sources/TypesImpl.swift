@@ -27,6 +27,9 @@
 
 import Foundation
 
+#if os(iOS)
+import UIKit
+
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)
 
@@ -151,3 +154,4 @@ extension Percent: CustomStringConvertible {
     }
 }
 
+#endif

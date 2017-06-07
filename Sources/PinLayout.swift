@@ -27,6 +27,9 @@
 
 import Foundation
 
+#if os(iOS)
+import UIKit
+
 // MARK: - PinLayout UIView's extension
 public extension UIView {
     public var pin: PinLayout {
@@ -306,3 +309,5 @@ prefix operator -
 public prefix func - (p: Percent) -> Percent {
     return Percent(value: -p.value)
 }
+
+#endif

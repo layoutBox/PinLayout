@@ -27,6 +27,9 @@
 
 import Foundation
 
+#if os(iOS)
+import UIKit
+
 class Coordinates {
     static func hCenter(_ view: UIView) -> CGFloat {
         return view.frame.minX + (view.frame.width / 2)
@@ -93,3 +96,5 @@ class Coordinates {
 public func setUnitTest(displayScale: CGFloat) {
     Coordinates.displayScale = displayScale
 }
+
+#endif

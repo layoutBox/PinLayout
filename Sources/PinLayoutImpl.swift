@@ -27,6 +27,8 @@
 
 import Foundation
 
+#if os(iOS)
+    
 public var unitTestLastWarning: String?
 
 #if DEBUG
@@ -1196,3 +1198,4 @@ extension PinLayoutImpl {
     }
 }
     
+#endif

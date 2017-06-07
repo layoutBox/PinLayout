@@ -21,9 +21,9 @@
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
 		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */; };
-		24A9782A1EE843D6002BD0F1 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A978291EE843D6002BD0F1 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24A9782C1EE84424002BD0F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24A9782B1EE84424002BD0F1 /* Info.plist */; };
-		24E301DC1EE813280064EE8D /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E301DB1EE813280064EE8D /* Coordinates.swift */; };
+		24A9782E1EE845BB002BD0F1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9782D1EE845BB002BD0F1 /* Coordinates.swift */; };
+		24A978311EE845CD002BD0F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24A9782F1EE845CD002BD0F1 /* Info.plist */; };
+		24A978321EE845CD002BD0F1 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A978301EE845CD002BD0F1 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* TypesImpl.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */; };
@@ -69,9 +69,9 @@
 		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24A978291EE843D6002BD0F1 /* PinLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinLayout.h; path = Sources/PinLayout.h; sourceTree = SOURCE_ROOT; };
-		24A9782B1EE84424002BD0F1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
-		24E301DB1EE813280064EE8D /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		24A9782D1EE845BB002BD0F1 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		24A9782F1EE845CD002BD0F1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
+		24A978301EE845CD002BD0F1 /* PinLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinLayout.h; path = Sources/PinLayout.h; sourceTree = SOURCE_ROOT; };
 		DF11A3701E833F03008B33E5 /* TypesImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesImpl.swift; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
 		DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutImpl.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				249EFE7C1E64FB4C00165E39 /* Sources */,
-				249EFE871E64FB4C00165E39 /* PinLayoutTests */,
+				249EFE871E64FB4C00165E39 /* Tests */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
 				138A1F602470415292B7194B /* Frameworks */,
 			);
@@ -137,7 +137,7 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		249EFE871E64FB4C00165E39 /* PinLayoutTests */ = {
+		249EFE871E64FB4C00165E39 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
@@ -152,14 +152,14 @@
 				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 			);
-			path = PinLayoutTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		DF11A3741E834181008B33E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				24A9782B1EE84424002BD0F1 /* Info.plist */,
-				24A978291EE843D6002BD0F1 /* PinLayout.h */,
+				24A9782F1EE845CD002BD0F1 /* Info.plist */,
+				24A978301EE845CD002BD0F1 /* PinLayout.h */,
 			);
 			name = "Supporting Files";
 			path = "../Supporting Files";
@@ -168,9 +168,9 @@
 		DFA06B031E8B38B300B6D5E7 /* Impl */ = {
 			isa = PBXGroup;
 			children = (
+				24A9782D1EE845BB002BD0F1 /* Coordinates.swift */,
 				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
 				DF11A3701E833F03008B33E5 /* TypesImpl.swift */,
-				24E301DB1EE813280064EE8D /* Coordinates.swift */,
 			);
 			name = Impl;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24A9782A1EE843D6002BD0F1 /* PinLayout.h in Headers */,
+				24A978321EE845CD002BD0F1 /* PinLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24A9782C1EE84424002BD0F1 /* Info.plist in Resources */,
+				24A978311EE845CD002BD0F1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +311,7 @@
 				DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
 				DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */,
-				24E301DC1EE813280064EE8D /* Coordinates.swift in Sources */,
+				24A9782E1EE845BB002BD0F1 /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,7 +494,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = PinLayoutTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -511,7 +511,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = PinLayoutTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

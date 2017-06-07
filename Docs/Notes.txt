@@ -1,37 +1,15 @@
 
-POD spec
-===============================
-Publish a new release:
-    * Update PinLayout.podspec version number
-    * Commit changes and push to master
-    * git tag 1.0.7
-    * git push --tags
-    * pod trunk push PinLayout.podspec
-
-If no session exists: pod trunk register ldion@mirego.com 'Luc Dion' --description='macbook pro'
-
-
-Swift Package Manager
-===============================
-Publish a new release:
-    git tag 1.0.8
-    git push origin --tags
-
-
 /*
  ===============================================
  QUESTIONS:
  ===============================================
  - sizeToFit OR adjustSize or fitSize ?
 
-
-Hi Natasha, I'm a fan of your newsletter for a long time, really excellent work. I have written PinLayout: Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable. The project has been receiving 210 ⭐️ in the last four days on GiHub, the library is on the top 5 of GitHub Swift trend (https://github.com/trending/swift ), it was even 1st on monday. I would like to know how would it be possible to add link in the "Code" section of your newsletter? The project site is  https://mirego.github.io/PinLayout/  If you have any questions, please contact me. Thanks again for your great work! 😀
-
  ===============================================
  TODO:
  ===============================================
  - Nice introduction https://github.com/stevestreza/Relayout
- - Remove directory "Supporting Files"
+
  - Add a doc example using width(40%).height(100%)
  - Add also an example using view.pin.top(25%).hCenter(0)
 

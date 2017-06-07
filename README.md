@@ -93,6 +93,16 @@ github "mirego/PinLayout"
 
 Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
 
+### Swift Package Manager
+
+Once you have your Swift package set up, you only need to add PinLayout as a dependency of your `Package.swift`.
+
+```ogdl
+dependencies: [
+    .Package(url: "https://github.com/mirego/PinLayout.git", majorVersion: 1)
+]
+```
+
 <br>
 
 # Usage sample

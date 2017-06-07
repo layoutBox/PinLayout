@@ -1,6 +1,7 @@
 # Xcode
 #
 
+.build/
 build/
 DerivedData/
 Pods/

@@ -25,6 +25,9 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
+import Foundation
+
+#if os(iOS)
 import UIKit
 
 // MARK: - PinLayout UIView's extension
@@ -306,3 +309,5 @@ prefix operator -
 public prefix func - (p: Percent) -> Percent {
     return Percent(value: -p.value)
 }
+
+#endif

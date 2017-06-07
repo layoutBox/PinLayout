@@ -291,6 +291,9 @@ class MarginsSpec: QuickSpec {
             }
         }
         
+        //
+        // bottom & height
+        //
         describe("the result of top&bottom margins when the bottom coordinate and the height are specified") {
             it("should adjust the aView") {
                 aView.pin.bottom(260).height(100).margin(10)
@@ -343,6 +346,9 @@ class MarginsSpec: QuickSpec {
             }
         }
         
+        //
+        // top & bottom
+        //
         describe("the result of top&bottom margins when the top and bottom coordinate are specified") {
             it("should adjust the aView") {
                 aView.pin.top(140).bottom(160).margin(10)
@@ -406,6 +412,114 @@ class MarginsSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.top(140).bottom(160).marginVertical(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
+            }
+        }
+        
+        //
+        // hCenter
+        //
+        describe("the result of top&bottom margins when the hCenter is specified") {
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 200.0, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).width(100).pinEdges().margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 80.0, height: 120.0)))
+            }
+            
+            it("should obtain the same result with or without pinEdges()") {
+                aView.pin.hCenter(100).margin(10)
+                let frameWithoutPinEdgest = aView.frame
+                
+                aView.pin.hCenter(100).pinEdges().margin(10)
+                
+                expect(aView.frame).to(equal(frameWithoutPinEdgest))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).width(100).pinEdges().marginLeft(10)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 90, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).width(100).pinEdges().marginRight(10)
+                expect(aView.frame).to(equal(CGRect(x: 50, y: 100.0, width: 90, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).width(100).pinEdges().marginLeft(10).marginRight(10)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 80.0, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).width(50).height(100).margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 85.0, y: 100.0, width: 50.0, height: 100.0)))
+            }
+        }
+        
+        //
+        // vCenter
+        //
+        describe("the result of top&bottom margins when the vCenter is specified") {
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).height(100).pinEdges().margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 60.0, width: 200.0, height: 80.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).marginTop(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).height(100).pinEdges().marginVertical(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 60.0, width: 200.0, height: 80.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).height(100).pinEdges().marginTop(20).marginBottom(20)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 70.0, width: 200.0, height: 60.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).height(100).pinEdges().marginTop(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 60.0, width: 200.0, height: 90.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).height(100).pinEdges().marginBottom(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 50.0, width: 200.0, height: 90.0)))
+            }
+            it("should adjust the aView") {
+                aView.pin.vCenter(50%).margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 140.0, width: 200.0, height: 120.0)))
+            }
+        }
+        
+        //
+        // hCenter and vCenter
+        //
+        describe("the result of top&bottom margins when the hCenter and vCenter are specified") {
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).vCenter(100).margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 40.0, width: 200.0, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).vCenter(100).width(100).pinEdges().marginTop(10)
+                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 40.0, width: 100.0, height: 120.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.hCenter(50%).vCenter(50%)
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 140, width: 200.0, height: 120.0)))
             }
         }
     }

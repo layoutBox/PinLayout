@@ -22,8 +22,8 @@
 		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */; };
 		249EFE8B1E64FB4C00165E39 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 249EFE7D1E64FB4C00165E39 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24E301DC1EE813280064EE8D /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E301DB1EE813280064EE8D /* Coordinates.swift */; };
 		DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* TypesImpl.swift */; };
-		DF11A37A1E834B3F008B33E5 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3791E834B3F008B33E5 /* Coordinates.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */; };
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
@@ -70,8 +70,8 @@
 		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24E301DB1EE813280064EE8D /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		DF11A3701E833F03008B33E5 /* TypesImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesImpl.swift; sourceTree = "<group>"; };
-		DF11A3791E834B3F008B33E5 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
 		DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutImpl.swift; sourceTree = "<group>"; };
 		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		249EFE701E64FB4C00165E39 = {
 			isa = PBXGroup;
 			children = (
-				249EFE7C1E64FB4C00165E39 /* PinLayout */,
+				249EFE7C1E64FB4C00165E39 /* Sources */,
 				249EFE871E64FB4C00165E39 /* PinLayoutTests */,
 				249EFE7B1E64FB4C00165E39 /* Products */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
@@ -127,14 +127,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		249EFE7C1E64FB4C00165E39 /* PinLayout */ = {
+		249EFE7C1E64FB4C00165E39 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
-				DF11A3761E8341A2008B33E5 /* Helpers */,
 			);
-			path = PinLayout;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		249EFE871E64FB4C00165E39 /* PinLayoutTests */ = {
@@ -164,19 +163,12 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DF11A3761E8341A2008B33E5 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				DF11A3791E834B3F008B33E5 /* Coordinates.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		DFA06B031E8B38B300B6D5E7 /* Impl */ = {
 			isa = PBXGroup;
 			children = (
 				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
 				DF11A3701E833F03008B33E5 /* TypesImpl.swift */,
+				24E301DB1EE813280064EE8D /* Coordinates.swift */,
 			);
 			name = Impl;
 			sourceTree = "<group>";
@@ -314,9 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */,
-				DF11A37A1E834B3F008B33E5 /* Coordinates.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
 				DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */,
+				24E301DC1EE813280064EE8D /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

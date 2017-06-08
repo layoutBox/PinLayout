@@ -75,19 +75,18 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 # PinLayout's Performance <a name="performance"></a>
 
-PinLayout's performance has been measured using the excellent LayoutKit benchmark, which has been developped to compared LayoutKit performance over UIStackView, Auto layout and manual layouting. [PinLayout has been added to this benchmark](https://github.com/mirego/LayoutKit)
- to compare its performance. 
+PinLayout's performance has been measured using the excellent LayoutKit benchmark. PinLayout has been added to this benchmark to compare its performance. 
 
 As you can see in the following chart, PinLayout's performance is as fast as manual layouting, and up to **12x faster than auto layout**, and **16x faster than UIStackViews**. 
 
 These results also means that **PinLayout is by far faster than any layout frameworks that is built over auto layout**. 
 
-[More details and explanation of the benchmark](Docs/Benchmark)
+[More details and explanation of the benchmark](Docs/Benchmark.md)
 
 <p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
-  <a href="https://mirego.github.io/PinLayout/"><img src="Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=500/></a>
-<p align="center" style="font-size:10px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
+  <img src="Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
+<p align="center" style="font-size:9px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
 </p> 
 
 <br/>
@@ -828,17 +827,19 @@ dependencies: [
 	``` 
 <br>
 
-## Comments, ideas, suggestions, issues, .... <a name="comments"></a>
+### Comments, ideas, suggestions, issues, .... <a name="comments"></a>
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
-<br>
 
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+### Thanks
+PinLayout was inspired by other great layout frameworks, including:
+
+* [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout)
+* HTML's CSS
+* [SnapKit](https://github.com/SnapKit/SnapKit)
+* [Stevia](https://github.com/freshOS/Stevia)
+* ... and even Auto layout :-)
+
 
 ## License
 BSD 3-Clause License

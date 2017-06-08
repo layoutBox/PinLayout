@@ -16,14 +16,14 @@
 
 <br>
 
-Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.
+Swift manual views layouting without auto layout, no magic, pure code, full control and FAST! Concise syntax, readable & chainable.
   
 > "No auto-layout constraints attached"
 
 <br>
 
 * [PinLayout principles and philosophy](#introduction)
-* [Installation](#installation)
+* [Performance](#performance)
 * [Documentation](#documentation)
     * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
     * [Anchors](#anchors)
@@ -34,6 +34,7 @@ Swift manual views layouting without auto layout, no magic, pure code, full cont
    	* [Warnings](#warnings)
    	* [More examples](#more_examples)
 
+* [Installation](#installation)
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
 
@@ -42,6 +43,7 @@ Swift manual views layouting without auto layout, no magic, pure code, full cont
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
 * Manual layouting. No magic, pure code, full control.
+* Fast, PinLayout exist to be simple and fast as possible! In fact it is fast as manual layouting. See [performance results below.](#performance)
 * Layout one view at a time. 
 * Concise syntax. Layout most views using a single line. 
 
@@ -71,39 +73,24 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 <br>
 
-## Installation <a name="installation"></a>
+# PinLayout's Performance <a name="performance"></a>
 
-### CocoaPods
+PinLayout's performance has been measured using the excellent LayoutKit benchmark, which has been developped to compared LayoutKit performance over UIStackView, Auto layout and manual layouting. [PinLayout has been added to this benchmark](https://github.com/mirego/LayoutKit)
+ to compare its performance. 
 
-To integrate PinLayout into your Xcode project using CocoaPods, specify it in your `Podfile`:
+As you can see in the following chart, PinLayout's performance is as fast as manual layouting, and up to **12x faster than auto layout**, and **16x faster than UIStackViews**. 
 
-```ruby
-    pod 'PinLayout'
-```
+These results also means that **PinLayout is by far faster than any layout frameworks that is built over auto layout**. 
 
-Then, run `pod install`.
+[More details and explanation of the benchmark](Docs/Benchmark)
 
-### Carthage
+<p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
+<p align="center">
+  <a href="https://mirego.github.io/PinLayout/"><img src="Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=500/></a>
+<p align="center" style="font-size:10px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
+</p> 
 
-To integrate PinLayout into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "mirego/PinLayout"
-```
-
-Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
-
-### Swift Package Manager
-
-Once you have your Swift package set up, you only need to add PinLayout as a dependency of your `Package.swift`.
-
-```ogdl
-dependencies: [
-    .Package(url: "https://github.com/mirego/PinLayout.git", majorVersion: 1)
-]
-```
-
-<br>
+<br/>
 
 # Usage sample
 ###### Example:
@@ -133,12 +120,11 @@ override func layoutSubviews() {
 }
 ``` 
 
-:pushpin: This example and some other examples are available in the **PinLayoutSample** project. Please note that you must do a `pod install` before running the sample project. 
+:pushpin: This example and some other examples are available in the **Example** project. Please note that you must do a `pod install` before running the example project. 
 
 :pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
 
 <br/>
-
 
 # Documentation <a name="documentation"></a>
 
@@ -784,6 +770,40 @@ Cell D:
 	d1.pin.topLeft().bottom().width(25%)
 	d2.pin.right(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
 	d3.pin.right(of: d2, aligned: .top).bottomRight().marginLeft(10)
+```
+
+<br>
+
+## Installation <a name="installation"></a>
+
+### CocoaPods
+
+To integrate PinLayout into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+    pod 'PinLayout'
+```
+
+Then, run `pod install`.
+
+### Carthage
+
+To integrate PinLayout into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "mirego/PinLayout"
+```
+
+Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
+
+### Swift Package Manager
+
+Once you have your Swift package set up, you only need to add PinLayout as a dependency of your `Package.swift`.
+
+```ogdl
+dependencies: [
+    .Package(url: "https://github.com/mirego/PinLayout.git", majorVersion: 1)
+]
 ```
 
 <br>

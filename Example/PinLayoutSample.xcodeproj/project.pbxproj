@@ -188,11 +188,11 @@
 		249EFE361E64FAFE00165E39 = {
 			isa = PBXGroup;
 			children = (
-				2439CC1E1E665858003326FB /* PinLayout.xcodeproj */,
 				160FB83905049FCEDD18DC8A /* Frameworks */,
 				249EFE411E64FAFE00165E39 /* PinLayoutSample */,
 				F143180314A617EFD07C5709 /* Pods */,
 				249EFE401E64FAFE00165E39 /* Products */,
+				2439CC1E1E665858003326FB /* PinLayout.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};

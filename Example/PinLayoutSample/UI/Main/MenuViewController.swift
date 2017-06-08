@@ -41,7 +41,7 @@ enum Page: Int {
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
         case .scrollingPin:               return "Pin to UIScrollView"
-        case .count:                      return "Unknown"
+        case .count:                      return ""
         }
     }
 
@@ -63,7 +63,7 @@ class MenuViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "PinLayout Samples"
+        title = "PinLayout Examples"
     }
 
     required init(coder aDecoder: NSCoder) {

@@ -3,10 +3,6 @@
 
 .build/
 build/
-DerivedData/
-Pods/
 Carthage/
-PinLayoutSample/Pods
 xcuserdata
-*.xcworkspace
 data/

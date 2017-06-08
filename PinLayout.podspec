@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PinLayout"
-  s.version      = "1.0.7"
+  s.version      = "1.0.9"
   s.summary      = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
 
   # This description is used to generate tags and improve search results.

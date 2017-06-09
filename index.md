@@ -22,4 +22,4 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 <br>
 
-[See GitHub PinLayout' page](https://github.com/mirego/PinLayout)
+[See GitHub PinLayout' page for the complete documentation](https://github.com/mirego/PinLayout)

@@ -83,13 +83,14 @@ These results also means that **PinLayout is by far faster than any layout frame
 
 [More details and explanation of the benchmark](Docs/Benchmark.md)
 
+<p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
-  <a href="Docs/Benchmark.md/"><img src="Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout" /></a>
+  <img src="https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
+</p>
+<p align="center" style="font-size:9px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
 </p>
 
-<p align="center" style="font-size: 0.6em">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
-
-
+<br>
 
 # Usage sample
 ###### Example:

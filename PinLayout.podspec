@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PinLayout"
-  s.version      = "1.0.9"
-  s.summary      = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
+  s.version      = "1.0.10"
+  s.summary      = "Swift manual views layouting without auto layout, fast, no magic, pure code, full control. Concise syntax, readable & chainable."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -115,7 +115,7 @@ A view can be layouted using PinLayout and later with another method.
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "PinLayout/**/*.swift"
+  s.source_files  = "Sources/**/*.swift"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

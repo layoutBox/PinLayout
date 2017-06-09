@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="pinlayout-logo-small.png" alt="PinLayout Performance" width=100/>
+	<img src="https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/pinlayout-logo-small.png" alt="PinLayout Performance" width=100/>
 </p>
 
 <h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 1.5em">PinLayout Benchmark</h1>

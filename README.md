@@ -81,16 +81,16 @@ As you can see in the following chart, PinLayout's performance is as fast as man
 
 These results also means that **PinLayout is by far faster than any layout frameworks that is built over auto layout**. 
 
-[More details and explanation of the benchmark](Docs/Benchmark.md)
+[More details and explanation of the benchmark](https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/Benchmark.md)
 
 <p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
 </p>
 <p align="center" style="font-size:9px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
-</p>
+</p> 
 
-<br>
+<br/>
 
 # Usage sample
 ###### Example:
@@ -690,6 +690,12 @@ Example:
 Example:  
 `view.pin.width(-100)`  
 👉 Layout Warning: `The width (-100) must be greater or equal to 0.`
+
+
+width and/or height cannot be determined using current PinLaoyout's commands
+
+size(...)'s height won't be aplied...
+size(...)'s widht won't be applied....
 
 ### Disabling warnings
 

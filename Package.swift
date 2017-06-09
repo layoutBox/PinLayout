@@ -4,4 +4,5 @@ import PackageDescription
 
 let package = Package(
     name: "PinLayout"
+    exclude: ["Tests"]
 )

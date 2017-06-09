@@ -16,7 +16,7 @@
 
 <br>
 
-Swift manual views layouting without auto layout, no magic, pure code, full control and FAST! Concise syntax, readable & chainable.
+Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
   
 > "No auto-layout constraints attached"
 
@@ -42,8 +42,8 @@ Swift manual views layouting without auto layout, no magic, pure code, full cont
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
-* Manual layouting. No magic, pure code, full control.
-* Fast, PinLayout exist to be simple and fast as possible! In fact it is fast as manual layouting. See [performance results below.](#performance)
+* Manual layouting (doesn't rely on auto layout).
+* Blazing fast. PinLayout exist to be simple and fast as possible! In fact it is fast as manual layouting. See [performance results below.](#performance)
 * Layout one view at a time. 
 * Concise syntax. Layout most views using a single line. 
 
@@ -85,11 +85,12 @@ These results also means that **PinLayout is by far faster than any layout frame
 
 <p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
-  <img src="Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
+  <img src="https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
+</p>
 <p align="center" style="font-size:9px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
-</p> 
+</p>
 
-<br/>
+<br>
 
 # Usage sample
 ###### Example:

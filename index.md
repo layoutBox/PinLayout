@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout"><img src="Docs/pinlayout-logo-small.png" alt="PinLayout" /></a>
+  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-small.png" alt="PinLayout" /></a>
 </p>
 
 <h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 3em">PinLayout</h1>

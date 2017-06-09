@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout"><img src="Docs/pinlayout-logo-small.png" alt="PinLayout" /></a>
+  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-small.png" alt="PinLayout" /></a>
 </p>
 
 <h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 3em">PinLayout</h1>
@@ -81,11 +81,11 @@ As you can see in the following chart, PinLayout's performance is as fast as man
 
 These results also means that **PinLayout is by far faster than any layout frameworks that is built over auto layout**. 
 
-[More details and explanation of the benchmark](https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/Benchmark.md)
+[More details and explanation of the benchmark](docs/Benchmark.md)
 
 <p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mirego/PinLayout/master/Docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
+  <img src="docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
 </p>
 <p align="center" style="font-size:9px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
 </p> 
@@ -108,7 +108,7 @@ This example layout an image, a UISegmentedControl and a label.
   * Adjust the label's height to fit its new width. (calls internally UILabel's sizeThatFits() method)
 
 
-![Flowers](Docs/IntroSample-padded.png)
+![Flowers](docs/IntroSample-padded.png)
 
 ```javascript
 override func layoutSubviews() {
@@ -169,7 +169,7 @@ The value specifies the vertical center distance from the superview's top edge i
 
 ###### Example:
 This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
-![Flowers](Docs/01-example-distance-superview-edge.png)
+![Flowers](docs/01-example-distance-superview-edge.png)
 
 ```javascript
     viewA.pin.top(10).left(10).bottom(10).right(10)
@@ -211,7 +211,7 @@ Position the view vertical center directly on its superview vertical center. Sim
 ###### Example:
 This example is similar to the previous example, but pins edges directly on superview’s edges. It will layout the view A to fit its superview frame with a margin of 10 pixels.
 
-![](Docs/02-example-superview-edge.png)
+![](docs/02-example-superview-edge.png)
 
 ```
     viewA.pin.top().left().bottom().right().margin(10)
@@ -237,7 +237,7 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 * `UIView.anchor.bottomCenter`
 * `UIView.anchor.bottomRight`
 
-![](Docs/pinlayout-anchors.png)
+![](docs/pinlayout-anchors.png)
 
 <br/>
 
@@ -272,7 +272,7 @@ Following methods position the corresponding view anchor on another view’s anc
 
 Layout using an anchors. This example pins the view B topLeft anchor on the view A topRight anchor.
 
-![](Docs/example-anchors.png)
+![](docs/example-anchors.png)
 
 ```javascript
 	viewB.pin.topLeft(to: viewA.anchor.topRight)
@@ -286,7 +286,7 @@ Layout using multiple anchors.
  
 It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with horizontal margins of 10px.
 
-![](Docs/example-multiple-anchors.png)
+![](docs/example-multiple-anchors.png)
 
 ```javascript
 	viewC.pin.topLeft(to: viewA.anchor.topRight)
@@ -317,7 +317,7 @@ The following methods position the corresponding view's anchor on another view�
 ###### Example:
 For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor..
 
-![](Docs/example-superview-anchors.png)
+![](docs/example-superview-anchors.png)
 
 ```javascript
 	viewA.pin.topRight()
@@ -344,7 +344,7 @@ PinLayout adds edges properties to UIViews. These properties are used to referen
 * `UIView.edge.bottom`
 * `UIView.edge.right`
 
-![](Docs/pinlayout-edges.png)
+![](docs/pinlayout-edges.png)
 
 ---
 ### Layout using edges
@@ -371,7 +371,7 @@ Layout using an edge.
 
 The following example will layout the view B left edge on the view A right edge. It only change the view B left coordinate
 
-![](Docs/example-edges.png)
+![](docs/example-edges.png)
 
 ```javascript
 	viewB.pin.left(to: viewA.edge.right)
@@ -409,7 +409,7 @@ Position the view right of the specified view. This method is similar to pinning
 ###### Example:
 The following example will position the view C between the view A and B with margins of 10px using relative positioning methods.
 
-![](Docs/pinlayout-relative.png)
+![](docs/pinlayout-relative.png)
 
 ```javascript
 	viewC.pin.top().left(of: viewA).right(of: viewB).margin(10)
@@ -451,7 +451,7 @@ This is similar to pinning to an anchor with a more natural syntax.
 ###### Example:
 The following example layout the view B below the view A aligned on its center.
 
-![](Docs/pinlayout-relative-with-alignment.png)
+![](docs/pinlayout-relative-with-alignment.png)
 
 ```javascript
 	viewB.pin.below(of: viewA, aligned: .center)
@@ -583,7 +583,7 @@ This table explains how and when **top and bottom margins** are applied dependin
 
 ###### Example 1:
 In this example, only the **left** margin is applied
-![](Docs/pinlayout-margin-01.png)
+![](docs/pinlayout-margin-01.png)
 
 ```javascript
 	view.pin.left().margin(10)
@@ -591,7 +591,7 @@ In this example, only the **left** margin is applied
 
 ###### Example 2:
 In this example, only the **right** margin is applied
-![](Docs/pinlayout-margin-02.png)
+![](docs/pinlayout-margin-02.png)
 
 ```javascript
 	view.pin.right().width(100).marginHorizontal(10)
@@ -599,7 +599,7 @@ In this example, only the **right** margin is applied
 
 ###### Example 3:
 In this example, the **left** and **right** margins are applied
-![](Docs/pinlayout-margin-03.png)
+![](docs/pinlayout-margin-03.png)
 
 ```javascript
 	view.pin.left().right().margin(10)
@@ -607,7 +607,7 @@ In this example, the **left** and **right** margins are applied
 
 ###### Example 4:
 In this example, **left**, **right** and **top** margins are applied. Note that the view’s width has been reduced to apply left and right margins.
-![](Docs/pinlayout-margin-04.png)
+![](docs/pinlayout-margin-04.png)
 
 ```javascript
 	view.pin.topLeft().right().height(100).margin(10)
@@ -615,7 +615,7 @@ In this example, **left**, **right** and **top** margins are applied. Note that 
 
 ###### Example 5:
 In this example, **left**, **right**, **top** and **bottom** margins are applied.
-![](Docs/pinlayout-margin-05.png)
+![](docs/pinlayout-margin-05.png)
 
 ```javascript
 	view.pin.topLeft().bottomRight().margin(10)
@@ -633,7 +633,7 @@ This method is an add-on, there is no equivalent in CSS.
 ###### Example without `pinEdges`
 Without `pinEdges()` margins rules would be applied and the view would be moved to the left.
 
-![](Docs/pinlayout-margin-pinEdges-01.png)
+![](docs/pinlayout-margin-pinEdges-01.png)
 
 ```javascript
 	view.pin.left().width(percent: 100).marginHorizontal(20)
@@ -644,7 +644,7 @@ Without `pinEdges()` margins rules would be applied and the view would be moved 
 
 With `pinEdges()` the left and right margins are applied even if only the left and width has been set. The reason is the call to pinEdges() has pinned the two horizontal edges at their position before applying margins.
 
-![](Docs/pinlayout-margin-pinEdges-02.png)
+![](docs/pinlayout-margin-pinEdges-02.png)
 
 ```javascript
 	view.pin.left().width(percent: 100).pinEdges().marginHorizontal(20)
@@ -654,7 +654,7 @@ With `pinEdges()` the left and right margins are applied even if only the left a
 
 NOTE: In that in that particular situation, the same results could have been achieved differently too:
 
-![](Docs/pinlayout-margin-pinEdges-03.png)
+![](docs/pinlayout-margin-pinEdges-03.png)
 
 ```javascript
 	view.pin.left().right().marginHorizontal(20)
@@ -732,7 +732,7 @@ Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogCo
 ### Adjust to container size
 The following examples show how PinLayout can be used to adjust views size and position to the size of their container. in this case containers are cells.
 
-![](Docs/pinlayout-example-cells.png)
+![](docs/pinlayout-example-cells.png)
 
 Cell A:
 

@@ -45,6 +45,8 @@ class PinEdgesSpec: QuickSpec {
         */
 
         beforeEach {
+            unitTestLastWarning = nil
+        
             viewController = UIViewController()
             
             rootView = BasicView(text: "", color: .white)
@@ -54,8 +56,6 @@ class PinEdgesSpec: QuickSpec {
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
             aView.frame = CGRect(x: 140, y: 100, width: 200, height: 100)
             rootView.addSubview(aView)
-            
-            unitTestLastWarning = nil
         }
 
         //

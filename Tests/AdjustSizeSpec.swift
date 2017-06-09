@@ -57,6 +57,8 @@ class AdjustSizeSpec: QuickSpec {
         }
 
         beforeEach {
+            unitTestLastWarning = nil
+            
             viewController = UIViewController()
             
             rootView = BasicView(text: "", color: .white)
@@ -169,9 +171,16 @@ class AdjustSizeSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 200.0, height: 200.0)))
             }
             
-            it("should warn that size() won't be applied") {
+            it("should warn that size()'s width won't be applied") {
                 aView.pin.width(90).size(CGSize(width: 25, height: 25))
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 25.0)))
+                expect(unitTestLastWarning).to(contain(["size", "width", "won't be applied", "value has already been set"]))
+            }
+            
+            it("should warn that size()'s height won't be applied") {
+                aView.pin.height(90).size(CGSize(width: 25, height: 25))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 25.0, height: 90.0)))
+                expect(unitTestLastWarning).to(contain(["size", "height", "won't be applied", "value has already been set"]))
             }
             
             it("should adjust the size of aView by calling a size(...) method") {
@@ -179,19 +188,22 @@ class AdjustSizeSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 30.0)))
             }
         
-            it("should warn that size(of) won't be applied") {
+            it("should warn that size(of)'s width won't be applied") {
                 aView.pin.width(90).size(of: aViewChild)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 30.0)))
+                expect(unitTestLastWarning).to(contain(["size", "width", "won't be applied", "value has already been set"]))
             }
             
-            it("should warn that size() won't be applied") {
+            it("should warn that size()'s width won't be applied") {
                 aView.pin.width(90).size(20)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 20.0)))
+                expect(unitTestLastWarning).to(contain(["size", "width", "won't be applied", "value has already been set"]))
             }
             
-            it("should warn that size() won't be applied") {
+            it("should warn that size()'s width won't be applied") {
                 aView.pin.width(90).size(50%)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 90.0, height: 200.0)))
+                expect(unitTestLastWarning).to(contain(["size", "width", "won't be applied", "value has already been set"]))
             }
         }
 

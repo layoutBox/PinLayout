@@ -594,43 +594,26 @@ class PinLayoutImpl: PinLayout {
     //
     @discardableResult
     func size(_ size: CGSize) -> PinLayout {
-        if isSizeNotSet({ return "size(CGSize(width: \(size.width), height: \(size.height)))" }) {
-            width(size.width)
-            height(size.height)
-        }
-        return self
+        return setSize(size, { return "size(CGSize(width: \(size.width), height: \(size.height)))" })
     }
     
     @discardableResult
     func size(_ sideLength: CGFloat) -> PinLayout {
-        if isSizeNotSet({ return "size(sideLength: \(sideLength))" }) {
-            width(sideLength)
-            height(sideLength)
-        }
-        return self
+        return setSize(CGSize(width: sideLength, height: sideLength), { return "size(sideLength: \(sideLength))" })
     }
     
     @discardableResult
     func size(_ percent: Percent) -> PinLayout {
         func context() -> String { return "size(\(percent))" }
-        if isSizeNotSet(context) {
-            guard let layoutSuperview = layoutSuperview(context) else { return self }
-            setWidth(percent.of(layoutSuperview.frame.width), context)
-            setHeight(percent.of(layoutSuperview.frame.height), context)
-        }
-        return self
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        let size = CGSize(width: percent.of(layoutSuperview.frame.width), height: percent.of(layoutSuperview.frame.height))
+        return setSize(size, context)
     }
     
     @discardableResult
     func size(of view: UIView) -> PinLayout {
         func context() -> String { return "size(of \(view))" }
-        let viewSize = view.frame.size
-        
-        if isSizeNotSet(context) {
-            setWidth(viewSize.width, context)
-            setHeight(viewSize.height, context)
-        }
-        return self
+        return setSize(view.frame.size, context)
     }
     
     @discardableResult
@@ -867,7 +850,7 @@ extension PinLayoutImpl {
         
         if let _left = _left, let _right = _right {
             warnConflict(context, ["left": _left, "right": _right])
-        } else if let width = width {
+        } else if let width = width, width != value {
             warnPropertyAlreadySet("width", propertyValue: width, context)
         } else {
             width = value
@@ -883,7 +866,7 @@ extension PinLayoutImpl {
         
         if let _top = _top, let _bottom = _bottom {
             warnConflict(context, ["top": _top, "bottom": _bottom])
-        } else if let height = height {
+        } else if let height = height, height != value {
             warnPropertyAlreadySet("height", propertyValue: height, context)
         } else {
             height = value
@@ -891,19 +874,10 @@ extension PinLayoutImpl {
         return self
     }
     
-    fileprivate func isSizeNotSet(_ context: Context) -> Bool {
-        if let _top = _top, let _bottom = _bottom {
-            warnConflict(context, ["top": _top, "bottom": _bottom])
-            return false
-        } else if let height = height {
-            warnConflict(context, ["height": height])
-            return false
-        } else if let width = width {
-            warnConflict(context, ["width": width])
-            return false
-        } else {
-            return true
-        }
+    fileprivate func setSize(_ size: CGSize, _ context: Context) -> PinLayout {
+        setWidth(size.width, { return "\(context())'s width" })
+        setHeight(size.height, { return "\(context())'s height" })
+        return self
     }
     
     fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ referenceView: UIView, _ referenceSuperview: UIView) -> CGPoint {

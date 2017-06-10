@@ -838,6 +838,9 @@ dependencies: [
 ### Comments, ideas, suggestions, issues, .... <a name="comments"></a>
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
+If you find PinLayout interresting, thanks to **Star** it. You'll be able to retrieve it easily later.
+
+<br>
 
 ### Thanks
 PinLayout was inspired by other great layout frameworks, including:

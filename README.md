@@ -116,7 +116,7 @@ override func layoutSubviews() {
     
    logo.pin.topLeft().size(100).margin(74, 10, 10)
    segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(20)
-   textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
+   textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit()
 }
 ``` 
 
@@ -815,6 +815,7 @@ dependencies: [
 <br>
 
 ## Coming soon <a name="coming_soon"></a>
+* Position relative to multiple views (ex: view.pin.below(of: label1, label2, image, aligned: .left))
 * minWidth/maxWidth, minHeight/maxHeight
 * CALayer support
 * ...
@@ -841,10 +842,10 @@ For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [is
 ### Thanks
 PinLayout was inspired by other great layout frameworks, including:
 
-* [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout)
-* HTML's CSS
-* [SnapKit](https://github.com/SnapKit/SnapKit)
-* [Stevia](https://github.com/freshOS/Stevia)
+* [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout): Nice absolute and relative positionning.
+* HTML's CSS: Management of margins in absolute positionning and bottom/right position coordinates.
+* Qt:Anchors and edges management.
+* [SnapKit](https://github.com/SnapKit/SnapKit): Clean interface for anchors.
 * ... and even Auto layout :-)
 
 

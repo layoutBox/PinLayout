@@ -28,9 +28,9 @@
 import UIKit
 
 class MultiRelativeView: UIView {
-    private let view1 = BasicView(text: "View1", color: UIColor.blue.withAlphaComponent(0.6))
-    private let view2 = BasicView(text: "View2", color: UIColor.blue.withAlphaComponent(0.6))
-    private let view = BasicView(text: "View", color: UIColor.blue.withAlphaComponent(1.0))
+    fileprivate let view1 = BasicView(text: "View1", color: UIColor.blue.withAlphaComponent(0.6))
+    fileprivate let view2 = BasicView(text: "View2", color: UIColor.blue.withAlphaComponent(0.6))
+    fileprivate let view = BasicView(text: "View", color: UIColor.blue.withAlphaComponent(1.0))
     
     init() {
         super.init(frame: .zero)

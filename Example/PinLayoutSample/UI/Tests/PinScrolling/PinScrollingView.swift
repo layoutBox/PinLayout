@@ -30,7 +30,7 @@ import PinLayout
 
 class PinScrollingView: UIView {
 
-    private let contentScrollView = UIScrollView()
+    fileprivate let contentScrollView = UIScrollView()
 
     var aView: BasicView!
     var bView: BasicView!

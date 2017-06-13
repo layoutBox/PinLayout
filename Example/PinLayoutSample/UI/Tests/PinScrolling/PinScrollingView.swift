@@ -28,7 +28,7 @@
 import UIKit
 import PinLayout
 
-class PinScrollingView: UIView {
+class PinScrollingView: BaseView {
 
     fileprivate let contentScrollView = UIScrollView()
 
@@ -102,7 +102,7 @@ class PinScrollingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentScrollView.pin.topLeft().bottomRight().marginTop(64)
+        contentScrollView.pin.topLeft().bottomRight().marginTop(topLayoutGuide)
         contentScrollView.contentSize = CGSize(width: frame.width, height: frame.height * 2)
         contentScrollView.contentInset = .zero
         

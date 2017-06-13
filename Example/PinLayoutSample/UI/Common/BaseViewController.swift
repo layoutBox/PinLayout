@@ -27,20 +27,13 @@
 
 import UIKit
 
-class RelativeViewController: BaseViewController {
-    fileprivate var mainView: RelativeView {
-        return self.view as! RelativeView
-    }
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
+class BaseViewController: UIViewController {
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func loadView() {
-        view = RelativeView()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if let view = view as? BaseView {
+            view.setLayoutGuides(top: topLayoutGuide.length, bottom: bottomLayoutGuide.length)
+        }
     }
 }

@@ -28,7 +28,7 @@
 import UIKit
 import PinLayout
 
-class RelativeView: UIView {
+class RelativeView: BaseView {
     fileprivate let belowNavBarView = BasicView(text: "Below navbar", color: UIColor.lightGray)
     
     var rootView: BasicView!
@@ -97,9 +97,9 @@ class RelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        belowNavBarView.pin.topLeft().bottomRight().marginTop(64)
+        belowNavBarView.pin.topLeft().bottomRight().marginTop(topLayoutGuide)
         
-        rootView.frame = CGRect(x: 0, y: 64, width: 400, height: 400)
+        rootView.frame = CGRect(x: 0, y: topLayoutGuide, width: 400, height: 400)
         centerView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
         
         topLeftView.pin.above(of: centerView, aligned: .left)

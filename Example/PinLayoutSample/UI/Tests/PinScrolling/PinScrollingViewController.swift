@@ -27,7 +27,7 @@
 
 import UIKit
 
-class PinScrollingViewController: UIViewController {
+class PinScrollingViewController: BaseViewController {
     fileprivate var mainView: PinScrollingView {
         return self.view as! PinScrollingView
     }

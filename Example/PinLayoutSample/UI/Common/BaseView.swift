@@ -27,20 +27,29 @@
 
 import UIKit
 
-class RelativeViewController: BaseViewController {
-    fileprivate var mainView: RelativeView {
-        return self.view as! RelativeView
-    }
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
+class BaseView: UIView {
+    fileprivate (set) var topLayoutGuide: CGFloat = 0
+    fileprivate (set) var bottomLayoutGuide: CGFloat = 0
+    
+    func setLayoutGuides(top: CGFloat, bottom: CGFloat) {
+        var didChange = false
+        
+        if top != topLayoutGuide {
+            topLayoutGuide = top
+            didChange = true
+        }
+        
+        if bottom != bottomLayoutGuide {
+            bottomLayoutGuide = bottom
+            didChange = true
+        }
+        
+        if didChange {
+            didChangeLayoutGuides()
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func loadView() {
-        view = RelativeView()
+    func didChangeLayoutGuides() {
+        setNeedsLayout()
     }
 }

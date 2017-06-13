@@ -27,20 +27,6 @@
 
 import UIKit
 
-class RelativeViewController: BaseViewController {
-    fileprivate var mainView: RelativeView {
-        return self.view as! RelativeView
-    }
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func loadView() {
-        view = RelativeView()
-    }
+extension UIColor {
+    class var pinLayoutColor: UIColor { return UIColor(red: 90.0 / 255.0, green: 171.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0) }
 }

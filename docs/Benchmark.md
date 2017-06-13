@@ -23,7 +23,7 @@ The benchmark include tests for the following layout systems:
 Anyone who would like to integrate any other layout frameworks to this GitHub repository is welcome.
 
 ##### Benchmark details
-The LayoutKit benchmark layout UICollectionView and UITableView cells in multiple pass, each pass contains more cells than the previous one. The **X axis** in following charts indicates the number of cell contained for each pass. The **Y axis** indicates the number of miliseconds to render all cells from one pass.
+The LayoutKit benchmark layout UICollectionView and UITableView cells in multiple pass, each pass contains more cells than the previous one. The **X axis** in following charts indicates the **number of cells** contained for each pass. The **Y axis** indicates the **number of seconds** to render all cells from one pass.
 
 Here are the rendering results to compare visual results:
  

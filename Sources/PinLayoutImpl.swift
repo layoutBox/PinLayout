@@ -253,8 +253,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topLeft", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setTopLeft(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setTopLeft(coordinatesList[0], context)
         }
         return self
     }
@@ -272,8 +272,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topCenter", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setTopCenter(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setTopCenter(coordinatesList[0], context)
         }
         return self
     }
@@ -292,8 +292,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topRight", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setTopRight(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setTopRight(coordinatesList[0], context)
         }
         return self
     }
@@ -312,8 +312,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func leftCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "leftCenter", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setLeftCenter(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setLeftCenter(coordinatesList[0], context)
         }
         return self
     }
@@ -332,8 +332,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func center(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "center", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setCenter(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setCenter(coordinatesList[0], context)
         }
         return self
     }
@@ -352,8 +352,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func rightCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "rightCenter", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setRightCenter(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setRightCenter(coordinatesList[0], context)
         }
         return self
     }
@@ -372,8 +372,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomLeft", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setBottomLeft(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setBottomLeft(coordinatesList[0], context)
         }
         return self
     }
@@ -392,8 +392,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomCenter", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setBottomCenter(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setBottomCenter(coordinatesList[0], context)
         }
         return self
     }
@@ -412,8 +412,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomRight", anchor: anchor) }
-        if let coordinates = computeCoordinates(forAnchor: anchor, context) {
-            setBottomRight(coordinates, context)
+        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
+            setBottomRight(coordinatesList[0], context)
         }
         return self
     }
@@ -428,63 +428,76 @@ class PinLayoutImpl: PinLayout {
         return self
     }
 
-    /// Set the view's bottom coordinate above of the specified view.
+    /// Set the view's bottom coordinate above all specified views.
     @discardableResult
-    func above(of referenceView: UIView) -> PinLayout {
-        func context() -> String { return "above(of: \(view))" }
-        if let coordinate = computeCoordinate(forEdge: referenceView.edge.top, context) {
-            setBottom(coordinate, context)
-        }
-        return self
-    }
-    
-    @discardableResult
-    func above(of referenceView: UIView, aligned: HorizontalAlignment) -> PinLayout {
-        func context() -> String { return "above(of: \(view), aligned: \(aligned))" }
+    func above(of relativeViews: UIView...) -> PinLayout {
+        func context() -> String { return "above(of: UIView...)" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
         
-        switch aligned {
-        case .left:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topLeft, context) {
-                setBottomLeft(coordinates, context)
-            }
-        case .center:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topCenter, context) {
-                setBottomCenter(coordinates, context)
-            }
-        case .right:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topRight, context) {
-                setBottomRight(coordinates, context)
-            }
+        let anchors = relativeViews.map({ $0.anchor.topLeft })
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setBottom(getTopMostCoordinate(list: coordinatesList), context)
         }
         return self
     }
-    
-    /// Set the view's top coordinate below of the specified view.
+
+    /// Set the view's bottom coordinate above all specified view.
     @discardableResult
-    func below(of referenceView: UIView) -> PinLayout {
-        func context() -> String { return "below(of: \(view))" }
-        if let coordinate = computeCoordinate(forEdge: referenceView.edge.bottom, context) {
-            setTop(coordinate, context)
-        }
-        return self
-    }
-    
-    @discardableResult
-    func below(of referenceView: UIView, aligned: HorizontalAlignment) -> PinLayout {
-        func context() -> String { return "below(of: \(view), aligned: \(aligned))" }
+    func above(of relativeViews: UIView..., aligned: HorizontalAlignment) -> PinLayout {
+        func context() -> String { return "above(of: UIView..., aligned: \(aligned))" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
         
+        let anchors: [Anchor]
         switch aligned {
-        case .left:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomLeft, context) {
-                setTopLeft(coordinates, context)
+        case .left:   anchors = relativeViews.map({ $0.anchor.topLeft })
+        case .center: anchors = relativeViews.map({ $0.anchor.topCenter })
+        case .right:  anchors = relativeViews.map({ $0.anchor.topRight })
+        }
+        
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setBottom(getTopMostCoordinate(list: coordinatesList), context)
+            
+            switch aligned {
+            case .left:   setLeft(getLeftMostCoordinate(list: coordinatesList), context)
+            case .center: setHorizontalCenter(getAverageHCenterCoordinate(list: coordinatesList), context)
+            case .right:  setRight(getRightMostCoordinate(list: coordinatesList), context)
             }
-        case .center:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomCenter, context) {
-                setTopCenter(coordinates, context)
-            }
-        case .right:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomRight, context) {
-                setTopRight(coordinates, context)
+        }
+        return self
+    }
+    
+    /// Set the view's top coordinate below all specified view.
+    @discardableResult
+    func below(of relativeViews: UIView...) -> PinLayout {
+        func context() -> String { return "below(of: UIView...)" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
+        
+        let anchors = relativeViews.map({ $0.anchor.bottomLeft })
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setTop(getBottomMostCoordinate(list: coordinatesList), context)
+        }
+        return self
+    }
+    
+    @discardableResult
+    func below(of relativeViews: UIView..., aligned: HorizontalAlignment) -> PinLayout {
+        func context() -> String { return "below(of: UIView..., aligned: \(aligned))" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
+        
+        let anchors: [Anchor]
+        switch aligned {
+        case .left:   anchors = relativeViews.map({ $0.anchor.bottomLeft })
+        case .center: anchors = relativeViews.map({ $0.anchor.bottomCenter })
+        case .right:  anchors = relativeViews.map({ $0.anchor.bottomRight })
+        }
+        
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setTop(getBottomMostCoordinate(list: coordinatesList), context)
+            
+            switch aligned {
+            case .left:   setLeft(getLeftMostCoordinate(list: coordinatesList), context)
+            case .center: setHorizontalCenter(getAverageHCenterCoordinate(list: coordinatesList), context)
+            case .right:  setRight(getRightMostCoordinate(list: coordinatesList), context)
             }
         }
         return self
@@ -492,30 +505,36 @@ class PinLayoutImpl: PinLayout {
     
     /// Set the view's right coordinate left of the specified view.
     @discardableResult
-    func left(of referenceView: UIView) -> PinLayout {
-        func context() -> String { return "left(of: \(view))" }
-        if let coordinate =  computeCoordinate(forEdge: referenceView.edge.left, context) {
-            setRight(coordinate, context)
+    func left(of relativeViews: UIView...) -> PinLayout {
+        func context() -> String { return "left(of: UIView...)" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
+        
+        let anchors = relativeViews.map({ $0.anchor.topLeft })
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setRight(getLeftMostCoordinate(list: coordinatesList), context)
         }
         return self
     }
     
     @discardableResult
-    func left(of referenceView: UIView, aligned: VerticalAlignment) -> PinLayout {
-        func context() -> String { return "left(of: \(view), aligned: \(aligned))" }
+    func left(of relativeViews: UIView..., aligned: VerticalAlignment) -> PinLayout {
+        func context() -> String { return "left(of: UIView..., aligned: \(aligned))" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
         
+        let anchors: [Anchor]
         switch aligned {
-        case .top:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topLeft, context) {
-                setTopRight(coordinates, context)
-            }
-        case .center:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.leftCenter, context) {
-                setRightCenter(coordinates, context)
-            }
-        case .bottom:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomLeft, context) {
-                setBottomRight(coordinates, context)
+        case .top:    anchors = relativeViews.map({ $0.anchor.topLeft })
+        case .center: anchors = relativeViews.map({ $0.anchor.leftCenter })
+        case .bottom: anchors = relativeViews.map({ $0.anchor.bottomLeft })
+        }
+        
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setRight(getLeftMostCoordinate(list: coordinatesList), context)
+            
+            switch aligned {
+            case .top:    setTop(getTopMostCoordinate(list: coordinatesList), context)
+            case .center: setVerticalCenter(getAverageVCenterCoordinate(list: coordinatesList), context)
+            case .bottom: setBottom(getBottomMostCoordinate(list: coordinatesList), context)
             }
         }
         return self
@@ -523,30 +542,36 @@ class PinLayoutImpl: PinLayout {
     
     /// Set the view's left coordinate right of the specified view.
     @discardableResult
-    func right(of referenceView: UIView) -> PinLayout {
-        func context() -> String { return "right(of: \(view))" }
-        if let coordinate = computeCoordinate(forEdge: referenceView.edge.right, context) {
-            setLeft(coordinate, context)
+    func right(of relativeViews: UIView...) -> PinLayout {
+        func context() -> String { return "right(of: UIView...)" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
+        
+        let anchors = relativeViews.map({ $0.anchor.topRight })
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setLeft(getRightMostCoordinate(list: coordinatesList), context)
         }
         return self
     }
     
     @discardableResult
-    func right(of referenceView: UIView, aligned: VerticalAlignment) -> PinLayout {
-        func context() -> String { return "right(of: \(view), aligned: \(aligned))" }
+    func right(of relativeViews: UIView..., aligned: VerticalAlignment) -> PinLayout {
+        func context() -> String { return "right(of: UIView..., aligned: \(aligned))" }
+        guard validateRelativeViewsCount(relativeViews, context: context) else { return self }
         
+        let anchors: [Anchor]
         switch aligned {
-        case .top:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.topRight, context) {
-                setTopLeft(coordinates, context)
-            }
-        case .center:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.rightCenter, context) {
-                setLeftCenter(coordinates, context)
-            }
-        case .bottom:
-            if let coordinates = computeCoordinates(forAnchor: referenceView.anchor.bottomRight, context) {
-                setBottomLeft(coordinates, context)
+        case .top:    anchors = relativeViews.map({ $0.anchor.topRight })
+        case .center: anchors = relativeViews.map({ $0.anchor.rightCenter })
+        case .bottom: anchors = relativeViews.map({ $0.anchor.bottomRight })
+        }
+        
+        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
+            setLeft(getRightMostCoordinate(list: coordinatesList), context)
+            
+            switch aligned {
+            case .top:    setTop(getTopMostCoordinate(list: coordinatesList), context)
+            case .center: setVerticalCenter(getAverageVCenterCoordinate(list: coordinatesList), context)
+            case .bottom: setBottom(getBottomMostCoordinate(list: coordinatesList), context)
             }
         }
         return self
@@ -704,7 +729,7 @@ class PinLayoutImpl: PinLayout {
 }
 
 //
-// MARK: Private methods
+// MARK: Private methods - Set coordinates
 //
 extension PinLayoutImpl {
     fileprivate func setTop(_ value: CGFloat, _ context: Context) {
@@ -887,13 +912,23 @@ extension PinLayoutImpl {
             return referenceSuperview.convert(point, to: layoutSuperview)
         }
     }
-
-    fileprivate func computeCoordinates(forAnchor anchor: Anchor, _ context: Context) -> CGPoint? {
-        let anchor = anchor as! AnchorImpl
+    
+    fileprivate func computeCoordinates(forAnchors anchors: [Anchor], _ context: Context) -> [CGPoint]? {
         guard let layoutSuperview = layoutSuperview(context) else { return nil }
-        guard let referenceSuperview = referenceSuperview(anchor.view, context) else { return nil }
+        var results: [CGPoint] = []
+        anchors.forEach({ (anchor) in
+            let anchor = anchor as! AnchorImpl
+            if let referenceSuperview = referenceSuperview(anchor.view, context) {
+                results.append(computeCoordinates(anchor.point, layoutSuperview, anchor.view, referenceSuperview))
+            }
+        })
         
-        return computeCoordinates(anchor.point, layoutSuperview, anchor.view, referenceSuperview)
+        guard results.count > 0 else {
+            warn("no valid references", context)
+            return nil
+        }
+        
+        return results
     }
     
     fileprivate func computeCoordinate(forEdge edge: HorizontalEdge, _ context: Context) -> CGFloat? {
@@ -925,11 +960,75 @@ extension PinLayoutImpl {
         if let superview = referenceView.superview {
             return superview
         } else {
-            warn("the view must be added as a sub-view before being used as a reference.", context)
+            warn("the reference view \(viewDescription(referenceView)) is invalid. UIViews must be added as a sub-view before being used as a reference.", context)
             return nil
         }
     }
+}
     
+// MARK - Relative methods helpers
+extension PinLayoutImpl {
+    fileprivate func getTopMostCoordinate(list: [CGPoint]) -> CGFloat {
+        assert(list.count > 0)
+        let firstCoordinate = list[0].y
+        return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
+            return (otherCoordinates.y < bestCoordinate) ? otherCoordinates.y : bestCoordinate
+        })
+    }
+    
+    fileprivate func getBottomMostCoordinate(list: [CGPoint]) -> CGFloat {
+        assert(list.count > 0)
+        let firstCoordinate = list[0].y
+        return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
+            return (otherCoordinates.y > bestCoordinate) ? otherCoordinates.y : bestCoordinate
+        })
+    }
+    
+    fileprivate func getLeftMostCoordinate(list: [CGPoint]) -> CGFloat {
+        assert(list.count > 0)
+        let firstCoordinate = list[0].x
+        return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
+            return (otherCoordinates.x < bestCoordinate) ? otherCoordinates.x : bestCoordinate
+        })
+    }
+    
+    fileprivate func getRightMostCoordinate(list: [CGPoint]) -> CGFloat {
+        assert(list.count > 0)
+        let firstCoordinate = list[0].x
+        return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
+            return (otherCoordinates.x > bestCoordinate) ? otherCoordinates.x : bestCoordinate
+        })
+    }
+    
+    fileprivate func getAverageHCenterCoordinate(list: [CGPoint]) -> CGFloat {
+        assert(list.count > 0)
+        let sum = list.reduce(0, { (result, point) -> CGFloat in
+            return result + point.x
+        })
+        return sum / CGFloat(list.count)
+    }
+    
+    fileprivate func getAverageVCenterCoordinate(list: [CGPoint]) -> CGFloat {
+        assert(list.count > 0)
+        let sum = list.reduce(0, { (result, point) -> CGFloat in
+            return result + point.y
+        })
+        return sum / CGFloat(list.count)
+    }
+    
+    fileprivate func validateRelativeViewsCount(_ views: [UIView], context: Context) -> Bool {
+        guard let _ = layoutSuperview(context) else { return false }
+        guard views.count > 0 else {
+            warn("At least one view must be specified", context)
+            return false
+        }
+        
+        return true
+    }
+}
+
+// MARK - UIView's frame compuation methods
+extension PinLayoutImpl {
     fileprivate func apply() {
         apply(onView: view)
     }
@@ -1169,6 +1268,10 @@ extension PinLayoutImpl {
     fileprivate func displayWarning(_ text: String) {
         print(text)
         unitTestLastWarning = text
+    }
+    
+    fileprivate func viewDescription(_ view: UIView) -> String {
+        return "\"\(view.description)\""
     }
 }
     

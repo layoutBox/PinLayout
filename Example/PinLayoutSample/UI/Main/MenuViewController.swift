@@ -56,7 +56,7 @@ enum Page: Int {
     }
 }
 
-class MenuViewController: UIViewController {
+class MenuViewController: BaseViewController {
     fileprivate var mainView: MenuView {
         return self.view as! MenuView
     }

@@ -27,10 +27,10 @@
 
 import UIKit
 
-class MultiRelativeView: UIView {
-    private let view1 = BasicView(text: "View1", color: UIColor.blue.withAlphaComponent(0.6))
-    private let view2 = BasicView(text: "View2", color: UIColor.blue.withAlphaComponent(0.6))
-    private let view = BasicView(text: "View", color: UIColor.blue.withAlphaComponent(1.0))
+class MultiRelativeView: BaseView {
+    fileprivate let view1 = BasicView(text: "View1", color: UIColor.blue.withAlphaComponent(0.6))
+    fileprivate let view2 = BasicView(text: "View2", color: UIColor.blue.withAlphaComponent(0.6))
+    fileprivate let view = BasicView(text: "View", color: UIColor.blue.withAlphaComponent(1.0))
     
     init() {
         super.init(frame: .zero)
@@ -52,7 +52,7 @@ class MultiRelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        view1.pin.top(64).left(10).width(100).height(100)
+        view1.pin.top(topLayoutGuide).left(10).width(100).height(100)
         view2.pin.right(of: view1, aligned: .top).marginLeft(150).width(100).height(100)
         view.pin.right(of: view1, aligned: .top).left(of: view2).height(75).marginLeft(10).marginRight(10)
     }

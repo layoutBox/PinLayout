@@ -71,11 +71,27 @@ class RelativePositionSpec: QuickSpec {
         }
         
         //
+        // above(of:)
+        //
+        describe("the result of above(of:)") {
+            it("should adjust the bView bottom edge relative to its sibling (aView)") {
+                bView.pin.above(of: aView)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 60.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the bView bottom edge relative to its sibling (aView)") {
+                bView.pin.above(of: aViewChild)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 110.0, width: 40.0, height: 40.0)))
+            }
+        }
+        
+        //
         // above(of:aligned:)
         //
         describe("the result of above(of:aligned: left)") {
             it("should adjust the bView position relative to its sibling (aView)") {
-                bView.pin.above(of: aView, aligned: .left)
+                bView.pin.above(of: aView, aViewChild)
+                bView.pin.above(of: aView, aViewChild, aligned: .left)
                 expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
             }
             
@@ -106,6 +122,21 @@ class RelativePositionSpec: QuickSpec {
             it("should adjust the bView position relative ot its sibling children (aViewChild)") {
                 bView.pin.above(of: aViewChild, aligned: .right)
                 expect(bView.frame).to(equal(CGRect(x: 185.0, y: 110.0, width: 40.0, height: 40.0)))
+            }
+        }
+        
+        //
+        // left(of:)
+        //
+        describe("the result of left(of:)") {
+            it("should adjust the bView right edge relative to its sibling (aView)") {
+                bView.pin.left(of: aView)
+                expect(bView.frame).to(equal(CGRect(x: 60.0, y: 200.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the bView right edge relative to its sibling (aView)") {
+                bView.pin.left(of: aViewChild)
+                expect(bView.frame).to(equal(CGRect(x: 105.0, y: 200.0, width: 40.0, height: 40.0)))
             }
         }
         
@@ -149,6 +180,21 @@ class RelativePositionSpec: QuickSpec {
         }
         
         //
+        // below(of:)
+        //
+        describe("the result of below(of:)") {
+            it("should adjust the bView top edge relative to its sibling (aView)") {
+                bView.pin.below(of: aView)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 260.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the bView top edge relative to its sibling (aView)") {
+                bView.pin.below(of: aViewChild)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 230.0, width: 40.0, height: 40.0)))
+            }
+        }
+        
+        //
         // below(of:aligned:)
         //
         describe("the result of below(of:aligned: .left)") {
@@ -187,7 +233,22 @@ class RelativePositionSpec: QuickSpec {
             }
         }
         
+        
         //
+        // right(of:)
+        //
+        describe("the result of right(of:)") {
+            it("should adjust the bView left edge relative to its sibling (aView)") {
+                bView.pin.right(of: aView)
+                expect(bView.frame).to(equal(CGRect(x: 300.0, y: 200.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the bView left edge relative to its sibling (aView)") {
+                bView.pin.right(of: aViewChild)
+                expect(bView.frame).to(equal(CGRect(x: 225.0, y: 200.0, width: 40.0, height: 40.0)))
+            }
+        }
+        
         // right(of:aligned:)
         //
         describe("the result of right(of:aligned: .top)") {
@@ -223,66 +284,6 @@ class RelativePositionSpec: QuickSpec {
             it("should adjust the bView position relative ot its sibling children (aViewChild)") {
                 bView.pin.right(of: aViewChild, aligned: .bottom)
                 expect(bView.frame).to(equal(CGRect(x: 225.0, y: 190.0, width: 40.0, height: 40.0)))
-            }
-        }
-        
-        //
-        // above(of:)
-        //
-        describe("the result of above(of:)") {
-            it("should adjust the bView bottom edge relative to its sibling (aView)") {
-                bView.pin.above(of: aView)
-                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 60.0, width: 40.0, height: 40.0)))
-            }
-
-            it("should adjust the bView bottom edge relative to its sibling (aView)") {
-                bView.pin.above(of: aViewChild)
-                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 110.0, width: 40.0, height: 40.0)))
-            }
-        }
-        
-        //
-        // left(of:)
-        //
-        describe("the result of left(of:)") {
-            it("should adjust the bView right edge relative to its sibling (aView)") {
-                bView.pin.left(of: aView)
-                expect(bView.frame).to(equal(CGRect(x: 60.0, y: 200.0, width: 40.0, height: 40.0)))
-            }
-            
-            it("should adjust the bView right edge relative to its sibling (aView)") {
-                bView.pin.left(of: aViewChild)
-                expect(bView.frame).to(equal(CGRect(x: 105.0, y: 200.0, width: 40.0, height: 40.0)))
-            }
-        }
-
-        //
-        // below(of:)
-        //
-        describe("the result of below(of:)") {
-            it("should adjust the bView top edge relative to its sibling (aView)") {
-                bView.pin.below(of: aView)
-                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 260.0, width: 40.0, height: 40.0)))
-            }
-            
-            it("should adjust the bView top edge relative to its sibling (aView)") {
-                bView.pin.below(of: aViewChild)
-                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 230.0, width: 40.0, height: 40.0)))
-            }
-        }
-
-        //
-        // right(of:)
-        //
-        describe("the result of right(of:)") {
-            it("should adjust the bView left edge relative to its sibling (aView)") {
-                bView.pin.right(of: aView)
-                expect(bView.frame).to(equal(CGRect(x: 300.0, y: 200.0, width: 40.0, height: 40.0)))
-            }
-            
-            it("should adjust the bView left edge relative to its sibling (aView)") {
-                bView.pin.right(of: aViewChild)
-                expect(bView.frame).to(equal(CGRect(x: 225.0, y: 200.0, width: 40.0, height: 40.0)))
             }
         }
     }

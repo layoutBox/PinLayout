@@ -28,28 +28,31 @@
 import UIKit
 import PinLayout
 
-class RelativeView: UIView {
+class RelativeView: BaseView {
     fileprivate let belowNavBarView = BasicView(text: "Below navbar", color: UIColor.lightGray)
     
     var rootView: BasicView!
     
-    private let centerView = UIView()
+    fileprivate let centerView = UIView()
     
-    private let topLeftView = UIView()
-    private let topCenterView = UIView()
-    private let topRightView = UIView()
+    fileprivate let topLeftView = UIView()
+    fileprivate let topCenterView = UIView()
+    fileprivate let topRightView = UIView()
     
-    private let leftTopView = UIView()
-    private let leftCenterView = UIView()
-    private let leftBottomView = UIView()
+    fileprivate let leftTopView = UIView()
+    fileprivate let leftCenterView = UIView()
+    fileprivate let leftBottomView = UIView()
     
-    private let bottomLeftView = UIView()
-    private let bottomCenterView = UIView()
-    private let bottomRightView = UIView()
+    fileprivate let bottomLeftView = UIView()
+    fileprivate let bottomCenterView = UIView()
+    fileprivate let bottomRightView = UIView()
     
-    private let rightTopView = UIView()
-    private let rightCenterView = UIView()
-    private let rightBottomView = UIView()
+    fileprivate let rightTopView = UIView()
+    fileprivate let rightCenterView = UIView()
+    fileprivate let rightBottomView = UIView()
+    
+    fileprivate let relativeView = UIView()
+    fileprivate let childRelativeView = UIView()
     
     init() {
         super.init(frame: .zero)
@@ -94,9 +97,9 @@ class RelativeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        belowNavBarView.pin.topLeft().bottomRight().marginTop(64)
+        belowNavBarView.pin.topLeft().bottomRight().marginTop(topLayoutGuide)
         
-        rootView.frame = CGRect(x: 0, y: 64, width: 400, height: 400)
+        rootView.frame = CGRect(x: 0, y: topLayoutGuide, width: 400, height: 400)
         centerView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
         
         topLeftView.pin.above(of: centerView, aligned: .left)

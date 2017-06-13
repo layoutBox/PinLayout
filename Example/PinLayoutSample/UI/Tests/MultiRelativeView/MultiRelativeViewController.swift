@@ -27,7 +27,7 @@
 
 import UIKit
 
-class MultiRelativeViewController: UIViewController {
+class MultiRelativeViewController: BaseViewController {
     fileprivate var mainView: MultiRelativeView {
         return self.view as! MultiRelativeView
     }

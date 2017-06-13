@@ -31,7 +31,7 @@ protocol MenuViewDelegate: class {
     func didSelect(page: Page)
 }
 
-class MenuView: UIView {
+class MenuView: BaseView {
     weak var delegate: MenuViewDelegate?
 
     fileprivate let tableView = UITableView()

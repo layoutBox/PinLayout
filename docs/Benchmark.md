@@ -44,7 +44,7 @@ It takes almost half a second (0.468 ms) to render 100 UICollectionView's cells 
 <p align="center">iPhone 6S - iOS 10.3.2</p>
 <p align="center">
   <a href=""><img src="Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance"/></a>
-<p align="center" style="font-size:10px;">X axis in the number cells in a UICollectionView, and Y axis is the time in miliseconds to layout all cells.</p>
+<p align="center" style="font-size:10px;">X axis in the number cells in a UICollectionView, and Y axis is the time in seconds to layout all cells</p>
 </p> 
 
 You can have a look at the [spreadsheet containing all the data](Benchmark/Benchmark-iPhone6S.xlsx)

@@ -22,12 +22,16 @@
 		249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE421E64FAFE00165E39 /* AppDelegate.swift */; };
 		249EFE4A1E64FAFE00165E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE491E64FAFE00165E39 /* Assets.xcassets */; };
 		249EFE4D1E64FAFE00165E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */; };
+		24A9C1F21EF0542F00F2CF64 /* TableViewExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */; };
+		24A9C1F31EF0542F00F2CF64 /* TableViewExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */; };
+		24A9C1F61EF054BF00F2CF64 /* MethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */; };
+		24A9C1F91EF0619C00F2CF64 /* MethodGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F81EF0619C00F2CF64 /* MethodGroupHeader.swift */; };
+		24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */; };
+		24A9C2041EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */; };
 		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
 		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
 		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
-		DF66F9DA1E8493E000ADB8D5 /* PinScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */; };
-		DF66F9DB1E8493E000ADB8D5 /* PinScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,12 +89,16 @@
 		249EFE491E64FAFE00165E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		249EFE4C1E64FAFE00165E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		249EFE4E1E64FAFE00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewExampleView.swift; path = TableViewExample/TableViewExampleView.swift; sourceTree = "<group>"; };
+		24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewExampleViewController.swift; path = TableViewExample/TableViewExampleViewController.swift; sourceTree = "<group>"; };
+		24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MethodCell.swift; path = TableViewExample/Cells/MethodCell.swift; sourceTree = "<group>"; };
+		24A9C1F81EF0619C00F2CF64 /* MethodGroupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodGroupHeader.swift; sourceTree = "<group>"; };
+		24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoAdjustingSizeView.swift; path = AutoAdjustingSize/AutoAdjustingSizeView.swift; sourceTree = "<group>"; };
+		24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoAdjustingSizeViewController.swift; path = AutoAdjustingSize/AutoAdjustingSizeViewController.swift; sourceTree = "<group>"; };
 		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = Intro/IntroView.swift; sourceTree = "<group>"; };
 		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = Intro/IntroViewController.swift; sourceTree = "<group>"; };
 		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinScrollingView.swift; path = PinScrolling/PinScrollingView.swift; sourceTree = "<group>"; };
-		DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinScrollingViewController.swift; path = PinScrolling/PinScrollingViewController.swift; sourceTree = "<group>"; };
 		F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
 		F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,10 +146,11 @@
 		2439CC371E665C5E003326FB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */,
 				24F75B581EE5642C008DB567 /* Intro */,
-				DF66F9D61E8493D400ADB8D5 /* PinScrolling */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
+				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -224,6 +233,25 @@
 			path = PinLayoutSample;
 			sourceTree = "<group>";
 		};
+		24A9C1EF1EF0542500F2CF64 /* TableViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				24A9C1F41EF054A900F2CF64 /* Cells */,
+				24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */,
+				24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */,
+			);
+			name = TableViewExample;
+			sourceTree = "<group>";
+		};
+		24A9C1F41EF054A900F2CF64 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */,
+				24A9C1F81EF0619C00F2CF64 /* MethodGroupHeader.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		24E654801E69040000A72A8B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,13 +269,13 @@
 			name = Intro;
 			sourceTree = "<group>";
 		};
-		DF66F9D61E8493D400ADB8D5 /* PinScrolling */ = {
+		DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */ = {
 			isa = PBXGroup;
 			children = (
-				DF66F9D81E8493E000ADB8D5 /* PinScrollingView.swift */,
-				DF66F9D91E8493E000ADB8D5 /* PinScrollingViewController.swift */,
+				24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */,
+				24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */,
 			);
-			name = PinScrolling;
+			name = AutoAdjustingSizeView;
 			sourceTree = "<group>";
 		};
 		F143180314A617EFD07C5709 /* Pods */ = {
@@ -422,21 +450,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF66F9DA1E8493E000ADB8D5 /* PinScrollingView.swift in Sources */,
 				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
+				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,
 				2439CC351E665BF6003326FB /* MenuView.swift in Sources */,
 				2493268C1EEEEFF100BCB814 /* BaseViewController.swift in Sources */,
 				2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */,
+				24A9C1F61EF054BF00F2CF64 /* MethodCell.swift in Sources */,
+				24A9C2041EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift in Sources */,
 				24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */,
 				249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */,
+				24A9C1F31EF0542F00F2CF64 /* TableViewExampleViewController.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
+				24A9C1F91EF0619C00F2CF64 /* MethodGroupHeader.swift in Sources */,
 				24E654821E69041B00A72A8B /* Expect.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
-				DF66F9DB1E8493E000ADB8D5 /* PinScrollingViewController.swift in Sources */,
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,
+				24A9C1F21EF0542F00F2CF64 /* TableViewExampleView.swift in Sources */,
 				2493268E1EEEF02700BCB814 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

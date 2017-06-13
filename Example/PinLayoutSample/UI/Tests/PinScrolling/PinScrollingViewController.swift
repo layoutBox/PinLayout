@@ -32,8 +32,10 @@ class PinScrollingViewController: BaseViewController {
         return self.view as! PinScrollingView
     }
 
-    init() {
+    init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
+        
+        title = pageType.text
     }
     
     required init?(coder aDecoder: NSCoder) {

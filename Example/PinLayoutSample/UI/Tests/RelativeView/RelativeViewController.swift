@@ -32,8 +32,10 @@ class RelativeViewController: BaseViewController {
         return self.view as! RelativeView
     }
 
-    init() {
+    init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
+        
+        title = pageType.text
     }
     
     required init?(coder aDecoder: NSCoder) {

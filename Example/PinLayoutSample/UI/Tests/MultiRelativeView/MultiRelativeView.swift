@@ -26,11 +26,13 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
+import PinLayout
 
 class MultiRelativeView: BaseView {
-    fileprivate let view1 = BasicView(text: "View1", color: UIColor.blue.withAlphaComponent(0.6))
-    fileprivate let view2 = BasicView(text: "View2", color: UIColor.blue.withAlphaComponent(0.6))
-    fileprivate let view = BasicView(text: "View", color: UIColor.blue.withAlphaComponent(1.0))
+    fileprivate let view1 = BasicView(text: "Relative view 1 (width: 20%, height: 50%)", color: .lightGray)
+    fileprivate let view2 = BasicView(text: "Relative view 2 (width: 20%, height: 50%)", color: .lightGray)
+    fileprivate let view = BasicView(text: "View layouted using two relative views: \n  - right(of: view1, aligned: .top)\n  - left(of: view2, aligned: .bottom)",
+                                     color: .pinLayoutColor)
     
     init() {
         super.init(frame: .zero)
@@ -52,8 +54,9 @@ class MultiRelativeView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        view1.pin.top(topLayoutGuide).left(10).width(100).height(100)
-        view2.pin.right(of: view1, aligned: .top).marginLeft(150).width(100).height(100)
-        view.pin.right(of: view1, aligned: .top).left(of: view2).height(75).marginLeft(10).marginRight(10)
+        view1.pin.top(topLayoutGuide).left().width(20%).height(50%)
+        view2.pin.top(topLayoutGuide).right().width(20%).height(50%)
+        
+        view.pin.right(of: view1, aligned: .top).left(of: view2, aligned: .bottom).marginHorizontal(10)
     }
 }

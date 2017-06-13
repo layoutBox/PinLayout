@@ -27,30 +27,33 @@
 
 import UIKit
 
-enum Page: Int {
+enum PageType: Int {
     case intro
+    case tableView
     case relativePositions
     case multiRelativePositions
-    case scrollingPin
+    case autoAdjustingSize
     
     case count
     
     var text: String {
         switch self {
         case .intro:                      return "PinLayout's Intro"
+        case .tableView:                  return "TableView with variable cell's height"
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
-        case .scrollingPin:               return "Pin to UIScrollView"
+        case .autoAdjustingSize:          return "Auto adjusting size"
         case .count:                      return ""
         }
     }
 
     var viewController: UIViewController {
         switch self {
-        case .intro:                      return IntroViewController()
-        case .relativePositions:          return RelativeViewController()
-        case .multiRelativePositions:     return MultiRelativeViewController()
-        case .scrollingPin:               return PinScrollingViewController()
+        case .intro:                      return IntroViewController(pageType: self)
+        case .tableView:                  return TableViewExampleViewController(pageType: self)
+        case .relativePositions:          return RelativeViewController(pageType: self)
+        case .multiRelativePositions:     return MultiRelativeViewController(pageType: self)
+        case .autoAdjustingSize:          return AutoAdjustingSizeViewController(pageType: self)
         case .count:                      return UIViewController()
         }
     }
@@ -77,13 +80,13 @@ class MenuViewController: BaseViewController {
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(true)
-//        didSelect(page: .intro)
+//        didSelect(pageType: .tableView)
 //    }
 }
 
 // MARK: MenuViewDelegate
 extension MenuViewController: MenuViewDelegate {
-    func didSelect(page: Page) {
-        navigationController?.pushViewController(page.viewController, animated: true)
+    func didSelect(pageType: PageType) {
+        navigationController?.pushViewController(pageType.viewController, animated: true)
     }
 }

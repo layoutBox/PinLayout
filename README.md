@@ -25,15 +25,15 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [PinLayout principles and philosophy](#introduction)
 * [Performance](#performance)
 * [Documentation](#documentation)
-    * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
-    * [Anchors](#anchors)
-    * [Edges](#edges)
-    * [Relative positionning](#relative_positionning)
-   	* [Width, height and size](#width_height_size)
-   	* [Margins](#margins)
-   	* [Warnings](#warnings)
-   	* [More examples](#more_examples)
-
+  * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
+  * [Anchors](#anchors)
+  * [Edges](#edges)
+  * [Relative positionning](#relative_positionning)
+  * [Width, height and size](#width_height_size)
+  * [Margins](#margins)
+  * [Warnings](#warnings)
+  * [More examples](#more_examples)
+* [Examples App](#examples_app)
 * [Installation](#installation)
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
@@ -78,34 +78,33 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 # PinLayout's Performance <a name="performance"></a>
 
-PinLayout's performance has been measured using the excellent LayoutKit benchmark. PinLayout has been added to this benchmark to compare its performance. 
+PinLayout's performance has been measured using the nice and simple LayoutKit benchmark. PinLayout has been added to this benchmark to compare its performance. 
 
-As you can see in the following chart, PinLayout's performance is as fast as manual layouting, and up to **12x faster than auto layout**, and **16x faster than UIStackViews**. 
+As you can see in the following chart, PinLayout's performance is as fast as manual layouting, and **between 12x and 16x faster than auto layout**, for all types of iPhone (5/6/6S/7)
 
-These results also means that **PinLayout is by far faster than any layout frameworks that is built over auto layout**. 
+These results also means that **PinLayout is faster than any layout frameworks that is built over auto layout**. 
 
-[More details and explanation of the benchmark](docs/Benchmark.md)
+[See here more complete details, results and explanation of the benchmark](docs/Benchmark.md).
 
-<p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
+<p align="center"> Tested on a iPhone 6 iOS 10.3.2</p>
 <p align="center">
-  <img src="docs/Benchmark/Chart-iPhone6S.png" alt="PinLayout Performance" width=650/>
+  <img src="docs/Benchmark/Benchmark-iPhone6.png" alt="PinLayout Performance" width=600/>
 </p>
-<p align="center" style="font-size:9px;">X axis in the number cells in a UICollectionView, and Y axis is the time in seconds to layout all cells.</p>
-</p> 
+
 
 <br/>
 
 # Usage sample
 ###### Example:
-This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device'size.
+This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device'size and orientation changes.
 
-* UIImageView' size is 100x100 and layouted below the UINavigationBar with a margin of 10 pixels all around.
-* UISegmentedControl: At the right of the logo image, use the remaining horizontal space with a left and right margin of 20 pixels.
-* UILabel: The label is below the UISegmentedControl with a top margin of 10 pixels. It's width matched the UISegmentedControl's width. The label's height must be adjusted to fit its new width. (calls internally UILabel's sizeThatFits() method)
-* Separator: The separator is below the UIImageView and the UILabel with a top margin of 10 pixels. The separator is left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
+* **UIImageView**'s size is 100x100 and layouted below the UINavigationBar with a margin of 10 pixels all around.
+* **UISegmentedControl** is at the right of the logo image, use the remaining horizontal space with a left and right margin of 20 pixels.
+* **UILabel** is below the UISegmentedControl with a top margin of 10 pixels. It's width matched the UISegmentedControl's width. The label is multiline, so its height must be adjusted to fit its width.
+* **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
 
 
-![Flowers](docs/pinlayout-intro-example.png)
+![](docs/pinlayout-intro-example.png)
 
 ```swift
 override func layoutSubviews() {
@@ -122,7 +121,7 @@ override func layoutSubviews() {
 
 :pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
 
-:pushpin: This example and some other examples are available in the **Example** project. Please note that you must do a `pod install` before running the example project. 
+:pushpin: This example and some other examples are available in the [Examples App](#examples_app) documented below. 
 
 <br/>
 
@@ -852,6 +851,26 @@ dependencies: [
 
 <br>
 
+## Examples App <a name="examples_app"></a>
+There is a tiny Example app that expose some usage example on PinLayout, including:
+
+* Example of UITableView with variable height cells.
+* Example presented at the top of this document.
+* Example showing relative positionning.
+* ...
+
+<p align="center">
+  <img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
+  <img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
+  <img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
+<img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>  
+  <img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
+</p>
+
+This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.
+
+<br>
+
 ## Coming soon <a name="coming_soon"></a>
 * Position relative to multiple views (ex: view.pin.below(of: label1, label2, image, aligned: .left))
 * minWidth/maxWidth, minHeight/maxHeight
@@ -885,7 +904,7 @@ PinLayout was inspired by other great layout frameworks, including:
 
 * [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout): Nice absolute and relative positionning.
 * HTML's CSS: Management of margins in absolute positionning and bottom/right position coordinates.
-* [Qt](https://www.qt.io/): Anchors and edges management.
+* Qt:Anchors and edges management.
 * [SnapKit](https://github.com/SnapKit/SnapKit): Clean interface for anchors.
 * ... and even Auto layout :-)
 

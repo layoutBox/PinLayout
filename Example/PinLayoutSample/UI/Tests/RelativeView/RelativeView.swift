@@ -29,10 +29,6 @@ import UIKit
 import PinLayout
 
 class RelativeView: BaseView {
-    fileprivate let belowNavBarView = BasicView(text: "Below navbar", color: UIColor.lightGray)
-    
-    var rootView: BasicView!
-    
     fileprivate let centerView = UIView()
     
     fileprivate let topLeftView = UIView()
@@ -59,34 +55,29 @@ class RelativeView: BaseView {
         
         backgroundColor = .white
         
-        addSubview(belowNavBarView)
+        centerView.backgroundColor = .pinLayoutColor
+        addSubview(centerView)
         
-        rootView = BasicView(text: "", color: .white)
-        addSubview(rootView)
+        addSquare(topLeftView, color: .lightGray)
+        addSquare(topCenterView, color: .gray)
+        addSquare(topRightView, color: .lightGray)
         
-        centerView.backgroundColor = .blue
-        rootView.addSubview(centerView)
+        addSquare(leftTopView, color: .lightGray)
+        addSquare(leftCenterView, color: .gray)
+        addSquare(leftBottomView, color: .lightGray)
         
-        addSquare(topLeftView, color: .green)
-        addSquare(topCenterView, color: .yellow)
-        addSquare(topRightView, color: .purple)
+        addSquare(bottomLeftView, color: .lightGray)
+        addSquare(bottomCenterView, color: .gray)
+        addSquare(bottomRightView, color: .lightGray)
         
-        addSquare(leftTopView, color: .magenta)
-        addSquare(leftCenterView, color: .cyan)
-        addSquare(leftBottomView, color: .purple)
-        
-        addSquare(bottomLeftView, color: .black)
-        addSquare(bottomCenterView, color: .red)
-        addSquare(bottomRightView, color: .gray)
-        
-        addSquare(rightTopView, color: .black)
-        addSquare(rightCenterView, color: .red)
-        addSquare(rightBottomView, color: .gray)
+        addSquare(rightTopView, color: .lightGray)
+        addSquare(rightCenterView, color: .gray)
+        addSquare(rightBottomView, color: .lightGray)
     }
     
     fileprivate func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
-        view.pin.width(50).height(50)
+        view.pin.size(40)
         addSubview(view)
     }
     
@@ -97,25 +88,22 @@ class RelativeView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        belowNavBarView.pin.topLeft().bottomRight().marginTop(topLayoutGuide)
+        centerView.pin.center().size(150)
         
-        rootView.frame = CGRect(x: 0, y: topLayoutGuide, width: 400, height: 400)
-        centerView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+        topLeftView.pin.above(of: centerView, aligned: .left).marginBottom(10)
+        topCenterView.pin.above(of: centerView, aligned: .center).marginBottom(10)
+        topRightView.pin.above(of: centerView, aligned: .right).marginBottom(10)
         
-        topLeftView.pin.above(of: centerView, aligned: .left)
-        topCenterView.pin.above(of: centerView, aligned: .center)
-        topRightView.pin.above(of: centerView, aligned: .right)
+        rightTopView.pin.right(of: centerView, aligned: .top).marginLeft(10)
+        rightCenterView.pin.right(of: centerView, aligned: .center).marginLeft(10)
+        rightBottomView.pin.right(of: centerView, aligned: .bottom).marginLeft(10)
         
-        leftTopView.pin.left(of: centerView, aligned: .top)
-        leftCenterView.pin.left(of: centerView, aligned: .center)
-        leftBottomView.pin.left(of: centerView, aligned: .bottom)
-        
-        bottomLeftView.pin.below(of: centerView, aligned: .left)
-        bottomCenterView.pin.below(of: centerView, aligned: .center)
-        bottomRightView.pin.below(of: centerView, aligned: .right)
+        bottomLeftView.pin.below(of: centerView, aligned: .left).marginTop(10)
+        bottomCenterView.pin.below(of: centerView, aligned: .center).marginTop(10)
+        bottomRightView.pin.below(of: centerView, aligned: .right).marginTop(10)
 
-        rightTopView.pin.right(of: centerView, aligned: .top)
-        rightCenterView.pin.right(of: centerView, aligned: .center)
-        rightBottomView.pin.right(of: centerView, aligned: .bottom)
+        leftTopView.pin.left(of: centerView, aligned: .top).marginRight(10)
+        leftCenterView.pin.left(of: centerView, aligned: .center).marginRight(10)
+        leftBottomView.pin.left(of: centerView, aligned: .bottom).marginRight(10)
     }
 }

@@ -32,8 +32,10 @@ class IntroViewController: BaseViewController {
         return self.view as! IntroView
     }
 
-    init() {
+    init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
+        
+        title = pageType.text
     }
     
     required init?(coder aDecoder: NSCoder) {

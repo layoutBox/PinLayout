@@ -77,9 +77,10 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 <br>
 
-:pushpin: PinLayout doesn't support Auto layout nor Storyboard. I'll just quote Pinterrest/Facebook [Texture's documentation here](http://texturegroup.org/docs/faq.html#asyncdisplaykit-does-not-support-uikit-auto-layout-or-interfacebuilder):
-
+:pushpin: PinLayout doesn't support Auto layout nor Storyboard. Interresting quote:
 > "UIKit Auto Layout and InterfaceBuilder are not supported by Texture. It is worth noting that both of these technologies are not permitted in established and disciplined iOS development teams, such as at Facebook, Instagram, and Pinterest"
+>
+> -- <cite>[Pinterrest/Facebook Texture's documentation](http://texturegroup.org/docs/faq.html#asyncdisplaykit-does-not-support-uikit-auto-layout-or-interfacebuilder)</cite>
 
 <br>
 

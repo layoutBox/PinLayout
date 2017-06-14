@@ -47,7 +47,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
 * Manual layouting (doesn't rely on auto layout).
-* Blazing fast. PinLayout exist to be simple and fast as possible! In fact it is fast as manual layouting. See [performance results below.](#performance)
+* PinLayout exist to be simple and fast as possible! In fact it is fast as manual layouting. See [performance results below.](#performance)
 * Layout one view at a time. 
 * Concise syntax. Layout most views using a single line. 
 

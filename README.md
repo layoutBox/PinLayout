@@ -24,6 +24,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 * [PinLayout principles and philosophy](#introduction)
 * [Performance](#performance)
+* [Usage example](#intro_usage_example)
 * [Documentation](#documentation)
   * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
   * [Anchors](#anchors)
@@ -56,7 +57,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 Each view can use the layout system that better suit it  (PinLayout, constraints, flexbox, grids, …)
 A view can be layouted using PinLayout and later with another method/framework.
 
-* No constraints/No auto-layout
+* No Auto layout and constraints
 	* Constraints are verbose and hard for a human brains to understand when there are many views implicated, even with sugar-syntax frameworks.
 	* PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width matches the other view’s width“). 
 	* No priorities, simply layout views in the order that makes sense. No priorities required.
@@ -73,6 +74,11 @@ A view can be layouted using PinLayout and later with another method/framework.
 	* As in CSS and flexbox, right and bottom coordinates are offset from container view's right and bottom edges.
 
 * Shorter possible commands to layout views, but keeping english phrasing almost valid.
+
+
+:pushpin: PinLayout doesn't support Auto layout nor Storyboard. I'll just quote Pinterrest/Facebook [Texture's documentation here](http://texturegroup.org/docs/faq.html#asyncdisplaykit-does-not-support-uikit-auto-layout-or-interfacebuilder):
+
+> "UIKit Auto Layout and InterfaceBuilder are not supported by Texture. It is worth noting that both of these technologies are not permitted in established and disciplined iOS development teams, such as at Facebook, Instagram, and Pinterest"
 
 <br>
 
@@ -94,7 +100,7 @@ These results also means that **PinLayout is faster than any layout frameworks t
 
 <br/>
 
-# Usage sample
+# Usage sample <a name="intro_usage_example"></a>
 ###### Example:
 This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device'size and orientation changes.
 
@@ -142,13 +148,13 @@ The value specifies the left edge distance from the superview's left edge in pix
 * `left(_ percent: Percent)`  
 The value specifies the left edge distance from the superview's left edge in percentage of its superview's width.
 * `bottom(_ value: CGFloat)`  
-The value specifies the bottom edge distance from the superview's bottom edge in pixels.
+The value specifies the bottom edge **distance from the superview's bottom edge** in pixels.
 * `bottom(_ percent: Percent)`  
-The value specifies the bottom edge distance from the superview's bottom edge in percentage of its superview's height.
+The value specifies the bottom edge **distance from the superview's bottom edge** in percentage of its superview's height.
 * `right(_ value: CGFloat)`  
-The value specifies the right edge distance from the superview's right edge in pixels.
+The value specifies the right edge **distance from the superview's right edge** in pixels.
 * `right(_ percent: Percent)`  
-The value specifies the right edge distance from the superview's right edge in percentage of its superview's width.
+The value specifies the right edge **distance from the superview's right edge** in percentage of its superview's width.
 * `hCenter(_ value: CGFloat)`  
 The value specifies the horizontal center distance from the superview's left edge in pixels.
 * `hCenter(_ percent: Percent)`  
@@ -854,8 +860,8 @@ dependencies: [
 ## Examples App <a name="examples_app"></a>
 There is a tiny Example app that expose some usage example on PinLayout, including:
 
-* Example of UITableView with variable height cells.
-* Example presented at the top of this document.
+* An example of UITableView with variable height cells.
+* The [example](#intro_usage_example) presented priviously in this README.
 * Example showing relative positionning.
 * ...
 

@@ -885,7 +885,7 @@ PinLayout was inspired by other great layout frameworks, including:
 
 * [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout): Nice absolute and relative positionning.
 * HTML's CSS: Management of margins in absolute positionning and bottom/right position coordinates.
-* Qt:Anchors and edges management.
+* [Qt](https://www.qt.io/): Anchors and edges management.
 * [SnapKit](https://github.com/SnapKit/SnapKit): Clean interface for anchors.
 * ... and even Auto layout :-)
 

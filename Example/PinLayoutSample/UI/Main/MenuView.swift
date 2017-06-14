@@ -28,7 +28,7 @@
 import UIKit
 
 protocol MenuViewDelegate: class {
-    func didSelect(page: Page)
+    func didSelect(pageType: PageType)
 }
 
 class MenuView: BaseView {
@@ -63,13 +63,13 @@ class MenuView: BaseView {
 // MARK: UITableViewDataSource
 extension MenuView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Page.count.rawValue
+        return PageType.count.rawValue
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = Page(rawValue: indexPath.row)?.text ?? "Unknown"
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
+        cell.textLabel?.text = PageType(rawValue: indexPath.row)?.text ?? "PinLayout Example"
+        cell.textLabel?.font = .systemFont(ofSize: 12)
         return cell
     }
 }
@@ -77,8 +77,9 @@ extension MenuView: UITableViewDataSource {
 // MARK: UITableViewDelegate
 extension MenuView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let page = Page(rawValue: indexPath.row) {
-            delegate?.didSelect(page: page)
+        if let pageType = PageType(rawValue: indexPath.row) {
+            delegate?.didSelect(pageType: pageType)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

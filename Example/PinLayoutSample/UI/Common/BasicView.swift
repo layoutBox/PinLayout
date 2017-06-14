@@ -38,9 +38,9 @@ class BasicView: UIView {
         layer.borderColor = UIColor.lightGray.cgColor
         
         label.text = text
-        label.font = UIFont.systemFont(ofSize: 7)
+        label.font = .systemFont(ofSize: 7)
         label.textColor = .white
-        label.sizeToFit()
+        label.numberOfLines = 0
         addSubview(label)
     }
 
@@ -51,7 +51,7 @@ class BasicView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
             
-        label.pin.top(2).left(2)
+        label.pin.topLeft().right().margin(4).sizeToFit()
     }
     
     var sizeThatFitsExpectedArea: CGFloat = 40 * 40

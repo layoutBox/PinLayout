@@ -860,11 +860,11 @@ There is a tiny Example app that expose some usage example on PinLayout, includi
 * ...
 
 <p align="center">
-  <img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
-  <img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
-  <img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
-<img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>  
-  <img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" style="width: 120px; margin: 4px; border: 1px solid lightgray"/>
+  <img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/>
+  <img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/>
+  <img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/>
+<img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/>  
+  <img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" width=120/>
 </p>
 
 This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.

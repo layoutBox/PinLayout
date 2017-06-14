@@ -27,9 +27,9 @@
 
 import UIKit
 
-class PinScrollingViewController: BaseViewController {
-    fileprivate var mainView: PinScrollingView {
-        return self.view as! PinScrollingView
+class AutoAdjustingSizeViewController: BaseViewController {
+    fileprivate var mainView: AutoAdjustingSizeView {
+        return self.view as! AutoAdjustingSizeView
     }
 
     init(pageType: PageType) {
@@ -43,6 +43,6 @@ class PinScrollingViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = PinScrollingView()
+        view = AutoAdjustingSizeView()
     }
 }

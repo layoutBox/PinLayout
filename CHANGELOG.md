@@ -7,6 +7,14 @@
 
 # Change Log
 
+## [1.0.15](https://github.com/mirego/PinLayout/releases/tag/1.0.15)
+Released on 2017-06-12. 
+
+#### Change
+* Add **tvOS** support & set iOS target to 8.0 (instead of 10.2)
+  * Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#46](https://github.com/mirego/PinLayout/pull/46)
+
+
 ## [1.0.14](https://github.com/mirego/PinLayout/releases/tag/1.0.14)
 Released on 2017-06-12. 
 
@@ -23,8 +31,6 @@ Released on 2017-06-12.
 	 * `left(of relativeViews: UIView..., aligned: VerticalAlignment)`
 	 * `right(of relativeViews: UIView...) `
 	 * `right(of relativeViews: UIView..., aligned: VerticalAlignment)`
-
-<br>
 
 ## [1.0.11](https://github.com/mirego/PinLayout/releases/tag/1.0.11)
 Released on 2017-06-08. 
@@ -45,7 +51,6 @@ Previously the size specified was applied only if both the width and height wasn
   - Fixed by [Luc Dion](https://github.com/lucmirego) in Pull Request
   [#36](https://github.com/mirego/PinLayout/pull/36).
 
-<br>
 
 ## [1.0.7](https://github.com/mirego/PinLayout/releases/tag/1.0.7)
 Released on 2017-06-06. 

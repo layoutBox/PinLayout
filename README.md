@@ -5,12 +5,12 @@
 <h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 3em">PinLayout</h1>
  
 <p align="center">
+  <a href=""><img src="https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat" /></a>
   <a href="https://travis-ci.org/mirego/PinLayout"><img src="https://travis-ci.org/mirego/PinLayout.svg?branch=master" /></a>
   <a href="https://codecov.io/gh/mirego/PinLayout"><img src="https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg"/></a>
   <a href='https://img.shields.io/cocoapods/v/PinLayout.svg'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg" /></a>
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" /></a>
   <a href="https://raw.githubusercontent.com/mirego/PinLayout/master/LICENSE"><img src="https://img.shields.io/badge/license-New%20BSD-blue.svg?style=flat" /></a>
-  <a href=""><img src="https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat" /></a>
   <!--a href="https://github.com/mirego/PinLayout/issues"><img src="https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat" /></a-->
 </p>
 
@@ -18,9 +18,16 @@
 
 Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
   
-> "No auto-layout constraints attached"
+> "No Auto layout constraints attached"
 
 <br>
+
+### Requirements
+* iOS 8.0+ / tvOS 9.0+
+* Xcode 8.0+
+* Swift 3.0+
+
+### Content
 
 * [PinLayout principles and philosophy](#introduction)
 * [Performance](#performance)
@@ -42,7 +49,6 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 <br>
 
 :pushpin: PinLayout is actively updated, adding more features weekly. So please come often to see latest changes. You can also **Star** it to be able to retrieve it easily later.
-
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
@@ -916,6 +922,12 @@ PinLayout was inspired by other great layout frameworks, including:
 * [SnapKit](https://github.com/SnapKit/SnapKit): Clean interface for anchors.
 * ... and even Auto layout :-)
 
+<br>
+
+## Changelog
+PinLayout recent history is available in the are documented in the [CHANGELOG](CHANGELOG.md).
+
+<br>
 
 ## License
 BSD 3-Clause License

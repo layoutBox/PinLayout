@@ -27,12 +27,12 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for PinLayout.
-FOUNDATION_EXPORT double PinLayoutVersionNumber;
+//! Project version number for PinLayoutTVOS.
+FOUNDATION_EXPORT double PinLayoutTVOSVersionNumber;
 
-//! Project version string for PinLayout.
-FOUNDATION_EXPORT const unsigned char PinLayoutVersionString[];
+//! Project version string for PinLayoutTVOS.
+FOUNDATION_EXPORT const unsigned char PinLayoutTVOSVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <PinLayout/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <PinLayoutTVOS/PublicHeader.h>
 
 

@@ -90,8 +90,8 @@ class RelativePositionSpec: QuickSpec {
         //
         describe("the result of above(of:aligned: left)") {
             it("should adjust the bView position relative to its sibling (aView)") {
-                bView.pin.above(of: aView, aViewChild)
-                bView.pin.above(of: aView, aViewChild, aligned: .left)
+                bView.pin.above(of: [aView, aViewChild])
+                bView.pin.above(of: [aView, aViewChild], aligned: .left)
                 expect(bView.frame).to(equal(CGRect(x: 100.0, y: 60.0, width: 40.0, height: 40.0)))
             }
             

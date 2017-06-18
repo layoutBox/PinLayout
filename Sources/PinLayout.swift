@@ -182,14 +182,25 @@ public protocol PinLayout {
     //
     // Layout using relative positioning
     //
-    @discardableResult func above(of relativeViews: UIView...) -> PinLayout
-    @discardableResult func above(of relativeViews: UIView..., aligned: HorizontalAlignment) -> PinLayout
-    @discardableResult func below(of relativeViews: UIView...) -> PinLayout
-    @discardableResult func below(of relativeViews: UIView..., aligned: HorizontalAlignment) -> PinLayout
-    @discardableResult func left(of relativeViews: UIView...) -> PinLayout
-    @discardableResult func left(of relativeViews: UIView..., aligned: VerticalAlignment) -> PinLayout
-    @discardableResult func right(of relativeViews: UIView...) -> PinLayout
-    @discardableResult func right(of relativeViews: UIView..., aligned: VerticalAlignment) -> PinLayout
+    @discardableResult func above(of: UIView) -> PinLayout
+    @discardableResult func above(of: [UIView]) -> PinLayout
+    @discardableResult func above(of: UIView, aligned: HorizontalAlignment) -> PinLayout
+    @discardableResult func above(of: [UIView], aligned: HorizontalAlignment) -> PinLayout
+    
+    @discardableResult func below(of: UIView) -> PinLayout
+    @discardableResult func below(of: [UIView]) -> PinLayout
+    @discardableResult func below(of: UIView, aligned: HorizontalAlignment) -> PinLayout
+    @discardableResult func below(of: [UIView], aligned: HorizontalAlignment) -> PinLayout
+    
+    @discardableResult func left(of: UIView) -> PinLayout
+    @discardableResult func left(of: [UIView]) -> PinLayout
+    @discardableResult func left(of: UIView, aligned: VerticalAlignment) -> PinLayout
+    @discardableResult func left(of: [UIView], aligned: VerticalAlignment) -> PinLayout
+    
+    @discardableResult func right(of: UIView) -> PinLayout
+    @discardableResult func right(of: [UIView]) -> PinLayout
+    @discardableResult func right(of: UIView, aligned: VerticalAlignment) -> PinLayout
+    @discardableResult func right(of: [UIView], aligned: VerticalAlignment) -> PinLayout
 
     //
     // Width, height and size

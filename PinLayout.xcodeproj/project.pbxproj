@@ -14,7 +14,7 @@
 		242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */; };
 		244C6E151E776A0C0074FC74 /* MarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsSpec.swift */; };
 		244DF3031EF46F6C0090508B /* InfoTVOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 244DF3011EF46F670090508B /* InfoTVOS.plist */; };
-		244DF3061EF46FC20090508B /* PinLayoutTVOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 244DF3041EF46FB90090508B /* PinLayoutTVOS.h */; };
+		244DF3061EF46FC20090508B /* PinLayoutTVOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 244DF3041EF46FB90090508B /* PinLayoutTVOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		245302071ED05FD000E13F29 /* AccurencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245302061ED05FD000E13F29 /* AccurencyTests.swift */; };
 		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
 		2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
@@ -22,6 +22,10 @@
 		2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
 		246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
+		24949A281EF550E2003643D3 /* PinLayoutImpl+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A271EF550E2003643D3 /* PinLayoutImpl+Relative.swift */; };
+		24949A2A1EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A291EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift */; };
+		24949A2C1EF55216003643D3 /* PinLayoutImpl+Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */; };
+		24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */; };
 		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
 		249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */; };
 		24A9782E1EE845BB002BD0F1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9782D1EE845BB002BD0F1 /* Coordinates.swift */; };
@@ -72,6 +76,10 @@
 		2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectNimbleMatcher.swift; sourceTree = "<group>"; };
 		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionSpec.swift; sourceTree = "<group>"; };
+		24949A271EF550E2003643D3 /* PinLayoutImpl+Relative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayoutImpl+Relative.swift"; sourceTree = "<group>"; };
+		24949A291EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayoutImpl+Coordinates.swift"; sourceTree = "<group>"; };
+		24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayoutImpl+Warning.swift"; sourceTree = "<group>"; };
+		24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayout+Filters.swift"; sourceTree = "<group>"; };
 		249EFE7A1E64FB4C00165E39 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTests.swift; sourceTree = "<group>"; };
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
+				24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
 			);
@@ -188,6 +197,9 @@
 			children = (
 				24A9782D1EE845BB002BD0F1 /* Coordinates.swift */,
 				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
+				24949A291EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift */,
+				24949A271EF550E2003643D3 /* PinLayoutImpl+Relative.swift */,
+				24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */,
 				DF11A3701E833F03008B33E5 /* TypesImpl.swift */,
 			);
 			name = Impl;
@@ -241,7 +253,6 @@
 				249EFE761E64FB4C00165E39 /* Frameworks */,
 				249EFE771E64FB4C00165E39 /* Headers */,
 				249EFE781E64FB4C00165E39 /* Resources */,
-				9045643059E57F984AB8FF52 /* Tailor */,
 			);
 			buildRules = (
 			);
@@ -344,23 +355,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		9045643059E57F984AB8FF52 /* Tailor */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#if hash tailor 2>/dev/null; then\n#tailor\n#else\n#  echo \"warning: Please install Tailor from https://tailor.sh\"\n#fi";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		244DF2F31EF46C500090508B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -374,9 +368,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */,
+				24949A2C1EF55216003643D3 /* PinLayoutImpl+Warning.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
+				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,
 				DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */,
 				24A9782E1EE845BB002BD0F1 /* Coordinates.swift in Sources */,
+				24949A281EF550E2003643D3 /* PinLayoutImpl+Relative.swift in Sources */,
+				24949A2A1EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +570,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -594,7 +591,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";

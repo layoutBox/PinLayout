@@ -399,16 +399,23 @@ PinLayout also has methods to position relative to other views. The view can be 
 
 **Methods:**
 
-* `above(of relativeViews: UIView...)`  
-Position the view above the specified views. One or many relative views can be specied. This method is similar to pinning the view’s bottom edge.
-* `below(of relativeViews: UIView...)`  
-Position the view below the specified view. One or many relative views can be specied. This method is similar to pinning the view’s top edge.
-* `left(of relativeViews: UIView...)`  
-Position the view left of the specified view. One or many relative views can be specied. This method is similar to pinning the view’s right edge.
-* `right(of relativeViews: UIView...)`  
-Position the view right of the specified view. One or many relative views can be specied. This method is similar to pinning the view’s left edge.
+* `above(of: UIView)`  
+`above(of: [UIView])`  
+Position the view above the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s bottom edge.  
+  
+* `below(of: UIView)`  
+`below(of: [UIView])`  
+Position the view below the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s top edge.  
+  
+* `left(of: UIView)`  
+`left(of: [UIView])`  
+Position the view left of the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s right edge.  
+  
+* `right(of: UIView)`  
+`right(of: [UIView])`  
+Position the view right of the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s left edge.
 
-:pushpin: **Multiple relative views**: If for example a call to `below(of ...) specify multiple relative views, the view will be layouted below *ALL* these views. 
+:pushpin: **Multiple relative views**: If for example a call to `below(of: [...]) specify multiple relative views, the view will be layouted below *ALL* these views. 
 
 :pushpin: These methods **set the position of a view's edge**: top, left, bottom or right. For example `below(of ...)` set the view's top edge, `right(of ...) set the view's left edge, ...
 
@@ -417,7 +424,7 @@ Position the view right of the specified view. One or many relative views can be
 ###### Usage examples:
 ```swift
 	view.pin.left(of: view2)
-	view.pin.below(of: view2, view3, view4)
+	view.pin.below(of: [view2, view3, view4])
 	view.pin.left(of: view1).above(of: view2).below(of: view3).right(of: view4)
 ```
 
@@ -451,14 +458,21 @@ PinLayout also has methods to position relative to other views but with also the
 
 **Methods:**
 
-* `above(of relativeViews: UIView..., aligned: HorizontalAlignment)`  
-Position the view above the specified views and aligned it using the specified HorizontalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: bottomLeft, bottomCenter or bottomRight.
-* `below(of relativeViews: UIView..., aligned: HorizontalAlignment)`  
-Position the view below the specified view and aligned it using the specified HorizontalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, topCenter or topRight.
-* `left(of relativeViews: UIView..., aligned: VerticalAlignment)`  
-Position the view left of the specified view and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topRight, rightCenter or bottomRight.
-* `right(of relativeViews: UIView..., aligned: VerticalAlignment)`  
-Position the view right of the specified view and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, leftCenter or bottomLeft.
+* `above(of: UIView, aligned: HorizontalAlignment)`  
+`above(of: [UIView], aligned: HorizontalAlignment)`  
+Position the view above the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: bottomLeft, bottomCenter or bottomRight.  
+  
+* `below(of: UIView, aligned: HorizontalAlignment)`  
+`below(of: [UIView], aligned: HorizontalAlignment)`  
+Position the view below the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, topCenter or topRight.  
+  
+* `left(of: UIView, aligned: VerticalAlignment)`  
+`left(of: [UIView], aligned: HorizontalAlignment)`  
+Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topRight, rightCenter or bottomRight.  
+  
+* `right(of: UIView, aligned: VerticalAlignment)`  
+`right(of: [UIView], aligned: HorizontalAlignment)`  
+Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, leftCenter or bottomLeft.
 
 **How alignment is applied:**
 
@@ -469,7 +483,7 @@ Position the view right of the specified view and aligned it using the specified
 *  `VerticalAlignment.center`: The view's vCenter edge will be aligned with the average vCenter of all  relative views.
 *  `VerticalAlignment.bottom`: The view's bottom edge will be aligned to the bottom most relative view.
 
-:pushpin: **Multiple relative views**: If for example a call to `below(of:, aligned:) specify multiple relative views, the view will be layouted below *ALL* these views. The alignment will be applied using all relative view
+:pushpin: **Multiple relative views**: If for example a call to `below(of: [...], aligned:) specify multiple relative views, the view will be layouted below *ALL* these views. The alignment will be applied using all relative view
 
 :pushpin: These methods **set the position of a view's anchor**: topLeft, topCenter, topRight, leftCenter, .... For example `below(of ..., aligned: .right)` set the view's topRight anchor, `right(of ..., aligned: .center) set the view's centerLeft anchor, ...
 
@@ -479,7 +493,7 @@ Position the view right of the specified view and aligned it using the specified
 ###### Usage examples:
 ```swift
 	view.pin.above(of: view2, aligned: .left)
-	view.pin.below(of: view2, view3, view4, aligned: .left)
+	view.pin.below(of: [view2, view3, view4], aligned: .left)
 	view.pin.left(of: view2, aligned: .top).right(of: view3, aligned: .bottom)
 ```
 
@@ -504,7 +518,7 @@ View A should be left aligned to the UIImageView and right aligned to the UILabe
 ![](docs/pinlayout-relative-multi.png)
 
 ```swift
-	a.pin.below(of: imageView, label, aligned: .left).right(to: label.edge.right).marginTop(10)
+	a.pin.below(of: [imageView, label], aligned: .left).right(to: label.edge.right).marginTop(10)
 ```
 This is an equivalent solutions using other methods:
 

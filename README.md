@@ -174,7 +174,7 @@ The value specifies the vertical center distance from the superview's top edge i
 
 ###### Usage Examples:
 
-```
+```swift
     view.pin.top(20).left(20)
     view.pin.top(25%).hCenter(0)
     view.pin.left(12).vCenter(100)
@@ -226,7 +226,7 @@ This example is similar to the previous example, but pins edges directly on supe
 
 ![](docs/02-example-superview-edge.png)
 
-```
+```swift
     viewA.pin.top().left().bottom().right().margin(10)
 ``` 
 
@@ -784,7 +784,7 @@ Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogCo
 
 * If the layout line is too long, you can split in multiple lines:  
 
-	```
+	```swift
 	textLabel.pin.below(of: titleLabel)
 	   .right(of: statusIcon).left(of: accessoryView)
 	   .above(of: button).marginHorizontal(10)
@@ -871,7 +871,7 @@ Then, run `carthage update` to build the framework and drag the built `PinLayout
 
 Once you have your Swift package set up, you only need to add PinLayout as a dependency of your `Package.swift`.
 
-```ogdl
+```swift
 dependencies: [
     .Package(url: "https://github.com/mirego/PinLayout.git", majorVersion: 1)
 ]
@@ -914,7 +914,7 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 * **Q: How to apply percentage from a CGFloat, a Float or a Int value?**  
   **R:** Many PinLayout's method has a parameter of type `Percent`. You can easily specify this type of parameter simply by adding the `%` operator to your value (eg: `view.pin.left(10%).width(50%)`. It is similar if you have a value of type  CGFloat, Float or Int, simply adds the `%` operator:  
   
-	``` 
+	```swift
 	let percentageValue: CGFloat = 50
 	view.pin.width(percentageValue%)
 	``` 

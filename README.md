@@ -54,7 +54,10 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 * Manual layouting (doesn't rely on auto layout).
 * PinLayout exist to be simple and fast as possible! In fact it is fast as manual layouting. See [performance results below.](#performance)
-* Layout one view at a time. 
+* Full control: You're in the middle of the layout process, no magic black box. 
+	* You can add conditions (if/switch/guard/...) related to device orientation, device type, traitCollection, animations, ...
+	* You can add iterations and enumerations (for/while/forEach/...)
+* Layout one view at a time. Make it simple to code and debug.
 * Concise syntax. Layout most views using a single line. 
 
 * Stateless
@@ -72,7 +75,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 * Not too intrusive. PinLayout only adds three properties to existing iOS classes: `UIView.pin`, `UIView.anchor` and `UIView.edge`
 
-* Minimize as much as possible calculations and constants when layouting views.
+* Minimize as much as possible calculations and constants when layouting views. But it is always possible to add advanced computation if required.
 
 * Methods match as much as possible other layouting systems, including CSS, flexbox, reactive Flexbox, …
 	* margin, marginHorizontal, marginVertical, marginTop, marginLeft, marginBottom, marginRight

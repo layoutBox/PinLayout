@@ -532,9 +532,9 @@ This is an equivalent solutions using other methods:
 
 ### Positioning using only visible relative UIViews 
 
-All PinLayout's relative methods can accept an array of UIViews (ex: `below(of: [UIView])`). Usign these methods its possible to filter the list of relative UIViews before the list is used by PinLayout.
+All PinLayout's relative methods can accept an array of UIViews (ex: `below(of: [UIView])`). Usign these methods it's possible to filter the list of relative UIViews before the list is used by PinLayout.
 
-PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really usefull when some views may be hidden for some particular reason.
+PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really useful when some views may be visible or hidden depending on the situation.
 
 ###### Example:
 The following example contains a UISwitch. Below a UITextField that is visible only when the UISwitch is set to ON. And then follow another UITextField. This example use the `visible(views: [UIView]) -> [UIView]` filter method that returns only views with `UIView.isHidden` set to false or `UIView.alpha` greater than 0.
@@ -934,11 +934,11 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 *  **Q: When the device rotation change, the layout is not updated.**  
    **R:** PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask.
    
-*  **Q: How can we adjust a UIView container to match all its child?**  
-   **R:** The proposed solution is used by the **Form** example for its rounded corner background. Suppose you want to adjust a container height to match all its childs (subviews). 
+*  **Q: How can we adjust a UIView container to match all its children?**  
+   **R:** The proposed solution is used by the **Form** example for its rounded corner background. Suppose you want to adjust a container height to match all its child (subviews). 
    1. First set the container width and its position:  
 `containerView.pin.topCenter().width(100%).marginTop(10)`
-   2. Layout all its childs.
+   2. Layout all its children.
    3. Finally, set the container height to match its last child Y position:  
 `containerView.pin.height(child6.frame.maxY + 10)` 
    
@@ -962,7 +962,7 @@ For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [is
 
 If you find PinLayout interresting, thanks to **Star** it. You'll be able to retrieve it easily later.
 
-If you'd like to contribute, your welcome!
+If you'd like to contribute, you're welcome!
 
 <br>
 

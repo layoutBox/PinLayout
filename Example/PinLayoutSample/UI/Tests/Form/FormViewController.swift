@@ -26,47 +26,23 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
-import PinLayout
 
-class IntroView: BaseView {
+class FormViewController: BaseViewController {
+    fileprivate var mainView: FormView {
+        return self.view as! FormView
+    }
 
-    fileprivate let container = UIView()
-    fileprivate let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
-    fileprivate let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
-    fileprivate let textLabel = UILabel()
-    fileprivate let separatorView = UIView()
-    
-    override init() {
-        super.init()
-
-        logo.contentMode = .scaleAspectFit
-        addSubview(logo)
+    init(pageType: PageType) {
+        super.init(nibName: nil, bundle: nil)
         
-        segmented.selectedSegmentIndex = 0
-        segmented.tintColor = .pinLayoutColor
-        addSubview(segmented)
-        
-        textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
-        textLabel.font = .systemFont(ofSize: 14)
-        textLabel.numberOfLines = 0
-        textLabel.lineBreakMode = .byWordWrapping
-        addSubview(textLabel)
-        
-        separatorView.pin.height(1)
-        separatorView.backgroundColor = .pinLayoutColor
-        addSubview(separatorView)
+        title = pageType.text
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        logo.pin.topLeft().size(100).margin(topLayoutGuide + 10, 10, 10)
-        segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
-        textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
-        separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
+    override func loadView() {
+        view = FormView()
     }
 }

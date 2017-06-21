@@ -31,6 +31,15 @@ class BaseView: UIView {
     fileprivate (set) var topLayoutGuide: CGFloat = 0
     fileprivate (set) var bottomLayoutGuide: CGFloat = 0
     
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setLayoutGuides(top: CGFloat, bottom: CGFloat) {
         var didChange = false
         

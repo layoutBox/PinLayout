@@ -34,10 +34,9 @@ class MultiRelativeView: BaseView {
     fileprivate let view = BasicView(text: "View layouted using two relative views: \n  - right(of: view1, aligned: .top)\n  - left(of: view2, aligned: .bottom)",
                                      color: .pinLayoutColor)
     
-    init() {
-        super.init(frame: .zero)
-        backgroundColor = .white
-        
+    override init() {
+        super.init()
+    
         addSubview(view1)
         addSubview(view2)
         addSubview(view)

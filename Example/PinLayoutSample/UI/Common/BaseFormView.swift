@@ -24,62 +24,63 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
-
 import UIKit
 
-protocol MenuViewDelegate: class {
-    func didSelect(pageType: PageType)
-}
-
-class MenuView: BaseView {
-    weak var delegate: MenuViewDelegate?
-
-    fileprivate let tableView = UITableView()
-    fileprivate let cellIdentifier = "MenuViewCell"
-
+class BaseFormView: BaseView {
+    let formScrollView = UIScrollView()
+    
     override init() {
         super.init()
-
-        backgroundColor = .red
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.tableFooterView = UIView()
-        addSubview(tableView)
+        
+        formScrollView.showsVerticalScrollIndicator = false
+        formScrollView.keyboardDismissMode = .onDrag
+        formScrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapScrollView)))
+        addSubview(formScrollView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        tableView.pin.size(frame.size)
+        
+        formScrollView.pin.topLeft().bottomRight()
     }
-}
-
-// MARK: UITableViewDataSource
-extension MenuView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PageType.count.rawValue
+    
+    override func didChangeLayoutGuides() {
+        super.didChangeLayoutGuides()
+        formScrollView.contentOffset = CGPoint(x: 0, y: topLayoutGuide)
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = PageType(rawValue: indexPath.row)?.text ?? "PinLayout Example"
-        cell.textLabel?.font = .systemFont(ofSize: 12)
-        return cell
+    
+    internal func keyboardWillShow(notification: Notification) {
+        guard let sizeValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
+        setFormScrollView(bottomInset: sizeValue.cgRectValue.height)
     }
-}
-
-// MARK: UITableViewDelegate
-extension MenuView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let pageType = PageType(rawValue: indexPath.row) {
-            delegate?.didSelect(pageType: pageType)
-        }
-        tableView.deselectRow(at: indexPath, animated: true)
+    
+    internal func keyboardWillHide(notification: Notification) {
+        resetScrollOffset()
+    }
+    
+    internal func didTapScrollView() {
+        endEditing(true)
+        resetScrollOffset()
+    }
+    
+    fileprivate func resetScrollOffset() {
+        guard formScrollView.contentInset != .zero else { return }
+        setFormScrollView(bottomInset: 0)
+    }
+    
+    fileprivate func setFormScrollView(bottomInset: CGFloat) {
+        formScrollView.contentInset = UIEdgeInsets(top: formScrollView.contentInset.top, left: 0,
+                                                   bottom: bottomInset, right: 0)
     }
 }

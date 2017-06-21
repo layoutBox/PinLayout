@@ -14,8 +14,8 @@ class TableViewExampleView: BaseView {
     
     fileprivate var methods: [PinLayoutMethod] = []
     
-    init() {
-        super.init(frame: .zero)
+    override init() {
+        super.init()
 
         tableView.dataSource = self
         tableView.delegate = self

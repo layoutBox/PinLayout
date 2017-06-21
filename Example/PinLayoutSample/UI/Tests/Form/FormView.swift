@@ -43,7 +43,7 @@ class FormView: BaseFormView {
     fileprivate let ageSwitch = UISwitch()
     fileprivate let ageField = UITextField()
     
-    fileprivate let adressField = UITextField()
+    fileprivate let addressField = UITextField()
 
     override init() {
         super.init()
@@ -72,10 +72,10 @@ class FormView: BaseFormView {
         ageField.layer.borderWidth = 1
         formContainerView.addSubview(ageField)
         
-        adressField.placeholder = "Address"
-        adressField.layer.borderColor = UIColor.gray.cgColor
-        adressField.layer.borderWidth = 1
-        formContainerView.addSubview(adressField)
+        addressField.placeholder = "Address"
+        addressField.layer.borderColor = UIColor.gray.cgColor
+        addressField.layer.borderWidth = 1
+        formContainerView.addSubview(addressField)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -101,10 +101,10 @@ class FormView: BaseFormView {
         ageField.pin.below(of: ageSwitch).left().right().height(40).margin(margin)
         
         // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
-        adressField.pin.below(of: visible([ageSwitch, ageField])).left().right().height(40).margin(margin)
+        addressField.pin.below(of: visible([ageSwitch, ageField])).left().right().height(40).margin(margin)
         
         // Adjust the form container bottom to contains all its childrens
-        formContainerView.pin.height(adressField.frame.maxY + margin)
+        formContainerView.pin.height(addressField.frame.maxY + margin)
         
         // Adjust UIScrollView contentSize
         formScrollView.contentSize = formContainerView.frame.size

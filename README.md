@@ -550,7 +550,7 @@ The following example contains a UISwitch. Below a UITextField that is visible o
    ageField.pin.below(of: ageSwitch).left().right().height(40).margin(margin)
        
    // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
-   adressField.pin.below(of: visibles([ageSwitch, ageField])).left().right().height(40).margin(margin)
+   addressField.pin.below(of: visibles([ageSwitch, ageField])).left().right().height(40).margin(margin)
 ``` 
 
 Note that this example is extracted from the **Form** example, see [Examples App](#examples_app)

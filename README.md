@@ -553,7 +553,7 @@ The following example contains a UISwitch. Below a UITextField that is visible o
    adressField.pin.below(of: visibles([ageSwitch, ageField])).left().right().height(40).margin(margin)
 ``` 
 
-Note that this example is extracted from the **Form** example, see [Examples App below](#examples_app).
+Note that this example is extracted from the **Form** example, see [Examples App](#examples_app)
 
 <br/>
 

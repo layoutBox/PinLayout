@@ -529,6 +529,34 @@ This is an equivalent solutions using other methods:
 
 <br/>
 
+
+### Positioning using only visible relative UIViews 
+
+All PinLayout's relative methods can accept an array of UIViews (ex: `below(of: [UIView])`). Usign these methods its possible to filter the list of relative UIViews before the list is used by PinLayout.
+
+PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really usefull when some views may be hidden for some particular reason.
+
+###### Example:
+The following example contains a UISwitch. Below a UITextField that is visible only when the UISwitch is set to ON. And then follow another UITextField. This example use the `visible(views: [UIView]) -> [UIView]` filter method that returns only views with `UIView.isHidden` set to false or `UIView.alpha` greater than 0.
+
+![](docs/pinlayout-relative-visible.png)
+
+
+```swift
+   formTitleLabel.pin.topCenter().margin(margin)
+   nameField.pin.below(of: formTitleLabel).left().right().height(40).margin(margin)
+        
+   ageSwitch.pin.below(of: nameField).left().right().height(40).margin(margin)
+   ageField.pin.below(of: ageSwitch).left().right().height(40).margin(margin)
+       
+   // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
+   adressField.pin.below(of: visibles([ageSwitch, ageField])).left().right().height(40).margin(margin)
+``` 
+
+Note that this example is extracted from the **Form** example, see [Examples App below](#examples_app).
+
+<br/>
+
 ## Width, height and size <a name="width_height_size"></a>
 
 ### Adjust view width, height and size
@@ -884,14 +912,16 @@ There is a tiny Example app that expose some usage example on PinLayout, includi
 
 * An example of UITableView with variable height cells.
 * The [example](#intro_usage_example) presented priviously in this README.
+* Example showing a form
 * Example showing relative positionning.
 * ...
 
 <p align="center">
   <img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/>
   <img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/>
+  <img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/>
   <img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/>
-<img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/>  
+  <img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/>  
   <img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" width=120/>
 </p>
 
@@ -899,17 +929,18 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 
 <br>
 
-## Coming soon <a name="coming_soon"></a>
-* Position relative to multiple views (ex: view.pin.below(of: label1, label2, image, aligned: .left))
-* minWidth/maxWidth, minHeight/maxHeight
-* CALayer support
-* ...
-
-
 ## FAQ <a name="faq"></a>
 
 *  **Q: When the device rotation change, the layout is not updated.**  
    **R:** PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask.
+   
+*  **Q: How can we adjust a UIView container to match all its child?**  
+   **R:** The proposed solution is used by the **Form** example for its rounded corner background. Suppose you want to adjust a container height to match all its childs (subviews). 
+   1. First set the container width and its position:  
+`containerView.pin.topCenter().width(100%).marginTop(10)`
+   2. Layout all its childs.
+   3. Finally, set the container height to match its last child Y position:  
+`containerView.pin.height(child6.frame.maxY + 10)` 
    
 * **Q: How to apply percentage from a CGFloat, a Float or a Int value?**  
   **R:** Many PinLayout's method has a parameter of type `Percent`. You can easily specify this type of parameter simply by adding the `%` operator to your value (eg: `view.pin.left(10%).width(50%)`. It is similar if you have a value of type  CGFloat, Float or Int, simply adds the `%` operator:  
@@ -920,12 +951,21 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 	``` 
 <br>
 
-### Comments, ideas, suggestions, issues, .... <a name="comments"></a>
+
+## Coming soon <a name="coming_soon"></a>
+* minWidth/maxWidth, minHeight/maxHeight
+* ...
+
+
+### Contributing, comments, ideas, suggestions, issues, .... <a name="comments"></a>
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
 If you find PinLayout interresting, thanks to **Star** it. You'll be able to retrieve it easily later.
 
+If you'd like to contribute, your welcome!
+
 <br>
+
 
 ### Thanks
 PinLayout was inspired by other great layout frameworks, including:

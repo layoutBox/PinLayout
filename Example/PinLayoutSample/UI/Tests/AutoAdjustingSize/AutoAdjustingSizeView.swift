@@ -50,10 +50,8 @@ class AutoAdjustingSizeView: BaseView {
     var row4Item2 = BasicView(text: "50%", color: .gray)
     var row4Item3 = BasicView(text: "25%", color: .pinLayoutColor)
 
-    init() {
-        super.init(frame: .zero)
-
-        backgroundColor = .white
+    override init() {
+        super.init()
 
         contentScrollView.backgroundColor = .white
         addSubview(contentScrollView)
@@ -84,11 +82,9 @@ class AutoAdjustingSizeView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentScrollView.pin.topLeft().bottomRight().marginTop(topLayoutGuide)
-        contentScrollView.contentSize = CGSize(width: frame.width, height: frame.height * 2)
-        contentScrollView.contentInset = .zero
+        contentScrollView.pin.topLeft().bottomRight()
         
-        row1.pin.topLeft().right().height(40).marginTop(10)
+        row1.pin.topLeft().right().height(40)
         row1Item1.pin.topLeft().bottom().width(50).margin(2)
         row1Item2.pin.right(of: row1Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
 
@@ -105,5 +101,7 @@ class AutoAdjustingSizeView: BaseView {
         row4Item1.pin.topLeft().width(25%).bottom().margin(2)
         row4Item2.pin.right(of: row4Item1, aligned: .top).width(50%).bottom().margin(0, 2, 2, 2)
         row4Item3.pin.right(of: row4Item2, aligned: .top).bottomRight().margin(0, 2, 2, 2)
+        
+        contentScrollView.contentSize = CGSize(width: frame.width, height: row4.frame.maxY)
     }
 }

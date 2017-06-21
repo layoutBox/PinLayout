@@ -9,7 +9,7 @@
 import UIKit
 
 // Filter out all hidden views (isHidden is true or alpha is 0)
-public func visibles(_ views: [UIView]) -> [UIView] {
+public func visible(_ views: [UIView]) -> [UIView] {
     return views.filter({ !$0.isHidden && $0.alpha > 0 })
 }
 

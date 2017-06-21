@@ -30,6 +30,7 @@ import UIKit
 enum PageType: Int {
     case intro
     case tableView
+    case form
     case relativePositions
     case multiRelativePositions
     case autoAdjustingSize
@@ -40,6 +41,7 @@ enum PageType: Int {
         switch self {
         case .intro:                      return "PinLayout's Intro"
         case .tableView:                  return "TableView with variable cell's height"
+        case .form:                       return "Form Example"
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
         case .autoAdjustingSize:          return "Auto adjusting size"
@@ -51,6 +53,7 @@ enum PageType: Int {
         switch self {
         case .intro:                      return IntroViewController(pageType: self)
         case .tableView:                  return TableViewExampleViewController(pageType: self)
+        case .form:                       return FormViewController(pageType: self)
         case .relativePositions:          return RelativeViewController(pageType: self)
         case .multiRelativePositions:     return MultiRelativeViewController(pageType: self)
         case .autoAdjustingSize:          return AutoAdjustingSizeViewController(pageType: self)
@@ -80,7 +83,7 @@ class MenuViewController: BaseViewController {
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(true)
-//        didSelect(pageType: .tableView)
+//        didSelect(pageType: .form)
 //    }
 }
 

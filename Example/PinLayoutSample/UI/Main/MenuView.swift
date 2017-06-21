@@ -37,8 +37,8 @@ class MenuView: BaseView {
     fileprivate let tableView = UITableView()
     fileprivate let cellIdentifier = "MenuViewCell"
 
-    init() {
-        super.init(frame: .zero)
+    override init() {
+        super.init()
 
         backgroundColor = .red
 

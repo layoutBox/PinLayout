@@ -50,10 +50,8 @@ class RelativeView: BaseView {
     fileprivate let relativeView = UIView()
     fileprivate let childRelativeView = UIView()
     
-    init() {
-        super.init(frame: .zero)
-        
-        backgroundColor = .white
+    override init() {
+        super.init()
         
         centerView.backgroundColor = .pinLayoutColor
         addSubview(centerView)

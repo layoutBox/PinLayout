@@ -146,13 +146,11 @@ extension PinLayoutImpl {
     
     @discardableResult
     internal func setWidth(_ value: CGFloat, _ context: Context) -> PinLayout {
-        guard value >= 0 else {
-            warn("the width (\(value)) ust be greater than or equal to zero.", context); return self
-        }
+        guard validateWidth(value, context: context) else { return self }
         
-        if let _left = _left, let _right = _right {
+        /*if let _left = _left, let _right = _right {
             warnConflict(context, ["left": _left, "right": _right])
-        } else if let width = width, width != value {
+        } else*/ if let width = width, width != value {
             warnPropertyAlreadySet("width", propertyValue: width, context)
         } else {
             width = value
@@ -161,10 +159,32 @@ extension PinLayoutImpl {
     }
     
     @discardableResult
-    internal func setHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
-        guard value >= 0 else {
-            warn("the height (\(value)) must be greater than or equal to zero.", context); return self
+    internal func setMinWidth(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard validateWidth(value, context: context) else { return self }
+        
+        if let minWidth = minWidth, minWidth != value {
+            warnConflict(context, ["minWidth": minWidth])
+        } else {
+            minWidth = value
         }
+        return self
+    }
+    
+    @discardableResult
+    internal func setMaxWidth(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard validateWidth(value, context: context) else { return self }
+        
+        if let maxWidth = maxWidth, maxWidth != value {
+            warnConflict(context, ["maxWidth": maxWidth])
+        } else {
+            maxWidth = value
+        }
+        return self
+    }
+    
+    @discardableResult
+    internal func setHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard validateHeight(value, context: context) else { return self }
         
         if let _top = _top, let _bottom = _bottom {
             warnConflict(context, ["top": _top, "bottom": _bottom])
@@ -175,6 +195,49 @@ extension PinLayoutImpl {
         }
         return self
     }
+    
+    @discardableResult
+    internal func setMinHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard validateHeight(value, context: context) else { return self }
+        
+        if let minHeight = minHeight, minWidth != value {
+            warnConflict(context, ["minHeight": minHeight])
+        } else {
+            minHeight = value
+        }
+        return self
+    }
+    
+    @discardableResult
+    internal func setMaxHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard validateHeight(value, context: context) else { return self }
+        
+        if let maxHeight = maxHeight, maxHeight != value {
+            warnConflict(context, ["maxHeight": maxHeight])
+        } else {
+            maxHeight = value
+        }
+        return self
+    }
+    
+    internal func validateWidth(_ width: CGFloat, context: Context) -> Bool {
+        if width < 0 {
+            warn("the width (\(width)) must be greater than or equal to zero.", context);
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    internal func validateHeight(_ height: CGFloat, context: Context) -> Bool {
+        if height < 0 {
+            warn("the height (\(height)) must be greater than or equal to zero.", context);
+            return false
+        } else {
+            return true
+        }
+    }
+    
     
     internal func setSize(_ size: CGSize, _ context: Context) -> PinLayout {
         setWidth(size.width, { return "\(context())'s width" })

@@ -208,17 +208,31 @@ public protocol PinLayout {
     @discardableResult func width(_ width: CGFloat) -> PinLayout
     @discardableResult func width(_ percent: Percent) -> PinLayout
     @discardableResult func width(of view: UIView) -> PinLayout
+    @discardableResult func minWidth(_ width: CGFloat) -> PinLayout
+    @discardableResult func minWidth(_ percent: Percent) -> PinLayout
+    @discardableResult func maxWidth(_ width: CGFloat) -> PinLayout
+    @discardableResult func maxWidth(_ percent: Percent) -> PinLayout
     
     @discardableResult func height(_ height: CGFloat) -> PinLayout
     @discardableResult func height(_ percent: Percent) -> PinLayout
     @discardableResult func height(of view: UIView) -> PinLayout
-    
+    @discardableResult func minHeight(_ height: CGFloat) -> PinLayout
+    @discardableResult func minHeight(_ percent: Percent) -> PinLayout
+    @discardableResult func maxHeight(_ height: CGFloat) -> PinLayout
+    @discardableResult func maxHeight(_ percent: Percent) -> PinLayout
+ 
     @discardableResult func size(_ size: CGSize) -> PinLayout
     @discardableResult func size(_ sideLength: CGFloat) -> PinLayout
     @discardableResult func size(_ percent: Percent) -> PinLayout
     @discardableResult func size(of view: UIView) -> PinLayout
     
     @discardableResult func sizeToFit() -> PinLayout
+    
+    // Think of align as a vertical invisible line running down the page. You can align the text left on that invisible line, right on that invisible line or have the text centered on that invisible line.
+//    Justification is a lateral horizontal measurement based on one of two invisible vertical lines - left and right for justified text or left only for unjustified text
+    
+//    @discardableResult func justify(_: HorizontalAlignment) -> PinLayout
+//    @discardableResult func align(_: VerticalAlignment) -> PinLayout
 
     //
     // Margins
@@ -259,7 +273,7 @@ public protocol PinLayout {
     ///   - bottom: <#bottom description#>
     ///   - right: <#right description#>
     /// - Returns: <#return value description#>
-    @discardableResult func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout
+    @discardableResult func margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout
 
     /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.
     /// This is also true even if the width has been set.

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2427236D1EFFD3A1006A5C3A /* BothEdgesSnappedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2427236B1EFFD3A1006A5C3A /* BothEdgesSnappedView.swift */; };
+		2427236E1EFFD3A1006A5C3A /* BothEdgesSnappedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2427236C1EFFD3A1006A5C3A /* BothEdgesSnappedViewController.swift */; };
 		2439CC281E6658C3003326FB /* PinLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2439CC2B1E6658CC003326FB /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; };
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
@@ -83,6 +85,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2427236B1EFFD3A1006A5C3A /* BothEdgesSnappedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothEdgesSnappedView.swift; sourceTree = "<group>"; };
+		2427236C1EFFD3A1006A5C3A /* BothEdgesSnappedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothEdgesSnappedViewController.swift; sourceTree = "<group>"; };
 		2439CC1E1E665858003326FB /* PinLayout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PinLayout.xcodeproj; path = ../PinLayout.xcodeproj; sourceTree = "<group>"; };
 		2439CC331E665BF6003326FB /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2439CC341E665BF6003326FB /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		2439CC371E665C5E003326FB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2427236B1EFFD3A1006A5C3A /* BothEdgesSnappedView.swift */,
+				2427236C1EFFD3A1006A5C3A /* BothEdgesSnappedViewController.swift */,
 				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
 				24F75B581EE5642C008DB567 /* Intro */,
@@ -496,8 +502,10 @@
 				24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */,
 				249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */,
 				2497CFEE1EF40B9100DFD13B /* FormViewController.swift in Sources */,
+				2427236E1EFFD3A1006A5C3A /* BothEdgesSnappedViewController.swift in Sources */,
 				24A9C1F31EF0542F00F2CF64 /* TableViewExampleViewController.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
+				2427236D1EFFD3A1006A5C3A /* BothEdgesSnappedView.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
 				24A9C1F91EF0619C00F2CF64 /* MethodGroupHeader.swift in Sources */,
 				24E654821E69041B00A72A8B /* Expect.swift in Sources */,

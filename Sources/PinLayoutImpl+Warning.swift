@@ -46,8 +46,8 @@ extension PinLayoutImpl {
     internal func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
         guard PinLayoutLogConflicts else { return }
         var warning = "\n👉 PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:\n"
-        properties.forEach { (key, value) in
-            warning += " \(key): \(value)\n"
+        properties.forEach { (property) in
+            warning += " \(property.key): \(property.value)\n"
         }
         
         displayWarning(warning)

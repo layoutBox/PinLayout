@@ -11,7 +11,7 @@
 Released on 2017-06-27. 
 
 #### Change
-* Support **Xcode 9 Beta 2** and Swift 4
+* Support **Xcode 9 Beta 2**
   * Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#52](https://github.com/mirego/PinLayout/pull/52)
 * Add a Form example
 	* Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#51](https://github.com/mirego/PinLayout/pull/51)  

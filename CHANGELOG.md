@@ -7,6 +7,30 @@
 
 # Change Log
 
+## [1.1.1](https://github.com/mirego/PinLayout/releases/tag/1.1.1)
+Released on 2017-06-27. 
+
+#### Change
+* Support **Xcode 9 Beta 2** and Swift 4
+  * Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#52](https://github.com/mirego/PinLayout/pull/52)
+* Add a Form example
+	* Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#51](https://github.com/mirego/PinLayout/pull/51)  
+	* This example demonstrates:  
+		* Usage of filter method when using PinLayout's relative methods (above, below, left, right)
+		* Adjusting a container's height to match all its children.
+		* Animation of the appearance/disappearance of UIViews.
+
+	
+  
+## [1.1.0](https://github.com/mirego/PinLayout/releases/tag/1.1.0)
+Released on 2017-06-18. 
+
+#### Change
+* Update relative methods signatures when specifying multiple relative views.  
+Update the minor version due to a small breaking change with methods above(of…), below(of…), left(of…) and right(of…). They now takes either a single UIView or an Array of UIViews.
+  * Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#48](https://github.com/mirego/PinLayout/pull/48)
+
+
 ## [1.0.15](https://github.com/mirego/PinLayout/releases/tag/1.0.15)
 Released on 2017-06-12. 
 

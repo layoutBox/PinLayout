@@ -231,9 +231,9 @@ public protocol PinLayout {
     // Think of align as a vertical invisible line running down the page. You can align the text left on that invisible line, right on that invisible line or have the text centered on that invisible line.
 //    Justification is a lateral horizontal measurement based on one of two invisible vertical lines - left and right for justified text or left only for unjustified text
     
-//    @discardableResult func justify(_: HorizontalAlignment) -> PinLayout
-//    @discardableResult func align(_: VerticalAlignment) -> PinLayout
-
+    @discardableResult func justify(_: HorizontalAlignment) -> PinLayout
+    @discardableResult func align(_: VerticalAlignment) -> PinLayout
+    
     //
     // Margins
     //

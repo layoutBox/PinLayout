@@ -463,8 +463,8 @@ class MarginsSpec: QuickSpec {
             }
             
             it("should adjust the aView") {
-                aView.pin.hCenter(100).width(50).height(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 85.0, y: 100.0, width: 50.0, height: 100.0)))
+                aView.pin.hCenter(100).width(50).height(100)
+                expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 50.0, height: 100.0)))
             }
         }
         

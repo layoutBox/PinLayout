@@ -216,11 +216,11 @@ public protocol PinLayout {
     @discardableResult func height(_ height: CGFloat) -> PinLayout
     @discardableResult func height(_ percent: Percent) -> PinLayout
     @discardableResult func height(of view: UIView) -> PinLayout
-    @discardableResult func minHeight(_ height: CGFloat) -> PinLayout
-    @discardableResult func minHeight(_ percent: Percent) -> PinLayout
-    @discardableResult func maxHeight(_ height: CGFloat) -> PinLayout
-    @discardableResult func maxHeight(_ percent: Percent) -> PinLayout
- 
+//    @discardableResult func minHeight(_ height: CGFloat) -> PinLayout
+//    @discardableResult func minHeight(_ percent: Percent) -> PinLayout
+//    @discardableResult func maxHeight(_ height: CGFloat) -> PinLayout
+//    @discardableResult func maxHeight(_ percent: Percent) -> PinLayout
+    
     @discardableResult func size(_ size: CGSize) -> PinLayout
     @discardableResult func size(_ sideLength: CGFloat) -> PinLayout
     @discardableResult func size(_ percent: Percent) -> PinLayout
@@ -228,11 +228,8 @@ public protocol PinLayout {
     
     @discardableResult func sizeToFit() -> PinLayout
     
-    // Think of align as a vertical invisible line running down the page. You can align the text left on that invisible line, right on that invisible line or have the text centered on that invisible line.
-//    Justification is a lateral horizontal measurement based on one of two invisible vertical lines - left and right for justified text or left only for unjustified text
-    
     @discardableResult func justify(_: HorizontalAlignment) -> PinLayout
-    @discardableResult func align(_: VerticalAlignment) -> PinLayout
+//    @discardableResult func align(_: VerticalAlignment) -> PinLayout
     
     //
     // Margins

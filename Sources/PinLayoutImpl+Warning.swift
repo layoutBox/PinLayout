@@ -33,6 +33,11 @@ extension PinLayoutImpl {
         displayWarning("\n👉 PinLayout Warning: \(context()) won't be applied, \(text)\n")
     }
     
+    internal func warn(_ text: String) {
+        guard PinLayoutLogConflicts else { return }
+        displayWarning("\n👉 PinLayout Warning: \(text)\n")
+    }
+    
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard PinLayoutLogConflicts else { return }
         displayWarning("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
@@ -51,6 +56,20 @@ extension PinLayoutImpl {
         }
         
         displayWarning(warning)
+    }
+    
+    internal func displayLayoutWarnings() {
+        if let justify = justify {
+            if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
+                warn("the left and right coordinates must be set to justify the view.", { "justify(\(justify))" })
+            }
+        }
+        
+//        if let align = align {
+//            if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
+//                warn("the left and right coordinates must be set to justify the view.", { "justify(\(justify))" })
+//            }
+//        }
     }
     
     internal func displayWarning(_ text: String) {

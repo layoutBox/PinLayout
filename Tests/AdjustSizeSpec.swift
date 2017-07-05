@@ -257,7 +257,16 @@ class AdjustSizeSpec: QuickSpec {
                 aView.pin.left(20).right(80).marginLeft(10).marginRight(10).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 30.0, y: 100.0, width: 280.0, height: 6.0)))
             }
-
+            
+            it("should adjust the size with sizeToFit()") {
+                aView.pin.left(20).right(80).marginLeft(10).marginRight(10).sizeToFit().justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 100.0, width: 280.0, height: 6.0)))
+            }
+            
+            it("should adjust the size with sizeToFit()") {
+                aView.pin.left(20).right(80).marginLeft(10).marginRight(10).sizeToFit().justify(.right)
+                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 100.0, width: 280.0, height: 6.0)))
+            }
         }
         
         describe("the result of the sizeToFit() method when pinning top and bottom edges") {
@@ -323,6 +332,11 @@ class AdjustSizeSpec: QuickSpec {
             
             it("should adjust the size with sizeToFit() and distribute extra width") {
                 aView.pin.right(100).width(200).pinEdges().marginLeft(10).marginRight(10).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 110.0, y: 100.0, width: 180, height: 9)))
+            }
+            
+            it("should adjust the size with sizeToFit() and distribute extra width") {
+                aView.pin.right(100).width(200).pinEdges().marginLeft(10).marginRight(10).sizeToFit().justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 110.0, y: 100.0, width: 180, height: 9)))
             }
         }
@@ -435,6 +449,21 @@ class AdjustSizeSpec: QuickSpec {
             it("should adjust the size with sizeToFit()") {
                 aView.pin.top(20).left(20).bottom(180).right(180).marginLeft(10).marginRight(10).marginTop(10).marginBottom(10).sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 30.0, y: 30.0, width: 180.0, height: 9.0)))
+            }
+            
+            it("should adjust the size with sizeToFit()") {
+                aView.pin.top(20).left(20).bottom(180).right(180).marginLeft(10).marginRight(10).marginTop(10).sizeToFit().justify(.left)
+                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 30.0, width: 180.0, height: 9)))
+            }
+            
+            it("should adjust the size with sizeToFit()") {
+                aView.pin.top(20).left(20).bottom(180).right(180).marginLeft(10).marginRight(10).marginTop(10).sizeToFit().justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 30.0, y: 30.0, width: 180.0, height: 9)))
+            }
+            
+            it("should adjust the size with sizeToFit()") {
+                aView.pin.top(20).left(20).bottom(180).right(180).marginLeft(15).marginRight(5).marginTop(10).sizeToFit().justify(.right)
+                expect(aView.frame).to(equal(CGRect(x: 35.0, y: 30.0, width: 180.0, height: 9)))
             }
         }
         

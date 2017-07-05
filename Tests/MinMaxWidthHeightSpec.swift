@@ -87,33 +87,33 @@ class MinMaxWidthHeightSpec: QuickSpec {
             }
             
             it("should adjust the width of aView") {
-                aView.pin.left(100).right(100)//.minWidth(250) // width < minWidth
+                aView.pin.left(100).right(100)
                 expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 200.0, height: 60.0)))
             }
             
             it("should adjust the width of aView") {
-                aView.pin.left(100).right(100).minWidth(250) // width < minWidth
-                expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
+                aView.pin.left(100).right(100).minWidth(250)
+                expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 250.0, height: 60.0)))
             }
             
             it("should adjust the width of aView") {
-                aView.pin.left(100).right(100).marginLeft(100).minWidth(250) // width < minWidth
+                aView.pin.left(100).right(100).marginLeft(100).minWidth(250)
                 expect(aView.frame).to(equal(CGRect(x: 200.0, y: 100.0, width: 250.0, height: 60.0)))
             }
             
             it("should adjust the width of aView") {
-                aView.pin.left(100).right(100).marginRight(100).minWidth(250) // width < minWidth
-                expect(aView.frame).to(equal(CGRect(x: -50.0, y: 100.0, width: 250.0, height: 60.0)))
+                aView.pin.left(100).right(100).marginRight(100).minWidth(250)
+                expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 250.0, height: 60.0)))
             }
             
             it("should adjust the width of aView") {
-                aView.pin.right(100).minWidth(300) // width < minWidth
+                aView.pin.right(100).minWidth(300)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 300.0, height: 60.0)))
             }
             
             it("should adjust the width to 500 and keep the view in the center") {
-                aView.pin.left().right().minWidth(500) // width < minWidth
-                expect(aView.frame).to(equal(CGRect(x: -50.0, y: 100.0, width: 500.0, height: 60.0)))
+                aView.pin.left().right().minWidth(500)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 500.0, height: 60.0)))
             }
             
             it("should adjust the width when using hCenter") {
@@ -151,7 +151,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             
             it("should adjust the width of aView") {
                 aView.pin.left().right().maxWidth(150)
-                expect(aView.frame).to(equal(CGRect(x: 125.0, y: 100.0, width: 150.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 150.0, height: 60.0)))
             }
 
             it("should adjust the width of aView") {
@@ -187,7 +187,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             
             it("should adjust the width of aView") {
                 aView.pin.left(0).right(0).marginRight(100).maxWidth(250)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 250.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
             }
             
             it("should adjust the width using justify") {
@@ -198,29 +198,25 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the width using justify") {
                 aView.pin.left().width(100%).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                // TODO: Should warn that justify won't be applied!!
-                // !!!!!!!!!!!!!!!!!!!!!
+                expect(unitTestLastWarning).to(contain(["justify(center)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.left().width(100%).maxWidth(250).justify(.right)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                // TODO: Should warn that justify won't be applied!!
-                // !!!!!!!!!!!!!!!!!!!!!
+                expect(unitTestLastWarning).to(contain(["justify(right)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.right().width(100%).maxWidth(250).justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
-                // TODO: Should warn that justify won't be applied!!
-                // !!!!!!!!!!!!!!!!!!!!!
+                expect(unitTestLastWarning).to(contain(["justify(left)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.right().width(100%).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
-                // TODO: Should warn that justify won't be applied!!
-                // !!!!!!!!!!!!!!!!!!!!!
+                expect(unitTestLastWarning).to(contain(["justify(center)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
@@ -234,6 +230,11 @@ class MinMaxWidthHeightSpec: QuickSpec {
             }
             
             it("should adjust the width using justify") {
+                aView.pin.left().right().maxWidth(250).justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
+            }
+            
+            it("should adjust the width using justify") {
                 aView.pin.left().right().marginLeft(20).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 85.0, y: 100.0, width: 250.0, height: 60.0)))
             }
@@ -243,9 +244,67 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
             }
             
+            it("should adjust the width using justify") {
+                aView.pin.left().right().marginLeft(20).marginRight(20).maxWidth(250).justify(.right)
+                expect(aView.frame).to(equal(CGRect(x: 130.0, y: 100.0, width: 250.0, height: 60.0)))
+            }
+            
             it("should adjust the width when using hCenter") {
                 aView.pin.hCenter().width(100%).maxWidth(250)
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
+            }
+        }
+        
+        //
+        // minWidth/maxWidth & sizeToFit()
+        //
+        describe("the result of the minWidth/maxWidth & sizeToFit()") {
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).sizeToFit().justify(.left)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().right().width(100%).maxWidth(250).sizeToFit().justify(.right)
+                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().right().maxWidth(250).sizeToFit().justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+                
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(10).minWidth(250).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().right().width(10).minWidth(250).sizeToFit().justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().right().width(10).minWidth(250).marginLeft(10).sizeToFit().justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().right().width(250).marginLeft(10).justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 250.0, height: 60)))
             }
         }
     }

@@ -220,11 +220,6 @@ class MarginsSpec: QuickSpec {
                 aView.pin.left(140).right(160).marginHorizontal(10)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 80.0, height: 120.0)))
             }
-            
-            
-            // Test  margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
-            //   and margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout
-            //   and margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
         }
         
        

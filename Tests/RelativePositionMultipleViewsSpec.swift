@@ -54,6 +54,8 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
         */
 
         beforeEach {
+            unitTestLastWarning = nil
+            
             viewController = UIViewController()
             
             rootView = UIView()

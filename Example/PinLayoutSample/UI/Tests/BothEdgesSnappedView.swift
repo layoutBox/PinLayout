@@ -940,11 +940,11 @@ class BothEdgesSnappedView: UIView {
 //        aView.pin.left().right().marginLeft(20).maxWidth(250).justify(.left)
 //        expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 250.0, height: 60.0)))
         
-//        aView.pin.left().right().marginLeft(20).maxWidth(250).justify(.center)
-//        expect(aView.frame).to(equal(CGRect(x: 85.0, y: 100.0, width: 250.0, height: 60.0)))
+//        aView.pin.left().right().maxWidth(250).justify(.center)
+//        expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
         
-//        aView.pin.left().right().marginLeft(20).maxWidth(250).justify(.right)
-//        expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
+//        aView.pin.left().right().marginLeft(20).maxWidth(250).justify(.center)
+//        expect(aView.frame).to(equal(CGRect(x: 95.0, y: 100.0, width: 250.0, height: 60.0)))
         
 //        aView.pin.hCenter().width(20).minWidth(250)
 //        expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
@@ -953,31 +953,24 @@ class BothEdgesSnappedView: UIView {
 //        expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
 //
         
+//        aView.pin.left().right().width(250)
+//        expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
+        
+//        aView.pin.left().right().width(250).justify(.left)
+//        expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
+        
+//        aView.pin.left().right().width(250).justify(.center)
+//        expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
+        
+//        aView.pin.left().right().width(250).justify(.right)
+//        expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
+        
+//        aView.pin.left().width(250).justify(.center)
+        
+        
         // TO BE ADDED TO UNIT TEST
         
-//        aView.sizeThatFitsExpectedArea = 40 * 40
-//        aView.pin.left().width(100%).maxWidth(250).sizeToFit()
-//        expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
         
-//        aView.sizeThatFitsExpectedArea = 40 * 40
-//        aView.pin.left().width(100%).maxWidth(250).sizeToFit().justify(.left)
-//        expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
-        
-//        aView.sizeThatFitsExpectedArea = 40 * 40
-//        aView.pin.left().width(100%).maxWidth(250).sizeToFit().justify(.right)
-//        expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 6.5)))
-        
-//        aView.sizeThatFitsExpectedArea = 40 * 40
-//        aView.pin.left().width(100%).maxWidth(250).sizeToFit().justify(.center)
-//        expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 6.5)))
-
-        
-//        aView.sizeThatFitsExpectedArea = 40 * 40
-//        aView.pin.left().width(10).minWidth(250).sizeToFit()
-//        expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
-        
-        aView.sizeThatFitsExpectedArea = 40 * 40
-        aView.pin.left().width(10).minWidth(250).sizeToFit().justify(.center)
         
         
 //        aView.pin.left().width(20).minWidth(250).justify(.center)
@@ -997,6 +990,24 @@ class BothEdgesSnappedView: UIView {
 //        aView.pin.left().width(20).minWidth(250).marginLeft(20).maxWidth(250).justify(.right)
         
         // TEST with the sizeToFit()!!!
+        
+//        aView.pin.left(50).right(50).width(200).justify(.left)
+//        expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 200.0, height: 60.0)))
+        
+//        aView.pin.left(50).right(50).width(200).justify(.center)
+//        expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 200.0, height: 60.0)))
+        
+//        aView.pin.left(50).right(50).width(200).justify(.right)
+//        expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 200.0, height: 60.0)))
+        
+//        aView.pin.left().right().marginHorizontal(50).width(200).justify(.left)
+//        expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 200.0, height: 60.0)))
+        
+//        aView.pin.left().right().marginHorizontal(50).width(200).justify(.center)
+//        expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 200.0, height: 60.0)))
+        
+//        aView.pin.left().right().marginHorizontal(50).width(200).justify(.right)
+//        expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 200.0, height: 60.0)))
         
         printViewFrame(aView, name: "aView")
 //        printViewFrame(aViewChild, name: "aViewChild")

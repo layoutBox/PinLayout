@@ -592,6 +592,7 @@ The value specifies the width and the height of the view in pixels, creating a s
 * `size(of view: UIView)`  
 Set the view’s size to match the referenced view’s size
 
+:pushpin: width/height/size have a higher priority than edges and anchors positionning. 
 
 ###### Usage examples:
 ```swift
@@ -606,6 +607,11 @@ Set the view’s size to match the referenced view’s size
 	view.pin.size(50%)
 	view.pin.size(250)
 ```
+
+## minWidth, maxWidth, minHeight, maxHeight <a name="minmax_width_height_size"></a>
+
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than width/height/size, edges and anchors positionning. Their values are always respected.  
+
 
 <br/>
 
@@ -769,7 +775,8 @@ In debug, PinLayout will display warnings when pin rules cannot be applied.
 * The newly pinned attributes conflict with other already pinned attributes.   
 Example:  
 `view.pin.left(10).right(10).width(200)`  
-👉 Layout Conflict: `width(200) won't be applied since it conflicts with the following already set properties: left: 0, right: 10.`  
+👉 Layout Conflict: `width(200) won't be applied since it conflicts with the following already set properties: left: 0, right: 10.` 
+
 * The newly pinned attributes have already been set to another value.  
 Example:  
 `view.pin.width(100).width(200)`  
@@ -787,8 +794,12 @@ Example:
 `view.pin.width(-100)`  
 👉 Layout Warning: `The width (-100) must be greater or equal to 0.`
 
+* `justify(.left|.center|.right)` is used without having set the left and the right coordinates.  
+Example:  
+`view.pin.left().width(250).justify(.center)`  
+👉 PinLayout Warning: justify(center) won't be applied, the left and right coordinates must be set to justify the view.
 
-width and/or height cannot be determined using current PinLaoyout's commands
+width and/or height cannot be determined using current PinLayout's commands
 
 size(...)'s height won't be aplied...
 size(...)'s widht won't be applied....

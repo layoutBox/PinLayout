@@ -10,6 +10,24 @@
  ===============================================
  - Nice introduction https://github.com/stevestreza/Relayout
 
+- min max
+    - Think of align as a vertical invisible line running down the page. You can align the text 
+      left on that invisible line, right on that invisible line or have the text centered on 
+      that invisible line.
+    - Justification is a lateral horizontal measurement based on one of two invisible vertical 
+       lines - left and right for justified text or left only for unjustified text
+
+    - Example with aView.pin.left().right().marginHorizontal(50).width(200).justify(.left / center / right)
+
+
+- If a margin is specified but not its corresponding edge, we automatically pin this edge to its parent!
+- If align/justify is specified but not its corresponding edges, we automatically pin these edges to its parent!
+
+ - Unit Test for  
+        margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
+        margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout
+        margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
+
  - Add a doc example using width(40%).height(100%)
  - Add also an example using view.pin.top(25%).hCenter(0)
 

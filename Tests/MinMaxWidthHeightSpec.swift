@@ -75,6 +75,12 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 aView.pin.left().minWidth(50)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 50.0, height: 60.0)))
             }
+            
+            it("should adjust the width of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 25, height: 60)
+                aView.pin.left().minWidth(25%)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
 
             it("should adjust the width of aView") {
                 aView.pin.left().width(100).minWidth(150) // width < minWidth
@@ -142,6 +148,13 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 
                 aView.pin.left().maxWidth(150)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 150.0, height: 60.0)))
+            }
+            
+            it("should adjust the width of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 200, height: 60)
+                
+                aView.pin.left().maxWidth(25%)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
             }
         
             it("should adjust the width of aView") {
@@ -326,6 +339,13 @@ class MinMaxWidthHeightSpec: QuickSpec {
             }
             
             it("should adjust the height of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 25, height: 30)
+                
+                aView.pin.top().minHeight(25%)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 25.0, height: 100.0)))
+            }
+            
+            it("should adjust the height of aView") {
                 aView.pin.top().height(100).minHeight(150) // height < minHeight
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 150.0)))
             }
@@ -391,6 +411,13 @@ class MinMaxWidthHeightSpec: QuickSpec {
 
                 aView.pin.top().maxHeight(150)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 150.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 100, height: 200)
+                
+                aView.pin.top().maxHeight(25%)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 100.0)))
             }
 
             it("should adjust the height of aView") {

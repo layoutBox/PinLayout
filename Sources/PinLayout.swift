@@ -184,23 +184,23 @@ public protocol PinLayout {
     //
     @discardableResult func above(of: UIView) -> PinLayout
     @discardableResult func above(of: [UIView]) -> PinLayout
-    @discardableResult func above(of: UIView, aligned: HorizontalAlignment) -> PinLayout
-    @discardableResult func above(of: [UIView], aligned: HorizontalAlignment) -> PinLayout
+    @discardableResult func above(of: UIView, aligned: HorizontalAlign) -> PinLayout
+    @discardableResult func above(of: [UIView], aligned: HorizontalAlign) -> PinLayout
     
     @discardableResult func below(of: UIView) -> PinLayout
     @discardableResult func below(of: [UIView]) -> PinLayout
-    @discardableResult func below(of: UIView, aligned: HorizontalAlignment) -> PinLayout
-    @discardableResult func below(of: [UIView], aligned: HorizontalAlignment) -> PinLayout
+    @discardableResult func below(of: UIView, aligned: HorizontalAlign) -> PinLayout
+    @discardableResult func below(of: [UIView], aligned: HorizontalAlign) -> PinLayout
     
     @discardableResult func left(of: UIView) -> PinLayout
     @discardableResult func left(of: [UIView]) -> PinLayout
-    @discardableResult func left(of: UIView, aligned: VerticalAlignment) -> PinLayout
-    @discardableResult func left(of: [UIView], aligned: VerticalAlignment) -> PinLayout
+    @discardableResult func left(of: UIView, aligned: VerticalAlign) -> PinLayout
+    @discardableResult func left(of: [UIView], aligned: VerticalAlign) -> PinLayout
     
     @discardableResult func right(of: UIView) -> PinLayout
     @discardableResult func right(of: [UIView]) -> PinLayout
-    @discardableResult func right(of: UIView, aligned: VerticalAlignment) -> PinLayout
-    @discardableResult func right(of: [UIView], aligned: VerticalAlignment) -> PinLayout
+    @discardableResult func right(of: UIView, aligned: VerticalAlign) -> PinLayout
+    @discardableResult func right(of: [UIView], aligned: VerticalAlign) -> PinLayout
 
     //
     // Width, height and size
@@ -216,10 +216,10 @@ public protocol PinLayout {
     @discardableResult func height(_ height: CGFloat) -> PinLayout
     @discardableResult func height(_ percent: Percent) -> PinLayout
     @discardableResult func height(of view: UIView) -> PinLayout
-//    @discardableResult func minHeight(_ height: CGFloat) -> PinLayout
-//    @discardableResult func minHeight(_ percent: Percent) -> PinLayout
-//    @discardableResult func maxHeight(_ height: CGFloat) -> PinLayout
-//    @discardableResult func maxHeight(_ percent: Percent) -> PinLayout
+    @discardableResult func minHeight(_ height: CGFloat) -> PinLayout
+    @discardableResult func minHeight(_ percent: Percent) -> PinLayout
+    @discardableResult func maxHeight(_ height: CGFloat) -> PinLayout
+    @discardableResult func maxHeight(_ percent: Percent) -> PinLayout
     
     @discardableResult func size(_ size: CGSize) -> PinLayout
     @discardableResult func size(_ sideLength: CGFloat) -> PinLayout
@@ -228,8 +228,8 @@ public protocol PinLayout {
     
     @discardableResult func sizeToFit() -> PinLayout
     
-    @discardableResult func justify(_: HorizontalAlignment) -> PinLayout
-//    @discardableResult func align(_: VerticalAlignment) -> PinLayout
+    @discardableResult func justify(_: HorizontalAlign) -> PinLayout
+    @discardableResult func align(_: VerticalAlign) -> PinLayout
     
     //
     // Margins
@@ -286,7 +286,7 @@ public protocol PinLayout {
 /// - left: left aligned
 /// - center: center aligned
 /// - right: right aligned
-public enum HorizontalAlignment: String {
+public enum HorizontalAlign: String {
     case left
     case center
     case right
@@ -297,7 +297,7 @@ public enum HorizontalAlignment: String {
 /// - top: top aligned
 /// - center: center aligned
 /// - bottom: bottom aligned
-public enum VerticalAlignment: String {
+public enum VerticalAlign: String {
     case top
     case center
     case bottom

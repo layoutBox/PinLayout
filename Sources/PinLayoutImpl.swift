@@ -63,8 +63,8 @@ class PinLayoutImpl: PinLayout {
     
     internal var shouldSizeToFit = false
     
-    internal var justify: HorizontalAlignment?
-//    internal var align: VerticalAlignment?
+    internal var justify: HorizontalAlign?
+    internal var align: VerticalAlign?
     
     internal var _marginTop: CGFloat { return marginTop ?? 0  }
     internal var _marginLeft: CGFloat { return marginLeft ?? 0 }
@@ -498,7 +498,7 @@ class PinLayoutImpl: PinLayout {
         return setHeight(view.frame.height, { return "height(of: \(view))" })
     }
     
-    /*@discardableResult
+    @discardableResult
     func minHeight(_ height: CGFloat) -> PinLayout {
         setMinHeight(height, { return "minHeight(\(height))" })
         return self
@@ -522,7 +522,7 @@ class PinLayoutImpl: PinLayout {
         func context() -> String { return "maxHeight(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setMaxHeight(percent.of(layoutSuperview.frame.height), context)
-    }*/
+    }
     
     //
     // size, sizeToFit
@@ -558,27 +558,16 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func justify(_ value: HorizontalAlignment) -> PinLayout {
-        func context() -> String { return "justify(\(value))" }
-        guard _hCenter == nil else {
-            warn("justification is not applied when hCenter has been set. By default the view will be centered around the hCenter.", context)
-            return self
-        }
-        
+    func justify(_ value: HorizontalAlign) -> PinLayout {
         justify = value
         return self
     }
     
-    /*@discardableResult
-    func align(_ value: VerticalAlignment) -> PinLayout {
-        func context() -> String { return "align(\(value))" }
-        guard _vCenter == nil else {
-            warn("alignment is not applied when vCenter has been set. By default the view will be centered around the vCenter.", context)
-            return self
-        }
+    @discardableResult
+    func align(_ value: VerticalAlign) -> PinLayout {
         align = value
         return self
-    }*/
+    }
     
     //
     // Margins
@@ -704,7 +693,7 @@ extension PinLayoutImpl {
             // left & right is set
             if let width = newSize.width {
                 newRect.size.width = width
-                newRect = justify(rect: newRect, betweenLeft: left, andRight: right)
+                newRect = applyJustify(rect: newRect, betweenLeft: left, andRight: right)
             } else {
                 newRect.origin.x = left + _marginLeft
                 newRect.size.width = right - _marginRight - newRect.origin.x
@@ -736,14 +725,19 @@ extension PinLayoutImpl {
         }
         
         // Compute vertical position
-        if let top = _top, let height = newSize.height {
+        if let top = _top, let bottom = _bottom {
+            // top & bottom is set
+            if let height = newSize.height {
+                newRect.size.height = height
+                newRect = applyAlign(rect: newRect, betweenTop: top, andBottom: bottom)
+            } else {
+                newRect.origin.y = top + _marginTop
+                newRect.size.height = bottom - _marginBottom - newRect.origin.y
+            }
+        } else if let top = _top, let height = newSize.height {
             // top & height is set
             newRect.origin.y = top + _marginTop
             newRect.size.height = height
-        } else if let top = _top, let bottom = _bottom {
-            // top & bottom is set
-            newRect.origin.y = top + _marginTop
-            newRect.size.height = bottom - _marginBottom - newRect.origin.y
         } else if let bottom = _bottom, let height = newSize.height {
             // bottom & height is set
             newRect.size.height = height
@@ -751,7 +745,7 @@ extension PinLayoutImpl {
         } else if let _vCenter = _vCenter, let height = newSize.height {
             // vCenter & height is set
             newRect.size.height = height
-            newRect.origin.y = _vCenter - (newRect.size.height / 2)
+            newRect.origin.y = _vCenter - (height / 2)
         } else if let top = _top {
             // Only top is set
             newRect.origin.y = top + _marginTop
@@ -764,6 +758,14 @@ extension PinLayoutImpl {
         } else if let height = newSize.height {
             // Only height is set
             newRect.size.height = height
+        }
+        
+        if !validateComputedWidth(newRect.size.width) {
+            newRect.size.width = view.frame.width
+        }
+        
+        if !validateComputedHeight(newRect.size.height) {
+            newRect.size.height = view.frame.height
         }
 
         view.frame = Coordinates.adjustRectToDisplayScale(newRect)
@@ -795,7 +797,7 @@ extension PinLayoutImpl {
             }
         }
 
-        if let height = height {
+        if let height = applyMinMax(toHeight: height) {
             if _top != nil && _bottom != nil {
                 warn("pinEdges() won't be applied vertically, top and bottom coordinates are already set.")
             } else if let top = _top {
@@ -842,7 +844,15 @@ extension PinLayoutImpl {
                 newHeight = sizeThatFits.height
             }
         }
-
+        
+        if !validateComputedWidth(newWidth) {
+            newWidth = nil
+        }
+        
+        if !validateComputedHeight(newHeight) {
+            newHeight = nil
+        }
+        
         return (newWidth, newHeight)
     }
     
@@ -858,9 +868,7 @@ extension PinLayoutImpl {
             newWidth = view.frame.width
         }
         
-        newWidth = applyMinMax(toWidth: newWidth)
-        
-        return newWidth
+        return applyMinMax(toWidth: newWidth)
     }
     
     fileprivate func applyMinMax(toWidth width: CGFloat?) -> CGFloat? {
@@ -879,15 +887,11 @@ extension PinLayoutImpl {
         return result
     }
     
-    fileprivate func justify(rect: CGRect, betweenLeft left: CGFloat, andRight right: CGFloat) -> CGRect {
+    fileprivate func applyJustify(rect: CGRect, betweenLeft left: CGFloat, andRight right: CGFloat) -> CGRect {
         let containerWidth = right - left - _marginLeft - _marginRight
         var remainingWidth = containerWidth - rect.width
-        var justifyType = HorizontalAlignment.left
-        
-        if remainingWidth > (containerWidth - _marginLeft + _marginRight) {
-            remainingWidth -= (_marginLeft + _marginRight)
-        }
-        
+        var justifyType = HorizontalAlign.left
+                
         if let justify = justify {
             justifyType = justify
         }
@@ -917,7 +921,46 @@ extension PinLayoutImpl {
             newHeight = view.frame.height
         }
         
-        return newHeight
+        return applyMinMax(toHeight: newHeight)
+    }
+    
+    fileprivate func applyMinMax(toHeight height: CGFloat?) -> CGFloat? {
+        var result = height
+        
+        // Handle minHeight
+        if let minHeight = minHeight, minHeight > (result ?? 0) {
+            result = minHeight
+        }
+        
+        // Handle maxHeight
+        if let maxHeight = maxHeight, maxHeight < (result ?? CGFloat.greatestFiniteMagnitude)  {
+            result = maxHeight
+        }
+        
+        return result
+    }
+    
+    fileprivate func applyAlign(rect: CGRect, betweenTop top: CGFloat, andBottom bottom: CGFloat) -> CGRect {
+        let containerHeight = bottom - top - _marginTop - _marginBottom
+        var remainingHeight = containerHeight - rect.height
+        var alignType = VerticalAlign.top
+        
+        if let align = align {
+            alignType = align
+        }
+        
+        var rect = rect
+        
+        switch alignType {
+        case .top:
+            rect.origin.y = top + _marginTop
+        case .center:
+            rect.origin.y = top + _marginTop + remainingHeight / 2
+        case .bottom:
+            rect.origin.y = bottom - _marginBottom - rect.height
+        }
+        
+        return rect
     }
 }
     

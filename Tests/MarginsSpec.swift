@@ -413,10 +413,6 @@ class MarginsSpec: QuickSpec {
                 aView.pin.top(140).bottom(160).marginVertical(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 150.0, width: 200.0, height: 80.0)))
             }
-            
-            // Test  margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
-            //   and margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout
-            //   and margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
         }
         
         //
@@ -457,6 +453,11 @@ class MarginsSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 80.0, height: 120.0)))
             }
             
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).width(50).height(100).margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 50.0, height: 100.0)))
+            }
+
             it("should adjust the aView") {
                 aView.pin.hCenter(100).width(50).height(100)
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 50.0, height: 100.0)))

@@ -28,12 +28,23 @@
         margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout
         margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
 
+ - Add: How to handle traitCollection changes
+ - Add: How to adjust parent size to match its childs
+ - 
+
+ - Add pin.bottomToContains(views: UIView....) Adjust the bottom to contains all specified UIViews.
+   So that we don't have to do: 
+        formContainerView.frame.size = CGSize(width: nameField.frame.width, 
+                                               height: formTitleLabel.frame.maxY + margin)
+    - pin.bottomToContains(views: UIView...)
+    - pin.bottom(toContains: UIView...)
+
+ - Add a section that describe example app
+
  - Add a doc example using width(40%).height(100%)
  - Add also an example using view.pin.top(25%).hCenter(0)
 
  - Add an image showing hCenter and vCenter (see http://doc.qt.io/qt-5/qtquick-positioning-anchors.html)
-
- - Optimization: Use a bit mask to check rapidly which properties has been set. ex: if propertiesMask & (TOP | BOTTOM) { ... }
 
  - Antoine Lamy: Suggestion pour ton système de layout (pt déjà le cas): Utiliser une interface entre l'engin de layout et
     UIKit afin de potentiellement être capable de le bridger vers d'autres entitées visuelles qu'une 
@@ -43,6 +54,7 @@
     Cette abstraction a été fait dans le framework d'animation POP ce qui fait qu'on peut virtuellement animer 
     n'importe quelle valeur, qu'elle soit liée à une vue ou pas. Ça rend le truc vraiment flexible.
         https://github.com/facebook/pop
+
 
  - pinEdgesHorizontal, pinEdgesVertical ??
  - pin.edges(), pin.horizontalEdges(), pin.verticalEdges(), 

@@ -124,7 +124,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the width when using hCenter") {
                 aView.pin.hCenter().width(20).minWidth(250).justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(unitTestLastWarning).to(contain(["justify(left)", "won't be applied", "justification is not applied when hCenter has been set"]))
+                expect(unitTestLastWarning).to(contain(["justify(.left)", "won't be applied", "justification is not applied when hCenter has been set"]))
             }
         }
         
@@ -198,25 +198,25 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the width using justify") {
                 aView.pin.left().width(100%).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(unitTestLastWarning).to(contain(["justify(center)", "won't be applied", "left and right coordinates"]))
+                expect(unitTestLastWarning).to(contain(["justify(.center)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.left().width(100%).maxWidth(250).justify(.right)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(unitTestLastWarning).to(contain(["justify(right)", "won't be applied", "left and right coordinates"]))
+                expect(unitTestLastWarning).to(contain(["justify(.right)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.right().width(100%).maxWidth(250).justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(unitTestLastWarning).to(contain(["justify(left)", "won't be applied", "left and right coordinates"]))
+                expect(unitTestLastWarning).to(contain(["justify(.left)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.right().width(100%).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(unitTestLastWarning).to(contain(["justify(center)", "won't be applied", "left and right coordinates"]))
+                expect(unitTestLastWarning).to(contain(["justify(.center)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
@@ -305,6 +305,257 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 aView.sizeThatFitsExpectedArea = 40 * 40
                 aView.pin.left().right().width(250).marginLeft(10).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 250.0, height: 60)))
+            }
+        }
+        
+        
+        //
+        // minHeight
+        //
+        describe("the result of the minHeight(...)") {
+            it("should adjust the height of aView") {
+                aView.pin.top().minHeight(50)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 25, height: 30)
+                
+                aView.pin.top().minHeight(50)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 25.0, height: 50.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.top().height(100).minHeight(150) // height < minHeight
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 150.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.top().height(100).minHeight(50) // height > minHeight
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 100.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.top(100).bottom(100)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 200.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.top(100).bottom(100).minHeight(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 250.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.top(100).bottom(100).marginTop(100).minHeight(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 200.0, width: 100.0, height: 250.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.top(100).bottom(100).marginBottom(100).minHeight(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 250.0)))
+            }
+            
+            it("should adjust the height of aView") {
+                aView.pin.bottom(100).minHeight(300)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 300.0)))
+            }
+            
+            it("should adjust the height to 500 and keep the view in the center") {
+                aView.pin.top().bottom().minHeight(500)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 500.0)))
+            }
+            
+            it("should adjust the height when using hCenter") {
+                aView.pin.vCenter().height(20).minHeight(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 75.0, width: 100.0, height: 250.0)))
+            }
+            
+            it("should adjust the height when using hCenter") {
+                aView.pin.vCenter().height(20).minHeight(250).align(.top)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 75.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.top)", "won't be applied", "alignment is not applied when vCenter has been set"]))
+            }
+        }
+        
+        //
+        // maxHeight
+        //
+        describe("the result of the maxHeight(...)") {
+            it("should adjust the height of aView") {
+                aView.pin.top().maxHeight(150)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 60.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 100, height: 200)
+
+                aView.pin.top().maxHeight(150)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 150.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top().maxHeight(150).marginTop(50)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 50.0, width: 100.0, height: 60.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top().bottom().maxHeight(150)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 150.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top().height(200).maxHeight(150)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 150.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.bottom().height(200).maxHeight(150)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 250.0, width: 100.0, height: 150.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top(0).bottom(0).maxHeight(250).marginTop(100)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top(0).maxHeight(250).marginTop(100)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.frame = CGRect(x: 40, y: 100, width: 100, height: 300)
+                aView.pin.top(0).maxHeight(250).marginTop(100)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top(0).height(100%).maxHeight(250).marginTop(100)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height of aView") {
+                aView.pin.top(0).bottom(0).marginBottom(100).maxHeight(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().height(100%).maxHeight(250).align(.top)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 00.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.top)", "won't be applied", "top and bottom coordinates"]))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().height(100%).maxHeight(250).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom coordinates"]))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().height(100%).maxHeight(250).align(.bottom)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 00.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.bottom)", "won't be applied", "top and bottom coordinates"]))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.bottom().height(100%).maxHeight(250).align(.top)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.top)", "won't be applied", "top and bottom coordinates"]))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.bottom().height(100%).maxHeight(250).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom coordinates"]))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.bottom().height(100%).maxHeight(250).align(.bottom)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
+                expect(unitTestLastWarning).to(contain(["align(.bottom)", "won't be applied", "top and bottom coordinates"]))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().bottom().marginTop(20).maxHeight(250).align(.top)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 20.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().bottom().maxHeight(250).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 75.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().bottom().marginTop(20).maxHeight(250).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 85.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().bottom().marginTop(20).maxHeight(250).align(.bottom)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height using align") {
+                aView.pin.top().bottom().marginTop(20).marginBottom(20).maxHeight(250).align(.bottom)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 130.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height when using hCenter") {
+                aView.pin.vCenter().height(100%).maxHeight(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 75.0, width: 100.0, height: 250.0)))
+            }
+        }
+
+        //
+        // minHeight/maxHeight & sizeToFit()
+        //
+        describe("the result of the minHeight/maxWidth & sizeToFit()") {
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().height(100%).maxHeight(200).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().height(100%).maxHeight(200).sizeToFit().align(.top)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().bottom().height(100%).maxHeight(200).sizeToFit().align(.bottom)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 200.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().bottom().maxHeight(200).sizeToFit().align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().height(10).minHeight(200).sizeToFit()
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().bottom().height(10).minHeight(200).sizeToFit().align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().bottom().height(10).minHeight(200).marginTop(10).sizeToFit().align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 105.0, width: 8.0, height: 200.0)))
+            }
+
+            it("should adjust the height when using sizeToFit") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.top().bottom().height(200).marginTop(10).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 105.0, width: 100.0, height: 200.0)))
             }
         }
     }

@@ -184,9 +184,7 @@ extension PinLayoutImpl {
     internal func setHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard validateHeight(value, context: context) else { return self }
         
-        /*if let _top = _top, let _bottom = _bottom {
-            warnConflict(context, ["top": _top, "bottom": _bottom])
-        } else*/ if let height = height, height != value {
+        if let height = height, height != value {
             warnPropertyAlreadySet("height", propertyValue: height, context)
         } else {
             height = value
@@ -194,7 +192,7 @@ extension PinLayoutImpl {
         return self
     }
     
-    /*@discardableResult
+    @discardableResult
     internal func setMinHeight(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard validateHeight(value, context: context) else { return self }
         
@@ -216,11 +214,20 @@ extension PinLayoutImpl {
             maxHeight = value
         }
         return self
-    }*/
+    }
     
     internal func validateWidth(_ width: CGFloat, context: Context) -> Bool {
         if width < 0 {
             warn("the width (\(width)) must be greater than or equal to zero.", context);
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    internal func validateComputedWidth(_ width: CGFloat?) -> Bool {
+        if let width = width, width < 0 {
+            warn("The computed width (\(width)) must be greater than or equal to zero. The view will keep its current width.")
             return false
         } else {
             return true
@@ -236,6 +243,14 @@ extension PinLayoutImpl {
         }
     }
     
+    internal func validateComputedHeight(_ height: CGFloat?) -> Bool {
+        if let height = height, height < 0 {
+            warn("The computed height (\(height)) must be greater than or equal to zero. The view will keep its current height.")
+            return false
+        } else {
+            return true
+        }
+    }
     
     internal func setSize(_ size: CGSize, _ context: Context) -> PinLayout {
         setWidth(size.width, { return "\(context())'s width" })

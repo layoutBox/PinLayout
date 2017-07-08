@@ -87,6 +87,47 @@ class JustifyAlignSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
                 expect(unitTestLastWarning).to(contain(["justify", "center", "won't be applied", "left and right"]))
             }
+            
+            it("test when hCenter has been set") {
+                aView.pin.hCenter(60).justify(.center)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(unitTestLastWarning).to(contain(["justify", "center", "won't be applied", "hCenter"]))
+            }
+        }
+        
+        //
+        // align + warning
+        //
+        describe("align() should warn that the alignment cannot be applied") {
+            it("test when missing top and bottom coordinate") {
+                aView.pin.align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+            }
+            
+            it("test when missing left and right coordinate") {
+                aView.pin.width(100).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+            }
+            
+            it("test when missing left and right coordinate") {
+                aView.pin.left().pinEdges().align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+            }
+            
+            it("test when missing right coordinate") {
+                aView.pin.left().width(250).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+            }
+            
+            it("test when hCenter has been set") {
+                aView.pin.hCenter(60).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(unitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+            }
         }
         
         //
@@ -150,6 +191,68 @@ class JustifyAlignSpec: QuickSpec {
             }
         }
         
+        
+        //
+        // align + height
+        //
+        describe("the result of the height(...) with align") {
+            it("should adjust the height and justify left aView") {
+                aView.pin.top().bottom().height(250)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the height and justify left aView") {
+                aView.pin.top().bottom().height(250).align(.top)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the width and align center aView") {
+                aView.pin.top().bottom().height(250).align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 75.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the width and align right aView") {
+                aView.pin.top().bottom().height(250).align(.bottom)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
+            }
+
+            it("should adjust the width and align left aView") {
+                aView.pin.top(50).bottom(50).height(200).align(.top)
+                let rect1 = aView.frame
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 50.0, width: 100.0, height: 200.0)))
+
+                aView.pin.top().bottom().marginVertical(50).height(200).align(.top)
+                let rect2 = aView.frame
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 50.0, width: 100.0, height: 200.0)))
+
+                expect(rect1).to(equal(rect2))
+            }
+
+            it("should adjust the height and align center aView") {
+                aView.pin.top(50).bottom(50).height(200).align(.center)
+                let rect1 = aView.frame
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 200.0)))
+
+                aView.pin.top().bottom().marginVertical(50).height(200).align(.center)
+                let rect2 = aView.frame
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 200.0)))
+
+                expect(rect1).to(equal(rect2))
+            }
+
+            it("should adjust the height and align bottom aView") {
+                aView.pin.top(50).bottom(50).height(200).align(.bottom)
+                let rect1 = aView.frame
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 200.0)))
+
+                aView.pin.top().bottom().marginVertical(50).height(200).align(.bottom)
+                let rect2 = aView.frame
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 200.0)))
+
+                expect(rect1).to(equal(rect2))
+            }
+        }
+        
         //
         // justify + pinEdges
         //
@@ -157,6 +260,16 @@ class JustifyAlignSpec: QuickSpec {
             it("should adjust the width and justify left aView") {
                 aView.pin.left().width(100).pinEdges().justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+        }
+        
+        //
+        // align + pinEdges
+        //
+        describe("the result of the pinEdges(...) with align") {
+            it("should adjust the width and justify left aView") {
+                aView.pin.top().height(100).pinEdges().align(.center)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 100.0)))
             }
         }
     }

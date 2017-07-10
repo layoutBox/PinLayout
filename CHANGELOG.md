@@ -7,6 +7,21 @@
 
 # Change Log
 
+
+## [1.1.4](https://github.com/mirego/PinLayout/releases/tag/1.1.4)
+Released on 2017-07-09. 
+
+#### Change
+* Implementation of:
+	* minWidth
+	* maxWidth
+	* minHeight
+	* maxHeight
+	* justify(:HorizontalAlign)
+	* align(:VerticalAlign)
+  * Added by [Luc Dion](https://github.com/lucmirego) in Pull Request [#53](https://github.com/mirego/PinLayout/pull/53) 
+
+
 ## [1.1.1](https://github.com/mirego/PinLayout/releases/tag/1.1.1)
 Released on 2017-06-27. 
 

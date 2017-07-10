@@ -619,7 +619,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout {
+    func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout {
         marginTop = top
         marginLeft = left
         marginBottom = bottom
@@ -889,7 +889,7 @@ extension PinLayoutImpl {
     
     fileprivate func applyJustify(rect: CGRect, betweenLeft left: CGFloat, andRight right: CGFloat) -> CGRect {
         let containerWidth = right - left - _marginLeft - _marginRight
-        var remainingWidth = containerWidth - rect.width
+        let remainingWidth = containerWidth - rect.width
         var justifyType = HorizontalAlign.left
                 
         if let justify = justify {
@@ -942,7 +942,7 @@ extension PinLayoutImpl {
     
     fileprivate func applyAlign(rect: CGRect, betweenTop top: CGFloat, andBottom bottom: CGFloat) -> CGRect {
         let containerHeight = bottom - top - _marginTop - _marginBottom
-        var remainingHeight = containerHeight - rect.height
+        let remainingHeight = containerHeight - rect.height
         var alignType = VerticalAlign.top
         
         if let align = align {

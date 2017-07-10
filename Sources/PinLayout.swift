@@ -270,7 +270,7 @@ public protocol PinLayout {
     ///   - bottom: <#bottom description#>
     ///   - right: <#right description#>
     /// - Returns: <#return value description#>
-    @discardableResult func margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) -> PinLayout
+    @discardableResult func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout
 
     /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.
     /// This is also true even if the width has been set.

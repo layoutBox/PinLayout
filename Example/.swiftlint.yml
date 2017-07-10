@@ -18,7 +18,7 @@ disabled_rules: # rule identifiers to exclude from running
   - force_cast
   - type_name
 #  - todo
-#  - file_length
+  - file_length
 #  - type_body_length
 #  - valid_docs
 #  - cyclomatic_complexity

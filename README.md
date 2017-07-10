@@ -38,6 +38,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Edges](#edges)
   * [Relative positionning](#relative_positionning)
   * [Width, height and size](#width_height_size)
+  * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
+  * [justify, align](#justify_align)
   * [Margins](#margins)
   * [Warnings](#warnings)
   * [More examples](#more_examples)
@@ -45,6 +47,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [Installation](#installation)
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
+
 
 <br>
 
@@ -127,10 +130,10 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 override func layoutSubviews() {
    super.layoutSubviews() 
     
-   logo.pin.topLeft().size(100).margin(topLayoutGuide + 10, 10, 10)
+   logo.pin.topLeft().size(100).marginTop(10).marginLeft(1010)
    segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
    textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit()
-   separatorView.pin.below(of: logo, textLabel, aligned: .left).right(to: segmented.edge.right).marginTop(10)
+   separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
 }
 ``` 
 
@@ -546,7 +549,7 @@ The following example contains a UISwitch. Below a UITextField that is visible o
 
 
 ```swift
-   formTitleLabel.pin.topCenter().margin(margin)
+   formTitleLabel.pin.topCenter().marginTop(margin)
    nameField.pin.below(of: formTitleLabel).left().right().height(40).margin(margin)
         
    ageSwitch.pin.below(of: nameField).left().right().height(40).margin(margin)
@@ -567,31 +570,23 @@ PinLayout has methods to set the view’s height and width.
 
 **Methods:**
 
-* `width(_ width: CGFloat)`  
-The value specifies the width of the view in pixels. Value must be non-negative.
-
-* `width(percent: Percent)`  
-The value specifies the width of the view in percentage of its superview. Value must be non-negative.
-
+* `width(_ width: CGFloat)` / `width(percent: Percent)`  
+The value specifies the view's width in pixels or in percentage of its superview. Value must be non-negative.
 * `width(of view: UIView)`  
 Set the view’s width to match the referenced view’s width.
 
-* `height(_ height: CGFloat)`  
-The value specifies the height of the view in pixels.
-* `height(percent: Percent)`  
-The value specifies the height of the view in percentage of its superview. Value must be non-negative.
+* `height(_ height: CGFloat)` / `height(percent: Percent)`  
+The value specifies the view's height in pixels or in percentage of its superview. Value must be non-negative.
 * `height(of view: UIView)`  
 Set the view’s height to match the referenced view’s height
-
-* `size(_ size: CGSize)`  
-The value specifies the size (width and value) of the view in pixels. Values must be non-negative.
-* `size(_ percent: Percent)`  
-The value specifies the width and the height of the view in percentage of its superview. Values must be non-negative.
+* `size(_ size: CGSize)` / `size(_ percent: Percent)`  
+The value specifies view's width and the height in pixels or in percentage of its superview. Values must be non-negative.
 * `size(_ sideLength: CGFloat)`  
 The value specifies the width and the height of the view in pixels, creating a square view. Values must be non-negative.
 * `size(of view: UIView)`  
 Set the view’s size to match the referenced view’s size
 
+:pushpin: width/height/size have a higher priority than edges and anchors positionning. 
 
 ###### Usage examples:
 ```swift
@@ -608,6 +603,111 @@ Set the view’s size to match the referenced view’s size
 ```
 
 <br/>
+
+## minWidth, maxWidth, minHeight, maxHeight <a name="minmax_width_height_size"></a>
+
+PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
+
+**Methods:**
+
+* `minWidth(_ width: CGFloat)` / `minWidth(_ percent: Percent)`  
+The value specifies the view's minimum width of the view in pixels or in percentage of its superview. Value must be non-negative.
+
+* `maxWidth(_ width: CGFloat)` / `maxWidth(_ percent: Percent)`  
+The value specifies the view's maximum width of the view in pixels or in percentage of its superview. Value must be non-negative.
+
+* `minHeight(_ height: CGFloat)` / `minHeight(_ percent: Percent)`  
+The value specifies the view's minimum height of the view in pixels or in percentage of its superview. Value must be non-negative.
+
+* `maxHeight(_ height: CGFloat)` / `maxHeight(_ percent: Percent)`  
+The value specifies the view's maximum height of the view in pixels or in percentage of its superview. Value must be non-negative.
+   
+###### Usage examples:
+```swift
+	view.pin.left(10).right(10).maxWidth(200)
+	view.pin.width(100%).maxWidth(250)
+	
+	view.pin.top().bottom().maxHeight(100)
+	view.pin.top().height(50%).maxHeight(200)
+```
+
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size) and edges positionning (top/left/bottom/right). Their values are always fullfilled.  
+
+
+###### Example:
+This example layout a view 20 pixels from the top, and horizontally from left to right with a maximum width of 200 pixels. If the superview is smaller than 200 pixels, the view will take the full horizontal space, but for a larger superview, the view will be centered.
+
+![](docs/pinlayout-example-maxWidth.png)
+
+
+```swift
+   viewA.pin.top(20).hCenter().width(100%).maxWidth(200)
+``` 
+
+This is an equivalent solutions using the `justify()` method. This method is explained in the next section:
+
+```swift
+   viewA.pin.top(20).left().right().maxWidth(200).justify(.center)
+```
+
+<br/>
+
+## justify() / align() <a name="justify_align"></a>
+
+**Method:**
+
+* `justify(_ : HorizontalAlign)`  
+Justify the view horizontally. This method justify horizontally a view in situations where the left, right and the width has been set (using either width/minWidth/maxWidth). In this situation the view may be smaller than the space available between the left and the right edges. A view can be justified **left**, **center** or **right**. 
+
+* `align(_ : VerticalAlign)`  
+Align the view vertically. This method align vertically a view in situations where the top, bottom and the height has been set (using either height/minHeight/maxHeight). In this situation the view may be smaller than the space available between the top and the bottom edges. A view can be aligned **top**, **center** or **bottom**. 
+
+###### Usage examples:
+```swift
+	view.pin.left().right().marginHorizontal(20).maxWidth(200).justify(.center)
+	view.pin.below(of: A).above(of: B).width(40).align(.center)
+```
+
+
+###### Example:
+This example layout a view between its superview left and right edges with a maximum size of 200 pixels. Without the usage of the `justify(:HorizontalAlign)` method, the view will be justified on the left:
+
+![](docs/pinlayout-example-justify-left.png)
+
+```swift
+   viewA.pin.left().right().maxWidth(200)
+```
+
+
+The same example, but using `justify(.center)`:
+
+![](docs/pinlayout-example-justify-center.png)
+
+
+```swift
+   viewA.pin.left().right().maxWidth(200).justify(.center)
+```
+
+And finally using `justify(.right)`:
+
+![](docs/pinlayout-example-justify-right.png)
+
+
+```swift
+   viewA.pin.left().right().maxWidth(200).justify(.right)
+```
+
+###### Example:
+This example centered horizontally the view B in the space remaining at the right of the view A. The view B has a width of 100 pixels..
+
+![](docs/pinlayout-example-justify-remaining-space.png)
+
+```swift
+   viewB.pin.left(of: viewA, aligned: .top).right().width(100).justify(.center)
+```
+
+<br/>
+
 
 ## Margins <a name="margins"></a>
 PinLayout applies margins similar to CSS. 
@@ -628,7 +728,7 @@ PinLayout has methods to apply margins.
 * `margin(_ value: CGFloat) `
 * `margin(_ vertical: CGFloat, _ horizontal: CGFloat)`
 * `margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`
-* `margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) `
+* `margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) `
 
 * `pinEdges()`
 
@@ -769,7 +869,8 @@ In debug, PinLayout will display warnings when pin rules cannot be applied.
 * The newly pinned attributes conflict with other already pinned attributes.   
 Example:  
 `view.pin.left(10).right(10).width(200)`  
-👉 Layout Conflict: `width(200) won't be applied since it conflicts with the following already set properties: left: 0, right: 10.`  
+👉 Layout Conflict: `width(200) won't be applied since it conflicts with the following already set properties: left: 0, right: 10.` 
+
 * The newly pinned attributes have already been set to another value.  
 Example:  
 `view.pin.width(100).width(200)`  
@@ -787,11 +888,10 @@ Example:
 `view.pin.width(-100)`  
 👉 Layout Warning: `The width (-100) must be greater or equal to 0.`
 
-
-width and/or height cannot be determined using current PinLaoyout's commands
-
-size(...)'s height won't be aplied...
-size(...)'s widht won't be applied....
+* `justify(.left|.center|.right)` is used without having set the left and the right coordinates.  
+Example:  
+`view.pin.left().width(250).justify(.center)`  
+👉 PinLayout Warning: justify(center) won't be applied, the left and right coordinates must be set to justify the view.
 
 ### Disabling warnings
 
@@ -953,11 +1053,6 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 	view.pin.width(percentageValue%)
 	``` 
 <br>
-
-
-## Coming soon <a name="coming_soon"></a>
-* minWidth/maxWidth, minHeight/maxHeight
-* ...
 
 
 ### Contributing, comments, ideas, suggestions, issues, .... <a name="comments"></a>

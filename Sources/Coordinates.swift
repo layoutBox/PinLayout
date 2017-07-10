@@ -78,10 +78,10 @@ class Coordinates {
     fileprivate static var displayScale: CGFloat = UIScreen.main.scale
 
     static func adjustRectToDisplayScale(_ rect: CGRect) -> CGRect {
-        return  CGRect(x: roundFloatToDisplayScale(rect.origin.x),
-                       y: roundFloatToDisplayScale(rect.origin.y),
-                       width: ceilFloatToDisplayScale(rect.size.width),
-                       height: ceilFloatToDisplayScale(rect.size.height))
+        return CGRect(x: roundFloatToDisplayScale(rect.origin.x),
+                      y: roundFloatToDisplayScale(rect.origin.y),
+                      width: ceilFloatToDisplayScale(rect.size.width),
+                      height: ceilFloatToDisplayScale(rect.size.height))
     }
 
     static func roundFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {

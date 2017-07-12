@@ -130,7 +130,7 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 override func layoutSubviews() {
    super.layoutSubviews() 
     
-   logo.pin.topLeft().size(100).marginTop(10).marginLeft(1010)
+   logo.pin.topLeft().size(100).marginTop(10).marginLeft(10)
    segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
    textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit()
    separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
@@ -1076,8 +1076,8 @@ PinLayout was inspired by other great layout frameworks, including:
 
 <br>
 
-## Changelog
-PinLayout recent history is available in the are documented in the [CHANGELOG](CHANGELOG.md).
+## History
+PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md).
 
 <br>
 

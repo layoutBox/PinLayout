@@ -80,7 +80,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 * Minimize as much as possible calculations and constants when layouting views. But it is always possible to add advanced computation if required.
 
-* Methods match as much as possible other layouting systems, including CSS, flexbox, reactive Flexbox, …
+* Method's name match as much as possible other layouting systems, including CSS, flexbox, reactive Flexbox, …
 	* margin, marginHorizontal, marginVertical, marginTop, marginLeft, marginBottom, marginRight
 	* top, left, bottom, right, width, height  
 	* As in CSS and flexbox, right and bottom coordinates are offset from container view's right and bottom edges.

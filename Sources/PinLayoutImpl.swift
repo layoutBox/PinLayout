@@ -28,6 +28,7 @@
 import Foundation
 
 #if os(iOS) || os(tvOS)
+import UIKit
     
 public var unitTestLastWarning: String?
 

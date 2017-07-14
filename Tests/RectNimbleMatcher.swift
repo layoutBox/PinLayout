@@ -28,31 +28,29 @@
 import Nimble
 import UIKit
 
-public func beCloseTo(_ expectedValues: CGRect, within delta: CGFloat = 0.00001) -> NonNilMatcherFunc <CGRect> {
-    return NonNilMatcherFunc { actualExpression, failureMessage in
-        failureMessage.postfixMessage = "be close to CGRect <\(stringify(expectedValues))> (each within \(stringify(delta)))"
+public func beCloseTo(_ expectedValue: CGRect, within delta: CGFloat = 0.00001) -> Predicate<CGRect> {
+    let errorMessage = "be close to <\(stringify(expectedValue))> (each within \(stringify(delta)))"
+    return Predicate.simple(errorMessage) { actualExpression in
         if let actual = try actualExpression.evaluate() {
-            failureMessage.actualValue = "<\(stringify(actual))>"
-            
-            if fabs(actual.origin.x - expectedValues.origin.x) > delta {
-                return false
-            }
-            
-            if fabs(actual.origin.y - expectedValues.origin.y) > delta {
-                return false
+            if fabs(actual.origin.x - expectedValue.origin.x) > delta {
+                return .doesNotMatch
             }
 
-            if fabs(actual.size.width - expectedValues.size.width) > delta {
-                return false
+            if fabs(actual.origin.y - expectedValue.origin.y) > delta {
+                return .doesNotMatch
             }
 
-            if fabs(actual.size.height - expectedValues.size.height) > delta {
-                return false
+            if fabs(actual.size.width - expectedValue.size.width) > delta {
+                return .doesNotMatch
             }
 
-            return true
+            if fabs(actual.size.height - expectedValue.size.height) > delta {
+                return .doesNotMatch
+            }
+
+            return .matches
         }
-        
-        return false
+        return .doesNotMatch
     }
 }
+

@@ -12,7 +12,7 @@ before_install:
   - pod install --repo-update
   
 script: xcodebuild
-  -project  PinLayout.xcodeproj
+  -workspace PinLayout.xcworkspace
   -scheme "PinLayout"
   -sdk iphonesimulator
   -destination 'platform=iOS Simulator,name=iPhone 6'

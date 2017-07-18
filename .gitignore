@@ -3,6 +3,7 @@
 
 .build/
 build/
-Carthage/
 xcuserdata
 data/
+
+Pods/

@@ -1,0 +1,21 @@
+PODS:
+  - Nimble (7.0.1)
+  - Quick (1.1.0)
+  - Reveal-SDK (9)
+  - SwiftLint (0.20.1)
+
+DEPENDENCIES:
+  - Nimble
+  - Quick
+  - Reveal-SDK
+  - SwiftLint
+
+SPEC CHECKSUMS:
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
+  Reveal-SDK: d977a1ec41e7c076025c1005da6e6d7c1b8ed254
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
+
+PODFILE CHECKSUM: b700e9190d78004aa9c8b5e614024d81df07f96e
+
+COCOAPODS: 1.2.1

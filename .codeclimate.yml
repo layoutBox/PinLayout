@@ -8,9 +8,7 @@ ratings:
 
 exclude_paths:
     - PinLayoutTests
-    - PinLayoutSample
-    - Carthage
-    - Source/Pods
+    - Example
+    - Pods
     - data
     - scripts
-    

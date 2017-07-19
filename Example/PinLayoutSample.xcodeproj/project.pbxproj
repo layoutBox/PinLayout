@@ -111,9 +111,9 @@
 		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = Intro/IntroView.swift; sourceTree = "<group>"; };
 		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = Intro/IntroViewController.swift; sourceTree = "<group>"; };
+		A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
-		F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
+		C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,8 +306,8 @@
 		F143180314A617EFD07C5709 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */,
-				F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */,
+				A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */,
+				C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = Pods/SwiftLint/swiftlint;
+			shellScript = ../Pods/SwiftLint/swiftlint;
 		};
 		5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -442,7 +442,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */ = {
@@ -457,7 +457,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */ = {
@@ -626,7 +626,7 @@
 		};
 		249EFE681E64FAFE00165E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1ACB0EACBD84B57B50D472D /* Pods-PinLayoutSample.debug.xcconfig */;
+			baseConfigurationReference = A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -641,7 +641,7 @@
 		};
 		249EFE691E64FAFE00165E39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F121E291CADD796B007C04BB /* Pods-PinLayoutSample.release.xcconfig */;
+			baseConfigurationReference = C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

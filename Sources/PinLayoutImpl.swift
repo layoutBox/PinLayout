@@ -803,7 +803,7 @@ extension PinLayoutImpl {
                 warn("pinEdges() won't be applied vertically, top and bottom coordinates are already set.")
             } else if let top = _top {
                 // convert the height into a bottom
-                assert(self._right == nil)
+                assert(self._bottom == nil)
                 self._bottom = top + height
                 self.height = nil
             } else if let bottom = _bottom {

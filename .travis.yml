@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode8.3
-xcode_project: PinLayout.xcodeproj
-xcode_scheme: PinLayout
+# xcode_project: PinLayout.xcodeproj
+# xcode_scheme: PinLayout
 xcode_sdk: iphonesimulator9.3
 env:
   - TARGET=ios

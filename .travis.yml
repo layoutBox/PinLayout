@@ -4,21 +4,45 @@ xcode_project: PinLayout.xcodeproj
 xcode_scheme: PinLayout
 xcode_sdk: iphonesimulator9.3
 env:
-  global: 
+  - TARGET=ios
+#  - TARGET=tvos
+global: 
 before_install:
+  # iOS
+  - |
+    if [[ $TARGET = "ios" ]]; then
+      brew outdated xctool || brew upgrade xctool;
+      gem install xcpretty-travis-formatter;
+      gem install cocoapods --pre --no-document --quiet;
+      pod repo update --silent;
+      pod install --repo-update;
+    fi
+
+# tvos
+  - |
+    if [[ $TARGET = "tvos" ]]; then
+      brew outdated xctool || brew upgrade xctool;
+      gem install xcpretty-travis-formatter;
+      gem install cocoapods --pre --no-document --quiet;
+      pod repo update --silent;
+      pod install --repo-update;
+    fi
+
   #- brew update
   #- brew install tailor
-  - gem install xcpretty-travis-formatter
-  - pod install --repo-update
+  # - gem install xcpretty-travis-formatter
+  # - pod install --repo-update
   
-script: xcodebuild
-  -workspace PinLayout.xcworkspace
-  -scheme "PinLayout"
-  -sdk iphonesimulator
-  -destination 'platform=iOS Simulator,name=iPhone 6'
-  -enableCodeCoverage YES 
-  test
- | xcpretty -f `xcpretty-travis-formatter`
+script:
+  # iOS
+  - |
+    if [[ $TARGET = "ios" ]]; then
+      set -o pipefail &&
+      xcodebuild -workspace PinLayout.xcworkspace -scheme "PinLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
+    fi
+
+
+script: 
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'

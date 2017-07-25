@@ -36,7 +36,5 @@ before_install:
 script:
   - xcodebuild -workspace PinLayout.xcworkspace -scheme "PinLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
 
-script: 
-
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'

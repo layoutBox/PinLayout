@@ -34,13 +34,7 @@ before_install:
   # - pod install --repo-update
   
 script:
-  # iOS
-  - |
-    if [[ $TARGET = "ios" ]]; then
-      set -o pipefail &&
-      xcodebuild -workspace PinLayout.xcworkspace -scheme "PinLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
-    fi
-
+  - xcodebuild -workspace PinLayout.xcworkspace -scheme "PinLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
 
 script: 
 

@@ -31,7 +31,11 @@ script:
 
     if [[ $SAMPLE_SCHEME -ne "None" ]]; then
       set -o pipefail &&
+      xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter` &&
       xcodebuild -workspace PinLayout.xcworkspace -scheme "$SAMPLE_SCHEME" -sdk "$SDK" -destination "$DESTINATION" | xcpretty -f `xcpretty-travis-formatter`
+    else 
+      set -o pipefail &&
+      xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter` &&
     fi
 
 after_success:

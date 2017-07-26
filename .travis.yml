@@ -18,16 +18,6 @@ before_install:
       pod install --repo-update;
     fi
 
-# tvos
-  - |
-    if [[ $TARGET = "tvos" ]]; then
-      brew outdated xctool || brew upgrade xctool;
-      gem install xcpretty-travis-formatter;
-      gem install cocoapods --pre --no-document --quiet;
-      pod repo update --silent;
-      pod install --repo-update;
-    fi
-
   #- brew update
   #- brew install tailor
   # - gem install xcpretty-travis-formatter
@@ -39,6 +29,8 @@ script:
     if [[ $TARGET = "ios" ]]; then
       set -o pipefail &&
       xcodebuild -workspace PinLayout.xcworkspace -scheme "PinLayout" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
+      set -o pipefail &&
+      xcodebuild -workspace PinLayout.xcworkspace -scheme "PinLayoutTVOS" -sdk appletvsimulator10.2 -destination 'platform=tvOS Simulator,name=Apple TV 1080p' | xcpretty -f `xcpretty-travis-formatter`
       set -o pipefail &&
       xcodebuild -workspace PinLayout.xcworkspace -list
       set -o pipefail &&

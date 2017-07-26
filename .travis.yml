@@ -27,7 +27,7 @@ script:
   # iOS
   - |
     set -o pipefail &&
-    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination $DESTINATION -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
+    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
 
 after_success:
   - |

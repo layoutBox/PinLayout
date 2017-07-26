@@ -6,9 +6,9 @@ cache:
     - $HOME/Library/Caches/Homebrew
 env:
   matrix:
-#    - TARGET=ios   SCHEME=PinLayout       OPTIONS='-enableCodeCoverage YES test'  SDK=iphonesimulator10.3   DESTINATION='platform=iOS Simulator,name=iPhone 7'
+    - TARGET=ios   SCHEME=PinLayout        OPTIONS='-enableCodeCoverage YES test'  SDK=iphonesimulator10.3   DESTINATION='platform=iOS Simulator,name=iPhone 7'
     - TRAGET=ios   SCHEME=PinLayoutSample  OPTIONS=''                              SDK=iphonesimulator10.3   DESTINATION='platform=iOS Simulator,name=iPhone 7'
-#   - TARGET=tvos  SCHEME=PinLayoutTVOS    OPTIONS='test'                          SDK=appletvsimulator10.2  DESTINATION='platform=tvOS Simulator,name=Apple TV 1080p'
+    - TARGET=tvos  SCHEME=PinLayoutTVOS    OPTIONS='test'                          SDK=appletvsimulator10.2  DESTINATION='platform=tvOS Simulator,name=Apple TV 1080p'
 
 # script:
 # - xctool test -test-sdk $TEST_SDK -simulator $SIMULATOR

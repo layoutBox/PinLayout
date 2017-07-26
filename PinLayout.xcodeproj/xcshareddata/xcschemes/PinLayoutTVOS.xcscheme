@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "249EFE821E64FB4C00165E39"
+               BuildableName = "PinLayoutTests.xctest"
+               BlueprintName = "PinLayoutTests"
+               ReferencedContainer = "container:PinLayout.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "244DF2F71EF46C500090508B"
+            BuildableName = "PinLayoutTVOS.framework"
+            BlueprintName = "PinLayoutTVOS"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

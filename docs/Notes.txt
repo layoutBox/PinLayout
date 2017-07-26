@@ -8,6 +8,11 @@
  ===============================================
  TODO:
  ===============================================
+ - Travis multi builds:
+    - http://andreas.boehrnsen.de/blog/2014/02/testing-multiple-ios-platforms-on-travis/
+    - https://medium.com/google-developers/hacks-i-did-to-use-travis-ci-with-firebase-ios-quickstarts-da67c4986f29
+    - https://lord.io/blog/2014/travis-multiple-subdirs/
+    
  - Nice introduction https://github.com/stevestreza/Relayout
 
 - min max

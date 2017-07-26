@@ -24,11 +24,7 @@ before_install:
     pod install --repo-update;
   
 script:
-  # iOS
   - |
-    set -o pipefail &&
-    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
-
     if [[ $SAMPLE_SCHEME -ne "None" ]]; then
       set -o pipefail &&
       xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter` &&

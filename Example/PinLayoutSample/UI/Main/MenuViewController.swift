@@ -29,6 +29,7 @@ import UIKit
 
 enum PageType: Int {
     case intro
+    case adjustToContainer
     case tableView
     case form
     case relativePositions
@@ -40,6 +41,7 @@ enum PageType: Int {
     var text: String {
         switch self {
         case .intro:                      return "PinLayout's Intro"
+        case .adjustToContainer:          return "Adjust to container size"
         case .tableView:                  return "TableView with variable cell's height"
         case .form:                       return "Form Example"
         case .relativePositions:          return "Relative Positionning"
@@ -52,6 +54,7 @@ enum PageType: Int {
     var viewController: UIViewController {
         switch self {
         case .intro:                      return IntroViewController(pageType: self)
+        case .adjustToContainer:          return AdjustToContainerViewController(pageType: self)
         case .tableView:                  return TableViewExampleViewController(pageType: self)
         case .form:                       return FormViewController(pageType: self)
         case .relativePositions:          return RelativeViewController(pageType: self)
@@ -83,7 +86,7 @@ class MenuViewController: BaseViewController {
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(true)
-//        didSelect(pageType: .form)
+//        didSelect(pageType: .intro)
 //    }
 }
 

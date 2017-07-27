@@ -3,9 +3,9 @@ osx_image: xcode8.3
 
 env:
   matrix:
-    - TARGET=ios   SCHEME=PinLayout        OPTIONS='-enableCodeCoverage YES test'  SDK=iphonesimulator10.3   DESTINATION='platform=iOS Simulator,name=iPhone 7'
-#    - TRAGET=ios   SCHEME=PinLayoutSample  OPTIONS=''                              SDK=iphonesimulator10.3   DESTINATION='platform=iOS Simulator,name=iPhone 7'
-#    - TARGET=tvos  SCHEME=PinLayoutTVOS    OPTIONS=''                              SDK=appletvsimulator10.2  DESTINATION='platform=tvOS Simulator,name=Apple TV 1080p'
+    - SCHEME=PinLayout       SDK=iphonesimulator10.3
+#    - SCHEME=PinLayoutSample SDK=iphonesimulator10.3   DESTINATION='platform=iOS Simulator,name=iPhone 7'
+#    - SCHEME=PinLayoutTVOS   SDK=appletvsimulator10.2  DESTINATION='platform=tvOS Simulator,name=Apple TV 1080p'
 
 before_install:
   - brew outdated xctool || brew upgrade xctool;
@@ -15,9 +15,13 @@ before_install:
   - pod install --repo-update;
   
 script:
-  - set -o pipefail &&
-    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination "$DESTINATION" $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
+  - |
+    if [[ $SCHEME = "PinLayout" ]]; then
+      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
+    fi
 
+#  - set -o pipefail &&
+#    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination "$DESTINATION" $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
 # Fonc    : xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
 # Fonc pas: xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination $DESTINATION $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
 # Fonc    : xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
@@ -27,6 +31,6 @@ script:
 
 after_success:
   - |
-    if [[ $TARGET = "ios" ]]; then
+    if [[ $SCHEME = "PinLayout" ]]; then
       bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'
     fi

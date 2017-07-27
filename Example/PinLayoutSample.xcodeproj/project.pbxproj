@@ -27,9 +27,12 @@
 		24A9C1F21EF0542F00F2CF64 /* TableViewExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */; };
 		24A9C1F31EF0542F00F2CF64 /* TableViewExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */; };
 		24A9C1F61EF054BF00F2CF64 /* MethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */; };
-		24A9C1F91EF0619C00F2CF64 /* MethodGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C1F81EF0619C00F2CF64 /* MethodGroupHeader.swift */; };
 		24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */; };
 		24A9C2041EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */; };
+		24CB99981F290540004EA7FB /* MethodGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB99971F290540004EA7FB /* MethodGroupHeader.swift */; };
+		24CB999C1F29059B004EA7FB /* AdjustToContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */; };
+		24CB999D1F29059B004EA7FB /* AdjustToContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */; };
+		24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */; };
 		24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */; };
 		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
@@ -104,9 +107,12 @@
 		24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewExampleView.swift; path = TableViewExample/TableViewExampleView.swift; sourceTree = "<group>"; };
 		24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewExampleViewController.swift; path = TableViewExample/TableViewExampleViewController.swift; sourceTree = "<group>"; };
 		24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MethodCell.swift; path = TableViewExample/Cells/MethodCell.swift; sourceTree = "<group>"; };
-		24A9C1F81EF0619C00F2CF64 /* MethodGroupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodGroupHeader.swift; sourceTree = "<group>"; };
 		24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoAdjustingSizeView.swift; path = AutoAdjustingSize/AutoAdjustingSizeView.swift; sourceTree = "<group>"; };
 		24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoAdjustingSizeViewController.swift; path = AutoAdjustingSize/AutoAdjustingSizeViewController.swift; sourceTree = "<group>"; };
+		24CB99971F290540004EA7FB /* MethodGroupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MethodGroupHeader.swift; path = TableViewExample/Cells/MethodGroupHeader.swift; sourceTree = "<group>"; };
+		24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustToContainerView.swift; path = AdjustToContainer/AdjustToContainerView.swift; sourceTree = "<group>"; };
+		24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustToContainerViewController.swift; path = AdjustToContainer/AdjustToContainerViewController.swift; sourceTree = "<group>"; };
+		24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChoiceSelectorView.swift; path = AdjustToContainer/Subviews/ChoiceSelectorView.swift; sourceTree = "<group>"; };
 		24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormView.swift; sourceTree = "<group>"; };
 		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = Intro/IntroView.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 		2439CC371E665C5E003326FB /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				24CB99991F290591004EA7FB /* AdjustToContainer */,
 				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
 				24F75B581EE5642C008DB567 /* Intro */,
@@ -272,9 +279,27 @@
 			isa = PBXGroup;
 			children = (
 				24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */,
-				24A9C1F81EF0619C00F2CF64 /* MethodGroupHeader.swift */,
+				24CB99971F290540004EA7FB /* MethodGroupHeader.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		24CB99991F290591004EA7FB /* AdjustToContainer */ = {
+			isa = PBXGroup;
+			children = (
+				24CB999E1F29063A004EA7FB /* Subviews */,
+				24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */,
+				24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */,
+			);
+			name = AdjustToContainer;
+			sourceTree = "<group>";
+		};
+		24CB999E1F29063A004EA7FB /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */,
+			);
+			name = Subviews;
 			sourceTree = "<group>";
 		};
 		24E654801E69040000A72A8B /* Domain */ = {
@@ -492,19 +517,22 @@
 				2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */,
 				24A9C1F61EF054BF00F2CF64 /* MethodCell.swift in Sources */,
 				24A9C2041EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift in Sources */,
+				24CB999C1F29059B004EA7FB /* AdjustToContainerView.swift in Sources */,
 				2497CFED1EF40B9100DFD13B /* FormView.swift in Sources */,
 				24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */,
 				249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */,
 				2497CFEE1EF40B9100DFD13B /* FormViewController.swift in Sources */,
 				24A9C1F31EF0542F00F2CF64 /* TableViewExampleViewController.swift in Sources */,
+				24CB99981F290540004EA7FB /* MethodGroupHeader.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
-				24A9C1F91EF0619C00F2CF64 /* MethodGroupHeader.swift in Sources */,
 				24E654821E69041B00A72A8B /* Expect.swift in Sources */,
+				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,
 				24A9C1F21EF0542F00F2CF64 /* TableViewExampleView.swift in Sources */,
 				2493268E1EEEF02700BCB814 /* BaseView.swift in Sources */,
+				24CB999D1F29059B004EA7FB /* AdjustToContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

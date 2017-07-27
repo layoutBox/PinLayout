@@ -31,7 +31,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 * [PinLayout principles and philosophy](#introduction)
 * [Performance](#performance)
-* [Usage example](#intro_usage_example)
+* [Usage examples](#intro_usage_examples)
 * [Documentation](#documentation)
   * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
   * [Anchors](#anchors)
@@ -114,9 +114,10 @@ These results also means that **PinLayout is faster than any layout frameworks t
 
 <br/>
 
-# Usage sample <a name="intro_usage_example"></a>
-###### Example:
-This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device'size and orientation changes.
+# Usage examples <a name="intro_usage_examples"></a>
+
+###### Example 1:
+This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device's size and orientation changes.
 
 * **UIImageView**'s size is 100x100 and layouted below the UINavigationBar with a margin of 10 pixels all around.
 * **UISegmentedControl** is at the right of the logo image, use the remaining horizontal space with a left and right margin of 20 pixels.
@@ -141,7 +142,34 @@ override func layoutSubviews() {
 
 :pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
 
-:pushpin: This example and some other examples are available in the [Examples App](#examples_app) documented below. 
+:pushpin: This example is available in the [Examples App](#examples_app). 
+
+<br/>
+
+###### Example 2:
+This example shows how easily PinLayout can adjust its layout based on the views's container size. 
+
+* If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
+* If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
+
+![](docs/pinlayout_example_adjust_to_container.png)
+
+```swift
+  let margin: CGFloat = 12
+        
+  if frame.width < 500 {
+      textLabel.pin.top().left().right().margin(margin).sizeToFit()
+      segmentedControl.pin.below(of: textLabel).right().margin(margin)
+  } else {
+      segmentedControl.pin.top().right().margin(margin)
+      textLabel.pin.top().left().left(of: segmentedControl).margin(margin).sizeToFit()
+  }
+``` 
+
+:pushpin: Would you be able to do that so easily using auto layout?
+
+:pushpin: This example is also available in the [Examples App](#examples_app). 
+
 
 <br/>
 
@@ -188,7 +216,7 @@ The value specifies the vertical center distance from the superview's top edge i
 
 ###### Example:
 This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
-![Flowers](docs/01-example-distance-superview-edge.png)
+![](docs/01-example-distance-superview-edge.png)
 
 ```swift
     viewA.pin.top(10).left(10).bottom(10).right(10)
@@ -1021,6 +1049,7 @@ There is a tiny Example app that expose some usage example on PinLayout, includi
 
 <p align="center">
   <img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/>
+  <img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/>
   <img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/>
   <img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/>
   <img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/>

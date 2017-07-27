@@ -8,10 +8,10 @@ env:
     - SCHEME=PinLayoutTVOS   SDK=appletvsimulator10.2 
 
 before_install:
-  - brew outdated xctool || brew upgrade xctool;
+#  - brew outdated xctool || brew upgrade xctool;
   - gem install xcpretty-travis-formatter;
-  - gem install cocoapods --pre --no-document --quiet;
-  - pod repo update --silent;
+  - gem install cocoapods --no-document --quiet;
+#  - pod repo update --silent;
   - pod install --repo-update;
 
 script:

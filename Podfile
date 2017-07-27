@@ -6,7 +6,7 @@ target 'PinLayoutTests' do
   project 'PinLayout.xcodeproj'
 
   pod 'Quick'
-  pod 'Nimble'
+  pod 'Nimble', :inhibit_warnings => true
 end
 
 target 'PinLayoutSample' do

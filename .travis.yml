@@ -16,7 +16,7 @@ before_install:
   
 script:
   - set -o pipefail &&
-    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination $DESTINATION $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
+    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' $OPTIONS | xcpretty -f `xcpretty-travis-formatter`
       
 #  - set -o pipefail &&
 #    xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" $OPTIONS | xcpretty -f `xcpretty-travis-formatter`

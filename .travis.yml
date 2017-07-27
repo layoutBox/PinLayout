@@ -17,15 +17,15 @@ before_install:
 script:
   - |
     if [[ $SCHEME = "PinLayout" ]]; then
-      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES test | xcpretty -f `xcpretty-travis-formatter`
+      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES build test | xcpretty -f `xcpretty-travis-formatter`
     fi
 
     if [[ $SCHEME = "PinLayoutSample" ]]; then
-      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' | xcpretty -f `xcpretty-travis-formatter`
+      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' build | xcpretty -f `xcpretty-travis-formatter`
     fi
 
     if [[ $SCHEME = "PinLayoutTVOS" ]]; then
-      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=tvOS Simulator,name=Apple TV 1080p' | xcpretty -f `xcpretty-travis-formatter`
+      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build | xcpretty -f `xcpretty-travis-formatter`
     fi
 
 after_success:

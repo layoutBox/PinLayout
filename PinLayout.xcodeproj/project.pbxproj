@@ -33,7 +33,6 @@
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
 		DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* TypesImpl.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
-		DF96AE2B1F2984D30012AAD9 /* PinLayoutTVOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244DF2F81EF46C500090508B /* PinLayoutTVOS.framework */; };
 		DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */; };
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 /* End PBXBuildFile section */
@@ -115,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF96AE2B1F2984D30012AAD9 /* PinLayoutTVOS.framework in Frameworks */,
 				249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */,
 				CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */,
 			);

@@ -30,8 +30,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 ### Content
 
 * [PinLayout principles and philosophy](#introduction)
-* [Performance](#performance)
 * [Usage examples](#intro_usage_examples)
+* [Performance](#performance)
 * [Documentation](#documentation)
   * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
   * [Anchors](#anchors)
@@ -96,24 +96,6 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 <br>
 
-# PinLayout's Performance <a name="performance"></a>
-
-PinLayout's performance has been measured using the nice and simple LayoutKit benchmark. PinLayout has been added to this benchmark to compare its performance. 
-
-As you can see in the following chart, PinLayout's performance is as fast as manual layouting, and **between 12x and 16x faster than auto layout**, for all types of iPhone (5/6/6S/7)
-
-These results also means that **PinLayout is faster than any layout frameworks that is built over auto layout**. 
-
-[See here more complete details, results and explanation of the benchmark](docs/Benchmark.md).
-
-<p align="center"> Tested on a iPhone 6 iOS 10.3.2</p>
-<p align="center">
-  <img src="docs/Benchmark/Benchmark-iPhone6.png" alt="PinLayout Performance" width=600/>
-</p>
-
-
-<br/>
-
 # Usage examples <a name="intro_usage_examples"></a>
 
 ###### Example 1:
@@ -152,7 +134,7 @@ This example shows how easily PinLayout can adjust its layout based on the views
 * If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
 * If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
 
-![](docs/pinlayout_example_adjust_to_container.png)
+![](Docs/pinlayout_example_adjust_to_container.png)
 
 ```swift
   let margin: CGFloat = 12
@@ -170,6 +152,22 @@ This example shows how easily PinLayout can adjust its layout based on the views
 
 :pushpin: This example is also available in the [Examples App](#examples_app). 
 
+<br/>
+
+# PinLayout's Performance <a name="performance"></a>
+
+PinLayout's performance has been measured using the nice and simple LayoutKit benchmark. PinLayout has been added to this benchmark to compare its performance. 
+
+As you can see in the following chart, PinLayout's performance is as fast as manual layouting, and **between 12x and 16x faster than auto layout**, for all types of iPhone (5/6/6S/7)
+
+These results also means that **PinLayout is faster than any layout frameworks that is built over auto layout**. 
+
+[See here more complete details, results and explanation of the benchmark](docs/Benchmark.md).
+
+<p align="center"> Tested on a iPhone 6 iOS 10.3.2</p>
+<p align="center">
+  <img src="docs/Benchmark/Benchmark-iPhone6.png" alt="PinLayout Performance" width=600/>
+</p>
 
 <br/>
 

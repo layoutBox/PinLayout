@@ -217,7 +217,7 @@ This example layout the view A to fit its superview frame with a margin of 10 pi
 ![](docs/01-example-distance-superview-edge.png)
 
 ```swift
-    viewA.pin.top(10).left(10).bottom(10).right(10)
+    viewA.pin.top(10).bottom(10).left(10).right(10)
 ``` 
 Another possible solution using other PinLayout's methods (more details later):
 

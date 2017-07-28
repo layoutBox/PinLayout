@@ -8,7 +8,7 @@
  ===============================================
  TODO:
  ===============================================
- - Do an example using data/ExampleAdjustSize
+ - Add aspectRatio(:CGFloat)?
 
  - Travis multi builds:
     - http://andreas.boehrnsen.de/blog/2014/02/testing-multiple-ios-platforms-on-travis/

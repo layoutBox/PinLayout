@@ -14,13 +14,10 @@
   <!--a href="https://github.com/mirego/PinLayout/issues"><img src="https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat" /></a-->
 </p>
 
-<br>
-
 Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
   
 > "No Auto layout constraints attached"
 
-<br>
 
 ### Requirements
 * iOS 8.0+ / tvOS 9.0+
@@ -29,8 +26,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### Content
 
+* [Introduction examples](#intro_usage_examples)
 * [PinLayout principles and philosophy](#introduction)
-* [Usage examples](#intro_usage_examples)
 * [Performance](#performance)
 * [Documentation](#documentation)
   * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
@@ -48,10 +45,67 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
 
-
 <br>
 
 :pushpin: PinLayout is actively updated, adding more features weekly. So please come often to see latest changes. You can also **Star** it to be able to retrieve it easily later.
+
+# Introduction examples <a name="intro_usage_examples"></a>
+
+###### Example 1:
+This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device's size and orientation changes.
+
+* **UIImageView**'s size is 100x100 and layouted below the UINavigationBar with a margin of 10 pixels all around.
+* **UISegmentedControl** is at the right of the logo image, use the remaining horizontal space with a left and right margin of 20 pixels.
+* **UILabel** is below the UISegmentedControl with a top margin of 10 pixels. It's width matched the UISegmentedControl's width. The label is multiline, so its height must be adjusted to fit its width.
+* **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
+
+
+![](docs/pinlayout-intro-example.png)
+
+```swift
+override func layoutSubviews() {
+   super.layoutSubviews() 
+    
+   logo.pin.top().left().size(100).margin(10)
+   segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
+   textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit()
+   separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
+}
+``` 
+
+:pushpin: 4 views, 4 lines!
+
+:pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
+
+:pushpin: This example is available in the [Examples App](#examples_app). 
+
+<br/>
+
+###### Example 2:
+This example shows how easily PinLayout can adjust its layout based on the views's container size. 
+
+* If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
+* If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
+
+![](docs/pinlayout_example_adjust_to_container2.png)
+
+```swift
+  let margin: CGFloat = 12
+        
+  if frame.width < 500 {
+      textLabel.pin.top().left().right().margin(margin).sizeToFit()
+      segmentedControl.pin.below(of: textLabel).right().margin(margin)
+  } else {
+      segmentedControl.pin.top().right().margin(margin)
+      textLabel.pin.top().left().left(of: segmentedControl).margin(margin).sizeToFit()
+  }
+``` 
+
+:pushpin: Would it be that easily using auto layout?
+
+:pushpin: This example is also available in the [Examples App](#examples_app). 
+
+<br/>
 
 ## PinLayout principles and philosophy <a name="introduction"></a>
 
@@ -96,63 +150,6 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 <br>
 
-# Usage examples <a name="intro_usage_examples"></a>
-
-###### Example 1:
-This example layout an image, a UISegmentedControl, a label and a line separator. This example adjust its content to match the device's size and orientation changes.
-
-* **UIImageView**'s size is 100x100 and layouted below the UINavigationBar with a margin of 10 pixels all around.
-* **UISegmentedControl** is at the right of the logo image, use the remaining horizontal space with a left and right margin of 20 pixels.
-* **UILabel** is below the UISegmentedControl with a top margin of 10 pixels. It's width matched the UISegmentedControl's width. The label is multiline, so its height must be adjusted to fit its width.
-* **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
-
-
-![](docs/pinlayout-intro-example.png)
-
-```swift
-override func layoutSubviews() {
-   super.layoutSubviews() 
-    
-   logo.pin.topLeft().size(100).marginTop(10).marginLeft(10)
-   segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
-   textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit()
-   separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
-}
-``` 
-
-:pushpin: 4 views, 4 lines!
-
-:pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitask. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
-
-:pushpin: This example is available in the [Examples App](#examples_app). 
-
-<br/>
-
-###### Example 2:
-This example shows how easily PinLayout can adjust its layout based on the views's container size. 
-
-* If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
-* If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
-
-![](docs/pinlayout_example_adjust_to_container2.png)
-
-```swift
-  let margin: CGFloat = 12
-        
-  if frame.width < 500 {
-      textLabel.pin.top().left().right().margin(margin).sizeToFit()
-      segmentedControl.pin.below(of: textLabel).right().margin(margin)
-  } else {
-      segmentedControl.pin.top().right().margin(margin)
-      textLabel.pin.top().left().left(of: segmentedControl).margin(margin).sizeToFit()
-  }
-``` 
-
-:pushpin: Would you be able to do that so easily using auto layout?
-
-:pushpin: This example is also available in the [Examples App](#examples_app). 
-
-<br/>
 
 # PinLayout's Performance <a name="performance"></a>
 

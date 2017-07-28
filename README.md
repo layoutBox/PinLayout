@@ -134,7 +134,7 @@ This example shows how easily PinLayout can adjust its layout based on the views
 * If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
 * If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
 
-![](docs/pinlayout_example_adjust_to_container.png)
+![](docs/pinlayout_example_adjust_to_container2.png)
 
 ```swift
   let margin: CGFloat = 12

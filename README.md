@@ -222,7 +222,7 @@ This example layout the view A to fit its superview frame with a margin of 10 pi
 Another possible solution using other PinLayout's methods (more details later):
 
 ```swift
-    view.pin.topLeft().bottomRight().margin(10)
+    view.pin.top().bottom().left().right().margin(10)
 ```
 
 <br/>
@@ -760,10 +760,10 @@ PinLayout has methods to apply margins.
 
 ###### Usage examples:
 ```swift
-	view.pin.topLeft().margin(20)
+	view.pin.top().left().margin(20)
 	view.pin.bottom().marginBottom(20)
 	view.pin.left().right().marginHorizontal(20)
-	view.pin.topLeft().bottomRight().margin(10, 12, 0, 12)
+	view.pin.top().bottom().left().right().margin(10, 12, 0, 12)
 ```
 
 <br>
@@ -832,7 +832,7 @@ In this example, **left**, **right** and **top** margins are applied. Note that 
 ![](docs/pinlayout-margin-04.png)
 
 ```swift
-	view.pin.topLeft().right().height(100).margin(10)
+	view.pin.top().left().right().height(100).margin(10)
 ```
 
 ###### Example 5:
@@ -840,7 +840,7 @@ In this example, **left**, **right**, **top** and **bottom** margins are applied
 ![](docs/pinlayout-margin-05.png)
 
 ```swift
-	view.pin.topLeft().bottomRight().margin(10)
+	view.pin.top().bottom().left().right().margin(10)
 ```
 
 <br>
@@ -939,6 +939,13 @@ Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogCo
 	view.pin.width(100).height(100%)
 	```
 
+* You should specify edges always in the same order, this is our proposed order:  
+`TOP, BOTTOM, LEFT, RIGHT`
+
+	```swift
+	view.pin.top().bottom().left(10%).right(10%)
+	```
+
 * If the layout line is too long, you can split in multiple lines:  
 
 	```swift
@@ -962,8 +969,8 @@ Cell A:
 * A2 fills the remaining space
 
 ```swift
-	a1.pin.topLeft().bottom().width(50)
-	a2.pin.right(of: a1, aligned: .top).bottomRight().marginLeft(10)
+	a1.pin.top().bottom().left().width(50)
+	a2.pin.right(of: a1, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 Cell B:
@@ -972,8 +979,8 @@ Cell B:
 * B1 fills the remaining space
 
 ```swift
-	b2.pin.topRight().bottom().width(50)
-	b1.pin.left(of: b2, aligned: .top).bottomLeft().marginRight(10)
+	b2.pin.top().bottom().right().width(50)
+	b1.pin.left(of: b2, aligned: .top).bottom().left().marginRight(10)
 ```
 
 Cell C:
@@ -984,8 +991,8 @@ Cell C:
 
 ```swift
 	c2.pin.topCenter().width(50).bottom()
-	c1.pin.left(of: c1, aligned: .top).bottomLeft().marginRight(10)
-	c3.pin.right(of: c2, aligned: .top).bottomRight().marginLeft(10)
+	c1.pin.left(of: c1, aligned: .top).bottom().left().marginRight(10)
+	c3.pin.right(of: c2, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 Cell D:
@@ -997,7 +1004,7 @@ Cell D:
 ```swift
 	d1.pin.topLeft().bottom().width(25%)
 	d2.pin.right(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
-	d3.pin.right(of: d2, aligned: .top).bottomRight().marginLeft(10)
+	d3.pin.right(of: d2, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 <br>
@@ -1018,7 +1025,7 @@ Then, run `pod install`.
 
 To integrate PinLayout into your Xcode project using Carthage, specify it in your `Cartfile`:
 
-```ogdl
+```
 github "mirego/PinLayout"
 ```
 
@@ -1095,11 +1102,10 @@ If you'd like to contribute, you're welcome!
 ### Thanks
 PinLayout was inspired by other great layout frameworks, including:
 
-* [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout): Nice absolute and relative positionning.
 * HTML's CSS: Management of margins in absolute positionning and bottom/right position coordinates.
+* [MCUIViewLayout](https://github.com/mirego/MCUIViewLayout): Nice absolute and relative positionning.
 * Qt:Anchors and edges management.
 * [SnapKit](https://github.com/SnapKit/SnapKit): Clean interface for anchors.
-* ... and even Auto layout :-)
 
 <br>
 

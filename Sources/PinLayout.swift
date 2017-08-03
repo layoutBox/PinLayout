@@ -57,7 +57,7 @@ public extension UIView {
             |                            |
             |                            |
             |           center           |
- leftCenter o             o              o rightCenter
+ centerLeft o             o              o centerRight
             |                            |
             |                            |
             |                            |
@@ -79,9 +79,9 @@ public protocol AnchorList {
     var topLeft: Anchor { get }
     var topCenter: Anchor { get }
     var topRight: Anchor { get }
-    var leftCenter: Anchor { get }
+    var centerLeft: Anchor { get }
     var center: Anchor { get }
-    var rightCenter: Anchor { get }
+    var centerRight: Anchor { get }
     var bottomLeft: Anchor { get }
     var bottomCenter: Anchor { get }
     var bottomRight: Anchor { get }
@@ -121,17 +121,25 @@ public protocol PinLayout {
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func top(_ percent: Percent) -> PinLayout
     
-    @discardableResult func left() -> PinLayout
-    @discardableResult func left(_ value: CGFloat) -> PinLayout
-    @discardableResult func left(_ percent: Percent) -> PinLayout
-    
     @discardableResult func bottom() -> PinLayout
     @discardableResult func bottom(_ value: CGFloat) -> PinLayout
     @discardableResult func bottom(_ percent: Percent) -> PinLayout
     
+    @discardableResult func left() -> PinLayout
+    @discardableResult func left(_ value: CGFloat) -> PinLayout
+    @discardableResult func left(_ percent: Percent) -> PinLayout
+    
+    @discardableResult func start() -> PinLayout
+    @discardableResult func start(_ value: CGFloat) -> PinLayout
+    @discardableResult func start(_ percent: Percent) -> PinLayout
+    
     @discardableResult func right() -> PinLayout
     @discardableResult func right(_ value: CGFloat) -> PinLayout
     @discardableResult func right(_ percent: Percent) -> PinLayout
+    
+    @discardableResult func end() -> PinLayout
+    @discardableResult func end(_ value: CGFloat) -> PinLayout
+    @discardableResult func end(_ percent: Percent) -> PinLayout
     
     @discardableResult func hCenter() -> PinLayout
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayout
@@ -140,7 +148,7 @@ public protocol PinLayout {
     @discardableResult func vCenter() -> PinLayout
     @discardableResult func vCenter(_ value: CGFloat) -> PinLayout
     @discardableResult func vCenter(_ percent: Percent) -> PinLayout
-
+    
     //
     // Layout using edges
     //
@@ -154,30 +162,42 @@ public protocol PinLayout {
     //
     @discardableResult func topLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func topLeft() -> PinLayout
+    @discardableResult func topStart(to anchor: Anchor) -> PinLayout
+    @discardableResult func topStart() -> PinLayout
 
     @discardableResult func topCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func topCenter() -> PinLayout
 
     @discardableResult func topRight(to anchor: Anchor) -> PinLayout
     @discardableResult func topRight() -> PinLayout
+    @discardableResult func topEnd(to anchor: Anchor) -> PinLayout
+    @discardableResult func topEnd() -> PinLayout
 
-    @discardableResult func leftCenter(to anchor: Anchor) -> PinLayout
-    @discardableResult func leftCenter() -> PinLayout
+    @discardableResult func centerLeft(to anchor: Anchor) -> PinLayout
+    @discardableResult func centerLeft() -> PinLayout
+    @discardableResult func centerStart(to anchor: Anchor) -> PinLayout
+    @discardableResult func centerStart() -> PinLayout
 
     @discardableResult func center(to anchor: Anchor) -> PinLayout
     @discardableResult func center() -> PinLayout
 
-    @discardableResult func rightCenter(to anchor: Anchor) -> PinLayout
-    @discardableResult func rightCenter() -> PinLayout
+    @discardableResult func centerRight(to anchor: Anchor) -> PinLayout
+    @discardableResult func centerRight() -> PinLayout
+    @discardableResult func centerEnd(to anchor: Anchor) -> PinLayout
+    @discardableResult func centerEnd() -> PinLayout
 
     @discardableResult func bottomLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomLeft() -> PinLayout
+    @discardableResult func bottomStart(to anchor: Anchor) -> PinLayout
+    @discardableResult func bottomStart() -> PinLayout
 
     @discardableResult func bottomCenter(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomCenter() -> PinLayout
 
     @discardableResult func bottomRight(to anchor: Anchor) -> PinLayout
     @discardableResult func bottomRight() -> PinLayout
+    @discardableResult func bottomEnd(to anchor: Anchor) -> PinLayout
+    @discardableResult func bottomEnd() -> PinLayout
 
     //
     // Layout using relative positioning
@@ -202,6 +222,16 @@ public protocol PinLayout {
     @discardableResult func right(of: UIView, aligned: VerticalAlign) -> PinLayout
     @discardableResult func right(of: [UIView], aligned: VerticalAlign) -> PinLayout
 
+    /*@discardableResult func before(of: UIView) -> PinLayout
+    @discardableResult func before(of: [UIView]) -> PinLayout
+    @discardableResult func before(of: UIView, aligned: VerticalAlign) -> PinLayout
+    @discardableResult func before(of: [UIView], aligned: VerticalAlign) -> PinLayout
+    
+    @discardableResult func after(of: UIView) -> PinLayout
+    @discardableResult func after(of: [UIView]) -> PinLayout
+    @discardableResult func after(of: UIView, aligned: VerticalAlign) -> PinLayout
+    @discardableResult func after(of: [UIView], aligned: VerticalAlign) -> PinLayout
+*/
     //
     // Width, height and size
     //
@@ -331,5 +361,16 @@ prefix operator -
 public prefix func - (p: Percent) -> Percent {
     return Percent(value: -p.value)
 }
+
+
+/*public enum LayoutDirection {
+    case ltr
+    case rtl
+}*/
+
+/*var layoutDirection = LayoutDirection.ltr
+public func PinLayoutDirection(_ direction: LayoutDirection) {
+    layoutDirection = direction
+}*/
 
 #endif

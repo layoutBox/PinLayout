@@ -101,9 +101,9 @@ class AnchorListImpl: AnchorList {
     var topLeft: Anchor { return AnchorImpl(view: view, type: .topLeft) }
     var topCenter: Anchor { return AnchorImpl(view: view, type: .topCenter) }
     var topRight: Anchor { return AnchorImpl(view: view, type: .topRight) }
-    var leftCenter: Anchor { return AnchorImpl(view: view, type: .leftCenter) }
+    var centerLeft: Anchor { return AnchorImpl(view: view, type: .leftCenter) }
     var center: Anchor { return AnchorImpl(view: view, type: .center) }
-    var rightCenter: Anchor { return AnchorImpl(view: view, type: .rightCenter) }
+    var centerRight: Anchor { return AnchorImpl(view: view, type: .rightCenter) }
     var bottomLeft: Anchor { return AnchorImpl(view: view, type: .bottomLeft) }
     var bottomCenter: Anchor { return AnchorImpl(view: view, type: .bottomCenter) }
     var bottomRight: Anchor { return AnchorImpl(view: view, type: .bottomRight) }

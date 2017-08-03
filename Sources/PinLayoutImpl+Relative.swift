@@ -183,7 +183,7 @@ extension PinLayoutImpl {
         if let aligned = aligned {
             switch aligned {
             case .top:    anchors = relativeViews.map({ $0.anchor.topLeft })
-            case .center: anchors = relativeViews.map({ $0.anchor.leftCenter })
+            case .center: anchors = relativeViews.map({ $0.anchor.centerLeft })
             case .bottom: anchors = relativeViews.map({ $0.anchor.bottomLeft })
             }
         } else {
@@ -204,7 +204,7 @@ extension PinLayoutImpl {
         if let aligned = aligned {
             switch aligned {
             case .top:    anchors = relativeViews.map({ $0.anchor.topRight })
-            case .center: anchors = relativeViews.map({ $0.anchor.rightCenter })
+            case .center: anchors = relativeViews.map({ $0.anchor.centerRight })
             case .bottom: anchors = relativeViews.map({ $0.anchor.bottomRight })
             }
         } else {

@@ -45,6 +45,16 @@ class EdgeListImpl: EdgeList {
     var left: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .left) }
     var bottom: VerticalEdge { return VerticalEdgeImpl(view: view, type: .bottom) }
     var right: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .right) }
+    
+    var start: HorizontalEdge {
+        return view.isLTR() ? HorizontalEdgeImpl(view: view, type: .left) :
+                              HorizontalEdgeImpl(view: view, type: .right)
+    }
+    
+    var end: HorizontalEdge {
+        return view.isLTR() ? HorizontalEdgeImpl(view: view, type: .right) :
+                              HorizontalEdgeImpl(view: view, type: .left)
+    }
 }
 
 class HorizontalEdgeImpl: HorizontalEdge {
@@ -91,7 +101,7 @@ class VerticalEdgeImpl: VerticalEdge {
     }
 }
 
-class AnchorListImpl: AnchorList {
+    class AnchorListImpl: AnchorList {
     internal let view: UIView
 
     internal init(view: UIView) {
@@ -101,21 +111,46 @@ class AnchorListImpl: AnchorList {
     var topLeft: Anchor { return AnchorImpl(view: view, type: .topLeft) }
     var topCenter: Anchor { return AnchorImpl(view: view, type: .topCenter) }
     var topRight: Anchor { return AnchorImpl(view: view, type: .topRight) }
-    var centerLeft: Anchor { return AnchorImpl(view: view, type: .leftCenter) }
+    var centerLeft: Anchor { return AnchorImpl(view: view, type: .centerLeft) }
     var center: Anchor { return AnchorImpl(view: view, type: .center) }
-    var centerRight: Anchor { return AnchorImpl(view: view, type: .rightCenter) }
+    var centerRight: Anchor { return AnchorImpl(view: view, type: .centerRight) }
     var bottomLeft: Anchor { return AnchorImpl(view: view, type: .bottomLeft) }
     var bottomCenter: Anchor { return AnchorImpl(view: view, type: .bottomCenter) }
     var bottomRight: Anchor { return AnchorImpl(view: view, type: .bottomRight) }
+
+    var topStart: Anchor {
+        return view.isLTR() ? AnchorImpl(view: view, type: .topLeft) :
+                              AnchorImpl(view: view, type: .topRight)
+    }
+    var topEnd: Anchor {
+        return view.isLTR() ? AnchorImpl(view: view, type: .topRight) :
+                              AnchorImpl(view: view, type: .topLeft)
+    }
+    var centerStart: Anchor{
+        return view.isLTR() ? AnchorImpl(view: view, type: .centerLeft) :
+                              AnchorImpl(view: view, type: .centerRight)
+    }
+    var centerEnd: Anchor {
+        return view.isLTR() ? AnchorImpl(view: view, type: .centerRight) :
+                              AnchorImpl(view: view, type: .centerLeft)
+    }
+    var bottomStart: Anchor {
+        return view.isLTR() ? AnchorImpl(view: view, type: .bottomLeft) :
+            AnchorImpl(view: view, type: .bottomRight)
+    }
+    var bottomEnd: Anchor {
+        return view.isLTR() ? AnchorImpl(view: view, type: .bottomRight) :
+                              AnchorImpl(view: view, type: .bottomLeft)
+    }
 }
 
 enum AnchorType: String {
     case topLeft
     case topCenter
     case topRight
-    case leftCenter
+    case centerLeft
     case center
-    case rightCenter
+    case centerRight
     case bottomLeft
     case bottomCenter
     case bottomRight
@@ -130,9 +165,9 @@ class AnchorImpl: Anchor {
         case .topLeft: return Coordinates.topLeft(view)
         case .topCenter: return Coordinates.topCenter(view)
         case .topRight: return Coordinates.topRight(view)
-        case .leftCenter: return Coordinates.leftCenter(view)
+        case .centerLeft: return Coordinates.centerLeft(view)
         case .center: return Coordinates.center(view)
-        case .rightCenter: return Coordinates.rightCenter(view)
+        case .centerRight: return Coordinates.centerRight(view)
         case .bottomLeft: return Coordinates.bottomLeft(view)
         case .bottomCenter: return Coordinates.bottomCenter(view)
         case .bottomRight: return Coordinates.bottomRight(view)

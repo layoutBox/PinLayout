@@ -128,6 +128,86 @@ extension PinLayoutImpl {
         func context() -> String { return "right(of: \(relativeViews), aligned: \(aligned))" }
         return right(relativeViews: relativeViews, aligned: aligned, context: context)
     }
+    
+    @discardableResult
+    func before(of relativeView: UIView) -> PinLayout {
+        func context() -> String { return "before(of: \(relativeView))" }
+        if isLTR() {
+            return left(relativeViews: [relativeView], aligned: nil, context: context)
+        } else {
+            return right(relativeViews: [relativeView], aligned: nil, context: context)
+        }
+    }
+    
+    @discardableResult
+    func before(of relativeViews: [UIView]) -> PinLayout {
+        func context() -> String { return "before(of: \(relativeViews))" }
+        if isLTR() {
+            return left(relativeViews: relativeViews, aligned: nil, context: context)
+        } else {
+            return right(relativeViews: relativeViews, aligned: nil, context: context)
+        }
+    }
+    
+    @discardableResult
+    func before(of relativeView: UIView, aligned: VerticalAlign) -> PinLayout {
+        func context() -> String { return "before(of: \(relativeView), aligned: \(aligned))" }
+        if isLTR() {
+            return left(relativeViews: [relativeView], aligned: aligned, context: context)
+        } else {
+            return right(relativeViews: [relativeView], aligned: aligned, context: context)
+        }
+    }
+    
+    @discardableResult
+    func before(of relativeViews: [UIView], aligned: VerticalAlign) -> PinLayout {
+        func context() -> String { return "before(of: \(relativeViews), aligned: \(aligned))" }
+        if isLTR() {
+            return left(relativeViews: relativeViews, aligned: aligned, context: context)
+        } else {
+            return right(relativeViews: relativeViews, aligned: aligned, context: context)
+        }
+    }
+    
+    @discardableResult
+    func after(of relativeView: UIView) -> PinLayout {
+        func context() -> String { return "after(of: \(relativeView))" }
+        if isLTR() {
+            return right(relativeViews: [relativeView], aligned: nil, context: context)
+        } else {
+            return left(relativeViews: [relativeView], aligned: nil, context: context)
+        }
+    }
+    
+    @discardableResult
+    func after(of relativeViews: [UIView]) -> PinLayout {
+        func context() -> String { return "after(of: \(relativeViews))" }
+        if isLTR() {
+            return right(relativeViews: relativeViews, aligned: nil, context: context)
+        } else {
+            return left(relativeViews: relativeViews, aligned: nil, context: context)
+        }
+    }
+    
+    @discardableResult
+    func after(of relativeView: UIView, aligned: VerticalAlign) -> PinLayout {
+        func context() -> String { return "after(of: \(relativeView))" }
+        if isLTR() {
+            return right(relativeViews: [relativeView], aligned: aligned, context: context)
+        } else {
+            return left(relativeViews: [relativeView], aligned: aligned, context: context)
+        }
+    }
+    
+    @discardableResult
+    func after(of relativeViews: [UIView], aligned: VerticalAlign) -> PinLayout {
+        func context() -> String { return "after(of: \(relativeViews), aligned: \(aligned))" }
+        if isLTR() {
+            return right(relativeViews: relativeViews, aligned: aligned, context: context)
+        } else {
+            return left(relativeViews: relativeViews, aligned: aligned, context: context)
+        }
+    }
 }
 
 // MARK: fileprivate
@@ -139,9 +219,11 @@ extension PinLayoutImpl {
         let anchors: [Anchor]
         if let aligned = aligned {
             switch aligned {
-            case .left:    anchors = relativeViews.map({ $0.anchor.topLeft })
+            case .left:   anchors = relativeViews.map({ $0.anchor.topLeft })
             case .center: anchors = relativeViews.map({ $0.anchor.topCenter })
-            case .right:   anchors = relativeViews.map({ $0.anchor.topRight })
+            case .right:  anchors = relativeViews.map({ $0.anchor.topRight })
+            case .start:  anchors = isLTR() ? relativeViews.map({ $0.anchor.topLeft }) : relativeViews.map({ $0.anchor.topRight })
+            case .end:    anchors = isLTR() ? relativeViews.map({ $0.anchor.topRight }) : relativeViews.map({ $0.anchor.topLeft })
             }
         } else {
             anchors = relativeViews.map({ $0.anchor.topLeft })
@@ -161,9 +243,11 @@ extension PinLayoutImpl {
         let anchors: [Anchor]
         if let aligned = aligned {
             switch aligned {
-            case .left:    anchors = relativeViews.map({ $0.anchor.bottomLeft })
+            case .left:   anchors = relativeViews.map({ $0.anchor.bottomLeft })
             case .center: anchors = relativeViews.map({ $0.anchor.bottomCenter })
-            case .right:   anchors = relativeViews.map({ $0.anchor.bottomRight })
+            case .right:  anchors = relativeViews.map({ $0.anchor.bottomRight })
+            case .start:  anchors = isLTR() ? relativeViews.map({ $0.anchor.bottomLeft }) : relativeViews.map({ $0.anchor.bottomRight })
+            case .end:    anchors = isLTR() ? relativeViews.map({ $0.anchor.bottomRight }) : relativeViews.map({ $0.anchor.bottomLeft })
             }
         } else {
             anchors = relativeViews.map({ $0.anchor.bottomLeft })
@@ -224,6 +308,13 @@ extension PinLayoutImpl {
             case .left:   setLeft(getLeftMostCoordinate(list: coordinatesList), context)
             case .center: setHorizontalCenter(getAverageHCenterCoordinate(list: coordinatesList), context)
             case .right:  setRight(getRightMostCoordinate(list: coordinatesList), context)
+                
+            case .start:
+                isLTR() ? setLeft(getLeftMostCoordinate(list: coordinatesList), context) :
+                          setRight(getRightMostCoordinate(list: coordinatesList), context)
+            case .end:
+                isLTR() ? setRight(getRightMostCoordinate(list: coordinatesList), context) :
+                          setLeft(getLeftMostCoordinate(list: coordinatesList), context)
             }
         }
     }

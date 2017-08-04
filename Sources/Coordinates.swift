@@ -51,18 +51,18 @@ class Coordinates {
         return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY)
     }
 
-    static func rightCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX + view.frame.width, y: vCenter(view))
+    static func centerLeft(_ view: UIView) -> CGPoint {
+        return CGPoint(x: view.frame.minX, y: vCenter(view))
     }
-
+    
     static func center(_ view: UIView) -> CGPoint {
         return CGPoint(x: hCenter(view), y: vCenter(view))
     }
 
-    static func leftCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX, y: vCenter(view))
+    static func centerRight(_ view: UIView) -> CGPoint {
+        return CGPoint(x: view.frame.minX + view.frame.width, y: vCenter(view))
     }
-
+    
     static func bottomLeft(_ view: UIView) -> CGPoint {
         return CGPoint(x: view.frame.minX, y: view.frame.minY + view.frame.height)
     }

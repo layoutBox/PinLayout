@@ -294,6 +294,25 @@ class PinLayoutImpl: PinLayout {
         return self
     }
     
+    @discardableResult
+    func start(to edge: HorizontalEdge) -> PinLayout {
+        func context() -> String { return relativeEdgeContext(method: "start", edge: edge) }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setStart(coordinate, context)
+        }
+        return self
+    }
+    
+    @discardableResult
+    func end(to edge: HorizontalEdge) -> PinLayout {
+        func context() -> String { return relativeEdgeContext(method: "end", edge: edge) }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setEnd(coordinate, context)
+        }
+        return self
+    }
+
+    
     //
     // topLeft, topCenter, topRight,
     // centerLeft, center, centerRight,
@@ -711,7 +730,18 @@ class PinLayoutImpl: PinLayout {
         marginRight = value
         return self
     }
+    
+    @discardableResult
+    func marginStart(_ value: CGFloat) -> PinLayout {
+        return isLTR() ? marginLeft(value) : marginRight(value)
+    }
+    
+    @discardableResult
+    func marginEnd(_ value: CGFloat) -> PinLayout {
+        return isLTR() ? marginRight(value) : marginLeft(value)
+    }
 
+    @discardableResult
     func marginHorizontal(_ value: CGFloat) -> PinLayout {
         marginLeft = value
         marginRight = value
@@ -1021,6 +1051,19 @@ extension PinLayoutImpl {
             rect.origin.x = left + _marginLeft + remainingWidth / 2
         case .right:
             rect.origin.x = right - _marginRight - rect.width
+            
+        case .start:
+            if isLTR() {
+                rect.origin.x = left + _marginLeft
+            } else {
+                rect.origin.x = right - _marginRight - rect.width
+            }
+        case .end:
+            if isLTR() {
+                rect.origin.x = right - _marginRight - rect.width
+            } else {
+                rect.origin.x = left + _marginLeft
+            }
         }
         
         return rect
@@ -1080,16 +1123,8 @@ extension PinLayoutImpl {
     }
     
     internal func isLTR() -> Bool {
-        if #available(iOS 9.0, *) {
-            return UIView.userInterfaceLayoutDirection(for: view.semanticContentAttribute) == .leftToRight
-        } else {
-            return UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
-        }
+        return view.isLTR()
     }
 }
 
-/*public enum LayoutDirection {
-    case ltr
-    case rtl
-}*/
 #endif

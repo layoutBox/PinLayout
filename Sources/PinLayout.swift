@@ -85,6 +85,14 @@ public protocol AnchorList {
     var bottomLeft: Anchor { get }
     var bottomCenter: Anchor { get }
     var bottomRight: Anchor { get }
+
+    // RTL support
+    var topStart: Anchor { get }
+    var topEnd: Anchor { get }
+    var centerStart: Anchor { get }
+    var centerEnd: Anchor { get }
+    var bottomStart: Anchor { get }
+    var bottomEnd: Anchor { get }
 }
 
 /*
@@ -110,6 +118,10 @@ public protocol EdgeList {
     var left: HorizontalEdge { get }
     var bottom: VerticalEdge { get }
     var right: HorizontalEdge { get }
+
+    // RTL support
+    var start: HorizontalEdge { get }
+    var end: HorizontalEdge { get }
 }
 
 /// PinLayout interface
@@ -121,25 +133,17 @@ public protocol PinLayout {
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func top(_ percent: Percent) -> PinLayout
     
-    @discardableResult func bottom() -> PinLayout
-    @discardableResult func bottom(_ value: CGFloat) -> PinLayout
-    @discardableResult func bottom(_ percent: Percent) -> PinLayout
-    
     @discardableResult func left() -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
     @discardableResult func left(_ percent: Percent) -> PinLayout
     
-    @discardableResult func start() -> PinLayout
-    @discardableResult func start(_ value: CGFloat) -> PinLayout
-    @discardableResult func start(_ percent: Percent) -> PinLayout
+    @discardableResult func bottom() -> PinLayout
+    @discardableResult func bottom(_ value: CGFloat) -> PinLayout
+    @discardableResult func bottom(_ percent: Percent) -> PinLayout
     
     @discardableResult func right() -> PinLayout
     @discardableResult func right(_ value: CGFloat) -> PinLayout
     @discardableResult func right(_ percent: Percent) -> PinLayout
-    
-    @discardableResult func end() -> PinLayout
-    @discardableResult func end(_ value: CGFloat) -> PinLayout
-    @discardableResult func end(_ percent: Percent) -> PinLayout
     
     @discardableResult func hCenter() -> PinLayout
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayout
@@ -148,6 +152,14 @@ public protocol PinLayout {
     @discardableResult func vCenter() -> PinLayout
     @discardableResult func vCenter(_ value: CGFloat) -> PinLayout
     @discardableResult func vCenter(_ percent: Percent) -> PinLayout
+
+    // RTL support
+    @discardableResult func start() -> PinLayout
+    @discardableResult func start(_ value: CGFloat) -> PinLayout
+    @discardableResult func start(_ percent: Percent) -> PinLayout
+    @discardableResult func end() -> PinLayout
+    @discardableResult func end(_ value: CGFloat) -> PinLayout
+    @discardableResult func end(_ percent: Percent) -> PinLayout
     
     //
     // Layout using edges
@@ -156,6 +168,9 @@ public protocol PinLayout {
     @discardableResult func left(to edge: HorizontalEdge) -> PinLayout
     @discardableResult func bottom(to edge: VerticalEdge) -> PinLayout
     @discardableResult func right(to edge: HorizontalEdge) -> PinLayout
+    // RTL support
+    @discardableResult func start(to edge: HorizontalEdge) -> PinLayout
+    @discardableResult func end(to edge: HorizontalEdge) -> PinLayout
 
     //
     // Layout using anchors
@@ -222,16 +237,16 @@ public protocol PinLayout {
     @discardableResult func right(of: UIView, aligned: VerticalAlign) -> PinLayout
     @discardableResult func right(of: [UIView], aligned: VerticalAlign) -> PinLayout
 
-    /*@discardableResult func before(of: UIView) -> PinLayout
+    // RTL support
+    @discardableResult func before(of: UIView) -> PinLayout
     @discardableResult func before(of: [UIView]) -> PinLayout
     @discardableResult func before(of: UIView, aligned: VerticalAlign) -> PinLayout
     @discardableResult func before(of: [UIView], aligned: VerticalAlign) -> PinLayout
-    
     @discardableResult func after(of: UIView) -> PinLayout
     @discardableResult func after(of: [UIView]) -> PinLayout
     @discardableResult func after(of: UIView, aligned: VerticalAlign) -> PinLayout
     @discardableResult func after(of: [UIView], aligned: VerticalAlign) -> PinLayout
-*/
+
     //
     // Width, height and size
     //
@@ -268,7 +283,10 @@ public protocol PinLayout {
     @discardableResult func marginLeft(_ value: CGFloat) -> PinLayout
     @discardableResult func marginBottom(_ value: CGFloat) -> PinLayout
     @discardableResult func marginRight(_ value: CGFloat) -> PinLayout
-
+    // RTL support
+    @discardableResult func marginStart(_ value: CGFloat) -> PinLayout
+    @discardableResult func marginEnd(_ value: CGFloat) -> PinLayout
+    
     @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
     @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
 
@@ -320,6 +338,10 @@ public enum HorizontalAlign: String {
     case left
     case center
     case right
+    
+    // RTL support
+    case start
+    case end
 }
 
 /// Vertical alignment used with relative positionning methods: left(of relativeView:, aligned:), right(of relativeView:, aligned:)
@@ -361,16 +383,5 @@ prefix operator -
 public prefix func - (p: Percent) -> Percent {
     return Percent(value: -p.value)
 }
-
-
-/*public enum LayoutDirection {
-    case ltr
-    case rtl
-}*/
-
-/*var layoutDirection = LayoutDirection.ltr
-public func PinLayoutDirection(_ direction: LayoutDirection) {
-    layoutDirection = direction
-}*/
 
 #endif

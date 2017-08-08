@@ -21,6 +21,25 @@ extension PinLayoutImpl {
         }
     }
     
+    @discardableResult
+    internal func left(_ context: Context) -> PinLayout {
+        setLeft(0, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func left(_ value: CGFloat, _ context: Context) -> PinLayout {
+        setLeft(value, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func left(_ percent: Percent, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setLeft(percent.of(layoutSuperview.frame.width), context)
+        return self
+    }
+    
     internal func setLeft(_ value: CGFloat, _ context: Context) {
         if let _right = _right, let width = width  {
             warnConflict(context, ["right": _right, "width": width])
@@ -41,6 +60,27 @@ extension PinLayoutImpl {
         }
     }
     
+    @discardableResult
+    internal func right(_ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func right(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width - value, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func right(_ percent: Percent, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width - percent.of(layoutSuperview.frame.width), context)
+        return self
+    }
+    
     internal func setRight(_ value: CGFloat, _ context: Context) {
         if let _left = _left, let width = width  {
             warnConflict(context, ["left": _left, "width": width])
@@ -53,6 +93,7 @@ extension PinLayoutImpl {
         }
     }
     
+    // TODO: Delete this function?
     internal func setEnd(_ value: CGFloat, _ context: Context) {
         if isLTR() {
             setRight(value, context)
@@ -105,13 +146,6 @@ extension PinLayoutImpl {
     }
     
     @discardableResult
-    internal func setTopStart(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setTop(point.y, context)
-        setStart(point.x, context)
-        return self
-    }
-    
-    @discardableResult
     internal func setTopCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
         setTop(point.y, context)
         setHorizontalCenter(point.x, context)
@@ -126,27 +160,12 @@ extension PinLayoutImpl {
     }
     
     @discardableResult
-    internal func setTopEnd(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setTop(point.y, context)
-        setEnd(point.x, context)
-        return self
-    }
-    
-    @discardableResult
     internal func setCenterLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
         setVerticalCenter(point.y, context)
         setLeft(point.x, context)
         return self
     }
-    
-    
-    @discardableResult
-    internal func setCenterStart(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setVerticalCenter(point.y, context)
-        setStart(point.x, context)
-        return self
-    }
-    
+
     @discardableResult
     internal func setCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
         setVerticalCenter(point.y, context)
@@ -162,23 +181,9 @@ extension PinLayoutImpl {
     }
 
     @discardableResult
-    internal func setCenterEnd(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setVerticalCenter(point.y, context)
-        setEnd(point.x, context)
-        return self
-    }
-
-    @discardableResult
     internal func setBottomLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
         setBottom(point.y, context)
         setLeft(point.x, context)
-        return self
-    }
-    
-    @discardableResult
-    internal func setBottomStart(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setBottom(point.y, context)
-        setStart(point.x, context)
         return self
     }
     
@@ -193,13 +198,6 @@ extension PinLayoutImpl {
     internal func setBottomRight(_ point: CGPoint, _ context: Context) -> PinLayout {
         setBottom(point.y, context)
         setRight(point.x, context)
-        return self
-    }
-    
-    @discardableResult
-    internal func setBottomEnd(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setBottom(point.y, context)
-        setEnd(point.x, context)
         return self
     }
     

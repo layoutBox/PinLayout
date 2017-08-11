@@ -34,13 +34,17 @@ public enum LayoutDirection {
 }
 
 public class PinLayoutGlobals {
-    public var direction = LayoutDirection.auto
+    public var layoutDirection = LayoutDirection.auto
 
 #if DEBUG
     public var logWarnings = true
 #else
     public var logWarnings = false
 #endif
+    
+    public func layoutDirection(_ direction: LayoutDirection) {
+        self.layoutDirection = direction
+    }
 }
 
 public let Pin = PinLayoutGlobals()

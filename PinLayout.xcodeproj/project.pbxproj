@@ -41,6 +41,7 @@
 		24D18D121F350157008129EF /* UIView+LTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D111F350157008129EF /* UIView+LTR.swift */; };
 		24D18D171F3B4381008129EF /* RTLSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D151F3B42E0008129EF /* RTLSpec.swift */; };
 		24D18D241F3E37DD008129EF /* PinLayoutGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* PinLayoutGlobals.swift */; };
+		24D18D251F3E47E2008129EF /* UIView+LTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D111F350157008129EF /* UIView+LTR.swift */; };
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
 		DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* TypesImpl.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
@@ -441,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D18D251F3E47E2008129EF /* UIView+LTR.swift in Sources */,
 				24B02B0B1F2A713D00C18179 /* Coordinates.swift in Sources */,
 				24B02B101F2A713D00C18179 /* TypesImpl.swift in Sources */,
 				24B02B0F1F2A713D00C18179 /* PinLayoutImpl+Warning.swift in Sources */,

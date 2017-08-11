@@ -13,7 +13,7 @@ import UIKit
     
 extension UIView {
     func isLTR() -> Bool {
-        switch Pin.direction {
+        switch Pin.layoutDirection {
         case .auto:
             if #available(iOS 9.0, *) {
                 return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight

@@ -87,7 +87,11 @@ extension PinLayoutImpl {
         } else if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _right = _right, _right != value {
-            warnPropertyAlreadySet("right", propertyValue: _right, context)
+            if let layoutSuperview = layoutSuperview(context) {
+                warnPropertyAlreadySet("right", propertyValue: layoutSuperview.frame.width - _right, context)
+            } else {
+                warnPropertyAlreadySet("right", propertyValue: _right, context)
+            }
         } else {
             _right = value
         }

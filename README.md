@@ -918,7 +918,7 @@ Example:
 
 ### Disabling warnings
 
-Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogConflicts to false.
+Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnings to false.
 
 <br/>
 

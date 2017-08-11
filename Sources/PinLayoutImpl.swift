@@ -31,12 +31,6 @@ import Foundation
 import UIKit
     
 public var unitTestLastWarning: String?
-    
-#if DEBUG
-    public var PinLayoutLogConflicts = true
-#else
-    public var PinLayoutLogConflicts = false
-#endif
 
 class PinLayoutImpl: PinLayout {
     internal let view: UIView
@@ -71,7 +65,7 @@ class PinLayoutImpl: PinLayout {
     internal var _marginLeft: CGFloat { return marginLeft ?? 0 }
     internal var _marginBottom: CGFloat { return marginBottom ?? 0 }
     internal var _marginRight: CGFloat { return marginRight ?? 0 }
-
+    
     init(view: UIView) {
         self.view = view
     }
@@ -116,8 +110,6 @@ class PinLayoutImpl: PinLayout {
     func left(_ percent: Percent) -> PinLayout {
         return left(percent, { return "left(\(percent))" })
     }
-    
-    
     
     @discardableResult func start() -> PinLayout {
         func context() -> String { return "start()" }

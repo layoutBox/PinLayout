@@ -29,27 +29,27 @@ extension PinLayoutImpl {
     }
     
     internal func warn(_ text: String, _ context: Context) {
-        guard PinLayoutLogConflicts else { return }
+        guard Pin.logWarnings else { return }
         warn("\(context()) won't be applied, \(text)\n")
     }
     
     internal func warn(_ text: String) {
-        guard PinLayoutLogConflicts else { return }
+        guard Pin.logWarnings else { return }
         displayWarning("\n👉 PinLayout Warning: \(text)\n")
     }
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
-        guard PinLayoutLogConflicts else { return }
+        guard Pin.logWarnings else { return }
         displayWarning("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
     }
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
-        guard PinLayoutLogConflicts else { return }
+        guard Pin.logWarnings else { return }
         displayWarning("\n👉 PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
     }
     
     internal func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
-        guard PinLayoutLogConflicts else { return }
+        guard Pin.logWarnings else { return }
         var warning = "\n👉 PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:\n"
         properties.forEach { (property) in
             warning += " \(property.key): \(property.value)\n"

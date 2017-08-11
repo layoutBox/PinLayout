@@ -13,11 +13,19 @@ import UIKit
     
 extension UIView {
     func isLTR() -> Bool {
-        if #available(iOS 9.0, *) {
-            return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
-        } else {
-            return UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
+        switch Pin.direction {
+        case .auto:
+            if #available(iOS 9.0, *) {
+                return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
+            } else {
+                return UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
+            }
+        case .ltr:
+            return true
+        case .rtl:
+            return false
         }
     }
 }
+    
 #endif

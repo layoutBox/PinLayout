@@ -46,6 +46,7 @@ class EdgeListImpl: EdgeList {
     var bottom: VerticalEdge { return VerticalEdgeImpl(view: view, type: .bottom) }
     var right: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .right) }
     
+    // RTL support
     var start: HorizontalEdge { return view.isLTR() ? left : right }
     var end: HorizontalEdge { return view.isLTR() ? right : left }
 }
@@ -94,7 +95,7 @@ class VerticalEdgeImpl: VerticalEdge {
     }
 }
 
-    class AnchorListImpl: AnchorList {
+class AnchorListImpl: AnchorList {
     internal let view: UIView
 
     internal init(view: UIView) {
@@ -111,6 +112,7 @@ class VerticalEdgeImpl: VerticalEdge {
     var bottomCenter: Anchor { return AnchorImpl(view: view, type: .bottomCenter) }
     var bottomRight: Anchor { return AnchorImpl(view: view, type: .bottomRight) }
 
+    // RTL support
     var topStart: Anchor { return view.isLTR() ? topLeft : topRight }
     var topEnd: Anchor { return view.isLTR() ? topRight : topLeft }
     var centerStart: Anchor { return view.isLTR() ? centerLeft : centerRight }

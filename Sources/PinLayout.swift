@@ -383,5 +383,5 @@ prefix operator -
 public prefix func - (p: Percent) -> Percent {
     return Percent(value: -p.value)
 }
-
+        
 #endif

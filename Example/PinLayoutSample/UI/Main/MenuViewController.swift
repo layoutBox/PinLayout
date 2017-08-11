@@ -29,6 +29,7 @@ import UIKit
 
 enum PageType: Int {
     case intro
+    case introRTL
     case adjustToContainer
     case tableView
     case form
@@ -41,6 +42,7 @@ enum PageType: Int {
     var text: String {
         switch self {
         case .intro:                      return "PinLayout's Intro"
+        case .introRTL:                   return "PinLayout's Intro RTL support"
         case .adjustToContainer:          return "Adjust to container size"
         case .tableView:                  return "TableView with variable cell's height"
         case .form:                       return "Form Example"
@@ -54,6 +56,7 @@ enum PageType: Int {
     var viewController: UIViewController {
         switch self {
         case .intro:                      return IntroViewController(pageType: self)
+        case .introRTL:                   return IntroRTLViewController(pageType: self)
         case .adjustToContainer:          return AdjustToContainerViewController(pageType: self)
         case .tableView:                  return TableViewExampleViewController(pageType: self)
         case .form:                       return FormViewController(pageType: self)

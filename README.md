@@ -179,9 +179,9 @@ Using `start` or `end`, you can position views without having to think about whe
 
 By default PinLayout detects UIView's layout direction using `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). But the layout direction can also be globaly set using the property `Pin.layoutDirection`.
 
-:pushpin: In this documentation all methods that support RTL languages are marked using an asterisk (*). 
+:pushpin: In this documentation all methods that support RTL languages are marked using the following icon :left_right_arrow:. 
 
-See RLT full documentation here (Comming soon)
+RTL full documentation comming soon....
 
 <br/>
 
@@ -207,13 +207,13 @@ The value specifies the bottom edge **distance from the superview's bottom edge*
 The value specifies the right edge **distance from the superview's right edge** in pixels.
 * `right(_ percent: Percent)`  
 The value specifies the right edge **distance from the superview's right edge** in percentage of its superview's width.
-* `start(_ value: CGFloat)`*  
+* `start(_ value: CGFloat)`:left_right_arrow:
 The value specifies the left edge distance from the superview's left edge in in LTR direction or the right edge distance from the superview's right edge  in RTL direction.
-* `start(_ percent: Percent)`*  
+* `start(_ percent: Percent)`:left_right_arrow:  
 The value specifies the left edge distance from the superview's left edge in LTR direction or the right edge distance from the superview's right edge in RTL direction.
-* `end(_ value: CGFloat)`*  
+* `end(_ value: CGFloat)`:left_right_arrow:  
 The value specifies the right edge distance from the superview's right edge in LTR direction or the left edge distance from the superview's left edge  in RTL direction.
-* `end(_ percent: Percent)`*  
+* `end(_ percent: Percent)`:left_right_arrow:  
 The value specifies the right edge distance from the superview's right edge in LTR direction or the right edge distance from the superview's right edge in RTL direction.
 * `hCenter(_ value: CGFloat)`  
 The value specifies the horizontal center distance from the superview's left edge in pixels.
@@ -262,9 +262,9 @@ Position the view left edge directly on its superview left edge. Similar to call
 Position the view bottom edge directly on its superview top edge. Similar to calling `bottom(0)`.
 * `right()`  
 Position the view right edge directly on its superview right edge. Similar to calling `right(0)`.
-* `start()`*  
+* `start()`:left_right_arrow:  
 Position the view left edge directly on its superview left edge in LTR direction or right edge directly on its superview right edge in RTL direction. Similar to calling `start(0)`.
-* `end()`*  
+* `end()`:left_right_arrow:  
 Position the view right edge directly on its superview right edge in LTR direction or left edge directly on its superview left edge in RTL direction. Similar to calling `end(0)`.
 * `hCenter()`  
 Position the view horizontal center directly on its superview horizontal center. Similar to calling `hCenter(superview.frame.width / 2)`.
@@ -861,7 +861,7 @@ NOTE: `-` indicates that the margin is not applied.
 
 This table explains how and when **top and bottom margins** are applied depending on which view’s attribute has been pinned using PinLayout.
 
-| View’s pinned attributes | Left Margin                               | Right Margin                               |
+| View’s pinned attributes | Top Margin                               | Bottom Margin                               |
 |--------------------------|:-------------------------------------------:|:--------------------------------------------:|
 | **Top**                     | *Move view down*                           | *-*                                |
 | **Top and Height**           | *Move view down*                           | *-*                                |

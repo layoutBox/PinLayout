@@ -7,7 +7,7 @@ ratings:
   - "**.swift"
 
 exclude_paths:
-    - PinLayoutTests
+    - Tests
     - Example
     - Pods
     - data

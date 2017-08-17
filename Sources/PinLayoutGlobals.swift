@@ -34,7 +34,7 @@ public enum LayoutDirection {
 }
 
 public class PinLayoutGlobals {
-    public var layoutDirection = LayoutDirection.auto
+    public var layoutDirection = LayoutDirection.ltr
 
 #if DEBUG
     public var logWarnings = true

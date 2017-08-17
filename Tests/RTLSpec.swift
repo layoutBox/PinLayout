@@ -35,17 +35,20 @@ class RTLSpec: QuickSpec {
         
         var rootView: BasicView!
         var aView: BasicView!
+        var bView: BasicView!
+        
         
         /*
           root
            |
-            - aView
-                |
-                 - aViewChild
+           |- aView
+           |
+            - bView
         */
 
         beforeEach {
             unitTestLastWarning = nil
+            Pin.layoutDirection(.ltr)
             
             viewController = UIViewController()
             
@@ -54,8 +57,12 @@ class RTLSpec: QuickSpec {
             viewController.view.addSubview(rootView)
             
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
-            aView.frame = CGRect(x: 140, y: 100, width: 200, height: 120)
+            aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
             rootView.addSubview(aView)
+            
+            bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+            bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
+            rootView.addSubview(bView)
         }
 
         //
@@ -108,6 +115,495 @@ class RTLSpec: QuickSpec {
                 Pin.layoutDirection(.rtl)
                 aView.pin.end(10).left(20)
                 expect(unitTestLastWarning).to(contain(["left", "won't be applied", "already been set to 10"]))
+            }
+        }
+        
+        //
+        // position
+        //
+        describe("RTL position") {
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.end()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.end()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+        
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start(20)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start(20)
+                expect(aView.frame).to(equal(CGRect(x: 280.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.end(20)
+                expect(aView.frame).to(equal(CGRect(x: 280.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.end(20)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start(20%)
+                expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start(20%)
+                expect(aView.frame).to(equal(CGRect(x: 220.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.end(20%)
+                expect(aView.frame).to(equal(CGRect(x: 220.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.end(20%)
+                expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start(20)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start(20)
+                expect(aView.frame).to(equal(CGRect(x: 280.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.end(20)
+                expect(aView.frame).to(equal(CGRect(x: 280.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.end(20)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start(20%)
+                expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start(20%)
+                expect(aView.frame).to(equal(CGRect(x: 220.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.end(20%)
+                expect(aView.frame).to(equal(CGRect(x: 220.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.end(20%)
+                expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+        }
+        
+        //
+        // margins
+        //
+        describe("RTL position") {
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start().end().marginStart(10)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 390.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start().end().marginStart(10)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 390.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start().end().marginEnd(10)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 390.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start().end().marginEnd(10)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 390.0, height: 60.0)))
+            }
+        }
+        
+        //
+        // Edges
+        //
+        describe("RTL edges") {
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start(to: bView.edge.start)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start(to: bView.edge.start)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.start(to: bView.edge.end)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.start(to: bView.edge.end)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.end(to: bView.edge.start)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.end(to: bView.edge.start)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+        }
+        
+        //
+        // ANCHORS
+        //
+        describe("RTL anchors") {
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.topStart()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.topStart()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 0.0, width: 100.0, height: 60.0)))
+            }
+        
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.topEnd()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 0.0, width: 100.0, height: 60.0)))
+            
+                Pin.layoutDirection(.rtl)
+                aView.pin.topEnd()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.centerStart()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 170.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.centerStart()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 170.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.centerEnd()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 170.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.centerEnd()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 170.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.bottomStart()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 340.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.bottomStart()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 340.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.bottomEnd()
+                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 340.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.bottomEnd()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 340.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.topStart(to: bView.anchor.topStart)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.topStart(to: bView.anchor.topStart)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.topStart(to: bView.anchor.topEnd)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.topStart(to: bView.anchor.topEnd)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.topEnd(to: bView.anchor.topEnd)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.topEnd(to: bView.anchor.topEnd)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.centerStart(to: bView.anchor.centerStart)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 130.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.centerStart(to: bView.anchor.centerStart)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 130.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.centerEnd(to: bView.anchor.centerEnd)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 130.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.centerEnd(to: bView.anchor.centerEnd)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 130.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.bottomStart(to: bView.anchor.bottomStart)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.bottomStart(to: bView.anchor.bottomStart)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.bottomEnd(to: bView.anchor.bottomEnd)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+        }
+        
+        
+        //
+        // relative
+        //
+        describe("RTL position") {
+            // after
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.after(of: bView)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.after(of: bView)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.after(of: bView, aligned: .top)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.after(of: bView, aligned: .top)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.after(of: [bView])
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.after(of: [bView])
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.after(of: [bView], aligned: .bottom)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.after(of: [bView], aligned: .bottom)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+            
+            // before
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.before(of: bView)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.before(of: bView)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.before(of: [bView])
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.before(of: [bView])
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.before(of: bView, aligned: .top)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.before(of: bView, aligned: .top)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.before(of: [bView], aligned: .top)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.before(of: [bView], aligned: .top)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 120.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.before(of: [bView], aligned: .bottom)
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.before(of: [bView], aligned: .bottom)
+                expect(aView.frame).to(equal(CGRect(x: 270.0, y: 140.0, width: 100.0, height: 60.0)))
+            }
+            
+            // below
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.below(of: bView, aligned: .start)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 200.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.below(of: bView, aligned: .start)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 200.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.ltr)
+                aView.pin.below(of: bView, aligned: .end)
+                expect(aView.frame).to(equal(CGRect(x: 170.0, y: 200.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should adjust the position") {
+                Pin.layoutDirection(.rtl)
+                aView.pin.below(of: bView, aligned: .end)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 200.0, width: 100.0, height: 60.0)))
             }
         }
     }

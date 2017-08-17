@@ -30,7 +30,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [PinLayout principles and philosophy](#introduction)
 * [Performance](#performance)
 * [Documentation](#documentation)
-  * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
+  * [Right to left languages (RTL) support](#rtl_support)
+  * [Layout using distances from superview’s edges](#distance_from_superview_edge) 
   * [Anchors](#anchors)
   * [Edges](#edges)
   * [Relative positionning](#relative_positionning)
@@ -116,6 +117,7 @@ This example shows how easily PinLayout can adjust its layout based on the views
 	* You can add iterations and enumerations (for/while/forEach/...)
 * Layout one view at a time. Make it simple to code and debug.
 * Concise syntax. Layout most views using a single line. 
+* Support lef to right (LTR) and right to left (RTL) languages.
 
 * Stateless
 	* PinLayout doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
@@ -170,16 +172,24 @@ These results also means that **PinLayout is faster than any layout frameworks t
 
 # Documentation <a name="documentation"></a>
 
-### Right to left languages (RTL) support
-PinLayout support left-to-right (LTR) and right-to-left (RTL) languages. 
+## Right to left languages (RTL) support <a name="rtl_support"></a>
+PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. 
 
-Every method/properties with a name containing either `left` or `right`, has RTL equivalent methods with name containing `start` or `end`.
+Every method/properties with a name containing `left`/`right`, has RTL enabled equivalent methods with name containing `start`/`end`.
 
-Using `start` or `end`, you can position views without having to think about whether your item will show up on the left or the right side of the screen (depending on the person’s language setting). 
-
-By default PinLayout detects UIView's layout direction using `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). But the layout direction can also be globaly set using the property `Pin.layoutDirection`.
+Using `start` or `end` methods, you can position views without having to think about whether your item will show up on the left or the right side of the screen (depending on the person’s language 
 
 :pushpin: In this documentation all methods that support RTL languages are marked using the following icon :left_right_arrow: 
+
+**Method**:
+
+* **`Pin.layoutDirection(direction: LayoutDirection)`**:left_right_arrow::  
+Set the PinLayout layout direction. Note that this set PinLayout's layout direction globaly. By default PinLayout use the left-to-right direction.
+
+	Layout direction modes:
+	1. `.ltr`: Layout views from left to right. (Default)
+	2. `.rtl`: Layout views from right to left.
+	3. `.auto`: Layout views based on `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). If you want to control the layout direction individually for each views, you should use this mode and control the view's layout direction using `UIView.userInterfaceLayoutDirection` property.
 
 RTL full documentation coming soon....
 

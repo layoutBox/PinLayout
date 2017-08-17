@@ -63,18 +63,6 @@ extension PinLayoutImpl {
         return below(relativeViews: relativeViews, aligned: aligned, context: context)
     }
     
-    @discardableResult
-    func below(ofVisible relativeViews: [UIView]) -> PinLayout {
-        func context() -> String { return "below(ofVisible: \(relativeViews))" }
-        return below(relativeViews: relativeViews, aligned: nil, context: context)
-    }
-    
-    @discardableResult
-    func below(ofVisible relativeViews: [UIView], aligned: HorizontalAlign) -> PinLayout {
-        func context() -> String { return "below(ofVisible: \(relativeViews), aligned: \(aligned))" }
-        return below(relativeViews: relativeViews, aligned: aligned, context: context)
-    }
-    
     //
     // left(of ...)
     //

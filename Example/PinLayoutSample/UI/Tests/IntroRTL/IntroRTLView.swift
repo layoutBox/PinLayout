@@ -39,8 +39,11 @@ class IntroRTLView: BaseView {
     override init() {
         super.init()
         
-        //PinLayoutDirection(.rtl)
-
+        // PinLayout will detect automatically the layout direction based on 
+        // `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or 
+        // `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9)
+        Pin.layoutDirection(.auto)
+        
         logo.contentMode = .scaleAspectFit
         addSubview(logo)
         

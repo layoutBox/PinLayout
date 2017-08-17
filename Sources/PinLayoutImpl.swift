@@ -111,7 +111,8 @@ class PinLayoutImpl: PinLayout {
         return left(percent, { return "left(\(percent))" })
     }
     
-    @discardableResult func start() -> PinLayout {
+    @discardableResult
+    func start() -> PinLayout {
         func context() -> String { return "start()" }
         return isLTR() ? left(context) : right(context)
     }

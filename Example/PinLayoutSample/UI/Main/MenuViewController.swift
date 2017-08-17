@@ -55,7 +55,7 @@ enum PageType: Int {
 
     var viewController: UIViewController {
         switch self {
-        case .intro:                      return IntroViewController(pageType: self)
+        case .intro:                      return BothEdgesSnappedViewController(pageType: self)
         case .introRTL:                   return IntroRTLViewController(pageType: self)
         case .adjustToContainer:          return AdjustToContainerViewController(pageType: self)
         case .tableView:                  return TableViewExampleViewController(pageType: self)
@@ -87,10 +87,10 @@ class MenuViewController: BaseViewController {
         mainView.delegate = self
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        didSelect(pageType: .intro)
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        didSelect(pageType: .intro)
+    }
 }
 
 // MARK: MenuViewDelegate

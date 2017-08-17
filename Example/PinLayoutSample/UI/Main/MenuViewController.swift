@@ -29,40 +29,40 @@ import UIKit
 
 enum PageType: Int {
     case intro
-    case introRTL
     case adjustToContainer
     case tableView
     case form
     case relativePositions
     case multiRelativePositions
     case autoAdjustingSize
+    case introRTL
     
     case count
     
     var text: String {
         switch self {
         case .intro:                      return "PinLayout's Intro"
-        case .introRTL:                   return "PinLayout's Intro RTL support"
         case .adjustToContainer:          return "Adjust to container size"
         case .tableView:                  return "TableView with variable cell's height"
         case .form:                       return "Form Example"
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
         case .autoAdjustingSize:          return "Auto adjusting size"
+        case .introRTL:                   return "PinLayout's right-to-left language support"
         case .count:                      return ""
         }
     }
 
     var viewController: UIViewController {
         switch self {
-        case .intro:                      return BothEdgesSnappedViewController(pageType: self)
-        case .introRTL:                   return IntroRTLViewController(pageType: self)
+        case .intro:                      return IntroViewController(pageType: self)
         case .adjustToContainer:          return AdjustToContainerViewController(pageType: self)
         case .tableView:                  return TableViewExampleViewController(pageType: self)
         case .form:                       return FormViewController(pageType: self)
         case .relativePositions:          return RelativeViewController(pageType: self)
         case .multiRelativePositions:     return MultiRelativeViewController(pageType: self)
         case .autoAdjustingSize:          return AutoAdjustingSizeViewController(pageType: self)
+        case .introRTL:                   return IntroRTLViewController(pageType: self)
         case .count:                      return UIViewController()
         }
     }
@@ -87,10 +87,10 @@ class MenuViewController: BaseViewController {
         mainView.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        didSelect(pageType: .intro)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        didSelect(pageType: .intro)
+//    }
 }
 
 // MARK: MenuViewDelegate

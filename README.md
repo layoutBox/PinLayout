@@ -187,9 +187,9 @@ Using `start` or `end` methods, you can position views without having to think a
 Set the PinLayout layout direction. Note that this set PinLayout's layout direction globaly. By default PinLayout use the left-to-right direction.
 
 	Layout direction modes:
-	1. `.ltr`: Layout views from left to right. (Default)
-	2. `.rtl`: Layout views from right to left.
-	3. `.auto`: Layout views based on `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). If you want to control the layout direction individually for each views, you should use this mode and control the view's layout direction using `UIView.userInterfaceLayoutDirection` property.
+	* `.ltr`: Layout views from left to right. (Default)
+	* `.rtl`: Layout views from right to left.
+	* `.auto`: Layout views based on `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). If you want to control the layout direction individually for each views, you should use this mode and control the view's layout direction using `UIView.userInterfaceLayoutDirection` property.
 
 RTL full documentation coming soon....
 

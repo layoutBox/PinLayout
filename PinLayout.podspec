@@ -26,30 +26,8 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC 
   
-* Layout one view at a time. 
-* Layout most views using a single line
-* Stateless
-  * The layout system doesn’t add any stored properties to UIViews. It simply compute the UIView.frame property, one view at a time.
-  * Since it is stateless, it can be used with any other layout framework without conflicts. 
-Each view can use the layout system that better suit it  (PinLayout, constraint, flexbox, grids, …)
-A view can be layouted using PinLayout and later with another method.
-  * REWORK THAT!!! Stateless also means that if a view reference other views, the view should be re-layouted in layoutSubViews()  layouted with PinLayout use other views as referenced view change (size/position) 
-
-* No constraints
-  * Constraints are very verbose and hard for a human brains to understand. Too much information.
-  * PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width match the other view’s width“). 
-  * No priorities, simply layout views in the order that make sense. No priority required.
-
-* Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So it’s possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20))
-
-* Minimize as much as possible calculations and constants when layouting views.
-
-* Methods matches as much as possible other layouting system, including CSS, flexbox, reactive Flexbox, …
-  * margin, marginHorizontal, marginVertical, marginTop, marginLeft, marginBottom, marginRight
-  * top, left, bottom, right, width, height  
-  * As in CSS and flexbox, right and bottom coordinates are offset from container’s view right and bottom edges.
-
-* Shorter possible commands to layout views, but keeping english phrasing almost valid.
+* Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
+* Support left to right (LTR) and right to left (RTL) languages.
                    DESC
 
   s.homepage     = "https://mirego.github.io/PinLayout/"
@@ -78,7 +56,8 @@ A view can be layouted using PinLayout and later with another method.
   #
 
   s.author             = { 
-    "Luc Dion" => "ldion@mirego.com"
+    "Luc Dion" => "ldion@mirego.com",
+    "Luc Dion" => "luc_dion@yahoo.com"
 # TODO Add more
      }
   

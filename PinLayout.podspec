@@ -25,11 +25,24 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC 
-  * Support left to right (LTR) and right to left (RTL) languages.
+
+  Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
+  Support left to right (LTR) and right to left (RTL) languages.
                    DESC
 
   s.homepage     = "https://mirego.github.io/PinLayout/"
+  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+
+
+  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  #
+  #  Licensing your code is important. See http://choosealicense.com for more info.
+  #  CocoaPods will detect a license file if there is a named LICENSE*
+  #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
+  #
+
   s.license      = "BSD 3-clause"
+  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -44,7 +57,7 @@ Pod::Spec.new do |s|
 
   s.author             = { 
     "Luc Dion" => "ldion@mirego.com",
-    "Luc Dion" => "luc_dion@yahoo.com`
+    "Luc Dion" => "luc_dion@yahoo.com"
      }
   
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

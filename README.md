@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-small.png" alt="PinLayout" /></a>
+  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-small.png" alt="PinLayout" width="240" /></a>
 </p>
 
 <h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 3em">PinLayout</h1>
@@ -30,7 +30,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [PinLayout principles and philosophy](#introduction)
 * [Performance](#performance)
 * [Documentation](#documentation)
-  * [Layout using distances from superview’s edges](#distance_from_superview_edge) 	  
+  * [Right to left languages (RTL) support](#rtl_support)
+  * [Layout using distances from superview’s edges](#distance_from_superview_edge) 
   * [Anchors](#anchors)
   * [Edges](#edges)
   * [Relative positionning](#relative_positionning)
@@ -116,6 +117,7 @@ This example shows how easily PinLayout can adjust its layout based on the views
 	* You can add iterations and enumerations (for/while/forEach/...)
 * Layout one view at a time. Make it simple to code and debug.
 * Concise syntax. Layout most views using a single line. 
+* Support lef to right (LTR) and right to left (RTL) languages.
 
 * Stateless
 	* PinLayout doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
@@ -170,36 +172,71 @@ These results also means that **PinLayout is faster than any layout frameworks t
 
 # Documentation <a name="documentation"></a>
 
+## Right to left languages (RTL) support <a name="rtl_support"></a>
+PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. 
+
+Every method/properties with a name containing `left`/`right`, has RTL enabled equivalent methods with name containing `start`/`end`.
+
+Using `start` or `end` methods, you can position views without having to think about whether your item will show up on the left or the right side of the screen (depending on the person’s language 
+
+:pushpin: In this documentation all methods that support RTL languages are marked using the following icon :left_right_arrow: 
+
+**Method**:
+
+* **`Pin.layoutDirection(direction: LayoutDirection)`**:left_right_arrow::  
+Set the PinLayout layout direction. Note that this set PinLayout's layout direction globaly. By default PinLayout use the left-to-right direction.
+
+	Layout direction modes:
+	1. `.ltr`: Layout views from left to right. (Default)
+	2. `.rtl`: Layout views from right to left.
+	3. `.auto`: Layout views based on `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). If you want to control the layout direction individually for each views, you should use this mode and control the view's layout direction using `UIView.userInterfaceLayoutDirection` property.
+
+RTL full documentation coming soon....
+
+<br/>
+
 ## Layout using distances from superview’s edges <a name="distance_from_superview_edge"></a>
 
 PinLayout can position a view’s edge relative to its superview edges.
 
 **Methods**:
 
-* `top(_ value: CGFloat)`  
+* **`top(_ value: CGFloat)`**  
 The value specifies the top edge distance from the superview's top edge in pixels.
-* `top(_ percent: Percent)`  
+* **`top(_ percent: Percent)`**  
 The value specifies the top edge distance from the superview's top edge in percentage of its superview's height.
-* `left(_ value: CGFloat)`  
+* **`left(_ value: CGFloat)`**  
 The value specifies the left edge distance from the superview's left edge in pixels.
-* `left(_ percent: Percent)`  
+* **`left(_ percent: Percent)`**  
 The value specifies the left edge distance from the superview's left edge in percentage of its superview's width.
-* `bottom(_ value: CGFloat)`  
+* **`bottom(_ value: CGFloat)`**  
 The value specifies the bottom edge **distance from the superview's bottom edge** in pixels.
-* `bottom(_ percent: Percent)`  
+* **`bottom(_ percent: Percent)`**  
 The value specifies the bottom edge **distance from the superview's bottom edge** in percentage of its superview's height.
-* `right(_ value: CGFloat)`  
+* **`right(_ value: CGFloat)`**  
 The value specifies the right edge **distance from the superview's right edge** in pixels.
-* `right(_ percent: Percent)`  
+* **`right(_ percent: Percent)`**  
 The value specifies the right edge **distance from the superview's right edge** in percentage of its superview's width.
-* `hCenter(_ value: CGFloat)`  
+* **`hCenter(_ value: CGFloat)`**  
 The value specifies the horizontal center distance from the superview's left edge in pixels.
-* `hCenter(_ percent: Percent)`  
+* **`hCenter(_ percent: Percent)`**  
 The value specifies the horizontal center distance from the superview's left edge in percentage of its superview's width.
-* `vCenter(_ value: CGFloat)`  
+* **`vCenter(_ value: CGFloat)`**  
 The value specifies the vertical center distance from the superview's top edge in pixels.
-* `vCenter(_ percent: Percent)`  
+* **`vCenter(_ percent: Percent)`**  
 The value specifies the vertical center distance from the superview's top edge in percentage of its superview's height.
+* **`start(_ value: CGFloat)`**:left_right_arrow:  
+In LTR direction the value specifies the left edge distance from the superview's left edge in pixels.   
+In RTL direction the value specifies the right edge distance from the superview's right edge in pixels.
+* **`start(_ percent: Percent)`**:left_right_arrow:  
+In LTR direction the value specifies the left edge distance from the superview's left edge in percentage of its superview's width.   
+In RTL direction the value specifies the right edge distance from the superview's right edge in percentage of its superview's width.
+* **`end(_ value: CGFloat)`**:left_right_arrow:  
+In LTR direction the value specifies the right edge distance from the superview's right edge in pixels.  
+In RTL direction the value specifies the left edge distance from the superview's left edge in pixels.   
+* **`end(_ percent: Percent)`**:left_right_arrow:  
+In LTR direction the value specifies the right edge distance from the superview's right edge in percentage of its superview's width.  
+In RTL direction the value specifies the left edge distance from the superview's left edge in percentage of its superview's width.   
 
 ###### Usage Examples:
 
@@ -207,6 +244,7 @@ The value specifies the vertical center distance from the superview's top edge i
     view.pin.top(20).left(20)
     view.pin.top(25%).hCenter(0)
     view.pin.left(12).vCenter(100)
+    view.pin.start(20).end(20)
 ```
 
 ###### Example:
@@ -230,17 +268,21 @@ PinLayout also has shorter version that pins a view’s edge **directly** on its
 
 **Methods**:
 
-* `top()`  
+* **`top()`**  
 Position the view top edge directly on its superview top edge. Similar to calling `top(0)`.
-* `left()`  
-Position the view left edge directly on its superview top edge. Similar to calling `left(0)`.
-* `bottom()`  
+* **`left()`**  
+Position the view left edge directly on its superview left edge. Similar to calling `left(0)`.
+* **`bottom()`**  
 Position the view bottom edge directly on its superview top edge. Similar to calling `bottom(0)`.
-* `right()`  
-Position the view right edge directly on its superview top edge. Similar to calling `right(0)`.
-* `hCenter()`  
+* **`right()`**  
+Position the view right edge directly on its superview right edge. Similar to calling `right(0)`.
+* **`start()`**:left_right_arrow:  
+Position the view left edge directly on its superview left edge in LTR direction or right edge directly on its superview right edge in RTL direction. Similar to calling `start(0)`.
+* **`end()`**:left_right_arrow:  
+Position the view right edge directly on its superview right edge in LTR direction or left edge directly on its superview left edge in RTL direction. Similar to calling `end(0)`.
+* **`hCenter()`**  
 Position the view horizontal center directly on its superview horizontal center. Similar to calling `hCenter(superview.frame.width / 2)`.
-* `vCenter()`  
+* **`vCenter()`**  
 Position the view vertical center directly on its superview vertical center. Similar to calling `hCenter(superview.frame.height / 2)`.
 
 ###### Usage examples:
@@ -248,6 +290,7 @@ Position the view vertical center directly on its superview vertical center. Sim
 	view.pin.top().left()
 	view.pin.bottom().right()
 	view.pin.hCenter().vCenter()
+	view.pin.start().end()
 ```
 
 ###### Example:
@@ -272,12 +315,18 @@ PinLayout add anchors properties to UIViews. These properties are used to refere
 * `UIView.anchor.topLeft`
 * `UIView.anchor.topCenter`
 * `UIView.anchor.topRight`
-* `UIView.anchor.leftCenter`
+* `UIView.anchor.topStart`:left_right_arrow:
+* `UIView.anchor.topEnd`:left_right_arrow:
+* `UIView.anchor.centerLeft`
 * `UIView.anchor.centers`
-* `UIView.anchor.rightCenter`
+* `UIView.anchor.centerRight`
+* `UIView.anchor.centerStart`:left_right_arrow:
+* `UIView.anchor.centerEnd`:left_right_arrow:
 * `UIView.anchor.bottomLeft`
 * `UIView.anchor.bottomCenter`
 * `UIView.anchor.bottomRight`
+* `UIView.anchor.bottomStart`:left_right_arrow:
+* `UIView.anchor.bottomEnd`:left_right_arrow:
 
 ![](docs/pinlayout-anchors.png)
 
@@ -294,12 +343,18 @@ Following methods position the corresponding view anchor on another view’s anc
 * `topLeft(to anchor: Anchor)`
 * `topCenter(to anchor: Anchor)`
 * `topRight(to anchor: Anchor)`
-* `leftCenter(to anchor: Anchor)`
+* `topStart(to anchor: Anchor)`:left_right_arrow:
+* `topEnd(to anchor: Anchor)`:left_right_arrow:
+* `centerLeft(to anchor: Anchor)`
 * `center(to anchor: Anchor)`
-* `rightCenter(to anchor: Anchor)`
+* `centerRight(to anchor: Anchor)`
+* `centerStart(to anchor: Anchor)`:left_right_arrow:
+* `centerEnd(to anchor: Anchor)`:left_right_arrow:
 * `bottomLeft(to anchor: Anchor)`
 * `bottomCenter(to anchor: Anchor)`
 * `bottomRight(to anchor: Anchor)`
+* `bottomStart(to anchor: Anchor)`:left_right_arrow:
+* `bottomEnd(to anchor: Anchor)`:left_right_arrow:
 
 :pushpin: These methods can pin a view’s anchor to any other view's anchor, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
 
@@ -347,12 +402,18 @@ The following methods position the corresponding view's anchor on another view�
 * `topLeft()`
 * `topCenter()`
 * `topRight()`
-* `leftCenter()`
+* `topStart()`:left_right_arrow:
+* `topEnd()`:left_right_arrow:
+* `centerLeft()`
 * `center()`
-* `rightCenter()`
+* `centerRight()`
+* `centerStart()`:left_right_arrow:
+* `centerEnd()`:left_right_arrow:
 * `bottomLeft()`
 * `bottomCenter()`
 * `bottomRight()`
+* `bottomStart()`:left_right_arrow:
+* `bottomEnd()`:left_right_arrow:
 
 ###### Example:
 For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor..
@@ -383,6 +444,8 @@ PinLayout adds edges properties to UIViews. These properties are used to referen
 * `UIView.edge.left`
 * `UIView.edge.bottom`
 * `UIView.edge.right`
+* `UIView.edge.start`:left_right_arrow:
+* `UIView.edge.end`:left_right_arrow:
 
 ![](docs/pinlayout-edges.png)
 
@@ -390,7 +453,7 @@ PinLayout adds edges properties to UIViews. These properties are used to referen
 
 ### Layout using edges
 
-PinLayout has methods to attach a UIView's edge (top, left, bottom or right edge) to another view’s edge.
+PinLayout has methods to attach a UIView's edge (top, left, bottom, right, start or end edge) to another view’s edge.
 
 **Methods:**
 
@@ -398,6 +461,8 @@ PinLayout has methods to attach a UIView's edge (top, left, bottom or right edge
 * `left(to: edge: HorizontalEdge)`
 * `bottom(to edge: VerticalEdge)`
 * `right(to: edge: HorizontalEdge)`
+* `start(to: edge: HorizontalEdge)`:left_right_arrow:
+* `end(to: edge: HorizontalEdge)`:left_right_arrow:
 
 :pushpin: These methods can pin a view’s edge to any other view's edge, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
 
@@ -428,21 +493,29 @@ PinLayout also has methods to position relative to other views. The view can be 
 
 **Methods:**
 
-* `above(of: UIView)`  
-`above(of: [UIView])`  
+* **`above(of: UIView)`**  
+**`above(of: [UIView])`**  
 Position the view above the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s bottom edge.  
   
-* `below(of: UIView)`  
-`below(of: [UIView])`  
+* **`below(of: UIView)`**  
+**`below(of: [UIView])`**  
 Position the view below the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s top edge.  
   
-* `left(of: UIView)`  
-`left(of: [UIView])`  
+* **`left(of: UIView)`**  
+**`left(of: [UIView])`**  
 Position the view left of the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s right edge.  
   
-* `right(of: UIView)`  
-`right(of: [UIView])`  
+* **`right(of: UIView)`**  
+**`right(of: [UIView])`**  
 Position the view right of the specified view(s). One or many relative views can be specied. This method is similar to pinning the view’s left edge.
+
+* **`before(of: UIView)`**:left_right_arrow:  
+**`before(of: [UIView])`**:left_right_arrow:  
+In LTR direction the view is positionned at the left of the specified view(s). In RTL direction the view is positionned at the right. One or many relative views can be specied. 
+
+* **`after(of: UIView)`**:left_right_arrow:  
+**`after(of: [UIView])`**:left_right_arrow:  
+In LTR direction the view is positionned at the right of the specified view(s). In RTL direction the view is positionned at the left. One or many relative views can be specied. 
 
 :pushpin: **Multiple relative views**: If for example a call to `below(of: [...]) specify multiple relative views, the view will be layouted below *ALL* these views. 
 
@@ -454,7 +527,8 @@ Position the view right of the specified view(s). One or many relative views can
 ```swift
 	view.pin.left(of: view2)
 	view.pin.below(of: [view2, view3, view4])
-	view.pin.left(of: view1).above(of: view2).below(of: view3).right(of: view4)
+	view.pin.left(of: view1).above(of: view2).right(of: view4).below(of: view3)
+	view.pin.after(of: view4).before(of: view1).below(of: view3)
 ```
 
 ###### Example:
@@ -487,34 +561,49 @@ PinLayout also has methods to position relative to other views but with also the
 
 **Methods:**
 
-* `above(of: UIView, aligned: HorizontalAlignment)`  
-`above(of: [UIView], aligned: HorizontalAlignment)`  
+* **`above(of: UIView, aligned: HorizontalAlignment)`**  
+**`above(of: [UIView], aligned: HorizontalAlignment)`**  
 Position the view above the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: bottomLeft, bottomCenter or bottomRight.  
   
-* `below(of: UIView, aligned: HorizontalAlignment)`  
-`below(of: [UIView], aligned: HorizontalAlignment)`  
+* **`below(of: UIView, aligned: HorizontalAlignment)`**  
+**`below(of: [UIView], aligned: HorizontalAlignment)`**  
 Position the view below the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, topCenter or topRight.  
   
-* `left(of: UIView, aligned: VerticalAlignment)`  
-`left(of: [UIView], aligned: HorizontalAlignment)`  
-Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topRight, rightCenter or bottomRight.  
+* **`left(of: UIView, aligned: VerticalAlignment)`**  
+**`left(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topRight, centerRight or bottomRight.  
   
-* `right(of: UIView, aligned: VerticalAlignment)`  
-`right(of: [UIView], aligned: HorizontalAlignment)`  
-Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, leftCenter or bottomLeft.
+* **`right(of: UIView, aligned: VerticalAlignment)`**  
+**`right(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specied. This method is similar to pinning one view’s anchor: topLeft, centerLeft or bottomLeft.
+
+* **`before(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
+**`before(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
+In LTR direction the view is positionned at the left of the specified view(s). In RTL direction the view is positionned at the right. One or many relative views can be specied. 
+
+* **`after(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
+**`after(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
+In LTR direction the view is positionned at the right of the specified view(s). In RTL direction the view is positionned at the left. One or many relative views can be specied. 
+
 
 **How alignment is applied:**
 
-*  `HorizontalAlignment.left`: The view's left edge will be aligned to the left most relative view.
-*  `HorizontalAlignment.center`: The view's hCenter edge will be aligned with the average hCenter of all  relative views.
-*  `HorizontalAlignment.right`: The view's right edge will be aligned to the right most relative view.
-*  `VerticalAlignment.top`: The view's top edge will be aligned to the top most relative view.
-*  `VerticalAlignment.center`: The view's vCenter edge will be aligned with the average vCenter of all  relative views.
-*  `VerticalAlignment.bottom`: The view's bottom edge will be aligned to the bottom most relative view.
+* **`HorizontalAlignment.left`**: The view's left edge will be aligned to the left most relative view.
+* **`HorizontalAlignment.center`**: The view's hCenter edge will be aligned with the average hCenter of all  relative views.
+*  **`HorizontalAlignment.right`**: The view's right edge will be aligned to the right most relative view.
+* **`HorizontalAlignment.start`**:left_right_arrow::  
+In LTR direction the view's left edge will be aligned to the left most relative view.  
+In RTL direction the view's right edge will be aligned to the right most relative view.
+* **`HorizontalAlignment.end`**:left_right_arrow::  
+In LTR direction the view's right edge will be aligned to the right most relative view.  
+In RTL direction the view's left edge will be aligned to the right most relative view.
+*  **`VerticalAlignment.top`**: The view's top edge will be aligned to the top most relative view.
+*  **`VerticalAlignment.center`**: The view's vCenter edge will be aligned with the average vCenter of all  relative views.
+*  **`VerticalAlignment.bottom`**: The view's bottom edge will be aligned to the bottom most relative view.
 
 :pushpin: **Multiple relative views**: If for example a call to `below(of: [...], aligned:) specify multiple relative views, the view will be layouted below *ALL* these views. The alignment will be applied using all relative view
 
-:pushpin: These methods **set the position of a view's anchor**: topLeft, topCenter, topRight, leftCenter, .... For example `below(of ..., aligned: .right)` set the view's topRight anchor, `right(of ..., aligned: .center) set the view's centerLeft anchor, ...
+:pushpin: These methods **set the position of a view's anchor**: topLeft, topCenter, topRight, centerLeft, .... For example `below(of ..., aligned: .right)` set the view's topRight anchor, `right(of ..., aligned: .center) set the view's centerLeft anchor, ...
 
 :pushpin: These methods **set the position of a view's edge**: top, left, bottom or right. For example `below(of ...)` set the view's top edge, `right(of ...) set the view's left edge, ...
 
@@ -593,20 +682,22 @@ PinLayout has methods to set the view’s height and width.
 
 **Methods:**
 
-* `width(_ width: CGFloat)` / `width(percent: Percent)`  
+* **`width(_ width: CGFloat)`**  
+**`width(percent: Percent)`**  
 The value specifies the view's width in pixels or in percentage of its superview. Value must be non-negative.
-* `width(of view: UIView)`  
+* **`width(of view: UIView)`**  
 Set the view’s width to match the referenced view’s width.
-
-* `height(_ height: CGFloat)` / `height(percent: Percent)`  
+* **`height(_ height: CGFloat)`**  
+**`height(percent: Percent)`**  
 The value specifies the view's height in pixels or in percentage of its superview. Value must be non-negative.
-* `height(of view: UIView)`  
+* **`height(of view: UIView)`**  
 Set the view’s height to match the referenced view’s height
-* `size(_ size: CGSize)` / `size(_ percent: Percent)`  
+* **`size(_ size: CGSize)`**  
+**`size(_ percent: Percent)`**  
 The value specifies view's width and the height in pixels or in percentage of its superview. Values must be non-negative.
-* `size(_ sideLength: CGFloat)`  
+* **`size(_ sideLength: CGFloat)`**  
 The value specifies the width and the height of the view in pixels, creating a square view. Values must be non-negative.
-* `size(of view: UIView)`  
+* **`size(of view: UIView)`**  
 Set the view’s size to match the referenced view’s size
 
 :pushpin: width/height/size have a higher priority than edges and anchors positionning. 
@@ -633,16 +724,20 @@ PinLayout has methods to set the view’s minimum and maximum width, and minimum
 
 **Methods:**
 
-* `minWidth(_ width: CGFloat)` / `minWidth(_ percent: Percent)`  
+* **`minWidth(_ width: CGFloat)`**  
+**`minWidth(_ percent: Percent)`**  
 The value specifies the view's minimum width of the view in pixels or in percentage of its superview. Value must be non-negative.
 
-* `maxWidth(_ width: CGFloat)` / `maxWidth(_ percent: Percent)`  
+* **`maxWidth(_ width: CGFloat)`**  
+**`maxWidth(_ percent: Percent)`**  
 The value specifies the view's maximum width of the view in pixels or in percentage of its superview. Value must be non-negative.
 
-* `minHeight(_ height: CGFloat)` / `minHeight(_ percent: Percent)`  
+* **`minHeight(_ height: CGFloat)`**  
+**`minHeight(_ percent: Percent)`**  
 The value specifies the view's minimum height of the view in pixels or in percentage of its superview. Value must be non-negative.
 
-* `maxHeight(_ height: CGFloat)` / `maxHeight(_ percent: Percent)`  
+* **`maxHeight(_ height: CGFloat)`**  
+**`maxHeight(_ percent: Percent)`**  
 The value specifies the view's maximum height of the view in pixels or in percentage of its superview. Value must be non-negative.
    
 ###### Usage examples:
@@ -679,10 +774,10 @@ This is an equivalent solutions using the `justify()` method. This method is exp
 
 **Method:**
 
-* `justify(_ : HorizontalAlign)`  
-Justify the view horizontally. This method justify horizontally a view in situations where the left, right and the width has been set (using either width/minWidth/maxWidth). In this situation the view may be smaller than the space available between the left and the right edges. A view can be justified **left**, **center** or **right**. 
+* **`justify(_ : HorizontalAlign)`**  
+Justify the view horizontally. This method justify horizontally a view in situations where the left, right and the width has been set (using either width/minWidth/maxWidth). In this situation the view may be smaller than the space available between the left and the right edges. A view can be justified **left**, **center**, **right**, **start***, **end***. 
 
-* `align(_ : VerticalAlign)`  
+* **`align(_ : VerticalAlign)`**  
 Align the view vertically. This method align vertically a view in situations where the top, bottom and the height has been set (using either height/minHeight/maxHeight). In this situation the view may be smaller than the space available between the top and the bottom edges. A view can be aligned **top**, **center** or **bottom**. 
 
 ###### Usage examples:
@@ -746,14 +841,14 @@ PinLayout has methods to apply margins.
 * `marginLeft(_ value: CGFloat)`
 * `marginBottom(_ value: CGFloat)`
 * `marginRight(_ value: CGFloat)`
+* `marginStart(_ value: CGFloat)`:left_right_arrow:
+* `marginEnd(_ value: CGFloat)`:left_right_arrow:
 * `marginHorizontal(_ value: CGFloat)`
 * `marginVertical(_ value: CGFloat)`
 * `margin(_ value: CGFloat) `
 * `margin(_ vertical: CGFloat, _ horizontal: CGFloat)`
 * `margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`
 * `margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) `
-
-* `pinEdges()`
 
 ###### Usage examples:
 ```swift
@@ -788,7 +883,7 @@ NOTE: `-` indicates that the margin is not applied.
 
 This table explains how and when **top and bottom margins** are applied depending on which view’s attribute has been pinned using PinLayout.
 
-| View’s pinned attributes | Left Margin                               | Right Margin                               |
+| View’s pinned attributes | Top Margin                               | Bottom Margin                               |
 |--------------------------|:-------------------------------------------:|:--------------------------------------------:|
 | **Top**                     | *Move view down*                           | *-*                                |
 | **Top and Height**           | *Move view down*                           | *-*                                |
@@ -842,7 +937,7 @@ In this example, **left**, **right**, **top** and **bottom** margins are applied
 
 <br>
 
-### pinEdges()
+### pinEdges() and margins
 The `pinEdges()` method pins the four edges (top, left, bottom and right edges) before applying margins. 
 
 This method is useful in situations where the width and/or the height attributes have been pinned.
@@ -918,7 +1013,7 @@ Example:
 
 ### Disabling warnings
 
-Warnings can be disabled in debug mode too by setting the boolean PinLayoutLogConflicts to false.
+Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnings to false.
 
 <br/>
 

@@ -33,6 +33,8 @@
 		24CB999C1F29059B004EA7FB /* AdjustToContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */; };
 		24CB999D1F29059B004EA7FB /* AdjustToContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */; };
 		24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */; };
+		24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */; };
+		24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */; };
 		24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */; };
 		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
@@ -113,6 +115,8 @@
 		24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustToContainerView.swift; path = AdjustToContainer/AdjustToContainerView.swift; sourceTree = "<group>"; };
 		24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustToContainerViewController.swift; path = AdjustToContainer/AdjustToContainerViewController.swift; sourceTree = "<group>"; };
 		24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChoiceSelectorView.swift; path = AdjustToContainer/Subviews/ChoiceSelectorView.swift; sourceTree = "<group>"; };
+		24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroRTLView.swift; path = IntroRTL/IntroRTLView.swift; sourceTree = "<group>"; };
+		24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroRTLViewController.swift; path = IntroRTL/IntroRTLViewController.swift; sourceTree = "<group>"; };
 		24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormView.swift; sourceTree = "<group>"; };
 		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = Intro/IntroView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
 				24F75B581EE5642C008DB567 /* Intro */,
+				24D18D181F3DECD6008129EF /* IntroRTL */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
 				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
@@ -300,6 +305,15 @@
 				24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */,
 			);
 			name = Subviews;
+			sourceTree = "<group>";
+		};
+		24D18D181F3DECD6008129EF /* IntroRTL */ = {
+			isa = PBXGroup;
+			children = (
+				24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */,
+				24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */,
+			);
+			name = IntroRTL;
 			sourceTree = "<group>";
 		};
 		24E654801E69040000A72A8B /* Domain */ = {
@@ -511,7 +525,9 @@
 				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
+				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
 				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,
+				24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */,
 				2439CC351E665BF6003326FB /* MenuView.swift in Sources */,
 				2493268C1EEEEFF100BCB814 /* BaseViewController.swift in Sources */,
 				2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */,

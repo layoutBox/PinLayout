@@ -21,6 +21,25 @@ extension PinLayoutImpl {
         }
     }
     
+    @discardableResult
+    internal func left(_ context: Context) -> PinLayout {
+        setLeft(0, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func left(_ value: CGFloat, _ context: Context) -> PinLayout {
+        setLeft(value, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func left(_ percent: Percent, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setLeft(percent.of(layoutSuperview.frame.width), context)
+        return self
+    }
+    
     internal func setLeft(_ value: CGFloat, _ context: Context) {
         if let _right = _right, let width = width  {
             warnConflict(context, ["right": _right, "width": width])
@@ -33,15 +52,57 @@ extension PinLayoutImpl {
         }
     }
     
+    internal func setStart(_ value: CGFloat, _ context: Context) {
+        if isLTR() {
+            setLeft(value, context)
+        } else {
+            setRight(value, context)
+        }
+    }
+    
+    @discardableResult
+    internal func right(_ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func right(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width - value, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func right(_ percent: Percent, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setRight(layoutSuperview.frame.width - percent.of(layoutSuperview.frame.width), context)
+        return self
+    }
+    
     internal func setRight(_ value: CGFloat, _ context: Context) {
         if let _left = _left, let width = width  {
             warnConflict(context, ["left": _left, "width": width])
         } else if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _right = _right, _right != value {
-            warnPropertyAlreadySet("right", propertyValue: _right, context)
+            if let layoutSuperview = layoutSuperview(context) {
+                warnPropertyAlreadySet("right", propertyValue: layoutSuperview.frame.width - _right, context)
+            } else {
+                warnPropertyAlreadySet("right", propertyValue: _right, context)
+            }
         } else {
             _right = value
+        }
+    }
+    
+    // TODO: Delete this function?
+    internal func setEnd(_ value: CGFloat, _ context: Context) {
+        if isLTR() {
+            setRight(value, context)
+        } else {
+            setLeft(value, context)
         }
     }
     
@@ -83,64 +144,64 @@ extension PinLayoutImpl {
     
     @discardableResult
     internal func setTopLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setLeft(point.x, context)
         setTop(point.y, context)
+        setLeft(point.x, context)
         return self
     }
     
     @discardableResult
     internal func setTopCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setHorizontalCenter(point.x, context)
         setTop(point.y, context)
+        setHorizontalCenter(point.x, context)
         return self
     }
     
     @discardableResult
     internal func setTopRight(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setRight(point.x, context)
         setTop(point.y, context)
+        setRight(point.x, context)
         return self
     }
     
     @discardableResult
-    internal func setLeftCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setLeft(point.x, context)
+    internal func setCenterLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
         setVerticalCenter(point.y, context)
+        setLeft(point.x, context)
         return self
     }
-    
+
     @discardableResult
     internal func setCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setHorizontalCenter(point.x, context)
         setVerticalCenter(point.y, context)
+        setHorizontalCenter(point.x, context)
         return self
     }
     
     @discardableResult
-    internal func setRightCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setRight(point.x, context)
+    internal func setCenterRight(_ point: CGPoint, _ context: Context) -> PinLayout {
         setVerticalCenter(point.y, context)
+        setRight(point.x, context)
         return self
     }
-    
+
     @discardableResult
     internal func setBottomLeft(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setLeft(point.x, context)
         setBottom(point.y, context)
+        setLeft(point.x, context)
         return self
     }
     
     @discardableResult
     internal func setBottomCenter(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setHorizontalCenter(point.x, context)
         setBottom(point.y, context)
+        setHorizontalCenter(point.x, context)
         return self
     }
     
     @discardableResult
     internal func setBottomRight(_ point: CGPoint, _ context: Context) -> PinLayout {
-        setRight(point.x, context)
         setBottom(point.y, context)
+        setRight(point.x, context)
         return self
     }
     

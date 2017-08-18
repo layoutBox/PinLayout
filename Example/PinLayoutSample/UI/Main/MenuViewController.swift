@@ -35,6 +35,7 @@ enum PageType: Int {
     case relativePositions
     case multiRelativePositions
     case autoAdjustingSize
+    case introRTL
     
     case count
     
@@ -47,6 +48,7 @@ enum PageType: Int {
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
         case .autoAdjustingSize:          return "Auto adjusting size"
+        case .introRTL:                   return "PinLayout's right-to-left language support"
         case .count:                      return ""
         }
     }
@@ -60,6 +62,7 @@ enum PageType: Int {
         case .relativePositions:          return RelativeViewController(pageType: self)
         case .multiRelativePositions:     return MultiRelativeViewController(pageType: self)
         case .autoAdjustingSize:          return AutoAdjustingSizeViewController(pageType: self)
+        case .introRTL:                   return IntroRTLViewController(pageType: self)
         case .count:                      return UIViewController()
         }
     }

@@ -7,12 +7,51 @@
 
 # Change Log
 
+## [1.2.0](https://github.com/mirego/PinLayout/releases/tag/1.2.0)
+Released on 2017-08-18. 
+
+#### Change
+* **Breaking change related to the following anchor's name**. The change makes these anchor's name more standard:  
+  * **UIView.anchors.leftCenter** has been renamed UIView.anchors.centerLeft
+  * **UIView.anchors.rightCenter** has been renamed UIView.anchors.centerRight
+
+* **Add left to right (LTR) and right to left (RTL) language support**.  
+Additions:
+  * Pin.layoutDirection(_ direction: LayoutDirection)
+  * start(), start(_ value: CGFloat), start(_ percent: Percent)
+  * end(), end(_ value: CGFloat), end(_ percent: Percent)
+  * UIView.edge.start
+  * UIView.edge.end
+  * UIView.anchor.topStart
+  * UIView.anchor.topEnd
+  * UIView.anchor.centerStart
+  * UIView.anchor.centerEnd
+  * UIView.anchor.bottomStart
+  * UIView.anchor.bottomEnd
+  * topStart(to anchor: Anchor), topStart()
+  * topEnd(to anchor: Anchor), topEnd()
+  * centerStart(to anchor: Anchor), centerStart()
+  * centerEnd(to anchor: Anchor), centerEnd()
+  * bottomStart(to anchor: Anchor), bottomStart()
+  * bottomEnd(to anchor: Anchor), bottomEnd()
+  * before(of: UIView), before(of: [UIView])
+  * before(of: UIView, aligned: VerticalAlign), before(of: [UIView], aligned: VerticalAlign)
+  * after(of: UIView), after(of: [UIView])
+  * after(of: UIView, aligned: VerticalAlign), after(of: [UIView], aligned: VerticalAlign)
+  * marginStart(_ value: CGFloat)
+  * marginEnd(_ value: CGFloat)
+  * HorizontalAlign.start
+  * HorizontalAlign.end
+  * Added by [Luc Dion](https://github.com/luc-dion) in Pull Request [#56](https://github.com/mirego/PinLayout/pull/56) 
+
+
+
 ## [1.1.5](https://github.com/mirego/PinLayout/releases/tag/1.1.5)
 Released on 2017-07-14. 
 
 #### Change
 * Fix missing UIKit import. The problem was occuring while using Swift Package Manager.
-  * Added by [Luc Dion](https://github.com/luc-dion) in Pull Request [#56](https://github.com/mirego/PinLayout/pull/56) 
+  * Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#67](https://github.com/mirego/PinLayout/pull/67) 
 
 
 ## [1.1.4](https://github.com/mirego/PinLayout/releases/tag/1.1.4)

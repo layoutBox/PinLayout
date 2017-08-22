@@ -54,7 +54,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 <a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="250"/></a>
 
-:pushpin: ** PinLayout** is a companion of **[FlexLayout](https://github.com/lucdion/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation, it is particularly useful in situations where you view contains many children and you don't require the  finest control of PinLayout or don't have to do complex animations.
+:pushpin: **PinLayout** is a companion of **[FlexLayout](https://github.com/lucdion/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation, it is particularly useful in situations where you view contains many children and you don't require the  finest control of PinLayout or don't have to do complex animations.
 
 Note that a view layouted using PinLayout can be embedded inside a FlexLayout's flexbox container and reversely PinLayout can layout a FlexLayout view. You choose the best layout framework for your situation. 
 

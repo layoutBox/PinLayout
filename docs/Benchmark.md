@@ -13,18 +13,18 @@
 ## Methodology  <a name="methodology"></a>
 
 ##### LayoutKit Benchmark
-PinLayout's performance has been tested using a fork of [LayoutKit](https://github.com/mirego/LayoutKit). LayoutKit include an example app with a really nice and simple benchmark. It is used to compare LayoutKit with Auto layout, UIStackViews and manual layouting. 
+PinLayout and [FlexLayout](https://github.com/lucdion/FlexLayout) performance has been tested using a [fork of LayoutKit](https://github.com/mirego/LayoutKit). LayoutKit include an example app with a really nice and simple benchmark. It is used to compare LayoutKit with Auto layout, UIStackViews and manual layouting. 
 
-The benchmark has been modified to also include [PinLayout](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemPinLayoutView.swift). Remark in the implemantation that PinLayout's layout code is concise, clean and doesn't contain any computation [compared to Manual Layouting source code](#source_code_compare).
-
+The benchmark has been modified to also include PinLayout ([source code](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemFlexLayoutView.swift)) and FlexLayout ([source code](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemPinLayoutView.swift)). You can remark in source code how PinLayout and FlexLayout implemantation is concise, clean and doesn't contain any computation [compared to Manual Layouting source code](#source_code_compare).
 
 The benchmark include tests for the following layout systems:
 
 * Auto layout
 * Auto layout using UIStackViews
-* LayoutKit
 * Manual layout (i.e. set UIView's frame directly)
-* PinLayout
+* [FlexLayout](https://github.com/lucdion/FlexLayout)
+* [PinLayout](https://github.com/mirego/PinLayout)
+* [LayoutKit](https://github.com/linkedin/LayoutKit)
 
 Anyone who would like to integrate any other layout frameworks to this GitHub repository is welcome.
 
@@ -34,9 +34,10 @@ The LayoutKit benchmark layout UICollectionView and UITableView cells in multipl
 ##### Benchmark cell layout
 Here are the benchmark rendering results to compare visual results:
  
-* [Auto layout rendering result](Benchmark/Benchmark-Autolayout.png)
-* [PinLayout rendering result](Benchmark/Benchmark-PinLayout.png)
-* [LayoutKit rendering result](Benchmark/Benchmark-LayoutKit.png)
+* [Auto layout rendering result](Benchmark/benchmark_result_Autolayout.png)
+* [FlexLayout rendering result](Benchmark/benchmark_result_FlexLayout.png)
+* [PinLayout rendering result](Benchmark/benchmark_result_PinLayout.png)
+* [LayoutKit rendering result](Benchmark/benchmark_result_LayoutKit.png)
 
 <br>
 
@@ -44,50 +45,56 @@ Here are the benchmark rendering results to compare visual results:
 
 As you can see in the following charts, PinLayout's performance is as fast as manual layouting, and **between 12x and 16x faster than auto layout**, for all types of iPhone (5/6/6S/7). [LayoutKit](https://github.com/linkedin/LayoutKit) is also really fast, slightly slower than PinLayout and manual layouting.
 
-These results means that PinLayout is faster than any layout frameworks that is built over auto layout (SnapKit, Stevia, PureLayout, ...). 
+These results means that PinLayout and FlexLayout are faster than any layout frameworks that is built over auto layout (SnapKit, Stevia, PureLayout, ...). 
 
 For example it took 611 miliseconds to render 100 UICollectionView's cells using Auto layout on a iPhone 6 compared to 53 miliseconds for PinLayout. Its 12 time faster.
 
 <br>
 
-#### PinLayout performance compared to  Auto layout when layouting 100 UICollectionView's cells
+### PinLayout and FlexLayout performance compared to Auto layout 
 
-|           | PinLayout performance compared to  Auto layout | Auto layout time  (seconds) | PinLayout time  (seconds) |
-|:---------:|:-----------------------------------------------------------------------:|:---------------------------:|:-------------------------:|
-|  iPhone 5 |                                16x Faster                               |            2.074            |           0.126           |
-|  iPhone 6 |                                12x Faster                               |            0.611            |           0.053           |
-| iPhone 6S |                                12x Faster                               |            0.344            |           0.029           |
-|  iPhone 7 |                                14x Faster                               |            0.293            |           0.021           |
+This table shows FlexLayout and PinLayout performance compared to  Auto layout when layouting UICollectionView's cells.
 
+The table shows that **FlexLayout took 23 miliseconds** to render 100 UICollectionView's cells on a iPhone 6 compared to **53 miliseconds for PinLayout** and **611 ms for Auto layout**. Its 26 time faster for FlexLayout and 12 time faster for PinLayout.
+
+|           | Auto layout time  (seconds) |  **PinLayout** time  (seconds) | **PinLayout** performance compared to Auto layout | **FlexLayout** time  (seconds) | **FlexLayout** performance compared to Auto layout |
+|:---------:|:---------:|:---------:|:-----------------------------------------------------------------------:|:---------------------------:|:-------------------------:|
+|  iPhone 5 | 2.074 |  0.126 | 16x Faster | 0.067 | 31x Faster | 
+|  iPhone 6 | 0.611 |  0.053 | 12x Faster| 0.023 | 26x Faster  | 
+| iPhone 6S | 0.344 |  0.029 | 12x Faster| NA | NA  | 
+|  iPhone 7 | 0.293 |  0.021 | 14x Faster| 0.008 | 37x Faster  | 
 <br>
 
 #### Benchmark charts  
 
-:pushpin: You can see the benchmark raw data in this [spreadsheet](Benchmark/Benchmark.xlsx).
+:pushpin: You can see the benchmark raw data in this [spreadsheet](Benchmark/benchmark.xlsx).
 
 
 <p align="center">
-  <a href=""><img src="Benchmark/Benchmark-iPhone5.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iPhone5.png" alt="PinLayout Performance"/></a>
   
 <p align="center">
-  <a href=""><img src="Benchmark/Benchmark-iPhone6.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iPhone6.png" alt="PinLayout Performance"/></a>
 
 <p align="center">
-  <a href=""><img src="Benchmark/Benchmark-iPhone6S.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iPhone6S.png" alt="PinLayout Performance"/></a>
   
 <p align="center">
-  <a href=""><img src="Benchmark/Benchmark-iPhone7.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iPhone7.png" alt="PinLayout Performance"/></a>
   
 
 <br>
 
-## Benchmark Source code <a name="source_code_compare"></a>
+## Code source comparison <a name="code_source_comparison"></a>
+This section shows the benchmark layout code for each type of layout framework.
 
-[PinLayout's layout source code](#pinlayout_code) is concise, clean and doesn't contain any computation as [Manual Layouting source code](#manual_code)
+Remark how PinLayout and FlexLayout code is concise and clean compared to Manual Layout and Auto layout source code.
 
-### PinLayout benchmark source code <a name="pinlayout_code"></a>
+### PinLayout source code
 
-```
+[See PinLayout source code on GitHub](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemPinLayoutView.swift)
+
+```swift
 override func layoutSubviews() {
     super.layoutSubviews()
     
@@ -121,9 +128,54 @@ override func layoutSubviews() {
 
 <br>
 
-#### Manual layouting benchmark source code <a name="manual_code"></a>
+### FlexLayout source code
 
-``` 
+[See FlexLayout source code on GitHub](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemFlexLayoutView.swift)
+
+```swift
+flex.addItem(contentView).padding(8).define { (flex) in
+    flex.addItem(contentView).padding(8).define { (flex) in
+        flex.addContainer().direction(.row).justifyContent(.spaceBetween).define { (flex) in
+            flex.addItem(actionLabel)
+            flex.addItem(optionsLabel)
+        }
+        
+        flex.addContainer().direction(.row).alignItems(.center).define({ (flex) in
+            flex.addItem(posterImageView).width(50).height(50).marginRight(8)
+
+            flex.addContainer().grow(1).define({ (flex) in
+                flex.addItem(posterNameLabel)
+                flex.addItem(posterHeadlineLabel)
+                flex.addItem(posterTimeLabel)
+            })
+        })
+
+        flex.addItem(posterCommentLabel)
+
+        flex.addItem(contentImageView).aspectRatio(350 / 200)
+        flex.addItem(contentTitleLabel)
+        flex.addItem(contentDomainLabel)
+
+        flex.addContainer().direction(.row).justifyContent(.spaceBetween).marginTop(4).define({ (flex) in
+            flex.addItem(likeLabel)
+            flex.addItem(commentLabel)
+            flex.addItem(shareLabel)
+        })
+
+        flex.addContainer().direction(.row).marginTop(2).define({ (flex) in
+            flex.addItem(actorImageView).width(50).height(50).marginRight(8)
+            flex.addItem(actorCommentLabel).grow(1)
+        })
+    }
+}
+```
+
+### Manual layout source code
+
+[See Manual layout source code on GitHub](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemManualView.swift)
+
+
+```swift 
 override func layoutSubviews() {
     super.layoutSubviews()
     
@@ -194,4 +246,6 @@ override func layoutSubviews() {
 
 <br>
 
+### Auto layout source code
 
+[See Auto layout source code on GitHub](https://github.com/mirego/LayoutKit/blob/master/LayoutKitSampleApp/Benchmarks/FeedItemAutoLayoutView.swift)

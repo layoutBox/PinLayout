@@ -73,7 +73,7 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 * **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
 
 
-![](docs/pinlayout-intro-example.png)
+<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/Intro/IntroView.swift"><img src="docs/pinlayout-intro-example.png"/></a>
 
 ```swift
 override func layoutSubviews() {
@@ -90,7 +90,7 @@ override func layoutSubviews() {
 
 :pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
 
-:pushpin: This example is available in the [Examples App](#examples_app). 
+:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/Intro/IntroView.swift)
 
 <br/>
 
@@ -100,7 +100,8 @@ This example shows how easily PinLayout can adjust its layout based on the view'
 * If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
 * If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
 
-![](docs/pinlayout_example_adjust_to_container2.png)
+<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container2.png"/></a>
+
 
 ```swift
   let margin: CGFloat = 12
@@ -114,9 +115,9 @@ This example shows how easily PinLayout can adjust its layout based on the view'
   }
 ``` 
 
-:pushpin: Would it be that easily using auto layout?
+:pushpin: Would it be easier using auto layout?
 
-:pushpin: This example is also available in the [Examples App](#examples_app). 
+:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/AdjustToContainer/Subviews/ChoiceSelectorView.swift)
 
 <br/>
 
@@ -730,6 +731,37 @@ Set the view’s size to match the referenced view’s size
 
 <br/>
 
+### sizeToFit()
+
+**Method:**
+
+* `sizeToFit()`  
+`sizeToFit()` is the equivalent of calling sizeThatFits(_: CGSize) once PinLayout has determined the view's width and/or height and has applied margins. **`sizeToFit()` is applied only if at least the width or the height (or both) can be determined.**
+
+###### Usage examples:
+```javascript
+    // Adjust the label's size based on a width of 200 pixels
+    label.pin.width(200).sizeToFit()    
+    
+    // Adjust the label's size based on the computed view's width
+    label.pin.left().right().sizeToFit() 
+    
+    // WRONG, neither the width nor the height can be determined, sizeToFit() won't be applied
+    label.pin.top().left().sizeToFit()
+```
+
+###### Example:
+The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note on the result that the UILabel’s height has changed to fit its content.
+
+![](Docs/pinlayout-sizeToFit.png)
+
+```javascript
+	label.pin.right(of: image, aligned: .top).right().marginHorizontal(10).sizeToFit()
+```
+
+
+<br/>
+
 ## minWidth, maxWidth, minHeight, maxHeight <a name="minmax_width_height_size"></a>
 
 PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
@@ -1150,20 +1182,24 @@ dependencies: [
 ## Examples App <a name="examples_app"></a>
 There is an Example app that expose some usage example on PinLayout, including:
 
-* An example of UITableView with variable height cells.
 * The [example](#intro_usage_example) presented priviously in this README.
+* An example showing of the right-to-left (RTL) language support. Similar to the Intro example.
+* An example of UITableView with variable height cells.
 * Example showing a form
 * Example showing relative positioning.
 * ...
 
+:pushpin: Tap on images to see the example's source code.
+
 <p align="center">
-  <img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/>
-  <img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/>
-  <img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/>
-  <img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/>
-  <img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/>
-  <img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/>  
-  <img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" width=120/>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/Intro/IntroView.swift"><img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/IntroRTL/IntroRTLView.swift"><img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/> </a> 
+  <a href="https://github.com/mirego/PinLayout/tree/master/Example/PinLayoutSample/UI/Tests/MultiRelativeView"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" width=120/></a>
 </p>
 
 This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.

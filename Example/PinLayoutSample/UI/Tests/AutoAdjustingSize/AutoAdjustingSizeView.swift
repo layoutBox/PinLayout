@@ -84,12 +84,12 @@ class AutoAdjustingSizeView: BaseView {
 
         contentScrollView.pin.topLeft().bottomRight()
         
-        row1.pin.topLeft().right().height(40)
-        row1Item1.pin.topLeft().bottom().width(50).margin(2)
+        row1.pin.top().left().right().height(40)
+        row1Item1.pin.top().left().bottom().width(50).margin(2)
         row1Item2.pin.right(of: row1Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
 
         row2.pin.below(of: row1, aligned: .left).size(of: row1).marginTop(10)
-        row2Item1.pin.topRight().bottom().width(150).width(25%).margin(2)
+        row2Item1.pin.top().right().bottom().width(150).width(25%).margin(2)
         row2Item2.pin.left(of: row2Item1, aligned: .top).bottomLeft().margin(0, 2, 2, 2)
 
         row3.pin.below(of: row2, aligned: .left).size(of: row1).marginTop(10)
@@ -98,7 +98,7 @@ class AutoAdjustingSizeView: BaseView {
         row3Item3.pin.right(of: row3Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
 
         row4.pin.below(of: row3, aligned: .left).size(of: row1).marginTop(10)
-        row4Item1.pin.topLeft().width(25%).bottom().margin(2)
+        row4Item1.pin.top().left().width(25%).bottom().margin(2)
         row4Item2.pin.right(of: row4Item1, aligned: .top).width(50%).bottom().margin(0, 2, 2, 2)
         row4Item3.pin.right(of: row4Item2, aligned: .top).bottomRight().margin(0, 2, 2, 2)
         

@@ -21,8 +21,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### Requirements
 * iOS 8.0+ / tvOS 9.0+
-* Xcode 8.0+
-* Swift 3.0+
+* Xcode 8.0+ / Xcode 9.0
+* Swift 3.0+ / Swift 4.0
 
 ### Content
 

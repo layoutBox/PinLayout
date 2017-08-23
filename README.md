@@ -206,6 +206,8 @@ Set the PinLayout layout direction. Note that this set PinLayout's layout direct
 
 RTL full documentation coming soon....
 
+:pushpin: See the RTL enabled "Introduction example" [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/IntroRTL/IntroRTLView.swift). This example is available in the [Examples App](#examples_app)
+
 <br/>
 
 ## Layout using distances from superview’s edges <a name="distance_from_superview_edge"></a>
@@ -1182,7 +1184,8 @@ dependencies: [
 ## Examples App <a name="examples_app"></a>
 There is an Example app that expose some usage example on PinLayout, including:
 
-* The [example](#intro_usage_example) presented priviously in this README.
+* The [introduction example](#intro_usage_example) presented priviously in this README.
+* An RTL enabled version of the [introduction example](#intro_usage_example)
 * An example showing of the right-to-left (RTL) language support. Similar to the Intro example.
 * An example of UITableView with variable height cells.
 * Example showing a form
@@ -1193,7 +1196,6 @@ There is an Example app that expose some usage example on PinLayout, including:
 
 <p align="center">
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/Intro/IntroView.swift"><img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/IntroRTL/IntroRTLView.swift"><img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Tests/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/></a>

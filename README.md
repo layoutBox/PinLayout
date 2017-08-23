@@ -50,13 +50,15 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 :pushpin: PinLayout is actively updated. So please come often to see latest changes. You can also **Star** it to be able to retrieve it easily later.
 
-**PinLayout + FlexLayout**
+### PinLayout + FlexLayout
 
 <a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="250"/></a>
 
-:pushpin: **PinLayout** is a companion of **[FlexLayout](https://github.com/lucdion/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation, it is particularly useful in situations where you view contains many children and you don't require the  finest control of PinLayout or don't have to do complex animations.
+**PinLayout** is a companion of **[FlexLayout](https://github.com/lucdion/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation.
 
-Note that a view layouted using PinLayout can be embedded inside a FlexLayout's flexbox container and reversely PinLayout can layout a FlexLayout view. You choose the best layout framework for your situation. 
+* A view can be layouted using PinLayout, FlexLayout, or both!
+* FlexLayout it is particularly useful in situations where you need to layouts many views but don't require the PinLayout's finest control nor complex animations.
+* A view layouted using PinLayout can be embedded inside a FlexLayout's container and reversely. You choose the best layout framework for your situation. 
 
 <br>
 
@@ -1146,7 +1148,7 @@ dependencies: [
 <br>
 
 ## Examples App <a name="examples_app"></a>
-There is a tiny Example app that expose some usage example on PinLayout, including:
+There is an Example app that expose some usage example on PinLayout, including:
 
 * An example of UITableView with variable height cells.
 * The [example](#intro_usage_example) presented priviously in this README.

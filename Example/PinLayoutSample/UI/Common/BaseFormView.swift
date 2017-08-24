@@ -34,6 +34,7 @@ class BaseFormView: BaseView {
         
         formScrollView.showsVerticalScrollIndicator = false
         formScrollView.keyboardDismissMode = .onDrag
+        
         formScrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapScrollView)))
         addSubview(formScrollView)
         
@@ -60,16 +61,16 @@ class BaseFormView: BaseView {
         formScrollView.contentOffset = CGPoint(x: 0, y: topLayoutGuide)
     }
     
-    internal func keyboardWillShow(notification: Notification) {
+    @objc internal func keyboardWillShow(notification: Notification) {
         guard let sizeValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
         setFormScrollView(bottomInset: sizeValue.cgRectValue.height)
     }
     
-    internal func keyboardWillHide(notification: Notification) {
+    @objc internal func keyboardWillHide(notification: Notification) {
         resetScrollOffset()
     }
     
-    internal func didTapScrollView() {
+    @objc internal func didTapScrollView() {
         endEditing(true)
         resetScrollOffset()
     }

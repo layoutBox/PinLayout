@@ -225,7 +225,7 @@ class AdjustSizeSpec: QuickSpec {
         // sizeToFit
         //
         describe("the result of the sizeToFit() method") {
-            it("should adjust the size of aView by calling sizeToFit() method without having specified width and height") {
+            it("should not adjust the size of aView if width or height has not been specified") {
                 aView.pin.sizeToFit()
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 60.0)))
             }

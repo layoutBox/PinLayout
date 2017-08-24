@@ -818,7 +818,7 @@ This is an equivalent solutions using the `justify()` method. This method is exp
 
 ## justify() / align() <a name="justify_align"></a>
 
-**Method:**
+**Methods:**
 
 * **`justify(_ : HorizontalAlign)`**  
 Justify the view horizontally. This method justifies horizontally a view in situations where the left, right and the width has been set (using either width/minWidth/maxWidth). In this situation, the view may be smaller than the space available between the left and the right edges. A view can be justified **left**, **center**, **right**, **start***, **end***. 

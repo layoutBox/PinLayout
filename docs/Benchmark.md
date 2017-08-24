@@ -71,16 +71,16 @@ The table shows that **FlexLayout took 23 miliseconds** to render 100 UICollecti
 
 
 <p align="center">
-  <a href=""><img src="Benchmark/benchmark_iPhone5.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iphone5.png" alt="PinLayout Performance"/></a>
   
 <p align="center">
-  <a href=""><img src="Benchmark/benchmark_iPhone6.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iphone6.png" alt="PinLayout Performance"/></a>
 
 <p align="center">
-  <a href=""><img src="Benchmark/benchmark_iPhone6S.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iphone6S.png" alt="PinLayout Performance"/></a>
   
 <p align="center">
-  <a href=""><img src="Benchmark/benchmark_iPhone7.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_iphone7.png" alt="PinLayout Performance"/></a>
   
 
 <br>

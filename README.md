@@ -1252,7 +1252,7 @@ PinLayout was inspired by other great layout frameworks, including:
 <br>
 
 ## History
-PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md).
+PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [GitHub Releases](https://github.com/mirego/PinLayout/releases).
 
 <br>
 

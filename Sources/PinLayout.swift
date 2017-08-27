@@ -71,7 +71,6 @@ public extension UIView {
 
 /// UIViews's anchor definition
 public protocol Anchor {
-    var point: CGPoint { get }
 }
 
 /// UIViews's list of anchors.
@@ -127,7 +126,7 @@ public protocol EdgeList {
 /// PinLayout interface
 public protocol PinLayout {
     //
-    // Layout using distances from superview’s edges
+    // MARK: Layout using distances from superview’s edges
     //
     @discardableResult func top() -> PinLayout
     @discardableResult func top(_ value: CGFloat) -> PinLayout
@@ -162,7 +161,7 @@ public protocol PinLayout {
     @discardableResult func end(_ percent: Percent) -> PinLayout
     
     //
-    // Layout using edges
+    // MARK: Layout using edges
     //
     @discardableResult func top(to edge: VerticalEdge) -> PinLayout
     @discardableResult func left(to edge: HorizontalEdge) -> PinLayout
@@ -173,7 +172,7 @@ public protocol PinLayout {
     @discardableResult func end(to edge: HorizontalEdge) -> PinLayout
 
     //
-    // Layout using anchors
+    // MARK: Layout using anchors
     //
     @discardableResult func topLeft(to anchor: Anchor) -> PinLayout
     @discardableResult func topLeft() -> PinLayout
@@ -215,7 +214,7 @@ public protocol PinLayout {
     @discardableResult func bottomEnd() -> PinLayout
 
     //
-    // Layout using relative positioning
+    // MARK: Layout using relative positioning
     //
     @discardableResult func above(of: UIView) -> PinLayout
     @discardableResult func above(of: [UIView]) -> PinLayout
@@ -248,7 +247,13 @@ public protocol PinLayout {
     @discardableResult func after(of: [UIView], aligned: VerticalAlign) -> PinLayout
 
     //
-    // Width, height and size
+    // MARK: justify / align
+    //
+    @discardableResult func justify(_: HorizontalAlign) -> PinLayout
+    @discardableResult func align(_: VerticalAlign) -> PinLayout
+    
+    //
+    // MARK: Width, height and size
     //
     @discardableResult func width(_ width: CGFloat) -> PinLayout
     @discardableResult func width(_ percent: Percent) -> PinLayout
@@ -271,13 +276,12 @@ public protocol PinLayout {
     @discardableResult func size(_ percent: Percent) -> PinLayout
     @discardableResult func size(of view: UIView) -> PinLayout
     
+    @available(*, deprecated, message: "You should now use fitSize() instead.")
     @discardableResult func sizeToFit() -> PinLayout
-    
-    @discardableResult func justify(_: HorizontalAlign) -> PinLayout
-    @discardableResult func align(_: VerticalAlign) -> PinLayout
-    
+    @discardableResult func fitSize() -> PinLayout
+
     //
-    // Margins
+    // MARK: Margins
     //
     @discardableResult func marginTop(_ value: CGFloat) -> PinLayout
     @discardableResult func marginLeft(_ value: CGFloat) -> PinLayout
@@ -357,31 +361,11 @@ public enum VerticalAlign: String {
 
 /// UIView's horizontal edges (left/right) definition
 public protocol HorizontalEdge {
-    var x: CGFloat { get }
 }
 
 /// UIView's vertical edges (top/bottom) definition
 public protocol VerticalEdge {
-    var y: CGFloat { get }
 }
 
-/// Percent
-public struct Percent {
-    let value: CGFloat
-}
-
-postfix operator %
-public postfix func % (v: CGFloat) -> Percent {
-    return Percent(value: v)
-}
-
-public postfix func % (v: Int) -> Percent {
-    return Percent(value: CGFloat(v))
-}
-
-prefix operator -
-public prefix func - (p: Percent) -> Percent {
-    return Percent(value: -p.value)
-}
         
 #endif

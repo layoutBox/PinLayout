@@ -71,7 +71,7 @@ class IntroRTLView: BaseView {
         
         logo.pin.top().start().size(100).margin(topLayoutGuide + 10, 10, 10, 10)
         segmented.pin.after(of: logo, aligned: .top).end().marginHorizontal(10)
-        textLabel.pin.below(of: segmented, aligned: .start).width(of: segmented).pinEdges().marginTop(10).sizeToFit()
+        textLabel.pin.below(of: segmented, aligned: .start).width(of: segmented).pinEdges().marginTop(10).fitSize()
         separatorView.pin.below(of: [logo, textLabel], aligned: .start).end(to: segmented.edge.end).marginTop(10)
     }
 }

@@ -30,8 +30,6 @@ import Foundation
 #if os(iOS) || os(tvOS)
 import UIKit
     
-public var unitTestLastWarning: String?
-
 class PinLayoutImpl: PinLayout {
     internal let view: UIView
 
@@ -682,7 +680,13 @@ class PinLayoutImpl: PinLayout {
         shouldSizeToFit = true
         return self
     }
-    
+
+    @discardableResult
+    func fitSize() -> PinLayout {
+        shouldSizeToFit = true
+        return self
+    }
+
     @discardableResult
     func justify(_ value: HorizontalAlign) -> PinLayout {
         justify = value

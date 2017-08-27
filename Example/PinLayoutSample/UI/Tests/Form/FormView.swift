@@ -110,7 +110,8 @@ class FormView: BaseFormView {
         formScrollView.contentSize = formContainerView.frame.size
     }
     
-    @objc internal func didChangeAgeSwitch(uiSwitch: UISwitch) {
+    @objc
+    internal func didChangeAgeSwitch(uiSwitch: UISwitch) {
         // Animate the appearance/disapearance of the age UITextField
         UIView.animate(withDuration: 0.2) { 
             self.ageField.alpha = uiSwitch.isOn ? 1 : 0

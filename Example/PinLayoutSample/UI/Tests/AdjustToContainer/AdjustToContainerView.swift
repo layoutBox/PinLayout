@@ -49,8 +49,8 @@ class AdjustToContainerView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        languageSelectorView.pin.top(topLayoutGuide).left().right().sizeToFit()
-        swiftOpinionSelectorView.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).sizeToFit()
-        swiftUsageSelectorView.pin.below(of: swiftOpinionSelectorView, aligned: .left).right().marginTop(10).sizeToFit()
+        languageSelectorView.pin.top(topLayoutGuide).left().right().fitSize()
+        swiftOpinionSelectorView.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).fitSize()
+        swiftUsageSelectorView.pin.below(of: swiftOpinionSelectorView, aligned: .left).right().marginTop(10).fitSize()
     }
 }

@@ -54,7 +54,7 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
         */
 
         beforeEach {
-            unitTestLastWarning = nil
+            _pinlayoutUnitTestLastWarning = nil
             
             viewController = UIViewController()
             
@@ -87,21 +87,21 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
                 let unatachedView = UIView()
                 bViewChild.pin.above(of: unatachedView)
                 expect(bViewChild.frame).to(equal(CGRect(x: 40, y: 10, width: 60, height: 20)))
-                expect(unitTestLastWarning).to(contain(["above", "won't be applied", "no valid references"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["above", "won't be applied", "no valid references"]))
             }
             
             it("should warns the view bottom edge") {
                 let unatachedView = UIView()
                 bViewChild.pin.above(of: [aView, unatachedView])
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -40.0, width: 60.0, height: 20.0)))
-                expect(unitTestLastWarning).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))
             }
             
             it("Should warn, but the view should be anyway layout it above") {
                 let unatachedView = UIView()
                 bViewChild.pin.above(of: [aView, unatachedView])
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -40.0, width: 60.0, height: 20.0)))
-                expect(unitTestLastWarning).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))
             }
         }
         

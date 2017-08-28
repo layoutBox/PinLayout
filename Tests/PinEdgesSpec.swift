@@ -45,7 +45,7 @@ class PinEdgesSpec: QuickSpec {
         */
 
         beforeEach {
-            unitTestLastWarning = nil
+            _pinlayoutUnitTestLastWarning = nil
         
             viewController = UIViewController()
             
@@ -336,7 +336,7 @@ class PinEdgesSpec: QuickSpec {
             it("should not apply hCenter") {
                 aView.pin.left().hCenter(-20)
                 expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 200.0, height: 100.0)))
-                expect(unitTestLastWarning).to(contain(["hCenter", "won't be applied", "left"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["hCenter", "won't be applied", "left"]))
             }
             
             it("should warns that the view is not added to any view") {
@@ -387,7 +387,7 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.top().vCenter(-20)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
-                expect(unitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
             }
             
             it("should warns that the view is not added to any view") {
@@ -395,7 +395,7 @@ class PinEdgesSpec: QuickSpec {
                 unAttachedView.pin.vCenter(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 200.0, height: 10)))
-                expect(unitTestLastWarning).to(contain(["vCenter", "won't be applied", "view must be added"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "view must be added"]))
             }
             
             it("should adjust the aView") {
@@ -411,7 +411,7 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.top().vCenter(-20%)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
-                expect(unitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
             }
         }
     }

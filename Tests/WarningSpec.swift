@@ -42,11 +42,11 @@ class WarningSpec: QuickSpec {
         */
         
         beforeSuite {
-            setUnitTest(displayScale: 2)
+            _pinlayoutSetUnitTest(displayScale: 2)
         }
 
         beforeEach {
-            unitTestLastWarning = nil
+            _pinlayoutUnitTestLastWarning = nil
             
             viewController = UIViewController()
             
@@ -67,13 +67,13 @@ class WarningSpec: QuickSpec {
             it("test when left & right & width is set") {
                 aView.pin.left().right().width(100%).pinEdges()
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 60.0)))
-                expect(unitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "horizontally"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "horizontally"]))
             }
             
             it("test when top & bottom & height is set") {
                 aView.pin.top().bottom().height(100%).pinEdges()
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 400.0)))
-                expect(unitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "vertically"]))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "vertically"]))
             }
         }
     }

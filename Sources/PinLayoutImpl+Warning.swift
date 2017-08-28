@@ -84,7 +84,7 @@ extension PinLayoutImpl {
     
     internal func displayWarning(_ text: String) {
         print(text)
-        unitTestLastWarning = text
+        _pinlayoutUnitTestLastWarning = text
     }
     
     internal func viewDescription(_ view: UIView) -> String {

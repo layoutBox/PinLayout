@@ -38,6 +38,10 @@
 		24B02B0E1F2A713D00C18179 /* PinLayoutImpl+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A271EF550E2003643D3 /* PinLayoutImpl+Relative.swift */; };
 		24B02B0F1F2A713D00C18179 /* PinLayoutImpl+Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */; };
 		24B02B101F2A713D00C18179 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF11A3701E833F03008B33E5 /* TypesImpl.swift */; };
+		24BBE6351F50FA1D0091D5E9 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */; };
+		24BBE6371F50FADE0091D5E9 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBE6361F50FADE0091D5E9 /* Percent.swift */; };
+		24BBE6381F52EC380091D5E9 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */; };
+		24BBE6391F52EC450091D5E9 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBE6361F50FADE0091D5E9 /* Percent.swift */; };
 		24D18D121F350157008129EF /* UIView+LTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D111F350157008129EF /* UIView+LTR.swift */; };
 		24D18D171F3B4381008129EF /* RTLSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D151F3B42E0008129EF /* RTLSpec.swift */; };
 		24D18D241F3E37DD008129EF /* PinLayoutGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* PinLayoutGlobals.swift */; };
@@ -99,6 +103,8 @@
 		24A9782D1EE845BB002BD0F1 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		24A9782F1EE845CD002BD0F1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		24A978301EE845CD002BD0F1 /* PinLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinLayout.h; path = Sources/PinLayout.h; sourceTree = SOURCE_ROOT; };
+		24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnitTests.swift; path = Impl/UnitTests.swift; sourceTree = "<group>"; };
+		24BBE6361F50FADE0091D5E9 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Percent.swift; sourceTree = "<group>"; };
 		24D18D111F350157008129EF /* UIView+LTR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LTR.swift"; sourceTree = "<group>"; };
 		24D18D151F3B42E0008129EF /* RTLSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLSpec.swift; sourceTree = "<group>"; };
 		24D18D231F3E37DD008129EF /* PinLayoutGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutGlobals.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
 				24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */,
 				24D18D231F3E37DD008129EF /* PinLayoutGlobals.swift */,
+				24BBE6361F50FADE0091D5E9 /* Percent.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
 			);
@@ -224,6 +231,7 @@
 				24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */,
 				DF11A3701E833F03008B33E5 /* TypesImpl.swift */,
 				24D18D111F350157008129EF /* UIView+LTR.swift */,
+				24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */,
 			);
 			name = Impl;
 			sourceTree = "<group>";
@@ -452,6 +460,8 @@
 				24B02B091F2A713000C18179 /* PinLayout+Filters.swift in Sources */,
 				24B02B0D1F2A713D00C18179 /* PinLayoutImpl+Coordinates.swift in Sources */,
 				24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */,
+				24BBE6391F52EC450091D5E9 /* Percent.swift in Sources */,
+				24BBE6381F52EC380091D5E9 /* UnitTests.swift in Sources */,
 				24B02B0E1F2A713D00C18179 /* PinLayoutImpl+Relative.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,8 +476,10 @@
 				24949A2C1EF55216003643D3 /* PinLayoutImpl+Warning.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
 				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,
+				24BBE6351F50FA1D0091D5E9 /* UnitTests.swift in Sources */,
 				DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */,
 				24A9782E1EE845BB002BD0F1 /* Coordinates.swift in Sources */,
+				24BBE6371F50FADE0091D5E9 /* Percent.swift in Sources */,
 				24949A281EF550E2003643D3 /* PinLayoutImpl+Relative.swift in Sources */,
 				24949A2A1EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift in Sources */,
 			);

@@ -25,50 +25,10 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-import UIKit
+import Foundation
 
-class BasicView: UIView {
-    fileprivate let label = UILabel()
-    
-    init(text: String? = nil, color: UIColor) {
-        super.init(frame: .zero)
+public var _pinlayoutUnitTestLastWarning: String?
 
-        backgroundColor = color
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
-        
-        label.text = text
-        label.font = .systemFont(ofSize: 7)
-        label.textColor = .white
-        label.numberOfLines = 0
-        addSubview(label)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-            
-        label.pin.topLeft().right().margin(4).fitSize()
-    }
-    
-    var sizeThatFitsExpectedArea: CGFloat = 40 * 40
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var newSize = CGSize()
-        if size.width != CGFloat.greatestFiniteMagnitude {
-            newSize.width = size.width
-            newSize.height = sizeThatFitsExpectedArea / newSize.width
-        } else if size.height != CGFloat.greatestFiniteMagnitude {
-            newSize.height = size.height
-            newSize.width = sizeThatFitsExpectedArea / newSize.height
-        } else {
-            newSize.width = 40
-            newSize.height = sizeThatFitsExpectedArea / newSize.width
-        }
-        
-        return newSize
-    }
+public func _pinlayoutSetUnitTest(displayScale: CGFloat) {
+    Coordinates.displayScale = displayScale
 }

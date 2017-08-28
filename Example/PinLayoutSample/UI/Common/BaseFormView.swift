@@ -61,16 +61,19 @@ class BaseFormView: BaseView {
         formScrollView.contentOffset = CGPoint(x: 0, y: topLayoutGuide)
     }
     
-    @objc internal func keyboardWillShow(notification: Notification) {
+    @objc
+    internal func keyboardWillShow(notification: Notification) {
         guard let sizeValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
         setFormScrollView(bottomInset: sizeValue.cgRectValue.height)
     }
     
-    @objc internal func keyboardWillHide(notification: Notification) {
+    @objc
+    internal func keyboardWillHide(notification: Notification) {
         resetScrollOffset()
     }
     
-    @objc internal func didTapScrollView() {
+    @objc
+    internal func didTapScrollView() {
         endEditing(true)
         resetScrollOffset()
     }

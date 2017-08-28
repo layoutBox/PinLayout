@@ -47,8 +47,8 @@ class MethodCell: UITableViewCell {
         let margin: CGFloat = 10
         
         iconImageView.pin.topLeft().size(30).margin(margin)
-        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(margin).sizeToFit()
-        descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(margin).sizeToFit()
+        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(margin).fitSize()
+        descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(margin).fitSize()
         
         return CGSize(width: frame.width, height: descriptionLabel.frame.maxY + margin)
     }

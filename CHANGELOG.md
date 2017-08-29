@@ -7,6 +7,11 @@
 
 # Change Log
 
+## [1.2.2](https://github.com/mirego/PinLayout/releases/tag/1.2.2)
+#### Change
+* Added a new method `fitSize()` that will replace the `sizeThatFit()` method. Its prior name was creating confusion with the already existingUIView.sizeToFit()` method.
+* `sizeThatFit()` method has been marked as deprecated.
+
 ## [1.2.1](https://github.com/mirego/PinLayout/releases/tag/1.2.1)
 #### Change
 * Add Swift 4.0 support  

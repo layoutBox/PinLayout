@@ -799,7 +799,7 @@ extension PinLayoutImpl {
         if let superview = view.superview {
             return superview
         } else {
-            warn("the view (\(viewName(view))) must be added as a sub-view before being layouted using this method.", context)
+            warn("the view must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }
@@ -808,7 +808,7 @@ extension PinLayoutImpl {
         if let superview = referenceView.superview {
             return superview
         } else {
-            warn("the reference view (\(viewName(referenceView))) is invalid. UIViews must be added as a sub-view before being used as a reference.", context)
+            warn("the reference view \(viewDescription(referenceView)) must be added as a sub-view before being used as a reference.", context)
             return nil
         }
     }

@@ -40,19 +40,19 @@ extension PinLayoutImpl {
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).\n")
+        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).")
     }
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).\n")
+        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).")
     }
     
     internal func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
         guard Pin.logWarnings else { return }
-        var warning = "PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:\n"
+        var warning = "PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:"
         properties.forEach { (property) in
-            warning += " \(property.key): \(property.value)\n"
+            warning += "\n \(property.key): \(property.value)"
         }
         
         displayWarning(warning)
@@ -61,7 +61,7 @@ extension PinLayoutImpl {
     internal func displayLayoutWarnings() {
         if let justify = justify {
             func context() -> String { return "justify(.\(justify))" }
-            if !((_left != nil && _right != nil) || (shouldPinEdges && _width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
+            if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
                 warn("the left and right coordinates must be set to justify the view horizontally.", context)
             }
             
@@ -72,7 +72,7 @@ extension PinLayoutImpl {
         
         if let align = align {
             func context() -> String { return "align(.\(align))" }
-            if !((_top != nil && _bottom != nil) || (shouldPinEdges && _height != nil && (_top != nil || _bottom != nil || _vCenter != nil))) {
+            if !((_top != nil && _bottom != nil) || (shouldPinEdges && height != nil && (_top != nil || _bottom != nil || _vCenter != nil))) {
                 warn("the top and bottom coordinates must be set to align the view vertically.", context)
             }
             

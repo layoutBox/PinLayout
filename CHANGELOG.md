@@ -7,6 +7,27 @@
 
 # Change Log
 
+## [1.2.3](https://github.com/mirego/PinLayout/releases/tag/1.2.3)
+#### Change
+* Warnings now display more context information
+  * The class name of the view being layouted.
+  * The view's current frame 
+  * The class name of all superviews
+  * The view's Tag  
+
+	Examples:
+	
+	* 👉 PinLayout Warning: width(50.0%) won't be applied, the view (UIView) must be added as a sub-view before being layouted using this method.  
+(Layouted view info: Type: UIView, Frame: (10.0, 10.0, 20.0, 30.0), Tag: 0)
+	
+	* 👉 PinLayout Warning: width(-20.0) won't be applied, the width (-20.0) must be greater than or equal to zero.  
+(Layouted view info: Type: ItemButton, Frame: (140.0, 100.0, 100.0, 60.0), Superviews: HomeView -> UIView, Tag: 0)
+	
+	* 👉 PinLayout Warning: topLeft(to: .topLeft, of: (UIView, Frame: (10.0, 10.0, 10.0, 10.0))) won't be applied, the reference view (UIView, Frame: (10.0, 10.0, 10.0, 10.0)) must be added as a sub-view before being used as a reference.  
+(Layouted view info: Type: UIView, Frame: (140.0, 100.0, 100.0, 60.0), Superviews: UIView -> UIView, Tag: 0)
+
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#75](https://github.com/mirego/PinLayout/pull/75) 
+
 ## [1.2.2](https://github.com/mirego/PinLayout/releases/tag/1.2.2)
 #### Change
 * Added a new method `fitSize()` that will replace the `sizeThatFit()` method. Its prior name was creating confusion with the already existingUIView.sizeToFit()` method.

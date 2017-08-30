@@ -576,7 +576,7 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func width(of view: UIView) -> PinLayout {
-        return setWidth(view.frame.width, { return "width(of: \(view))" })
+        return setWidth(view.frame.width, { return "width(of: \(viewDescription(view)))" })
     }
     
     @discardableResult
@@ -619,7 +619,7 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func height(of view: UIView) -> PinLayout {
-        return setHeight(view.frame.height, { return "height(of: \(view))" })
+        return setHeight(view.frame.height, { return "height(of: \(viewDescription(view)))" })
     }
     
     @discardableResult
@@ -671,7 +671,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func size(of view: UIView) -> PinLayout {
-        func context() -> String { return "size(of \(view))" }
+        func context() -> String { return "size(of \(viewDescription(view)))" }
         return setSize(view.frame.size, context)
     }
     
@@ -799,7 +799,7 @@ extension PinLayoutImpl {
         if let superview = view.superview {
             return superview
         } else {
-            warn("the view must be added as a sub-view before being layouted using this method.", context)
+            warn("the view (\(viewName(view))) must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }
@@ -808,7 +808,7 @@ extension PinLayoutImpl {
         if let superview = referenceView.superview {
             return superview
         } else {
-            warn("the reference view \(viewDescription(referenceView)) is invalid. UIViews must be added as a sub-view before being used as a reference.", context)
+            warn("the reference view (\(viewName(referenceView))) is invalid. UIViews must be added as a sub-view before being used as a reference.", context)
             return nil
         }
     }

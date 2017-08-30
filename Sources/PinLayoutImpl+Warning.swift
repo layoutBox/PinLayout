@@ -15,17 +15,17 @@ extension PinLayoutImpl {
     
     internal func relativeEdgeContext(method: String, edge: VerticalEdge) -> String {
         let edge = edge as! VerticalEdgeImpl
-        return "\(method)(to: \(edge.type.rawValue), of: \(edge.view))"
+        return "\(method)(to: .\(edge.type.rawValue), of: \(viewDescription(edge.view)))"
     }
     
     internal func relativeEdgeContext(method: String, edge: HorizontalEdge) -> String {
         let edge = edge as! HorizontalEdgeImpl
-        return "\(method)(to: \(edge.type.rawValue), of: \(edge.view))"
+        return "\(method)(to: .\(edge.type.rawValue), of: \(viewDescription(edge.view))"
     }
     
     internal func relativeAnchorContext(method: String, anchor: Anchor) -> String {
         let anchor = anchor as! AnchorImpl
-        return "\(method)(to: \(anchor.type.rawValue), of: \(anchor.view))"
+        return "\(method)(to: .\(anchor.type.rawValue), of: \(viewDescription(anchor.view)))"
     }
     
     internal func warn(_ text: String, _ context: Context) {
@@ -84,9 +84,7 @@ extension PinLayoutImpl {
     
     internal func displayWarning(_ text: String) {
         var displayText = "\n👉 \(text)"
-        
-        let viewType = "\(type(of: view))"
-        displayText += "\n   (View type: \(viewType), Frame: \(view.frame)"
+        displayText += "\n   (Layouted view info: Type: \(viewName(view)), Frame: \(view.frame)"
         
         var currentView = view
         var hierarchy: [String] = []
@@ -105,7 +103,11 @@ extension PinLayoutImpl {
     }
     
     internal func viewDescription(_ view: UIView) -> String {
-        return "\"\(view.description)\""
+        return "(\(viewName(view)), Frame: \(view.frame))"
+    }
+    
+    internal func viewName(_ view: UIView) -> String {
+        return "\(type(of: view))"
     }
 }
 

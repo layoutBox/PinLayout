@@ -64,16 +64,10 @@ class WarningSpec: QuickSpec {
         // pinEdges warnings
         //
         describe("pinEdges() should warn ") {
-            it("test when left & right & width is set") {
-                aView.pin.left().right().width(100%).pinEdges()
-                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "horizontally"]))
-            }
-            
-            it("test when top & bottom & height is set") {
-                aView.pin.top().bottom().height(100%).pinEdges()
-                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 400.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "vertically"]))
+            it("test when top, left, bottom and right is set") {
+                aView.pin.top().bottom().left().right().width(100%).pinEdges()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 400.0, height: 400.0)))
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["pinEdges()", "won't be applied", "top, left, bottom and right coordinates are already set"]))
             }
         }
     }

@@ -914,10 +914,12 @@ extension PinLayoutImpl {
 
     fileprivate func handlePinEdges() {
         guard shouldPinEdges else { return }
-        if let width = applyMinMax(toWidth: width) {
-            if _left != nil && _right != nil {
-                warn("pinEdges() won't be applied horizontally, left and right coordinates are already set.")
-            } else if let left = _left {
+        guard _top == nil || _bottom == nil || _left == nil || _right == nil else {
+            return warn("pinEdges() won't be applied, top, left, bottom and right coordinates are already set.")
+        }
+        
+        if let width = applyMinMax(toWidth: width), _left == nil || _right == nil  {
+            if let left = _left {
                 // convert the width into a right
                 assert(self._right == nil)
                 self._right = left + width
@@ -938,10 +940,8 @@ extension PinLayoutImpl {
             }
         }
 
-        if let height = applyMinMax(toHeight: height) {
-            if _top != nil && _bottom != nil {
-                warn("pinEdges() won't be applied vertically, top and bottom coordinates are already set.")
-            } else if let top = _top {
+        if let height = applyMinMax(toHeight: height), _top == nil || _bottom == nil {
+            if let top = _top {
                 // convert the height into a bottom
                 assert(self._bottom == nil)
                 self._bottom = top + height

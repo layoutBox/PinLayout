@@ -168,7 +168,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 # PinLayout's Performance <a name="performance"></a>
 
-PinLayout's performance has been measured using the nice LayoutKit benchmark. PinLayout and [FlexLayout](https://github.com/lucdion/FlexLayout) has been added to this benchmark to compare their performance. 
+PinLayout's performance has been measured using the [Layout Framework Benchmark](https://github.com/lucdion/LayoutFrameworkBenchmark). FlexLayout and [PinLayout](https://github.com/mirego/PinLayout) has been added to this benchmark to compare their performance. 
 
 As you can see in the following chart, PinLayout and FlexLayout and performance are faster or equal to manual layouting, and **between 12x and 16x faster than auto layout**, and this for all types of iPhone (5/6/6S/7)
 

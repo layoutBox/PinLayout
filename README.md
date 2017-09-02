@@ -176,9 +176,9 @@ These results also mean that **PinLayout is by far faster than any layout framew
 
 [See here a more complete details, results and explanation of the benchmark](docs/Benchmark.md).
 
-<p align="center"> Tested on a iPhone 6 iOS 10.3.2</p>
+<p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
-  <img src="docs/Benchmark/benchmark_iphone6.png" alt="PinLayout Performance" width=600/>
+  <img src="docs/Benchmark/benchmark_iphone6s.png" alt="PinLayout Performance" width=600/>
 </p>
 
 <br/>

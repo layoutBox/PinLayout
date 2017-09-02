@@ -63,6 +63,7 @@ extension TableViewExampleView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return methodCellTemplate.cellHeight(forWidth: frame.width, method: methods[indexPath.row])
+        methodCellTemplate.configure(method: methods[indexPath.row])
+        return methodCellTemplate.sizeThatFits(CGSize(width: frame.width, height: .greatestFiniteMagnitude)).height
     }
 }

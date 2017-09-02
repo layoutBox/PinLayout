@@ -58,7 +58,7 @@ class MethodCell: UITableViewCell {
         return layout()
     }
     
-    func configure(method: PinLayoutMethod) {
+    func configure(method: Method) {
         nameLabel.text = method.name
         descriptionLabel.text = method.description
     }

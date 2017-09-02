@@ -12,7 +12,7 @@ class TableViewExampleView: BaseView {
     fileprivate let tableView = UITableView()
     fileprivate let methodCellTemplate = MethodCell()
     
-    fileprivate var methods: [PinLayoutMethod] = []
+    fileprivate var methods: [Method] = []
     
     override init() {
         super.init()
@@ -29,7 +29,7 @@ class TableViewExampleView: BaseView {
         super.init(coder: aDecoder)
     }
     
-    func configure(methods: [PinLayoutMethod]) {
+    func configure(methods: [Method]) {
         self.methods = methods
         tableView.reloadData()
     }

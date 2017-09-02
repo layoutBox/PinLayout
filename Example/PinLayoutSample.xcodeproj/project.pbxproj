@@ -36,7 +36,6 @@
 		24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */; };
 		24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */; };
 		24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */; };
-		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
 		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
 		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
@@ -99,28 +98,27 @@
 		249326881EEEEE3D00BCB814 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		2493268B1EEEEFF100BCB814 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2493268D1EEEF02700BCB814 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		2497CFEB1EF40B9100DFD13B /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormView.swift; path = Form/FormView.swift; sourceTree = "<group>"; };
-		2497CFEC1EF40B9100DFD13B /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormViewController.swift; path = Form/FormViewController.swift; sourceTree = "<group>"; };
+		2497CFEB1EF40B9100DFD13B /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		2497CFEC1EF40B9100DFD13B /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		249EFE3F1E64FAFE00165E39 /* PinLayoutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinLayoutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE421E64FAFE00165E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		249EFE491E64FAFE00165E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		249EFE4C1E64FAFE00165E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		249EFE4E1E64FAFE00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewExampleView.swift; path = TableViewExample/TableViewExampleView.swift; sourceTree = "<group>"; };
-		24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewExampleViewController.swift; path = TableViewExample/TableViewExampleViewController.swift; sourceTree = "<group>"; };
-		24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MethodCell.swift; path = TableViewExample/Cells/MethodCell.swift; sourceTree = "<group>"; };
-		24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoAdjustingSizeView.swift; path = AutoAdjustingSize/AutoAdjustingSizeView.swift; sourceTree = "<group>"; };
-		24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoAdjustingSizeViewController.swift; path = AutoAdjustingSize/AutoAdjustingSizeViewController.swift; sourceTree = "<group>"; };
-		24CB99971F290540004EA7FB /* MethodGroupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MethodGroupHeader.swift; path = TableViewExample/Cells/MethodGroupHeader.swift; sourceTree = "<group>"; };
-		24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustToContainerView.swift; path = AdjustToContainer/AdjustToContainerView.swift; sourceTree = "<group>"; };
-		24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdjustToContainerViewController.swift; path = AdjustToContainer/AdjustToContainerViewController.swift; sourceTree = "<group>"; };
-		24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChoiceSelectorView.swift; path = AdjustToContainer/Subviews/ChoiceSelectorView.swift; sourceTree = "<group>"; };
-		24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroRTLView.swift; path = IntroRTL/IntroRTLView.swift; sourceTree = "<group>"; };
-		24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroRTLViewController.swift; path = IntroRTL/IntroRTLViewController.swift; sourceTree = "<group>"; };
+		24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewExampleView.swift; sourceTree = "<group>"; };
+		24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewExampleViewController.swift; sourceTree = "<group>"; };
+		24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodCell.swift; sourceTree = "<group>"; };
+		24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoAdjustingSizeView.swift; sourceTree = "<group>"; };
+		24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoAdjustingSizeViewController.swift; sourceTree = "<group>"; };
+		24CB99971F290540004EA7FB /* MethodGroupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodGroupHeader.swift; sourceTree = "<group>"; };
+		24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustToContainerView.swift; sourceTree = "<group>"; };
+		24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustToContainerViewController.swift; sourceTree = "<group>"; };
+		24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceSelectorView.swift; sourceTree = "<group>"; };
+		24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroRTLView.swift; sourceTree = "<group>"; };
+		24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroRTLViewController.swift; sourceTree = "<group>"; };
 		24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormView.swift; sourceTree = "<group>"; };
-		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
-		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = Intro/IntroView.swift; sourceTree = "<group>"; };
-		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = Intro/IntroViewController.swift; sourceTree = "<group>"; };
+		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,13 +159,13 @@
 			isa = PBXGroup;
 			children = (
 				2439CC5E1E665C71003326FB /* Common */,
-				2439CC661E666128003326FB /* Main */,
-				2439CC371E665C5E003326FB /* Tests */,
+				2439CC661E666128003326FB /* Menu */,
+				2439CC371E665C5E003326FB /* Examples */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		2439CC371E665C5E003326FB /* Tests */ = {
+		2439CC371E665C5E003326FB /* Examples */ = {
 			isa = PBXGroup;
 			children = (
 				24CB99991F290591004EA7FB /* AdjustToContainer */,
@@ -179,15 +177,15 @@
 				2439CC631E66606D003326FB /* RelativeView */,
 				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
 			);
-			path = Tests;
+			path = Examples;
 			sourceTree = "<group>";
 		};
 		2439CC5E1E665C71003326FB /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2493268B1EEEEFF100BCB814 /* BaseViewController.swift */,
 				24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */,
 				2493268D1EEEF02700BCB814 /* BaseView.swift */,
+				2493268B1EEEEFF100BCB814 /* BaseViewController.swift */,
 				2439CC381E665C6B003326FB /* BasicView.swift */,
 				249326881EEEEE3D00BCB814 /* Stylesheet.swift */,
 			);
@@ -212,13 +210,13 @@
 			path = RelativeView;
 			sourceTree = "<group>";
 		};
-		2439CC661E666128003326FB /* Main */ = {
+		2439CC661E666128003326FB /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				2439CC331E665BF6003326FB /* MenuView.swift */,
 				2439CC341E665BF6003326FB /* MenuViewController.swift */,
 			);
-			path = Main;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		2439CC671E66614D003326FB /* Supporting Files */ = {
@@ -237,7 +235,7 @@
 				2497CFEB1EF40B9100DFD13B /* FormView.swift */,
 				2497CFEC1EF40B9100DFD13B /* FormViewController.swift */,
 			);
-			name = Form;
+			path = Form;
 			sourceTree = "<group>";
 		};
 		249EFE361E64FAFE00165E39 = {
@@ -262,10 +260,9 @@
 		249EFE411E64FAFE00165E39 /* PinLayoutSample */ = {
 			isa = PBXGroup;
 			children = (
-				24E654801E69040000A72A8B /* Domain */,
+				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
 				2439CC321E665BE3003326FB /* UI */,
 				2439CC671E66614D003326FB /* Supporting Files */,
-				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
 			);
 			path = PinLayoutSample;
 			sourceTree = "<group>";
@@ -277,7 +274,7 @@
 				24A9C1F01EF0542F00F2CF64 /* TableViewExampleView.swift */,
 				24A9C1F11EF0542F00F2CF64 /* TableViewExampleViewController.swift */,
 			);
-			name = TableViewExample;
+			path = TableViewExample;
 			sourceTree = "<group>";
 		};
 		24A9C1F41EF054A900F2CF64 /* Cells */ = {
@@ -286,7 +283,7 @@
 				24A9C1F51EF054BF00F2CF64 /* MethodCell.swift */,
 				24CB99971F290540004EA7FB /* MethodGroupHeader.swift */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		24CB99991F290591004EA7FB /* AdjustToContainer */ = {
@@ -296,7 +293,7 @@
 				24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */,
 				24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */,
 			);
-			name = AdjustToContainer;
+			path = AdjustToContainer;
 			sourceTree = "<group>";
 		};
 		24CB999E1F29063A004EA7FB /* Subviews */ = {
@@ -304,7 +301,7 @@
 			children = (
 				24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */,
 			);
-			name = Subviews;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		24D18D181F3DECD6008129EF /* IntroRTL */ = {
@@ -313,15 +310,7 @@
 				24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */,
 				24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */,
 			);
-			name = IntroRTL;
-			sourceTree = "<group>";
-		};
-		24E654801E69040000A72A8B /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				24E654811E69041B00A72A8B /* Expect.swift */,
-			);
-			path = Domain;
+			path = IntroRTL;
 			sourceTree = "<group>";
 		};
 		24F75B581EE5642C008DB567 /* Intro */ = {
@@ -330,7 +319,7 @@
 				24F75B591EE5644E008DB567 /* IntroView.swift */,
 				24F75B5A1EE5644E008DB567 /* IntroViewController.swift */,
 			);
-			name = Intro;
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */ = {
@@ -339,7 +328,7 @@
 				24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */,
 				24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */,
 			);
-			name = AutoAdjustingSizeView;
+			path = AutoAdjustingSizeView;
 			sourceTree = "<group>";
 		};
 		F143180314A617EFD07C5709 /* Pods */ = {
@@ -475,9 +464,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-10/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -505,13 +497,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PinLayoutSample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -542,7 +537,6 @@
 				24CB99981F290540004EA7FB /* MethodGroupHeader.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
-				24E654821E69041B00A72A8B /* Expect.swift in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,

@@ -12,7 +12,7 @@ class TableViewExampleView: BaseView {
     fileprivate let tableView = UITableView()
     fileprivate let methodCellTemplate = MethodCell()
     
-    fileprivate var methods: [PinLayoutMethod] = []
+    fileprivate var methods: [Method] = []
     
     override init() {
         super.init()
@@ -29,7 +29,7 @@ class TableViewExampleView: BaseView {
         super.init(coder: aDecoder)
     }
     
-    func configure(methods: [PinLayoutMethod]) {
+    func configure(methods: [Method]) {
         self.methods = methods
         tableView.reloadData()
     }
@@ -63,6 +63,7 @@ extension TableViewExampleView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return methodCellTemplate.cellHeight(forWidth: frame.width, method: methods[indexPath.row])
+        methodCellTemplate.configure(method: methods[indexPath.row])
+        return methodCellTemplate.sizeThatFits(CGSize(width: frame.width, height: .greatestFiniteMagnitude)).height
     }
 }

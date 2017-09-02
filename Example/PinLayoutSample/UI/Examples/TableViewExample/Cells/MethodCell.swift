@@ -58,14 +58,8 @@ class MethodCell: UITableViewCell {
         return layout()
     }
     
-    func configure(method: PinLayoutMethod) {
+    func configure(method: Method) {
         nameLabel.text = method.name
         descriptionLabel.text = method.description
-    }
-    
-    /// Returns the height of the cell for the specified PinLayoutMethod
-    func cellHeight(forWidth width: CGFloat, method: PinLayoutMethod) -> CGFloat {
-        configure(method: method)
-        return sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
     }
 }

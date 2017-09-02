@@ -36,7 +36,6 @@
 		24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */; };
 		24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */; };
 		24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */; };
-		24E654821E69041B00A72A8B /* Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E654811E69041B00A72A8B /* Expect.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
 		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
 		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
@@ -118,7 +117,6 @@
 		24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroRTLView.swift; sourceTree = "<group>"; };
 		24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroRTLViewController.swift; sourceTree = "<group>"; };
 		24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormView.swift; sourceTree = "<group>"; };
-		24E654811E69041B00A72A8B /* Expect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expect.swift; sourceTree = "<group>"; };
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,8 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				2439CC5E1E665C71003326FB /* Common */,
-				2439CC371E665C5E003326FB /* Examples */,
 				2439CC661E666128003326FB /* Menu */,
+				2439CC371E665C5E003326FB /* Examples */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -179,7 +177,6 @@
 				2439CC631E66606D003326FB /* RelativeView */,
 				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
 			);
-			name = Examples;
 			path = Examples;
 			sourceTree = "<group>";
 		};
@@ -219,7 +216,6 @@
 				2439CC331E665BF6003326FB /* MenuView.swift */,
 				2439CC341E665BF6003326FB /* MenuViewController.swift */,
 			);
-			name = Menu;
 			path = Menu;
 			sourceTree = "<group>";
 		};
@@ -264,10 +260,9 @@
 		249EFE411E64FAFE00165E39 /* PinLayoutSample */ = {
 			isa = PBXGroup;
 			children = (
-				24E654801E69040000A72A8B /* Domain */,
-				2439CC671E66614D003326FB /* Supporting Files */,
-				2439CC321E665BE3003326FB /* UI */,
 				249EFE421E64FAFE00165E39 /* AppDelegate.swift */,
+				2439CC321E665BE3003326FB /* UI */,
+				2439CC671E66614D003326FB /* Supporting Files */,
 			);
 			path = PinLayoutSample;
 			sourceTree = "<group>";
@@ -316,14 +311,6 @@
 				24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */,
 			);
 			path = IntroRTL;
-			sourceTree = "<group>";
-		};
-		24E654801E69040000A72A8B /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				24E654811E69041B00A72A8B /* Expect.swift */,
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		24F75B581EE5642C008DB567 /* Intro */ = {
@@ -550,7 +537,6 @@
 				24CB99981F290540004EA7FB /* MethodGroupHeader.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
-				24E654821E69041B00A72A8B /* Expect.swift in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,

@@ -43,7 +43,7 @@ enum PageType: Int {
         switch self {
         case .intro:                      return "PinLayout's Intro"
         case .adjustToContainer:          return "Adjust to container size"
-        case .tableView:                  return "TableView with variable cell's height"
+        case .tableView:                  return "UITableView with variable cell's height"
         case .form:                       return "Form Example"
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"

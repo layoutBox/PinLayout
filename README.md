@@ -757,7 +757,7 @@ Set the view’s size to match the referenced view’s size
 ###### Example:
 The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note on the result that the UILabel’s height has changed to fit its content.
 
-![](Docs/pinlayout-fitSize.png)
+![](docs/pinlayout-fitSize.png)
 
 ```javascript
 	label.pin.right(of: image, aligned: .top).right().marginHorizontal(10).fitSize()

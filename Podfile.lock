@@ -1,7 +1,7 @@
 PODS:
   - Nimble (7.0.1)
   - Quick (1.1.0)
-  - Reveal-SDK (10)
+  - Reveal-SDK (11)
   - SwiftLint (0.22.0)
 
 DEPENDENCIES:
@@ -13,7 +13,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  Reveal-SDK: 7869ddf1f902cabbb07a1f0dd06bd25861a126f7
+  Reveal-SDK: 7fa13d04bb55db61ff2342a990cf731d5159361d
   SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
 
 PODFILE CHECKSUM: 3b67fc05230707b4ff0a4b82edf3192f17967214

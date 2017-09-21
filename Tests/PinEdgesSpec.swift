@@ -35,7 +35,9 @@ class PinEdgesSpec: QuickSpec {
         
         var rootView: BasicView!
         var aView: BasicView!
-        
+        var bView: BasicView!
+        var bViewChild: BasicView!
+
         /*
           root
            |
@@ -56,6 +58,14 @@ class PinEdgesSpec: QuickSpec {
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
             aView.frame = CGRect(x: 140, y: 100, width: 200, height: 100)
             rootView.addSubview(aView)
+            
+            bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+            bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
+            rootView.addSubview(bView)
+            
+            bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
+            bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
+            bView.addSubview(bViewChild)
         }
 
         //
@@ -339,6 +349,7 @@ class PinEdgesSpec: QuickSpec {
                 expect(_pinlayoutUnitTestLastWarning).to(contain(["hCenter", "won't be applied", "left"]))
             }
             
+            // hCenter(%)
             it("should warns that the view is not added to any view") {
                 let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.hCenter(20%)
@@ -354,6 +365,22 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.hCenter(-20%)
                 expect(aView.frame).to(equal(CGRect(x: -180, y: 100.0, width: 200.0, height: 100.0)))
+            }
+            
+            // hCenter(to: ...)
+            it("should adjust the bView") {
+                bView.pin.hCenter(to: aView.edge.left)
+                expect(bView.frame).to(equal(CGRect(x: 85.0, y: 120.0, width: 110.0, height: 80.0)))
+            }
+            
+            it("should adjust the bView") {
+                bView.pin.hCenter(to: aView.edge.hCenter)
+                expect(bView.frame).to(equal(CGRect(x: 185.0, y: 120.0, width: 110.0, height: 80.0)))
+            }
+            
+            it("should adjust the bView") {
+                bView.pin.hCenter(to: aView.edge.right)
+                expect(bView.frame).to(equal(CGRect(x: 285.0, y: 120.0, width: 110.0, height: 80.0)))
             }
         }
         
@@ -412,6 +439,27 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.top().vCenter(-20%)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
                 expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+            }
+            
+            // vCenter(to: ...)
+            it("should adjust the bView") {
+                bView.pin.vCenter(to: aView.edge.top)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 60.0, width: 110.0, height: 80.0)))
+            }
+
+            it("should adjust the bView") {
+                bView.pin.vCenter(to: aView.edge.vCenter)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 110.0, width: 110.0, height: 80.0)))
+            }
+            
+            it("should adjust the bView") {
+                bView.pin.vCenter(to: aView.edge.bottom)
+                expect(bView.frame).to(equal(CGRect(x: 160.0, y: 160.0, width: 110.0, height: 80.0)))
+            }
+            
+            it("should adjust the bView") {
+                bViewChild.pin.vCenter(to: aView.edge.vCenter)
+                expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: 20.0, width: 60.0, height: 20.0)))
             }
         }
     }

@@ -240,6 +240,24 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
+    func vCenter(to edge: VerticalEdge) -> PinLayout {
+        func context() -> String { return relativeEdgeContext(method: "vCenter", edge: edge) }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setVerticalCenter(coordinate, context)
+        }
+        return self
+    }
+
+    @discardableResult
+    func bottom(to edge: VerticalEdge) -> PinLayout {
+        func context() -> String { return relativeEdgeContext(method: "bottom", edge: edge) }
+        if let coordinate = computeCoordinate(forEdge: edge, context) {
+            setBottom(coordinate, context)
+        }
+        return self
+    }
+    
+    @discardableResult
     func left(to edge: HorizontalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "left", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -249,10 +267,10 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func bottom(to edge: VerticalEdge) -> PinLayout {
-        func context() -> String { return relativeEdgeContext(method: "bottom", edge: edge) }
+    func hCenter(to edge: HorizontalEdge) -> PinLayout {
+        func context() -> String { return relativeEdgeContext(method: "hCenter", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
-            setBottom(coordinate, context)
+            setHorizontalCenter(coordinate, context)
         }
         return self
     }

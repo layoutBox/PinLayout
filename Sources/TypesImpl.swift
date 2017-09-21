@@ -42,8 +42,11 @@ class EdgeListImpl: EdgeList {
     }
 
     var top: VerticalEdge { return VerticalEdgeImpl(view: view, type: .top) }
-    var left: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .left) }
+    var vCenter: VerticalEdge { return VerticalEdgeImpl(view: view, type: .vCenter) }
     var bottom: VerticalEdge { return VerticalEdgeImpl(view: view, type: .bottom) }
+
+    var left: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .left) }
+    var hCenter: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .hCenter) }
     var right: HorizontalEdge { return HorizontalEdgeImpl(view: view, type: .right) }
     
     // RTL support
@@ -54,6 +57,7 @@ class EdgeListImpl: EdgeList {
 class HorizontalEdgeImpl: HorizontalEdge {
     enum EdgeType: String {
         case left
+        case hCenter
         case right
     }
 
@@ -62,8 +66,9 @@ class HorizontalEdgeImpl: HorizontalEdge {
 
     var x: CGFloat {
         switch type {
-        case .left: return view.frame.origin.x
-        case .right: return view.frame.maxX
+        case .left:    return view.frame.origin.x
+        case .hCenter: return view.frame.midX
+        case .right:   return view.frame.maxX
         }
     }
 
@@ -76,6 +81,7 @@ class HorizontalEdgeImpl: HorizontalEdge {
 class VerticalEdgeImpl: VerticalEdge {
     enum EdgeType: String {
         case top
+        case vCenter
         case bottom
     }
     
@@ -84,8 +90,9 @@ class VerticalEdgeImpl: VerticalEdge {
 
     var y: CGFloat {
         switch type {
-        case .top: return view.frame.origin.y
-        case .bottom: return view.frame.maxY
+        case .top:     return view.frame.origin.y
+        case .vCenter: return view.frame.midY
+        case .bottom:  return view.frame.maxY
         }
     }
 

@@ -98,24 +98,25 @@ public protocol AnchorList {
  UIView's Edges
  ======================
                    top
-          +-------------------+
-          |                   |
-          |                   |
-          |                   |
-     left |                   | right
-          |                   |
-          |                   |
-          |                   |
-          |                   |
-          +-------------------+
+          +-----------------+
+          |                 |
+          |                 |
+          |     hCenter     |
+     left |        +        | right
+          |     vCenter     |
+          |                 |
+          |                 |
+          +-----------------+
                   bottom
 */
 
 /// UIViews's list of edges
 public protocol EdgeList {
     var top: VerticalEdge { get }
-    var left: HorizontalEdge { get }
+    var vCenter: VerticalEdge { get }
     var bottom: VerticalEdge { get }
+    var left: HorizontalEdge { get }
+    var hCenter: HorizontalEdge { get }
     var right: HorizontalEdge { get }
 
     // RTL support
@@ -164,8 +165,10 @@ public protocol PinLayout {
     // MARK: Layout using edges
     //
     @discardableResult func top(to edge: VerticalEdge) -> PinLayout
-    @discardableResult func left(to edge: HorizontalEdge) -> PinLayout
+    @discardableResult func vCenter(to edge: VerticalEdge) -> PinLayout
     @discardableResult func bottom(to edge: VerticalEdge) -> PinLayout
+    @discardableResult func left(to edge: HorizontalEdge) -> PinLayout
+    @discardableResult func hCenter(to edge: HorizontalEdge) -> PinLayout
     @discardableResult func right(to edge: HorizontalEdge) -> PinLayout
     // RTL support
     @discardableResult func start(to edge: HorizontalEdge) -> PinLayout

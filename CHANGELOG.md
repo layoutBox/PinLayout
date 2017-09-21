@@ -7,6 +7,17 @@
 
 # Change Log
 
+## [1.2.4](https://github.com/mirego/PinLayout/releases/tag/1.2.4)
+#### Change
+* Add methods to pin hCenter and vCenter to any other view's edges (including the new hCenter and vCenter edges)
+	*  New methods:
+		*  func hCenter(to edge: HorizontalEdge) -> PinLayout
+		*  func vCenter(to edge: VerticalEdge) -> PinLayout
+	*  New UIView's edges:
+		*  UIView.edge.hCenter
+		*  UIView.edge.vCenter
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#80](https://github.com/mirego/PinLayout/pull/80) 
+  
 ## [1.2.3](https://github.com/mirego/PinLayout/releases/tag/1.2.3)
 #### Change
 * Warnings now display more context information

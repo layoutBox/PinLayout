@@ -220,26 +220,26 @@ PinLayout can position a view’s edge relative to its superview edges.
 The value specifies the top edge distance from the superview's top edge in pixels.
 * **`top(_ percent: Percent)`**  
 The value specifies the top edge distance from the superview's top edge in percentage of its superview's height.
-* **`left(_ value: CGFloat)`**  
-The value specifies the left edge distance from the superview's left edge in pixels.
-* **`left(_ percent: Percent)`**  
-The value specifies the left edge distance from the superview's left edge in percentage of its superview's width.
-* **`bottom(_ value: CGFloat)`**  
-The value specifies the bottom edge **distance from the superview's bottom edge** in pixels.
-* **`bottom(_ percent: Percent)`**  
-The value specifies the bottom edge **distance from the superview's bottom edge** in percentage of its superview's height.
-* **`right(_ value: CGFloat)`**  
-The value specifies the right edge **distance from the superview's right edge** in pixels.
-* **`right(_ percent: Percent)`**  
-The value specifies the right edge **distance from the superview's right edge** in percentage of its superview's width.
-* **`hCenter(_ value: CGFloat)`**  
-The value specifies the horizontal center distance from the superview's left edge in pixels.
-* **`hCenter(_ percent: Percent)`**  
-The value specifies the horizontal center distance from the superview's left edge in percentage of its superview's width.
 * **`vCenter(_ value: CGFloat)`**  
 The value specifies the vertical center distance from the superview's top edge in pixels.
 * **`vCenter(_ percent: Percent)`**  
 The value specifies the vertical center distance from the superview's top edge in percentage of its superview's height.
+* **`bottom(_ value: CGFloat)`**  
+The value specifies the bottom edge **distance from the superview's bottom edge** in pixels.
+* **`bottom(_ percent: Percent)`**  
+The value specifies the bottom edge **distance from the superview's bottom edge** in percentage of its superview's height.
+* **`left(_ value: CGFloat)`**  
+The value specifies the left edge distance from the superview's left edge in pixels.
+* **`left(_ percent: Percent)`**  
+The value specifies the left edge distance from the superview's left edge in percentage of its superview's width.
+* **`hCenter(_ value: CGFloat)`**  
+The value specifies the horizontal center distance from the superview's left edge in pixels.
+* **`hCenter(_ percent: Percent)`**  
+The value specifies the horizontal center distance from the superview's left edge in percentage of its superview's width.
+* **`right(_ value: CGFloat)`**  
+The value specifies the right edge **distance from the superview's right edge** in pixels.
+* **`right(_ percent: Percent)`**  
+The value specifies the right edge **distance from the superview's right edge** in percentage of its superview's width.
 * **`start(_ value: CGFloat)`**:left_right_arrow:  
 In LTR direction the value specifies the left edge distance from the superview's left edge in pixels.   
 In RTL direction the value specifies the right edge distance from the superview's right edge in pixels.
@@ -285,20 +285,20 @@ PinLayout also has a shorter version that pins a view’s edge **directly** on i
 
 * **`top()`**  
 Position the view top edge directly on its superview top edge. Similar to calling `top(0)`.
-* **`left()`**  
-Position the view left edge directly on its superview left edge. Similar to calling `left(0)`.
+* **`vCenter()`**  
+Position vertically the view's center directly on its superview vertical center. Similar to calling `vCenter(0)`.
 * **`bottom()`**  
 Position the view bottom edge directly on its superview top edge. Similar to calling `bottom(0)`.
+* **`left()`**  
+Position the view left edge directly on its superview left edge. Similar to calling `left(0)`.
+* **`hCenter()`**  
+Position horizontally the view's center directly on its superview horizontal center. Similar to calling `hCenter(0)`.
 * **`right()`**  
 Position the view right edge directly on its superview right edge. Similar to calling `right(0)`.
 * **`start()`**:left_right_arrow:  
 Position the view left edge directly on its superview left edge in LTR direction or right edge directly on its superview right edge in RTL direction. Similar to calling `start(0)`.
 * **`end()`**:left_right_arrow:  
 Position the view right edge directly on its superview right edge in LTR direction or left edge directly on its superview left edge in RTL direction. Similar to calling `end(0)`.
-* **`hCenter()`**  
-Position the view horizontal center directly on its superview horizontal center. Similar to calling `hCenter(superview.frame.width / 2)`.
-* **`vCenter()`**  
-Position the view vertical center directly on its superview vertical center. Similar to calling `hCenter(superview.frame.height / 2)`.
 
 ###### Usage examples:
 ```swift
@@ -316,6 +316,73 @@ This example is similar to the previous example, but pins edges directly on supe
 ```swift
     viewA.pin.top().left().bottom().right().margin(10)
 ``` 
+
+<br/>
+
+## Edges <a name="edges"></a>
+
+### PinLayout UIView’s edges
+
+PinLayout adds edges properties to UIViews. These properties are used to reference other view’s edges.
+
+**PinLayout UIView’s edges**:
+
+* `UIView.edge.top`
+* `UIView.edge.vCenter`
+* `UIView.edge.bottom`
+* `UIView.edge.left`
+* `UIView.edge.hCenter`
+* `UIView.edge.right`
+* `UIView.edge.start`:left_right_arrow:
+* `UIView.edge.end`:left_right_arrow:
+
+![](docs/pinlayout-edges.png)
+
+<br/>
+
+### Layout using edges
+
+PinLayout has methods to attach a UIView's edge (top, left, bottom, right, start or end edge) to another view’s edge.
+
+**Methods:**
+
+* **`top(to edge: ViewEdge)`**:  
+Position the view's top edge directly on another view’s edge (top/vCenter/bottom).
+* **`vCenter(to edge: ViewEdge)`**:  
+Position vertically the view's center directly on another view’s edge (top/vCenter/bottom).
+* **`bottom(to edge: ViewEdge)`**:  
+Position the view's bottom edge directly on another view’s edge (top/vCenter/bottom).
+* **`left(to: edge: ViewEdge)`**:  
+Position the view's left edge directly on another view’s edge (left/hCenter/right).
+* **`hCenter(to: edge: ViewEdge)`**:  
+Position horizontally the view's center directly on another view’s edge (left/hCenter/right).
+* **`right(to: edge: ViewEdge)`**:  
+Position the view's right edge directly on another view’s edge (left/hCenter/right).
+* **`start(to: edge: ViewEdge)`**:left_right_arrow:
+In LTR direction it position the view's left edge directly on another view’s edge.  
+In RTL direction it position the view's right edge directly on another view’s edge.  
+* **`end(to: edge: ViewEdge)`**:left_right_arrow:  
+In LTR direction it position the view's top edge directly on another view’s edge.  
+In RTL direction it position the view's bottom edge directly on another view’s edge.  
+
+:pushpin: These methods can pin a view’s edge to any other view's edge, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
+
+###### Usage examples:
+```swift
+	view.pin.left(to: view1.edge.right)
+	view.pin.left(to: view1.edge.right).top(to: view2.edge.right)
+```
+
+###### Example:
+Layout using an edge.
+
+The following example will layout the view B left edge on the view A right edge. It only changes the view B left coordinate.
+
+![](docs/example-edges.png)
+
+```swift
+	viewB.pin.left(to: viewA.edge.right)
+```
 
 <br/>
 
@@ -443,59 +510,6 @@ This is equivalent to:
 
 ```swift
 	viewA.pin.topRight(to: superview.pin.topRight)
-```
-
-<br/>
-
-## Edges <a name="edges"></a>
-
-### PinLayout UIView’s edges
-
-PinLayout adds edges properties to UIViews. These properties are used to reference other view’s edges.
-
-**PinLayout UIView’s edges**:
-
-* `UIView.edge.top`
-* `UIView.edge.left`
-* `UIView.edge.bottom`
-* `UIView.edge.right`
-* `UIView.edge.start`:left_right_arrow:
-* `UIView.edge.end`:left_right_arrow:
-
-![](docs/pinlayout-edges.png)
-
-<br/>
-
-### Layout using edges
-
-PinLayout has methods to attach a UIView's edge (top, left, bottom, right, start or end edge) to another view’s edge.
-
-**Methods:**
-
-* `top(to edge: VerticalEdge)`
-* `left(to: edge: HorizontalEdge)`
-* `bottom(to edge: VerticalEdge)`
-* `right(to: edge: HorizontalEdge)`
-* `start(to: edge: HorizontalEdge)`:left_right_arrow:
-* `end(to: edge: HorizontalEdge)`:left_right_arrow:
-
-:pushpin: These methods can pin a view’s edge to any other view's edge, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
-
-###### Usage examples:
-```swift
-	view.pin.left(to: view1.edge.right)
-	view.pin.left(to: view1.edge.right).top(to: view2.edge.right)
-```
-
-###### Example:
-Layout using an edge.
-
-The following example will layout the view B left edge on the view A right edge. It only changes the view B left coordinate.
-
-![](docs/example-edges.png)
-
-```swift
-	viewB.pin.left(to: viewA.edge.right)
 ```
 
 <br/>

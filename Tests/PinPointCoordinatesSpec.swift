@@ -185,7 +185,7 @@ class PinPointCoordinatesSpec: QuickSpec {
         describe("the result of the topCenter() and topCenter(to: UIView) methods") {
             it("should position the aView's topCenter corner at the specified position") {
                 aView.pin.top(100).hCenter(100)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 100.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's topCenter corner on its parent's topCenter corner") {
@@ -314,7 +314,7 @@ class PinPointCoordinatesSpec: QuickSpec {
         describe("the result of the centerLeft() and centerLeft(to: UIView) methods") {
             it("should position the aView's centerLeft corner at the specified position") {
                 aView.pin.left(100).vCenter(100)
-                expect(aView.frame).to(equal(CGRect(x: 100, y: 70.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 270.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's centerLeft corner at the specified position") {
@@ -381,7 +381,7 @@ class PinPointCoordinatesSpec: QuickSpec {
         describe("the result of the center() and center(to: UIView) methods") {
             it("should position the aView's center corner at the specified position") {
                 aView.pin.hCenter(100).vCenter(100)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 70.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 270.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's center corner at the specified position") {
@@ -438,7 +438,7 @@ class PinPointCoordinatesSpec: QuickSpec {
         describe("the result of the centerRight() and centerRight(to: UIView) methods") {
             it("should position the aView's centerRight corner at the specified position") {
                 aView.pin.right(100).vCenter(100)
-                expect(aView.frame).to(equal(CGRect(x: 200.0, y: 70.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 200.0, y: 270.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's centerRight corner at the specified position") {
@@ -552,7 +552,7 @@ class PinPointCoordinatesSpec: QuickSpec {
         describe("the result of the bottomCenter() and bottomCenter(to: UIView) methods") {
             it("should position the aView's bottomCenter corner at the specified position") {
                 aView.pin.bottom(100).hCenter(100)
-                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 240.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 240.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's bottomCenter corner at the specified position") {

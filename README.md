@@ -176,9 +176,8 @@ These results also mean that **PinLayout is by far faster than any layout framew
 
 [See here a more complete details, results and explanation of the benchmark](docs/Benchmark.md).
 
-<p align="center"> Tested on a iPhone 6S iOS 10.3.2</p>
 <p align="center">
-  <img src="docs/Benchmark/benchmark_iphone6s.png" alt="PinLayout Performance" width=600/>
+  <img src="docs/Benchmark/benchmark_iphone7.png" alt="PinLayout Performance" width=600/>
 </p>
 
 <br/>
@@ -221,9 +220,9 @@ The value specifies the top edge distance from the superview's top edge in pixel
 * **`top(_ percent: Percent)`**  
 The value specifies the top edge distance from the superview's top edge in percentage of its superview's height.
 * **`vCenter(_ value: CGFloat)`**  
-The value specifies the vertical center distance from the superview's top edge in pixels.
+The value specifies the distance vertically of the view's center related to the superview's center in pixels. A positive value move the view down and a negative value move it up relative to the superview's center.
 * **`vCenter(_ percent: Percent)`**  
-The value specifies the vertical center distance from the superview's top edge in percentage of its superview's height.
+The value specifies the distance vertically of the view's center related to the superview's center in percentage of its superview's height. A positive value move the view down and a negative value move it up relative to the superview's center.
 * **`bottom(_ value: CGFloat)`**  
 The value specifies the bottom edge **distance from the superview's bottom edge** in pixels.
 * **`bottom(_ percent: Percent)`**  
@@ -233,9 +232,9 @@ The value specifies the left edge distance from the superview's left edge in pix
 * **`left(_ percent: Percent)`**  
 The value specifies the left edge distance from the superview's left edge in percentage of its superview's width.
 * **`hCenter(_ value: CGFloat)`**  
-The value specifies the horizontal center distance from the superview's left edge in pixels.
+The value specifies the distance horizontally of the view's center related to the superview's center in pixels. A positive value move the view to the right  and a negative value move it to the left relative to the superview's center.
 * **`hCenter(_ percent: Percent)`**  
-The value specifies the horizontal center distance from the superview's left edge in percentage of its superview's width.
+The value specifies the distance horizontally of the view's center related to the superview's center in percentage of its superview's width. A positive value move the view to the right  and a negative value move it to the left relative to the superview's center.
 * **`right(_ value: CGFloat)`**  
 The value specifies the right edge **distance from the superview's right edge** in pixels.
 * **`right(_ percent: Percent)`**  
@@ -256,9 +255,9 @@ In RTL direction the value specifies the left edge distance from the superview's
 ###### Usage Examples:
 
 ```swift
-    view.pin.top(20).left(20)
-    view.pin.top(25%).hCenter(0)
-    view.pin.left(12).vCenter(100)
+    view.pin.top(20).bottom(20)	  // The view has a top margin and a bottom margin of 20 pixels 
+    view.pin.top(25%).hCenter(0)   // The view is centered horizontally
+    view.pin.left(12).vCenter(0)   // The view is centered vertically
     view.pin.start(20).end(20)
 ```
 
@@ -373,16 +372,22 @@ In RTL direction it position the view's bottom edge directly on another view’s
 	view.pin.left(to: view1.edge.right).top(to: view2.edge.right)
 ```
 
-###### Example:
-Layout using an edge.
-
-The following example will layout the view B left edge on the view A right edge. It only changes the view B left coordinate.
+###### Example 1:
+This example layout the view B left edge on the view A right edge. It only changes the view B left coordinate.
 
 ![](docs/example-edges.png)
 
 ```swift
 	viewB.pin.left(to: viewA.edge.right)
 ```
+
+###### Example 2:
+This example center horizontally the view B inside the view A with a top margin of 10 from the same view.
+![](docs/pinlayout_example_hCenter_edge.png)
+
+```swift
+    aView.pin.top(to: bView.edge.top).hCenter(to: bView.edge.hCenter).marginTop(10)
+``` 
 
 <br/>
 

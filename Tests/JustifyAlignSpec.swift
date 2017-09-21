@@ -88,9 +88,9 @@ class JustifyAlignSpec: QuickSpec {
                 expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "left and right"]))
             }
             
-            it("test when hCenter has been set") {
+            it("test when hCenter has been set and justify() won't be applied") {
                 aView.pin.hCenter(60).justify(.center)
-                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 210.0, y: 100.0, width: 100.0, height: 60.0)))
                 expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "hCenter"]))
             }
         }
@@ -123,9 +123,9 @@ class JustifyAlignSpec: QuickSpec {
                 expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
             
-            it("test when hCenter has been set") {
+            it("test when hCenter has been set and align() won't be applied") {
                 aView.pin.hCenter(60).align(.center)
-                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 210.0, y: 100.0, width: 100.0, height: 60.0)))
                 expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
         }

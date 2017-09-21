@@ -6,16 +6,27 @@
 
 
 # Change Log
+## [1.3.0](https://github.com/mirego/PinLayout/releases/tag/1.3.0)
+Released on 2017-08-18. 
+
+#### Change
+* **Breaking change related to hCenter(CGFloat), hCenter(percent), vCenter(CGFloat), vCenter(percent)**:  
+  * **`vCenter(_ value: CGFloat)`** and **`vCenter(_ percent: Percent)`**:  
+The value specifies the distance vertically of the view's center **related to the superview's center** in pixels. Previously it was related to the **superview's top edge**.
+  * **`hCenter(_ value: CGFloat)`** and **`hCenter(_ percent: Percent)`**:  
+The value specifies the distance horizontally of the view's center **related to the superview's center** in pixels. Previously it was related to the **superview's left edge**.
 
 ## [1.2.4](https://github.com/mirego/PinLayout/releases/tag/1.2.4)
 #### Change
 * Add methods to pin hCenter and vCenter to any other view's edges (including the new hCenter and vCenter edges)
-	*  New methods:
-		*  func hCenter(to edge: HorizontalEdge) -> PinLayout
-		*  func vCenter(to edge: VerticalEdge) -> PinLayout
-	*  New UIView's edges:
-		*  UIView.edge.hCenter
-		*  UIView.edge.vCenter
+	*  **New methods**:
+		* **`hCenter(to: edge)`**  
+        Position horizontally the view's center directly on another view’s edge (left/hCenter/right)
+		* **`vCenter(to: edge)`**  
+        Position vertically the view's center directly on another view’s edge (top/vCenter/bottom).
+	*  **New UIView's edges**:
+		*  **`UIView.edge.hCenter`**
+		*  **`UIView.edge.vCenter`**
 	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#80](https://github.com/mirego/PinLayout/pull/80) 
   
 ## [1.2.3](https://github.com/mirego/PinLayout/releases/tag/1.2.3)

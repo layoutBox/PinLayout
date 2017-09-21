@@ -192,7 +192,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func hCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "hCenter(\(value))" }
-        setHorizontalCenter(value, context)
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setHorizontalCenter((layoutSuperview.frame.width / 2) + value, context)
         return self
     }
     
@@ -200,7 +201,7 @@ class PinLayoutImpl: PinLayout {
     func hCenter(_ percent: Percent) -> PinLayout {
         func context() -> String { return "hCenter(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setHorizontalCenter(percent.of(layoutSuperview.frame.width), context)
+        setHorizontalCenter((layoutSuperview.frame.width / 2) + percent.of(layoutSuperview.frame.width), context)
         return self
     }
 
@@ -215,7 +216,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func vCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "vCenter(\(value))" }
-        setVerticalCenter(value, context)
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setVerticalCenter((layoutSuperview.frame.height / 2) + value, context)
         return self
     }
     
@@ -223,7 +225,7 @@ class PinLayoutImpl: PinLayout {
     func vCenter(_ percent: Percent) -> PinLayout {
         func context() -> String { return "vCenter(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setVerticalCenter(percent.of(layoutSuperview.frame.height), context)
+        setVerticalCenter((layoutSuperview.frame.height / 2) + percent.of(layoutSuperview.frame.height), context)
         return self
     }
 

@@ -52,16 +52,17 @@ class TableViewExampleViewController: BaseViewController {
         mainView.configure(methods: [
             Method(name: "top(_ value: CGFloat)", description: "The value specifies the top edge distance from the superview's top edge in pixels."),
             Method(name: "top(_ percent: Percent)", description: "The value specifies the top edge distance from the superview's top edge in percentage of its superview's height."),
-            Method(name: "left(_ value: CGFloat)", description: "The value specifies the left edge distance from the superview's left edge in pixels. The value specifies the left edge distance from the superview's left edge in pixels."),
-            Method(name: "left(_ percent: Percent)", description: "The value specifies the left edge distance from the superview's left edge in percentage of its superview's width."),
+            Method(name: "vCenter(_ value: CGFloat)", description: "The value specifies the distance vertically of the view's center related to the superview's center in pixels."),
+            Method(name: "vCenter(_ percent: Percent)", description: "The value specifies the distance vertically of the view's center related to the superview's center in percentage of its superview's height."),
             Method(name: "bottom(_ value: CGFloat)", description: "The value specifies the bottom edge distance from the superview's bottom edge in pixels."),
             Method(name: "bottom(_ percent: Percent)", description: "The value specifies the bottom edge distance from the superview's bottom edge in percentage of its superview's height."),
+            
+            Method(name: "left(_ value: CGFloat)", description: "The value specifies the left edge distance from the superview's left edge in pixels. The value specifies the left edge distance from the superview's left edge in pixels."),
+            Method(name: "left(_ percent: Percent)", description: "The value specifies the left edge distance from the superview's left edge in percentage of its superview's width."),
+            Method(name: "hCenter(_ value: CGFloat)", description: "The value specifies the distance horizontally of the view's center related to the superview's center in pixels."),
+            Method(name: "hCenter(_ percent: Percent)", description: "The value specifies the distance horizontally of the view's center related to the superview's center in percentage of its superview's height."),
             Method(name: "right(_ value: CGFloat)", description: "The value specifies the right edge distance from the superview's right edge in pixels."),
-            Method(name: "right(_ percent: Percent)", description: "The value specifies the right edge distance from the superview's right edge in percentage of its superview's width."),
-            Method(name: "hCenter(_ value: CGFloat)", description: "The value specifies the horizontal center distance from the superview's left edge in pixels."),
-            Method(name: "hCenter(_ percent: Percent)", description: "The value specifies the horizontal center distance from the superview's left edge in percentage of its superview's width."),
-            Method(name: "vCenter(_ value: CGFloat)", description: "The value specifies the vertical center distance from the superview's top edge in pixels."),
-            Method(name: "vCenter(_ percent: Percent)", description: "The value specifies the vertical center distance from the superview's top edge in percentage of its superview's height.")
+            Method(name: "right(_ percent: Percent)", description: "The value specifies the right edge distance from the superview's right edge in percentage of its superview's width.")
         ])
     }
 }

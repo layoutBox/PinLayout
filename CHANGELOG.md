@@ -16,6 +16,8 @@ The value specifies the distance vertically of the view's center **related to th
   * **`hCenter(_ value: CGFloat)`** and **`hCenter(_ percent: Percent)`**:  
 The value specifies the distance horizontally of the view's center **related to the superview's center** in pixels. Previously it was related to the **superview's left edge**.
 
+Previously `hCenter(0)` wasn't equal to `hCenter()`, same thing for `vCenter(0)`. But this was an exception: `top(0)` == `top()`,` left(0)` == `left()`, `right(0)` == `right()`. Now thay all have the same logic.
+
 ## [1.2.4](https://github.com/mirego/PinLayout/releases/tag/1.2.4)
 #### Change
 * Add methods to pin hCenter and vCenter to any other view's edges (including the new hCenter and vCenter edges)

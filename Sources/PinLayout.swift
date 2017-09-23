@@ -286,45 +286,89 @@ public protocol PinLayout {
     //
     // MARK: Margins
     //
+    
+    /**
+     Set the top margin.
+     */
     @discardableResult func marginTop(_ value: CGFloat) -> PinLayout
+    
+    /**
+     Set the left margin.
+     */
     @discardableResult func marginLeft(_ value: CGFloat) -> PinLayout
+    
+    /**
+     Set the bottom margin.
+     */
     @discardableResult func marginBottom(_ value: CGFloat) -> PinLayout
+    
+    /**
+     Set the right margin.
+     */
     @discardableResult func marginRight(_ value: CGFloat) -> PinLayout
+    
     // RTL support
+    /**
+     Set the start margin.
+     
+     Depends on the value of `Pin.layoutDirection(...)`:
+     * In LTR direction, start margin specify the **left** margin.
+     * In RTL direction, start margin specify the **right** margin.
+     */
     @discardableResult func marginStart(_ value: CGFloat) -> PinLayout
+    
+    /**
+     Set the end margin.
+     
+     Depends on the value of `Pin.layoutDirection(...)`:
+     * In LTR direction, end margin specify the **right** margin.
+     * In RTL direction, end margin specify the **left** margin.
+     */
     @discardableResult func marginEnd(_ value: CGFloat) -> PinLayout
     
+    /**
+     Set the left, right, start and end margins to the specified value.
+     */
     @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
+    
+    /**
+     Set the top and bottom margins to the specified value.
+     */
     @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
 
-    /// Apply to all four margins (top, left, bottom, right)
-    ///
-    /// - Parameter value: <#value description#>
-    /// - Returns: <#return value description#>
+    /**
+     Set margins using UIEdgeInsets. 
+     This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
+     */
+    @discardableResult func margin(_ insets: UIEdgeInsets) -> PinLayout
+    
+    /**
+     Set margins using NSDirectionalEdgeInsets.
+     This method is particularly to set all margins using iOS 11 `UIView.directionalLayoutMargins`.
+     
+     Available only on iOS 11 and higher.
+     */
+    @available(iOS 11.0, *)
+    @discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout
+
+    /**
+     Set all margins to the specified value.
+     */
     @discardableResult func margin(_ value: CGFloat) -> PinLayout
-    /// vertical | horizontal
-    ///
-    /// - Parameters:
-    ///   - vertical: <#vertical description#>
-    ///   - horizontal: <#horizontal description#>
-    /// - Returns: <#return value description#>
+    
+    /**
+     Set individually vertical margins (top, bottom) and horizontal margins (left, right, start, end).
+     */
     @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
-    /// top | horizontal | bottom
-    ///
-    /// - Parameters:
-    ///   - top: <#top description#>
-    ///   - horizontal: <#horizontal description#>
-    ///   - bottom: <#bottom description#>
-    /// - Returns: <#return value description#>
+    
+    /**
+     Set individually top, horizontal margins and bottom margin.
+     */
     @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
-    /// top | right | bottom | left
-    ///
-    /// - Parameters:
-    ///   - top: <#top description#>
-    ///   - left: <#left description#>
-    ///   - bottom: <#bottom description#>
-    ///   - right: <#right description#>
-    /// - Returns: <#return value description#>
+    
+    /**
+     Set individually top, left, bottom and right margins.
+     */
     @discardableResult func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout
 
     /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.

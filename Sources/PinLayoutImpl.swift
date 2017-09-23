@@ -769,6 +769,25 @@ class PinLayoutImpl: PinLayout {
         marginBottom = value
         return self
     }
+    
+    @discardableResult
+    func margin(_ insets: UIEdgeInsets) -> PinLayout {
+        marginTop = insets.top
+        marginBottom = insets.bottom
+        marginLeft = insets.left
+        marginRight = insets.right
+        return self
+    }
+    
+    @available(iOS 11.0, *)
+    @discardableResult
+    func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout {
+        marginTop = directionalInsets.top
+        marginBottom = directionalInsets.bottom
+        marginStart(directionalInsets.leading)
+        marginEnd(directionalInsets.trailing)
+        return self
+    }
 
     @discardableResult
     func margin(_ value: CGFloat) -> PinLayout {

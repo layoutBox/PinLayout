@@ -547,5 +547,35 @@ class MarginsSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 300, y: 340, width: 200.0, height: 120.0)))
             }
         }
+        
+        //
+        // margin using UIEdgeInsets and NSDirectionalEdgeInsets
+        //
+        describe("the result of top&bottom margins when the hCenter and vCenter are specified") {
+            it("should adjust the aView") {
+                aView.pin.top().bottom().left().right().margin(UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
+            }
+            
+            if #available(iOS 11.0, *) {
+                it("should adjust the aView") {
+                    Pin.layoutDirection(.ltr)
+                    aView.pin.top().bottom().start().end().margin(NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 40))
+                    expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
+                }
+                
+                it("should adjust the aView") {
+                    Pin.layoutDirection(.rtl)
+                    aView.pin.top().bottom().start().end().margin(NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 40))
+                    expect(aView.frame).to(equal(CGRect(x: 40.0, y: 10.0, width: 340.0, height: 360.0)))
+                }
+                
+                it("should adjust the aView") {
+                    Pin.layoutDirection(.auto)
+                    aView.pin.top().bottom().start().end().margin(NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 40))
+                    expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
+                }
+            }
+        }
     }
 }

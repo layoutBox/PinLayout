@@ -1,15 +1,14 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode8.3
 
 env:
   matrix:
-    - SCHEME=PinLayout       SDK=iphonesimulator11.0
-    - SCHEME=PinLayoutSample SDK=iphonesimulator11.0
-    - SCHEME=PinLayoutTVOS   SDK=appletvsimulator11.0 
+    - SCHEME=PinLayout       SDK=iphonesimulator10.3
+    - SCHEME=PinLayoutSample SDK=iphonesimulator10.3
+    - SCHEME=PinLayoutTVOS   SDK=appletvsimulator10.2 
 
 before_install:
 #  - brew outdated xctool || brew upgrade xctool;
-# - bundle install
   - gem install xcpretty-travis-formatter;
   - gem install cocoapods --no-document --quiet;
 #  - pod repo update --silent;

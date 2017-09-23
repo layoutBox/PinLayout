@@ -337,7 +337,7 @@ public protocol PinLayout {
     @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
 
     /**
-     Set margins using UIEdgeInsets. 
+     Set all margins using UIEdgeInsets. 
      This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
      */
     @discardableResult func margin(_ insets: UIEdgeInsets) -> PinLayout
@@ -348,8 +348,8 @@ public protocol PinLayout {
      
      Available only on iOS 11 and higher.
      */
-    @available(iOS 11.0, *)
-    @discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout
+    //@available(iOS 11.0, *)
+    //@discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout
 
     /**
      Set all margins to the specified value.

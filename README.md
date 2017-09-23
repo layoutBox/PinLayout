@@ -919,9 +919,7 @@ Set the top and bottom margins to the specified value.
 * **`margin(_ value: CGFloat)`**  
 Apply the value to all margins (top, left, bottom, right)
 * **`margin(_ insets: UIEdgeInsets)`**  
-Set margins using UIEdgeInsets. This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
-* **`margin(_ directionalInsets: NSDirectionalEdgeInsets)`**  
-Available only on iOS 11 and higher.
+Set all margins using an UIEdgeInsets. This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
 * **`margin(_ vertical: CGFloat, _ horizontal: CGFloat)`**  
 Set the individually vertical margins (top, bottom) and horizontal margins (left, right, start, end)
 * **`margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`**  

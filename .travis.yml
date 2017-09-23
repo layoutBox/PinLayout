@@ -9,6 +9,7 @@ env:
 
 before_install:
 #  - brew outdated xctool || brew upgrade xctool;
+  - bundle install
   - gem install xcpretty-travis-formatter;
   - gem install cocoapods --no-document --quiet;
 #  - pod repo update --silent;

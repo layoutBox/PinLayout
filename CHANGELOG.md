@@ -6,6 +6,14 @@
 
 
 # Change Log
+
+## [1.3.1](https://github.com/mirego/PinLayout/releases/tag/1.3.1)
+#### Change
+* Add new margin method `margin(_ insets: UIEdgeInsets)`  
+Set all margins using an UIEdgeInsets.
+This method is particularly useful to set all margins using iOS 11 UIView.safeAreaInsets
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#82](https://github.com/mirego/PinLayout/pull/82)
+	
 ## [1.3.0](https://github.com/mirego/PinLayout/releases/tag/1.3.0)
 Released on 2017-08-18. 
 

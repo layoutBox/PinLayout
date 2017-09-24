@@ -904,18 +904,27 @@ PinLayout has methods to apply margins.
 
 **Methods:**
 
-* `marginTop(_ value: CGFloat)`
-* `marginLeft(_ value: CGFloat)`
-* `marginBottom(_ value: CGFloat)`
-* `marginRight(_ value: CGFloat)`
-* `marginStart(_ value: CGFloat)`:left_right_arrow:
-* `marginEnd(_ value: CGFloat)`:left_right_arrow:
-* `marginHorizontal(_ value: CGFloat)`
-* `marginVertical(_ value: CGFloat)`
-* `margin(_ value: CGFloat) `
-* `margin(_ vertical: CGFloat, _ horizontal: CGFloat)`
-* `margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`
-* `margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat) `
+* **`marginTop(_ value: CGFloat)`**
+* **`marginLeft(_ value: CGFloat)`**
+* **`marginBottom(_ value: CGFloat)`**
+* **`marginRight(_ value: CGFloat)`**
+* **`marginStart(_ value: CGFloat)`**:left_right_arrow:  
+Set the start margin. Depends on the value of `Pin.layoutDirection(...)`. In LTR direction, start margin specify the **left** margin. In RTL direction, start margin specify the **right** margin.
+* **`marginEnd(_ value: CGFloat)`**:left_right_arrow:  
+Set the end margin. Depends on the value of `Pin.layoutDirection(...)`. In LTR direction, end margin specify the **right** margin. In RTL direction, end margin specify the **left** margin.
+* **`marginHorizontal(_ value: CGFloat)`**  
+Set the left, right, start and end margins to the specified value
+* **`marginVertical(_ value: CGFloat)`**  
+Set the top and bottom margins to the specified value.
+* **`margin(_ value: CGFloat)`**  
+Apply the value to all margins (top, left, bottom, right)
+* **`margin(_ insets: UIEdgeInsets)`**  
+Set all margins using an UIEdgeInsets. This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
+* **`margin(_ vertical: CGFloat, _ horizontal: CGFloat)`**  
+Set the individually vertical margins (top, bottom) and horizontal margins (left, right, start, end)
+* **`margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`**  
+Set individually top, horizontal margins and bottom margin
+* **`margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat)`**
 
 ###### Usage examples:
 ```swift

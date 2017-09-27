@@ -212,6 +212,36 @@ class AspectRatioTests: QuickSpec {
                 aView.pin.left().width(100).aspectRatio(2).maxHeight(30)
                     expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 30.0)))
             }
+
+            it("should apply aspectRatio()") {
+                aView.pin.left().width(100).maxWidth(80).aspectRatio(2)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 80.0, height: 40.0)))
+            }
+            
+            it("should apply aspectRatio()") {
+                aView.pin.left().width(100).minWidth(100).aspectRatio(2)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 50.0)))
+            }
+            
+            it("should apply aspectRatio()") {
+                aView.pin.left().width(100).maxWidth(80).aspectRatio(2).maxHeight(30)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 80.0, height: 30.0)))
+            }
+            
+            it("should apply aspectRatio()") {
+                aView.pin.left().height(100).maxHeight(80).aspectRatio(2)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 160.0, height: 80.0)))
+            }
+            
+            it("should apply aspectRatio()") {
+                aView.pin.left().height(100).minHeight(120).aspectRatio(2)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 240.0, height: 120.0)))
+            }
+            
+            it("should apply aspectRatio()") {
+                aView.pin.left().height(100).maxHeight(80).aspectRatio(2).maxWidth(140)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 140.0, height: 80.0)))
+            }
         }
     }
 }

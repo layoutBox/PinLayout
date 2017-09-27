@@ -1052,39 +1052,39 @@ extension PinLayoutImpl {
     }
 
     fileprivate func computeSize() -> Size {
-        var newWidth = computeWidth()
-        var newHeight = computeHeight()
+        var width = computeWidth()
+        var height = computeHeight()
         
-        if (newWidth != nil || newHeight != nil) {
+        if (width != nil || height != nil) {
             if shouldSizeToFit {
                 // Apply min/max width/height before calling sizeThatFits() ... and reapply them after.
-                newWidth = applyMinMax(toWidth: newWidth)
-                newHeight = applyMinMax(toHeight: newHeight)
+                width = applyMinMax(toWidth: width)
+                height = applyMinMax(toHeight: height)
                 
-                let fitSize = CGSize(width: newWidth ?? .greatestFiniteMagnitude,
-                                     height: newHeight ?? .greatestFiniteMagnitude)
+                let fitSize = CGSize(width: width ?? .greatestFiniteMagnitude,
+                                     height: height ?? .greatestFiniteMagnitude)
 
                 let sizeThatFits = view.sizeThatFits(fitSize)
                 
                 if fitSize.width != .greatestFiniteMagnitude && sizeThatFits.width > fitSize.width {
-                    newWidth = fitSize.width
+                    width = fitSize.width
                 } else {
-                    newWidth = sizeThatFits.width
+                    width = sizeThatFits.width
                 }
 
                 if fitSize.height != .greatestFiniteMagnitude && sizeThatFits.height > fitSize.height {
-                    newHeight = fitSize.height
+                    height = fitSize.height
                 } else {
-                    newHeight = sizeThatFits.height
+                    height = sizeThatFits.height
                 }
             } else if let aspectRatio = _aspectRatio {
-                if newWidth != nil && newHeight != nil {
+                if width != nil && height != nil {
                     // warn, both are specified
                     warn("aspectRatio won't be applied, the width and the height are already defined by other PinLayout's properties.")
-                } else if let newWidth = newWidth {
-                    newHeight = newWidth / aspectRatio
-                } else if let newHeight = newHeight {
-                    newWidth = newHeight * aspectRatio
+                } else if let width = width, let adjWidth = applyMinMax(toWidth: width) {
+                    height = adjWidth / aspectRatio
+                } else if let height = height, let adjHeight = applyMinMax(toHeight: height) {
+                    width = adjHeight * aspectRatio
                 }
             }
         } else {
@@ -1096,18 +1096,18 @@ extension PinLayoutImpl {
             }
         }
         
-        newWidth = applyMinMax(toWidth: newWidth)
-        newHeight = applyMinMax(toHeight: newHeight)
+        width = applyMinMax(toWidth: width)
+        height = applyMinMax(toHeight: height)
         
-        if !validateComputedWidth(newWidth) {
-            newWidth = nil
+        if !validateComputedWidth(width) {
+            width = nil
         }
         
-        if !validateComputedHeight(newHeight) {
-            newHeight = nil
+        if !validateComputedHeight(height) {
+            height = nil
         }
         
-        return (newWidth, newHeight)
+        return (width, height)
     }
     
     fileprivate func computeWidth() -> CGFloat? {

@@ -789,6 +789,9 @@ The following example layout the UILabel on the right side of the UIImageView wi
 
 PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
 
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, fitSize, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
+
+
 **Methods:**
 
 * **`minWidth(_ width: CGFloat)`**  
@@ -815,9 +818,6 @@ The value specifies the view's maximum height of the view in pixels or in percen
 	view.pin.top().bottom().maxHeight(100)
 	view.pin.top().height(50%).maxHeight(200)
 ```
-
-:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
-
 
 ###### Example:
 This example layout a view 20 pixels from the top, and horizontally from left to right with a maximum width of 200 pixels. If the superview is smaller than 200 pixels, the view will take the full horizontal space, but for a larger superview, the view will be centered.
@@ -1258,10 +1258,14 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 	let percentageValue: CGFloat = 50
 	view.pin.width(percentageValue%)
 	``` 
+* For other questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
+
 <br>
 
 
-### Contributing, comments, ideas, suggestions, issues, .... <a name="comments"></a>
+### Questions, comments, ideas, suggestions, issues, .... <a name="comments"></a>
+If you have questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
+
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
 If you find PinLayout interesting, thanks to **Star** it. You'll be able to retrieve it easily later.

@@ -37,6 +37,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Relative positioning](#relative_positioning)
   * [Width, height and size](#width_height_size)
   * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
+  * [Aspect Ratio](#aspect_ratio)
   * [justify, align](#justify_align)
   * [Margins](#margins)
   * [Warnings](#warnings)
@@ -836,6 +837,46 @@ This is an equivalent solutions using the `justify()` method. This method is exp
 ```
 
 <br/>
+
+
+## Aspect Ratio <a name="aspect_ratio"></a>
+Set the view aspect ratio. 
+AspectRatio solves the problem of knowing one dimension of an element and an aspect ratio, this is particularly useful for images. 
+     
+AspectRatio is applied only if a single dimension (either width or height) can be determined, in that case the aspect ratio will be used to compute the other dimension.
+
+* AspectRatio is defined as the ratio between the width and the height (width / height).
+* An aspect ratio of 2 means the width is twice the size of the height.
+* AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight) 
+ dimensions of an item.
+     
+**Methods:**
+
+* **`aspectRatio(_ ratio: CGFloat)`**:  
+Set the view aspect ratio using a CGFloat. AspectRatio is defined as the ratio between the width and the height (width / height). 
+* **`aspectRatio(of view: UIView)`**:  
+Set the view aspect ratio using another UIView's aspect ratio.      
+* **`aspectRatio()`**:  
+If the layouted view is an UIImageView, this method will set the aspectRatio using the UIImageView's image dimension. For other types of views, this method as no impact.
+     
+###### Usage examples:
+```swift
+	aView.pin.left().width(100%).aspectRatio(2)
+	imageView.pin.left().width(200).aspectRatio()
+```
+
+###### Example:
+This example layout an UIImageView at the top and center it horizontally, it also adjust its width to 50%. The view’s height will be adjusted automatically using the image aspect ratio.
+
+![](docs/pinlayout_example_aspectratio.png)
+
+```swift
+   imageView.pin.top().hCenter().width(50%).aspectRatio()
+```
+
+
+</br>
+
 
 ## justify() / align() <a name="justify_align"></a>
 

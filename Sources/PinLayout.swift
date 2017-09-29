@@ -279,6 +279,37 @@ public protocol PinLayout {
     @discardableResult func size(_ percent: Percent) -> PinLayout
     @discardableResult func size(of view: UIView) -> PinLayout
     
+    /**
+     Set the view aspect ratio.
+     
+     AspectRatio is applied only if a single dimension (either width or height) can be determined,
+     in that case the aspect ratio will be used to compute the other dimension.
+
+     * AspectRatio is defined as the ratio between the width and the height (width / height).
+     * An aspect ratio of 2 means the width is twice the size of the height.
+     * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight) 
+     dimensions of an item.
+     */
+    @discardableResult func aspectRatio(_ ratio: CGFloat) -> PinLayout
+    /**
+     Set the view aspect ratio using another UIView's aspect ratio. 
+     
+     AspectRatio is applied only if a single dimension (either width or height) can be determined,
+     in that case the aspect ratio will be used to compute the other dimension.
+     
+     * AspectRatio is defined as the ratio between the width and the height (width / height).
+     * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
+     dimensions of an item.
+     */
+    @discardableResult func aspectRatio(of view: UIView) -> PinLayout
+    /**
+     If the layouted view is an UIImageView, this method will set the aspectRatio using
+     the UIImageView's image dimension.
+     
+     For other types of views, this method as no impact.
+     */
+    @discardableResult func aspectRatio() -> PinLayout
+    
     @available(*, deprecated, message: "You should now use fitSize() instead.")
     @discardableResult func sizeToFit() -> PinLayout
     @discardableResult func fitSize() -> PinLayout

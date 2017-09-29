@@ -21,6 +21,8 @@
 		2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
 		246D36481E6C46F50050F202 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
+		248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */; };
+		248E4C771F7A88D200C0E7F7 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */; };
 		24949A281EF550E2003643D3 /* PinLayoutImpl+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A271EF550E2003643D3 /* PinLayoutImpl+Relative.swift */; };
 		24949A2A1EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A291EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift */; };
 		24949A2C1EF55216003643D3 /* PinLayoutImpl+Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */; };
@@ -92,6 +94,8 @@
 		2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectNimbleMatcher.swift; sourceTree = "<group>"; };
 		246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPointCoordinatesSpec.swift; sourceTree = "<group>"; };
 		2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionSpec.swift; sourceTree = "<group>"; };
+		248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectRatioTests.swift; sourceTree = "<group>"; };
+		248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		24949A271EF550E2003643D3 /* PinLayoutImpl+Relative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayoutImpl+Relative.swift"; sourceTree = "<group>"; };
 		24949A291EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayoutImpl+Coordinates.swift"; sourceTree = "<group>"; };
 		24949A2B1EF55216003643D3 /* PinLayoutImpl+Warning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayoutImpl+Warning.swift"; sourceTree = "<group>"; };
@@ -179,7 +183,6 @@
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
 				24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */,
 				24D18D231F3E37DD008129EF /* PinLayoutGlobals.swift */,
-				24BBE6361F50FADE0091D5E9 /* Percent.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
 			);
@@ -193,6 +196,7 @@
 				2469C5011E75D88500073BEE /* BasicView.swift */,
 				245302061ED05FD000E13F29 /* AccurencyTests.swift */,
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
+				248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */,
 				240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */,
 				244C6E141E776A0C0074FC74 /* MarginsSpec.swift */,
 				242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */,
@@ -205,6 +209,7 @@
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 				242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */,
 				240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */,
+				248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 		DFA06B031E8B38B300B6D5E7 /* Impl */ = {
 			isa = PBXGroup;
 			children = (
+				24BBE6361F50FADE0091D5E9 /* Percent.swift */,
 				24A9782D1EE845BB002BD0F1 /* Coordinates.swift */,
 				DFC97CA41E8A8EB3001545D5 /* PinLayoutImpl.swift */,
 				24949A291EF551D6003643D3 /* PinLayoutImpl+Coordinates.swift */,
@@ -500,6 +506,7 @@
 				240F88BE1F0C066800280FC8 /* JustifyAlignSpec.swift in Sources */,
 				2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */,
 				2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */,
+				248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */,
 				240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */,
 				242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */,
 				2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */,
@@ -512,6 +519,7 @@
 				DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */,
 				244C6E151E776A0C0074FC74 /* MarginsSpec.swift in Sources */,
 				249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */,
+				248E4C771F7A88D200C0E7F7 /* UIImage+Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

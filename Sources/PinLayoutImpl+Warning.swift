@@ -28,11 +28,11 @@ extension PinLayoutImpl {
         return "\(method)(to: .\(anchor.type.rawValue), of: \(viewDescription(anchor.view)))"
     }
     
-    internal func warn(_ text: String, _ context: Context) {
+    internal func warnWontBeApplied(_ text: String, _ context: Context) {
         guard Pin.logWarnings else { return }
         warn("\(context()) won't be applied, \(text)")
     }
-    
+        
     internal func warn(_ text: String) {
         guard Pin.logWarnings else { return }
         displayWarning("PinLayout Warning: \(text)")
@@ -48,7 +48,7 @@ extension PinLayoutImpl {
         displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).")
     }
     
-    internal func warnConflict(_ context: Context, _ properties: [String: CGFloat]) {
+    internal func warnConflict(_ context: Context, _ properties: [String: Any]) {
         guard Pin.logWarnings else { return }
         var warning = "PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:"
         properties.forEach { (property) in
@@ -62,22 +62,22 @@ extension PinLayoutImpl {
         if let justify = justify {
             func context() -> String { return "justify(.\(justify))" }
             if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
-                warn("the left and right coordinates must be set to justify the view horizontally.", context)
+                warnWontBeApplied("the left and right coordinates must be set to justify the view horizontally.", context)
             }
             
             if _hCenter != nil {
-                warn("justification is not applied when hCenter has been set. By default the view will be centered around the hCenter.", context)
+                warnWontBeApplied("justification is not applied when hCenter has been set. By default the view will be centered around the hCenter.", context)
             }
         }
         
         if let align = align {
             func context() -> String { return "align(.\(align))" }
             if !((_top != nil && _bottom != nil) || (shouldPinEdges && height != nil && (_top != nil || _bottom != nil || _vCenter != nil))) {
-                warn("the top and bottom coordinates must be set to align the view vertically.", context)
+                warnWontBeApplied("the top and bottom coordinates must be set to align the view vertically.", context)
             }
             
             if _vCenter != nil {
-                warn("alignment is not applied when vCenter has been set. By default the view will be centered around the specified vCenter.", context)
+                warnWontBeApplied("alignment is not applied when vCenter has been set. By default the view will be centered around the specified vCenter.", context)
             }
         }
     }

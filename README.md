@@ -37,6 +37,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Relative positioning](#relative_positioning)
   * [Width, height and size](#width_height_size)
   * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
+  * [Aspect Ratio](#aspect_ratio)
   * [justify, align](#justify_align)
   * [Margins](#margins)
   * [Warnings](#warnings)
@@ -789,6 +790,9 @@ The following example layout the UILabel on the right side of the UIImageView wi
 
 PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
 
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, fitSize, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
+
+
 **Methods:**
 
 * **`minWidth(_ width: CGFloat)`**  
@@ -816,9 +820,6 @@ The value specifies the view's maximum height of the view in pixels or in percen
 	view.pin.top().height(50%).maxHeight(200)
 ```
 
-:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
-
-
 ###### Example:
 This example layout a view 20 pixels from the top, and horizontally from left to right with a maximum width of 200 pixels. If the superview is smaller than 200 pixels, the view will take the full horizontal space, but for a larger superview, the view will be centered.
 
@@ -836,6 +837,46 @@ This is an equivalent solutions using the `justify()` method. This method is exp
 ```
 
 <br/>
+
+
+## Aspect Ratio <a name="aspect_ratio"></a>
+Set the view aspect ratio. 
+AspectRatio solves the problem of knowing one dimension of an element and an aspect ratio, this is particularly useful for images. 
+     
+AspectRatio is applied only if a single dimension (either width or height) can be determined, in that case the aspect ratio will be used to compute the other dimension.
+
+* AspectRatio is defined as the ratio between the width and the height (width / height).
+* An aspect ratio of 2 means the width is twice the size of the height.
+* AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight) 
+ dimensions of an item.
+     
+**Methods:**
+
+* **`aspectRatio(_ ratio: CGFloat)`**:  
+Set the view aspect ratio using a CGFloat. AspectRatio is defined as the ratio between the width and the height (width / height). 
+* **`aspectRatio(of view: UIView)`**:  
+Set the view aspect ratio using another UIView's aspect ratio.      
+* **`aspectRatio()`**:  
+If the layouted view is an UIImageView, this method will set the aspectRatio using the UIImageView's image dimension. For other types of views, this method as no impact.
+     
+###### Usage examples:
+```swift
+	aView.pin.left().width(100%).aspectRatio(2)
+	imageView.pin.left().width(200).aspectRatio()
+```
+
+###### Example:
+This example layout an UIImageView at the top and center it horizontally, it also adjust its width to 50%. The view’s height will be adjusted automatically using the image aspect ratio.
+
+![](docs/pinlayout_example_aspectratio.png)
+
+```swift
+   imageView.pin.top().hCenter().width(50%).aspectRatio()
+```
+
+
+</br>
+
 
 ## justify() / align() <a name="justify_align"></a>
 
@@ -1258,10 +1299,14 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 	let percentageValue: CGFloat = 50
 	view.pin.width(percentageValue%)
 	``` 
+* For other questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
+
 <br>
 
 
-### Contributing, comments, ideas, suggestions, issues, .... <a name="comments"></a>
+### Questions, comments, ideas, suggestions, issues, .... <a name="comments"></a>
+If you have questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
+
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
 
 If you find PinLayout interesting, thanks to **Star** it. You'll be able to retrieve it easily later.

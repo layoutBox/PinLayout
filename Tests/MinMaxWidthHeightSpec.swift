@@ -274,7 +274,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
         describe("the result of the minWidth/maxWidth & fitSize()") {
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().width(100%).maxWidth(250).fitSize()
+                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).fitSize()
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             

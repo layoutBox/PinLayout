@@ -279,7 +279,7 @@ extension PinLayoutImpl {
     
     internal func validateWidth(_ width: CGFloat, context: Context) -> Bool {
         if width < 0 {
-            warn("the width (\(width)) must be greater than or equal to zero.", context);
+            warnWontBeApplied("the width (\(width)) must be greater than or equal to zero.", context);
             return false
         } else {
             return true
@@ -297,7 +297,7 @@ extension PinLayoutImpl {
     
     internal func validateHeight(_ height: CGFloat, context: Context) -> Bool {
         if height < 0 {
-            warn("the height (\(height)) must be greater than or equal to zero.", context);
+            warnWontBeApplied("the height (\(height)) must be greater than or equal to zero.", context);
             return false
         } else {
             return true
@@ -338,7 +338,7 @@ extension PinLayoutImpl {
         })
         
         guard results.count > 0 else {
-            warn("no valid references", context)
+            warnWontBeApplied("no valid references", context)
             return nil
         }
         

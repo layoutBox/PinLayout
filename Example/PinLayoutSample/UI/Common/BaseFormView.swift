@@ -46,7 +46,7 @@ class BaseFormView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        formScrollView.pin.topLeft().bottomRight()
+        formScrollView.pin.top().left().bottom().right().margin(containerInsets())
     }
     
     override func didChangeLayoutGuides() {
@@ -79,5 +79,13 @@ class BaseFormView: BaseView {
     fileprivate func setFormScrollView(bottomInset: CGFloat) {
         formScrollView.contentInset = UIEdgeInsets(top: formScrollView.contentInset.top, left: 0,
                                                    bottom: bottomInset, right: 0)
+    }
+    
+    fileprivate func containerInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return safeAreaInsets
+        } else {
+            return UIEdgeInsets.zero
+        }
     }
 }

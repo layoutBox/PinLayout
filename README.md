@@ -81,7 +81,7 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 override func layoutSubviews() {
    super.layoutSubviews() 
     
-   logo.pin.top().left().size(100).margin(10)
+   logo.pin.top().left().size(100).aspectRatio().margin(10)
    segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
    textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).fitSize()
    separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
@@ -962,6 +962,8 @@ Set the top and bottom margins to the specified value.
 Apply the value to all margins (top, left, bottom, right)
 * **`margin(_ insets: UIEdgeInsets)`**  
 Set all margins using an UIEdgeInsets. This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
+* **`margin(_ insets: NSDirectionalEdgeInsets) `**  
+Set all margins using an NSDirectionalEdgeInsets. This method is useful to set all margins using iOS 11 `UIView. directionalLayoutMargins` when layouting a view supporting RTL/LTR languages.
 * **`margin(_ vertical: CGFloat, _ horizontal: CGFloat)`**  
 Set the individually vertical margins (top, bottom) and horizontal margins (left, right, start, end)
 * **`margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`**  
@@ -1092,9 +1094,7 @@ NOTE: In that in that particular situation, the same results could have been ach
 	view.pin.left().right().marginHorizontal(20)
 ```
 
-
 <br>
-
 
 ## Warnings <a name="warnings"></a>
 ### PinLayout's warnings
@@ -1163,6 +1163,8 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 	   .right(of: statusIcon).left(of: accessoryView)
 	   .above(of: button).marginHorizontal(10)
 	```
+
+:pushpin: PinLayout's method call order is irrelevant, the layout result will always be the same. 
 
 <br/>
 
@@ -1292,6 +1294,9 @@ PinLayout also expose an Objective-C interface slightly different than the Swift
 
 *  **Q: When the device rotation change, the layout is not updated.**  
    **R:** PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking.
+   
+*  **Q: How to handle new iOS 11 `UIView.safeAreaInsets` and the iPhone X .**  
+   **R:** iOS 11 adds `UIView.safeAreaInsets` to particularly support the iPhone X landscape mode. In this mode `UIView.safeAreaInsets` has a left and right insets. The easiest way the handle this situation with PinLayout is to add a container view that will contains all your view's children, and simply adjust this container view to match the `safeAreaInsets`. All example in the [Examples App](#examples_app) handle correctly the `safeAreaInsets` and works on iPhone X in landscape mode.
    
 *  **Q: How can we adjust a UIView container to match all its children?**  
    **R:** The proposed solution is used by the **Form** example for its rounded corner background. Suppose you want to adjust a container height to match all its child (subviews). 

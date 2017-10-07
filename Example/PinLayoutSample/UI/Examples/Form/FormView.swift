@@ -81,9 +81,8 @@ class FormView: BaseFormView {
     
     fileprivate func layoutFormFields() {
         let margin: CGFloat = 12
-        let width = max(300, frame.width)
         
-        formContainerView.pin.topCenter().width(width).pinEdges().margin(margin, margin, margin)
+        formContainerView.pin.top().hCenter().width(100%).maxWidth(400).pinEdges().margin(margin, margin, margin)
         
         formTitleLabel.pin.topCenter().margin(margin)
 

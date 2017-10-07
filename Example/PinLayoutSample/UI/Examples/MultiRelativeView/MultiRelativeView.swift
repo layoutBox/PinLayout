@@ -21,6 +21,7 @@ import UIKit
 import PinLayout
 
 class MultiRelativeView: BaseView {
+    fileprivate let container = UIView()
     fileprivate let view1 = BasicView(text: "Relative view 1 (width: 20%, height: 50%)", color: .lightGray)
     fileprivate let view2 = BasicView(text: "Relative view 2 (width: 20%, height: 50%)", color: .lightGray)
     fileprivate let view = BasicView(text: "View layouted using two relative views: \n  - right(of: view1, aligned: .top)\n  - left(of: view2, aligned: .bottom)",
@@ -29,25 +30,33 @@ class MultiRelativeView: BaseView {
     override init() {
         super.init()
     
-        addSubview(view1)
-        addSubview(view2)
-        addSubview(view)
+        addSubview(container)
+
+        container.addSubview(view1)
+        container.addSubview(view2)
+        container.addSubview(view)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func configure() {
-        
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        view1.pin.top(topLayoutGuide).left().width(20%).height(50%)
-        view2.pin.top(topLayoutGuide).right().width(20%).height(50%)
+        container.pin.top().bottom().left().right().margin(containerInsets())
+        
+        view1.pin.top().left().width(20%).height(50%)
+        view2.pin.top().right().width(20%).height(50%)
         
         view.pin.right(of: view1, aligned: .top).left(of: view2, aligned: .bottom).marginHorizontal(10)
+    }
+    
+    fileprivate func containerInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return safeAreaInsets
+        } else {
+            return UIEdgeInsets(top: topLayoutGuide, left: 0, bottom: 0, right: 0)
+        }
     }
 }

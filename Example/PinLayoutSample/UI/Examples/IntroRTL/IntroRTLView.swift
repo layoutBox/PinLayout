@@ -36,22 +36,24 @@ class IntroRTLView: BaseView {
         // `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9)
         Pin.layoutDirection(.auto)
         
+        addSubview(container)
+
         logo.contentMode = .scaleAspectFit
-        addSubview(logo)
+        container.addSubview(logo)
         
         segmented.selectedSegmentIndex = 0
         segmented.tintColor = .pinLayoutColor
-        addSubview(segmented)
+        container.addSubview(segmented)
         
         textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
         textLabel.font = .systemFont(ofSize: 14)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
-        addSubview(textLabel)
+        container.addSubview(textLabel)
         
         separatorView.pin.height(1)
         separatorView.backgroundColor = .pinLayoutColor
-        addSubview(separatorView)
+        container.addSubview(separatorView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,9 +63,20 @@ class IntroRTLView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        logo.pin.top().start().size(100).margin(topLayoutGuide + 10, 10, 10, 10)
-        segmented.pin.after(of: logo, aligned: .top).end().marginHorizontal(10)
+        container.pin.top().bottom().start().end().margin(containerInsets())
+
+        logo.pin.top().start().size(100).aspectRatio().marginTop(10)
+        segmented.pin.after(of: logo, aligned: .top).end().marginStart(10)
         textLabel.pin.below(of: segmented, aligned: .start).width(of: segmented).pinEdges().marginTop(10).fitSize()
         separatorView.pin.below(of: [logo, textLabel], aligned: .start).end(to: segmented.edge.end).marginTop(10)
+    }
+
+    fileprivate func containerInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            // The container margin must be at least of 10 pixels all around
+            return safeAreaInsets.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
+        } else {
+            return UIEdgeInsets(top: topLayoutGuide, left: 10, bottom: 0, right: 10)
+        }
     }
 }

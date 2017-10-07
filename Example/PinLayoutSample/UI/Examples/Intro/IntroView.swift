@@ -30,23 +30,25 @@ class IntroView: BaseView {
     
     override init() {
         super.init()
+        
+        addSubview(container)
 
         logo.contentMode = .scaleAspectFit
-        addSubview(logo)
+        container.addSubview(logo)
         
         segmented.selectedSegmentIndex = 0
         segmented.tintColor = .pinLayoutColor
-        addSubview(segmented)
+        container.addSubview(segmented)
         
         textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
         textLabel.font = .systemFont(ofSize: 14)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
-        addSubview(textLabel)
+        container.addSubview(textLabel)
         
         separatorView.pin.height(1)
         separatorView.backgroundColor = .pinLayoutColor
-        addSubview(separatorView)
+        container.addSubview(separatorView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,9 +58,20 @@ class IntroView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        logo.pin.top().left().size(100).margin(topLayoutGuide + 10, 10, 10)
-        segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
+        container.pin.top().bottom().left().right().margin(containerInsets())
+        
+        logo.pin.top().left().size(100).aspectRatio().marginTop(10)
+        segmented.pin.right(of: logo, aligned: .top).right().marginLeft(10)
         textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).fitSize()
         separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
+    }
+    
+    fileprivate func containerInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            // The container margin must be at least of 10 pixels all around
+            return safeAreaInsets.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
+        } else {
+            return UIEdgeInsets(top: topLayoutGuide, left: 10, bottom: 0, right: 10)
+        }
     }
 }

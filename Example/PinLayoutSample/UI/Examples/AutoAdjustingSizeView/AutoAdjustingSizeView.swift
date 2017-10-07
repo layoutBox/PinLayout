@@ -74,7 +74,7 @@ class AutoAdjustingSizeView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentScrollView.pin.topLeft().bottomRight()
+        contentScrollView.pin.top().bottom().left().right().margin(containerInsets())
         
         row1.pin.top().left().right().height(40)
         row1Item1.pin.top().left().bottom().width(50).margin(2)
@@ -82,18 +82,26 @@ class AutoAdjustingSizeView: BaseView {
 
         row2.pin.below(of: row1, aligned: .left).size(of: row1).marginTop(10)
         row2Item1.pin.top().right().bottom().width(150).width(25%).margin(2)
-        row2Item2.pin.left(of: row2Item1, aligned: .top).bottomLeft().margin(0, 2, 2, 2)
+        row2Item2.pin.left(of: row2Item1, aligned: .top).left().bottom().margin(0, 2, 2, 2)
 
         row3.pin.below(of: row2, aligned: .left).size(of: row1).marginTop(10)
         row3Item1.pin.topCenter().width(50).bottom().margin(2)
-        row3Item2.pin.left(of: row3Item1, aligned: .top).bottomLeft().margin(0, 2, 2, 2)
-        row3Item3.pin.right(of: row3Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
+        row3Item2.pin.left(of: row3Item1, aligned: .top).left().bottom().margin(0, 2, 2, 2)
+        row3Item3.pin.right(of: row3Item1, aligned: .top).right().bottom().margin(0, 2, 2, 2)
 
         row4.pin.below(of: row3, aligned: .left).size(of: row1).marginTop(10)
         row4Item1.pin.top().left().width(25%).bottom().margin(2)
         row4Item2.pin.right(of: row4Item1, aligned: .top).width(50%).bottom().margin(0, 2, 2, 2)
-        row4Item3.pin.right(of: row4Item2, aligned: .top).bottomRight().margin(0, 2, 2, 2)
+        row4Item3.pin.right(of: row4Item2, aligned: .top).right().bottom().margin(0, 2, 2, 2)
         
-        contentScrollView.contentSize = CGSize(width: frame.width, height: row4.frame.maxY)
+        contentScrollView.contentSize = CGSize(width: contentScrollView.frame.width, height: row4.frame.maxY)
+    }
+    
+    fileprivate func containerInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return safeAreaInsets
+        } else {
+            return UIEdgeInsets.zero
+        }
     }
 }

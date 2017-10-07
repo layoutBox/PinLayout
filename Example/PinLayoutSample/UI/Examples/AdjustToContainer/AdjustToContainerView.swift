@@ -21,7 +21,7 @@ import UIKit
 import PinLayout
 
 class AdjustToContainerView: BaseView {
-
+    fileprivate let container = UIView()
     fileprivate let languageSelectorView = ChoiceSelectorView(text: "What is your favorite language?", choices: ["Swift", "Objective-C", "C++"])
     fileprivate let swiftOpinionSelectorView = ChoiceSelectorView(text: "Overall, are you satisfied with the Swift performance in your projects?", choices: ["Yes", "No"])
     fileprivate let swiftUsageSelectorView = ChoiceSelectorView(text: "How often do you typically use Swift?", choices: ["Daily", "Weekly", "Montly", "Do not use"])
@@ -29,9 +29,11 @@ class AdjustToContainerView: BaseView {
     override init() {
         super.init()
 
-        addSubview(languageSelectorView)
-        addSubview(swiftOpinionSelectorView)
-        addSubview(swiftUsageSelectorView)
+        addSubview(container)
+
+        container.addSubview(languageSelectorView)
+        container.addSubview(swiftOpinionSelectorView)
+        container.addSubview(swiftUsageSelectorView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,8 +43,18 @@ class AdjustToContainerView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        languageSelectorView.pin.top(topLayoutGuide).left().right().fitSize()
+        container.pin.top().bottom().left().right().margin(containerInsets())
+        
+        languageSelectorView.pin.top().left().right().fitSize()
         swiftOpinionSelectorView.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).fitSize()
         swiftUsageSelectorView.pin.below(of: swiftOpinionSelectorView, aligned: .left).right().marginTop(10).fitSize()
+    }
+    
+    fileprivate func containerInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return safeAreaInsets
+        } else {
+            return UIEdgeInsets(top: topLayoutGuide, left: 0, bottom: 0, right: 0)
+        }
     }
 }

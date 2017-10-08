@@ -799,7 +799,7 @@ class PinLayoutImpl: PinLayout {
         return self
     }
     
-    @available(iOS 11.0, *)
+    @available(tvOS 11.0, iOS 11.0, *)
     @discardableResult
     func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout {
         marginTop = directionalInsets.top

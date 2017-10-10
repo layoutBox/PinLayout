@@ -16,6 +16,10 @@
 		2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */; };
 		2439CC541E665C6B003326FB /* RelativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC411E665C6B003326FB /* RelativeView.swift */; };
 		2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC421E665C6B003326FB /* RelativeViewController.swift */; };
+		246812FD1F8D013500462E53 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246812FC1F8D013500462E53 /* NotificationCenter.framework */; };
+		246813001F8D013500462E53 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246812FF1F8D013500462E53 /* TodayViewController.swift */; };
+		246813031F8D013500462E53 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246813011F8D013500462E53 /* MainInterface.storyboard */; };
+		246813071F8D013500462E53 /* PinLayoutTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 246812FB1F8D013500462E53 /* PinLayoutTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249326881EEEEE3D00BCB814 /* Stylesheet.swift */; };
 		2493268C1EEEEFF100BCB814 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493268B1EEEEFF100BCB814 /* BaseViewController.swift */; };
 		2493268E1EEEF02700BCB814 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493268D1EEEF02700BCB814 /* BaseView.swift */; };
@@ -63,6 +67,13 @@
 			remoteGlobalIDString = 249EFE791E64FB4C00165E39;
 			remoteInfo = PinLayout;
 		};
+		246813051F8D013500462E53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 249EFE371E64FAFE00165E39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 246812FA1F8D013500462E53;
+			remoteInfo = PinLayoutTodayExtension;
+		};
 		24DA374E1EF7F90700D1AB2F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2439CC1E1E665858003326FB /* PinLayout.xcodeproj */;
@@ -84,6 +95,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2468130D1F8D013600462E53 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				246813071F8D013500462E53 /* PinLayoutTodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +117,11 @@
 		2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiRelativeViewController.swift; sourceTree = "<group>"; };
 		2439CC411E665C6B003326FB /* RelativeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeView.swift; sourceTree = "<group>"; };
 		2439CC421E665C6B003326FB /* RelativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeViewController.swift; sourceTree = "<group>"; };
+		246812FB1F8D013500462E53 /* PinLayoutTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PinLayoutTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		246812FC1F8D013500462E53 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		246812FF1F8D013500462E53 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		246813021F8D013500462E53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		246813041F8D013500462E53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249326881EEEEE3D00BCB814 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		2493268B1EEEEFF100BCB814 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2493268D1EEEF02700BCB814 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -125,6 +152,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		246812F81F8D013500462E53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246812FD1F8D013500462E53 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		249EFE3C1E64FAFE00165E39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */,
+				246812FC1F8D013500462E53 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,6 +265,16 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		246812FE1F8D013500462E53 /* PinLayoutTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				246812FF1F8D013500462E53 /* TodayViewController.swift */,
+				246813011F8D013500462E53 /* MainInterface.storyboard */,
+				246813041F8D013500462E53 /* Info.plist */,
+			);
+			path = PinLayoutTodayExtension;
+			sourceTree = "<group>";
+		};
 		2497CFEA1EF40B8100DFD13B /* Form */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +287,7 @@
 		249EFE361E64FAFE00165E39 = {
 			isa = PBXGroup;
 			children = (
+				246812FE1F8D013500462E53 /* PinLayoutTodayExtension */,
 				160FB83905049FCEDD18DC8A /* Frameworks */,
 				249EFE411E64FAFE00165E39 /* PinLayoutSample */,
 				F143180314A617EFD07C5709 /* Pods */,
@@ -253,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				249EFE3F1E64FAFE00165E39 /* PinLayoutSample.app */,
+				246812FB1F8D013500462E53 /* PinLayoutTodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,6 +391,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		246812FA1F8D013500462E53 /* PinLayoutTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2468130C1F8D013600462E53 /* Build configuration list for PBXNativeTarget "PinLayoutTodayExtension" */;
+			buildPhases = (
+				246812F71F8D013500462E53 /* Sources */,
+				246812F81F8D013500462E53 /* Frameworks */,
+				246812F91F8D013500462E53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PinLayoutTodayExtension;
+			productName = PinLayoutTodayExtension;
+			productReference = 246812FB1F8D013500462E53 /* PinLayoutTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		249EFE3E1E64FAFE00165E39 /* PinLayoutSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 249EFE671E64FAFE00165E39 /* Build configuration list for PBXNativeTarget "PinLayoutSample" */;
@@ -355,11 +420,13 @@
 				5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */,
 				CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */,
 				24E6547E1E68F88D00A72A8B /* Run Swiftlint */,
+				2468130D1F8D013600462E53 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				2439CC2A1E6658C3003326FB /* PBXTargetDependency */,
+				246813061F8D013500462E53 /* PBXTargetDependency */,
 			);
 			name = PinLayoutSample;
 			productName = PinLayoutSample;
@@ -372,10 +439,15 @@
 		249EFE371E64FAFE00165E39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Mirego;
 				TargetAttributes = {
+					246812FA1F8D013500462E53 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 4Q596JWQC5;
+						ProvisioningStyle = Automatic;
+					};
 					249EFE3E1E64FAFE00165E39 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4Q596JWQC5;
@@ -403,6 +475,7 @@
 			projectRoot = "";
 			targets = (
 				249EFE3E1E64FAFE00165E39 /* PinLayoutSample */,
+				246812FA1F8D013500462E53 /* PinLayoutTodayExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -432,6 +505,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		246812F91F8D013500462E53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246813031F8D013500462E53 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		249EFE3D1E64FAFE00165E39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -465,7 +546,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-10/iOS/RevealServer.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-11/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -512,6 +593,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		246812F71F8D013500462E53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246813001F8D013500462E53 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		249EFE3B1E64FAFE00165E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,9 +643,22 @@
 			name = PinLayout;
 			targetProxy = 2439CC291E6658C3003326FB /* PBXContainerItemProxy */;
 		};
+		246813061F8D013500462E53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 246812FA1F8D013500462E53 /* PinLayoutTodayExtension */;
+			targetProxy = 246813051F8D013500462E53 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		246813011F8D013500462E53 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				246813021F8D013500462E53 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		249EFE4B1E64FAFE00165E39 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -569,6 +671,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		246813081F8D013600462E53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4Q596JWQC5;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = PinLayoutTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample.PinLayoutTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		246813091F8D013600462E53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4Q596JWQC5;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = PinLayoutTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample.PinLayoutTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		249EFE651E64FAFE00165E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -668,6 +824,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				INFOPLIST_FILE = "PinLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -683,6 +840,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				INFOPLIST_FILE = "PinLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -695,6 +853,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2468130C1F8D013600462E53 /* Build configuration list for PBXNativeTarget "PinLayoutTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				246813081F8D013600462E53 /* Debug */,
+				246813091F8D013600462E53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		249EFE3A1E64FAFE00165E39 /* Build configuration list for PBXProject "PinLayoutSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

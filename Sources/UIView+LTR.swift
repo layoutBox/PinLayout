@@ -17,8 +17,10 @@ extension UIView {
         case .auto:
             if #available(iOS 9.0, *) {
                 return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
+            } else if let shared = UIApplication.value(forKey: "sharedApplication") as? UIApplication {
+                return shared.userInterfaceLayoutDirection == .leftToRight
             } else {
-                return UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
+                return true
             }
         case .ltr:
             return true

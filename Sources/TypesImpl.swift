@@ -33,7 +33,28 @@ import UIKit
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)
 
+extension HorizontalAlign {
+    var description: String {
+        switch self {
+        case .left: return "left"
+        case .center: return "center"
+        case .right: return "right"
+        case .start: return "start"
+        case .end: return "end"
+        }
+    }
+}
 
+extension VerticalAlign {
+    var description: String {
+        switch self {
+        case .top: return "top"
+        case .center: return "center"
+        case .bottom: return "bottom"
+        }
+    }
+}
+    
 class EdgeListImpl: EdgeList {
     internal let view: UIView
 
@@ -164,7 +185,7 @@ class AnchorImpl: Anchor {
     }
 }
 
-extension Percent: CustomStringConvertible {
+extension Percent {
     func of(_ rhs: CGFloat) -> CGFloat {
         return rhs * value / 100
     }

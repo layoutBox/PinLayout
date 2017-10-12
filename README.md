@@ -22,7 +22,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 ### Requirements
 * iOS 8.0+ / tvOS 9.0+
 * Xcode 8.0+ / Xcode 9.0
-* Swift 3.0+ / Swift 4.0
+* Swift 3.0+ / Swift 4.0 / Objective-C
 
 ### Content
 
@@ -43,6 +43,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Warnings](#warnings)
   * [More examples](#more_examples)
 * [Examples App](#examples_app)
+* [Using PinLayout with Objective-C](#objective_c_interface)
 * [Installation](#installation)
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
@@ -1261,6 +1262,7 @@ There is an Example app that expose some usage example on PinLayout, including:
 * An example of UITableView with variable height cells.
 * Example showing a form
 * Example showing relative positioning.
+* Example using objective-c
 * ...
 
 :pushpin: Tap on images to see the example's source code.
@@ -1276,6 +1278,13 @@ There is an Example app that expose some usage example on PinLayout, including:
 </p>
 
 This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.
+
+<br>
+
+## Using PinLayout with Objective-C <a name="objective_c_interface"></a>
+PinLayout also expose an Objective-C interface slightly different than the Swift interface. 
+
+[See here for more details](docs/objective_c.md).
 
 <br>
 
@@ -1304,7 +1313,7 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 <br>
 
 
-### Questions, comments, ideas, suggestions, issues, .... <a name="comments"></a>
+## Questions, comments, ideas, suggestions, issues, .... <a name="comments"></a>
 If you have questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
 
 For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
@@ -1316,7 +1325,7 @@ If you'd like to contribute, you're welcome!
 <br>
 
 
-### Thanks
+## Thanks
 PinLayout was inspired by other great layout frameworks, including:
 
 * HTML's CSS: Management of margins in absolute positioning and bottom/right position coordinates.

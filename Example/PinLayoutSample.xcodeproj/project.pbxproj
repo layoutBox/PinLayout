@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241637711F8E4BC200EE703A /* IntroObjectiveCViewController.m */; };
+		241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 241637761F8E4F9100EE703A /* IntroObjectiveCView.m */; };
 		2439CC281E6658C3003326FB /* PinLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2439CC2B1E6658CC003326FB /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; };
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
@@ -109,6 +111,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		241637701F8E4BC200EE703A /* IntroObjectiveCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroObjectiveCViewController.h; sourceTree = "<group>"; };
+		241637711F8E4BC200EE703A /* IntroObjectiveCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroObjectiveCViewController.m; sourceTree = "<group>"; };
+		241637751F8E4F9100EE703A /* IntroObjectiveCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroObjectiveCView.h; sourceTree = "<group>"; };
+		241637761F8E4F9100EE703A /* IntroObjectiveCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroObjectiveCView.m; sourceTree = "<group>"; };
 		2439CC1E1E665858003326FB /* PinLayout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PinLayout.xcodeproj; path = ../PinLayout.xcodeproj; sourceTree = "<group>"; };
 		2439CC331E665BF6003326FB /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2439CC341E665BF6003326FB /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 		24CB999A1F29059B004EA7FB /* AdjustToContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustToContainerView.swift; sourceTree = "<group>"; };
 		24CB999B1F29059B004EA7FB /* AdjustToContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustToContainerViewController.swift; sourceTree = "<group>"; };
 		24CB999F1F290664004EA7FB /* ChoiceSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceSelectorView.swift; sourceTree = "<group>"; };
+		24CD1E8D1F8E4B0A00C3A54D /* PinLayoutSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinLayoutSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		24D18D1B1F3DED0D008129EF /* IntroRTLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroRTLView.swift; sourceTree = "<group>"; };
 		24D18D1C1F3DED0D008129EF /* IntroRTLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroRTLViewController.swift; sourceTree = "<group>"; };
 		24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormView.swift; sourceTree = "<group>"; };
@@ -181,6 +188,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2416376F1F8E4BC200EE703A /* IntroObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				241637761F8E4F9100EE703A /* IntroObjectiveCView.m */,
+				241637751F8E4F9100EE703A /* IntroObjectiveCView.h */,
+				241637711F8E4BC200EE703A /* IntroObjectiveCViewController.m */,
+				241637701F8E4BC200EE703A /* IntroObjectiveCViewController.h */,
+			);
+			path = IntroObjectiveC;
+			sourceTree = "<group>";
+		};
 		2439CC1F1E665858003326FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,9 +227,11 @@
 				2497CFEA1EF40B8100DFD13B /* Form */,
 				24F75B581EE5642C008DB567 /* Intro */,
 				24D18D181F3DECD6008129EF /* IntroRTL */,
+				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
 				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
+				24CD1E8D1F8E4B0A00C3A54D /* PinLayoutSample-Bridging-Header.h */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -544,7 +564,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-11/iOS/RevealServer.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-10/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -605,6 +625,7 @@
 			files = (
 				24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */,
 				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
+				241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
 				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
@@ -624,6 +645,7 @@
 				24CB99981F290540004EA7FB /* MethodGroupHeader.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
+				241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,
@@ -828,6 +850,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinLayoutSample/UI/Examples/PinLayoutSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -844,6 +868,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinLayoutSample/UI/Examples/PinLayoutSample-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

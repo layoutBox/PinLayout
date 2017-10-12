@@ -31,6 +31,7 @@ extension PinLayoutImpl {
         return above(relativeViews: [relativeView], aligned: aligned, context: context)
     }
     
+    @discardableResult
     func above(of relativeViews: [UIView], aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "above(of: \(relativeViews), aligned: \(aligned))" }
         return above(relativeViews: relativeViews, aligned: aligned, context: context)

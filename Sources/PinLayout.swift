@@ -70,11 +70,11 @@ public extension UIView {
  */
 
 /// UIViews's anchor definition
-public protocol Anchor {
+@objc public protocol Anchor {
 }
 
 /// UIViews's list of anchors.
-public protocol AnchorList {
+@objc public protocol AnchorList {
     var topLeft: Anchor { get }
     var topCenter: Anchor { get }
     var topRight: Anchor { get }
@@ -111,7 +111,7 @@ public protocol AnchorList {
 */
 
 /// UIViews's list of edges
-public protocol EdgeList {
+@objc public protocol EdgeList {
     var top: VerticalEdge { get }
     var vCenter: VerticalEdge { get }
     var bottom: VerticalEdge { get }
@@ -416,7 +416,7 @@ public protocol PinLayout {
 /// - left: left aligned
 /// - center: center aligned
 /// - right: right aligned
-public enum HorizontalAlign: String {
+@objc public enum HorizontalAlign: Int {
     case left
     case center
     case right
@@ -431,19 +431,18 @@ public enum HorizontalAlign: String {
 /// - top: top aligned
 /// - center: center aligned
 /// - bottom: bottom aligned
-public enum VerticalAlign: String {
+@objc public enum VerticalAlign: Int {
     case top
     case center
     case bottom
 }
 
 /// UIView's horizontal edges (left/right) definition
-public protocol HorizontalEdge {
+@objc public protocol HorizontalEdge {
 }
 
 /// UIView's vertical edges (top/bottom) definition
-public protocol VerticalEdge {
+@objc public protocol VerticalEdge {
 }
-
         
 #endif

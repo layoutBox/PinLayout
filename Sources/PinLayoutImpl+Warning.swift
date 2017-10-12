@@ -60,7 +60,7 @@ extension PinLayoutImpl {
     
     internal func displayLayoutWarnings() {
         if let justify = justify {
-            func context() -> String { return "justify(.\(justify))" }
+            func context() -> String { return "justify(.\(justify.description))" }
             if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
                 warnWontBeApplied("the left and right coordinates must be set to justify the view horizontally.", context)
             }
@@ -71,7 +71,7 @@ extension PinLayoutImpl {
         }
         
         if let align = align {
-            func context() -> String { return "align(.\(align))" }
+            func context() -> String { return "align(.\(align.description))" }
             if !((_top != nil && _bottom != nil) || (shouldPinEdges && height != nil && (_top != nil || _bottom != nil || _vCenter != nil))) {
                 warnWontBeApplied("the top and bottom coordinates must be set to align the view vertically.", context)
             }

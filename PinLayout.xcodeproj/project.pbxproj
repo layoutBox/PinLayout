@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		240F88BE1F0C066800280FC8 /* JustifyAlignSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */; };
 		240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */; };
+		241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */; };
+		241A277E1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */; };
 		242723731F008BF7006A5C3A /* MinMaxWidthHeightSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */; };
 		242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */; };
 		244C6E151E776A0C0074FC74 /* MarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsSpec.swift */; };
@@ -81,6 +83,8 @@
 /* Begin PBXFileReference section */
 		240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustifyAlignSpec.swift; sourceTree = "<group>"; };
 		240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningSpec.swift; sourceTree = "<group>"; };
+		241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutObjC.swift; sourceTree = "<group>"; };
+		241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutObjCImpl.swift; sourceTree = "<group>"; };
 		242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMaxWidthHeightSpec.swift; sourceTree = "<group>"; };
 		242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionMultipleViewsSpec.swift; sourceTree = "<group>"; };
 		244C6E141E776A0C0074FC74 /* MarginsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsSpec.swift; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		241A277A1F8E958F00B1AD39 /* ObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */,
+				241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */,
+			);
+			path = ObjectiveC;
+			sourceTree = "<group>";
+		};
 		249EFE701E64FB4C00165E39 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +197,7 @@
 				24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */,
 				24D18D231F3E37DD008129EF /* PinLayoutGlobals.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
+				241A277A1F8E958F00B1AD39 /* ObjectiveC */,
 				DF11A3741E834181008B33E5 /* Supporting Files */,
 			);
 			path = Sources;
@@ -485,10 +499,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D18D241F3E37DD008129EF /* PinLayoutGlobals.swift in Sources */,
+				241A277E1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift in Sources */,
 				24D18D121F350157008129EF /* UIView+LTR.swift in Sources */,
 				DF11A3711E833F03008B33E5 /* TypesImpl.swift in Sources */,
 				24949A2C1EF55216003643D3 /* PinLayoutImpl+Warning.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
+				241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */,
 				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,
 				24BBE6351F50FA1D0091D5E9 /* UnitTests.swift in Sources */,
 				DFC97CA51E8A8EB3001545D5 /* PinLayoutImpl.swift in Sources */,

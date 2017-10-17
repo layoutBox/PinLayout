@@ -930,7 +930,7 @@ extension PinLayoutImpl {
         } else if let _hCenter = _hCenter, let width = newSize.width {
             // hCenter & width is set
             newRect.size.width = width
-            newRect.origin.x = (_hCenter - (width / 2)) + _marginLeft
+            newRect.origin.x = (_hCenter - (width / 2)) + _marginLeft - _marginRight
         } else if let left = _left {
             // Only left is set
             newRect.origin.x = left + _marginLeft
@@ -939,7 +939,7 @@ extension PinLayoutImpl {
             newRect.origin.x = right - view.frame.width - _marginRight
         } else if let _hCenter = _hCenter {
             // Only hCenter is set
-            newRect.origin.x = (_hCenter - (view.frame.width / 2)) + _marginLeft
+            newRect.origin.x = (_hCenter - (view.frame.width / 2)) + _marginLeft - _marginRight
         } else if let width = newSize.width {
             // Only width is set
             newRect.size.width = width
@@ -966,7 +966,7 @@ extension PinLayoutImpl {
         } else if let _vCenter = _vCenter, let height = newSize.height {
             // vCenter & height is set
             newRect.size.height = height
-            newRect.origin.y = (_vCenter - (height / 2)) + _marginTop
+            newRect.origin.y = (_vCenter - (height / 2)) + _marginTop - _marginBottom
         } else if let top = _top {
             // Only top is set
             newRect.origin.y = top + _marginTop
@@ -975,7 +975,7 @@ extension PinLayoutImpl {
             newRect.origin.y = bottom - view.frame.height - _marginBottom
         } else if let _vCenter = _vCenter {
             // Only vCenter is set
-            newRect.origin.y = (_vCenter - (view.frame.height / 2)) + _marginTop
+            newRect.origin.y = (_vCenter - (view.frame.height / 2)) + _marginTop - _marginBottom
         } else if let height = newSize.height {
             // Only height is set
             newRect.size.height = height

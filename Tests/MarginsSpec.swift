@@ -413,12 +413,12 @@ class MarginsSpec: QuickSpec {
         describe("the result of top&bottom margins when the hCenter is specified") {
             it("should adjust the aView") {
                 aView.pin.hCenter(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 200.0, y: 100.0, width: 200.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 210.0, y: 100.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
                 aView.pin.hCenter(-100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 200.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
@@ -452,7 +452,7 @@ class MarginsSpec: QuickSpec {
             
             it("should adjust the aView") {
                 aView.pin.hCenter(100).width(50).height(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 275.0, y: 100.0, width: 50.0, height: 100.0)))
+                expect(aView.frame).to(equal(CGRect(x: 285.0, y: 100.0, width: 50.0, height: 100.0)))
             }
 
             it("should adjust the aView") {
@@ -477,7 +477,7 @@ class MarginsSpec: QuickSpec {
         describe("the result of top&bottom margins when the vCenter is specified") {
             it("should adjust the aView") {
                 aView.pin.vCenter(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 240.0, width: 200.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 250.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
@@ -487,7 +487,7 @@ class MarginsSpec: QuickSpec {
             
             it("should adjust the aView") {
                 aView.pin.vCenter(100).marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 240.0, width: 200.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 250.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
@@ -511,7 +511,7 @@ class MarginsSpec: QuickSpec {
             }
             it("should adjust the aView") {
                 aView.pin.vCenter(50%).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 340.0, width: 200.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 350.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
@@ -526,12 +526,12 @@ class MarginsSpec: QuickSpec {
         describe("the result of top&bottom margins when the hCenter and vCenter are specified") {
             it("should adjust the aView") {
                 aView.pin.hCenter(100).vCenter(100).margin(10)
-                expect(aView.frame).to(equal(CGRect(x: 200.0, y: 240.0, width: 200.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 210.0, y: 250.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
                 aView.pin.hCenter(100).vCenter(100).width(100).pinEdges().marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 240.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 250.0, width: 100.0, height: 120.0)))
             }
             
             it("should adjust the aView") {

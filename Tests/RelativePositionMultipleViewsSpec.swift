@@ -188,7 +188,7 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
             
             it("should move the view below relative views") {
                 bViewChild.pin.below(of: [aView, bView], aligned: .center).margin(10)
-                expect(bViewChild.frame).to(equal(CGRect(x: -37.5, y: 90.0, width: 60.0, height: 20.0)))
+                expect(bViewChild.frame).to(equal(CGRect(x: -27.5, y: 90.0, width: 60.0, height: 20.0)))
             }
         }
         
@@ -243,7 +243,7 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
             
             it("should move the view left relative views") {
                 bViewChild.pin.left(of: [aView, bView], aligned: .center).margin(10)
-                expect(bViewChild.frame).to(equal(CGRect(x: -190.0, y: 15.0, width: 60.0, height: 20.0)))
+                expect(bViewChild.frame).to(equal(CGRect(x: -190.0, y: 25.0, width: 60.0, height: 20.0)))
             }
         }
         
@@ -293,7 +293,7 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
             
             it("should move the view right relative views") {
                 bViewChild.pin.right(of: [aView, bView], aligned: .center).margin(10)
-                expect(bViewChild.frame).to(equal(CGRect(x: 120.0, y: 15.0, width: 60.0, height: 20.0)))
+                expect(bViewChild.frame).to(equal(CGRect(x: 120.0, y: 25.0, width: 60.0, height: 20.0)))
             }
         }     
     }

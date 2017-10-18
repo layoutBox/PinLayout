@@ -7,6 +7,12 @@
 
 # Change Log
 
+## [1.4.0](https://github.com/mirego/PinLayout/releases/tag/1.4.0)
+#### Change
+* Add **aspectRatio** methods:
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#84](https://github.com/mirego/PinLayout/pull/84)
+
+
 ## [1.3.2](https://github.com/mirego/PinLayout/releases/tag/1.3.2)
 #### Change
 * Add **aspectRatio** methods:
@@ -33,7 +39,7 @@ This method is particularly useful to set all margins using iOS 11 UIView.safeAr
      
      For other types of views, this method as no impact. 
 	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#84](https://github.com/mirego/PinLayout/pull/84)
-	* 
+	
 ## [1.3.1](https://github.com/mirego/PinLayout/releases/tag/1.3.1)
 #### Change
 * Add new margin method `margin(_ insets: UIEdgeInsets)`  

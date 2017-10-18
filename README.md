@@ -1068,7 +1068,7 @@ Without `pinEdges()` margins rules would be applied and the view would be moved 
 ![](docs/pinlayout-margin-pinEdges-01.png)
 
 ```swift
-	view.pin.left().width(percent: 100).marginHorizontal(20)
+	view.pin.left().width(100%).marginHorizontal(20)
 ```
 
 
@@ -1079,7 +1079,7 @@ With `pinEdges()` the left and right margins are applied even if only the left a
 ![](docs/pinlayout-margin-pinEdges-02.png)
 
 ```swift
-	view.pin.left().width(percent: 100).pinEdges().marginHorizontal(20)
+	view.pin.left().width(100%).pinEdges().marginHorizontal(20)
 ```
 
 <br>

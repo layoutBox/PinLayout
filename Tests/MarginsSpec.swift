@@ -417,6 +417,16 @@ class MarginsSpec: QuickSpec {
             }
             
             it("should adjust the aView") {
+                aView.pin.hCenter(100).marginLeft(10)
+                expect(aView.frame).to(equal(CGRect(x: 210.0, y: 100.0, width: 200.0, height: 120.0)))
+            }
+
+            it("should adjust the aView") {
+                aView.pin.hCenter(100).marginRight(10)
+                expect(aView.frame).to(equal(CGRect(x: 190.0, y: 100.0, width: 200.0, height: 120.0)))
+            }
+
+            it("should adjust the aView") {
                 aView.pin.hCenter(-100).margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 200.0, height: 120.0)))
             }
@@ -481,13 +491,18 @@ class MarginsSpec: QuickSpec {
             }
             
             it("should adjust the aView") {
+                aView.pin.vCenter(100).marginTop(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 250.0, width: 200.0, height: 120.0)))
+            }
+
+            it("should adjust the aView") {
+                aView.pin.vCenter(100).marginBottom(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 230.0, width: 200.0, height: 120.0)))
+            }
+
+            it("should adjust the aView") {
                 aView.pin.vCenter(100).height(100).pinEdges().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 260.0, width: 200.0, height: 80.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.vCenter(100).marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 240.0, width: 200.0, height: 120.0)))
             }
             
             it("should adjust the aView") {
@@ -531,7 +546,7 @@ class MarginsSpec: QuickSpec {
             
             it("should adjust the aView") {
                 aView.pin.hCenter(100).vCenter(100).width(100).pinEdges().marginTop(10)
-                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 240.0, width: 100.0, height: 120.0)))
+                expect(aView.frame).to(equal(CGRect(x: 250.0, y: 250.0, width: 100.0, height: 120.0)))
             }
             
             it("should adjust the aView") {

@@ -22,7 +22,7 @@ import PinLayout
 
 class IntroRTLView: BaseView {
 
-    fileprivate let container = UIView()
+    fileprivate let contentView = UIView()
     fileprivate let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
     fileprivate let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
     fileprivate let textLabel = UILabel()
@@ -36,24 +36,24 @@ class IntroRTLView: BaseView {
         // `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9)
         Pin.layoutDirection(.auto)
         
-        addSubview(container)
+        addSubview(contentView)
 
         logo.contentMode = .scaleAspectFit
-        container.addSubview(logo)
+        contentView.addSubview(logo)
         
         segmented.selectedSegmentIndex = 0
         segmented.tintColor = .pinLayoutColor
-        container.addSubview(segmented)
+        contentView.addSubview(segmented)
         
         textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
         textLabel.font = .systemFont(ofSize: 14)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
-        container.addSubview(textLabel)
+        contentView.addSubview(textLabel)
         
         separatorView.pin.height(1)
         separatorView.backgroundColor = .pinLayoutColor
-        container.addSubview(separatorView)
+        contentView.addSubview(separatorView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,20 +63,13 @@ class IntroRTLView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        container.pin.top().bottom().start().end().margin(containerInsets())
+        // Layout the contentView using the view's safeArea with at least of 10 pixels all around.
+        let containerInsets = safeArea.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
+        contentView.pin.top().bottom().start().end().margin(containerInsets)
 
         logo.pin.top().start().size(100).aspectRatio().marginTop(10)
         segmented.pin.after(of: logo, aligned: .top).end().marginStart(10)
         textLabel.pin.below(of: segmented, aligned: .start).width(of: segmented).pinEdges().marginTop(10).fitSize()
         separatorView.pin.below(of: [logo, textLabel], aligned: .start).end(to: segmented.edge.end).marginTop(10)
-    }
-
-    fileprivate func containerInsets() -> UIEdgeInsets {
-        if #available(iOS 11.0, *) {
-            // The container margin must be at least of 10 pixels all around
-            return safeAreaInsets.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
-        } else {
-            return UIEdgeInsets(top: topLayoutGuide, left: 10, bottom: 0, right: 10)
-        }
     }
 }

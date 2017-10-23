@@ -74,7 +74,8 @@ class AutoAdjustingSizeView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentScrollView.pin.top().bottom().left().right().margin(containerInsets())
+        // Layout the contentScrollView using the view's safeArea.
+        contentScrollView.pin.top().bottom().left().right().margin(safeArea)
         
         row1.pin.top().left().right().height(40)
         row1Item1.pin.top().left().bottom().width(50).margin(2)
@@ -95,13 +96,5 @@ class AutoAdjustingSizeView: BaseView {
         row4Item3.pin.right(of: row4Item2, aligned: .top).right().bottom().margin(0, 2, 2, 2)
         
         contentScrollView.contentSize = CGSize(width: contentScrollView.frame.width, height: row4.frame.maxY)
-    }
-    
-    fileprivate func containerInsets() -> UIEdgeInsets {
-        if #available(iOS 11.0, *) {
-            return safeAreaInsets
-        } else {
-            return UIEdgeInsets.zero
-        }
     }
 }

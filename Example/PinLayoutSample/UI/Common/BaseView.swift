@@ -20,8 +20,18 @@
 import UIKit
 
 class BaseView: UIView {
-    fileprivate (set) var topLayoutGuide: CGFloat = 0
-    fileprivate (set) var bottomLayoutGuide: CGFloat = 0
+    private var legacySafeArea: UIEdgeInsets = .zero
+    
+    // safeArea returns UIView.safeAreaInsets for iOS 11+ or
+    // an UIEdgeInsets initialized with the UIViewController's topLayoutGuide and
+    // bottomLayoutGuide for other iOS versions.
+    var safeArea: UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return safeAreaInsets
+        } else {
+            return legacySafeArea
+        }
+    }
     
     init() {
         super.init(frame: .zero)
@@ -32,25 +42,17 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setLayoutGuides(top: CGFloat, bottom: CGFloat) {
-        var didChange = false
-        
-        if top != topLayoutGuide {
-            topLayoutGuide = top
-            didChange = true
-        }
-        
-        if bottom != bottomLayoutGuide {
-            bottomLayoutGuide = bottom
-            didChange = true
-        }
-        
-        if didChange {
-            didChangeLayoutGuides()
-        }
+    func setSafeArea(_ safeArea: UIEdgeInsets) {
+        guard safeArea != self.safeArea else { return }
+        legacySafeArea = safeArea
+        safeAreaDidChange()
     }
     
-    func didChangeLayoutGuides() {
+    func safeAreaDidChange() {
         setNeedsLayout()
+    }
+    
+    override func safeAreaInsetsDidChange() {
+        safeAreaDidChange()
     }
 }

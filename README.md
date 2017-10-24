@@ -54,7 +54,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### PinLayout + FlexLayout
 
-<a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="250"/></a>
+<a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="200"/></a>
 
 **PinLayout** is a companion of **[FlexLayout](https://github.com/lucdion/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation.
 

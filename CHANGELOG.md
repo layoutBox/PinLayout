@@ -7,10 +7,28 @@
 
 # Change Log
 
+## [1.4.1](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
+#### Change
+* Add new method `margin(_ directionalInsets: NSDirectionalEdgeInsets)`  
+
+	Set margins using NSDirectionalEdgeInsets.
+     This method is particularly to set all margins using iOS 11 `UIView.directionalLayoutMargins`.
+     
+     Available only on iOS 11 and higher.
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#85](https://github.com/mirego/PinLayout/pull/85)
+     
+* Update all examples so they support iOS 11 and iPhoneX landscape mode. They use the new UIView.safeAreaInsets property.
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#85](https://github.com/mirego/PinLayout/pull/85)
+
 ## [1.4.0](https://github.com/mirego/PinLayout/releases/tag/1.4.0)
 #### Change
-* Add **aspectRatio** methods:
-	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#84](https://github.com/mirego/PinLayout/pull/84)
+* PinLayout now apply correctly margins when hCenter or vCenter have been set
+	* hCenter: When the Horizontal Center is set, PinLayout now applies the left margin.
+	* vCenter: When the Vertical Center is set, PinLayout now applies the top margin.
+
+	**BREAKING CHANGE**: This may be a breaking change if you are using hCenter(..), vCenter(...), center(...), centerRight(...), centerLeft(...), or any other method using the center position while also using a margin.
+
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#91](https://github.com/mirego/PinLayout/pull/91)
 
 
 ## [1.3.2](https://github.com/mirego/PinLayout/releases/tag/1.3.2)

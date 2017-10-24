@@ -30,7 +30,7 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
         
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.sizeToFit()
-        addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

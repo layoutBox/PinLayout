@@ -46,20 +46,23 @@ class ChoiceSelectorView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        _ = layout(size: frame.size)
+        _ = layout()
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return layout(size: size)
+        // 1) Set the width to the specified width
+        self.pin.width(size.width)
+        
+        // 2) Layout the contentView's controls
+        return layout()
     }
     
-    fileprivate func layout(size: CGSize) -> CGSize {
-        let width = size.width
+    fileprivate func layout() -> CGSize {
         let margin: CGFloat = 12
         
         if frame.width > 500 {
             // The UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
-            segmentedControl.pin.topRight().margin(margin)
+            segmentedControl.pin.top().right().margin(margin)
             textLabel.pin.top().left().left(of: segmentedControl).margin(margin).fitSize()
         } else {
             // The UISegmentedControl is placed below the label.
@@ -67,6 +70,6 @@ class ChoiceSelectorView: UIView {
             segmentedControl.pin.below(of: textLabel).right().margin(margin)
         }
         
-        return CGSize(width: width, height: max(textLabel.frame.maxY, segmentedControl.frame.maxY) + margin)
+        return CGSize(width: frame.width, height: max(textLabel.frame.maxY, segmentedControl.frame.maxY) + margin)
     }
 }

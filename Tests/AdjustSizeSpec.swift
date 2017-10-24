@@ -111,13 +111,6 @@ class AdjustSizeSpec: QuickSpec {
                 aView.pin.width(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 60.0)))
             }
-        
-            // Negative width
-            it("should adjust the left but warn that the width won't be applied due to a negative width") {
-                aView.pin.left(300).right(300)
-                expect(aView.frame).to(equal(CGRect(x: 300.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["computed width (-200.0)", "greater than or equal to zero", "view will keep its current width"]))
-            }
         }
         
         describe("the result of the height(...) methods") {
@@ -150,13 +143,6 @@ class AdjustSizeSpec: QuickSpec {
             it("should adjust the height of aView") {
                 aView.pin.height(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 30.0)))
-            }
-            
-            // Negative height
-            it("should adjust the top but warn that the height won't be applied due to a negative height") {
-                aView.pin.top(300).bottom(300)
-                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 300.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["computed height (-200.0)", "greater than or equal to zero", "view will keep its current height"]))
             }
         }
         

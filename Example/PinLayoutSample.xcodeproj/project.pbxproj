@@ -22,6 +22,7 @@
 		246813001F8D013500462E53 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246812FF1F8D013500462E53 /* TodayViewController.swift */; };
 		246813031F8D013500462E53 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 246813011F8D013500462E53 /* MainInterface.storyboard */; };
 		246813071F8D013500462E53 /* PinLayoutTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 246812FB1F8D013500462E53 /* PinLayoutTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */; };
 		249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249326881EEEEE3D00BCB814 /* Stylesheet.swift */; };
 		2493268C1EEEEFF100BCB814 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493268B1EEEEFF100BCB814 /* BaseViewController.swift */; };
 		2493268E1EEEF02700BCB814 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493268D1EEEF02700BCB814 /* BaseView.swift */; };
@@ -128,6 +129,7 @@
 		246812FF1F8D013500462E53 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		246813021F8D013500462E53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		246813041F8D013500462E53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+PinLayout.swift"; sourceTree = "<group>"; };
 		249326881EEEEE3D00BCB814 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		2493268B1EEEEFF100BCB814 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2493268D1EEEF02700BCB814 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				2493268B1EEEEFF100BCB814 /* BaseViewController.swift */,
 				2439CC381E665C6B003326FB /* BasicView.swift */,
 				249326881EEEEE3D00BCB814 /* Stylesheet.swift */,
+				247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
+				247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */,
 				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
 				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,
 				24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */,

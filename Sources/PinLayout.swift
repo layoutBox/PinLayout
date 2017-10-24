@@ -371,8 +371,8 @@ public protocol PinLayout {
      
      Available only on iOS 11 and higher.
      */
-    //@available(iOS 11.0, *)
-    //@discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout
+    @available(tvOS 11.0, iOS 11.0, *)
+    @discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout
 
     /**
      Set all margins to the specified value.

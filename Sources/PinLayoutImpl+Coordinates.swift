@@ -300,7 +300,6 @@ extension PinLayoutImpl {
     
     internal func validateComputedWidth(_ width: CGFloat?) -> Bool {
         if let width = width, width < 0 {
-            warn("The computed width (\(width)) must be greater than or equal to zero. The view will keep its current width.")
             return false
         } else {
             return true
@@ -318,7 +317,6 @@ extension PinLayoutImpl {
     
     internal func validateComputedHeight(_ height: CGFloat?) -> Bool {
         if let height = height, height < 0 {
-            warn("The computed height (\(height)) must be greater than or equal to zero. The view will keep its current height.")
             return false
         } else {
             return true

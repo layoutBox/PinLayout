@@ -50,7 +50,7 @@ class TableViewExampleView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        tableView.pin.topLeft().bottomRight()
+        tableView.pin.top().bottom().left().right()
     }
 }
 

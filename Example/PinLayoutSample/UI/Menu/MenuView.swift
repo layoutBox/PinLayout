@@ -18,6 +18,7 @@
 //  THE SOFTWARE.
 
 import UIKit
+import PinLayout
 
 protocol MenuViewDelegate: class {
     func didSelect(pageType: PageType)
@@ -48,7 +49,7 @@ class MenuView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        tableView.pin.size(frame.size)
+        tableView.pin.top().left().size(100%)
     }
 }
 

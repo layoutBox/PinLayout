@@ -19,6 +19,7 @@ script:
   - |
     if [[ $SCHEME = "PinLayout" ]]; then
       set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES build test | xcpretty -f `xcpretty-travis-formatter`
+      bundle exec fastlane travis
     fi
 
     if [[ $SCHEME = "PinLayoutSample" ]]; then

@@ -1,0 +1,63 @@
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.29.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    cocoapods    
+  end
+
+  lane :build do
+    xcodebuild(scheme: "PinLayout", workspace: "PinLayout.xcworkspace", clean: true)
+    xcodebuild(scheme: "PinLayoutTVOS", workspace: "PinLayout.xcworkspace")
+    
+    xcodebuild(
+      workspace: "PinLayout.xcworkspace",
+      scheme: "PinLayoutSample",
+      configuration: "Debug",
+      build: true,
+      destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
+    )
+  end
+
+  lane :pods do
+    cocoapods(podfile: "./")
+  end
+
+  lane :tests do
+    scan(scheme: "PinLayout", workspace: "PinLayout.xcworkspace", clean: true)
+  end
+
+  lane :travis do
+    pods
+    tests
+    pod_lib_lint(allow_warnings: true, verbose: false)
+  end
+
+  lane :deploy do
+    ensure_git_branch
+    version = version_bump_podspec(path: "PinLayout.podspec")
+    git_commit(path: ["./PinLayout.podspec"], message: "Bumped to version #{version}")
+    push_to_git_remote(remote_branch: 'master', force: false, tags: true)
+    changelog = changelog_from_git_commits
+    github_release = set_github_release(
+      repository_name: "mirego/PinLayout",
+      api_token: ENV['GITHUB_TOKEN'],
+      name: version,
+      tag_name: version,
+      description: changelog,
+      commitish: "master"
+    )
+    sh("git fetch --tags")
+    pod_push(allow_warnings: true, verbose: true)
+  end
+
+end

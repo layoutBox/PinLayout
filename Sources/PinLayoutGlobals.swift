@@ -40,4 +40,3 @@ public class PinLayoutGlobals {
 }
 
 public let Pin = PinLayoutGlobals()
-

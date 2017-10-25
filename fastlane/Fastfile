@@ -12,32 +12,57 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    cocoapods    
+  end
+
+  lane :install do
+    bundle_install
+    cocoapods(
+      use_bundle_exec: true,
+      try_repo_update_on_error: true
+    )
   end
 
   lane :build do
-    xcodebuild(scheme: "PinLayout", workspace: "PinLayout.xcworkspace", clean: true)
-    xcodebuild(scheme: "PinLayoutTVOS", workspace: "PinLayout.xcworkspace")
-    
+    install
+
+    swiftlint(
+      mode: :lint, 
+      config_file: ".swiftlint.yml"
+    )
+
+    xcodebuild(
+      workspace: "PinLayout.xcworkspace",
+      scheme: "PinLayout",
+      configuration: "Debug",
+      build: true,
+      clean: true
+    )
+
+    xcodebuild(
+      workspace: "PinLayout.xcworkspace",
+      scheme: "PinLayoutTVOS",
+      configuration: "Debug",
+      build: true,
+      clean: true
+    )
+
     xcodebuild(
       workspace: "PinLayout.xcworkspace",
       scheme: "PinLayoutSample",
       configuration: "Debug",
       build: true,
+      clean: true,
       destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
     )
   end
 
-  lane :pods do
-    cocoapods(podfile: "./")
-  end
-
   lane :tests do
-    scan(scheme: "PinLayout", workspace: "PinLayout.xcworkspace", clean: true)
+    scan(scheme: "PinLayout", 
+         workspace: "PinLayout.xcworkspace")
   end
 
   lane :travis do
-    pods
+    build
     tests
     pod_lib_lint(allow_warnings: true, verbose: false)
   end

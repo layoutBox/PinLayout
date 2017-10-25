@@ -56,7 +56,7 @@ class PinLayoutImpl: PinLayout {
     internal var justify: HorizontalAlign?
     internal var align: VerticalAlign?
     
-    internal var _marginTop: CGFloat { return marginTop ?? 0  }
+    internal var _marginTop: CGFloat { return marginTop ?? 0 }
     internal var _marginLeft: CGFloat { return marginLeft ?? 0 }
     internal var _marginBottom: CGFloat { return marginBottom ?? 0 }
     internal var _marginRight: CGFloat { return marginRight ?? 0 }
@@ -300,7 +300,6 @@ class PinLayoutImpl: PinLayout {
         }
         return self
     }
-
     
     //
     // topLeft, topCenter, topRight,
@@ -694,12 +693,12 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func aspectRatio(_ ratio: CGFloat) -> PinLayout {
-        return setAspectRatio(ratio, context: { "aspectRatio(\(ratio))"})
+        return setAspectRatio(ratio, context: { "aspectRatio(\(ratio))" })
     }
     
     @discardableResult
     func aspectRatio(of view: UIView) -> PinLayout {
-        return setAspectRatio(view.frame.width / view.frame.height, context: { "aspectRatio(of: \(viewDescription(view)))"})
+        return setAspectRatio(view.frame.width / view.frame.height, context: { "aspectRatio(of: \(viewDescription(view)))" })
     }
     
     @discardableResult
@@ -868,7 +867,7 @@ extension PinLayoutImpl {
         if shouldSizeToFit {
             warnConflict(context, ["fitSize": shouldSizeToFit])
         } else if ratio <= 0 {
-            warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context);
+            warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
         } else {
             _aspectRatio = ratio
         }
@@ -998,7 +997,7 @@ extension PinLayoutImpl {
             return warn("pinEdges() won't be applied, top, left, bottom and right coordinates are already set.")
         }
         
-        if let width = applyMinMax(toWidth: width), _left == nil || _right == nil  {
+        if let width = applyMinMax(toWidth: width), _left == nil || _right == nil {
             if let left = _left {
                 // convert the width into a right
                 assert(self._right == nil)
@@ -1047,7 +1046,7 @@ extension PinLayoutImpl {
         var width = computeWidth()
         var height = computeHeight()
         
-        if (width != nil || height != nil) {
+        if width != nil || height != nil {
             if shouldSizeToFit {
                 // Apply min/max width/height before calling sizeThatFits() ... and reapply them after.
                 width = applyMinMax(toWidth: width)
@@ -1126,7 +1125,7 @@ extension PinLayoutImpl {
         }
         
         // Handle maxWidth
-        if let maxWidth = maxWidth, maxWidth < (result ?? CGFloat.greatestFiniteMagnitude)  {
+        if let maxWidth = maxWidth, maxWidth < (result ?? CGFloat.greatestFiniteMagnitude) {
             result = maxWidth
         }
         
@@ -1192,7 +1191,7 @@ extension PinLayoutImpl {
         }
         
         // Handle maxHeight
-        if let maxHeight = maxHeight, maxHeight < (result ?? CGFloat.greatestFiniteMagnitude)  {
+        if let maxHeight = maxHeight, maxHeight < (result ?? CGFloat.greatestFiniteMagnitude) {
             result = maxHeight
         }
         

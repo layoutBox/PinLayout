@@ -214,7 +214,6 @@ class MarginsSpec: QuickSpec {
             }
         }
         
-       
         //
         // top&bottom margins
         //

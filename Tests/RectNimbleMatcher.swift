@@ -45,4 +45,3 @@ public func beCloseTo(_ expectedValue: CGRect, within delta: CGFloat = 0.00001) 
         return .doesNotMatch
     }
 }
-

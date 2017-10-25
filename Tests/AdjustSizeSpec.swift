@@ -284,7 +284,6 @@ class AdjustSizeSpec: QuickSpec {
             }
         }
         
-        
         describe("the result of the fitSize() method when pinning right edge + width") {
             it("should adjust the size with fitSize() and distribute extra width") {
                 aView.pin.right(100).width(200).fitSize()
@@ -478,7 +477,6 @@ class AdjustSizeSpec: QuickSpec {
                 aView.pin.top(20).left(20).bottom(80).right(180).marginLeft(15).marginRight(5).marginTop(10).fitSize().align(.bottom)
                 expect(aView.frame).to(equal(CGRect(x: 35.0, y: 311.0, width: 180.0, height: 9.0)))
             }
-            
             
             it("should adjust the size with fitSize()") {
                 aView.pin.top(20).bottom(80).marginTop(10).marginBottom(10).fitSize().align(.center)

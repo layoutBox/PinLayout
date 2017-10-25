@@ -53,7 +53,7 @@ extension PinLayoutImpl {
     }
     
     internal func setLeft(_ value: CGFloat, _ context: Context) {
-        if let _right = _right, let width = width  {
+        if let _right = _right, let width = width {
             warnConflict(context, ["right": _right, "width": width])
         } else if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
@@ -94,7 +94,7 @@ extension PinLayoutImpl {
     }
     
     internal func setRight(_ value: CGFloat, _ context: Context) {
-        if let _left = _left, let width = width  {
+        if let _left = _left, let width = width {
             warnConflict(context, ["left": _left, "width": width])
         } else if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
@@ -109,7 +109,6 @@ extension PinLayoutImpl {
         }
     }
     
-    // TODO: Delete this function?
     internal func setEnd(_ value: CGFloat, _ context: Context) {
         if isLTR() {
             setRight(value, context)
@@ -291,7 +290,7 @@ extension PinLayoutImpl {
     
     internal func validateWidth(_ width: CGFloat, context: Context) -> Bool {
         if width < 0 {
-            warnWontBeApplied("the width (\(width)) must be greater than or equal to zero.", context);
+            warnWontBeApplied("the width (\(width)) must be greater than or equal to zero.", context)
             return false
         } else {
             return true
@@ -308,7 +307,7 @@ extension PinLayoutImpl {
     
     internal func validateHeight(_ height: CGFloat, context: Context) -> Bool {
         if height < 0 {
-            warnWontBeApplied("the height (\(height)) must be greater than or equal to zero.", context);
+            warnWontBeApplied("the height (\(height)) must be greater than or equal to zero.", context)
             return false
         } else {
             return true

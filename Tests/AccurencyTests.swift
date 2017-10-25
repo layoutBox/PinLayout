@@ -23,7 +23,6 @@ import PinLayout
 
 @testable import PinLayout
 
-
 class AccurencyTests: QuickSpec {
     var viewController: UIViewController!
     var rootView: UIView!

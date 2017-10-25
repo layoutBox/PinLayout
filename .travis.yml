@@ -4,9 +4,9 @@ osx_image: xcode9
 env:
   matrix:
     - SCHEME=PinLayout       SDK=iphonesimulator11.0
-    - SCHEME=PinLayout       SDK=iphonesimulator10.3
-    - SCHEME=PinLayoutSample SDK=iphonesimulator11.0
-    - SCHEME=PinLayoutTVOS   SDK=appletvsimulator11.0 
+    #- SCHEME=PinLayout       SDK=iphonesimulator10.3
+    #- SCHEME=PinLayoutSample SDK=iphonesimulator11.0
+    #- SCHEME=PinLayoutTVOS   SDK=appletvsimulator11.0 
 
 before_install:
 #  - brew outdated xctool || brew upgrade xctool;
@@ -22,13 +22,13 @@ script:
       bundle exec fastlane travis
     fi
 
-    if [[ $SCHEME = "PinLayoutSample" ]]; then
-      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' build | xcpretty -f `xcpretty-travis-formatter`
-    fi
+    #if [[ $SCHEME = "PinLayoutSample" ]]; then
+    #  set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' build | xcpretty -f `xcpretty-travis-formatter`
+    #fi
 
-    if [[ $SCHEME = "PinLayoutTVOS" ]]; then
-      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build | xcpretty -f `xcpretty-travis-formatter`
-    fi
+    #if [[ $SCHEME = "PinLayoutTVOS" ]]; then
+    #  set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build | xcpretty -f `xcpretty-travis-formatter`
+    #fi
 
 after_success:
   - |

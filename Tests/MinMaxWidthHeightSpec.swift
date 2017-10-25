@@ -313,7 +313,6 @@ class MinMaxWidthHeightSpec: QuickSpec {
             }
         }
         
-        
         //
         // minHeight
         //

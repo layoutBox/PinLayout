@@ -225,7 +225,6 @@ class RelativePositionSpec: QuickSpec {
             }
         }
         
-        
         //
         // right(of:)
         //

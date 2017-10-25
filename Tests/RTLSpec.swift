@@ -29,7 +29,6 @@ class RTLSpec: QuickSpec {
         var aView: BasicView!
         var bView: BasicView!
         
-        
         /*
           root
            |
@@ -457,7 +456,6 @@ class RTLSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 170.0, y: 140.0, width: 100.0, height: 60.0)))
             }
         }
-        
         
         //
         // relative

@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PinLayout.xcodeproj">
+      location = "group:Example/PinLayoutSample.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/PinLayoutSample.xcodeproj">
+      location = "group:PinLayout.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -3,7 +3,6 @@ opt_in_rules: # some rules are only opt-in
   - closure_spacing
   - explicit_init
   - nimble_operator
-  - number_separator
   - operator_usage_whitespace
   - overridden_super_call
   - private_outlet

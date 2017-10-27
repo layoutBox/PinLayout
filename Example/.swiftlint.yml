@@ -1,11 +1,8 @@
 opt_in_rules: # some rules are only opt-in
-  - attributes
   - closure_end_indentation
   - closure_spacing
-  - empty_count
   - explicit_init
   - nimble_operator
-  - number_separator
   - operator_usage_whitespace
   - overridden_super_call
   - private_outlet
@@ -13,22 +10,16 @@ opt_in_rules: # some rules are only opt-in
   - redundant_nil_coalescing
 
 disabled_rules: # rule identifiers to exclude from running
-#  - function_body_length
+  - function_body_length
   - trailing_whitespace
   - force_cast
   - type_name
-#  - todo
   - file_length
-#  - type_body_length
-#  - valid_docs
-#  - cyclomatic_complexity
-#  - nesting
-#  - function_parameter_count
-#  - large_tuple
-#  - variable_name
-#  - empty_parentheses_with_trailing_closure
+  - type_body_length
+  - cyclomatic_complexity
+  - nimble_operator
+  - identifier_name
   - line_length
 
 excluded: # paths to ignore during linting. overridden by `included`.
   - Pods
-  

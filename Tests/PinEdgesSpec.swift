@@ -196,16 +196,16 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.bottom()
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 300.0, width: 200.0, height: 100.0)))
             }
-
+            
             it("should adjust the aView") {
                 aView.pin.bottom(0)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 300.0, width: 200.0, height: 100.0)))
             }
-
+            
             it("should have the same position without or with a 0 parameter value") {
                 aView.pin.bottom()
                 let noParameterFrame = aView.frame
-
+                
                 aView.pin.bottom(0)
                 expect(aView.frame).to(equal(noParameterFrame))
             }
@@ -452,6 +452,66 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the bView") {
                 bViewChild.pin.vCenter(to: aView.edge.vCenter)
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: 20.0, width: 60.0, height: 20.0)))
+            }
+        }
+        
+        //
+        // all / horizontall / vertically
+        //
+        describe("the result of bottom(...)") {
+            it("should adjust the aView") {
+                aView.pin.all()
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 300.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(0)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 300.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should have the same position without or with a 0 parameter value") {
+                aView.pin.bottom()
+                let noParameterFrame = aView.frame
+                
+                aView.pin.bottom(0)
+                expect(aView.frame).to(equal(noParameterFrame))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 320.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().bottom(-20)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 420.0)))
+            }
+            
+            it("should warns that the view is not added to any view") {
+                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                unAttachedView.pin.bottom(20%)
+                
+                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 220.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().bottom(20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 320.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.bottom(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 380.0, width: 200.0, height: 100.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.pin.top().bottom(-20%)
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 480.0)))
             }
         }
     }

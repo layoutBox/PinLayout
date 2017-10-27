@@ -153,6 +153,11 @@ public protocol PinLayout {
     @discardableResult func end(_ value: CGFloat) -> PinLayout
     @discardableResult func end(_ percent: Percent) -> PinLayout
     
+    // Pin multiple edges at once.
+    @discardableResult func all() -> PinLayout
+    @discardableResult func horizontally() -> PinLayout
+    @discardableResult func vertically() -> PinLayout
+    
     //
     // MARK: Layout using edges
     //

@@ -21,6 +21,10 @@
 import UIKit
 
 extension PinLayoutImpl {
+    internal func top(_ context: Context) {
+        setTop(0, context)
+    }
+    
     internal func setTop(_ value: CGFloat, _ context: Context) {
         if let _bottom = _bottom, let height = height {
             warnConflict(context, ["bottom": _bottom, "height": height])
@@ -115,6 +119,20 @@ extension PinLayoutImpl {
         } else {
             setLeft(value, context)
         }
+    }
+    
+    @discardableResult
+    internal func bottom(_ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setBottom(layoutSuperview.frame.height, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func bottom(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setBottom(layoutSuperview.frame.height - value, context)
+        return self
     }
     
     internal func setBottom(_ value: CGFloat, _ context: Context) {

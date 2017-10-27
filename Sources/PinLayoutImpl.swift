@@ -73,7 +73,7 @@ class PinLayoutImpl: PinLayout {
     // top, left, bottom, right
     //
     @discardableResult func top() -> PinLayout {
-        setTop(0, { return "top()" })
+        top({ return "top()" })
         return self
     }
 
@@ -125,25 +125,19 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult func bottom() -> PinLayout {
-        func context() -> String { return "bottom()" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottom(layoutSuperview.frame.height, context)
-        return self
+        return bottom({ return "bottom()" })
     }
 
     @discardableResult
     func bottom(_ value: CGFloat) -> PinLayout {
-        func context() -> String { return "bottom(\(value))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottom(layoutSuperview.frame.height - value, context)
-        return self
+        return bottom(value, { return "bottom(\(value))" })
     }
     
     @discardableResult
     func bottom(_ percent: Percent) -> PinLayout {
         func context() -> String { return "bottom(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottom(layoutSuperview.frame.height - percent.of(layoutSuperview.frame.height), context)
+        bottom(percent.of(layoutSuperview.frame.height), context)
         return self
     }
 
@@ -223,6 +217,31 @@ class PinLayoutImpl: PinLayout {
         func context() -> String { return "vCenter(\(percent))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         setVerticalCenter((layoutSuperview.frame.height / 2) + percent.of(layoutSuperview.frame.height), context)
+        return self
+    }
+    
+    @discardableResult
+    func all() -> PinLayout {
+        func context() -> String { return "all()" }
+        top(context)
+        bottom(context)
+        right(context)
+        left(context)
+        return self
+    }
+    
+    @discardableResult
+    func horizontally() -> PinLayout {
+        func context() -> String { return "horizontally()" }
+        right(context)
+        left(context)
+        return self
+    }
+    @discardableResult
+    func vertically() -> PinLayout {
+        func context() -> String { return "vertically()" }
+        top(context)
+        bottom(context)
         return self
     }
 

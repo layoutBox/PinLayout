@@ -18,7 +18,7 @@ disabled_rules: # rule identifiers to exclude from running
   - type_body_length
   - cyclomatic_complexity
   - nimble_operator
-  - variable_name
+  - identifier_name
   - line_length
 
 excluded: # paths to ignore during linting. overridden by `included`.

@@ -44,20 +44,21 @@ class PinEdgesSpec: QuickSpec {
             viewController = UIViewController()
             
             rootView = BasicView(text: "", color: .white)
-            rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
-            aView.frame = CGRect(x: 140, y: 100, width: 200, height: 100)
             rootView.addSubview(aView)
             
             bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
-            bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
             rootView.addSubview(bView)
             
             bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
-            bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
             bView.addSubview(bViewChild)
+            
+            rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+            aView.frame = CGRect(x: 140, y: 100, width: 200, height: 100)
+            bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
+            bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
         }
 
         //
@@ -456,62 +457,113 @@ class PinEdgesSpec: QuickSpec {
         }
         
         //
-        // all / horizontall / vertically
+        // all()
         //
-        describe("the result of bottom(...)") {
+        describe("the result of all()") {
             it("should adjust the aView") {
                 aView.pin.all()
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 300.0, width: 200.0, height: 100.0)))
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 400.0, height: 400.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(0)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 300.0, width: 200.0, height: 100.0)))
+                aView.pin.all().margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 380.0, height: 380.0)))
             }
             
-            it("should have the same position without or with a 0 parameter value") {
-                aView.pin.bottom()
-                let noParameterFrame = aView.frame
-                
-                aView.pin.bottom(0)
-                expect(aView.frame).to(equal(noParameterFrame))
+            it("should adjust the bViewChild") {
+                bViewChild.pin.all()
+                expect(bViewChild.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 110.0, height: 80.0)))
+            }
+            
+            it("should adjust the bViewChild") {
+                bViewChild.pin.all().margin(10)
+                expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 60.0)))
+            }
+            
+            it("should warn") {
+                aView.pin.top(20).all()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() top coordinate", "won't be applied", "already been set to 20.0"]))
+            }
+            it("should warn") {
+                aView.pin.left(20).all()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() left coordinate", "won't be applied", "already been set to 20.0"]))
+            }
+            it("should warn") {
+                aView.pin.right(20).all()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() right coordinate", "won't be applied", "already been set to 20.0"]))
+            }
+            
+            it("should warn") {
+                aView.pin.bottom(20).all()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() bottom coordinate", "won't be applied", "already been set to 20.0"]))
+            }
+        }
+        
+        //
+        // horizontally()
+        //
+        describe("the result of horizontally()") {
+            it("should adjust the aView") {
+                aView.pin.horizontally()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 100.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.bottom(-20)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 320.0, width: 200.0, height: 100.0)))
+                aView.pin.horizontally().margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 380.0, height: 100.0)))
+            }
+            
+            it("should adjust the bViewChild") {
+                bViewChild.pin.horizontally()
+                expect(bViewChild.frame).to(equal(CGRect(x: 0.0, y: 10.0, width: 110.0, height: 20.0)))
+            }
+
+            it("should adjust the bViewChild") {
+                bViewChild.pin.horizontally().margin(10)
+                expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 20.0)))
+            }
+            
+            it("should warn") {
+                aView.pin.left(20).horizontally()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["horizontally() left coordinate", "won't be applied", "already been set to 20.0"]))
+            }
+            it("should warn") {
+                aView.pin.right(20).horizontally()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["horizontally() right coordinate", "won't be applied", "already been set to 20.0"]))
+            }
+        }
+        
+        //
+        // vertically()
+        //
+        describe("the result of vertically()") {
+            it("should adjust the aView") {
+                aView.pin.vertically()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 0.0, width: 200.0, height: 400.0)))
             }
             
             it("should adjust the aView") {
-                aView.pin.top().bottom(-20)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 420.0)))
+                aView.pin.vertically().margin(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 380.0)))
             }
             
-            it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
-                unAttachedView.pin.bottom(20%)
-                
-                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
+            it("should adjust the bViewChild") {
+                bViewChild.pin.vertically()
+                expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 60.0, height: 80.0)))
             }
             
-            it("should adjust the aView") {
-                aView.pin.bottom(20%)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 220.0, width: 200.0, height: 100.0)))
+            it("should adjust the bViewChild") {
+                bViewChild.pin.vertically().margin(10)
+                expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: 10.0, width: 60.0, height: 60.0)))
             }
-            
-            it("should adjust the aView") {
-                aView.pin.top().bottom(20%)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 320.0)))
+
+            it("should warn") {
+                aView.pin.top(20).vertically()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["vertically() top coordinate", "won't be applied", "already been set to 20.0"]))
             }
-            
-            it("should adjust the aView") {
-                aView.pin.bottom(-20%)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 380.0, width: 200.0, height: 100.0)))
-            }
-            
-            it("should adjust the aView") {
-                aView.pin.top().bottom(-20%)
-                expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 480.0)))
+            it("should warn") {
+                aView.pin.bottom(20).vertically()
+                expect(_pinlayoutUnitTestLastWarning).to(contain(["vertically() bottom coordinate", "won't be applied", "already been set to 20.0"]))
             }
         }
     }

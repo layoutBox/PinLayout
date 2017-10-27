@@ -222,26 +222,23 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func all() -> PinLayout {
-        func context() -> String { return "all()" }
-        top(context)
-        bottom(context)
-        right(context)
-        left(context)
+        top({ "all() top coordinate" })
+        bottom({ "all() bottom coordinate" })
+        right({ "all() right coordinate" })
+        left({ "all() left coordinate" })
         return self
     }
     
     @discardableResult
     func horizontally() -> PinLayout {
-        func context() -> String { return "horizontally()" }
-        right(context)
-        left(context)
+        right({ "horizontally() right coordinate" })
+        left({ "horizontally() left coordinate" })
         return self
     }
     @discardableResult
     func vertically() -> PinLayout {
-        func context() -> String { return "vertically()" }
-        top(context)
-        bottom(context)
+        top({ "vertically() top coordinate" })
+        bottom({ "vertically() bottom coordinate" })
         return self
     }
 

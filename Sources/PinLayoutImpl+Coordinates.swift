@@ -103,8 +103,8 @@ extension PinLayoutImpl {
         } else if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _right = _right, _right != value {
-            if let layoutSuperview = layoutSuperview(context) {
-                warnPropertyAlreadySet("right", propertyValue: layoutSuperview.frame.width - _right, context)
+            if let superview = view.superview {
+                warnPropertyAlreadySet("right", propertyValue: superview.frame.width - _right, context)
             } else {
                 warnPropertyAlreadySet("right", propertyValue: _right, context)
             }
@@ -141,7 +141,11 @@ extension PinLayoutImpl {
         } else if let _vCenter = _vCenter {
             warnConflict(context, ["Vertical Center": _vCenter])
         } else if let _bottom = _bottom, _bottom != value {
-            warnPropertyAlreadySet("bottom", propertyValue: _bottom, context)
+            if let superview = view.superview {
+                warnPropertyAlreadySet("bottom", propertyValue: superview.frame.height - _bottom, context)
+            } else {
+                warnPropertyAlreadySet("bottom", propertyValue: _bottom, context)
+            }
         } else {
             _bottom = value
         }

@@ -29,7 +29,6 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.sizeToFit()
         contentView.addSubview(titleLabel)
     }
     
@@ -39,13 +38,11 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
     
     func configure(title: String) {
         titleLabel.text = title
-        titleLabel.sizeToFit()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Center the label vertically. Note that we don't need to specify the size, it has already be adjusted in init().
-        titleLabel.pin.left().right().vCenter().margin(10)
+        titleLabel.pin.left().right().vCenter().margin(10).fitSize()
     }
 }

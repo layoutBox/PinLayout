@@ -45,7 +45,7 @@ class MultiRelativeView: BaseView {
         super.layoutSubviews()
         
         // Layout the contentView using the view's safeArea.
-        contentView.pin.top().bottom().left().right().margin(safeArea)
+        contentView.pin.all().margin(safeArea)
         
         view1.pin.top().left().width(20%).height(50%)
         view2.pin.top().right().width(20%).height(50%)

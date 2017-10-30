@@ -65,7 +65,7 @@ class IntroRTLView: BaseView {
         
         // Layout the contentView using the view's safeArea with at least of 10 pixels all around.
         let containerInsets = safeArea.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
-        contentView.pin.top().bottom().start().end().margin(containerInsets)
+        contentView.pin.all().margin(containerInsets)
 
         logo.pin.top().start().size(100).aspectRatio().marginTop(10)
         segmented.pin.after(of: logo, aligned: .top).end().marginStart(10)

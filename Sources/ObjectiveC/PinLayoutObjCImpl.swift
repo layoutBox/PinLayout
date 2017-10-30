@@ -199,6 +199,21 @@ import UIKit
         return self
     }
     
+    public func all() -> PinLayoutObjC {
+        impl?.all()
+        return self
+    }
+    
+    public func horizontally() -> PinLayoutObjC {
+        impl?.horizontally()
+        return self
+    }
+    
+    public func vertically() -> PinLayoutObjC {
+        impl?.vertically()
+        return self
+    }
+    
     public func topLeft(to anchor: Anchor) -> PinLayoutObjC {
         impl?.topLeft(to: anchor)
         return self

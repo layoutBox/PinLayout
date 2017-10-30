@@ -26,7 +26,8 @@ class MethodCell: UITableViewCell {
     fileprivate let iconImageView = UIImageView(image: UIImage(named: "method"))
     fileprivate let nameLabel = UILabel()
     fileprivate let descriptionLabel = UILabel()
-    
+    fileprivate let margin: CGFloat = 10
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -50,10 +51,7 @@ class MethodCell: UITableViewCell {
     
     func configure(method: Method) {
         nameLabel.text = method.name
-        nameLabel.sizeToFit()
-        
         descriptionLabel.text = method.description
-        descriptionLabel.sizeToFit()
     }
     
     override func layoutSubviews() {
@@ -61,17 +59,10 @@ class MethodCell: UITableViewCell {
         layout()
     }
     
-    @discardableResult
-    fileprivate func layout() -> CGSize {
-        let margin: CGFloat = 10
-        
-        // 1) Layout controls
+    fileprivate func layout() {
         iconImageView.pin.top().left().size(30).margin(margin)
         nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(margin).fitSize()
         descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(margin).fitSize()
-        
-        // 2) Returns a size that contains all controls
-        return CGSize(width: contentView.frame.width, height: descriptionLabel.frame.maxY + margin)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -79,6 +70,9 @@ class MethodCell: UITableViewCell {
         contentView.pin.width(size.width)
 
         // 2) Layout the contentView's controls
-        return layout()
+        layout()
+        
+        // 3) Returns a size that contains all controls
+        return CGSize(width: contentView.frame.width, height: descriptionLabel.frame.maxY + margin)
     }
 }

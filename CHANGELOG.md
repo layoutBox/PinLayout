@@ -7,6 +7,20 @@
 
 # Change Log
 
+
+## [1.4.2](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
+#### Change
+Add method that can pin multiples edges:
+
+* `all()`: Pin all edges on its superview's corresponding edges (top, bottom, left, right). Similar to calling `view.top().bottom().left().right()`
+
+* `horizontally()`: Pin the left and right edges on its superview's corresponding edges. Similar to calling `view.left().right()`.
+
+* `vertically()`: Pin the **top and bottom edges** on its superview's corresponding edges. Similar to calling `view.top().bottom()`.
+     
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#93](https://github.com/mirego/PinLayout/pull/93)
+    
+
 ## [1.4.1](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
 #### Change
 * Add new method `margin(_ directionalInsets: NSDirectionalEdgeInsets)`  

@@ -8,16 +8,15 @@
 
 Pod::Spec.new do |s|
   s.name         = "PinLayout"
-  s.version      = "1.4.1"
+  s.version      = "1.4.2"
   s.summary      = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
   s.description  = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
 
   s.homepage     = "https://mirego.github.io/PinLayout/"
   s.license      = "BSD 3-clause"
-  s.author             = { 
-    "Luc Dion" => "ldion@mirego.com",
+  s.author       = { 
     "Luc Dion" => "luc_dion@yahoo.com"
-     }
+  }
   
   s.platform     = :ios, "8.0"
   s.tvos.deployment_target = '9.0'

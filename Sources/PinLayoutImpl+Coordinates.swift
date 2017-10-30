@@ -21,6 +21,10 @@
 import UIKit
 
 extension PinLayoutImpl {
+    internal func top(_ context: Context) {
+        setTop(0, context)
+    }
+    
     internal func setTop(_ value: CGFloat, _ context: Context) {
         if let _bottom = _bottom, let height = height {
             warnConflict(context, ["bottom": _bottom, "height": height])
@@ -99,8 +103,8 @@ extension PinLayoutImpl {
         } else if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _right = _right, _right != value {
-            if let layoutSuperview = layoutSuperview(context) {
-                warnPropertyAlreadySet("right", propertyValue: layoutSuperview.frame.width - _right, context)
+            if let superview = view.superview {
+                warnPropertyAlreadySet("right", propertyValue: superview.frame.width - _right, context)
             } else {
                 warnPropertyAlreadySet("right", propertyValue: _right, context)
             }
@@ -117,13 +121,31 @@ extension PinLayoutImpl {
         }
     }
     
+    @discardableResult
+    internal func bottom(_ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setBottom(layoutSuperview.frame.height, context)
+        return self
+    }
+    
+    @discardableResult
+    internal func bottom(_ value: CGFloat, _ context: Context) -> PinLayout {
+        guard let layoutSuperview = layoutSuperview(context) else { return self }
+        setBottom(layoutSuperview.frame.height - value, context)
+        return self
+    }
+    
     internal func setBottom(_ value: CGFloat, _ context: Context) {
         if let _top = _top, let height = height {
             warnConflict(context, ["top": _top, "height": height])
         } else if let _vCenter = _vCenter {
             warnConflict(context, ["Vertical Center": _vCenter])
         } else if let _bottom = _bottom, _bottom != value {
-            warnPropertyAlreadySet("bottom", propertyValue: _bottom, context)
+            if let superview = view.superview {
+                warnPropertyAlreadySet("bottom", propertyValue: superview.frame.height - _bottom, context)
+            } else {
+                warnPropertyAlreadySet("bottom", propertyValue: _bottom, context)
+            }
         } else {
             _bottom = value
         }

@@ -153,6 +153,26 @@ public protocol PinLayout {
     @discardableResult func end(_ value: CGFloat) -> PinLayout
     @discardableResult func end(_ percent: Percent) -> PinLayout
     
+    // Pin multiple edges at once.
+    /**
+     Pin all edges on its superview's corresponding edges (top, bottom, left, right).
+     
+     Similar to calling `view.top().bottom().left().right()`
+     */
+    @discardableResult func all() -> PinLayout
+    /**
+     Pin the left and right edges on its superview's corresponding edges.
+     
+     Similar to calling `view.left().right()`.
+     */
+    @discardableResult func horizontally() -> PinLayout
+    /**
+     Pin the **top and bottom edges** on its superview's corresponding edges.
+     
+     Similar to calling `view.top().bottom()`.
+     */
+    @discardableResult func vertically() -> PinLayout
+    
     //
     // MARK: Layout using edges
     //

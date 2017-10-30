@@ -75,6 +75,11 @@ public extension UIView {
     @discardableResult func end(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func end(percent: CGFloat) -> PinLayoutObjC
     
+    // Pin multiple edges at once.
+    @discardableResult func all() -> PinLayoutObjC
+    @discardableResult func horizontally() -> PinLayoutObjC
+    @discardableResult func vertically() -> PinLayoutObjC
+    
     //
     // MARK: Layout using edges
     //

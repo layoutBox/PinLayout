@@ -82,7 +82,7 @@ override func layoutSubviews() {
    super.layoutSubviews() 
     
    logo.pin.top().left().size(100).aspectRatio().margin(10)
-   segmented.pin.right(of: logo, aligned: .top).right().marginHorizontal(10)
+   segmented.pin.after(of: logo, aligned: .top).right().marginHorizontal(10)
    textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).fitSize()
    separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
 }
@@ -113,7 +113,7 @@ This example shows how easily PinLayout can adjust its layout based on the view'
       segmentedControl.pin.below(of: textLabel).right().margin(margin)
   } else {
       segmentedControl.pin.top().right().margin(margin)
-      textLabel.pin.top().left().left(of: segmentedControl).margin(margin).fitSize()
+      textLabel.pin.top().left().before(of: segmentedControl).margin(margin).fitSize()
   }
 ``` 
 
@@ -252,7 +252,7 @@ In LTR direction the value specifies the right edge distance from the superview'
 In RTL direction the value specifies the left edge distance from the superview's left edge in pixels.   
 * **`end(_ percent: Percent)`**:left_right_arrow:  
 In LTR direction the value specifies the right edge distance from the superview's right edge in percentage of its superview's width.  
-In RTL direction the value specifies the left edge distance from the superview's left edge in percentage of its superview's width.   
+In RTL direction the value specifies the left edge distance from the superview's left edge in percentage of its superview's width. 
 
 ###### Usage Examples:
 
@@ -273,7 +273,7 @@ This example layout the view A to fit its superview frame with a margin of 10 pi
 Another possible solution using other PinLayout's methods (more details later):
 
 ```swift
-    view.pin.top().bottom().left().right().margin(10)
+    view.pin.all().margin(10)
 ```
 
 <br/>
@@ -301,21 +301,36 @@ Position the view left edge directly on its superview left edge in LTR direction
 * **`end()`**:left_right_arrow:  
 Position the view right edge directly on its superview right edge in LTR direction or left edge directly on its superview left edge in RTL direction. Similar to calling `end(0)`.
 
+**Methods pinning multiple edges**:
+
+* **`all()`**  
+Pin **all edges** on its superview's corresponding edges (top, bottom, left, right).  
+Similar to calling `view.top().bottom().left().right()`. 
+* **`horizontally()`**  
+Pin the **left and right edges** on its superview's corresponding edges.  
+Similar to calling `view.left().right()`. 
+* **`vertically()`**  
+Pin the **top and bottom edges** on its superview's corresponding edges.  
+Similar to calling `view.top().bottom()`. 
+
+
 ###### Usage examples:
 ```swift
 	view.pin.top().left()
 	view.pin.bottom().right()
 	view.pin.hCenter().vCenter()
 	view.pin.start().end()
+	view.pin.all()
+	view.pin.top().horizontally()
 ```
 
 ###### Example:
-This example is similar to the previous example, but pins edges directly on superview’s edges. It will layout the view A to fit its superview frame with a margin of 10 pixels.
+This example is similar to the previous example, but pins edges directly on superview’s edges. It will layout the view A to fit its superview frame with a margin of 10 pixels all around.
 
 ![](docs/02-example-superview-edge.png)
 
 ```swift
-    viewA.pin.top().left().bottom().right().margin(10)
+    viewA.pin.all().margin(10)
 ``` 
 
 <br/>
@@ -537,14 +552,6 @@ Position the view above the specified view(s). One or many relative views can be
 **`below(of: [UIView])`**  
 Position the view below the specified view(s). One or many relative views can be specified. This method is similar to pinning the view’s top edge.  
   
-* **`left(of: UIView)`**  
-**`left(of: [UIView])`**  
-Position the view left of the specified view(s). One or many relative views can be specified. This method is similar to pinning the view’s right edge.  
-  
-* **`right(of: UIView)`**  
-**`right(of: [UIView])`**  
-Position the view right of the specified view(s). One or many relative views can be specified. This method is similar to pinning the view’s left edge.
-
 * **`before(of: UIView)`**:left_right_arrow:  
 **`before(of: [UIView])`**:left_right_arrow:  
 In LTR direction the view is positionned at the left of the specified view(s). In RTL direction the view is positionned at the right. One or many relative views can be specified. 
@@ -552,6 +559,14 @@ In LTR direction the view is positionned at the left of the specified view(s). I
 * **`after(of: UIView)`**:left_right_arrow:  
 **`after(of: [UIView])`**:left_right_arrow:  
 In LTR direction the view is positionned at the right of the specified view(s). In RTL direction the view is positionned at the left. One or many relative views can be specified. 
+
+* **`left(of: UIView)`**  
+**`left(of: [UIView])`**  
+Position the view left of the specified view(s). Similar to `before(of:)`. One or many relative views can be specified. This method is similar to pinning the view’s right edge.  
+  
+* **`right(of: UIView)`**  
+**`right(of: [UIView])`**  
+Position the view right of the specified view(s). Similar to `after(of:)`. One or many relative views can be specified. This method is similar to pinning the view’s left edge.
 
 :pushpin: **Multiple relative views**: If for example a call to `below(of: [...]) specify multiple relative views, the view will be layouted below *ALL* these views. 
 
@@ -561,10 +576,10 @@ In LTR direction the view is positionned at the right of the specified view(s). 
 
 ###### Usage examples:
 ```swift
+	view.pin.after(of: view4).before(of: view1).below(of: view3)
 	view.pin.left(of: view2)
 	view.pin.below(of: [view2, view3, view4])
 	view.pin.left(of: view1).above(of: view2).right(of: view4).below(of: view3)
-	view.pin.after(of: view4).before(of: view1).below(of: view3)
 ```
 
 ###### Example:
@@ -573,7 +588,7 @@ The following example will position the view C between the view A and B with mar
 ![](docs/pinlayout-relative.png)
 
 ```swift
-	viewC.pin.top().left(of: viewA).right(of: viewB).margin(10)
+	viewC.pin.top().after(of: viewA).before(of: viewB).margin(10)
 ```
 This is an equivalent solution using [edges](#edge):
 
@@ -584,7 +599,7 @@ This is an equivalent solution using [edges](#edge):
 This is also an equivalent solution using [relative positioning and alignment](#relative_positioning_w_alignment) explained in the next section:
 
 ```swift
-	viewC.pin.left(of: viewA, aligned: .top).right(of: viewB, aligned: top).marginHorizontal(10)
+	viewC.pin.after(of: viewA, aligned: .top).before(of: viewB, aligned: top).marginHorizontal(10)
 ```
 
 
@@ -605,14 +620,6 @@ Position the view above the specified view(s) and aligned it using the specified
 **`below(of: [UIView], aligned: HorizontalAlignment)`**  
 Position the view below the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, topCenter or topRight.  
   
-* **`left(of: UIView, aligned: VerticalAlignment)`**  
-**`left(of: [UIView], aligned: HorizontalAlignment)`**  
-Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topRight, centerRight or bottomRight.  
-  
-* **`right(of: UIView, aligned: VerticalAlignment)`**  
-**`right(of: [UIView], aligned: HorizontalAlignment)`**  
-Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, centerLeft or bottomLeft.
-
 * **`before(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
 **`before(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
 In LTR direction the view is positionned at the left of the specified view(s). In RTL direction the view is positionned at the right. One or many relative views can be specified. 
@@ -620,6 +627,14 @@ In LTR direction the view is positionned at the left of the specified view(s). I
 * **`after(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
 **`after(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
 In LTR direction the view is positionned at the right of the specified view(s). In RTL direction the view is positionned at the left. One or many relative views can be specified. 
+
+* **`left(of: UIView, aligned: VerticalAlignment)`**  
+**`left(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `before(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topRight, centerRight or bottomRight.  
+  
+* **`right(of: UIView, aligned: VerticalAlignment)`**  
+**`right(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `after(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, centerLeft or bottomLeft.
 
 
 **How alignment is applied:**
@@ -648,7 +663,7 @@ In RTL direction the view's left edge will be aligned to the right most relative
 ```swift
 	view.pin.above(of: view2, aligned: .left)
 	view.pin.below(of: [view2, view3, view4], aligned: .left)
-	view.pin.left(of: view2, aligned: .top).right(of: view3, aligned: .bottom)
+	view.pin.after(of: view2, aligned: .top).before(of: view3, aligned: .bottom)
 ```
 
 ###### Example:
@@ -781,7 +796,7 @@ The following example layout the UILabel on the right side of the UIImageView wi
 ![](docs/pinlayout-fitSize.png)
 
 ```javascript
-	label.pin.right(of: image, aligned: .top).right().marginHorizontal(10).fitSize()
+	label.pin.after(of: image, aligned: .top).right().marginHorizontal(10).fitSize()
 ```
 
 
@@ -930,7 +945,7 @@ This example centered horizontally the view B in the space remaining at the righ
 ![](docs/pinlayout-example-justify-remaining-space.png)
 
 ```swift
-   viewB.pin.left(of: viewA, aligned: .top).right().width(100).justify(.center)
+   viewB.pin.after(of: viewA, aligned: .top).right().width(100).justify(.center)
 ```
 
 <br/>
@@ -1160,7 +1175,7 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 
 	```swift
 	textLabel.pin.below(of: titleLabel)
-	   .right(of: statusIcon).left(of: accessoryView)
+	   .before(of: statusIcon).after(of: accessoryView)
 	   .above(of: button).marginHorizontal(10)
 	```
 
@@ -1182,7 +1197,7 @@ Cell A:
 
 ```swift
 	a1.pin.top().bottom().left().width(50)
-	a2.pin.right(of: a1, aligned: .top).bottom().right().marginLeft(10)
+	a2.pin.after(of: a1, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 Cell B:
@@ -1192,7 +1207,7 @@ Cell B:
 
 ```swift
 	b2.pin.top().bottom().right().width(50)
-	b1.pin.left(of: b2, aligned: .top).bottom().left().marginRight(10)
+	b1.pin.before(of: b2, aligned: .top).bottom().left().marginRight(10)
 ```
 
 Cell C:
@@ -1203,8 +1218,8 @@ Cell C:
 
 ```swift
 	c2.pin.topCenter().width(50).bottom()
-	c1.pin.left(of: c1, aligned: .top).bottom().left().marginRight(10)
-	c3.pin.right(of: c2, aligned: .top).bottom().right().marginLeft(10)
+	c1.pin.before(of: c2, aligned: .top).bottom().left().marginRight(10)
+	c3.pin.after(of: c2, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 Cell D:
@@ -1215,8 +1230,8 @@ Cell D:
 
 ```swift
 	d1.pin.topLeft().bottom().width(25%)
-	d2.pin.right(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
-	d3.pin.right(of: d2, aligned: .top).bottom().right().marginLeft(10)
+	d2.pin.after(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
+	d3.pin.after(of: d2, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 <br>

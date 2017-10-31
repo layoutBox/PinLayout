@@ -1276,10 +1276,11 @@ There is an Example app that expose some usage example on PinLayout, including:
 * The [introduction example](#intro_usage_example) presented priviously in this README.
 * An RTL enabled version of the [introduction example](#intro_usage_example)
 * An example showing of the right-to-left (RTL) language support. Similar to the Intro example.
-* An example of UITableView with variable height cells.
+* UITableView example with variable height cells.
+* UICollectionView example.
 * Example showing a form
 * Example showing relative positioning.
-* Example using objective-c
+* Example using Objective-C
 * ...
 
 :pushpin: Tap on images to see the example's source code.
@@ -1288,6 +1289,7 @@ There is an Example app that expose some usage example on PinLayout, including:
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/pinlayout_exampleapp_intro.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" alt="PinLayout example" width=120/></a>  
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/> </a> 

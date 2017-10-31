@@ -23,6 +23,7 @@ enum PageType: Int {
     case intro
     case adjustToContainer
     case tableView
+    case collectionView
     case form
     case relativePositions
     case multiRelativePositions
@@ -37,6 +38,7 @@ enum PageType: Int {
         case .intro:                      return "PinLayout's Intro"
         case .adjustToContainer:          return "Adjust to container size"
         case .tableView:                  return "UITableView with variable cell's height"
+        case .collectionView:             return "UICollectionView Example"
         case .form:                       return "Form Example"
         case .relativePositions:          return "Relative Positionning"
         case .multiRelativePositions:     return "Multiple Relatives Positionning"
@@ -52,6 +54,7 @@ enum PageType: Int {
         case .intro:                      return IntroViewController(pageType: self)
         case .adjustToContainer:          return AdjustToContainerViewController(pageType: self)
         case .tableView:                  return TableViewExampleViewController(pageType: self)
+        case .collectionView:             return CollectionViewExampleViewController(pageType: self)
         case .form:                       return FormViewController(pageType: self)
         case .relativePositions:          return RelativeViewController(pageType: self)
         case .multiRelativePositions:     return MultiRelativeViewController(pageType: self)
@@ -84,7 +87,7 @@ class MenuViewController: BaseViewController {
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(true)
-//        didSelect(pageType: .intro)
+//        didSelect(pageType: .collectionView)
 //    }
 }
 

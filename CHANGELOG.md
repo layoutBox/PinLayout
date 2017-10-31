@@ -7,6 +7,8 @@
 
 # Change Log
 
+## [1.4.3](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
+Fix carthage build.
 
 ## [1.4.2](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
 #### Change

@@ -8,7 +8,9 @@
 # Change Log
 
 ## [1.4.3](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
-Fix carthage build.
+Fix Carthage support
+
+* Fix an issue that occurs with the latest Carthage version.
 
 ## [1.4.2](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
 #### Change

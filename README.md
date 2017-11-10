@@ -531,7 +531,9 @@ For example .topRight() will pin the viewâ€™s topRight anchor on its superviewâ€
 This is equivalent to:
 
 ```swift
-	viewA.pin.topRight(to: superview.pin.topRight)
+	viewA.pin.topRight(to: superview.anchor.topRight)
+	// OR
+	viewA.pin.top().right()
 ```
 
 <br/>

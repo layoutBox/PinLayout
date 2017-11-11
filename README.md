@@ -1004,13 +1004,18 @@ The following section explains how CSS/PinLayout margin rules are applied.
 
 This table explains how and when **left and right margins** are applied depending on which view’s attribute has been pinned using PinLayout.
 
-| View’s pinned attributes | Left Margin                               | Right Margin                               |
-|--------------------------|:-------------------------------------------:|:--------------------------------------------:|
-| **Left**                     | *Move view right*                           | *-*                                |
-| **Left and Width**           | *Move view right*                           | *-*                                |
-| **Right**                    | *-*                               | *Move view left*                             |
-| **Right and Width**          | *-*                               | *Move view left*                             |
-| **Left and Right**           | *Reduce the width to apply the left margin* | *Reduce the width to apply the right margin* |
+| View’s pinned attributes | Left Margin                           | Right Margin                                   |
+|--------------------------|:-------------------------------------:|:----------------------------------------------:|
+| **Left**                 | Move view right                       | -                                              |
+| **Left and Width**       | Move view right                       | -                                              |
+| **Right**                | -                                     | Move view left                                 |
+| **Right and Width**      | -                                     | Move view left                                 |
+| **Left and Right**       | Reduce the width to apply the left margin | Reduce the width to apply the right margin |
+| **hCenter**              | Move view right                       | Movie view left                                |
+
+
+Luc Dion [7 minutes ago] 
+Salut @sdc, 15h plus tard mais bon :slightly_smiling_face:. Le seul problème avec ta ligne initiale est que tu appliques une marge top et bottom simultanément. La difficulté est lorsque qu’un centre est pinné, que veut dire une marge? Dans PinLayout je me suis inspiré encore une fois de CSS (même si CSS ne supporte pas ça), lorsque le vCenter à été pinné, une top margin pousse la view vers le bas, et une bottom margin pousse la view vers le haut. Donc dans ton cas ceci est la bonne solution:
 
 NOTE: `-` indicates that the margin is not applied.
 
@@ -1021,12 +1026,13 @@ NOTE: `-` indicates that the margin is not applied.
 This table explains how and when **top and bottom margins** are applied depending on which view’s attribute has been pinned using PinLayout.
 
 | View’s pinned attributes | Top Margin                               | Bottom Margin                               |
-|--------------------------|:-------------------------------------------:|:--------------------------------------------:|
-| **Top**                     | *Move view down*                           | *-*                                |
-| **Top and Height**           | *Move view down*                           | *-*                                |
-| **Bottom**                    | *-*                               | *Move view up*                             |
-| **Bottom and Height**          | *-*                               | *Move view up*                             |
-| **Top and Bottom**           | *Reduce the height to apply the top margin* | *Reduce the height to apply the bottom margin* |
+|--------------------------|:----------------------------------------:|:-------------------------------------------:|
+| **Top**                  | Move view down                           | -                                           |
+| **Top and Height**       | Move view down                           | -                                           |
+| **Bottom**               | -                                        | Move view up                                |
+| **Bottom and Height**    | -                                        | Move view up                                |
+| **Top and Bottom**       | Reduce the height to apply the top margin | Reduce the height to apply the bottom margin |
+| **vCenter**              | Move view down                          | Movie view up                                |
 
 <br>
 

@@ -1002,7 +1002,7 @@ The following section explains how CSS/PinLayout margin rules are applied.
 
 #### When and how horizontal margins are applied in PinLayout?
 
-This table explains how and when **left and right margins** are applied depending on which view’s attribute has been pinned using PinLayout.
+This table explains how and when **left and right margins** are applied depending on which view’s attribute has been pinned.
 
 | View’s pinned attributes | Left Margin                           | Right Margin                                   |
 |--------------------------|:-------------------------------------:|:----------------------------------------------:|
@@ -1013,17 +1013,13 @@ This table explains how and when **left and right margins** are applied dependin
 | **Left and Right**       | Reduce the width to apply the left margin | Reduce the width to apply the right margin |
 | **hCenter**              | Move view right                       | Movie view left                                |
 
-
-Luc Dion [7 minutes ago] 
-Salut @sdc, 15h plus tard mais bon :slightly_smiling_face:. Le seul problème avec ta ligne initiale est que tu appliques une marge top et bottom simultanément. La difficulté est lorsque qu’un centre est pinné, que veut dire une marge? Dans PinLayout je me suis inspiré encore une fois de CSS (même si CSS ne supporte pas ça), lorsque le vCenter à été pinné, une top margin pousse la view vers le bas, et une bottom margin pousse la view vers le haut. Donc dans ton cas ceci est la bonne solution:
-
 NOTE: `-` indicates that the margin is not applied.
 
 <br>
 
 #### When and how does vertical margins are applied in PinLayout?
 
-This table explains how and when **top and bottom margins** are applied depending on which view’s attribute has been pinned using PinLayout.
+This table explains how and when **top and bottom margins** are applied depending on which view’s attribute has been pinned.
 
 | View’s pinned attributes | Top Margin                               | Bottom Margin                               |
 |--------------------------|:----------------------------------------:|:-------------------------------------------:|

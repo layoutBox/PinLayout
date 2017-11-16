@@ -698,5 +698,114 @@ class AdjustSizeSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 32.0, height: 50.0)))
             }
         }
+        
+        //
+        // fitWidthHard
+        //
+        describe("the result of the fitWidthHard()") {
+            it("should adjust the aView") {
+                aView.pin.fitWidth()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 16.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.width(50).fitWidth()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.width(50).fitWidthHard()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 40.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.size(CGSize(width: 20, height: 100)).fitWidth()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 10.0, height: 160.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.size(CGSize(width: 20, height: 100)).fitWidthHard()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 20.0, height: 160.0)))
+            }
+        }
+        
+        //
+        // fitHeightHard
+        //
+        describe("the result of the fitHeightHard()") {
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.fitHeight()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 32.0, height: 50.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.fitHeightHard()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 32.0, height: 60.0)))
+            }
+        }
+        
+        //
+        // fitSizeHard
+        //
+        describe("the result of the fitSizeHard()") {
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.width(50).fitSize()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 40.0)))
+            }
+
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.width(50).fitSizeHard()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 40.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = 10
+                aView.pin.width(50).fitSize()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 26.6), within: 0.5))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = 10
+                aView.pin.width(50).fitSizeHard()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 26.6), within: 0.5))
+            }
+        
+            it("should adjust the aView") {
+                aView.pin.height(50).fitSize()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 32.0, height: 50.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.height(50).fitSize()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 40.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = -10
+                aView.pin.height(50).fitSizeHard()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 50.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = 10
+                aView.pin.height(30).fitSize()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 30.0)))
+            }
+            
+            it("should adjust the aView") {
+                aView.sizeThatFitSizeOffset = 10
+                aView.pin.height(30).fitSizeHard()
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 30.0)))
+            }
+        }
     }
 }

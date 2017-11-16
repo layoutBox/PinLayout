@@ -61,8 +61,8 @@ class MethodCell: UITableViewCell {
     
     fileprivate func layout() {
         iconImageView.pin.top().left().size(30).margin(margin)
-        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(margin).fitSize()
-        descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(margin).fitSize()
+        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(margin).fitWidth()
+        descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(margin).fitWidth()
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

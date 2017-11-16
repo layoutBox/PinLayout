@@ -46,8 +46,8 @@ class AdjustToContainerView: BaseView {
         // Layout the contentView using the view's safeArea.
         contentView.pin.all().margin(safeArea)
         
-        languageSelectorView.pin.top().left().right().fitSize()
-        swiftOpinionSelectorView.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).fitSize()
-        swiftUsageSelectorView.pin.below(of: swiftOpinionSelectorView, aligned: .left).right().marginTop(10).fitSize()
+        languageSelectorView.pin.top().left().right().fitWidth()
+        swiftOpinionSelectorView.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).fitWidth()
+        swiftUsageSelectorView.pin.below(of: swiftOpinionSelectorView, aligned: .left).right().marginTop(10).fitWidth()
     }
 }

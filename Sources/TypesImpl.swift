@@ -185,5 +185,21 @@ extension Percent {
         return "\(value)%"
     }
 }
+    
+enum FitType {
+    case size
+    case width
+    case height
+    
+    var name: String {
+        switch self {
+        case .size:   return "fitSize()"
+        case .width:  return "fitWidth()"
+        case .height: return "fitHeight()"
+        }
+    }
+}
+
+
 
 #endif

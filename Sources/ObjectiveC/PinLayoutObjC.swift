@@ -230,6 +230,11 @@ public extension UIView {
     @discardableResult func aspectRatio() -> PinLayoutObjC
 
     @discardableResult func fitSize() -> PinLayoutObjC
+    @discardableResult func fitSizeHard() -> PinLayoutObjC
+    @discardableResult func fitWidth() -> PinLayoutObjC
+    @discardableResult func fitWidthHard() -> PinLayoutObjC
+    @discardableResult func fitHeight() -> PinLayoutObjC
+    @discardableResult func fitHeightHard() -> PinLayoutObjC
 
     //
     // MARK: Margins

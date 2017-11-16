@@ -604,6 +604,31 @@ import UIKit
         return self
     }
     
+    public func fitSizeHard() -> PinLayoutObjC {
+        impl?.fitSizeHard()
+        return self
+    }
+    
+    public func fitWidth() -> PinLayoutObjC {
+        impl?.fitWidth()
+        return self
+    }
+    
+    public func fitWidthHard() -> PinLayoutObjC {
+        impl?.fitWidthHard()
+        return self
+    }
+    
+    public func fitHeight() -> PinLayoutObjC {
+        impl?.fitHeight()
+        return self
+    }
+    
+    public func fitHeightHard() -> PinLayoutObjC {
+        impl?.fitHeightHard()
+        return self
+    }
+    
     public func marginTop(_ value: CGFloat) -> PinLayoutObjC {
         impl?.marginTop(value)
         return self

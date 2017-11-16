@@ -813,29 +813,29 @@ Similar to `fitSize()`, except that the resulting width/height will **always mat
 ###### Usage examples:
 ```javascript
 	// Adjust the view's height based on a width of 100 pixels.
-   view.pin.width(100).fitWidth()
+	view.pin.width(100).fitWidth()
  
-   // Adjust the view's height based on view's current width.
-   view.pin.fitWidth()
+ 	// Adjust the view's height based on view's current width.
+	view.pin.fitWidth()
  
- 	// Adjust the labels's height based on a width of 100 pixels. The width will be 100 pixels even 
- 	// if the label text size is smaller.
-   label.pin.width(100).fitWidthHard()
+	// Adjust the labels's height based on a width of 100 pixels. The width will be 100 pixels even 
+	// if the label text size is smaller.
+	label.pin.width(100).fitWidthHard()
    
-   // Adjust the view's width based on a height of 100 pixels.
+	// Adjust the view's width based on a height of 100 pixels.
 	view.pin.height(100).fitHeight()
 	 
 	// Adjust the view's width based on view's current height.
 	view.pin.fitHeight()
 	
-    // Adjust the label's size based on a width of 200 pixels
-    label.pin.width(200).fitSize()    
+	// Adjust the label's size based on a width of 200 pixels
+	label.pin.width(200).fitSize()    
     
-    // Adjust the label's size based on the computed view's width
-    label.pin.left().right().fitSize() 
+	// Adjust the label's size based on the computed view's width
+	label.pin.left().right().fitSize() 
     
-    // WRONG, neither the width nor the height can be determined, fitSize() won't be applied
-    label.pin.top().left().fitSize()
+	// WRONG, neither the width nor the height can be determined, fitSize() won't be applied
+	label.pin.top().left().fitSize()
 ```
 
 ###### Example:

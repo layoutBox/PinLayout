@@ -329,12 +329,12 @@ public protocol PinLayout {
     
     /**
      The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**.
-     The method compute the height based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method computes the height based on the result of the view's `sizeThatFits(: CGSize)` method.
      
      Notes:
-     * The resulting width will never be bigger than the reference width, but could be smaller.
+     * The resulting width will never be bigger than the reference width but could be smaller.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference width.
+     * If margin rules apply, margins will be applied when determining the reference width.
 
      Example:
          ```
@@ -349,12 +349,12 @@ public protocol PinLayout {
     
     /**
      The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**.
-     The method compute the height based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method computes the height based on the result of the view's `sizeThatFits(: CGSize)` method.
      
      Notes:
      * The resulting width will always **match the reference width**.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference width.
+     * If margin rules apply, margins will be applied when determining the reference width.
 
      Example:
          `view.pin.width(100).fitWidthHard()`.
@@ -368,12 +368,12 @@ public protocol PinLayout {
     
     /**
      The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**.
-     The method compute the width based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method computes the width based on the result of the view's `sizeThatFits(: CGSize)` method.
      
      Notes:
-     * The resulting height will never be bigger than the reference height, but could be smaller.
+     * The resulting height will never be bigger than the reference height but could be smaller.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference height.
+     * If margin rules apply, margins will be applied when determining the reference height.
 
      Example:
          ```
@@ -388,12 +388,12 @@ public protocol PinLayout {
     
     /**
      The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**.
-     The method compute the width based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method computes the width based on the result of the view's `sizeThatFits(: CGSize)` method.
      
      Notes:
      * The resulting height will always match the reference height.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference height.
+     * If margin rules apply, margins will be applied when determining the reference height.
 
      Example:
          `view.pin.height(100).fitHeightHard()`.
@@ -407,7 +407,7 @@ public protocol PinLayout {
     
     /**
      The method **adjust the view's width and height** based on either the **pinned height** or **pinned width**.
-     The method compute the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method computes the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.
      
      If the width has been pinned, the method **adjust the view's height** based on this width.
      If the height has been pinned, the method **adjust the view's width** based on this height.
@@ -416,7 +416,7 @@ public protocol PinLayout {
      Notes:
      * The resulting width/height will never be bigger than the pinnded width/height, but could be smaller.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference width/height.
+     * If margin rules apply, margins will be applied when determining the reference width/height.
 
      Example:
      `view.pin.width(100).fitSize()`.
@@ -429,7 +429,7 @@ public protocol PinLayout {
     
     /**
      The method **adjust the view's width and height** based on either the pinned height or width.
-     The method compute the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method computes the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.
      
      If the width has been pinned, the method **adjust the view's height** based on this width.
      If the height has been pinned, the method **adjust the view's width** based on this height.
@@ -438,7 +438,7 @@ public protocol PinLayout {
      Notes:
      * The resulting width/height will **always match the pinned width/height**.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference width/height.
+     * If margin rules apply, margins will be applied when determining the reference width/height.
 
      Example:
      `view.pin.width(100).fitSizeHard()`.

@@ -776,35 +776,35 @@ Set the view’s size to match the referenced view’s size
 **Method:**
 
 * **`fitWidth()`**  
-The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**. The method compute the height based on the result of the view's `sizeThatFits(: CGSize)` method.  
+The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**. The method computes the height based on the result of the view's `sizeThatFits(: CGSize)` method.  
 
 	Notes:
-     * The resulting width will never be bigger than the reference width, but could be smaller.
+     * The resulting width will never be bigger than the reference width but could be smaller.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference width.
+     * If margin rules apply, margins will be applied when determining the reference width.
   
 * **`fitWidthHard()`**  
 Similar to `fitWidth()`, except that the resulting width will **always match the reference width**.
 
 * **`fitHeight()`**  
-The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**. The method compute the width based on the result of the view's `sizeThatFits(: CGSize)` method.  
+The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**. The method computes the width based on the result of the view's `sizeThatFits(: CGSize)` method.  
 
 	Notes:
-     * The resulting height will always match the reference height.
+     * The resulting height will never be bigger than the reference height but could be smaller.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference height.
+     * If margin rules apply, margins will be applied when determining the reference height.
 * **`fitHeightHard()`**  
 Similar to `fitHeight()`, except that the resulting height will **always match the reference width**.
 * **`fitSize()`**  
-The method **adjust the view's width and height** based on either the **pinned height** or **pinned width**. The method compute the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.  
+The method **adjust the view's width and height** based on either the **pinned height** or **pinned width**. The method computes the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.  
 If the **width** has been pinned => the method **adjust the view's height** based on this width.  
 If the **height** has been pinned => the method **adjust the view's width** based on this height.  
 If the **width and the height** have been pinned => the method **adjust the view's size** based on both values.
      
      Notes:
-     * The resulting width/height will never be bigger than the pinnded width/height, but could be smaller.
+     * The resulting width/height will never be bigger than the pinned width/height but could be smaller.
      * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules applies, margins will be applied when determining the reference width/height.
+     * If margin rules apply, margins will be applied when determining the reference width/height.
 
 * **`fitSizeHard()`**  
 Similar to `fitSize()`, except that the resulting width/height will **always match the pinned width/height**..

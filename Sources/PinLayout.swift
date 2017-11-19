@@ -386,7 +386,7 @@ public protocol PinLayout {
      */
     @discardableResult func sizeToFit(_ fitType: FitType) -> PinLayout
     
-    @available(*, deprecated: 1.5.0, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
+    @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
     @discardableResult func fitSize() -> PinLayout
     
     //

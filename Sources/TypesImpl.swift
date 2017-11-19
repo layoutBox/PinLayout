@@ -185,5 +185,20 @@ extension Percent {
         return "\(value)%"
     }
 }
+    
+internal extension FitType {
+    var name: String {
+        switch self {
+        case .width: return ".width"
+        case .height: return ".height"
+        case .widthFlexible: return ".widthFlexible"
+        case .heightFlexible: return ".heightFlexible"
+        }
+    }
+    
+    var isFlexible: Bool {
+        return self == .widthFlexible || self == .heightFlexible
+    }
+}
 
 #endif

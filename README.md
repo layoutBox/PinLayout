@@ -83,7 +83,7 @@ override func layoutSubviews() {
     
    logo.pin.top().left().size(100).aspectRatio().margin(10)
    segmented.pin.after(of: logo, aligned: .top).right().marginHorizontal(10)
-   textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).fitSize()
+   textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).fitWidth()
    separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
 }
 ``` 
@@ -109,11 +109,11 @@ This example shows how easily PinLayout can adjust its layout based on the view'
   let margin: CGFloat = 12
         
   if frame.width < 500 {
-      textLabel.pin.top().left().right().margin(margin).fitSize()
+      textLabel.pin.top().left().right().margin(margin).fitWidth()
       segmentedControl.pin.below(of: textLabel).right().margin(margin)
   } else {
       segmentedControl.pin.top().right().margin(margin)
-      textLabel.pin.top().left().before(of: segmentedControl).margin(margin).fitSize()
+      textLabel.pin.top().left().before(of: segmentedControl).margin(margin).fitWidth()
   }
 ``` 
 
@@ -771,34 +771,69 @@ Set the view’s size to match the referenced view’s size
 
 <br/>
 
-### fitSize()
+### sizeToFit
 
 **Method:**
 
-* `fitSize()`  
-`fitSize()` is the equivalent of calling sizeThatFits(_: CGSize) once PinLayout has determined the view's size and has applied margins. **`fitSize()` is applied only if at least the width or the height (or both) can be determined.**  
+* **`sizeToFit(_ fitType: FitType)`**  
+The method adjust the view's size based on the view's `sizeThatFits()` method result.
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
+     
+     Notes:
+     * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
+     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
+     
+	**Parameter `fitType`:** Identify the reference dimension (width / height) that will be used to adjust the view's size.  
 
-   The method was previously named `sizeToFit()`, but it was creating confusion with the already existing `UIView.sizeToFit()` method.
-
+ * **`.width`**: The method adjust the view's size based on the **reference width**.
+        * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
+            the **reference width will be determined by these properties**, else the **current view's width**
+            will be used.
+        * The resulting width will always **match the reference width**.
+     
+ * **`.height`**: The method adjust the view's size based on the **reference height**.
+         * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
+         the **reference height will be determined by these properties**, else the **current view's height**
+         will be used.
+         * The resulting height will always **match the reference height**.
+     
+ * **`.widthFlexible`**: Similar to `.width`, except that PinLayout won't constrain the resulting width to match the reference width. The resulting width may be smaller of bigger depending on the view's sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its string is smaller than the reference width.
+     
+ * **`.heightFlexible`**: Similar to `.height`, except that PinLayout won't constrain the resulting height to match the reference height. The resulting height may be smaller of bigger depending on the view's sizeThatFits(..) method result.
+     
 ###### Usage examples:
-```javascript
-    // Adjust the label's size based on a width of 200 pixels
-    label.pin.width(200).fitSize()    
-    
-    // Adjust the label's size based on the computed view's width
-    label.pin.left().right().fitSize() 
-    
-    // WRONG, neither the width nor the height can be determined, fitSize() won't be applied
-    label.pin.top().left().fitSize()
+
+```swift
+     // Adjust the view's size based on a width of 100 pixels.
+     // The resulting width will always match the pinned property `width(100)`.
+     view.pin.width(100).sizeToFit(.width)
+ 
+     // Adjust the view's size based on view's current width.
+     // The resulting width will always match the view's original width.
+     // The resulting height will never be bigger than the specified `maxHeight`.
+     view.pin.sizeToFit(.width).maxHeight(100)
+ 
+     // Adjust the view's size based on 100% of the superview's height.
+     // The resulting height will always match the pinned property `height(100%)`.
+     view.pin.height(100%).sizeToFit(.height)
+ 
+    // Adjust the view's size based on view's current height.
+    // The resulting width will always match the view's original height.
+    view.pin.sizeToFit(.height)
+
+    // Since `.widthFlexible` has been specified, its possible that the resulting
+    // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
+    // method result.
+    label.pin.width(100).sizeToFit(.widthFlexible)
 ```
 
 ###### Example:
-The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note on the result that the UILabel’s height has changed to fit its content.
+The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note that the UILabel’s height has changed to fit its content.
 
-![](docs/pinlayout-fitSize.png)
+![](docs/images/pinlayout-sizeToFit.png)
 
 ```javascript
-	label.pin.after(of: image, aligned: .top).right().marginHorizontal(10).fitSize()
+	label.pin.after(of: image, aligned: .top).right().marginHorizontal(10).sizeToFit(.width)
 ```
 
 
@@ -808,7 +843,7 @@ The following example layout the UILabel on the right side of the UIImageView wi
 
 PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
 
-:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, fitSize, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, sizeToFit, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
 
 
 **Methods:**
@@ -1157,14 +1192,14 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 ## PinLayout style guide
 
 * You should always specifies methods in the same order, it makes layout lines easier to understand. Here is our prefered ordering:  
-`view.pin.[EDGE|ANCHOR|RELATIVE].[WIDTH|HEIGHT|SIZE].[pinEdges()].[MARGINS].[fitSize()]`  
+`view.pin.[EDGE|ANCHOR|RELATIVE].[WIDTH|HEIGHT|SIZE].[pinEdges()].[MARGINS].[fitWidth()/fitHeight()]`  
 
-   This order reflect the logic inside PinLayout. `pinEdges()` is applied before margins and margins are applied before `fitSize()`.    
+   This order reflect the logic inside PinLayout. `pinEdges()` is applied before margins and margins are applied before `fitWidth()/fitHeight()`.    
 
 	```swift
 	view.pin.top().left(10%).margin(10, 12, 10, 12)
 	view.pin.left().width(100%).pinEdges().marginHorizontal(12)
-	view.pin.left().right().margin(0, 12).fitSize()
+	view.pin.left().right().margin(0, 12).fitWidth()
 	view.pin.width(100).height(100%)
 	```
 

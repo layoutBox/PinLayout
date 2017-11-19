@@ -604,6 +604,18 @@ import UIKit
         return self
     }
     
+    public func sizeToFit(_ fitType: Fit) -> PinLayoutObjC {
+        let type: FitType
+        switch fitType {
+        case .width: type = .width
+        case .height: type = .height
+        case .widthFlexible: type = .widthFlexible
+        case .heightFlexible: type = .heightFlexible
+        }
+        impl?.sizeToFit(type)
+        return self
+    }
+    
     public func marginTop(_ value: CGFloat) -> PinLayoutObjC {
         impl?.marginTop(value)
         return self

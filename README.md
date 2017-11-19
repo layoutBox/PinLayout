@@ -771,80 +771,69 @@ Set the view’s size to match the referenced view’s size
 
 <br/>
 
-### fitWidth() / fitHeight() / fitSize() / ...
+### sizeToFit
 
 **Method:**
 
-* **`fitWidth()`**  
-The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**. The method computes the height based on the result of the view's `sizeThatFits(: CGSize)` method.  
-
-	Notes:
-     * The resulting width will never be bigger than the reference width but could be smaller.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference width.
-  
-* **`fitWidthHard()`**  
-Similar to `fitWidth()`, except that the resulting width will **always match the reference width**.
-
-* **`fitHeight()`**  
-The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**. The method computes the width based on the result of the view's `sizeThatFits(: CGSize)` method.  
-
-	Notes:
-     * The resulting height will never be bigger than the reference height but could be smaller.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference height.
-* **`fitHeightHard()`**  
-Similar to `fitHeight()`, except that the resulting height will **always match the reference width**.
-* **`fitSize()`**  
-The method **adjust the view's width and height** based on either the **pinned height** or **pinned width**. The method computes the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.  
-If the **width** has been pinned => the method **adjust the view's height** based on this width.  
-If the **height** has been pinned => the method **adjust the view's width** based on this height.  
-If the **width and the height** have been pinned => the method **adjust the view's size** based on both values.
+* **`sizeToFit(_ fitType: FitType)`**  
+The method adjust the view's size based on the view's `sizeThatFits()` method result.
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
      
      Notes:
-     * The resulting width/height will never be bigger than the pinned width/height but could be smaller.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference width/height.
+     * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
+     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
+     
+	**Parameter `fitType`:** Identify the reference dimension (width / height) that will be used to adjust the view's size.  
 
-* **`fitSizeHard()`**  
-Similar to `fitSize()`, except that the resulting width/height will **always match the pinned width/height**..
-
-
+ * **`.width`**: The method adjust the view's size based on the **reference width**.
+        * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
+            the **reference width will be determined by these properties**, else the **current view's width**
+            will be used.
+        * The resulting width will always **match the reference width**.
+     
+ * **`.height`**: The method adjust the view's size based on the **reference height**.
+         * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
+         the **reference height will be determined by these properties**, else the **current view's height**
+         will be used.
+         * The resulting height will always **match the reference height**.
+     
+ * **`.widthFlexible`**: Similar to `.width`, except that PinLayout won't constrain the resulting width to match the reference width. The resulting width may be smaller of bigger depending on the view's sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its string is smaller than the reference width.
+     
+ * **`.heightFlexible`**: Similar to `.height`, except that PinLayout won't constrain the resulting height to match the reference height. The resulting height may be smaller of bigger depending on the view's sizeThatFits(..) method result.
+     
 ###### Usage examples:
-```javascript
-	// Adjust the view's height based on a width of 100 pixels.
-	view.pin.width(100).fitWidth()
+
+```swift
+     // Adjust the view's size based on a width of 100 pixels.
+     // The resulting width will always match the pinned property `width(100)`.
+     view.pin.width(100).sizeToFit(.width)
  
- 	// Adjust the view's height based on view's current width.
-	view.pin.fitWidth()
+     // Adjust the view's size based on view's current width.
+     // The resulting width will always match the view's original width.
+     // The resulting height will never be bigger than the specified `maxHeight`.
+     view.pin.sizeToFit(.width).maxHeight(100)
  
-	// Adjust the labels's height based on a width of 100 pixels. The width will be 100 pixels even 
-	// if the label text size is smaller.
-	label.pin.width(100).fitWidthHard()
-   
-	// Adjust the view's width based on a height of 100 pixels.
-	view.pin.height(100).fitHeight()
-	 
-	// Adjust the view's width based on view's current height.
-	view.pin.fitHeight()
-	
-	// Adjust the label's size based on a width of 200 pixels
-	label.pin.width(200).fitSize()    
-    
-	// Adjust the label's size based on the computed view's width
-	label.pin.left().right().fitSize() 
-    
-	// WRONG, neither the width nor the height can be determined, fitSize() won't be applied
-	label.pin.top().left().fitSize()
+     // Adjust the view's size based on 100% of the superview's height.
+     // The resulting height will always match the pinned property `height(100%)`.
+     view.pin.height(100%).sizeToFit(.height)
+ 
+    // Adjust the view's size based on view's current height.
+    // The resulting width will always match the view's original height.
+    view.pin.sizeToFit(.height)
+
+    // Since `.widthFlexible` has been specified, its possible that the resulting
+    // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
+    // method result.
+    label.pin.width(100).sizeToFit(.widthFlexible)
 ```
 
 ###### Example:
-The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note on the result that the UILabel’s height has changed to fit its content.
+The following example layout the UILabel on the right side of the UIImageView with a margin of 10px all around and also adjust the UILabel’t height to fit the text size. Note that the UILabel’s height has changed to fit its content.
 
-![](docs/images/pinlayout-fitSize.png)
+![](docs/images/pinlayout-sizeToFit.png)
 
 ```javascript
-	label.pin.after(of: image, aligned: .top).right().marginHorizontal(10).fitWidth()
+	label.pin.after(of: image, aligned: .top).right().marginHorizontal(10).sizeToFit(.width)
 ```
 
 
@@ -854,7 +843,7 @@ The following example layout the UILabel on the right side of the UIImageView wi
 
 PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
 
-:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, fitWidth/fitHeight/fitSize, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, sizeToFit, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
 
 
 **Methods:**

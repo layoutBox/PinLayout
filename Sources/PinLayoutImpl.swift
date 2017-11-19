@@ -41,11 +41,11 @@ class PinLayoutImpl: PinLayout {
     internal var maxHeight: CGFloat?
 
     internal var fitType: FitType?
-    internal var shouldConstrainFit = false
+    internal var legacyFitSize = false
     internal var _aspectRatio: CGFloat?
 
     internal var shouldKeepViewDimension: Bool {
-        return fitType == nil && _aspectRatio == nil
+        return fitType == nil && !legacyFitSize && _aspectRatio == nil
     }
     
     internal var marginTop: CGFloat?
@@ -748,35 +748,15 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func fitWidth() -> PinLayout {
-        return setFitSize(fitType: .width, constrain: false, { return "fitWidth()" })
+    func sizeToFit(_ fitType: FitType) -> PinLayout {
+        return setFitSize(fitType: fitType, { return "sizeToFit(\(fitType.name))" })
     }
 
     @discardableResult
-    func fitWidthHard() -> PinLayout {
-        return setFitSize(fitType: .width, constrain: true, { return "fitWidthHard()" })
-    }
-    
-    @discardableResult
-    func fitHeight() -> PinLayout {
-        return setFitSize(fitType: .height, constrain: false, { return "fitHeight()" })
-    }
-    
-    @discardableResult
-    func fitHeightHard() -> PinLayout {
-        return setFitSize(fitType: .height, constrain: true, { return "fitHeightHard()" })
-    }
-    
-    @discardableResult
     func fitSize() -> PinLayout {
-        return setFitSize(fitType: .size, constrain: false, { return "fitSize()" })
+        return setFitSize(fitType: nil, { return "fitSize()" })
     }
-    
-    @discardableResult
-    func fitSizeHard() -> PinLayout {
-        return setFitSize(fitType: .size, constrain: true, { return "fitSizeHard()" })
-    }
-    
+
     @discardableResult
     func justify(_ value: HorizontalAlign) -> PinLayout {
         justify = value
@@ -904,14 +884,19 @@ class PinLayoutImpl: PinLayout {
 // MARK: Private methods
 //
 extension PinLayoutImpl {
-    internal func setFitSize(fitType: FitType, constrain: Bool, _ context: Context) -> PinLayout {
+    internal func setFitSize(fitType: FitType?, _ context: Context) -> PinLayout {
         if let aspectRatio = _aspectRatio {
             warnConflict(context, ["aspectRatio": aspectRatio])
+        } else if fitType != nil && legacyFitSize {
+            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with fitSize().")
         } else if let currentFitType = self.fitType, currentFitType != fitType {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with \(currentFitType.name).")
+            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(currentFitType.name)).")
         } else {
-            self.fitType = fitType
-            shouldConstrainFit = constrain
+            if fitType == nil {
+                legacyFitSize = true
+            } else {
+                self.fitType = fitType
+            }
         }
         return self
     }
@@ -919,7 +904,9 @@ extension PinLayoutImpl {
     @discardableResult
     internal func setAspectRatio(_ ratio: CGFloat, context: Context) -> PinLayout {
         if let fitType = fitType {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with \(fitType.name).")
+            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(fitType.name)).")
+        } else if legacyFitSize {
+            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with fitSize().")
         } else if ratio <= 0 {
             warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
         } else {
@@ -1102,53 +1089,66 @@ extension PinLayoutImpl {
         var width = computeWidth()
         var height = computeHeight()
         
-        if let fitType = fitType {
-            if fitType == .size && width == nil && height == nil {
+        if legacyFitSize {
+            if width == nil && height == nil {
                 warn("fitSize() won't be applied, neither the width nor the height can be determined.")
             } else {
                 var fitWidth = CGFloat.greatestFiniteMagnitude
                 var fitHeight = CGFloat.greatestFiniteMagnitude
                 
-                // Apply min/max width/height before calling sizeThatFits() ... and reapply them after.
-                switch fitType {
-                case .size:
-                    if let width = applyMinMax(toWidth: width) {
-                        fitWidth = width
-                    }
-                    if let height = applyMinMax(toHeight: height) {
-                        fitHeight = height
-                    }
-                case .width:
-                    if let width = applyMinMax(toWidth: width) {
-                        fitWidth = width
-                    } else {
-                        fitWidth = view.frame.width
-                    }
-                case .height:
-                    if let height = applyMinMax(toHeight: height) {
-                        fitHeight = height
-                    } else {
-                        fitHeight = view.frame.height
-                    }
+                if let width = applyMinMax(toWidth: width) {
+                    fitWidth = width
+                }
+                if let height = applyMinMax(toHeight: height) {
+                    fitHeight = height
                 }
                 
                 let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
                 
-                if fitWidth != .greatestFiniteMagnitude &&
-                    (sizeThatFits.width > fitWidth ||
-                        (shouldConstrainFit && sizeThatFits.width < fitWidth)) {
+                if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
                     width = fitWidth
                 } else {
                     width = sizeThatFits.width
                 }
                 
-                if fitHeight != .greatestFiniteMagnitude &&
-                    (sizeThatFits.height > fitHeight ||
-                        (shouldConstrainFit && sizeThatFits.height < fitHeight)) {
+                if fitHeight != .greatestFiniteMagnitude && (sizeThatFits.height > fitHeight) {
                     height = fitHeight
                 } else {
                     height = sizeThatFits.height
                 }
+            }
+        } else if let fitType = fitType {
+            var fitWidth = CGFloat.greatestFiniteMagnitude
+            var fitHeight = CGFloat.greatestFiniteMagnitude
+            
+            // Apply min/max width/height before calling sizeThatFits() ... and reapply them after.
+            switch fitType {
+            case .width, .widthFlexible:
+                if let width = applyMinMax(toWidth: width) {
+                    fitWidth = width
+                } else {
+                    fitWidth = view.frame.width
+                }
+            case .height, .heightFlexible:
+                if let height = applyMinMax(toHeight: height) {
+                    fitHeight = height
+                } else {
+                    fitHeight = view.frame.height
+                }
+            }
+                
+            let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
+            
+            if fitWidth != .greatestFiniteMagnitude {
+                width = fitType.isFlexible ? sizeThatFits.width : fitWidth
+            } else {
+                width = sizeThatFits.width
+            }
+            
+            if fitHeight != .greatestFiniteMagnitude {
+                height = fitType.isFlexible ? sizeThatFits.height : fitHeight
+            } else {
+                height = sizeThatFits.height
             }
         } else if let aspectRatio = _aspectRatio {
             if width == nil && height == nil {

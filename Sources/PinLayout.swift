@@ -118,7 +118,6 @@ public extension UIView {
 
 /// PinLayout interface
 public protocol PinLayout {
-    
     //
     // MARK: Layout using distances from superview’s edges
     //
@@ -328,127 +327,67 @@ public protocol PinLayout {
     @discardableResult func aspectRatio() -> PinLayout
     
     /**
-     The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**.
-     The method computes the height based on the result of the view's `sizeThatFits(: CGSize)` method.
+     The method adjust the view's size based on the view's `sizeThatFits()` method result.
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
      
      Notes:
-     * The resulting width will never be bigger than the reference width but could be smaller.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference width.
-
-     Example:
-         ```
-         // Adjust the view's height based on a width of 100 pixels.
-         view.pin.width(100).fitWidth()
+     * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
+     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
      
-         // Adjust the view's height based on view's current width.
-         view.pin.fitWidth()
+     - Parameter fitType: Identify the reference dimension (width / height) that will be used
+     to adjust the view's size:
+     
+     .width: The method adjust the view's size based on the **reference width**.
+        * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
+            the **reference width will be determined by these properties**, else the **current view's width**
+            will be used.
+        * The resulting width will always **match the reference width**.
+     
+     .height: The method adjust the view's size based on the **reference height**.
+         * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
+         the **reference height will be determined by these properties**, else the **current view's height**
+         will be used.
+         * The resulting height will always **match the reference height**.
+     
+     .widthFlexible: Similar to `.width`, except that PinLayout won't constrain the resulting width to
+        match the reference width. The resulting width may be smaller of bigger depending on the view's
+        sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
+        string is smaller than the reference width.
+     
+     .heightFlexible: Similar to `.height`, except that PinLayout won't constrain the resulting height to
+        match the reference height. The resulting height may be smaller of bigger depending on the view's
+        sizeThatFits(..) method result.
+     
+     Examples:
+     
+         ```
+         // Adjust the view's size based on a width of 100 pixels.
+         // The resulting width will always match the pinned property `width(100)`.
+         view.pin.width(100).sizeToFit(.width)
+     
+         // Adjust the view's size based on view's current width.
+         // The resulting width will always match the view's original width.
+         // The resulting height will never be bigger than the specified `maxHeight`.
+         view.pin.sizeToFit(.width).maxHeight(100)
+     
+         // Adjust the view's size based on 100% of the superview's height.
+         // The resulting height will always match the pinned property `height(100%)`.
+         view.pin.height(100%).sizeToFit(.height)
+     
+        // Adjust the view's size based on view's current height.
+        // The resulting width will always match the view's original height.
+        view.pin.sizeToFit(.height)
+
+        // Since `.widthFlexible` has been specified, its possible that the resulting
+        // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
+        // method result.
+        label.pin.width(100).sizeToFit(.widthFlexible)
      ```
      */
-    @discardableResult func fitWidth() -> PinLayout
+    @discardableResult func sizeToFit(_ fitType: FitType) -> PinLayout
     
-    /**
-     The method **adjust the view's height** based on either the **current view's width** or the **width determined by PinLayout**.
-     The method computes the height based on the result of the view's `sizeThatFits(: CGSize)` method.
-     
-     Notes:
-     * The resulting width will always **match the reference width**.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference width.
-
-     Example:
-         `view.pin.width(100).fitWidthHard()`.
-     
-         In this example PinLayout will call the view's sizeThatFits() method with a width of
-         100 pixels and adjust the height accordingly. Note that if sizeThatFits() returns a
-         bigger width (ex: 120 pixels) or a smaller width (ex: 80 pixels), PinLayout will
-         constrain the width to 100.
-     */
-    @discardableResult func fitWidthHard() -> PinLayout
-    
-    /**
-     The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**.
-     The method computes the width based on the result of the view's `sizeThatFits(: CGSize)` method.
-     
-     Notes:
-     * The resulting height will never be bigger than the reference height but could be smaller.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference height.
-
-     Example:
-         ```
-         // Adjust the view's width based on a height of 100 pixels.
-         view.pin.height(100).fitHeight()
-     
-         // Adjust the view's width based on view's current height.
-         view.pin.fitHeight()
-         ```
-     */
-    @discardableResult func fitHeight() -> PinLayout
-    
-    /**
-     The method **adjust the view's width** based on either the **current view's height** or the **height determined by PinLayout**.
-     The method computes the width based on the result of the view's `sizeThatFits(: CGSize)` method.
-     
-     Notes:
-     * The resulting height will always match the reference height.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference height.
-
-     Example:
-         `view.pin.height(100).fitHeightHard()`.
-     
-         In this example PinLayout will call the view's sizeThatFits() method with a height of
-         100 pixels and adjust the width accordingly. Note that if sizeThatFits() returns a
-         bigger height (ex: 120 pixels) or a smaller height (ex: 80 pixels), PinLayout will
-         constrain the height to 100.
-     */
-    @discardableResult func fitHeightHard() -> PinLayout
-    
-    /**
-     The method **adjust the view's width and height** based on either the **pinned height** or **pinned width**.
-     The method computes the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.
-     
-     If the width has been pinned, the method **adjust the view's height** based on this width.
-     If the height has been pinned, the method **adjust the view's width** based on this height.
-     If the width and the height have been pinned, the method **adjust the view's size** based on both values.
-     
-     Notes:
-     * The resulting width/height will never be bigger than the pinnded width/height, but could be smaller.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference width/height.
-
-     Example:
-     `view.pin.width(100).fitSize()`.
-     
-      In this example PinLayout will call the view's sizeThatFits() method with a width of 100.
-      If sizeThatFits() returns a bigger width (ex: 120 pixels), PinLayout will constrain the width to 100.
-      If sizeThatFits() returns a smaller width (ex: 80 pixels), this smaller width will be use.
-     */
+    @available(*, deprecated: 1.5.0, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
     @discardableResult func fitSize() -> PinLayout
-    
-    /**
-     The method **adjust the view's width and height** based on either the pinned height or width.
-     The method computes the width and height based on the result of the view's `sizeThatFits(: CGSize)` method.
-     
-     If the width has been pinned, the method **adjust the view's height** based on this width.
-     If the height has been pinned, the method **adjust the view's width** based on this height.
-     If the width and the height have been pinned, the method **adjust the view's size** based on both values.
-     
-     Notes:
-     * The resulting width/height will **always match the pinned width/height**.
-     * The resulting size will always respect minWidth/maxWidth/minHeight/maxHeight.
-     * If margin rules apply, margins will be applied when determining the reference width/height.
-
-     Example:
-     `view.pin.width(100).fitSizeHard()`.
-     
-     In this example PinLayout will call the view's sizeThatFits() method with a width of
-     100 pixels and adjust the height accordingly. Note that if sizeThatFits() returns a
-     bigger width (ex: 120 pixels) or a smaller width (ex: 80 pixels), PinLayout will
-     constrain the width to 100.
-     */
-    @discardableResult func fitSizeHard() -> PinLayout
     
     //
     // MARK: Margins
@@ -581,5 +520,38 @@ public protocol PinLayout {
 /// UIView's vertical edges (top/bottom) definition
 @objc public protocol VerticalEdge {
 }
-        
+    
+public enum FitType {
+    /**
+     **Adjust the view's height** based on the reference width.
+     * If properties related to the width have been pinned (e.g: width, left & right, margins),
+     the **reference width will be determined by these properties**, else the **current view's width**
+     will be used.
+     * The resulting width will always **match the reference width**.
+    */
+    case width
+    /**
+     **Adjust the view's width** based on the reference height.
+     * If properties related to the height have been pinned (e.g: height, top & bottom, margins),
+     the reference height will be determined by these properties, else the **current view's height**
+     will be used.
+     * The resulting height will always **match the reference height*.
+     */
+    case height
+
+    /**
+     Similar to `.width`, except that PinLayout won't constrain the resulting width to
+     match the reference width. The resulting width may be smaller of bigger depending on the view's
+     sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
+     string is smaller than the reference width.
+     */
+    case widthFlexible
+    /**
+     Similar to `.height`, except that PinLayout won't constrain the resulting height to
+     match the reference height. The resulting height may be smaller of bigger depending on the view's
+     sizeThatFits(..) method result.
+     */
+    case heightFlexible
+}
+    
 #endif

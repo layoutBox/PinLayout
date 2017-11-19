@@ -604,28 +604,15 @@ import UIKit
         return self
     }
     
-    public func fitSizeHard() -> PinLayoutObjC {
-        impl?.fitSizeHard()
-        return self
-    }
-    
-    public func fitWidth() -> PinLayoutObjC {
-        impl?.fitWidth()
-        return self
-    }
-    
-    public func fitWidthHard() -> PinLayoutObjC {
-        impl?.fitWidthHard()
-        return self
-    }
-    
-    public func fitHeight() -> PinLayoutObjC {
-        impl?.fitHeight()
-        return self
-    }
-    
-    public func fitHeightHard() -> PinLayoutObjC {
-        impl?.fitHeightHard()
+    public func sizeToFit(_ fitType: Fit) -> PinLayoutObjC {
+        let type: FitType
+        switch fitType {
+        case .width: type = .width
+        case .height: type = .height
+        case .widthFlexible: type = .widthFlexible
+        case .heightFlexible: type = .heightFlexible
+        }
+        impl?.sizeToFit(type)
         return self
     }
     

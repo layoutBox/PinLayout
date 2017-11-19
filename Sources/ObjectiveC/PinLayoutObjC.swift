@@ -229,12 +229,8 @@ public extension UIView {
      */
     @discardableResult func aspectRatio() -> PinLayoutObjC
 
+    @discardableResult func sizeToFit(_ fitType: Fit) -> PinLayoutObjC
     @discardableResult func fitSize() -> PinLayoutObjC
-    @discardableResult func fitSizeHard() -> PinLayoutObjC
-    @discardableResult func fitWidth() -> PinLayoutObjC
-    @discardableResult func fitWidthHard() -> PinLayoutObjC
-    @discardableResult func fitHeight() -> PinLayoutObjC
-    @discardableResult func fitHeightHard() -> PinLayoutObjC
 
     //
     // MARK: Margins
@@ -331,6 +327,13 @@ public extension UIView {
     ///
     /// - Returns: PinLayout
     @discardableResult func pinEdges() -> PinLayoutObjC
+}
+    
+@objc public enum Fit: Int {
+    case width
+    case height
+    case widthFlexible
+    case heightFlexible
 }
 
 #endif

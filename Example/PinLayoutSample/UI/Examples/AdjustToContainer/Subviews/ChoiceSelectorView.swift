@@ -63,10 +63,10 @@ class ChoiceSelectorView: UIView {
         if frame.width > 500 {
             // The UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
             segmentedControl.pin.top().right().margin(margin)
-            textLabel.pin.top().left().before(of: segmentedControl).margin(margin).fitSize()
+            textLabel.pin.top().left().before(of: segmentedControl).margin(margin).sizeToFit(.width)
         } else {
             // The UISegmentedControl is placed below the label.
-            textLabel.pin.top().left().right().margin(margin).fitSize()
+            textLabel.pin.top().left().right().margin(margin).sizeToFit(.width)
             segmentedControl.pin.below(of: textLabel).right().margin(margin)
         }
         

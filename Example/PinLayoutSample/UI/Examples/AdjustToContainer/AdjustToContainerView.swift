@@ -23,8 +23,8 @@ import PinLayout
 class AdjustToContainerView: BaseView {
     fileprivate let contentView = UIView()
     fileprivate let languageSelectorView = ChoiceSelectorView(text: "What is your favorite language?", choices: ["Swift", "Objective-C", "C++"])
-    fileprivate let swiftOpinionSelectorView = ChoiceSelectorView(text: "Overall, are you satisfied with the Swift performance in your projects?", choices: ["Yes", "No"])
-    fileprivate let swiftUsageSelectorView = ChoiceSelectorView(text: "How often do you typically use Swift?", choices: ["Daily", "Weekly", "Montly", "Do not use"])
+    fileprivate let swiftOpinionSelector = ChoiceSelectorView(text: "Overall, are you satisfied with the Swift performance in your projects?", choices: ["Yes", "No"])
+    fileprivate let swiftUsageSelector = ChoiceSelectorView(text: "How often do you typically use Swift?", choices: ["Daily", "Weekly", "Montly", "Do not use"])
     
     override init() {
         super.init()
@@ -32,8 +32,8 @@ class AdjustToContainerView: BaseView {
         addSubview(contentView)
 
         contentView.addSubview(languageSelectorView)
-        contentView.addSubview(swiftOpinionSelectorView)
-        contentView.addSubview(swiftUsageSelectorView)
+        contentView.addSubview(swiftOpinionSelector)
+        contentView.addSubview(swiftUsageSelector)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,8 +46,8 @@ class AdjustToContainerView: BaseView {
         // Layout the contentView using the view's safeArea.
         contentView.pin.all().margin(safeArea)
         
-        languageSelectorView.pin.top().left().right().fitWidth()
-        swiftOpinionSelectorView.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).fitWidth()
-        swiftUsageSelectorView.pin.below(of: swiftOpinionSelectorView, aligned: .left).right().marginTop(10).fitWidth()
+        languageSelectorView.pin.top().left().right().sizeToFit(.width)
+        swiftOpinionSelector.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).sizeToFit(.width)
+        swiftUsageSelector.pin.below(of: swiftOpinionSelector, aligned: .left).right().marginTop(10).sizeToFit(.width)
     }
 }

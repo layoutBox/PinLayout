@@ -64,7 +64,7 @@ class IntroView: BaseView {
         
         logo.pin.top().left().size(100).aspectRatio().marginTop(10)
         segmented.pin.after(of: logo, aligned: .top).right().marginLeft(10)
-        textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).fitWidth()
+        textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit(.width)
         separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
     }
 }

@@ -186,20 +186,19 @@ extension Percent {
     }
 }
     
-enum FitType {
-    case size
-    case width
-    case height
-    
+internal extension FitType {
     var name: String {
         switch self {
-        case .size:   return "fitSize()"
-        case .width:  return "fitWidth()"
-        case .height: return "fitHeight()"
+        case .width: return ".width"
+        case .height: return ".height"
+        case .widthFlexible: return ".widthFlexible"
+        case .heightFlexible: return ".heightFlexible"
         }
     }
+    
+    var isFlexible: Bool {
+        return self == .widthFlexible || self == .heightFlexible
+    }
 }
-
-
 
 #endif

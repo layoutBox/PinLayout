@@ -339,13 +339,13 @@ public protocol PinLayout {
      
      .width: The method adjust the view's size based on the **reference width**.
         * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
-            the **reference width will be determined by these properties**, else the **current view's width**
+            the **reference width will be determined by these properties**, if not the **current view's width**
             will be used.
         * The resulting width will always **match the reference width**.
      
      .height: The method adjust the view's size based on the **reference height**.
          * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
-         the **reference height will be determined by these properties**, else the **current view's height**
+         the **reference height will be determined by these properties**, if not the **current view's height**
          will be used.
          * The resulting height will always **match the reference height**.
      

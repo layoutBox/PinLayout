@@ -65,6 +65,7 @@ class HouseCell: UICollectionViewCell {
         nameLabel.text = house.name
         priceLabel.text = house.price
         distanceLabel.text = "\(house.distance) KM"
+        distanceLabel.textAlignment = .right
 
         mainImage.download(url: house.mainImageURL)
         mainImage.contentMode = .scaleAspectFill
@@ -79,13 +80,13 @@ class HouseCell: UICollectionViewCell {
     
     private func layout() {
         headerView.pin.top().horizontally().height(100)
-        nameLabel.pin.top().horizontally().margin(padding).fitSize()
+        nameLabel.pin.top().horizontally().margin(padding).sizeToFit(.width)
         
         mainImage.pin.below(of: nameLabel).horizontally().height(300).marginTop(padding)
         
         footerView.pin.below(of: mainImage).horizontally()
-        priceLabel.pin.top().horizontally().fitSize().margin(6, padding)
-        distanceLabel.pin.top().after(of: priceLabel).right().fitSize().justify(.right).margin(6, padding)
+        priceLabel.pin.top().horizontally().margin(6, padding).sizeToFit(.width)
+        distanceLabel.pin.top().after(of: priceLabel).right().margin(6, padding).sizeToFit(.width)
         footerView.pin.height(max(priceLabel.frame.maxY, distanceLabel.frame.maxY) + 6)
         
         contentView.pin.height(footerView.frame.maxY)

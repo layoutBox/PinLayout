@@ -272,37 +272,67 @@ class MinMaxWidthHeightSpec: QuickSpec {
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().width(100%).maxWidth(250).fitSize().justify(.left)
+                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).fitSize()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using fitSizeHard") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).minHeight(14).sizeToFit(.width)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 14)))
+            }
+            
+            it("should adjust the width when using fitSize") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).height(14).maxHeight(20).fitSize()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+            
+            it("should adjust the width when using fitSizeHard") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).height(14).maxHeight(20).sizeToFit(.width)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
+            }
+
+            it("should adjust the width when using fitSizeHard") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).height(14).maxHeight(5).sizeToFit(.width)
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 5)))
+            }
+
+            it("should adjust the width when using fitSize") {
+                aView.sizeThatFitsExpectedArea = 40 * 40
+                aView.pin.left().width(100%).maxWidth(250).sizeToFit(.width).justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().right().width(100%).maxWidth(250).fitSize().justify(.right)
+                aView.pin.left().right().width(100%).maxWidth(250).sizeToFit(.width).justify(.right)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().right().maxWidth(250).fitSize().justify(.center)
+                aView.pin.left().right().maxWidth(250).sizeToFit(.width).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 6.5)))
             }
                 
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().width(10).minWidth(250).fitSize()
+                aView.pin.left().width(10).minWidth(250).sizeToFit(.width)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().right().width(10).minWidth(250).fitSize().justify(.center)
+                aView.pin.left().right().width(10).minWidth(250).sizeToFit(.width).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().right().width(10).minWidth(250).marginLeft(10).fitSize().justify(.center)
+                aView.pin.left().right().width(10).minWidth(250).marginLeft(10).sizeToFit(.width).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             

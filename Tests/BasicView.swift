@@ -46,14 +46,15 @@ class BasicView: UIView {
     }
     
     var sizeThatFitsExpectedArea: CGFloat = 40 * 40
+    var sizeThatFitSizeOffset: CGFloat = 0
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var newSize = CGSize()
         if size.width != CGFloat.greatestFiniteMagnitude {
-            newSize.width = size.width
+            newSize.width = size.width + sizeThatFitSizeOffset
             newSize.height = sizeThatFitsExpectedArea / newSize.width
         } else if size.height != CGFloat.greatestFiniteMagnitude {
-            newSize.height = size.height
+            newSize.height = size.height + sizeThatFitSizeOffset
             newSize.width = sizeThatFitsExpectedArea / newSize.height
         } else {
             newSize.width = 40

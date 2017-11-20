@@ -291,6 +291,10 @@ public protocol PinLayout {
     @discardableResult func size(_ percent: Percent) -> PinLayout
     @discardableResult func size(of view: UIView) -> PinLayout
     
+//    @discardableResult func wrapSubViews() -> PinLayout
+//    @discardableResult func wrapSubViews(insets: UIEdgeInsets) -> PinLayout
+    
+    
     /**
      Set the view aspect ratio.
      
@@ -322,14 +326,72 @@ public protocol PinLayout {
      */
     @discardableResult func aspectRatio() -> PinLayout
     
-    @available(*, deprecated, message: "You should now use fitSize() instead.")
-    @discardableResult func sizeToFit() -> PinLayout
-    @discardableResult func fitSize() -> PinLayout
+    /**
+     The method adjust the view's size based on the view's `sizeThatFits()` method result.
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
+     
+     Notes:
+     * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
+     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
+     
+     - Parameter fitType: Identify the reference dimension (width / height) that will be used
+     to adjust the view's size:
+     
+     .width: The method adjust the view's size based on the **reference width**.
+        * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
+            the **reference width will be determined by these properties**, if not the **current view's width**
+            will be used.
+        * The resulting width will always **match the reference width**.
+     
+     .height: The method adjust the view's size based on the **reference height**.
+         * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
+         the **reference height will be determined by these properties**, if not the **current view's height**
+         will be used.
+         * The resulting height will always **match the reference height**.
+     
+     .widthFlexible: Similar to `.width`, except that PinLayout won't constrain the resulting width to
+        match the reference width. The resulting width may be smaller of bigger depending on the view's
+        sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
+        string is smaller than the reference width.
+     
+     .heightFlexible: Similar to `.height`, except that PinLayout won't constrain the resulting height to
+        match the reference height. The resulting height may be smaller of bigger depending on the view's
+        sizeThatFits(..) method result.
+     
+     Examples:
+     
+         ```
+         // Adjust the view's size based on a width of 100 pixels.
+         // The resulting width will always match the pinned property `width(100)`.
+         view.pin.width(100).sizeToFit(.width)
+     
+         // Adjust the view's size based on view's current width.
+         // The resulting width will always match the view's original width.
+         // The resulting height will never be bigger than the specified `maxHeight`.
+         view.pin.sizeToFit(.width).maxHeight(100)
+     
+         // Adjust the view's size based on 100% of the superview's height.
+         // The resulting height will always match the pinned property `height(100%)`.
+         view.pin.height(100%).sizeToFit(.height)
+     
+        // Adjust the view's size based on view's current height.
+        // The resulting width will always match the view's original height.
+        view.pin.sizeToFit(.height)
 
+        // Since `.widthFlexible` has been specified, its possible that the resulting
+        // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
+        // method result.
+        label.pin.width(100).sizeToFit(.widthFlexible)
+     ```
+     */
+    @discardableResult func sizeToFit(_ fitType: FitType) -> PinLayout
+    
+    @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
+    @discardableResult func fitSize() -> PinLayout
+    
     //
     // MARK: Margins
     //
-    
     /**
      Set the top margin.
      */
@@ -421,6 +483,8 @@ public protocol PinLayout {
     ///
     /// - Returns: PinLayout
     @discardableResult func pinEdges() -> PinLayout
+    
+    //func layout()
 }
 
 /// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)
@@ -456,5 +520,38 @@ public protocol PinLayout {
 /// UIView's vertical edges (top/bottom) definition
 @objc public protocol VerticalEdge {
 }
-        
+    
+public enum FitType {
+    /**
+     **Adjust the view's height** based on the reference width.
+     * If properties related to the width have been pinned (e.g: width, left & right, margins),
+     the **reference width will be determined by these properties**, else the **current view's width**
+     will be used.
+     * The resulting width will always **match the reference width**.
+    */
+    case width
+    /**
+     **Adjust the view's width** based on the reference height.
+     * If properties related to the height have been pinned (e.g: height, top & bottom, margins),
+     the reference height will be determined by these properties, else the **current view's height**
+     will be used.
+     * The resulting height will always **match the reference height*.
+     */
+    case height
+
+    /**
+     Similar to `.width`, except that PinLayout won't constrain the resulting width to
+     match the reference width. The resulting width may be smaller of bigger depending on the view's
+     sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
+     string is smaller than the reference width.
+     */
+    case widthFlexible
+    /**
+     Similar to `.height`, except that PinLayout won't constrain the resulting height to
+     match the reference height. The resulting height may be smaller of bigger depending on the view's
+     sizeThatFits(..) method result.
+     */
+    case heightFlexible
+}
+    
 #endif

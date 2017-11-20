@@ -61,6 +61,10 @@ platform :ios do
          workspace: "PinLayout.xcworkspace")
   end
 
+  lane :jazzy do 
+    jazzy
+  end
+
   lane :travis do
     build
     tests

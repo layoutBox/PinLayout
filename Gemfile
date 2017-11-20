@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 gem 'synx'
 gem 'cocoapods'
-gem 'jazzy'
+gem 'jazzy', '0.9'
 gem 'fastlane'

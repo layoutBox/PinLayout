@@ -15,7 +15,6 @@
 		242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */; };
 		244C6E151E776A0C0074FC74 /* MarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsSpec.swift */; };
 		244DF3061EF46FC20090508B /* PinLayoutTVOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 244DF3041EF46FB90090508B /* PinLayoutTVOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		245302071ED05FD000E13F29 /* AccurencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245302061ED05FD000E13F29 /* AccurencyTests.swift */; };
 		2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
 		2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
 		2469C5021E75D88500073BEE /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
@@ -89,7 +88,6 @@
 		244DF2F81EF46C500090508B /* PinLayoutTVOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayoutTVOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244DF3011EF46F670090508B /* InfoTVOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = InfoTVOS.plist; path = Sources/InfoTVOS.plist; sourceTree = SOURCE_ROOT; };
 		244DF3041EF46FB90090508B /* PinLayoutTVOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinLayoutTVOS.h; path = Sources/PinLayoutTVOS.h; sourceTree = SOURCE_ROOT; };
-		245302061ED05FD000E13F29 /* AccurencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccurencyTests.swift; sourceTree = "<group>"; };
 		2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgeCoordinateSpec.swift; sourceTree = "<group>"; };
 		2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustSizeSpec.swift; sourceTree = "<group>"; };
 		2469C5011E75D88500073BEE /* BasicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 			children = (
 				249EFE8A1E64FB4C00165E39 /* Info.plist */,
 				2469C5011E75D88500073BEE /* BasicView.swift */,
-				245302061ED05FD000E13F29 /* AccurencyTests.swift */,
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
 				248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */,
 				240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */,
@@ -514,7 +511,6 @@
 				242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */,
 				2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */,
 				242723731F008BF7006A5C3A /* MinMaxWidthHeightSpec.swift in Sources */,
-				245302071ED05FD000E13F29 /* AccurencyTests.swift in Sources */,
 				2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */,
 				24D18D171F3B4381008129EF /* RTLSpec.swift in Sources */,
 				2469C5021E75D88500073BEE /* BasicView.swift in Sources */,

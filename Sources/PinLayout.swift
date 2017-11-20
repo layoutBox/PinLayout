@@ -296,7 +296,6 @@ public protocol PinLayout {
 //    @discardableResult func wrapSubViews() -> PinLayout
 //    @discardableResult func wrapSubViews(insets: UIEdgeInsets) -> PinLayout
     
-    
     /**
      Set the view aspect ratio.
      

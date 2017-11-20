@@ -118,6 +118,8 @@ public extension UIView {
 
 /// PinLayout interface
 public protocol PinLayout {
+    func layout()
+
     //
     // MARK: Layout using distances from superview’s edges
     //
@@ -483,8 +485,6 @@ public protocol PinLayout {
     ///
     /// - Returns: PinLayout
     @discardableResult func pinEdges() -> PinLayout
-    
-    //func layout()
 }
 
 /// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)

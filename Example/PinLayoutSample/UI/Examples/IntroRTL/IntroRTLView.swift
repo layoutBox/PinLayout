@@ -67,7 +67,7 @@ class IntroRTLView: BaseView {
         let containerInsets = safeArea.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
         contentView.pin.all().margin(containerInsets)
 
-        logo.pin.top().start().size(100).aspectRatio().marginTop(10)
+        logo.pin.top().start().width(100).aspectRatio().marginTop(10)
         segmented.pin.after(of: logo, aligned: .top).end().marginStart(10)
         textLabel.pin.below(of: segmented, aligned: .start).width(of: segmented).pinEdges().marginTop(10).sizeToFit(.width)
         separatorView.pin.below(of: [logo, textLabel], aligned: .start).end(to: segmented.edge.end).marginTop(10)

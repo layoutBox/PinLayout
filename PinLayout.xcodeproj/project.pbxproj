@@ -14,6 +14,7 @@
 		242723731F008BF7006A5C3A /* MinMaxWidthHeightSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */; };
 		242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */; };
 		243B12BC1FC393580072A9C3 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243C620E1FC3834B0082C327 /* Percent.swift */; };
+		243B12C81FC3D06F0072A9C3 /* LayoutMethodSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */; };
 		243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C61FC37C1C0054CADD /* PinLayoutImpl.swift */; };
 		243C62051FC37F6C0082C327 /* PinLayoutImpl+Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C71FC37C1C0054CADD /* PinLayoutImpl+Coordinates.swift */; };
 		243C62061FC37F6C0082C327 /* PinLayoutImpl+Layouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C41FC37A900054CADD /* PinLayoutImpl+Layouting.swift */; };
@@ -86,6 +87,7 @@
 		241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutObjCImpl.swift; sourceTree = "<group>"; };
 		242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMaxWidthHeightSpec.swift; sourceTree = "<group>"; };
 		242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionMultipleViewsSpec.swift; sourceTree = "<group>"; };
+		243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutMethodSpec.swift; sourceTree = "<group>"; };
 		243C620E1FC3834B0082C327 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Percent.swift; path = Impl/Percent.swift; sourceTree = "<group>"; };
 		244C6E141E776A0C0074FC74 /* MarginsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsSpec.swift; sourceTree = "<group>"; };
 		244DF2F81EF46C500090508B /* PinLayoutTVOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayoutTVOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +223,7 @@
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
 				248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */,
 				240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */,
+				243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */,
 				244C6E141E776A0C0074FC74 /* MarginsSpec.swift */,
 				242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */,
 				249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */,
@@ -510,6 +513,7 @@
 			files = (
 				240F88BE1F0C066800280FC8 /* JustifyAlignSpec.swift in Sources */,
 				2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */,
+				243B12C81FC3D06F0072A9C3 /* LayoutMethodSpec.swift in Sources */,
 				2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */,
 				248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */,
 				240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */,

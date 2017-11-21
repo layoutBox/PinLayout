@@ -71,6 +71,10 @@ extension PinLayoutImpl {
     }
     
     internal func displayLayoutWarnings() {
+        if !Thread.isMainThread {
+            warn("Layout must be executed from the Main Thread!")
+        }
+        
         if let justify = justify {
             func context() -> String { return "justify(.\(justify.description))" }
             if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
@@ -96,7 +100,7 @@ extension PinLayoutImpl {
     
     internal func displayWarning(_ text: String) {
         var displayText = "\n👉 \(text)"
-        displayText += "\n   (Layouted view info: Type: \(viewName(view)), Frame: \(view.frame)"
+        displayText += "\n(Layouted view info: Type: \(viewName(view)), Frame: \(view.frame)"
         
         var currentView = view
         var hierarchy: [String] = []

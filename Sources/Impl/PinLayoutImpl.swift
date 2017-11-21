@@ -69,6 +69,9 @@ class PinLayoutImpl: PinLayout {
     }
     
     deinit {
+        if !isLayouted && Pin.warnMissingLayoutCalls {
+            warn("PinLayout commands have been issued without calling the 'layout()' method to complete the layout. (These warnings can be disabled by setting Pin.warnMissingLayoutCalls to false)")
+        }
         apply()
     }
     

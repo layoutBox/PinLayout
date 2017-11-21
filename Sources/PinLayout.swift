@@ -118,8 +118,6 @@ public extension UIView {
 
 /// PinLayout interface
 public protocol PinLayout {
-    func layout()
-
     //
     // MARK: Layout using distances from superview’s edges
     //
@@ -484,6 +482,18 @@ public protocol PinLayout {
     ///
     /// - Returns: PinLayout
     @discardableResult func pinEdges() -> PinLayout
+    
+    /**
+     The method will execute PinLayout commands immediately. This method is **required only if your
+     source codes should also works in Xcode Playgrounds**. Outside of playgrounds, PinLayout execute
+     this method implicetely, it is not necessary to call it.
+     
+     Examples:
+         ```swift
+         view.pin.top(20).width(100).layout()
+         ```
+    */
+    func layout()
 }
 
 /// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)

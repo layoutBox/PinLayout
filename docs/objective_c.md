@@ -2,9 +2,9 @@
 	<img src="pinlayout-logo-small.png" width=100/>
 </p>
 
-<h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 1.5em">PinLayout Objective-C</h1>
+<h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 1.5em">PinLayout using Objective-C</h1>
 
-PinLayout can also be used from Objective-C. The PinLayout interface is slightly different from the Swift interface due to more limited objective-c parameter definitions.
+PinLayout can also be used from Objective-C. The PinLayout interface is slightly different from the Swift interface due to more limited Objective-C parameters definitions.
 
 ###### Example 1:
 This example implement the PinLayout's Intro example using objective-c 
@@ -34,9 +34,13 @@ The PinLayout's objective-c interface is available using the property `pinObjc` 
  [[view.pinObjc top] layout];
 ``` 
 
-#### `layout` method
+#### `layout()`
 
-When using the Objective-c interface, the `layout` method must be called explicitly to complete the view's layout. 
+**Method:**
+
+* **`layout()`**  
+When using the Objective-c interface, the `layout` method must be called explicitly to complete the view's layout. The method will execute PinLayout commands immediately. In Swift, PinLayout executes this method implicitly, it is not necessary to call it. 
+
 
 ```
  // Swift

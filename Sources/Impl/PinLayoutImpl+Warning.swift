@@ -115,7 +115,7 @@ extension PinLayoutImpl {
         displayText += ", Tag: \(view.tag))\n"
         
         print(displayText)
-        _pinlayoutUnitTestLastWarning = text
+        Pin.lastWarningText = text
     }
     
     internal func viewDescription(_ view: UIView) -> String {

@@ -38,7 +38,7 @@ class JustifyAlignSpec: QuickSpec {
         }
 
         beforeEach {
-            _pinlayoutUnitTestLastWarning = nil
+            Pin.lastWarningText = nil
             
             viewController = UIViewController()
             
@@ -59,31 +59,31 @@ class JustifyAlignSpec: QuickSpec {
             it("test when missing left and right coordinate") {
                 aView.pin.justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "left and right"]))
+                expect(Pin.lastWarningText).to(contain(["justify", "center", "won't be applied", "left and right"]))
             }
             
             it("test when missing left and right coordinate") {
                 aView.pin.width(100).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "left and right"]))
+                expect(Pin.lastWarningText).to(contain(["justify", "center", "won't be applied", "left and right"]))
             }
             
             it("test when missing left and right coordinate") {
                 aView.pin.left().pinEdges().justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "left and right"]))
+                expect(Pin.lastWarningText).to(contain(["justify", "center", "won't be applied", "left and right"]))
             }
             
             it("test when missing right coordinate") {
                 aView.pin.left().width(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "left and right"]))
+                expect(Pin.lastWarningText).to(contain(["justify", "center", "won't be applied", "left and right"]))
             }
             
             it("test when hCenter has been set and justify() won't be applied") {
                 aView.pin.hCenter(60).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 210.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify", "center", "won't be applied", "hCenter"]))
+                expect(Pin.lastWarningText).to(contain(["justify", "center", "won't be applied", "hCenter"]))
             }
         }
         
@@ -94,31 +94,31 @@ class JustifyAlignSpec: QuickSpec {
             it("test when missing top and bottom coordinate") {
                 aView.pin.align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
             
             it("test when missing left and right coordinate") {
                 aView.pin.width(100).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
             
             it("test when missing left and right coordinate") {
                 aView.pin.left().pinEdges().align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
             
             it("test when missing right coordinate") {
                 aView.pin.left().width(250).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
             
             it("test when hCenter has been set and align() won't be applied") {
                 aView.pin.hCenter(60).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 210.0, y: 100.0, width: 100.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom"]))
             }
         }
         

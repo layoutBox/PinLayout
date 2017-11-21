@@ -43,8 +43,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Warnings](#warnings)
   * [More examples](#more_examples)
 * [Examples App](#examples_app)
-* [Using PinLayout with Xcode Playgrounds](#playgrounds)
-* [Using PinLayout with Objective-C](#objective_c_interface)
+* [PinLayout in Xcode Playgrounds](#playgrounds)
+* [PinLayout using Objective-C](#objective_c_interface)
 * [Installation](#installation)
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
@@ -1340,29 +1340,18 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 
 <br>
 
-## Using PinLayout with Xcode Playgrounds <a name="playgrounds"></a>
-PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well documented issue. The impact of this problem is that PinLayout doesn't layout views at the time and in the order required. To handle this situation in playgrounds it is possible to call the `layout()` method to complete the layout.
+## PinLayout in Xcode Playgrounds <a name="playgrounds"></a>
 
-**Method:**
+PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well documented issue and have a little impact on the PinLayout behaviour.
 
-* **`layout()`**  
-The method will execute PinLayout commands immediately. This method is **required only if your source codes should also work in Xcode Playgrounds**. Outside of playgrounds, PinLayout executes this method implicitly, it is not necessary to call it. 
+[See here for more details about using PinLayout in Xcode playgrounds](docs/xcode_playground.md)
 
-###### Usage Examples:
+<br>
 
-```swift
-    view.pin.top(20).bottom(20).width(100).layout()
-    view2.pin.below(of: view).left().right().layout()
-```
-
-**TIP**: If your codes needs to work in Xcode playgrounds, you may set to `true` the property `Pin.warnMissingLayoutCalls`, this way any missing call to `layout()` will generate a warning in the Xcode console.
-
-<br>     
-
-## Using PinLayout with Objective-C <a name="objective_c_interface"></a>
+## PinLayout using Objective-C <a name="objective_c_interface"></a>
 PinLayout also expose an Objective-C interface slightly different than the Swift interface. 
 
-[See here for more details](docs/objective_c.md).
+[See here for more details](docs/objective_c.md)
 
 <br>
 

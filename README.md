@@ -1346,7 +1346,7 @@ PinLayout layouts views immediately after the line containing `.pin` has been fu
 **Method:**
 
 * **`layout()`**  
-The method will execute PinLayout commands immediately. This method is **required only if your source codes should also works in Xcode Playgrounds**. Outside of playgrounds, PinLayout execute this method implicetely, it is not necessary to call it. 
+The method will execute PinLayout commands immediately. This method is **required only if your source codes should also work in Xcode Playgrounds**. Outside of playgrounds, PinLayout executes this method implicitly, it is not necessary to call it. 
 
 ###### Usage Examples:
 

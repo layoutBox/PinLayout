@@ -35,7 +35,7 @@ public class PinLayoutGlobals {
 #endif
     
     /**
-     If your codes needs to work in Xcode playgrounds, you may set to `true` the property
+     If your codes need to work in Xcode playgrounds, you may set to `true` the property
      `Pin.warnMissingLayoutCalls`, this way any missing call to `layout()` will generate
      a warning in the Xcode console..
     */

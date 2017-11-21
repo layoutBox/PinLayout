@@ -20,7 +20,6 @@ disabled_rules: # rule identifiers to exclude from running
   - nimble_operator
   - identifier_name
   - line_length
-  - variable_name
 
 excluded: # paths to ignore during linting. overridden by `included`.
   - Pods

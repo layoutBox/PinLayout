@@ -27,7 +27,8 @@ platform :ios do
 
     swiftlint(
       mode: :lint, 
-      config_file: ".swiftlint.yml"
+      config_file: ".swiftlint.yml",
+      executable: "Pods/SwiftLint/swiftlint"
     )
 
     xcodebuild(
@@ -61,7 +62,7 @@ platform :ios do
          workspace: "PinLayout.xcworkspace")
   end
 
-  lane :jazzy do 
+  lane :doc do 
     jazzy
   end
 

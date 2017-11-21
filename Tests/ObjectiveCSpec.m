@@ -22,7 +22,7 @@ describe(@"test Objective-C interface", ^{
     __block UIView* aView = nil;
     
     beforeEach(^{
-        Pin.warnMissingLayoutCalls = false;
+        Pin.logMissingLayoutCalls = false;
         Pin.lastWarningText = nil;
         
         viewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
@@ -35,7 +35,7 @@ describe(@"test Objective-C interface", ^{
     });
     
     afterEach(^{
-        Pin.warnMissingLayoutCalls = false;
+        Pin.logMissingLayoutCalls = false;
     });
     
     describe(@"its click", ^{
@@ -44,15 +44,15 @@ describe(@"test Objective-C interface", ^{
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
         });
         
-        it(@"using Pin.warnMissingLayoutCalls", ^{
-            Pin.warnMissingLayoutCalls = true;
+        it(@"using Pin.logMissingLayoutCalls", ^{
+            Pin.logMissingLayoutCalls = true;
             [[aView pinObjc] top:10];
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
             expect(Pin.lastWarningText).to(contain(@"PinLayout commands have been issued without calling the 'layout()' method to complete the layout"));
         });
 
-        it(@"using Pin.warnMissingLayoutCalls set to false", ^{
-            Pin.warnMissingLayoutCalls = false;
+        it(@"using Pin.logMissingLayoutCalls set to false", ^{
+            Pin.logMissingLayoutCalls = false;
             [[[aView pinObjc] top:10] layout];
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
             expect(Pin.lastWarningText).to(beNil());

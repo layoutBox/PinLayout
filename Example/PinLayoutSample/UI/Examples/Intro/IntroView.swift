@@ -62,7 +62,7 @@ class IntroView: BaseView {
         let containerInsets = safeArea.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
         contentView.pin.all().margin(containerInsets)
         
-        logo.pin.top().left().size(100).aspectRatio().marginTop(10)
+        logo.pin.top().left().width(100).aspectRatio().marginTop(10)
         segmented.pin.after(of: logo, aligned: .top).right().marginLeft(10)
         textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit(.width)
         separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)

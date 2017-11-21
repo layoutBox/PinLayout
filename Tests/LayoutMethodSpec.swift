@@ -39,7 +39,7 @@ class LayoutMethodSpec: QuickSpec {
 
         beforeEach {
             Pin.lastWarningText = nil
-            Pin.warnMissingLayoutCalls = false
+            Pin.logMissingLayoutCalls = false
             
             viewController = UIViewController()
             
@@ -53,7 +53,7 @@ class LayoutMethodSpec: QuickSpec {
         }
         
         afterEach {
-            Pin.warnMissingLayoutCalls = false
+            Pin.logMissingLayoutCalls = false
         }
         
         //
@@ -71,8 +71,8 @@ class LayoutMethodSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 60.0)))
             }
             
-            it("should warn if layout() is not called when Pin.warnMissingLayoutCalls is set to true") {
-                Pin.warnMissingLayoutCalls = true
+            it("should warn if layout() is not called when Pin.logMissingLayoutCalls is set to true") {
+                Pin.logMissingLayoutCalls = true
                 
                 aView.pin.left().right()
                 expect(Pin.lastWarningText).to(contain(["PinLayout commands have been issued without calling the 'layout()' method"]))

@@ -32,6 +32,8 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
+        Pin.logMissingLayoutCalls = true;
+        
         topLayoutGuide = 0;
         self.backgroundColor = UIColor.whiteColor;
         
@@ -54,6 +56,10 @@
         [self addSubview:separatorView];
     }
     return self;
+}
+
+- (void)dealloc {
+    Pin.logMissingLayoutCalls = false;
 }
 
 - (void) layoutSubviews {

@@ -7,10 +7,21 @@
 
 # Change Log
 
+## [1.5.1](https://github.com/mirego/PinLayout/releases/tag/1.5.1)
+#### Change
+
+* ##### Add `layout()` method to support Xcode playgrounds
+PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well-documented issue. The impact of this problem is that PinLayout doesn't layout views at the time and in the order required. To handle this situation in playgrounds it is possible to call the `layout()` method to complete the layout.
+
+[See PinLayout in Xcode Playgrounds documentation for more information](https://github.com/mirego/PinLayout#playgrounds)
+	
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#101](https://github.com/mirego/PinLayout/pull/101)
+	
+
 ## [1.5.0](https://github.com/mirego/PinLayout/releases/tag/1.5.0)
 ### New method `sizeToFit(:FitType)` & `fitSize()` is now deprecated
 
-Changes:
+#### Changes
 
 * BREAKING CHANGE: **`fitSize()`** is now deprecated. The new `sizeToFit(:FitType)` should be used instead.
 
@@ -36,6 +47,8 @@ Changes:
 	 * **`.widthFlexible`**: Similar to `.width`, except that PinLayout won't constrain the resulting width to match the reference width. The resulting width may be smaller of bigger depending on the view's sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its string is smaller than the reference width.
 	     
 	 * **`.heightFlexible`**: Similar to `.height`, except that PinLayout won't constrain the resulting height to match the reference height. The resulting height may be smaller of bigger depending on the view's sizeThatFits(..) method result.
+
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#103](https://github.com/mirego/PinLayout/pull/103)
 
 ## [1.4.3](https://github.com/mirego/PinLayout/releases/tag/1.4.1)
 Fix Carthage support

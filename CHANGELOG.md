@@ -13,9 +13,9 @@
 * ##### Add `layout()` method to support Xcode playgrounds
 PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well-documented issue. The impact of this problem is that PinLayout doesn't layout views at the time and in the order required. To handle this situation in playgrounds it is possible to call the `layout()` method to complete the layout.
 
-	[See PinLayout in Xcode Playgrounds documentation for more information](https://github.com/mirego/PinLayout#playgrounds)
+[See PinLayout in Xcode Playgrounds documentation for more information](https://github.com/mirego/PinLayout#playgrounds)
 	
-	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#101](https://github.com/mirego/PinLayout/pull/101)
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#101](https://github.com/mirego/PinLayout/pull/101)
 	
 
 ## [1.5.0](https://github.com/mirego/PinLayout/releases/tag/1.5.0)

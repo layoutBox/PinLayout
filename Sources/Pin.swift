@@ -25,18 +25,26 @@ public enum LayoutDirection {
     case rtl
 }
 
-public class PinLayoutGlobals {
-    public var layoutDirection = LayoutDirection.ltr
+@objc public class Pin: NSObject {
+    public static var layoutDirection = LayoutDirection.ltr
 
 #if DEBUG
-    public var logWarnings = true
+    public static var logWarnings = true
 #else
-    public var logWarnings = false
+    public static var logWarnings = false
 #endif
     
-    public func layoutDirection(_ direction: LayoutDirection) {
+    /**
+     If your codes need to work in Xcode playgrounds, you may set to `true` the property
+     `Pin.logMissingLayoutCalls`, this way any missing call to `layout()` will generate
+     a warning in the Xcode console..
+    */
+    public static var logMissingLayoutCalls = false
+    
+    public static func layoutDirection(_ direction: LayoutDirection) {
         self.layoutDirection = direction
     }
+    
+    // Contains PinLayout last warning's text. Used by PinLayout's Unit Tests.
+    public static var lastWarningText: String?
 }
-
-public let Pin = PinLayoutGlobals()

@@ -38,7 +38,7 @@ class RTLSpec: QuickSpec {
         */
 
         beforeEach {
-            _pinlayoutUnitTestLastWarning = nil
+            Pin.lastWarningText = nil
             Pin.layoutDirection(.ltr)
             
             viewController = UIViewController()
@@ -62,50 +62,50 @@ class RTLSpec: QuickSpec {
         describe("warn") {
             it("should display a warning") {
                 aView.pin.start(10).left(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["left", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["left", "won't be applied", "already been set to 10"]))
             }
             
             it("should display a warning") {
                 aView.pin.end(10).right(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["right", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["right", "won't be applied", "already been set to 10"]))
             }
 
             it("should display a warning") {
                 Pin.layoutDirection(.auto)
                 aView.pin.start(10).left(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["left", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["left", "won't be applied", "already been set to 10"]))
             }
             
             it("should display a warning") {
                 Pin.layoutDirection(.auto)
                 aView.pin.end(10).right(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["right", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["right", "won't be applied", "already been set to 10"]))
             }
             
             it("should display a warning") {
                 Pin.layoutDirection(.ltr)
                 aView.pin.start(10).left(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["left", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["left", "won't be applied", "already been set to 10"]))
             }
             
             it("should display a warning") {
                 Pin.layoutDirection(.ltr)
                 aView.pin.end(10).right(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["right", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["right", "won't be applied", "already been set to 10"]))
             }
 
             it("should display a warning") {
                 // With RTL
                 Pin.layoutDirection(.rtl)
                 aView.pin.start(10).right(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["right", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["right", "won't be applied", "already been set to 10"]))
             }
             
             it("should display a warning") {
                 // With RTL
                 Pin.layoutDirection(.rtl)
                 aView.pin.end(10).left(20)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["left", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["left", "won't be applied", "already been set to 10"]))
             }
         }
         

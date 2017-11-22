@@ -21,7 +21,7 @@ import Quick
 import Nimble
 import PinLayout
 
-class WarningSpec: QuickSpec {
+class LayoutMethodSpec: QuickSpec {
     override func spec() {
         var viewController: UIViewController!
         var rootView: BasicView!
@@ -39,6 +39,7 @@ class WarningSpec: QuickSpec {
 
         beforeEach {
             Pin.lastWarningText = nil
+            Pin.logMissingLayoutCalls = false
             
             viewController = UIViewController()
             
@@ -48,18 +49,33 @@ class WarningSpec: QuickSpec {
             
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
             aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
-            aView.sizeThatFitsExpectedArea = 40 * 40
             rootView.addSubview(aView)
         }
         
+        afterEach {
+            Pin.logMissingLayoutCalls = false
+        }
+        
         //
-        // pinEdges warnings
+        // layout()
         //
-        describe("pinEdges() should warn ") {
-            it("test when top, left, bottom and right is set") {
-                aView.pin.top().bottom().left().right().width(100%).pinEdges()
-                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 400.0, height: 400.0)))
-                expect(Pin.lastWarningText).to(contain(["pinEdges()", "won't be applied", "top, left, bottom and right coordinates are already set"]))
+        describe("layout()") {
+            it("test layout() method") {
+                let aViewFrame = aView.frame
+                aView.pin.left().right()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 60.0)))
+                expect(Pin.lastWarningText).to(beNil())
+                
+                aView.frame = aViewFrame
+                aView.pin.left().right().layout()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 60.0)))
+            }
+            
+            it("should warn if layout() is not called when Pin.logMissingLayoutCalls is set to true") {
+                Pin.logMissingLayoutCalls = true
+                
+                aView.pin.left().right()
+                expect(Pin.lastWarningText).to(contain(["PinLayout commands have been issued without calling the 'layout()' method"]))
             }
         }
     }

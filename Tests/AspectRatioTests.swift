@@ -42,7 +42,7 @@ class AspectRatioTests: QuickSpec {
         }
         
         beforeEach {
-            _pinlayoutUnitTestLastWarning = nil
+            Pin.lastWarningText = nil
             
             viewController = UIViewController()
             
@@ -69,54 +69,54 @@ class AspectRatioTests: QuickSpec {
         describe("the result of the aspectRatio(CGFloat)") {
             it("should warn about fitSize()") {
                 aView.pin.left().width(100%).aspectRatio(2).fitSize()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio"]))
+                expect(Pin.lastWarningText).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio"]))
             }
             
             it("should warn about fitSize()") {
                 aView.pin.left().height(100).aspectRatio(2).fitSize()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio"]))
+                expect(Pin.lastWarningText).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio"]))
             }
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
                 aView.pin.left().width(100%).fitSize().aspectRatio(2)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio(2.0) won't be applied", "conflicts", "fitSize()"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio(2.0) won't be applied", "conflicts", "fitSize()"]))
             }
 
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
                 aView.pin.left().height(100).fitSize().aspectRatio(2)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio(2.0) won't be applied", "conflicts", "fitSize"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio(2.0) won't be applied", "conflicts", "fitSize"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 16.0, height: 100.0)))
             }
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.pin.left().aspectRatio(2)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio won't be applied", "neither the width nor the height can be determined"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio won't be applied", "neither the width nor the height can be determined"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 200.0, height: 100.0)))
             }
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.pin.left().width(100%).aspectRatio(-2)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 100.0)))
             }
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.pin.left().height(100).aspectRatio(-2)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 200.0, height: 100.0)))
             }
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.pin.left().width(100%).aspectRatio(0)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 400.0, height: 100.0)))
             }
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.pin.left().height(100).aspectRatio(0)
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio", "won't be applied", "must be greater than zero"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 200.0, height: 100.0)))
             }
 
@@ -165,13 +165,13 @@ class AspectRatioTests: QuickSpec {
         describe("the result of the aspectRatio(CGFloat)") {
             it("should warn about aspectRatio()") {
                 aView.pin.left().width(100).aspectRatio()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio() won't be applied", "the layouted must be an UIImageView()"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio() won't be applied", "the layouted must be an UIImageView()"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 100.0)))
             }
             
             it("should warn about aspectRatio()") {
                 imageView.pin.left().aspectRatio()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["aspectRatio won't be applied", "neither the width nor the height can be determined"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio won't be applied", "neither the width nor the height can be determined"]))
                 expect(imageView.frame).to(equal(CGRect(x: 0.0, y: 10.0, width: 60.0, height: 60.0)))
             }
             

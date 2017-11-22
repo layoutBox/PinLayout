@@ -43,7 +43,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Warnings](#warnings)
   * [More examples](#more_examples)
 * [Examples App](#examples_app)
-* [Using PinLayout with Objective-C](#objective_c_interface)
+* [PinLayout in Xcode Playgrounds](#playgrounds)
+* [PinLayout using Objective-C](#objective_c_interface)
 * [Installation](#installation)
 * [FAQ](#faq)
 * [Comments, ideas, suggestions, issues, ....](#comments)
@@ -81,7 +82,7 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 override func layoutSubviews() {
    super.layoutSubviews() 
     
-   logo.pin.top().left().size(100).aspectRatio().margin(10)
+   logo.pin.top().left().width(100).aspectRatio().margin(10)
    segmented.pin.after(of: logo, aligned: .top).right().marginHorizontal(10)
    textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit(.width)
    separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
@@ -1179,6 +1180,10 @@ Example:
 `view.pin.left().width(250).justify(.center)`  
 👉 PinLayout Warning: justify(center) won't be applied, the left and right coordinates must be set to justify the view.
 
+* Layout must be executed from the **Main thread**.  
+👉 PinLayout Warning: Layout must be executed from the Main Thread!
+
+
 ### Disabling warnings
 
 Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnings to false.
@@ -1335,10 +1340,18 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 
 <br>
 
-## Using PinLayout with Objective-C <a name="objective_c_interface"></a>
+## PinLayout in Xcode Playgrounds <a name="playgrounds"></a>
+
+PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well documented issue and have a little impact on the PinLayout behaviour.
+
+[See here for more details about using PinLayout in Xcode playgrounds](docs/xcode_playground.md)
+
+<br>
+
+## PinLayout using Objective-C <a name="objective_c_interface"></a>
 PinLayout also expose an Objective-C interface slightly different than the Swift interface. 
 
-[See here for more details](docs/objective_c.md).
+[See here for more details](docs/objective_c.md)
 
 <br>
 

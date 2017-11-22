@@ -19,8 +19,6 @@
 
 import UIKit
 
-public var _pinlayoutUnitTestLastWarning: String?
-
 public func _pinlayoutSetUnitTest(displayScale: CGFloat) {
     Coordinates.displayScale = displayScale
 }

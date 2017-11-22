@@ -69,6 +69,9 @@ class PinLayoutImpl: PinLayout {
     }
     
     deinit {
+        if !isLayouted && Pin.logMissingLayoutCalls {
+            warn("PinLayout commands have been issued without calling the 'layout()' method to complete the layout. (These warnings can be disabled by setting Pin.logMissingLayoutCalls to false)")
+        }
         apply()
     }
     
@@ -88,7 +91,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func top(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "top(\(percent))" }
+        func context() -> String { return "top(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         setTop(percent.of(layoutSuperview.frame.height), context)
         return self
@@ -106,7 +109,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func left(_ percent: Percent) -> PinLayout {
-        return left(percent, { return "left(\(percent))" })
+        return left(percent, { return "left(\(percent.description))" })
     }
     
     @discardableResult
@@ -123,7 +126,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func start(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "start(\(percent))" }
+        func context() -> String { return "start(\(percent.description))" }
         return isLTR() ? left(percent, context) : right(percent, context)
     }
     
@@ -138,7 +141,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func bottom(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "bottom(\(percent))" }
+        func context() -> String { return "bottom(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         bottom(percent.of(layoutSuperview.frame.height), context)
         return self
@@ -155,7 +158,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func right(_ percent: Percent) -> PinLayout {
-        return right(percent, { return "right(\(percent))" })
+        return right(percent, { return "right(\(percent.description))" })
     }
     
     @discardableResult func end() -> PinLayout {
@@ -171,7 +174,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func end(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "end(\(percent))" }
+        func context() -> String { return "end(\(percent.description))" }
         return isLTR() ? right(percent, context) : left(percent, context)
     }
 
@@ -193,7 +196,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func hCenter(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "hCenter(\(percent))" }
+        func context() -> String { return "hCenter(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         setHorizontalCenter((layoutSuperview.frame.width / 2) + percent.of(layoutSuperview.frame.width), context)
         return self
@@ -217,7 +220,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func vCenter(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "vCenter(\(percent))" }
+        func context() -> String { return "vCenter(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         setVerticalCenter((layoutSuperview.frame.height / 2) + percent.of(layoutSuperview.frame.height), context)
         return self
@@ -604,7 +607,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func width(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "width(\(percent))" }
+        func context() -> String { return "width(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setWidth(percent.of(layoutSuperview.frame.width), context)
     }
@@ -622,7 +625,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func minWidth(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "minWidth(\(percent))" }
+        func context() -> String { return "minWidth(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setMinWidth(percent.of(layoutSuperview.frame.width), context)
     }
@@ -635,7 +638,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func maxWidth(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "maxWidth(\(percent))" }
+        func context() -> String { return "maxWidth(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setMaxWidth(percent.of(layoutSuperview.frame.width), context)
     }
@@ -647,7 +650,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func height(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "height(\(percent))" }
+        func context() -> String { return "height(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setHeight(percent.of(layoutSuperview.frame.height), context)
     }
@@ -665,7 +668,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func minHeight(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "minHeight(\(percent))" }
+        func context() -> String { return "minHeight(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setMinHeight(percent.of(layoutSuperview.frame.height), context)
     }
@@ -678,7 +681,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func maxHeight(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "maxHeight(\(percent))" }
+        func context() -> String { return "maxHeight(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         return setMaxHeight(percent.of(layoutSuperview.frame.height), context)
     }
@@ -698,7 +701,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func size(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "size(\(percent))" }
+        func context() -> String { return "size(\(percent.description))" }
         guard let layoutSuperview = layoutSuperview(context) else { return self }
         let size = CGSize(width: percent.of(layoutSuperview.frame.width), height: percent.of(layoutSuperview.frame.height))
         return setSize(size, context)

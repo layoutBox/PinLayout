@@ -52,25 +52,35 @@ extension PinLayoutImpl {
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue).")
+        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue.description).")
     }
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width), height: \(propertyValue.height)).")
+        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width.description), height: \(propertyValue.height.description)).")
     }
     
     internal func warnConflict(_ context: Context, _ properties: [String: Any]) {
         guard Pin.logWarnings else { return }
         var warning = "PinLayout Conflict: \(context()) won't be applied since it conflicts with the following already set properties:"
         properties.forEach { (property) in
-            warning += "\n \(property.key): \(property.value)"
+            warning += "\n \(property.key): "
+            
+            if let floatValue = property.value as? CGFloat {
+                warning += "\(floatValue.description)"
+            } else {
+                warning += "\(property.value)"
+            }
         }
         
         displayWarning(warning)
     }
     
     internal func displayLayoutWarnings() {
+        if !Thread.isMainThread {
+            warn("Layout must be executed from the Main Thread!")
+        }
+        
         if let justify = justify {
             func context() -> String { return "justify(.\(justify.description))" }
             if !((_left != nil && _right != nil) || (shouldPinEdges && width != nil && (_left != nil || _right != nil || _hCenter != nil))) {
@@ -96,7 +106,7 @@ extension PinLayoutImpl {
     
     internal func displayWarning(_ text: String) {
         var displayText = "\n👉 \(text)"
-        displayText += "\n   (Layouted view info: Type: \(viewName(view)), Frame: \(view.frame)"
+        displayText += "\n(Layouted view info: Type: \(viewName(view)), Frame: \(view.frame)"
         
         var currentView = view
         var hierarchy: [String] = []
@@ -111,7 +121,7 @@ extension PinLayoutImpl {
         displayText += ", Tag: \(view.tag))\n"
         
         print(displayText)
-        _pinlayoutUnitTestLastWarning = text
+        Pin.lastWarningText = text
     }
     
     internal func viewDescription(_ view: UIView) -> String {

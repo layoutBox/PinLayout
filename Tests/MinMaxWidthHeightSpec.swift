@@ -38,7 +38,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
         }
 
         beforeEach {
-            _pinlayoutUnitTestLastWarning = nil
+            Pin.lastWarningText = nil
             
             viewController = UIViewController()
             
@@ -122,7 +122,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the width when using hCenter") {
                 aView.pin.hCenter().width(20).minWidth(250).justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify(.left)", "won't be applied", "justification is not applied when hCenter has been set"]))
+                expect(Pin.lastWarningText).to(contain(["justify(.left)", "won't be applied", "justification is not applied when hCenter has been set"]))
             }
         }
         
@@ -203,25 +203,25 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the width using justify") {
                 aView.pin.left().width(100%).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify(.center)", "won't be applied", "left and right coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["justify(.center)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.left().width(100%).maxWidth(250).justify(.right)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify(.right)", "won't be applied", "left and right coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["justify(.right)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.right().width(100%).maxWidth(250).justify(.left)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify(.left)", "won't be applied", "left and right coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["justify(.left)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
                 aView.pin.right().width(100%).maxWidth(250).justify(.center)
                 expect(aView.frame).to(equal(CGRect(x: 150.0, y: 100.0, width: 250.0, height: 60.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["justify(.center)", "won't be applied", "left and right coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["justify(.center)", "won't be applied", "left and right coordinates"]))
             }
             
             it("should adjust the width using justify") {
@@ -414,7 +414,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the height when using hCenter") {
                 aView.pin.vCenter().height(20).minHeight(250).align(.top)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 75.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.top)", "won't be applied", "alignment is not applied when vCenter has been set"]))
+                expect(Pin.lastWarningText).to(contain(["align(.top)", "won't be applied", "alignment is not applied when vCenter has been set"]))
             }
         }
         
@@ -490,37 +490,37 @@ class MinMaxWidthHeightSpec: QuickSpec {
             it("should adjust the height using align") {
                 aView.pin.top().height(100%).maxHeight(250).align(.top)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 00.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.top)", "won't be applied", "top and bottom coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["align(.top)", "won't be applied", "top and bottom coordinates"]))
             }
 
             it("should adjust the height using align") {
                 aView.pin.top().height(100%).maxHeight(250).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom coordinates"]))
             }
 
             it("should adjust the height using align") {
                 aView.pin.top().height(100%).maxHeight(250).align(.bottom)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 00.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.bottom)", "won't be applied", "top and bottom coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["align(.bottom)", "won't be applied", "top and bottom coordinates"]))
             }
 
             it("should adjust the height using align") {
                 aView.pin.bottom().height(100%).maxHeight(250).align(.top)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.top)", "won't be applied", "top and bottom coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["align(.top)", "won't be applied", "top and bottom coordinates"]))
             }
 
             it("should adjust the height using align") {
                 aView.pin.bottom().height(100%).maxHeight(250).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.center)", "won't be applied", "top and bottom coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["align(.center)", "won't be applied", "top and bottom coordinates"]))
             }
 
             it("should adjust the height using align") {
                 aView.pin.bottom().height(100%).maxHeight(250).align(.bottom)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 150.0, width: 100.0, height: 250.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["align(.bottom)", "won't be applied", "top and bottom coordinates"]))
+                expect(Pin.lastWarningText).to(contain(["align(.bottom)", "won't be applied", "top and bottom coordinates"]))
             }
 
             it("should adjust the height using align") {

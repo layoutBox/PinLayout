@@ -39,7 +39,7 @@ class PinEdgesSpec: QuickSpec {
         */
 
         beforeEach {
-            _pinlayoutUnitTestLastWarning = nil
+            Pin.lastWarningText = nil
         
             viewController = UIViewController()
             
@@ -339,7 +339,7 @@ class PinEdgesSpec: QuickSpec {
             it("should not apply hCenter") {
                 aView.pin.left().hCenter(-20)
                 expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 200.0, height: 100.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["hCenter", "won't be applied", "left"]))
+                expect(Pin.lastWarningText).to(contain(["hCenter", "won't be applied", "left"]))
             }
             
             // hCenter(%)
@@ -407,7 +407,7 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.top().vCenter(-20)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+                expect(Pin.lastWarningText).to(contain(["vCenter", "won't be applied", "top"]))
             }
             
             it("should warns that the view is not added to any view") {
@@ -415,7 +415,7 @@ class PinEdgesSpec: QuickSpec {
                 unAttachedView.pin.vCenter(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 200.0, height: 10)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "view must be added"]))
+                expect(Pin.lastWarningText).to(contain(["vCenter", "won't be applied", "view must be added"]))
             }
             
             it("should adjust the aView") {
@@ -431,7 +431,7 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.top().vCenter(-20%)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 100.0)))
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["vCenter", "won't be applied", "top"]))
+                expect(Pin.lastWarningText).to(contain(["vCenter", "won't be applied", "top"]))
             }
             
             // vCenter(to: ...)
@@ -482,20 +482,20 @@ class PinEdgesSpec: QuickSpec {
             
             it("should warn") {
                 aView.pin.top(20).all()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() top coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["all() top coordinate", "won't be applied", "already been set to 20"]))
             }
             it("should warn") {
                 aView.pin.left(20).all()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() left coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["all() left coordinate", "won't be applied", "already been set to 20"]))
             }
             it("should warn") {
                 aView.pin.right(20).all()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() right coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["all() right coordinate", "won't be applied", "already been set to 20"]))
             }
             
             it("should warn") {
                 aView.pin.bottom(20).all()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["all() bottom coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["all() bottom coordinate", "won't be applied", "already been set to 20"]))
             }
         }
         
@@ -525,11 +525,11 @@ class PinEdgesSpec: QuickSpec {
             
             it("should warn") {
                 aView.pin.left(20).horizontally()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["horizontally() left coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["horizontally() left coordinate", "won't be applied", "already been set to 20"]))
             }
             it("should warn") {
                 aView.pin.right(20).horizontally()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["horizontally() right coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["horizontally() right coordinate", "won't be applied", "already been set to 20"]))
             }
         }
         
@@ -559,11 +559,11 @@ class PinEdgesSpec: QuickSpec {
 
             it("should warn") {
                 aView.pin.top(20).vertically()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["vertically() top coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["vertically() top coordinate", "won't be applied", "already been set to 20"]))
             }
             it("should warn") {
                 aView.pin.bottom(20).vertically()
-                expect(_pinlayoutUnitTestLastWarning).to(contain(["vertically() bottom coordinate", "won't be applied", "already been set to 20.0"]))
+                expect(Pin.lastWarningText).to(contain(["vertically() bottom coordinate", "won't be applied", "already been set to 20"]))
             }
         }
     }

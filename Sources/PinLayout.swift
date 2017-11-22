@@ -349,12 +349,12 @@ public protocol PinLayout {
          * The resulting height will always **match the reference height**.
      
      .widthFlexible: Similar to `.width`, except that PinLayout won't constrain the resulting width to
-        match the reference width. The resulting width may be smaller of bigger depending on the view's
+        match the reference width. The resulting width may be smaller or bigger depending on the view's
         sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
         string is smaller than the reference width.
      
      .heightFlexible: Similar to `.height`, except that PinLayout won't constrain the resulting height to
-        match the reference height. The resulting height may be smaller of bigger depending on the view's
+        match the reference height. The resulting height may be smaller or bigger depending on the view's
         sizeThatFits(..) method result.
      
      Examples:

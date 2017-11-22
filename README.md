@@ -47,7 +47,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [PinLayout using Objective-C](#objective_c_interface)
 * [Installation](#installation)
 * [FAQ](#faq)
-* [Comments, ideas, suggestions, issues, ....](#comments)
+* [Comments, ideas, suggestions, issues, ...](#comments)
 
 <br>
 
@@ -72,7 +72,7 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 
 * **UIImageView**'s size is 100x100 and layouted below the UINavigationBar with a margin of 10 pixels all around.
 * **UISegmentedControl** is at the right of the logo image, use the remaining horizontal space with a left and right margin of 20 pixels.
-* **UILabel** is below the UISegmentedControl with a top margin of 10 pixels. It's width matched the UISegmentedControl's width. The label is multiline, so its height must be adjusted to fit its width.
+* **UILabel** is below the UISegmentedControl with a top margin of 10 pixels. Its width matched the UISegmentedControl's width. The label is multiline, so its height must be adjusted to fit its width.
 * **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
 
 
@@ -146,7 +146,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 	* PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width matches the other view’s width“). 
 	* No priorities, simply layout views in the order that makes sense. No priorities required.
 
-* Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So it’s possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20)). This makes PinLayout really animation friendly.
+* Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So its possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20)). This makes PinLayout really animation friendly.
 
 * Not too intrusive. PinLayout only adds three properties to existing iOS classes: `UIView.pin`, `UIView.anchor` and `UIView.edge`
 
@@ -192,14 +192,14 @@ PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages.
 
 Every method/properties with a name containing `left`/`right`, has RTL enabled equivalent methods with a name containing `start`/`end`.
 
-Using `start` or `end` methods, you can position views without having to think about whether your item will show up on the left or the right side of the screen (depending on the person’s language 
+Using `start` or `end` methods, you can position views without having to think about whether your item will show up on the left or the right side of the screen (depending on the person’s language). 
 
 :pushpin: In this documentation all methods that support RTL languages are marked using the following icon :left_right_arrow: 
 
 **Method**:
 
 * **`Pin.layoutDirection(direction: LayoutDirection)`**:left_right_arrow::  
-Set the PinLayout layout direction. Note that this set PinLayout's layout direction globaly. By default PinLayout use the left-to-right direction.
+Set the PinLayout layout direction. Note that this set PinLayout's layout direction globally. By default PinLayout use the left-to-right direction.
 
 	Layout direction modes:
 	* `.ltr`: Layout views from left to right. (Default)
@@ -498,7 +498,7 @@ It is also possible to combine two anchors to pin the position and the size of a
 
 ### Layout using superview’s anchors
 
-PinLayout also has a shorter version that pins a view's anchor **directly** on its corresponding superview’s anchor.
+PinLayout also has a shorter version that pins a view's anchor **directly** on it's corresponding superview’s anchor.
 
 The following methods position the corresponding view's anchor on another view’s anchor.
 
@@ -521,7 +521,7 @@ The following methods position the corresponding view's anchor on another view�
 * `bottomEnd()`:left_right_arrow:
 
 ###### Example:
-For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor..
+For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor.
 
 ![](docs/example-superview-anchors.png)
 
@@ -557,11 +557,11 @@ Position the view below the specified view(s). One or many relative views can be
   
 * **`before(of: UIView)`**:left_right_arrow:  
 **`before(of: [UIView])`**:left_right_arrow:  
-In LTR direction the view is positionned at the left of the specified view(s). In RTL direction the view is positionned at the right. One or many relative views can be specified. 
+In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified. 
 
 * **`after(of: UIView)`**:left_right_arrow:  
 **`after(of: [UIView])`**:left_right_arrow:  
-In LTR direction the view is positionned at the right of the specified view(s). In RTL direction the view is positionned at the left. One or many relative views can be specified. 
+In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
 
 * **`left(of: UIView)`**  
 **`left(of: [UIView])`**  
@@ -625,11 +625,11 @@ Position the view below the specified view(s) and aligned it using the specified
   
 * **`before(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
 **`before(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
-In LTR direction the view is positionned at the left of the specified view(s). In RTL direction the view is positionned at the right. One or many relative views can be specified. 
+In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified. 
 
 * **`after(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
 **`after(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
-In LTR direction the view is positionned at the right of the specified view(s). In RTL direction the view is positionned at the left. One or many relative views can be specified. 
+In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
 
 * **`left(of: UIView, aligned: VerticalAlignment)`**  
 **`left(of: [UIView], aligned: HorizontalAlignment)`**  
@@ -704,7 +704,7 @@ This is an equivalent solutions using other methods:
 
 ### Positioning using only visible relative UIViews 
 
-All PinLayout's relative methods can accept an array of UIViews (ex: `below(of: [UIView])`). Using these methods it's possible to filter the list of relative UIViews before the list is used by PinLayout.
+All PinLayout's relative methods can accept an array of UIViews (ex: `below(of: [UIView])`). Using these methods its possible to filter the list of relative UIViews before the list is used by PinLayout.
 
 PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really useful when some views may be visible or hidden depending on the situation.
 
@@ -794,7 +794,7 @@ The method adjust the view's size based on the view's `sizeThatFits()` method re
          * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...), the **reference height will be determined by these properties**, if not the **current view's height**  will be used.
          * The resulting height will always **match the reference height**.
      
- * **`.widthFlexible`**: Similar to `.width`, except that PinLayout won't constrain the resulting width to match the reference width. The resulting width may be smaller of bigger depending on the view's sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its string is smaller than the reference width.
+ * **`.widthFlexible`**: Similar to `.width`, except that PinLayout won't constrain the resulting width to match the reference width. The resulting width may be smaller of bigger depending on the view's sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if it's string is smaller than the reference width.
      
  * **`.heightFlexible`**: Similar to `.height`, except that PinLayout won't constrain the resulting height to match the reference height. The resulting height may be smaller of bigger depending on the view's sizeThatFits(..) method result.
      
@@ -840,7 +840,7 @@ The following example layout the UILabel on the right side of the UIImageView wi
 
 PinLayout has methods to set the view’s minimum and maximum width, and minimum and maximum height. 
 
-:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, sizeToFit, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fullfilled.  
+:pushpin: minWidth/maxWidth & minHeight/maxHeight have the highest priority. Higher than sizes (width/height/size, sizeToFit, aspectRatio) and edges positioning (top/left/bottom/right). Their values are always fulfilled.  
 
 
 **Methods:**
@@ -1192,7 +1192,7 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 
 ## PinLayout style guide
 
-* You should always specifies methods in the same order, it makes layout lines easier to understand. Here is our prefered ordering:  
+* You should always specifies methods in the same order, it makes layout lines easier to understand. Here is our preferred ordering:  
 `view.pin.[EDGE|ANCHOR|RELATIVE].[WIDTH|HEIGHT|SIZE].[pinEdges()].[MARGINS].[sizeToFit()]`  
 
    This order reflect the logic inside PinLayout. `pinEdges()` is applied before margins and margins are applied before `sizeToFit()`.    
@@ -1226,7 +1226,7 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 ## More examples<a name="more_examples"></a>
 
 ### Adjust to container size
-The following examples show how PinLayout can be used to adjust views size and position to the size of their container. in this case containers are cells.
+The following examples show how PinLayout can be used to adjust views size and position to the size of their container. In this case containers are cells.
 
 ![](docs/pinlayout-example-cells.png)
 
@@ -1313,7 +1313,7 @@ dependencies: [
 ## Examples App <a name="examples_app"></a>
 There is an Example app that expose some usage example on PinLayout, including:
 
-* The [introduction example](#intro_usage_example) presented priviously in this README.
+* The [introduction example](#intro_usage_example) presented previously in this README.
 * An RTL enabled version of the [introduction example](#intro_usage_example)
 * An example showing of the right-to-left (RTL) language support. Similar to the Intro example.
 * UITableView example with variable height cells.
@@ -1361,7 +1361,7 @@ PinLayout also expose an Objective-C interface slightly different than the Swift
    **R:** PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking.
    
 *  **Q: How to handle new iOS 11 `UIView.safeAreaInsets` and the iPhone X .**  
-   **R:** iOS 11 has introduced `UIView.safeAreaInsets` to particularly support the iPhone X landscape mode. In this mode `UIView.safeAreaInsets` has a left and right insets. The easiest way the handle this situation with PinLayout is to add a contentView that will contains all your view's childs, and simply adjust this contentView view to match the `safeAreaInsets`. All example in the [Examples App](#examples_app) handle correctly the `safeAreaInsets` and works on iPhone X in landscape mode. 
+   **R:** iOS 11 has introduced `UIView.safeAreaInsets` to particularly support the iPhone X landscape mode. In this mode `UIView.safeAreaInsets` has a left and right insets. The easiest way the handle this situation with PinLayout is to add a contentView that will contains all your view's child, and simply adjust this contentView view to match the `safeAreaInsets`. All example in the [Examples App](#examples_app) handle correctly the `safeAreaInsets` and works on iPhone X in landscape mode. 
    
    Note that **only the UIViewController's main view** must handle the `safeAreaInsets`, sub-views don't have to handle it.  
    

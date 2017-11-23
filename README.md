@@ -53,13 +53,18 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 :pushpin: PinLayout is actively updated. So please come often to see latest changes. You can also **Star** it to be able to retrieve it easily later.
 
+Features coming soon:
+* Possibilities of layouting multiple views using containers (column / row)
+* macOS support
+
+
 ### PinLayout + FlexLayout
 
 <a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="200"/></a>
 
-**PinLayout** is a companion of **[FlexLayout](https://github.com/lucdion/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation.
+**PinLayout** is a companion of **[FlexLayout](https://github.com/layoutBox/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation.
 
-* A view can be layouted using PinLayout, FlexLayout, or both!
+* A view can layouts its subviews using PinLayout, FlexLayout, or both!
 * FlexLayout it is particularly useful in situations where you need to layouts many views but don't require the PinLayout's finest control nor complex animations.
 * A view layouted using PinLayout can be embedded inside a FlexLayout's container and reversely. You choose the best layout framework for your situation. 
 
@@ -152,7 +157,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 * Minimize as much as possible calculations and constants when layouting views. But it is always possible to add advanced computation if required.
 
-* Method's name match as much as possible other layout frameworks, including [FlexLayout](https://github.com/lucdion/FlexLayout)/flexbox, CSS, React Native, …
+* Method's name match as much as possible other layout frameworks, including [FlexLayout](https://github.com/layoutBox/FlexLayout)/flexbox, CSS, React Native, …
 	* margin, marginHorizontal, marginVertical, marginTop, marginLeft, marginBottom, marginRight
 	* top, left, bottom, right, width, height  
 	* As in CSS and flexbox, right and bottom coordinates are offset from container view's right and bottom edges.

@@ -1,8 +1,6 @@
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-small.png" alt="PinLayout" width="240" /></a>
+  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-text.png" alt="PinLayout" width="200" /></a>
 </p>
-
-<h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 3em">PinLayout</h1>
  
 <p align="center">
   <a href=""><img src="https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat" /></a>

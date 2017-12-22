@@ -121,7 +121,13 @@ extension PinLayoutImpl {
             newRect.size.height = view.frame.height
         }
         
-        view.frame = Coordinates.adjustRectToDisplayScale(newRect)
+        /*
+         To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
+         view's transform (UIView.transform).
+         By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
+         the view's transform. So view's transforms won't be affected/altered by PinLayout.
+        */
+        Coordinates.setViewRectUsingDisplayScale(view: view, toRect: newRect)
     }
     
     private func handlePinEdges() {

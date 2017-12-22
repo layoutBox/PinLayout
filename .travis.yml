@@ -1,11 +1,11 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode9.2 
 
 env:
   matrix:
-    - SCHEME=PinLayout       SDK=iphonesimulator11.0
+    - SCHEME=PinLayout       SDK=iphonesimulator11.2
     #- SCHEME=PinLayout       SDK=iphonesimulator10.3
-    #- SCHEME=PinLayoutSample SDK=iphonesimulator11.0
+    #- SCHEME=PinLayoutSample SDK=iphonesimulator11.2
     #- SCHEME=PinLayoutTVOS   SDK=appletvsimulator11.0 
 
 before_install:

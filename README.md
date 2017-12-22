@@ -1387,7 +1387,8 @@ PinLayout also expose an Objective-C interface slightly different than the Swift
 	let percentageValue: CGFloat = 50
 	view.pin.width(percentageValue%)
 	``` 
-* For other questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
+* **Q: How does PinLayout handle UIView's transforms?**  
+  **R:** PinLayout set the frame of the non-transformed view. So PinLayout won't affect the view's transforms.
 
 <br>
 

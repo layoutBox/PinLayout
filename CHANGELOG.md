@@ -7,10 +7,22 @@
 
 # Change Log
 
+## [1.5.2](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.2)
+Released on 2017-12-22
+
+* POSSIBLE BREAKING CHANGE: PinLayout now keeps UIView's transform (scale, rotation, ...)    
+Previously any view's transform was altered after layouting the view with PinLayout. Now PinLayout won't affect the view's transforms.  
+
+	For people not using transforms, this should be a non-breaking change. If someone is using transforms with PinLayout, this may change the behavior, although I think this will produce the expected results (ie, transforms not being affected/altered by layout).
+  
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#49](https://github.com/mirego/PinLayout/pull/107) 
+
+
 ## [1.5.1](https://github.com/mirego/PinLayout/releases/tag/1.5.1)
+
 #### Change
 
-* ##### Add `layout()` method to support Xcode playgrounds
+* Add `layout()` method to support Xcode playgrounds
 PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well-documented issue. The impact of this problem is that PinLayout doesn't layout views at the time and in the order required. To handle this situation in playgrounds it is possible to call the `layout()` method to complete the layout.
 
 [See PinLayout in Xcode Playgrounds documentation for more information](https://github.com/mirego/PinLayout#playgrounds)

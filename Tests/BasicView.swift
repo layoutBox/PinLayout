@@ -32,6 +32,7 @@ class BasicView: UIView {
         label.text = text
         label.font = UIFont.systemFont(ofSize: 7)
         label.textColor = .white
+        label.sizeToFit()
         addSubview(label)
     }
 
@@ -42,7 +43,7 @@ class BasicView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
             
-        label.pin.top().left().fitSize()
+        label.pin.top().left()
     }
     
     var sizeThatFitsExpectedArea: CGFloat = 40 * 40

@@ -29,6 +29,16 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "249EFE821E64FB4C00165E39"
+               BuildableName = "PinLayoutTests.xctest"
+               BlueprintName = "PinLayoutTests"
+               ReferencedContainer = "container:../PinLayout.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

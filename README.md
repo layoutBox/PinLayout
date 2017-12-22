@@ -6,10 +6,14 @@
   <a href=""><img src="https://img.shields.io/cocoapods/p/PinLayout.svg?style=flat" /></a>
   <a href="https://travis-ci.org/mirego/PinLayout"><img src="https://travis-ci.org/mirego/PinLayout.svg?branch=master" /></a>
   <a href="https://codecov.io/gh/mirego/PinLayout"><img src="https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg"/></a>
-  <a href='https://img.shields.io/cocoapods/v/PinLayout.svg'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg" /></a>
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" /></a>
   <a href="https://raw.githubusercontent.com/mirego/PinLayout/master/LICENSE"><img src="https://img.shields.io/badge/license-New%20BSD-blue.svg?style=flat" /></a>
-  <!--a href="https://github.com/mirego/PinLayout/issues"><img src="https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat" /></a-->
+  <a href="https://github.com/mirego/PinLayout/issues"><img src="https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat" /></a>
+</p>
+<p align="center">
+  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg" /></a>
+  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/dm/PinLayout.svg" /></a>
+  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/dt/PinLayout.svg" /></a>
 </p>
 
 Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
@@ -174,7 +178,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 # PinLayout's Performance <a name="performance"></a>
 
-PinLayout's performance has been measured using the [Layout Framework Benchmark](https://github.com/lucdion/LayoutFrameworkBenchmark). FlexLayout and [PinLayout](https://github.com/mirego/PinLayout) has been added to this benchmark to compare their performance. 
+PinLayout's performance has been measured using the [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark). FlexLayout and [PinLayout](https://github.com/mirego/PinLayout) has been added to this benchmark to compare their performance. 
 
 As you can see in the following chart, PinLayout and FlexLayout and performance are faster or equal to manual layouting, and **between 12x and 16x faster than auto layout**, and this for all types of iPhone (5/6/6S/7)
 

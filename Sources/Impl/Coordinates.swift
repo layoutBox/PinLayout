@@ -76,7 +76,7 @@ class Coordinates {
                       height: ceilFloatToDisplayScale(rect.size.height))
     }
     
-    static func setViewRectUsingDisplayScale(view: UIView, toRect rect: CGRect) {
+    static func setUntransformedViewRect(_ view: UIView, toRect rect: CGRect) {
         /*
          To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
          view's transform (UIView.transform).
@@ -86,6 +86,19 @@ class Coordinates {
         let adjustedRect = Coordinates.adjustRectToDisplayScale(rect)
         view.center = CGPoint(x: adjustedRect.midX, y: adjustedRect.midY)
         view.bounds = CGRect(origin: .zero, size: adjustedRect.size)
+    }
+    
+    static func getUntransformedViewRect(_ view: UIView) -> CGRect {
+        /*
+         To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
+         view's transform (UIView.transform).
+         By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
+         the view's transform. So view's transforms won't be affected/altered by PinLayout.
+         */
+        let bounds = view.bounds
+        let origin = CGPoint(x: view.center.x - bounds.width / 2, y: view.center.y - bounds.height / 2)
+
+        return CGRect(origin: origin, size: bounds.size)
     }
 
     static func roundFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {

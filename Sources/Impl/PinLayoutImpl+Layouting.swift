@@ -127,7 +127,7 @@ extension PinLayoutImpl {
          By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
          the view's transform. So view's transforms won't be affected/altered by PinLayout.
         */
-        Coordinates.setViewRectUsingDisplayScale(view: view, toRect: newRect)
+        Coordinates.setUntransformedViewRect(view, toRect: newRect)
     }
     
     private func handlePinEdges() {

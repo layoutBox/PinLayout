@@ -51,8 +51,8 @@ extension PinLayoutImpl {
     
     @discardableResult
     internal func left(_ percent: Percent, _ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setLeft(percent.of(layoutSuperview.frame.width), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setLeft(percent.of(layoutSuperviewRect.width), context)
         return self
     }
     
@@ -78,22 +78,22 @@ extension PinLayoutImpl {
     
     @discardableResult
     internal func right(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setRight(layoutSuperview.frame.width, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setRight(layoutSuperviewRect.width, context)
         return self
     }
     
     @discardableResult
     internal func right(_ value: CGFloat, _ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setRight(layoutSuperview.frame.width - value, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setRight(layoutSuperviewRect.width - value, context)
         return self
     }
     
     @discardableResult
     internal func right(_ percent: Percent, _ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setRight(layoutSuperview.frame.width - percent.of(layoutSuperview.frame.width), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setRight(layoutSuperviewRect.width - percent.of(layoutSuperviewRect.width), context)
         return self
     }
     
@@ -123,15 +123,15 @@ extension PinLayoutImpl {
     
     @discardableResult
     internal func bottom(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottom(layoutSuperview.frame.height, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setBottom(layoutSuperviewRect.height, context)
         return self
     }
     
     @discardableResult
     internal func bottom(_ value: CGFloat, _ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottom(layoutSuperview.frame.height - value, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setBottom(layoutSuperviewRect.height - value, context)
         return self
     }
     

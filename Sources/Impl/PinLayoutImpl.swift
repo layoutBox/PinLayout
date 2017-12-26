@@ -92,8 +92,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func top(_ percent: Percent) -> PinLayout {
         func context() -> String { return "top(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setTop(percent.of(layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setTop(percent.of(layoutSuperviewRect.height), context)
         return self
     }
     
@@ -142,8 +142,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottom(_ percent: Percent) -> PinLayout {
         func context() -> String { return "bottom(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        bottom(percent.of(layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        bottom(percent.of(layoutSuperviewRect.height), context)
         return self
     }
 
@@ -181,48 +181,48 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func hCenter() -> PinLayout {
         func context() -> String { return "hCenter()" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setHorizontalCenter(layoutSuperview.frame.width / 2, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setHorizontalCenter(layoutSuperviewRect.width / 2, context)
         return self
     }
     
     @discardableResult
     func hCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "hCenter(\(value))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setHorizontalCenter((layoutSuperview.frame.width / 2) + value, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setHorizontalCenter((layoutSuperviewRect.width / 2) + value, context)
         return self
     }
     
     @discardableResult
     func hCenter(_ percent: Percent) -> PinLayout {
         func context() -> String { return "hCenter(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setHorizontalCenter((layoutSuperview.frame.width / 2) + percent.of(layoutSuperview.frame.width), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setHorizontalCenter((layoutSuperviewRect.width / 2) + percent.of(layoutSuperviewRect.width), context)
         return self
     }
 
     @discardableResult
     func vCenter() -> PinLayout {
         func context() -> String { return "vCenter()" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setVerticalCenter(layoutSuperview.frame.height / 2, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setVerticalCenter(layoutSuperviewRect.height / 2, context)
         return self
     }
     
     @discardableResult
     func vCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "vCenter(\(value))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setVerticalCenter((layoutSuperview.frame.height / 2) + value, context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setVerticalCenter((layoutSuperviewRect.height / 2) + value, context)
         return self
     }
     
     @discardableResult
     func vCenter(_ percent: Percent) -> PinLayout {
         func context() -> String { return "vCenter(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setVerticalCenter((layoutSuperview.frame.height / 2) + percent.of(layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setVerticalCenter((layoutSuperviewRect.height / 2) + percent.of(layoutSuperviewRect.height), context)
         return self
     }
     
@@ -375,8 +375,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func topCenter() -> PinLayout {
         func context() -> String { return "topCenter()" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setTopCenter(CGPoint(x: layoutSuperview.frame.width / 2, y: 0), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setTopCenter(CGPoint(x: layoutSuperviewRect.width / 2, y: 0), context)
         return self
     }
 
@@ -395,8 +395,8 @@ class PinLayoutImpl: PinLayout {
     }
     
     fileprivate func topRight(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setTopRight(CGPoint(x: layoutSuperview.frame.width, y: 0), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setTopRight(CGPoint(x: layoutSuperviewRect.width, y: 0), context)
         return self
     }
     
@@ -431,8 +431,8 @@ class PinLayoutImpl: PinLayout {
     }
     
     fileprivate func centerLeft(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setCenterLeft(CGPoint(x: 0, y: layoutSuperview.frame.height / 2), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setCenterLeft(CGPoint(x: 0, y: layoutSuperviewRect.height / 2), context)
         return self
     }
 
@@ -464,8 +464,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func center() -> PinLayout {
         func context() -> String { return "center()" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setCenter(CGPoint(x: layoutSuperview.frame.width / 2, y: layoutSuperview.frame.height / 2), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setCenter(CGPoint(x: layoutSuperviewRect.width / 2, y: layoutSuperviewRect.height / 2), context)
         return self
     }
     
@@ -485,8 +485,8 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     fileprivate func centerRight(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setCenterRight(CGPoint(x: layoutSuperview.frame.width, y: layoutSuperview.frame.height / 2), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setCenterRight(CGPoint(x: layoutSuperviewRect.width, y: layoutSuperviewRect.height / 2), context)
         return self
     }
     
@@ -522,8 +522,8 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     fileprivate func bottomLeft(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottomLeft(CGPoint(x: 0, y: layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setBottomLeft(CGPoint(x: 0, y: layoutSuperviewRect.height), context)
         return self
     }
     
@@ -555,8 +555,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func bottomCenter() -> PinLayout {
         func context() -> String { return "bottomCenter()" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottomCenter(CGPoint(x: layoutSuperview.frame.width / 2, y: layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setBottomCenter(CGPoint(x: layoutSuperviewRect.width / 2, y: layoutSuperviewRect.height), context)
         return self
     }
 
@@ -576,8 +576,8 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     fileprivate func bottomRight(_ context: Context) -> PinLayout {
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        setBottomRight(CGPoint(x: layoutSuperview.frame.width, y: layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setBottomRight(CGPoint(x: layoutSuperviewRect.width, y: layoutSuperviewRect.height), context)
         return self
     }
 
@@ -608,8 +608,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func width(_ percent: Percent) -> PinLayout {
         func context() -> String { return "width(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setWidth(percent.of(layoutSuperview.frame.width), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        return setWidth(percent.of(layoutSuperviewRect.width), context)
     }
 
     @discardableResult
@@ -626,8 +626,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func minWidth(_ percent: Percent) -> PinLayout {
         func context() -> String { return "minWidth(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setMinWidth(percent.of(layoutSuperview.frame.width), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        return setMinWidth(percent.of(layoutSuperviewRect.width), context)
     }
     
     @discardableResult
@@ -639,8 +639,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func maxWidth(_ percent: Percent) -> PinLayout {
         func context() -> String { return "maxWidth(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setMaxWidth(percent.of(layoutSuperview.frame.width), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        return setMaxWidth(percent.of(layoutSuperviewRect.width), context)
     }
 
     @discardableResult
@@ -651,8 +651,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func height(_ percent: Percent) -> PinLayout {
         func context() -> String { return "height(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setHeight(percent.of(layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        return setHeight(percent.of(layoutSuperviewRect.height), context)
     }
 
     @discardableResult
@@ -669,8 +669,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func minHeight(_ percent: Percent) -> PinLayout {
         func context() -> String { return "minHeight(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setMinHeight(percent.of(layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        return setMinHeight(percent.of(layoutSuperviewRect.height), context)
     }
     
     @discardableResult
@@ -682,8 +682,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func maxHeight(_ percent: Percent) -> PinLayout {
         func context() -> String { return "maxHeight(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        return setMaxHeight(percent.of(layoutSuperview.frame.height), context)
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        return setMaxHeight(percent.of(layoutSuperviewRect.height), context)
     }
     
     //
@@ -702,8 +702,8 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func size(_ percent: Percent) -> PinLayout {
         func context() -> String { return "size(\(percent.description))" }
-        guard let layoutSuperview = layoutSuperview(context) else { return self }
-        let size = CGSize(width: percent.of(layoutSuperview.frame.width), height: percent.of(layoutSuperview.frame.height))
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        let size = CGSize(width: percent.of(layoutSuperviewRect.width), height: percent.of(layoutSuperviewRect.height))
         return setSize(size, context)
     }
     
@@ -914,6 +914,15 @@ extension PinLayoutImpl {
         return self
     }
     
+    internal func layoutSuperviewRect(_ context: Context) -> CGRect? {
+        if let superview = view.superview {
+            return Coordinates.getUntransformedViewRect(superview)
+        } else {
+            warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
+            return nil
+        }
+    }
+    
     internal func layoutSuperview(_ context: Context) -> UIView? {
         if let superview = view.superview {
             return superview
@@ -923,6 +932,7 @@ extension PinLayoutImpl {
         }
     }
 
+    // CHECK THIS!!!
     internal func referenceSuperview(_ referenceView: UIView, _ context: Context) -> UIView? {
         if let superview = referenceView.superview {
             return superview

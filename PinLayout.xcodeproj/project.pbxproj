@@ -229,7 +229,6 @@
 				240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */,
 				243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */,
 				244C6E141E776A0C0074FC74 /* MarginsSpec.swift */,
-				245C1DA11FEC4FC6007594F7 /* TransformSpec.swift */,
 				242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */,
 				243B12C91FC469550072A9C3 /* ObjectiveCSpec.m */,
 				249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */,
@@ -240,6 +239,7 @@
 				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 				242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */,
+				245C1DA11FEC4FC6007594F7 /* TransformSpec.swift */,
 				240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */,
 				248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */,
 			);

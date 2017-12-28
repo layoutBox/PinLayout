@@ -1388,7 +1388,7 @@ PinLayout also expose an Objective-C interface slightly different than the Swift
 	view.pin.width(percentageValue%)
 	``` 
 * **Q: How does PinLayout handle UIView's transforms?**  
-  **R:** PinLayout set the frame of the non-transformed view. So PinLayout won't affect the view's transforms.
+  **R:** PinLayout set the position and the size of the non-transformed view. So PinLayout won't affect/change the view's transforms.
 
 <br>
 

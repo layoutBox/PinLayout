@@ -614,7 +614,7 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func width(of view: UIView) -> PinLayout {
-        return setWidth(view.frame.width, { return "width(of: \(viewDescription(view)))" })
+        return setWidth(view.bounds.width, { return "width(of: \(viewDescription(view)))" })
     }
     
     @discardableResult
@@ -657,7 +657,7 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func height(of view: UIView) -> PinLayout {
-        return setHeight(view.frame.height, { return "height(of: \(viewDescription(view)))" })
+        return setHeight(view.bounds.height, { return "height(of: \(viewDescription(view)))" })
     }
     
     @discardableResult
@@ -710,7 +710,7 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func size(of view: UIView) -> PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
-        return setSize(view.frame.size, context)
+        return setSize(view.bounds.size, context)
     }
     
 //    @discardableResult
@@ -728,7 +728,7 @@ class PinLayoutImpl: PinLayout {
     
     @discardableResult
     func aspectRatio(of view: UIView) -> PinLayout {
-        return setAspectRatio(view.frame.width / view.frame.height, context: { "aspectRatio(of: \(viewDescription(view)))" })
+        return setAspectRatio(view.bounds.width / view.bounds.height, context: { "aspectRatio(of: \(viewDescription(view)))" })
     }
     
     @discardableResult

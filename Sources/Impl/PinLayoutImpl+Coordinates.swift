@@ -353,6 +353,13 @@ extension PinLayoutImpl {
     fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ referenceView: UIView, _ referenceSuperview: UIView) -> CGPoint {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
+        } else if referenceSuperview == layoutSuperview.superview {
+            let layoutSuperviewRect = Coordinates.getUntransformedViewRect(layoutSuperview)
+            return CGPoint(x: point.x - layoutSuperviewRect.origin.x,
+                           y: point.y - layoutSuperviewRect.origin.y)
+        // TOOD: Handle all cases. computeCoordinates should compute coordinates using only untransformed
+        //       coordinates, but UIView.convert(...) below use transformed coordinates!
+        //       Currently we only support 1 and 2 levels.
         } else {
             return referenceSuperview.convert(point, to: layoutSuperview)
         }

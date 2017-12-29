@@ -24,47 +24,58 @@ import UIKit
 
 class Coordinates {
     static func hCenter(_ view: UIView) -> CGFloat {
-        return view.frame.minX + (view.frame.width / 2)
+        let rect = getUntransformedViewRect(view)
+        return rect.minX + (rect.width / 2)
     }
 
     static func vCenter(_ view: UIView) -> CGFloat {
-        return view.frame.minY + (view.frame.height / 2)
+        let rect = getUntransformedViewRect(view)
+        return rect.minY + (rect.height / 2)
     }
 
     static func topLeft(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX, y: view.frame.minY)
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: rect.minX, y: rect.minY)
     }
 
     static func topCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: hCenter(view), y: view.frame.minY)
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: hCenter(view), y: rect.minY)
     }
 
     static func topRight(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY)
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: rect.minX + rect.width, y: rect.minY)
     }
 
     static func centerLeft(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX, y: vCenter(view))
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: rect.minX, y: vCenter(view))
     }
     
     static func center(_ view: UIView) -> CGPoint {
+        let rect = getUntransformedViewRect(view)
         return CGPoint(x: hCenter(view), y: vCenter(view))
     }
 
     static func centerRight(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX + view.frame.width, y: vCenter(view))
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: rect.minX + rect.width, y: vCenter(view))
     }
     
     static func bottomLeft(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX, y: view.frame.minY + view.frame.height)
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: rect.minX, y: rect.minY + rect.height)
     }
 
     static func bottomCenter(_ view: UIView) -> CGPoint {
-        return CGPoint(x: hCenter(view), y: view.frame.minY + view.frame.height)
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: hCenter(view), y: rect.minY + rect.height)
     }
 
     static func bottomRight(_ view: UIView) -> CGPoint {
-        return CGPoint(x: view.frame.minX + view.frame.width, y: view.frame.minY + view.frame.height)
+        let rect = getUntransformedViewRect(view)
+        return CGPoint(x: rect.minX + rect.width, y: rect.minY + rect.height)
     }
 
     internal static var displayScale: CGFloat = UIScreen.main.scale

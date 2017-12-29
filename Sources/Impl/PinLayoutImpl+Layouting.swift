@@ -35,7 +35,7 @@ extension PinLayoutImpl {
     private func apply(onView view: UIView) {
         displayLayoutWarnings()
         
-        var newRect = view.frame
+        var newRect = Coordinates.getUntransformedViewRect(view)
         
         handlePinEdges()
         
@@ -68,10 +68,10 @@ extension PinLayoutImpl {
             newRect.origin.x = left + _marginLeft
         } else if let right = _right {
             // Only right is set
-            newRect.origin.x = right - view.frame.width - _marginRight
+            newRect.origin.x = right - view.bounds.width - _marginRight
         } else if let _hCenter = _hCenter {
             // Only hCenter is set
-            newRect.origin.x = (_hCenter - (view.frame.width / 2)) + _marginLeft - _marginRight
+            newRect.origin.x = (_hCenter - (view.bounds.width / 2)) + _marginLeft - _marginRight
         } else if let width = newSize.width {
             // Only width is set
             newRect.size.width = width
@@ -104,21 +104,21 @@ extension PinLayoutImpl {
             newRect.origin.y = top + _marginTop
         } else if let bottom = _bottom {
             // Only bottom is set
-            newRect.origin.y = bottom - view.frame.height - _marginBottom
+            newRect.origin.y = bottom - view.bounds.height - _marginBottom
         } else if let _vCenter = _vCenter {
             // Only vCenter is set
-            newRect.origin.y = (_vCenter - (view.frame.height / 2)) + _marginTop - _marginBottom
+            newRect.origin.y = (_vCenter - (view.bounds.height / 2)) + _marginTop - _marginBottom
         } else if let height = newSize.height {
             // Only height is set
             newRect.size.height = height
         }
         
         if !validateComputedWidth(newRect.size.width) {
-            newRect.size.width = view.frame.width
+            newRect.size.width = view.bounds.width
         }
         
         if !validateComputedHeight(newRect.size.height) {
-            newRect.size.height = view.frame.height
+            newRect.size.height = view.bounds.height
         }
         
         /*
@@ -223,13 +223,13 @@ extension PinLayoutImpl {
                 if let width = applyMinMax(toWidth: width) {
                     fitWidth = width
                 } else {
-                    fitWidth = view.frame.width
+                    fitWidth = view.bounds.width
                 }
             case .height, .heightFlexible:
                 if let height = applyMinMax(toHeight: height) {
                     fitHeight = height
                 } else {
-                    fitHeight = view.frame.height
+                    fitHeight = view.bounds.height
                 }
             }
             
@@ -284,7 +284,7 @@ extension PinLayoutImpl {
             newWidth = right - left - _marginLeft - _marginRight
         } else if shouldKeepViewDimension {
             // No width has been specified (and won't be computed by a sizeToFit) => use the current view's width
-            newWidth = view.frame.width
+            newWidth = view.bounds.width
         }
         
         return newWidth
@@ -350,7 +350,7 @@ extension PinLayoutImpl {
         } else if let top = _top, let bottom = _bottom {
             newHeight = bottom - top - _marginTop - _marginBottom
         } else if shouldKeepViewDimension {
-            newHeight = view.frame.height
+            newHeight = view.bounds.height
         }
         
         return newHeight

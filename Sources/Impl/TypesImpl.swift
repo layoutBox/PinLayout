@@ -78,10 +78,12 @@ class HorizontalEdgeImpl: HorizontalEdge {
     let type: EdgeType
 
     var x: CGFloat {
+        let rect = Coordinates.getUntransformedViewRect(view)
+        
         switch type {
-        case .left:    return view.frame.origin.x
-        case .hCenter: return view.frame.midX
-        case .right:   return view.frame.maxX
+        case .left:    return rect.origin.x
+        case .hCenter: return rect.midX
+        case .right:   return rect.maxX
         }
     }
 
@@ -102,10 +104,13 @@ class VerticalEdgeImpl: VerticalEdge {
     internal let type: EdgeType
 
     var y: CGFloat {
+        let rect = Coordinates.getUntransformedViewRect(view)
+        
         switch type {
-        case .top:     return view.frame.origin.y
-        case .vCenter: return view.frame.midY
-        case .bottom:  return view.frame.maxY
+        case .top:     return rect.origin.y
+        case .vCenter: return rect.midY
+        case .bottom:  return rect
+            .maxY
         }
     }
 

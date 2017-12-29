@@ -7,6 +7,20 @@
 
 # Change Log
 
+## [1.5.4](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.4)
+Released on 2017-12-28
+
+* PinLayout now handle correctly more situations with view with transforms.
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#110](https://github.com/mirego/PinLayout/pull/110) 
+
+
+## [1.5.3](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.3)
+Released on 2017-12-28
+
+* PinLayout now handle correctly parents (superviews) with transforms.
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#108](https://github.com/mirego/PinLayout/pull/108) 
+
+
 ## [1.5.2](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.2)
 Released on 2017-12-22
 
@@ -15,7 +29,7 @@ Previously any view's transform was altered after layouting the view with PinLay
 
 	For people not using transforms, this should be a non-breaking change. If someone is using transforms with PinLayout, this may change the behavior, although I think this will produce the expected results (ie, transforms not being affected/altered by layout).
   
-	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#49](https://github.com/mirego/PinLayout/pull/107) 
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#107](https://github.com/mirego/PinLayout/pull/107) 
 
 
 ## [1.5.1](https://github.com/mirego/PinLayout/releases/tag/1.5.1)

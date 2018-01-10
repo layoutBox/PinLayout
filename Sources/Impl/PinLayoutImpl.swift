@@ -241,10 +241,25 @@ class PinLayoutImpl: PinLayout {
         left({ "horizontally() left coordinate" })
         return self
     }
+
+    @discardableResult
+    func horizontally(_ value: CGFloat) -> PinLayout {
+        right({ "horizontally() right(\(value)) coordinate" })
+        left({ "horizontally() left(\(value)) coordinate" })
+        return self
+    }
+
     @discardableResult
     func vertically() -> PinLayout {
         top({ "vertically() top coordinate" })
         bottom({ "vertically() bottom coordinate" })
+        return self
+    }
+
+    @discardableResult
+    func vertically(_ value: CGFloat) -> PinLayout {
+        top({ "vertically() top(\(value)) coordinate" })
+        bottom({ "vertically() bottom(\(value)) coordinate" })
         return self
     }
 

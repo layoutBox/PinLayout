@@ -166,12 +166,14 @@ public protocol PinLayout {
      Similar to calling `view.left().right()`.
      */
     @discardableResult func horizontally() -> PinLayout
+    @discardableResult func horizontally(_ value: CGFloat) -> PinLayout
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
      
      Similar to calling `view.top().bottom()`.
      */
     @discardableResult func vertically() -> PinLayout
+    @discardableResult func vertically(_ value: CGFloat) -> PinLayout
     
     //
     // MARK: Layout using edges

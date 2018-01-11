@@ -24,6 +24,19 @@ extension PinLayoutImpl {
     internal func top(_ context: Context) {
         setTop(0, context)
     }
+
+    @discardableResult
+    internal func top(_ value: CGFloat, _ context: Context) -> PinLayout {
+        setTop(value, context)
+        return self
+    }
+
+    @discardableResult
+    internal func top(_ percent: Percent, _ context: Context) -> PinLayout {
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setTop(percent.of(layoutSuperviewRect.height), context)
+        return self
+    }
     
     internal func setTop(_ value: CGFloat, _ context: Context) {
         if let _bottom = _bottom, let height = height {
@@ -132,6 +145,13 @@ extension PinLayoutImpl {
     internal func bottom(_ value: CGFloat, _ context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setBottom(layoutSuperviewRect.height - value, context)
+        return self
+    }
+
+    @discardableResult
+    internal func bottom(_ percent: Percent, _ context: Context) -> PinLayout {
+        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
+        setBottom(layoutSuperviewRect.height - percent.of(layoutSuperviewRect.height), context)
         return self
     }
     

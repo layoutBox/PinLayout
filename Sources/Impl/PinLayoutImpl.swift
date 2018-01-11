@@ -234,6 +234,16 @@ class PinLayoutImpl: PinLayout {
         left({ "all() left coordinate" })
         return self
     }
+
+    @discardableResult
+    func all(_ value: CGFloat) -> PinLayout {
+        func context() -> String { return "all(\(value))" }
+        top(value, context)
+        bottom(value, context)
+        left(value, context)
+        right(value, context)
+        return self
+    }
     
     @discardableResult
     func horizontally() -> PinLayout {
@@ -244,8 +254,17 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func horizontally(_ value: CGFloat) -> PinLayout {
-        right({ "horizontally() right(\(value)) coordinate" })
-        left({ "horizontally() left(\(value)) coordinate" })
+        func context() -> String { return "horizontally(\(value))" }
+        left(value, context)
+        right(value, context)
+        return self
+    }
+
+    @discardableResult
+    func horizontally(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "horizontally(\(percent.description))" }
+        left(percent, context)
+        right(percent, context)
         return self
     }
 
@@ -258,8 +277,17 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func vertically(_ value: CGFloat) -> PinLayout {
-        top({ "vertically() top(\(value)) coordinate" })
-        bottom({ "vertically() bottom(\(value)) coordinate" })
+        func context() -> String { return "vertically(\(value))" }
+        top(value, context)
+        bottom(value, context)
+        return self
+    }
+
+    @discardableResult
+    func vertically(_ percent: Percent) -> PinLayout {
+        func context() -> String { return "vertically(\(percent.description))" }
+        top(percent, context)
+        bottom(percent, context)
         return self
     }
 

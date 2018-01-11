@@ -563,19 +563,19 @@ class PinEdgesSpec: QuickSpec {
             }
             it("should warn") {
                 aView.pin.left(10).horizontally(20)
-                expect(Pin.lastWarningText).to(contain(["horizontally(20.0)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["horizontally(20.0) left", "won't be applied", "already been set to 10"]))
             }
             it("should warn") {
                 aView.pin.right(10).horizontally(20)
-                expect(Pin.lastWarningText).to(contain(["horizontally(20.0)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["horizontally(20.0) right", "won't be applied", "already been set to 10"]))
             }
             it("should warn") {
                 aView.pin.left(10).horizontally(10%)
-                expect(Pin.lastWarningText).to(contain(["horizontally(10%)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["horizontally(10%) left", "won't be applied", "already been set to 10"]))
             }
             it("should warn") {
                 aView.pin.right(10).horizontally(10%)
-                expect(Pin.lastWarningText).to(contain(["horizontally(10%)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["horizontally(10%) right", "won't be applied", "already been set to 10"]))
             }
         }
         
@@ -623,19 +623,19 @@ class PinEdgesSpec: QuickSpec {
             }
             it("should warn") {
                 aView.pin.top(10).vertically(20)
-                expect(Pin.lastWarningText).to(contain(["vertically(20.0)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["vertically(20.0) top", "won't be applied", "already been set to 10"]))
             }
             it("should warn") {
                 aView.pin.bottom(10).vertically(20)
-                expect(Pin.lastWarningText).to(contain(["vertically(20.0)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["vertically(20.0) bottom", "won't be applied", "already been set to 10"]))
             }
             it("should warn") {
                 aView.pin.top(10).vertically(10%)
-                expect(Pin.lastWarningText).to(contain(["vertically(10%)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["vertically(10%) top", "won't be applied", "already been set to 10"]))
             }
             it("should warn") {
                 aView.pin.bottom(10).vertically(10%)
-                expect(Pin.lastWarningText).to(contain(["vertically(10%)", "won't be applied", "already been set to 10"]))
+                expect(Pin.lastWarningText).to(contain(["vertically(10%) bottom", "won't be applied", "already been set to 10"]))
             }
         }
     }

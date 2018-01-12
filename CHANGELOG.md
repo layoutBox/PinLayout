@@ -7,6 +7,24 @@
 
 # Change Log
 
+## [1.5.5](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.5)
+Released on 2018-01-12
+
+Add methods:
+
+* **`all(_ value: CGFloat)`**  
+The value specifies the **top, bottom, left and right edges** distance from the superview's corresponding edge in pixels. 
+Similar to calling `view.top(value).bottom(value).left(value).right(value)`. 
+
+* **`horizontally(_ value: CGFloat)`** / **`horizontally(_ percent: Percent)`** 
+The value specifies the **left and right edges** on its superview's corresponding edges in pixels (or in percentage of its superview's width).  
+Similar to calling `view.left(value).right(value)`. 
+
+* **`vertically(_ value: CGFloat)`**  / **`vertically(_ percent: Percent)`** 
+The value specifies the ** top and bottom edges** on its superview's corresponding edges in pixels (or in percentage of its superview's height).  
+Similar to calling `view.top(value).bottom(value)`. 
+	* Added by [Olivier Pineau](https://github.com/OlivierPineau) in Pull Request [#111](https://github.com/mirego/PinLayout/pull/111) 
+
 ## [1.5.4](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.4)
 Released on 2017-12-28
 

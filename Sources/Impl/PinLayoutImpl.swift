@@ -270,15 +270,15 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func vertically(_ value: CGFloat) -> PinLayout {
-        top(value, { return "vertically(\(value)) top" })
-        bottom(value, { return "vertically(\(value)) bottom" })
+        top(value, { return "vertically(\(value)) top coordinate" })
+        bottom(value, { return "vertically(\(value)) bottom coordinate" })
         return self
     }
 
     @discardableResult
     func vertically(_ percent: Percent) -> PinLayout {
-        top(percent, { return "vertically(\(percent.description)) top" })
-        bottom(percent, { return "vertically(\(percent.description)) bottom" })
+        top(percent, { return "vertically(\(percent.description)) top coordinate" })
+        bottom(percent, { return "vertically(\(percent.description)) bottom coordinate" })
         return self
     }
 

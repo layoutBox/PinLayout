@@ -469,6 +469,11 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.all().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 380.0, height: 380.0)))
             }
+
+            it("should adjust the aView") {
+                aView.pin.all(10)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 380.0, height: 380.0)))
+            }
             
             it("should adjust the bViewChild") {
                 bViewChild.pin.all()
@@ -477,6 +482,11 @@ class PinEdgesSpec: QuickSpec {
             
             it("should adjust the bViewChild") {
                 bViewChild.pin.all().margin(10)
+                expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 60.0)))
+            }
+
+            it("should adjust the bViewChild") {
+                bViewChild.pin.all(10)
                 expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 60.0)))
             }
             
@@ -512,6 +522,16 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.horizontally().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 380.0, height: 100.0)))
             }
+
+            it("should adjust the aView") {
+                aView.pin.horizontally(10)
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 100.0, width: 380.0, height: 100.0)))
+            }
+
+            it("should adjust the aView") {
+                aView.pin.horizontally(10%)
+                expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 320.0, height: 100.0)))
+            }
             
             it("should adjust the bViewChild") {
                 bViewChild.pin.horizontally()
@@ -522,6 +542,16 @@ class PinEdgesSpec: QuickSpec {
                 bViewChild.pin.horizontally().margin(10)
                 expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 20.0)))
             }
+
+            it("should adjust the bViewChild") {
+                bViewChild.pin.horizontally(10)
+                expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 20.0)))
+            }
+
+            it("should adjust the bViewChild") {
+                bViewChild.pin.horizontally(10%)
+                expect(bViewChild.frame).to(equal(CGRect(x: 11.0, y: 10.0, width: 88.0, height: 20.0)))
+            }
             
             it("should warn") {
                 aView.pin.left(20).horizontally()
@@ -530,6 +560,22 @@ class PinEdgesSpec: QuickSpec {
             it("should warn") {
                 aView.pin.right(20).horizontally()
                 expect(Pin.lastWarningText).to(contain(["horizontally() right coordinate", "won't be applied", "already been set to 20"]))
+            }
+            it("should warn") {
+                aView.pin.left(10).horizontally(20)
+                expect(Pin.lastWarningText).to(contain(["horizontally(20.0) left coordinate", "won't be applied", "already been set to 10"]))
+            }
+            it("should warn") {
+                aView.pin.right(10).horizontally(20)
+                expect(Pin.lastWarningText).to(contain(["horizontally(20.0) right coordinate", "won't be applied", "already been set to 10"]))
+            }
+            it("should warn") {
+                aView.pin.left(10).horizontally(10%)
+                expect(Pin.lastWarningText).to(contain(["horizontally(10%) left coordinate", "won't be applied", "already been set to 10"]))
+            }
+            it("should warn") {
+                aView.pin.right(10).horizontally(10%)
+                expect(Pin.lastWarningText).to(contain(["horizontally(10%) right coordinate", "won't be applied", "already been set to 10"]))
             }
         }
         
@@ -545,6 +591,16 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.vertically().margin(10)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 380.0)))
+            }
+
+            it("should adjust the aView") {
+                aView.pin.vertically(10)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 380.0)))
+            }
+
+            it("should adjust the aView") {
+                aView.pin.vertically(10%)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 40.0, width: 200.0, height: 320.0)))
             }
             
             it("should adjust the bViewChild") {
@@ -564,6 +620,22 @@ class PinEdgesSpec: QuickSpec {
             it("should warn") {
                 aView.pin.bottom(20).vertically()
                 expect(Pin.lastWarningText).to(contain(["vertically() bottom coordinate", "won't be applied", "already been set to 20"]))
+            }
+            it("should warn") {
+                aView.pin.top(10).vertically(20)
+                expect(Pin.lastWarningText).to(contain(["vertically(20.0) top coordinate", "won't be applied", "already been set to 10"]))
+            }
+            it("should warn") {
+                aView.pin.bottom(10).vertically(20)
+                expect(Pin.lastWarningText).to(contain(["vertically(20.0) bottom coordinate", "won't be applied", "already been set to 10"]))
+            }
+            it("should warn") {
+                aView.pin.top(10).vertically(10%)
+                expect(Pin.lastWarningText).to(contain(["vertically(10%) top coordinate", "won't be applied", "already been set to 10"]))
+            }
+            it("should warn") {
+                aView.pin.bottom(10).vertically(10%)
+                expect(Pin.lastWarningText).to(contain(["vertically(10%) bottom coordinate", "won't be applied", "already been set to 10"]))
             }
         }
     }

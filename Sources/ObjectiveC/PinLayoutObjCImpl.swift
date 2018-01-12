@@ -209,9 +209,19 @@ import UIKit
         impl?.horizontally()
         return self
     }
+
+    public func horizontally(_ value: CGFloat) -> PinLayoutObjC {
+        impl?.horizontally(value)
+        return self
+    }
     
     public func vertically() -> PinLayoutObjC {
         impl?.vertically()
+        return self
+    }
+
+    public func vertically(_ value: CGFloat) -> PinLayoutObjC {
+        impl?.vertically(value)
         return self
     }
     

@@ -354,7 +354,7 @@ This example is similar to the previous example, but pins edges directly on supe
     viewA.pin.all().margin(10)
 ``` 
 
-The same results can be achieved using:
+The same results can also be achieved using:
 
 ```swift
     view.pin.all(10)

@@ -54,7 +54,6 @@ class Coordinates {
     }
     
     static func center(_ view: UIView) -> CGPoint {
-        let rect = getUntransformedViewRect(view)
         return CGPoint(x: hCenter(view), y: vCenter(view))
     }
 

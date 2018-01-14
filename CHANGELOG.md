@@ -7,6 +7,12 @@
 
 # Change Log
 
+## [1.5.6](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.6)
+Released on 2018-01-14
+
+* Fix a compilation warning
+
+
 ## [1.5.5](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.5)
 Released on 2018-01-12
 

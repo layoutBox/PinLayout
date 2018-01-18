@@ -455,5 +455,45 @@ class TransformSpec: QuickSpec {
                 expect(rootView.bounds).to(equal(CGRect(x: 0, y: 0, width: 400.0, height: 400.0)))
             }
         }
+
+        describe("Modifying layer.anchorPoint change the view.center position") {
+            it("aView: Default layer.anchorPoint (0.5, 0.5)") {
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 100.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 150, y: 150)))
+            }
+
+            it("aView: With layer.anchorPoint change (0.25, 0.25)") {
+                aView.layer.anchorPoint = CGPoint(x: 0.25, y: 0.25) // default is 0.5, 0.5 (Center)
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 100.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 125, y: 125)))
+            }
+
+            it("aView: With layer.anchorPoint change (1, 1)") {
+                aView.layer.anchorPoint = CGPoint(x: 1, y: 1) // default is 0.5, 0.5 (Center)
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 100.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 200, y: 200)))
+            }
+
+            it("aView: With layer.anchorPoint change (0, 0) + transform scale 2") {
+                aView.layer.anchorPoint = CGPoint(x: 0, y: 0) // default is 0.5, 0.5 (Center)
+                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 200.0, height: 200.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 100, y: 100)))
+            }
+
+        }
     }
 }

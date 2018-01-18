@@ -58,6 +58,7 @@
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
+		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		6070E55EDEAA3DC58C0B4CDD /* Pods-PinLayoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
 		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
+		DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 				242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */,
 				245C1DA11FEC4FC6007594F7 /* TransformSpec.swift */,
+				DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */,
 				240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */,
 				248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */,
 			);
@@ -525,6 +528,7 @@
 				248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */,
 				240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */,
 				245C1DA31FEC4FCC007594F7 /* TransformSpec.swift in Sources */,
+				DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */,
 				242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */,
 				2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */,
 				242723731F008BF7006A5C3A /* MinMaxWidthHeightSpec.swift in Sources */,

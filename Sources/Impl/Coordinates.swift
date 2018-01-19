@@ -94,7 +94,10 @@ class Coordinates {
          the view's transform. So view's transforms won't be affected/altered by PinLayout.
          */
         let adjustedRect = Coordinates.adjustRectToDisplayScale(rect)
-        view.center = CGPoint(x: adjustedRect.midX, y: adjustedRect.midY)
+
+        // NOTE: The center is offset by the layer.anchorPoint, so we have to take it into account.
+        view.center = CGPoint(x: adjustedRect.origin.x + (adjustedRect.width * view.layer.anchorPoint.x),
+                              y: adjustedRect.origin.y + (adjustedRect.height * view.layer.anchorPoint.y))
         view.bounds = CGRect(origin: .zero, size: adjustedRect.size)
     }
     

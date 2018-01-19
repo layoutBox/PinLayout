@@ -7,6 +7,16 @@
 
 # Change Log
 
+## [1.5.7](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.7)
+Released on 2018-01-19
+
+* Fix an issue that was affecting UIScrollViews. PinLayout now set only the bounds's size and keep the origin.  
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#115](https://github.com/mirego/PinLayout/pull/115) 
+
+* Handle correctly view's `layer.anchorPoint`. PinLayout now update correctly the view position when the view's layer.anchorPoint has been modified, i.e. when it is not its default value (0.5, 0.5).
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#114](https://github.com/mirego/PinLayout/pull/114) 
+
+
 ## [1.5.6](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.6)
 Released on 2018-01-14
 

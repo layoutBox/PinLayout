@@ -109,10 +109,12 @@ class Coordinates {
          By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
          the view's transform. So view's transforms won't be affected/altered by PinLayout.
          */
-        let bounds = view.bounds
-        let origin = CGPoint(x: view.center.x - bounds.width / 2, y: view.center.y - bounds.height / 2)
+        let size = view.bounds.size
+        // See setUntransformedViewRect(...) for details about this calculation.
+        let origin = CGPoint(x: view.center.x - (size.width * view.layer.anchorPoint.x),
+                             y: view.center.y - (size.height * view.layer.anchorPoint.y))
 
-        return CGRect(origin: origin, size: bounds.size)
+        return CGRect(origin: origin, size: size)
     }
 
     static func roundFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {

@@ -7,6 +7,12 @@
 
 # Change Log
 
+## [1.5.8](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.8)
+Released on 2018-01-20
+
+* Handle layout relative to a view with a transforms and/or a modified anchorPoint.  
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#116](https://github.com/mirego/PinLayout/pull/116) 
+
 ## [1.5.7](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.7)
 Released on 2018-01-19
 
@@ -15,13 +21,6 @@ Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#115](https://g
 
 * Handle correctly view's `layer.anchorPoint`. PinLayout now update correctly the view position when the view's layer.anchorPoint has been modified, i.e. when it is not its default value (0.5, 0.5).
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#114](https://github.com/mirego/PinLayout/pull/114) 
-
-
-## [1.5.6](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.6)
-Released on 2018-01-14
-
-* Fix a compilation warning
-
 
 ## [1.5.5](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.5)
 Released on 2018-01-12

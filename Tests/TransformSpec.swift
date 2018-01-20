@@ -493,7 +493,68 @@ class TransformSpec: QuickSpec {
                 expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
                 expect(aView.center).to(equal(CGPoint(x: 100, y: 100)))
             }
+        }
 
+        describe("when a view is layouted relative to a view with a modified anchorPoint and/or scale transform") {
+            it("should layout the bView correctly below the relative view with an anchorPoint of (0.5, 0.5)") {
+                aView.pin.top(100).left(100).width(100).height(100)
+                bView.pin.below(of: aView, aligned: .left)
+
+                expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 100.0)))
+
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 200.0, width: 100.0, height: 50.0)))
+                expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
+                expect(bView.center).to(equal(CGPoint(x: 150, y: 225)))
+            }
+
+            it("should layout the bView correctly below the relative view with an anchorPoint of (0.25, 0.25)") {
+                aView.layer.anchorPoint = CGPoint(x: 0.25, y: 0.25) // default is 0.5, 0.5 (Center)
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                bView.pin.below(of: aView, aligned: .left)
+
+                expect(aView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 100.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 125, y: 125)))
+
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 200.0, width: 100.0, height: 50.0)))
+                expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
+                expect(bView.center).to(equal(CGPoint(x: 150, y: 225)))
+            }
+
+            it("should layout the bView correctly below the relative view with an anchorPoint of (0, 1) and a scale x2") {
+                aView.layer.anchorPoint = CGPoint(x: 0, y: 1) // default is 0.5, 0.5 (Center)
+                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                bView.pin.below(of: aView, aligned: .left)
+
+                expect(aView.frame).to(equal(CGRect(x: 100.0, y: 0.0, width: 200.0, height: 200.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 100, y: 200)))
+
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 200.0, width: 100.0, height: 50.0)))
+                expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
+                expect(bView.center).to(equal(CGPoint(x: 150, y: 225)))
+            }
+
+            it("should layout the bView correctly with aView and bView modified anchorPoint + scale") {
+                aView.layer.anchorPoint = CGPoint(x: 0, y: 1) // default is 0.5, 0.5 (Center)
+                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.pin.top(100).left(100).width(100).height(100)
+
+                bView.layer.anchorPoint = CGPoint(x: 0, y: 0) // default is 0.5, 0.5 (Center)
+                bView.transform = CGAffineTransform(scaleX: 4, y: 2)
+                bView.pin.below(of: aView, aligned: .left)
+
+                expect(aView.frame).to(equal(CGRect(x: 100.0, y: 0.0, width: 200.0, height: 200.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 100.0)))
+                expect(aView.center).to(equal(CGPoint(x: 100, y: 200)))
+
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 200.0, width: 400.0, height: 100.0)))
+                expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
+                expect(bView.center).to(equal(CGPoint(x: 100, y: 200)))
+            }
         }
     }
 }

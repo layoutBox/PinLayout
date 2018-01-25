@@ -806,7 +806,7 @@ Set the view’s size to match the referenced view’s size
 **Method:**
 
 * **`sizeToFit(_ fitType: FitType)`**  
-The method adjust the view's size based on the view's `sizeThatFits()` method result.
+The method adjust the view's size based on the view's `sizeThatFits()` method result.  
      PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
      
      Notes:
@@ -815,13 +815,14 @@ The method adjust the view's size based on the view's `sizeThatFits()` method re
      
 	**Parameter `fitType`:** Identify the reference dimension (width / height) that will be used to adjust the view's size.  
 
- * **`.width`**: The method adjust the view's size based on the **reference width**.
-        * If properties related to the width have been pinned (e.g: width, left & right, margins, ...), the **reference width will be determined by these properties**, if not the **current view's width** will be used.
-        * The resulting width will always **match the reference width**.
+ * **`.width`**: The method adjust the view's size based on the **reference width**.  
+     * If properties related to the width have been pinned (e.g: width, left & right, margins, ...), the **reference width will be determined by these properties**, if not the **current view's width** will be used.
+     * The resulting width will always **match the reference width**.
      
- * **`.height`**: The method adjust the view's size based on the **reference height**.
-         * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...), the **reference height will be determined by these properties**, if not the **current view's height**  will be used.
-         * The resulting height will always **match the reference height**.
+ * **`.height`**: The method adjust the view's size based on the **reference height**.  
+ 
+     * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...), the **reference height will be determined by these properties**, if not the **current view's height**  will be used.
+     * The resulting height will always **match the reference height**.
      
  * **`.widthFlexible`**: Similar to `.width`, except that PinLayout won't constrain the resulting width to match the reference width. The resulting width may be smaller of bigger depending on the view's sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if it's string is smaller than the reference width.
      

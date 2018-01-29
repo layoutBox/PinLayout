@@ -10,7 +10,7 @@
 ## [1.5.8](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.8)
 Released on 2018-01-20
 
-* Handle layout relative to a view with a transforms and/or a modified anchorPoint.  
+* Handle layout relative to a view with a transform and/or a modified anchorPoint.  
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#116](https://github.com/mirego/PinLayout/pull/116) 
 
 ## [1.5.7](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.7)

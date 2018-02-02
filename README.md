@@ -142,13 +142,11 @@ This example shows how easily PinLayout can adjust its layout based on the view'
 	* You can add iterations and enumerations (for/while/forEach/...)
 * Layout one view at a time. Make it simple to code and debug.
 * Concise syntax. Layout most views using a single line. 
-* Support left to right (LTR) and right to left (RTL) languages.
 
 * Stateless
 	* PinLayout doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 
 Each view can use the layout system that better suit it  (PinLayout, constraints, flexbox, grids, …)
-A view can be layouted using PinLayout and later with another method/framework.
 
 * No Auto layout and constraints
 	* Constraints are verbose and hard for a human brains to understand when there are many views implicated, even with sugar-syntax frameworks.
@@ -162,11 +160,6 @@ A view can be layouted using PinLayout and later with another method/framework.
 * Minimize as much as possible calculations and constants when layouting views. But it is always possible to add advanced computation if required.
 
 * Method's name match as much as possible other layout frameworks, including [FlexLayout](https://github.com/layoutBox/FlexLayout)/flexbox, CSS, React Native, …
-	* margin, marginHorizontal, marginVertical, marginTop, marginLeft, marginBottom, marginRight
-	* top, left, bottom, right, width, height  
-	* As in CSS and flexbox, right and bottom coordinates are offset from container view's right and bottom edges.
-
-* Shorter possible commands to layout views, but keeping English phrasing almost valid.
 
 <br>
 
@@ -182,9 +175,7 @@ A view can be layouted using PinLayout and later with another method/framework.
 
 PinLayout's performance has been measured using the [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark). FlexLayout and [PinLayout](https://github.com/mirego/PinLayout) has been added to this benchmark to compare their performance. 
 
-As you can see in the following chart, PinLayout and FlexLayout and performance are faster or equal to manual layouting, and **between 12x and 16x faster than auto layout**, and this for all types of iPhone (5/6/6S/7)
-
-These results also mean that **PinLayout is by far faster than any layout frameworks built over auto layout**. 
+As you can see in the following chart, PinLayout are faster or equal to manual layouting, and **between 12x and 16x faster than auto layout**, and this for all types of iPhone (5/6/6S/7/8)
 
 [See here a more complete details, results and explanation of the benchmark](docs/Benchmark.md).
 
@@ -230,55 +221,67 @@ PinLayout can position a view’s edge relative to its superview edges.
 
 **Methods**:
 
-* **`top(_ value: CGFloat)`**  / **`top(_ percent: Percent)`**  
-The value specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height).
+* **`top(_ value: CGFloat)`**  / **`top(_ percent: Percent)`**  / **`top()`**  
+The value specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height).  
+`top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge.
 
-* **`vCenter(_ value: CGFloat)`** / **`vCenter(_ percent: Percent)`**  
-The value specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive value move the view down and a negative value move it up relative to the superview's center.
+* **`vCenter(_ value: CGFloat)`** / **`vCenter(_ percent: Percent)`** / **`vCenter()`**  
+The value specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive value move the view down and a negative value move it up relative to the superview's center.  
+`vCenter()` is similar to calling `vCenter(0)`, it position vertically the view's center directly on its superview vertical center.
 
-* **`bottom(_ value: CGFloat)`** / **`bottom(_ percent: Percent)`**   
-The value specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height).
+* **`bottom(_ value: CGFloat)`** / **`bottom(_ percent: Percent)`** / **`bottom()`**     
+The value specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height).  
+`bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge.
 
-* **`left(_ value: CGFloat)`** / **`left(_ percent: Percent)`**   
-The value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).
+* **`left(_ value: CGFloat)`** / **`left(_ percent: Percent)`** / **`left()`**   
+The value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).  
+`left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge.
 
-* **`hCenter(_ value: CGFloat)`** /**`hCenter(_ percent: Percent)`**   
-The value specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). 
-A positive value move the view to the right  and a negative value move it to the left relative to the superview's center.
+* **`hCenter(_ value: CGFloat)`** /**`hCenter(_ percent: Percent)`** / **`hCenter()`**   
+The value specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). A positive value move the view to the right  and a negative value move it to the left relative to the superview's center.  
+`hCenter()` is similar to calling `hCenter(0)`, it position horizontally the view's center directly on its superview horizontal center. 
 
-* **`right(_ value: CGFloat)`** / **`right(_ percent: Percent)`**  
-The value specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width).
+* **`right(_ value: CGFloat)`** / **`right(_ percent: Percent)`** / **`right()`**  
+The value specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width).  
+`right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge.
 
-* **`start(_ value: CGFloat)`** / **`start(_ percent: Percent)`** :left_right_arrow:  
+* **`start(_ value: CGFloat)`** / **`start(_ percent: Percent)`** / **`start()`**:left_right_arrow:  
 In LTR direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).   
-In RTL direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).
+In RTL direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
+`start()` is similar to calling `start(0)`.
 
-* **`end(_ value: CGFloat)`** /  **`end(_ percent: Percent)`** :left_right_arrow:  
+* **`end(_ value: CGFloat)`** /  **`end(_ percent: Percent)`** / **`end()`** :left_right_arrow:  
 In LTR direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
 In RTL direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).   
+`end()` is similar to calling `end(0)`.
 
 **Methods pinning multiple edges**:
 
-* **`all(_ value: CGFloat)`**  
+* **`all(_ value: CGFloat)`** / **`all()`**  
 The value specifies the **top, bottom, left and right edges** distance from the superview's corresponding edge in pixels. 
-Similar to calling `view.top(value).bottom(value).left(value).right(value)`. 
+Similar to calling `view.top(value).bottom(value).left(value).right(value)`.  
+`all()` is similar to calling `all(0)`. 
 
-* **`horizontally(_ value: CGFloat)`** / **`horizontally(_ percent: Percent)`** 
+* **`horizontally(_ value: CGFloat)`** / **`horizontally(_ percent: Percent)`** / **`horizontally()` 
 The value specifies the **left and right edges** on its superview's corresponding edges in pixels (or in percentage of its superview's width).  
-Similar to calling `view.left(value).right(value)`. 
+`horizontally()` is similar to calling `horizontally(0)`. 
 
-* **`vertically(_ value: CGFloat)`**  / **`vertically(_ percent: Percent)`** 
+* **`vertically(_ value: CGFloat)`**  / **`vertically(_ percent: Percent)`** / **`vertically()`** 
 The value specifies the ** top and bottom edges** on its superview's corresponding edges in pixels (or in percentage of its superview's height).  
-Similar to calling `view.top(value).bottom(value)`. 
+`vertically()` is similar to calling `vertically(0)`. 
 
 
 ###### Usage Examples:
 
 ```swift
-    view.pin.top(20).bottom(20)	  // The view has a top margin and a bottom margin of 20 pixels 
-    view.pin.top(25%).hCenter(0)   // The view is centered horizontally
-    view.pin.left(12).vCenter(0)   // The view is centered vertically
-    view.pin.start(20).end(20)
+   view.pin.top(20).bottom(20)   // The view has a top margin and a bottom margin of 20 pixels 
+   view.pin.top().left()         // The view is pinned directly on its parent top and left edge
+   view.pin.top(25%).hCenter()   // The view is centered horizontally with a top margin of 25%
+   view.pin.left(12).vCenter()   // The view is centered vertically
+   view.pin.start(20).end(20)    // Support right-to-left languages.
+   view.pin.all()                // The view fill completely its parent (horizontally and vertically)
+   view.pin.horizontally(20)     // The view is filling its parent width with a left and right margin.
+   view.pin.top().horizontally() // The view is pinned at the top edge of its parent and fill it horizontally.
 ```
 
 ###### Example:
@@ -290,71 +293,6 @@ This example layout the view A to fit its superview frame with a margin of 10 pi
 ``` 
 
 Another shorter possible solution using `all()`:
-
-```swift
-    view.pin.all(10)
-```
-
-
-<br/>
-
-<a name="position_edges"></a>
-### Position view directly on superview’s edges 
-
-PinLayout also has a shorter version that pins a view’s edge **directly** on its superview's corresponding edge.
-
-**Methods**:
-
-* **`top()`**  
-Position the view top edge directly on its superview top edge. Similar to calling `top(0)`.
-* **`vCenter()`**  
-Position vertically the view's center directly on its superview vertical center. Similar to calling `vCenter(0)`.
-* **`bottom()`**  
-Position the view bottom edge directly on its superview top edge. Similar to calling `bottom(0)`.
-* **`left()`**  
-Position the view left edge directly on its superview left edge. Similar to calling `left(0)`.
-* **`hCenter()`**  
-Position horizontally the view's center directly on its superview horizontal center. Similar to calling `hCenter(0)`.
-* **`right()`**  
-Position the view right edge directly on its superview right edge. Similar to calling `right(0)`.
-* **`start()`**:left_right_arrow:  
-Position the view left edge directly on its superview left edge in LTR direction or right edge directly on its superview right edge in RTL direction. Similar to calling `start(0)`.
-* **`end()`**:left_right_arrow:  
-Position the view right edge directly on its superview right edge in LTR direction or left edge directly on its superview left edge in RTL direction. Similar to calling `end(0)`.
-
-**Methods pinning multiple edges**:
-
-* **`all()`**  
-Pin **all edges** on its superview's corresponding edges (top, bottom, left, right).  
-Similar to calling `view.top().bottom().left().right()`. 
-* **`horizontally()`**  
-Pin the **left and right edges** on its superview's corresponding edges.  
-Similar to calling `view.left().right()`. 
-* **`vertically()`**  
-Pin the **top and bottom edges** on its superview's corresponding edges.  
-Similar to calling `view.top().bottom()`. 
-
-
-###### Usage examples:
-```swift
-	view.pin.top().left()
-	view.pin.bottom().right()
-	view.pin.hCenter().vCenter()
-	view.pin.start().end()
-	view.pin.all()
-	view.pin.top().horizontally()
-```
-
-###### Example:
-This example is similar to the previous example, but pins edges directly on superview’s edges. It will layout the view A to fit its superview frame with a margin of 10 pixels all around.
-
-![](docs/02-example-superview-edge.png)
-
-```swift
-    viewA.pin.all().margin(10)
-``` 
-
-The same results can also be achieved using:
 
 ```swift
     view.pin.all(10)

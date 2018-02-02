@@ -10,6 +10,11 @@ jobs:
     macos:
       xcode: "9.2.0"
 
+  dependencies:
+    pre:                                                                                                                                                                       
+      - rvm install rubygems 2.4.8 --force                                                                                                                                     
+      - gem install bundler -v 1.11.2
+
     steps:
       - checkout
 
@@ -21,7 +26,7 @@ jobs:
       # Build the app and run tests
       - run:
           name: Build and run tests
-          command: fastlane travis
+          command: bundle exec fastlane travis
           environment:
             SCAN_DEVICE: iPhone 6
             SCAN_SCHEME: WebTests

@@ -245,7 +245,7 @@ The value specifies the distance horizontally of the view's center related to th
 The value specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width).  
 `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge.
 
-* **`start(_ value: CGFloat)`** / **`start(_ percent: Percent)`** / **`start()`**:left_right_arrow:  
+* **`start(_ value: CGFloat)`** / **`start(_ percent: Percent)`** / **`start()`** :left_right_arrow:  
 In LTR direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).   
 In RTL direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
 `start()` is similar to calling `start(0)`.
@@ -262,7 +262,7 @@ The value specifies the **top, bottom, left and right edges** distance from the 
 Similar to calling `view.top(value).bottom(value).left(value).right(value)`.  
 `all()` is similar to calling `all(0)`. 
 
-* **`horizontally(_ value: CGFloat)`** / **`horizontally(_ percent: Percent)`** / **`horizontally()` 
+* **`horizontally(_ value: CGFloat)`** / **`horizontally(_ percent: Percent)`** / **`horizontally()`**   
 The value specifies the **left and right edges** on its superview's corresponding edges in pixels (or in percentage of its superview's width).  
 `horizontally()` is similar to calling `horizontally(0)`. 
 

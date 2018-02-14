@@ -25,7 +25,11 @@ import UIKit
 // MARK: - PinLayout UIView's extension
 public extension UIView {
     public var pin: PinLayout {
-        return PinLayoutImpl(view: self)
+        return PinLayoutImpl(view: self, keepTransform: true)
+    }
+
+    public var pinFrame: PinLayout {
+        return PinLayoutImpl(view: self, keepTransform: false)
     }
 
     public var anchor: AnchorList {

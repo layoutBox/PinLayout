@@ -35,7 +35,7 @@ extension PinLayoutImpl {
     private func apply(onView view: UIView) {
         displayLayoutWarnings()
         
-        var newRect = Coordinates.getUntransformedViewRect(view)
+        var newRect = Coordinates.getViewRect(view, keepTransform: keepTransform)
         
         handlePinEdges()
         
@@ -127,7 +127,7 @@ extension PinLayoutImpl {
          By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
          the view's transform. So view's transforms won't be affected/altered by PinLayout.
         */
-        Coordinates.setUntransformedViewRect(view, toRect: newRect)
+        Coordinates.setViewRect(view, toRect: newRect, keepTransform: keepTransform)
     }
     
     private func handlePinEdges() {

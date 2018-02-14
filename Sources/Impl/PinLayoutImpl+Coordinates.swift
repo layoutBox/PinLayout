@@ -374,7 +374,7 @@ extension PinLayoutImpl {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
         } else if referenceSuperview == layoutSuperview.superview {
-            let layoutSuperviewRect = Coordinates.getUntransformedViewRect(layoutSuperview)
+            let layoutSuperviewRect = Coordinates.getViewRect(layoutSuperview, keepTransform: keepTransform)
             return CGPoint(x: point.x - layoutSuperviewRect.origin.x,
                            y: point.y - layoutSuperviewRect.origin.y)
         // TOOD: Handle all cases. computeCoordinates should compute coordinates using only untransformed
@@ -391,7 +391,8 @@ extension PinLayoutImpl {
         anchors.forEach({ (anchor) in
             let anchor = anchor as! AnchorImpl
             if let referenceSuperview = referenceSuperview(anchor.view, context) {
-                results.append(computeCoordinates(anchor.point, layoutSuperview, anchor.view, referenceSuperview))
+                results.append(computeCoordinates(anchor.point(keepTransform: keepTransform),
+                                                  layoutSuperview, anchor.view, referenceSuperview))
             }
         })
         
@@ -408,7 +409,8 @@ extension PinLayoutImpl {
         guard let layoutSuperview = layoutSuperview(context) else { return nil }
         guard let referenceSuperview = referenceSuperview(edge.view, context) else { return nil }
         
-        return computeCoordinates(CGPoint(x: edge.x, y: 0), layoutSuperview, edge.view, referenceSuperview).x
+        return computeCoordinates(CGPoint(x: edge.x(keepTransform: keepTransform), y: 0),
+                                  layoutSuperview, edge.view, referenceSuperview).x
     }
     
     internal func computeCoordinate(forEdge edge: VerticalEdge, _ context: Context) -> CGFloat? {
@@ -416,7 +418,8 @@ extension PinLayoutImpl {
         guard let layoutSuperview = layoutSuperview(context) else { return nil }
         guard let referenceSuperview = referenceSuperview(edge.view, context) else { return nil }
         
-        return computeCoordinates(CGPoint(x: 0, y: edge.y), layoutSuperview, edge.view, referenceSuperview).y
+        return computeCoordinates(CGPoint(x: 0, y: edge.y(keepTransform: keepTransform)),
+                                  layoutSuperview, edge.view, referenceSuperview).y
     }
 }
 

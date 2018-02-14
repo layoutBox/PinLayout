@@ -1119,6 +1119,19 @@ NOTE: In that in that particular situation, the same results could have been ach
 
 <br>
 
+<a name="uiview_tranform"></a>
+## UIView's transforms
+
+PinLayout set the position and the size of the non-transformed view. So PinLayout won't affect/change the view's transforms.
+
+For example:
+
+```swift
+	view.pin.left().width(100%).pinEdges().marginHorizontal(20)
+```
+
+
+
 <a name="warnings"></a>
 ## Warnings 
 ### PinLayout's warnings
@@ -1359,9 +1372,6 @@ PinLayout also expose an Objective-C interface slightly different than the Swift
 	let percentageValue: CGFloat = 50
 	view.pin.width(percentageValue%)
 	``` 
-* **Q: How does PinLayout handle UIView's transforms?**  
-  **R:** PinLayout set the position and the size of the non-transformed view. So PinLayout won't affect/change the view's transforms.
-
 <br>
 
 <a name="comments"></a>

@@ -87,6 +87,21 @@ class TransformSpec: QuickSpec {
                 aView.transform = CGAffineTransform.identity
                 expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 50.0)))
             }
+
+            it("Parent: No transform  Child: Scale transform") {
+                rootView.transform = .identity
+
+                aView.pin.top(100).left(100).width(100).height(50)
+
+                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+
+                // The view should keep its transform
+                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 75.0, width: 200.0, height: 100.0)))
+
+                // If we clear the transform, the view should retrieve the original frame.
+                aView.transform = CGAffineTransform.identity
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 50.0)))
+            }
             
             it("Parent: No transform  Child: No transform") {
                 rootView.transform = .identity
@@ -554,6 +569,36 @@ class TransformSpec: QuickSpec {
                 expect(bView.frame).to(equal(CGRect(x: 100.0, y: 200.0, width: 400.0, height: 100.0)))
                 expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
                 expect(bView.center).to(equal(CGPoint(x: 100, y: 200)))
+            }
+        }
+
+        describe("Using pinFrame") {
+            it("Parent: No transform  Child: No transform") {
+                rootView.transform = .identity
+                aView.transform = .identity
+
+                aView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 50.0)))
+            }
+
+            it("Parent: No transform  Child: No transform") {
+                rootView.transform = .identity
+                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+
+                aView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 10.0, height: 50.0)))
+            }
+
+            it("Parent: No transform  Child: No transform") {
+                rootView.transform = .identity
+                aView.frame = CGRect(x: 100, y: 0, width: 400, height: 100)
+                aView.transform = .init(rotationAngle: CGFloat.pi / 2)
+
+                aView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 10.0, height: 50.0)))
             }
         }
     }

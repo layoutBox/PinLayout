@@ -22,7 +22,7 @@ import Foundation
 #if os(iOS) || os(tvOS)
 import UIKit
     
-final class PinLayoutImpl: PinLayout {
+class PinLayoutImpl: PinLayout {
     internal let view: UIView
     internal let keepTransform: Bool
 

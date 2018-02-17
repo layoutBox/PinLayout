@@ -24,8 +24,17 @@ public struct Percent {
 }
 
 postfix operator %
+
 public postfix func % (v: CGFloat) -> Percent {
     return Percent(value: v)
+}
+
+public postfix func % (v: Float) -> Percent {
+    return Percent(value: CGFloat(v))
+}
+
+public postfix func % (v: Double) -> Percent {
+    return Percent(value: CGFloat(v))
 }
 
 public postfix func % (v: Int) -> Percent {

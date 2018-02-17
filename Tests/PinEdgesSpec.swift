@@ -410,14 +410,6 @@ class PinEdgesSpec: QuickSpec {
                 expect(Pin.lastWarningText).to(contain(["vCenter", "won't be applied", "top"]))
             }
             
-            it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 200.0, height: 10))
-                unAttachedView.pin.vCenter(20%)
-                
-                expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 200.0, height: 10)))
-                expect(Pin.lastWarningText).to(contain(["vCenter", "won't be applied", "view must be added"]))
-            }
-            
             it("should adjust the aView") {
                 aView.pin.vCenter(20%)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 230.0, width: 200.0, height: 100.0)))

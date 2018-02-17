@@ -959,7 +959,9 @@ extension PinLayoutImpl {
         if let superview = view.superview {
             return Coordinates.getViewRect(superview, keepTransform: keepTransform)
         } else {
-            warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
+            // Disable this warning: Using XIB, layoutSubview() is called even before views have been
+            // added, and there is no way to modify that strange behaviour of UIKit.
+            //warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }
@@ -968,7 +970,9 @@ extension PinLayoutImpl {
         if let superview = view.superview {
             return superview
         } else {
-            warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
+            // Disable this warning: Using XIB, layoutSubview() is called even before views have been
+            // added, and there is no way to modify that strange behaviour of UIKit.
+            //warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }

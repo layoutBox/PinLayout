@@ -61,8 +61,7 @@ platform :ios do
 
   lane :tests do
     scan(scheme: "PinLayout", 
-         workspace: "PinLayout.xcworkspace",
-         destination: "name=iPhone 8 Plus,OS=11.2"
+         workspace: "PinLayout.xcworkspace"
          )
   end
 

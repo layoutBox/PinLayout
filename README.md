@@ -1147,7 +1147,7 @@ Until now `UIView.pin` was used to layout views, but there's also another proper
 
 * `pin`: Set the position and the size of the **non-transformed view**. The size and position is applied **before the transform**. This is particularly useful when you want to animate a view using a transform without modifying its layout.
 
-* `.pinFrame`: Set the position and the size on the **transformed view**. The size and position is applied **after the transform**.
+* `pinFrame`: Set the position and the size on the **transformed view**. The size and position is applied **after the transform**.
 
 
 #### Examples 

@@ -7,6 +7,21 @@
 
 # Change Log
 
+## [1.5.9](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.9)
+Released on 2018-02-18
+
+#### **`UIView.pin`** versus **`UIView.pinFrame`**
+Until now `UIView.pin` was used to layout views, but there's also another property called `UIView.pinFrame` that does something slightly different in situations where the view has a transform (`UIView.transform`, scaling, rotation, ...).
+
+* `pin`: Set the position and the size of the **non-transformed view**. The size and position is applied **before the transform**. This is particularly useful when you want to animate a view using a transform without modifying its layout.
+
+* `.pinFrame`: Set the position and the size on the **transformed view**. The size and position is applied **after the transform**.
+
+See https://github.com/mirego/PinLayout#uiviews-transforms for more informations.
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#122](https://github.com/mirego/PinLayout/pull/122) 
+
+
 ## [1.5.8](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.8)
 Released on 2018-01-20
 

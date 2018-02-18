@@ -29,26 +29,7 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DFEE3CD6202BDEEF004AEC4F"
-               BuildableName = "PinLayoutTestsTVOS.xctest"
-               BlueprintName = "PinLayoutTestsTVOS"
-               ReferencedContainer = "container:PinLayout.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayoutTVOS.framework"
-            BlueprintName = "PinLayoutTVOS"
-            ReferencedContainer = "container:PinLayout.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

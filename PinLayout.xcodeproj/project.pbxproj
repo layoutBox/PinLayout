@@ -50,8 +50,6 @@
 		249EFE891E64FB4C00165E39 /* PinLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */; };
 		24B02B091F2A713000C18179 /* PinLayout+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */; };
 		24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
-		24BBE6351F50FA1D0091D5E9 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */; };
-		24BBE6381F52EC380091D5E9 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */; };
 		24D18D171F3B4381008129EF /* RTLSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D151F3B42E0008129EF /* RTLSpec.swift */; };
 		24D18D241F3E37DD008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		24D18D261F3E5EA5008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
@@ -121,7 +119,6 @@
 		249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE881E64FB4C00165E39 /* PinLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTests.swift; sourceTree = "<group>"; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnitTests.swift; path = Impl/UnitTests.swift; sourceTree = "<group>"; };
 		24D18D151F3B42E0008129EF /* RTLSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLSpec.swift; sourceTree = "<group>"; };
 		24D18D231F3E37DD008129EF /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,7 +257,6 @@
 				2475B6D21FC37CD40054CADD /* Coordinates.swift */,
 				243C620E1FC3834B0082C327 /* Percent.swift */,
 				2475B6CE1FC37C570054CADD /* TypesImpl.swift */,
-				24BBE6341F50FA1D0091D5E9 /* UnitTests.swift */,
 				2475B6D01FC37C8C0054CADD /* UIView+LTR.swift */,
 			);
 			name = Impl;
@@ -487,7 +483,6 @@
 				24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */,
 				243C620B1FC37F6C0082C327 /* UIView+LTR.swift in Sources */,
 				243C62091FC37F6C0082C327 /* Coordinates.swift in Sources */,
-				24BBE6381F52EC380091D5E9 /* UnitTests.swift in Sources */,
 				243C620A1FC37F6C0082C327 /* TypesImpl.swift in Sources */,
 				243C62061FC37F6C0082C327 /* PinLayoutImpl+Layouting.swift in Sources */,
 				243C62051FC37F6C0082C327 /* PinLayoutImpl+Coordinates.swift in Sources */,
@@ -511,7 +506,6 @@
 				2475B6D31FC37CD40054CADD /* Coordinates.swift in Sources */,
 				241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */,
 				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,
-				24BBE6351F50FA1D0091D5E9 /* UnitTests.swift in Sources */,
 				2475B6CD1FC37C1C0054CADD /* PinLayoutImpl+Relative.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

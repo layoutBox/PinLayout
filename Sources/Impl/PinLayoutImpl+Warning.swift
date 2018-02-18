@@ -106,7 +106,13 @@ extension PinLayoutImpl {
     
     internal func displayWarning(_ text: String) {
         var displayText = "\n👉 \(text)"
-        displayText += "\n(Layouted view info: Type: \(viewName(view)), Frame: \(view.frame)"
+
+        let x = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.x)))!
+        let y = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.y)))!
+        let width = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.width)))!
+        let height = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.height)))!
+
+        displayText += "\n(Layouted view info: Type: \(viewName(view)), Frame: x: \(x), y: \(y), width: \(width), height: \(height))"
         
         var currentView = view
         var hierarchy: [String] = []

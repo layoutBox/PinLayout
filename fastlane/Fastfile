@@ -34,7 +34,9 @@ platform :ios do
     xcodebuild(
       workspace: "PinLayout.xcworkspace",
       scheme: "PinLayout",
-      configuration: "Debug",
+      destination: "name=iPhone 8 Plus,OS=11.2",
+      build: true,
+      #configuration: "Debug",
       build: true,
       clean: true
     )
@@ -42,7 +44,7 @@ platform :ios do
     xcodebuild(
       workspace: "PinLayout.xcworkspace",
       scheme: "PinLayoutTVOS",
-      configuration: "Debug",
+      destination: "name=Apple TV",
       build: true,
       clean: true
     )
@@ -50,16 +52,17 @@ platform :ios do
     xcodebuild(
       workspace: "PinLayout.xcworkspace",
       scheme: "PinLayoutSample",
-      configuration: "Debug",
       build: true,
       clean: true,
+      #destination: "name=iPhone 8 Plus,OS=11.2",
       destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
     )
   end
 
   lane :tests do
     scan(scheme: "PinLayout", 
-         workspace: "PinLayout.xcworkspace")
+         workspace: "PinLayout.xcworkspace"
+         )
   end
 
   lane :doc do 

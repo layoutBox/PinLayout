@@ -14,7 +14,9 @@ target 'PinLayoutSample' do
   platform :ios, "8.0"
   project 'Example/PinLayoutSample.xcodeproj'
 
+  pod 'PinLayout', :path => './'
+  pod 'SwiftLint'
+  
   # Debug only
   pod 'Reveal-SDK', '~> 10', :configurations => ['Debug']
-  pod 'SwiftLint'
 end

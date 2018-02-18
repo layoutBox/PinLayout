@@ -77,8 +77,8 @@ class HorizontalEdgeImpl: HorizontalEdge {
     let view: UIView
     let type: EdgeType
 
-    var x: CGFloat {
-        let rect = Coordinates.getUntransformedViewRect(view)
+    func x(keepTransform: Bool) -> CGFloat {
+        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
         
         switch type {
         case .left:    return rect.origin.x
@@ -103,8 +103,8 @@ class VerticalEdgeImpl: VerticalEdge {
     internal let view: UIView
     internal let type: EdgeType
 
-    var y: CGFloat {
-        let rect = Coordinates.getUntransformedViewRect(view)
+    func y(keepTransform: Bool) -> CGFloat {
+        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
         
         switch type {
         case .top:     return rect.origin.y
@@ -162,17 +162,17 @@ class AnchorImpl: Anchor {
     let view: UIView
     let type: AnchorType
 
-    var point: CGPoint {
+    func point(keepTransform: Bool) -> CGPoint {
         switch type {
-        case .topLeft: return Coordinates.topLeft(view)
-        case .topCenter: return Coordinates.topCenter(view)
-        case .topRight: return Coordinates.topRight(view)
-        case .centerLeft: return Coordinates.centerLeft(view)
-        case .center: return Coordinates.center(view)
-        case .centerRight: return Coordinates.centerRight(view)
-        case .bottomLeft: return Coordinates.bottomLeft(view)
-        case .bottomCenter: return Coordinates.bottomCenter(view)
-        case .bottomRight: return Coordinates.bottomRight(view)
+        case .topLeft: return Coordinates.topLeft(view, keepTransform: keepTransform)
+        case .topCenter: return Coordinates.topCenter(view, keepTransform: keepTransform)
+        case .topRight: return Coordinates.topRight(view, keepTransform: keepTransform)
+        case .centerLeft: return Coordinates.centerLeft(view, keepTransform: keepTransform)
+        case .center: return Coordinates.center(view, keepTransform: keepTransform)
+        case .centerRight: return Coordinates.centerRight(view, keepTransform: keepTransform)
+        case .bottomLeft: return Coordinates.bottomLeft(view, keepTransform: keepTransform)
+        case .bottomCenter: return Coordinates.bottomCenter(view, keepTransform: keepTransform)
+        case .bottomRight: return Coordinates.bottomRight(view, keepTransform: keepTransform)
         }
     }
 

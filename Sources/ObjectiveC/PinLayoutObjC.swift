@@ -26,7 +26,7 @@ import UIKit
 public extension UIView {
     // Expose PinLayout's objective-c interface.
     public var pinObjc: PinLayoutObjC {
-        return PinLayoutObjCImpl(view: self)
+        return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
 }
 

@@ -825,6 +825,17 @@ class AdjustSizeSpec: QuickSpec {
                 aView.pin.height(30).sizeToFit(.height)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 40.0, height: 30.0)))
             }
+
+            it("should adjust the aView") {
+                aView.pin.width(50).sizeToFit(.width)
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0), within: 0.5))
+            }
+
+            it("should adjust the height using the current width") {
+                aView.frame.size = CGSize(width: 50, height: 0)
+                aView.pin.sizeToFit(.width)
+                expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0), within: 0.5))
+            }
         }
     }
 }

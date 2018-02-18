@@ -24,6 +24,7 @@ import UIKit
     
 class PinLayoutImpl: PinLayout {
     internal let view: UIView
+    internal let keepTransform: Bool
 
     internal var _top: CGFloat?       // offset from superview's top edge
     internal var _left: CGFloat?      // offset from superview's left edge
@@ -63,9 +64,15 @@ class PinLayoutImpl: PinLayout {
     internal var _marginRight: CGFloat { return marginRight ?? 0 }
     
     internal var isLayouted = false
-    
-    init(view: UIView) {
+
+    internal let numberFormatter = NumberFormatter()
+
+    init(view: UIView, keepTransform: Bool) {
         self.view = view
+        self.keepTransform = keepTransform
+
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.decimalSeparator = "."
     }
     
     deinit {
@@ -950,9 +957,11 @@ extension PinLayoutImpl {
     
     internal func layoutSuperviewRect(_ context: Context) -> CGRect? {
         if let superview = view.superview {
-            return Coordinates.getUntransformedViewRect(superview)
+            return Coordinates.getViewRect(superview, keepTransform: keepTransform)
         } else {
-            warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
+            // Disable this warning: Using XIB, layoutSubview() is called even before views have been
+            // added, and there is no way to modify that strange behaviour of UIKit.
+            //warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }
@@ -961,7 +970,9 @@ extension PinLayoutImpl {
         if let superview = view.superview {
             return superview
         } else {
-            warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
+            // Disable this warning: Using XIB, layoutSubview() is called even before views have been
+            // added, and there is no way to modify that strange behaviour of UIKit.
+            //warnWontBeApplied("the view must be added as a sub-view before being layouted using this method.", context)
             return nil
         }
     }

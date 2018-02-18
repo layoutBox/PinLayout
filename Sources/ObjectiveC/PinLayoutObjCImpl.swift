@@ -23,8 +23,8 @@ import UIKit
 @objc public class PinLayoutObjCImpl: NSObject, PinLayoutObjC {
     fileprivate var impl: PinLayoutImpl?
     
-    init(view: UIView) {
-        impl = PinLayoutImpl(view: view)
+    init(view: UIView, keepTransform: Bool) {
+        impl = PinLayoutImpl(view: view, keepTransform: keepTransform)
     }
     
     deinit {

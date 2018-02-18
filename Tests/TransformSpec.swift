@@ -76,13 +76,28 @@ class TransformSpec: QuickSpec {
             
             it("Parent: No transform  Child: Scale transform") {
                 rootView.transform = .identity
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.top(100).left(100).width(100).height(50)
                 
                 // The view should keep its transform
                 expect(aView.frame).to(equal(CGRect(x: 50.0, y: 75.0, width: 200.0, height: 100.0)))
                 
+                // If we clear the transform, the view should retrieve the original frame.
+                aView.transform = CGAffineTransform.identity
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 50.0)))
+            }
+
+            it("Parent: No transform  Child: Scale transform") {
+                rootView.transform = .identity
+
+                aView.pin.top(100).left(100).width(100).height(50)
+
+                aView.transform = .init(scaleX: 2, y: 2)
+
+                // The view should keep its transform
+                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 75.0, width: 200.0, height: 100.0)))
+
                 // If we clear the transform, the view should retrieve the original frame.
                 aView.transform = CGAffineTransform.identity
                 expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 50.0)))
@@ -101,7 +116,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.top().bottom().left().right()
@@ -113,7 +128,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.top().left().width(100%).height(100%)
@@ -139,7 +154,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.topLeft().bottomRight()
@@ -165,7 +180,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.topLeft().bottomRight()
@@ -176,7 +191,7 @@ class TransformSpec: QuickSpec {
             
             it("aView: No transform  bView: Scale transform") {
                 aView.transform = .identity
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.topLeft(to: bView.anchor.topLeft)//.bottomRight(to: bView.anchor.bottomRight)
 
@@ -189,7 +204,7 @@ class TransformSpec: QuickSpec {
             
             it("aView: No transform  bView: Scale transform") {
                 aView.transform = .identity
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.top().left().bottomRight(to: bView.anchor.bottomRight)
                 
@@ -203,7 +218,7 @@ class TransformSpec: QuickSpec {
             
             it("Parent: No transform  Child: Scale transform") {
                 rootView.transform = .identity
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.topLeft(to: rootView.anchor.topLeft).bottomRight(to: rootView.anchor.bottomRight)
                 
@@ -214,8 +229,8 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: Scale transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.topLeft().bottomRight()
                 
@@ -227,7 +242,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.topLeft(to: rootView.anchor.topLeft).bottomRight(to: rootView.anchor.bottomRight)
@@ -241,7 +256,7 @@ class TransformSpec: QuickSpec {
             
             it("Parent: Scale transform  Child: No transform") {
                 rootView.frame = CGRect(x: 100, y: 100, width: 400, height: 400)
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.topLeft(to: rootView.anchor.topLeft).bottomRight(to: rootView.anchor.bottomRight)
@@ -270,7 +285,7 @@ class TransformSpec: QuickSpec {
             
             it("Parent: No transform  Child: Scale transform") {
                 rootView.transform = .identity
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.top(to: rootView.edge.top).bottom(to: rootView.edge.bottom)
                 
@@ -282,7 +297,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
                 
                 aView.pin.top(to: rootView.edge.top).bottom(to: rootView.edge.bottom)
@@ -295,8 +310,8 @@ class TransformSpec: QuickSpec {
             }
             
             it("Parent: Scale transform  Child: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.top(to: rootView.edge.top).bottom(to: rootView.edge.bottom)
                 
@@ -322,7 +337,7 @@ class TransformSpec: QuickSpec {
             
             it("aView: No transform  bView: Scale transform") {
                 aView.transform = .identity
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.width(of: bView)
                 
@@ -332,8 +347,8 @@ class TransformSpec: QuickSpec {
             }
             
             it("aView: Scale transform  bView: Scale transform") {
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.width(of: bView)
                 
@@ -356,7 +371,7 @@ class TransformSpec: QuickSpec {
             
             it("aView: No transform  bView: Scale transform") {
                 aView.transform = .identity
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.height(of: bView)
                 
@@ -366,8 +381,8 @@ class TransformSpec: QuickSpec {
             }
             
             it("aView: Scale transform  bView: Scale transform") {
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.height(of: bView)
                 
@@ -392,7 +407,7 @@ class TransformSpec: QuickSpec {
             
             it("aView: No transform  bView: Scale transform") {
                 aView.transform = .identity
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.size(of: bView)
                 
@@ -403,8 +418,8 @@ class TransformSpec: QuickSpec {
             }
             
             it("aView: Scale transform  bView: Scale transform") {
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
-                bView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.size(of: bView)
                 
@@ -431,7 +446,7 @@ class TransformSpec: QuickSpec {
             
             it("aView: No transform  aView: Scale transform") {
                 rootView.transform = .identity
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 
                 aView.pin.right().width(100)
                 
@@ -443,7 +458,7 @@ class TransformSpec: QuickSpec {
             }
             
             it("aView: Scale transform  aView: No transform") {
-                rootView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                rootView.transform = .init(scaleX: 2, y: 2)
                 aView.transform = .identity
 
                 aView.pin.right().width(100)
@@ -485,7 +500,7 @@ class TransformSpec: QuickSpec {
 
             it("aView: With layer.anchorPoint change (0, 0) + transform scale 2") {
                 aView.layer.anchorPoint = CGPoint(x: 0, y: 0) // default is 0.5, 0.5 (Center)
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
 
                 aView.pin.top(100).left(100).width(100).height(100)
 
@@ -524,7 +539,7 @@ class TransformSpec: QuickSpec {
 
             it("should layout the bView correctly below the relative view with an anchorPoint of (0, 1) and a scale x2") {
                 aView.layer.anchorPoint = CGPoint(x: 0, y: 1) // default is 0.5, 0.5 (Center)
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 aView.pin.top(100).left(100).width(100).height(100)
 
                 bView.pin.below(of: aView, aligned: .left)
@@ -540,7 +555,7 @@ class TransformSpec: QuickSpec {
 
             it("should layout the bView correctly with aView and bView modified anchorPoint + scale") {
                 aView.layer.anchorPoint = CGPoint(x: 0, y: 1) // default is 0.5, 0.5 (Center)
-                aView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                aView.transform = .init(scaleX: 2, y: 2)
                 aView.pin.top(100).left(100).width(100).height(100)
 
                 bView.layer.anchorPoint = CGPoint(x: 0, y: 0) // default is 0.5, 0.5 (Center)
@@ -554,6 +569,91 @@ class TransformSpec: QuickSpec {
                 expect(bView.frame).to(equal(CGRect(x: 100.0, y: 200.0, width: 400.0, height: 100.0)))
                 expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
                 expect(bView.center).to(equal(CGPoint(x: 100, y: 200)))
+            }
+        }
+
+        describe("Using pinFrame") {
+            it("pinFrame + identity") {
+                rootView.transform = .identity
+                aView.transform = .identity
+
+                aView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 100, y: 100, width: 100.0, height: 50.0)))
+            }
+
+            it("pinFrame + scale") {
+                rootView.transform = .identity
+
+                bView.frame = aView.frame
+
+                aView.transform = .init(scaleX: 2, y: 2)
+                bView.transform = .init(scaleX: 2, y: 2)
+
+                // aView final frame size is 200x100
+                aView.pin.top(100).left(100).width(100).height(50)
+
+                // bView final frame size is 100x50 size. In this case the view's bounds is modified
+                // to match the final frame
+                bView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 50.0, y: 75.0, width: 200.0, height: 100.0)))
+                expect(aView.bounds).to(equal(CGRect(x: 0, y: 0, width: 100.0, height: 50.0)))
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 50.0)))
+                expect(bView.bounds).to(equal(CGRect(x: 0, y: 0, width: 50.0, height: 25.0)))
+            }
+
+            it("pinFrame + rotation") {
+                rootView.transform = .identity
+
+                aView.transform = .init(rotationAngle: CGFloat.pi / 2)
+                bView.transform = .init(rotationAngle: CGFloat.pi / 2)
+
+                aView.pin.top(100).left(100).width(100).height(50)
+                bView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 125.0, y: 75.0, width: 50.0, height: 100.0)))
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 50.0)))
+            }
+
+            it("pinFrame + rotation 2") {
+                rootView.transform = .identity
+
+                aView.transform = .init(rotationAngle: CGFloat.pi / 2)
+                bView.transform = .init(rotationAngle: CGFloat.pi / 2)
+
+                aView.pin.top(100).left(100).width(100).height(50)
+
+                bView.pinFrame.top(100).left(100).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 125.0, y: 75.0, width: 50.0, height: 100.0)))
+                expect(bView.frame).to(equal(CGRect(x: 100.0, y: 100.0, width: 100.0, height: 50.0)))
+            }
+
+            it("pinFrame + relative") {
+                rootView.transform = .identity
+
+                aView.transform = .init(scaleX: 1.5, y: 1.5)
+                bView.transform = .init(scaleX: 1.5, y: 1.5)
+
+                aView.pinFrame.center().width(100).height(50)
+                bView.pinFrame.below(of: aView, aligned: .left).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 175.0, width: 100.0, height: 50.0)))
+                expect(bView.frame).to(equal(CGRect(x: 150.0, y: 225.0, width: 100.0, height: 50.0)))
+            }
+
+            it("pinFrame + relative 2") {
+                rootView.transform = .identity
+
+                aView.transform = .init(scaleX: 1.5, y: 1.5)
+                bView.transform = .init(scaleX: 1.5, y: 1.5)
+
+                aView.pin.center().width(100).height(50)
+                bView.pinFrame.below(of: aView, aligned: .left).width(100).height(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 125.0, y: 162.5, width: 150.0, height: 75.0)))
+                expect(bView.frame).to(beCloseTo(CGRect(x: 125.0, y: 237.6667, width: 100.0, height: 50.0), within: 0.5))
             }
         }
     }

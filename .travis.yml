@@ -1,9 +1,9 @@
 language: objective-c
 osx_image: xcode9.2 
 
-env:
-  matrix:
-    - SCHEME=PinLayout       SDK=iphonesimulator11.2
+#env:
+  #matrix:
+    #- SCHEME=PinLayout       SDK=iphonesimulator11.2
     #- SCHEME=PinLayout       SDK=iphonesimulator10.3
     #- SCHEME=PinLayoutSample SDK=iphonesimulator11.2
     #- SCHEME=PinLayoutTVOS   SDK=appletvsimulator11.0 
@@ -16,11 +16,12 @@ before_install:
   - pod install --repo-update;
 
 script:
-  - |
-    if [[ $SCHEME = "PinLayout" ]]; then
-      set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES build test | xcpretty -f `xcpretty-travis-formatter`
-      bundle exec fastlane travis
-    fi
+  - set -o pipefail && bundle exec fastlane travis
+  #- |
+    #if [[ $SCHEME = "PinLayout" ]]; then
+      #set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' -enableCodeCoverage YES build test | xcpretty -f `xcpretty-travis-formatter`
+  #    bundle exec fastlane travis
+    #fi
 
     #if [[ $SCHEME = "PinLayoutSample" ]]; then
     #  set -o pipefail && xcodebuild -workspace PinLayout.xcworkspace -scheme "$SCHEME" -sdk $SDK -destination 'platform=iOS Simulator,name=iPhone 6' build | xcpretty -f `xcpretty-travis-formatter`
@@ -31,7 +32,7 @@ script:
     #fi
 
 after_success:
-  - |
-    if [[ $SCHEME = "PinLayout" ]]; then
-      bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'
-    fi
+ # - |
+ #   if [[ $SCHEME = "PinLayout" ]]; then
+  bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'
+ #   fi

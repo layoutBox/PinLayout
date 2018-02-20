@@ -1254,7 +1254,7 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 ### Adjust to container size
 The following examples show how PinLayout can be used to adjust views size and position to the size of their container. In this case containers are cells.
 
-![](docs/pinlayout-example-cells.png)
+<img src="docs/pinlayout-example-cells.png" width="500"/>
 
 Cell A:
 

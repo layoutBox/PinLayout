@@ -61,8 +61,7 @@ platform :ios do
 
   lane :tests do
     scan(scheme: "PinLayout", 
-         workspace: "PinLayout.xcworkspace"
-         )
+         workspace: "PinLayout.xcworkspace")
   end
 
   lane :doc do 

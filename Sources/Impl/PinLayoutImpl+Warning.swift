@@ -20,6 +20,8 @@
 #if os(iOS) || os(tvOS)
 import UIKit
 
+fileprivate var numberFormatter: NumberFormatter?
+
 extension PinLayoutImpl {
     internal func pointContext(method: String, point: CGPoint) -> String {
         return "\(method)(to: CGPoint(x: \(point.x), y: \(point.y)))"
@@ -107,10 +109,10 @@ extension PinLayoutImpl {
     internal func displayWarning(_ text: String) {
         var displayText = "\n👉 \(text)"
 
-        let x = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.x)))!
-        let y = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.y)))!
-        let width = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.width)))!
-        let height = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.height)))!
+        let x = numberFormattter().string(from: NSNumber(value: Float(view.frame.origin.x)))!
+        let y = numberFormattter().string(from: NSNumber(value: Float(view.frame.origin.y)))!
+        let width = numberFormattter().string(from: NSNumber(value: Float(view.frame.size.width)))!
+        let height = numberFormattter().string(from: NSNumber(value: Float(view.frame.size.height)))!
 
         displayText += "\n(Layouted view info: Type: \(viewName(view)), Frame: x: \(x), y: \(y), width: \(width), height: \(height))"
         
@@ -136,6 +138,20 @@ extension PinLayoutImpl {
     
     internal func viewName(_ view: UIView) -> String {
         return "\(type(of: view))"
+    }
+
+    internal func insetsDescription(_ insets: UIEdgeInsets) -> String {
+        return "UIEdgeInsets(top: \(insets.top), left: \(insets.left), bottom: \(insets.bottom), right: \(insets.right))"
+    }
+
+    fileprivate func numberFormattter() -> NumberFormatter {
+        if numberFormatter == nil {
+            numberFormatter = NumberFormatter()
+            numberFormatter!.numberStyle = .decimal
+            numberFormatter!.decimalSeparator = "."
+        }
+
+        return numberFormatter!
     }
 }
 

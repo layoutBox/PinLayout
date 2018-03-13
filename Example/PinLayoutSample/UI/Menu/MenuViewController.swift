@@ -66,7 +66,7 @@ enum PageType: Int {
     }
 }
 
-class MenuViewController: BaseViewController {
+class MenuViewController: UIViewController {
     fileprivate var mainView: MenuView {
         return self.view as! MenuView
     }
@@ -85,10 +85,10 @@ class MenuViewController: BaseViewController {
         mainView.delegate = self
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        didSelect(pageType: .collectionView)
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+//        didSelect(pageType: .autoAdjustingSize)
+    }
 }
 
 // MARK: MenuViewDelegate

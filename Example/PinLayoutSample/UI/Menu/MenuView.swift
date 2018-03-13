@@ -24,14 +24,14 @@ protocol MenuViewDelegate: class {
     func didSelect(pageType: PageType)
 }
 
-class MenuView: BaseView {
+class MenuView: UIView {
     weak var delegate: MenuViewDelegate?
 
     fileprivate let tableView = UITableView()
     fileprivate let cellIdentifier = "MenuViewCell"
 
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
 
         backgroundColor = .red
 

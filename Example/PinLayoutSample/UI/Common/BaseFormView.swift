@@ -18,12 +18,13 @@
 //  THE SOFTWARE.
 
 import UIKit
+import PinLayout
 
-class BaseFormView: BaseView {
+class BaseFormView: UIView {
     let formScrollView = UIScrollView()
     
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
         
         formScrollView.showsVerticalScrollIndicator = false
         formScrollView.keyboardDismissMode = .onDrag
@@ -46,14 +47,9 @@ class BaseFormView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        formScrollView.pin.top().left().bottom().right().margin(safeArea)
+        formScrollView.pin.all()
     }
-    
-    override func safeAreaDidChange() {
-        super.safeAreaDidChange()
-        formScrollView.contentOffset = CGPoint(x: 0, y: safeArea.top)
-    }
-    
+
     @objc
     internal func keyboardWillShow(notification: Notification) {
         guard let sizeValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }

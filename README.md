@@ -33,6 +33,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [Performance](#performance)
 * [Documentation](#documentation)
   * [Right to left languages (RTL) support](#rtl_support)
+  * [safeAreaInsets support](#safeAreaInsets)
   * [Layout using distances from superview’s edges](#distance_from_superview_edge) 
   * [Edges](#edges)
   * [Anchors](#anchors)
@@ -65,11 +66,10 @@ Features coming soon:
 
 <a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="200"/></a>
 
-**PinLayout** is a companion of **[FlexLayout](https://github.com/layoutBox/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation.
+**PinLayout** is a companion of **[FlexLayout](https://github.com/layoutBox/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation. A view can layouts its subviews using PinLayout, FlexLayout, or both! FlexLayout it is particularly useful in situations where you need to layouts many views but don't require the PinLayout's finest control nor complex animations. 
 
-* A view can layouts its subviews using PinLayout, FlexLayout, or both!
-* FlexLayout it is particularly useful in situations where you need to layouts many views but don't require the PinLayout's finest control nor complex animations.
-* A view layouted using PinLayout can be embedded inside a FlexLayout's container and reversely. You choose the best layout framework for your situation. 
+### PinLayout + Autolayout
+You don't need to choose, you can layout some views using PinLayout and some other with autolayout. Your views just to need to implement the autolayout `intrinsicContentSize` properties.
 
 <br>
 
@@ -85,24 +85,24 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 * **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
 
 
-<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/pinlayout-intro-example.png" width="640"/></a>
+<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png"/></a>  
 
 ```swift
 override func layoutSubviews() {
    super.layoutSubviews() 
+   let padding: CGFloat = 10
     
-   logo.pin.top().left().width(100).aspectRatio().margin(10)
-   segmented.pin.after(of: logo, aligned: .top).right().marginHorizontal(10)
-   textLabel.pin.below(of: segmented, aligned: .left).right().marginTop(10).marginRight(10).sizeToFit(.width)
+   logo.pin.top(pin.safeArea).left(pin.safeArea).width(100).aspectRatio().margin(padding)
+   segmented.pin.after(of: logo, aligned: .top).right(pin.safeArea).marginHorizontal(padding)
+   textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit(.width)
    separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
 }
 ``` 
 
-:pushpin: 4 views, 4 lines!
-
-:pushpin: PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
-
-:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift)
+* 5 views, 5 lines
+* PinLayout can handle iPhone X/iOS 11 safe area using  `UIView.safeAreaInsets` while running on iOS 11, or using [`pin.safeArea`](#safe_area) that support earlier iOS releases (7/8/9/10).
+* PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
+* This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift)
 
 <br/>
 
@@ -127,8 +127,6 @@ This example shows how easily PinLayout can adjust its layout based on the view'
   }
 ``` 
 
-:pushpin: Would it be easier using auto layout?
-
 :pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift)
 
 
@@ -145,18 +143,13 @@ This example shows how easily PinLayout can adjust its layout based on the view'
 * Stateless
 	* PinLayout doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 
-Each view can use the layout system that better suit it  (PinLayout, constraints, flexbox, grids, …)
+Each view can use the layout system that better suit it  (PinLayout, autolayout, flexbox, …)
 * No Auto layout and constraints
-	* Constraints are verbose and hard for a human brains to understand when there are many views implicated, even with sugar-syntax frameworks.
+	* Constraints are verbose and quite hard for a human brains to understand when there are many views implicated, even with sugar-syntax frameworks.
 	* PinLayout positions views as a designer would explain it (eg: “The TextField is below the Label, aligned left, and is its width matches the other view’s width“). 
 	* No priorities, simply layout views in the order that makes sense. No priorities required.
 * Before applying the new sets of attributes, PinLayout always start with the view’s current frame. So its possible to set the view’s size during the initialization (ex: view.pin.width(100).height(200)), and later only position the view (ex: view.pin.top(10).left(20)). This makes PinLayout really animation friendly.
 * Minimize as much as possible calculations and constants when layouting views. But it is always possible to add advanced computation if required.
-
-:pushpin: PinLayout doesn't support Auto layout nor Storyboard. Interesting quote:
-> "UIKit Auto Layout and InterfaceBuilder are not supported by Texture. It is worth noting that both of these technologies are not permitted in established and disciplined iOS development teams, such as at Facebook, Instagram, and Pinterest"
->
-> -- <cite>[Pinterest/Facebook Texture's documentation](http://texturegroup.org/docs/faq.html#asyncdisplaykit-does-not-support-uikit-auto-layout-or-interfacebuilder)</cite>
 
 <a name="performance"></a>
 # PinLayout's Performance 
@@ -168,7 +161,9 @@ As you can see in the following chart, PinLayout are faster or equal to manual l
 [See here a more complete details, results and explanation of the benchmark](docs/Benchmark.md).
 
 <p align="center">
-  <img src="docs/Benchmark/benchmark_iphone7.png" alt="PinLayout Performance" width=560/>
+	<a href="docs/Benchmark.md">
+	  <img src="docs/Benchmark/benchmark_iphone7.png" alt="PinLayout Performance" width=560/>
+	  </a>
 </p>
 
 <a name="documentation"></a>
@@ -176,29 +171,48 @@ As you can see in the following chart, PinLayout are faster or equal to manual l
 
 <a name="rtl_support"></a>
 ## Right to left languages (RTL) support 
-PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. 
-
-Every method/properties with a name containing `left`/`right`, has RTL enabled equivalent methods with a name containing `start`/`end`.
-
-Using `start` or `end` methods, you can position views without having to think about whether your item will show up on the left or the right side of the screen (depending on the person’s language). 
-
-:pushpin: In this documentation all methods that support RTL languages are marked using the following icon :left_right_arrow: 
-
-**Method**:
-
-* **`Pin.layoutDirection(direction: LayoutDirection)`**:left_right_arrow::  
-Set the PinLayout layout direction. Note that this set PinLayout's layout direction globally. By default PinLayout use the left-to-right direction.
-
-	Layout direction modes:
-	* `.ltr`: Layout views from left to right. (Default)
-	* `.rtl`: Layout views from right to left.
-	* `.auto`: Layout views based on `UIView.userInterfaceLayoutDirection(for: semanticContentAttribute)` (>= iOS 9) or `UIApplication.shared.userInterfaceLayoutDirection` (< iOS 9). If you want to control the layout direction individually for each views, you should use this mode and control the view's layout direction using `UIView.userInterfaceLayoutDirection` property.
-
-RTL full documentation coming soon....
-
-:pushpin: See the RTL enabled "Introduction example" [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/IntroRTL/IntroRTLView.swift). This example is available in the [Examples App](#examples_app)
+PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages.  
+[See here for complete details](docs/rtl_support.md).
 
 <br/>
+
+<a name="safeAreaInsets"></a>
+## safeAreaInsets support 
+PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases, including iOS 7/8/9/10.
+
+**Property**:
+
+* **`UIView.pin.safeArea`**  
+The safe area of a view represent the area not covered by navigation bars, tab bars, toolbars, and other ancestors that obscure a view controller's view.  
+
+While running on a iOS 11 devices, this property simply expose the UIKit `UIView.safeAreaInsets`. But on previous iOS releases, PinLayout use the information from the `UIViewController`'s topLayoutGuide and bottomLayoutGuide to expose the safe area.
+
+
+### Document PinSafeAreaInsetsUpdate protocol
+
+
+view1.pin.top(pin.safeArea) === view1.pin.top(pin.safeArea.top) ==
+view1.pin.top(safeAreaInsets)
+
+class BaseFormView: UIView, PinSafeAreaInsetsUpdate {
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+        }
+    }
+}
+
+
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+        }
+        print("safeAreaInsetsDidChange!!!!: \(pin.safeArea)")
+    }
+
+
+<br/>
+
 
 <a name="distance_from_superview_edge"></a>
 ## Layout using distances from superview’s edges 
@@ -207,48 +221,80 @@ PinLayout can position a view’s edge relative to its superview edges.
 
 **Methods**:
 
-* **`top(_ value: CGFloat)`**  / **`top(_ percent: Percent)`**  / **`top()`**  
-The value specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height). `top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge.
+* **`top(:CGFloat)`**  
+**`top(:Percent)`**  
+**`top()`**  
+**`top(:UIEdgeInsets)`**  
+The value specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height). `top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge. `top(:UIEdgeInsets)` use the `UIEdgeInsets.top` property, is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`vCenter(_ value: CGFloat)`** / **`vCenter(_ percent: Percent)`** / **`vCenter()`**  
+* **`vCenter(:CGFloat)`**  
+**`vCenter(:Percent)`**   
+**`vCenter()`**  
 The value specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive value move the view down and a negative value move it up relative to the superview's center. `vCenter()` is similar to calling `vCenter(0)`, it position vertically the view's center directly on its superview vertical center.
 
-* **`bottom(_ value: CGFloat)`** / **`bottom(_ percent: Percent)`** / **`bottom()`**     
-The value specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height). `bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge.
+* **`bottom(:CGFloat)`**  
+**`bottom(:Percent)`**   
+**`bottom()`**  
+**`bottom(:UIEdgeInsets)`**   
+The value specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height). `bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge. `bottom(:UIEdgeInsets)` use the `UIEdgeInsets.bottom` property, it is is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`left(_ value: CGFloat)`** / **`left(_ percent: Percent)`** / **`left()`**   
-The value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). `left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge.
+* **`left(:CGFloat)`**  
+**`left(:Percent)`**   
+**`left()`**  
+**`left(:UIEdgeInsets)`**   
+The value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). `left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge. `left(:UIEdgeInsets)` use the `UIEdgeInsets.left` property, it is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`hCenter(_ value: CGFloat)`** /**`hCenter(_ percent: Percent)`** / **`hCenter()`**   
+* **`hCenter(:CGFloat)`**  
+**`hCenter(:Percent)`**  
+**`hCenter()`**  
 The value specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). A positive value move the view to the right and a negative value move it to the left relative to the superview's center. `hCenter()` is similar to calling `hCenter(0)`, it position horizontally the view's center directly on its superview horizontal center. 
 
-* **`right(_ value: CGFloat)`** / **`right(_ percent: Percent)`** / **`right()`**  
-The value specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width). `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge.
+* **`right(:CGFloat)`**  
+**`right(:Percent)`**   
+**`right()`**  
+**`right(:UIEdgeInsets)`**   
+The value specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width). `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge. `right(:UIEdgeInsets)` use the `UIEdgeInsets. right` property, it is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`start(_ value: CGFloat)`** / **`start(_ percent: Percent)`** / **`start()`** :left_right_arrow:  
+* **`start(:CGFloat)`** :left_right_arrow:  
+**`start(:Percent)`** :left_right_arrow:  
+**`start()`** :left_right_arrow:  
+**`start(:UIEdgeInsets)`**   
 In LTR direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).   
 In RTL direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
-`start()` is similar to calling `start(0)`.
+`start()` is similar to calling `start(0)`. `start(:UIEdgeInsets)` use the `UIEdgeInsets.left` property in LTR direction and `UIEdgeInsets.right` in RTL direction, it is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`end(_ value: CGFloat)`** /  **`end(_ percent: Percent)`** / **`end()`** :left_right_arrow:  
+* **`end(:CGFloat)`** :left_right_arrow:   
+**`end(:Percent)`** :left_right_arrow:   
+**`end()`** :left_right_arrow:  
+**`end(:UIEdgeInsets)`**   
 In LTR direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
-In RTL direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).   
-`end()` is similar to calling `end(0)`.
+In RTL direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).  `end()` is similar to calling `end(0)`. `end(:UIEdgeInsets)` use the `UIEdgeInsets.right` property in LTR direction and `UIEdgeInsets.left` in RTL direction, it is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
 **Methods pinning multiple edges**:
 
-* **`all(_ value: CGFloat)`** / **`all()`**  
-The value specifies the **top, bottom, left and right edges** distance from the superview's corresponding edge in pixels. 
-Similar to calling `view.top(value).bottom(value).left(value).right(value)`.  
-`all()` is similar to calling `all(0)`. 
+* **`all(:CGFloat)`**  
+**`all(:UIEdgeInsets)`**  
+**`all()`**  
+The value/insets specifies the **top, bottom, left and right edges** distance from the superview's corresponding edge in pixels. Similar to calling `view.top(value).bottom(value).left(value).right(value)`.  
+`all()` is similar to calling `all(0)`.  
+`all(:UIEdgeInsets)` is particularly useful with [`pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`horizontally(_ value: CGFloat)`** / **`horizontally(_ percent: Percent)`** / **`horizontally()`**   
+* **`horizontally(:CGFloat)`**  
+**`horizontally(:Percent)`**   
+**`horizontally(:UIEdgeInsets)`**  
+**`horizontally()`**  
 The value specifies the **left and right edges** on its superview's corresponding edges in pixels (or in percentage of its superview's width).  
-`horizontally()` is similar to calling `horizontally(0)`. 
+`horizontally()` is similar to calling `horizontally(0)`.  
+`horizontally(:UIEdgeInsets)` use the UIEdgeInsets's left and right value to pin left and right edges.
 
-* **`vertically(_ value: CGFloat)`**  / **`vertically(_ percent: Percent)`** / **`vertically()`** 
-The value specifies the ** top and bottom edges** on its superview's corresponding edges in pixels (or in percentage of its superview's height).  
-`vertically()` is similar to calling `vertically(0)`. 
+* **`vertically(:CGFloat)`**  
+**`vertically(:Percent)`**   
+**`vertically(:UIEdgeInsets)`**  
+**`vertically()`**  
+The value specifies the **top and bottom edges** on its superview's corresponding edges in pixels (or in percentage of its superview's height).  
+`vertically()` is similar to calling `vertically(0)`.  
+`vertically(:UIEdgeInsets)` use the UIEdgeInsets's top and bottom value to pin top and bottom edges.
+
 
 
 ###### Usage Examples:
@@ -671,19 +717,24 @@ PinLayout has methods to set the view’s height and width.
 
 **Methods:**
 
-* **`width(_ width: CGFloat)`** / **`width(percent: Percent)`**  
+* **`width(:CGFloat)`**  
+**`width(:Percent)`**  
 The value specifies the view's width in pixels (or in percentage of its superview). The value must be non-negative.
-* **`width(of view: UIView)`**  
+* **`width(of: UIView)`**  
 Set the view’s width to match the referenced view’s width.
-* **`height(_ height: CGFloat)`** / **`height(percent: Percent)`**  
+
+* **`height(:CGFloat)`**  
+**`height(:Percent)`**  
 The value specifies the view's height in pixels (or in percentage of its superview). The value must be non-negative.
-* **`height(of view: UIView)`**  
+* **`height(of: UIView)`**  
 Set the view’s height to match the referenced view’s height
-* **`size(_ size: CGSize)`** / **`size(_ percent: Percent)`**  
+
+* **`size(:CGSize)`**  
+**`size(:Percent)`**  
 The value specifies view's width and the height in pixels (or in percentage of its superview). Values must be non-negative.
 * **`size(_ sideLength: CGFloat)`**  
 The value specifies the width and the height of the view in pixels, creating a square view. Values must be non-negative.
-* **`size(of view: UIView)`**  
+* **`size(of: UIView)`**  
 Set the view’s size to match the referenced view’s size
 
 :pushpin: width/height/size have a higher priority than edges and anchors positioning. 
@@ -780,16 +831,20 @@ PinLayout has methods to set the view’s minimum and maximum width, and minimum
 
 **Methods:**
 
-* **`minWidth(_ width: CGFloat)`** / **`minWidth(_ percent: Percent)`**  
+* **`minWidth(:CGFloat)`**  
+**`minWidth(:Percent)`**  
 The value specifies the view's minimum width of the view in pixels (or in percentage of its superview). The value must be non-negative.
 
-* **`maxWidth(_ width: CGFloat)`** / **`maxWidth(_ percent: Percent)`**  
+* **`maxWidth(:CGFloat)`**  
+**`maxWidth(:Percent)`**  
 The value specifies the view's maximum width of the view in pixels (or in percentage of its superview). The value must be non-negative.
 
-* **`minHeight(_ height: CGFloat)`** / **`minHeight(_ percent: Percent)`**  
+* **`minHeight(:CGFloat)`**  
+**`minHeight(:Percent)`**  
 The value specifies the view's minimum height of the view in pixels (or in percentage of its superview). The value must be non-negative.
 
-* **`maxHeight(_ height: CGFloat)`** / **`maxHeight(_ percent: Percent)`**  
+* **`maxHeight(:CGFloat)`**  
+**`maxHeight(:Percent)`**  
 The value specifies the view's maximum height of the view in pixels (or in percentage of its superview). The value must be non-negative.
    
 ###### Usage examples:
@@ -873,26 +928,26 @@ PinLayout has methods to apply margins.
 
 **Methods:**
 
-* **`marginTop(_ value: CGFloat)`**  
+* **`marginTop(:CGFloat)`**  
 Set the top margin.
-* **`marginLeft(_ value: CGFloat)`**  
+* **`marginLeft(:CGFloat)`**  
 Set the left margin.
-* **`marginBottom(_ value: CGFloat)`**  
+* **`marginBottom(:CGFloat)`**  
 Set the bottom margin.
-* **`marginRight(_ value: CGFloat)`**  
+* **`marginRight(:CGFloat)`**  
 Set the right margin.
-* **`marginStart(_ value: CGFloat)`**:left_right_arrow:  
+* **`marginStart(:CGFloat)`**:left_right_arrow:  
 Set the start margin. Depends on the value of `Pin.layoutDirection(...)`. In LTR direction, start margin specify the **left** margin. In RTL direction, start margin specify the **right** margin.
-* **`marginEnd(_ value: CGFloat)`**:left_right_arrow:  
+* **`marginEnd(:CGFloat)`**:left_right_arrow:  
 Set the end margin. Depends on the value of `Pin.layoutDirection(...)`. In LTR direction, end margin specify the **right** margin. In RTL direction, end margin specify the **left** margin.
-* **`marginHorizontal(_ value: CGFloat)`**  
+* **`marginHorizontal(:CGFloat)`**  
 Set the left, right, start and end margins to the specified value
-* **`marginVertical(_ value: CGFloat)`**  
+* **`marginVertical(:CGFloat)`**  
 Set the top and bottom margins to the specified value.
-* **`margin(_ value: CGFloat)`**  
+* **`margin(:CGFloat)`**  
 Apply the value to all margins (top, left, bottom, right)
-* **`margin(_ insets: UIEdgeInsets)`**  
-Set all margins using an UIEdgeInsets. This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
+* **`margin(:UIEdgeInsets)`**  
+Set all margins using an UIEdgeInsets. This method is particularly useful to set all margins using iOS 11 with `UIView.safeAreaInsets` or [`pin.safeArea`](#safeAreaInsets).
 * **`margin(_ insets: NSDirectionalEdgeInsets) `**  
 Set all margins using an NSDirectionalEdgeInsets. This method is useful to set all margins using iOS 11 `UIView. directionalLayoutMargins` when layouting a view supporting RTL/LTR languages.
 * **`margin(_ vertical: CGFloat, _ horizontal: CGFloat)`**  
@@ -1392,7 +1447,9 @@ PinLayout also expose an Objective-C interface slightly different than the Swift
    **R:** PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking.
    
 *  **Q: How to handle new iOS 11 `UIView.safeAreaInsets` and the iPhone X .**  
-   **R:** iOS 11 has introduced `UIView.safeAreaInsets` to particularly support the iPhone X landscape mode. In this mode `UIView.safeAreaInsets` has a left and right insets. The easiest way the handle this situation with PinLayout is to add a contentView that will contains all your view's child, and simply adjust this contentView view to match the `safeAreaInsets`. All example in the [Examples App](#examples_app) handle correctly the `safeAreaInsets` and works on iPhone X in landscape mode. 
+   **R:** iOS 11 has introduced `UIView.safeAreaInsets` to particularly support the iPhone X landscape mode. In this mode `UIView.safeAreaInsets` has a left and right insets. The easiest way the handle this situation with PinLayout is to add a contentView that will contains all your view's child, and simply adjust this contentView view to match the `safeAreaInsets` or PinLayout's [`pin.safeArea`](#safeAreaInsets).
+   
+All example in the [Examples App](#examples_app) handle correctly the `safeAreaInsets` and works on iPhone X in landscape mode. Many PinLayout's method accept an UIEdgeInsets as parameter.
    
    Note that **only the UIViewController's main view** must handle the `safeAreaInsets`, sub-views don't have to handle it.  
    

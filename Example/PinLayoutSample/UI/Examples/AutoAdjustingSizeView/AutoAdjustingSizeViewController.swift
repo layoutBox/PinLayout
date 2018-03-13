@@ -19,7 +19,7 @@
 
 import UIKit
 
-class AutoAdjustingSizeViewController: BaseViewController {
+class AutoAdjustingSizeViewController: UIViewController {
     fileprivate var mainView: AutoAdjustingSizeView {
         return self.view as! AutoAdjustingSizeView
     }

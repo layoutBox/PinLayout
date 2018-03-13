@@ -20,8 +20,6 @@
 		2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC421E665C6B003326FB /* RelativeViewController.swift */; };
 		247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */; };
 		249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249326881EEEEE3D00BCB814 /* Stylesheet.swift */; };
-		2493268C1EEEEFF100BCB814 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493268B1EEEEFF100BCB814 /* BaseViewController.swift */; };
-		2493268E1EEEF02700BCB814 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2493268D1EEEF02700BCB814 /* BaseView.swift */; };
 		2497CFED1EF40B9100DFD13B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497CFEB1EF40B9100DFD13B /* FormView.swift */; };
 		2497CFEE1EF40B9100DFD13B /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497CFEC1EF40B9100DFD13B /* FormViewController.swift */; };
 		249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249EFE421E64FAFE00165E39 /* AppDelegate.swift */; };
@@ -119,8 +117,6 @@
 		246812FC1F8D013500462E53 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+PinLayout.swift"; sourceTree = "<group>"; };
 		249326881EEEEE3D00BCB814 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
-		2493268B1EEEEFF100BCB814 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		2493268D1EEEF02700BCB814 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2497CFEB1EF40B9100DFD13B /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		2497CFEC1EF40B9100DFD13B /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		249EFE3F1E64FAFE00165E39 /* PinLayoutSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinLayoutSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,8 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				24DA374A1EF7F90600D1AB2F /* BaseFormView.swift */,
-				2493268D1EEEF02700BCB814 /* BaseView.swift */,
-				2493268B1EEEEFF100BCB814 /* BaseViewController.swift */,
 				2439CC381E665C6B003326FB /* BasicView.swift */,
 				249326881EEEEE3D00BCB814 /* Stylesheet.swift */,
 				247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */,
@@ -585,7 +579,6 @@
 				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,
 				24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */,
 				2439CC351E665BF6003326FB /* MenuView.swift in Sources */,
-				2493268C1EEEEFF100BCB814 /* BaseViewController.swift in Sources */,
 				2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */,
 				24A9C1F61EF054BF00F2CF64 /* MethodCell.swift in Sources */,
 				24A9C2041EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift in Sources */,
@@ -605,7 +598,6 @@
 				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,
 				24F246101FA8D4D100B6332E /* CollectionViewExampleView.swift in Sources */,
 				24A9C1F21EF0542F00F2CF64 /* TableViewExampleView.swift in Sources */,
-				2493268E1EEEF02700BCB814 /* BaseView.swift in Sources */,
 				24CB999D1F29059B004EA7FB /* AdjustToContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

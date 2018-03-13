@@ -19,7 +19,7 @@
 
 import UIKit
 
-class AdjustToContainerViewController: BaseViewController {
+class AdjustToContainerViewController: UIViewController {
     fileprivate var mainView: AdjustToContainerView {
         return self.view as! AdjustToContainerView
     }

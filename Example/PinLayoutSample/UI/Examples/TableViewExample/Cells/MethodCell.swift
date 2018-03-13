@@ -26,7 +26,7 @@ class MethodCell: UITableViewCell {
     fileprivate let iconImageView = UIImageView(image: UIImage(named: "method"))
     fileprivate let nameLabel = UILabel()
     fileprivate let descriptionLabel = UILabel()
-    fileprivate let margin: CGFloat = 10
+    fileprivate let padding: CGFloat = 10
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,9 +60,9 @@ class MethodCell: UITableViewCell {
     }
     
     fileprivate func layout() {
-        iconImageView.pin.top().left().size(30).margin(margin)
-        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(margin).sizeToFit(.width)
-        descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(margin).sizeToFit(.width)
+        iconImageView.pin.top().left().size(30).margin(padding)
+        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(padding).sizeToFit(.width)
+        descriptionLabel.pin.below(of: [iconImageView, nameLabel]).left().right().margin(padding).sizeToFit(.width)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -73,6 +73,6 @@ class MethodCell: UITableViewCell {
         layout()
         
         // 3) Returns a size that contains all controls
-        return CGSize(width: contentView.frame.width, height: descriptionLabel.frame.maxY + margin)
+        return CGSize(width: contentView.frame.width, height: descriptionLabel.frame.maxY + padding)
     }
 }

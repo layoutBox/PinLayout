@@ -80,7 +80,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     var safeArea: UIEdgeInsets {
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             return view.safeAreaInsets
         } else {
             return view.compatibilitySafeAreaInsets

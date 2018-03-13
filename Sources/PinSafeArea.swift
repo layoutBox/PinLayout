@@ -32,7 +32,7 @@ internal class PinSafeArea {
     internal static var isEnabledCompatibilitySafeAreaInsets = false
 
     internal static func enableCompatibilitySafeArea() {
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             // Do nothing, let the iOS 11+ safeAreaInsets mecanism do his thing
         } else if !isEnabledCompatibilitySafeAreaInsets {
             swizzleMethod(UIViewController.self, #selector(UIViewController.viewWillLayoutSubviews), #selector(UIViewController.swizzled_viewWillLayoutSubviews))
@@ -50,7 +50,7 @@ internal class PinSafeArea {
 
 extension UIViewController {
     @objc fileprivate func swizzled_viewWillLayoutSubviews() {
-        if #available(iOS 11.0, *) { assertionFailure() }
+        if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
 
         self.swizzled_viewWillLayoutSubviews()
         let safeAreaInsets = UIEdgeInsets(top: topLayoutGuide.length, left: 0, bottom: bottomLayoutGuide.length, right: 0)
@@ -65,11 +65,11 @@ extension UIView {
 
     private(set) var compatibilitySafeAreaInsets: UIEdgeInsets {
         get {
-            if #available(iOS 11.0, *) { assertionFailure() }
+            if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
             return objc_getAssociatedObject(self, &AssociatedKeys.compatibilitySafeAreaInsets) as? UIEdgeInsets ?? UIEdgeInsets.zero
         }
         set {
-            if #available(iOS 11.0, *) { assertionFailure() }
+            if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
             let didChange: Bool = compatibilitySafeAreaInsets != newValue
             objc_setAssociatedObject(self, &AssociatedKeys.compatibilitySafeAreaInsets, newValue,
                                      objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -80,7 +80,7 @@ extension UIView {
     }
 
     fileprivate func assignSafeAreaInsetsRecursively(insets: UIEdgeInsets) {
-        if #available(iOS 11.0, *) { assertionFailure() }
+        if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
         compatibilitySafeAreaInsets = insets
 
         for subview in subviews {

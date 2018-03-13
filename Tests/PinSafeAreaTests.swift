@@ -53,7 +53,7 @@ class UIViewSafeAreaTests: XCTestCase {
         let expectedSafeAreaInsets = UIEdgeInsets.zero
         let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
             XCTAssertEqual(viewController.mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
         }
@@ -78,7 +78,7 @@ class UIViewSafeAreaTests: XCTestCase {
         navigationController.navigationBar.barStyle = .blackTranslucent
         setupWindow(with: navigationController)
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
             XCTAssertEqual(viewController.mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
         }
@@ -102,7 +102,7 @@ class UIViewSafeAreaTests: XCTestCase {
         navigationController.navigationBar.barStyle = .blackTranslucent
         setupWindow(with: navigationController)
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
             XCTAssertEqual(viewController.mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
         }
@@ -128,7 +128,7 @@ class UIViewSafeAreaTests: XCTestCase {
         let expectedOffsetViewFrame: CGRect
         let screenSize = viewController.view.frame.size
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
             expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
             expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
@@ -141,7 +141,7 @@ class UIViewSafeAreaTests: XCTestCase {
                                              height: screenSize.height - expectedSafeAreaInsets.top)
         }
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
             XCTAssertEqual(viewController.mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
         }
@@ -160,7 +160,7 @@ class UIViewSafeAreaTests: XCTestCase {
 
         let expectedSafeAreaInsets: UIEdgeInsets
         let expectedOffsetViewSafeAreaInsets: UIEdgeInsets
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
             expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
             expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 44, left: 10, bottom: 0, right: 0)
@@ -171,7 +171,7 @@ class UIViewSafeAreaTests: XCTestCase {
         navigationController.navigationBar.barStyle = .blackTranslucent
         setupWindow(with: navigationController)
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
             XCTAssertEqual(viewController.mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
         }
@@ -213,7 +213,7 @@ fileprivate class TestView: UIView {
     }
 
     override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             super.safeAreaInsetsDidChange()
         }
         

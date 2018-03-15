@@ -63,6 +63,7 @@ platform :ios do
     scan(
       scheme: "PinLayout", 
       workspace: "PinLayout.xcworkspace",
+      clean: true,
       devices: [
         "iPhone 7 (10.2)",
         "iPhone 7 (11.2)",

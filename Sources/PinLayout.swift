@@ -135,7 +135,7 @@ public protocol PinLayout {
     @discardableResult func left() -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
     @discardableResult func left(_ percent: Percent) -> PinLayout
-    @discardableResult func left(_ safeArea: UIEdgeInsets) -> PinLayout
+    @discardableResult func left(_ insets: UIEdgeInsets) -> PinLayout
     
     @discardableResult func bottom() -> PinLayout
     @discardableResult func bottom(_ value: CGFloat) -> PinLayout

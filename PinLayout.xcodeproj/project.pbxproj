@@ -260,9 +260,9 @@
 				2475B6C41FC37A900054CADD /* PinLayoutImpl+Layouting.swift */,
 				2475B6C91FC37C1C0054CADD /* PinLayoutImpl+Relative.swift */,
 				2475B6C81FC37C1C0054CADD /* PinLayoutImpl+Warning.swift */,
+				DF1E399220464E520002D0AA /* PinSafeArea.swift */,
 				2475B6D21FC37CD40054CADD /* Coordinates.swift */,
 				243C620E1FC3834B0082C327 /* Percent.swift */,
-				DF1E399220464E520002D0AA /* PinSafeArea.swift */,
 				2475B6CE1FC37C570054CADD /* TypesImpl.swift */,
 				2475B6D01FC37C8C0054CADD /* UIView+LTR.swift */,
 			);

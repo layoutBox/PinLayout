@@ -204,11 +204,11 @@
 		2439CC371E665C5E003326FB /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				24F75B581EE5642C008DB567 /* Intro */,
 				24CB99991F290591004EA7FB /* AdjustToContainer */,
-				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */,
+				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */,
 				24F2460C1FA8D4D100B6332E /* CollectionViewExample */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
-				24F75B581EE5642C008DB567 /* Intro */,
 				24D18D181F3DECD6008129EF /* IntroRTL */,
 				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
@@ -371,13 +371,13 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
-		DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSizeView */ = {
+		DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */ = {
 			isa = PBXGroup;
 			children = (
 				24A9C2011EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift */,
 				24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */,
 			);
-			path = AutoAdjustingSizeView;
+			path = AutoAdjustingSize;
 			sourceTree = "<group>";
 		};
 		F143180314A617EFD07C5709 /* Pods */ = {
@@ -514,12 +514,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-10/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

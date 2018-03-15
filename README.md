@@ -33,7 +33,6 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [Performance](#performance)
 * [Documentation](#documentation)
   * [Right to left languages (RTL) support](#rtl_support)
-  * [safeAreaInsets support](#safeAreaInsets)
   * [Layout using distances from superview’s edges](#distance_from_superview_edge) 
   * [Edges](#edges)
   * [Anchors](#anchors)
@@ -42,6 +41,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
   * [Aspect Ratio](#aspect_ratio)
   * [Margins](#margins)
+  * [safeAreaInsets support](#safeAreaInsets)
   * [justify, align](#justify_align)
   * [UIView's transforms](#uiview_transform)
   * [Warnings](#warnings)
@@ -100,7 +100,7 @@ override func layoutSubviews() {
 ``` 
 
 * 5 views, 5 lines
-* PinLayout can handle iPhone X/iOS 11 safe area using  `UIView.safeAreaInsets` while running on iOS 11, or using [`pin.safeArea`](#safe_area) that support earlier iOS releases (7/8/9/10).
+* PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
 * PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
 * This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift)
 
@@ -176,43 +176,12 @@ PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages.
 
 <br/>
 
-<a name="safeAreaInsets"></a>
 ## safeAreaInsets support 
-PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases, including iOS 7/8/9/10.
+PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`.
 
-**Property**:
-
-* **`UIView.pin.safeArea`**  
-The safe area of a view represent the area not covered by navigation bars, tab bars, toolbars, and other ancestors that obscure a view controller's view.  
-
-While running on a iOS 11 devices, this property simply expose the UIKit `UIView.safeAreaInsets`. But on previous iOS releases, PinLayout use the information from the `UIViewController`'s topLayoutGuide and bottomLayoutGuide to expose the safe area.
-
-
-### Document PinSafeAreaInsetsUpdate protocol
-
-
-view1.pin.top(pin.safeArea) === view1.pin.top(pin.safeArea.top) ==
-view1.pin.top(safeAreaInsets)
-
-class BaseFormView: UIView, PinSafeAreaInsetsUpdate {
-    override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-    }
-}
-
-
-    override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-        print("safeAreaInsetsDidChange!!!!: \(pin.safeArea)")
-    }
-
+[See here for complete details](#safeAreaInsets)
 
 <br/>
-
 
 <a name="distance_from_superview_edge"></a>
 ## Layout using distances from superview’s edges 
@@ -1089,6 +1058,43 @@ NOTE: In that in that particular situation, the same results could have been ach
 ```
 
 </br>
+
+<a name="safeAreaInsets"></a>
+## safeAreaInsets support 
+PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`.
+
+**Property**:
+
+* **`UIView.pin.safeArea`**  
+The safe area of a view represent the area not covered by navigation bars, tab bars, toolbars, and other ancestors that obscure a view controller's view.  
+
+While running on a iOS 11 devices, this property simply expose the UIKit `UIView.safeAreaInsets`. But on previous iOS releases, PinLayout use the information from the `UIViewController`'s topLayoutGuide and bottomLayoutGuide to expose the safe area.
+
+
+### Document PinSafeAreaInsetsUpdate protocol
+
+view1.pin.top(pin.safeArea) === view1.pin.top(pin.safeArea.top) ==
+view1.pin.top(safeAreaInsets)
+
+class BaseFormView: UIView, PinSafeAreaInsetsUpdate {
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+        }
+    }
+}
+
+
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+        }
+        print("safeAreaInsetsDidChange!!!!: \(pin.safeArea)")
+    }
+
+
+<br/>
+
 
 <a name="aspect_ratio"></a>
 ## justify() / align()

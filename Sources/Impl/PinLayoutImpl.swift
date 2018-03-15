@@ -83,7 +83,7 @@ class PinLayoutImpl: PinLayout {
         if #available(iOS 11.0, tvOS 11.0, *) {
             return view.safeAreaInsets
         } else {
-            return view.compatibilitySafeAreaInsets
+            return view.computeSafeAreaInsets()
         }
     }
 
@@ -1036,7 +1036,6 @@ extension PinLayoutImpl {
         }
     }
 
-    // CHECK THIS!!!
     internal func referenceSuperview(_ referenceView: UIView, _ context: Context) -> UIView? {
         if let superview = referenceView.superview {
             return superview

@@ -54,7 +54,9 @@ extension UIViewController {
 
         self.swizzled_viewWillLayoutSubviews()
         let safeAreaInsets = UIEdgeInsets(top: topLayoutGuide.length, left: 0, bottom: bottomLayoutGuide.length, right: 0)
-        view.assignSafeAreaInsetsRecursively(insets: safeAreaInsets)
+
+        // Set children safeArea up to 3 level, to limit the performance issue of computing this compatibilitySafeAreaInsets
+        view.setCompatibilitySafeAreaInsets(safeAreaInsets, recursiveLevel: 3)
     }
 }
 
@@ -66,7 +68,7 @@ extension UIView {
     private(set) var compatibilitySafeAreaInsets: UIEdgeInsets {
         get {
             if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
-            return objc_getAssociatedObject(self, &AssociatedKeys.compatibilitySafeAreaInsets) as? UIEdgeInsets ?? UIEdgeInsets.zero
+            return objc_getAssociatedObject(self, &AssociatedKeys.compatibilitySafeAreaInsets) as? UIEdgeInsets ?? .zero
         }
         set {
             if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
@@ -79,20 +81,68 @@ extension UIView {
         }
     }
 
-    fileprivate func assignSafeAreaInsetsRecursively(insets: UIEdgeInsets) {
+    fileprivate func setCompatibilitySafeAreaInsets(_ insets: UIEdgeInsets, recursiveLevel: Int = 0) {
         if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
         compatibilitySafeAreaInsets = insets
 
+        guard recursiveLevel > 0 else { return }
         for subview in subviews {
-            guard !(self is UIScrollView) else { return }
-            let topSafeInsetValue = max(insets.top - subview.frame.origin.y, 0)
-            let leftSafeInsetValue = max(insets.left - subview.frame.origin.x, 0)
-            let bottomSafeInsetValue = max((subview.frame.origin.y + subview.frame.size.height) - bounds.size.height - insets.bottom, 0)
-            let rightSafeInsetValue = max((subview.frame.origin.x + subview.frame.size.width) - bounds.size.width - insets.right, 0)
-            let subviewSafeAreaInsets = UIEdgeInsets(top: topSafeInsetValue, left: leftSafeInsetValue, bottom: bottomSafeInsetValue, right: rightSafeInsetValue)
+            guard !(self is UIScrollView) else { return }  // scrollview's children don't have safeAreaInsets
 
-            subview.assignSafeAreaInsetsRecursively(insets: subviewSafeAreaInsets)
+            let subviewSafeAreaInsets = viewSafeAreaInsets(forView: subview, parent: self, parentSafeArea: insets)
+            subview.setCompatibilitySafeAreaInsets(subviewSafeAreaInsets, recursiveLevel: recursiveLevel - 1)
         }
+    }
+
+    func computeSafeAreaInsets() -> UIEdgeInsets {
+        if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
+
+        if let _ = self.next as? UIViewController {
+            // The UIView is the UIViewController's UIView, its compatibilitySafeAreaInsets don't need to be recomputed.
+            return self.compatibilitySafeAreaInsets
+        } else {
+            // NOTE: We recompute all view's safeAreaInsets because their position and size may have
+            //       been modified since the last UIViewController.viewWillLayoutSubviews() call (see swizzled_viewWillLayoutSubviews).
+            var stack: [UIView] = [self]
+            var topParent = self
+
+            // 1) Reach the UIViewController's UIView to get its compatibilitySafeAreaInsets, which is the
+            //    only one we are sure its value is valid.
+            while (topParent.next as? UIViewController) == nil {
+                guard let parent = topParent.superview  else { return .zero }  // The view is not attached
+                guard !(parent is UIScrollView) else { return .zero }          // scrollview's children don't have safeAreaInsets
+                topParent = parent
+
+                if (topParent.next as? UIViewController) == nil {
+                    stack.append(topParent)
+                }
+            }
+
+            // 2) Use this UIViewController's top UIView compatibilitySafeAreaInsets to recompute
+            //    all its children UIView's compatibilitySafeAreaInsets until we reach "self" (UIView)
+            var safeAreaInsets = topParent.compatibilitySafeAreaInsets
+
+            while let currentView = stack.popLast() {
+                safeAreaInsets = viewSafeAreaInsets(forView: currentView, parent: topParent, parentSafeArea: safeAreaInsets)
+                currentView.compatibilitySafeAreaInsets = safeAreaInsets
+
+                topParent = currentView
+            }
+            return safeAreaInsets
+        }
+    }
+
+    fileprivate func viewSafeAreaInsets(forView view: UIView, parent: UIView, parentSafeArea: UIEdgeInsets) -> UIEdgeInsets {
+        // WARNING: On iOS 11, children has never inset values (UIView.safeAreaInsets) greater than their parent insets!!
+        //          This looks like a bug, because a children with a negative positition (ex: frame.origin.y = -20) should
+        //          have a top inset greater than its parent top inset. But on iOS 11 this is not the case. For that
+        //          reason we must limit inset value to their parent inset value (ref: min(newInset, parentInset)).
+        let topInsetValue = max(min(parentSafeArea.top - view.frame.origin.y, parentSafeArea.top), 0)
+        let bottomInsetValue = max(min(view.frame.maxY - parent.bounds.size.height + parentSafeArea.bottom, parentSafeArea.bottom), 0)
+
+        // Compute only top and bottom inset values. compatibilitySafeAreaInsets is used only for non iOS 11 devices, which
+        // only has topLayoutGuide and bottomLayoutGuide.
+        return UIEdgeInsets(top: topInsetValue, left: 0, bottom: bottomInsetValue, right: 0)
     }
 
     fileprivate func callSafeAreaInsetsDidChange() {

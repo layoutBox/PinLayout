@@ -1,10 +1,21 @@
+//  Copyright (c) 2017 Luc Dion
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  UIViewSafeAreaTests.swift
-//  TaylorTests
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-//  Created by Antoine Lamy on 2017-12-28.
-//  Copyright © 2017 Mirego. All rights reserved.
-//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
 import XCTest
 import PinLayout
@@ -18,11 +29,13 @@ class PinSafeAreaSpec: QuickSpec {
         var window: UIWindow!
 
         beforeEach {
+            Pin.safeAreaInsetsDidChangeMode = .always
             viewController = TestViewController()
             navigationController = UINavigationController(rootViewController: viewController)
         }
 
         afterEach {
+            Pin.safeAreaInsetsDidChangeMode = .optIn
             viewController = nil
             navigationController = nil
             window = nil
@@ -237,26 +250,24 @@ fileprivate class TestView: UIView {
     }
 
     override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-        
         safeAreaInsetsDidChangeCalledCount += 1
     }
 }
 
-class PinSafeArea2Spec: QuickSpec {
+class PinSafeAreaMoreTestsSpec: QuickSpec {
     override func spec() {
         var viewController: TestViewController2!
         var navigationController: UINavigationController!
         var window: UIWindow!
 
         beforeEach {
+            Pin.safeAreaInsetsDidChangeMode = .always
             viewController = TestViewController2()
             navigationController = UINavigationController(rootViewController: viewController)
         }
 
         afterEach {
+            Pin.safeAreaInsetsDidChangeMode = .optIn
             viewController = nil
             navigationController = nil
             window = nil
@@ -418,6 +429,124 @@ class PinSafeArea2Spec: QuickSpec {
     }
 }
 
+class PinSafeAreaWithOptInModeSpec: QuickSpec {
+    override func spec() {
+        var viewController: TestViewController2!
+        var navigationController: UINavigationController!
+        var window: UIWindow!
+
+        beforeEach {
+            viewController = TestViewController2()
+            navigationController = UINavigationController(rootViewController: viewController)
+        }
+
+        afterEach {
+            viewController = nil
+            navigationController = nil
+            window = nil
+        }
+
+        func setupWindow(with viewController: UIViewController) {
+            window = UIWindow()
+            window.rootViewController = viewController
+            window.addSubview(viewController.view)
+
+            // Testing UIViewController's layout methods is kind of bad
+            // but needed in our case so we need to wait some time
+            RunLoop.current.run(until: Date().addingTimeInterval(0.2))
+        }
+
+        describe("using Pin.safeAreaInsetsDidChangeMode = .optIn") {
+            it("should not call safeAreaInsetsDidChange()") {
+                let mainView = viewController.mainView
+                var expectedSafeAreaInsetsDidChangeCalledCount: Int {
+                    if #available(iOS 11.0, tvOS 11.0, *) { return 1 } else { return 0 }
+                }
+                var expectedSubViewSafeAreaInsetsDidChangeCalledCount: Int {
+                    if #available(iOS 11.0, tvOS 11.0, *) { return 1 } else { return 0 }
+                }
+
+                mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
+                    subView.pin.top(10).left(10).size(100)
+                }
+
+                navigationController.navigationBar.barStyle = .blackTranslucent
+                setupWindow(with: navigationController)
+
+                // MATCH safeAreaInsets!
+                expect(mainView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSafeAreaInsetsDidChangeCalledCount))
+                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSubViewSafeAreaInsetsDidChangeCalledCount))
+
+                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
+
+                expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+            }
+        }
+    }
+}
+
+class PinSafeAreaWithOptInInsetsUpdateModeSpec: QuickSpec {
+    override func spec() {
+        var viewController: TestInsetsUpdateViewController!
+        var navigationController: UINavigationController!
+        var window: UIWindow!
+
+        beforeEach {
+            viewController = TestInsetsUpdateViewController()
+            navigationController = UINavigationController(rootViewController: viewController)
+        }
+
+        afterEach {
+            viewController = nil
+            navigationController = nil
+            window = nil
+        }
+
+        func setupWindow(with viewController: UIViewController) {
+            window = UIWindow()
+            window.rootViewController = viewController
+            window.addSubview(viewController.view)
+
+            // Testing UIViewController's layout methods is kind of bad
+            // but needed in our case so we need to wait some time
+            RunLoop.current.run(until: Date().addingTimeInterval(0.2))
+        }
+
+        describe("using Pin.safeAreaInsetsDidChangeMode = .optIn") {
+            it("should not call safeAreaInsetsDidChange()") {
+                let mainView = viewController.mainView
+                var expectedSafeAreaInsetsDidChangeCalledCount: Int {
+                    if #available(iOS 11.0, tvOS 11.0, *) { return 1 } else { return 3 }
+                }
+                var expectedSubViewSafeAreaInsetsDidChangeCalledCount: Int {
+                    if #available(iOS 11.0, tvOS 11.0, *) { return 1 } else { return 0 }
+                }
+
+                mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
+                    subView.pin.top(10).left(10).size(100)
+                }
+
+                navigationController.navigationBar.barStyle = .blackTranslucent
+                setupWindow(with: navigationController)
+
+                // MATCH safeAreaInsets!
+                expect(mainView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSafeAreaInsetsDidChangeCalledCount))
+                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSubViewSafeAreaInsetsDidChangeCalledCount))
+
+                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
+
+                expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+            }
+        }
+    }
+}
+
 class PinSafeAreaTabBarControllerSpec: QuickSpec {
     override func spec() {
         var viewController: TestViewController2!
@@ -425,6 +554,8 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
         var window: UIWindow!
 
         beforeEach {
+            Pin.safeAreaInsetsDidChangeMode = .always
+
             viewController = TestViewController2()
 
             let tabbarController = UITabBarController()
@@ -434,6 +565,7 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
         }
 
         afterEach {
+            Pin.safeAreaInsetsDidChangeMode = .optIn
             viewController = nil
             navigationController = nil
             window = nil
@@ -521,11 +653,13 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
         var window: UIWindow!
 
         beforeEach {
+            Pin.safeAreaInsetsDidChangeMode = .always
             viewController = TestScrollViewController()
             navigationController = UINavigationController(rootViewController: viewController)
         }
 
         afterEach {
+            Pin.safeAreaInsetsDidChangeMode = .optIn
             viewController = nil
             navigationController = nil
             window = nil
@@ -569,6 +703,8 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
     }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 fileprivate class TestViewController2: UIViewController {
     var mainView: TestView2 { return self.view as! TestView2 }
     override func loadView() {
@@ -593,10 +729,6 @@ class TestView2: UIView {
     }
 
     override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-
         safeAreaInsetsDidChangeCalledCount += 1
     }
 
@@ -637,10 +769,6 @@ class SubView: UIView {
     }
 
     override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-
         safeAreaInsetsDidChangeCalledCount += 1
     }
 
@@ -657,6 +785,51 @@ fileprivate class TestScrollViewController: UIViewController {
     }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+fileprivate class TestInsetsUpdateViewController: UIViewController {
+    var mainView: TestInsetsUpdateView { return self.view as! TestInsetsUpdateView }
+    override func loadView() {
+        self.view = TestInsetsUpdateView()
+    }
+}
+
+class TestInsetsUpdateView: UIView, PinSafeAreaInsetsUpdate {
+    fileprivate let subView = SubView(name: "SubViewA", addSubView: true)
+    var safeAreaInsetsDidChangeCalledCount: Int = 0
+    var layoutOffsetViewClosure: ((_ subView: UIView, _ parent: UIView) -> Void)?
+
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
+
+        addSubview(subView)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override func safeAreaInsetsDidChange() {
+        safeAreaInsetsDidChangeCalledCount += 1
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutSubView()
+    }
+
+    fileprivate func layoutSubView() {
+        assert(layoutOffsetViewClosure != nil)
+        layoutOffsetViewClosure?(subView, self)
+
+        subView.layoutIfNeeded()
+        subView.subViewB?.layoutIfNeeded()
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TestScrollView: UIView {
     let scrollView = UIScrollView()
     let subView = SubView(name: "SubViewA", addSubView: true)
@@ -675,10 +848,6 @@ class TestScrollView: UIView {
     }
 
     override func safeAreaInsetsDidChange() {
-        if #available(iOS 11.0, *) {
-            super.safeAreaInsetsDidChange()
-        }
-
         safeAreaInsetsDidChangeCalledCount += 1
     }
 

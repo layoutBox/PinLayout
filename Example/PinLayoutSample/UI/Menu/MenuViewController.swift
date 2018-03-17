@@ -24,6 +24,7 @@ enum PageType: Int {
     case adjustToContainer
     case tableView
     case collectionView
+    case safeArea
     case form
     case relativePositions
     case multiRelativePositions
@@ -35,33 +36,49 @@ enum PageType: Int {
     
     var text: String {
         switch self {
-        case .intro:                      return "PinLayout's Intro"
-        case .adjustToContainer:          return "Adjust to container size"
-        case .tableView:                  return "UITableView with variable cell's height"
-        case .collectionView:             return "UICollectionView Example"
-        case .form:                       return "Form Example"
-        case .relativePositions:          return "Relative Positionning"
-        case .multiRelativePositions:     return "Multiple Relatives Positionning"
-        case .autoAdjustingSize:          return "Auto adjusting size"
-        case .introRTL:                   return "PinLayout's right-to-left language support"
-        case .introObjC:                  return "Objective-C PinLayout Example"
-        case .count:                      return ""
+        case .intro:                  return "Introduction example"
+        case .adjustToContainer:      return "Adjust to container size"
+        case .tableView:              return "UITableView with variable cell's height"
+        case .collectionView:         return "UICollectionView Example"
+        case .safeArea:               return "SafeArea"
+        case .form:                   return "Form Example"
+        case .relativePositions:      return "Relative Positionning"
+        case .multiRelativePositions: return "Multiple Relatives Positionning"
+        case .autoAdjustingSize:      return "Auto adjusting size"
+        case .introRTL:               return "PinLayout's right-to-left language support"
+        case .introObjC:              return "Objective-C PinLayout Example"
+        case .count:                  return ""
         }
     }
 
     var viewController: UIViewController {
         switch self {
-        case .intro:                      return IntroViewController(pageType: self)
-        case .adjustToContainer:          return AdjustToContainerViewController(pageType: self)
-        case .tableView:                  return TableViewExampleViewController(pageType: self)
-        case .collectionView:             return CollectionViewExampleViewController(pageType: self)
-        case .form:                       return FormViewController(pageType: self)
-        case .relativePositions:          return RelativeViewController(pageType: self)
-        case .multiRelativePositions:     return MultiRelativeViewController(pageType: self)
-        case .autoAdjustingSize:          return AutoAdjustingSizeViewController(pageType: self)
-        case .introRTL:                   return IntroRTLViewController(pageType: self)
-        case .introObjC:                  return IntroObjectiveCViewController()
-        case .count:                      return UIViewController()
+        case .intro:
+            return IntroViewController(pageType: self)
+        case .adjustToContainer:
+            return AdjustToContainerViewController(pageType: self)
+        case .tableView:
+            return TableViewExampleViewController(pageType: self)
+        case .collectionView:
+            return CollectionViewExampleViewController(pageType: self)
+        case .safeArea:
+            let tabbarController = UITabBarController()
+            tabbarController.setViewControllers([SafeAreaViewController(), SafeAreaCornersViewController()], animated: false)
+            return tabbarController
+        case .form:
+            return FormViewController(pageType: self)
+        case .relativePositions:
+            return RelativeViewController(pageType: self)
+        case .multiRelativePositions:
+            return MultiRelativeViewController(pageType: self)
+        case .autoAdjustingSize:
+            return AutoAdjustingSizeViewController(pageType: self)
+        case .introRTL:
+            return IntroRTLViewController(pageType: self)
+        case .introObjC:
+            return IntroObjectiveCViewController()
+        case .count:
+            return UIViewController()
         }
     }
 }
@@ -87,7 +104,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        didSelect(pageType: .autoAdjustingSize)
+//        didSelect(pageType: .safeArea)
     }
 }
 

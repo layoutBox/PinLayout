@@ -44,6 +44,11 @@
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
 		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
 		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
+		DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */; };
+		DF4C1AA5205AEDFC00DED50B /* SafeAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA1205AEDFC00DED50B /* SafeAreaViewController.swift */; };
+		DF4C1AAA205AF10900DED50B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA7205AF10900DED50B /* RoundedButton.swift */; };
+		DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */; };
+		DF4C1AAF205AF78A00DED50B /* SafeAreaCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +151,11 @@
 		A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
+		DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaView.swift; sourceTree = "<group>"; };
+		DF4C1AA1205AEDFC00DED50B /* SafeAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaViewController.swift; sourceTree = "<group>"; };
+		DF4C1AA7205AF10900DED50B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaCornersViewController.swift; sourceTree = "<group>"; };
+		DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaCornersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,13 +217,14 @@
 				24F75B581EE5642C008DB567 /* Intro */,
 				24CB99991F290591004EA7FB /* AdjustToContainer */,
 				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */,
+				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
 				24F2460C1FA8D4D100B6332E /* CollectionViewExample */,
+				DF4C1A9F205AEDFC00DED50B /* SafeArea */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
 				24D18D181F3DECD6008129EF /* IntroRTL */,
 				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
-				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
 				24CD1E8D1F8E4B0A00C3A54D /* PinLayoutSample-Bridging-Header.h */,
 			);
 			path = Examples;
@@ -369,6 +380,26 @@
 				24F75B5A1EE5644E008DB567 /* IntroViewController.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		DF4C1A9F205AEDFC00DED50B /* SafeArea */ = {
+			isa = PBXGroup;
+			children = (
+				DF4C1AAB205AF10C00DED50B /* Subviews */,
+				DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */,
+				DF4C1AA1205AEDFC00DED50B /* SafeAreaViewController.swift */,
+				DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */,
+				DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */,
+			);
+			path = SafeArea;
+			sourceTree = "<group>";
+		};
+		DF4C1AAB205AF10C00DED50B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				DF4C1AA7205AF10900DED50B /* RoundedButton.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */ = {
@@ -565,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4C1AAF205AF78A00DED50B /* SafeAreaCornersView.swift in Sources */,
 				24F246141FA8D57100B6332E /* UIImageView+Download.swift in Sources */,
 				24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */,
 				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
@@ -574,8 +606,10 @@
 				247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */,
 				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
 				24F246121FA8D4D100B6332E /* HouseCell.swift in Sources */,
+				DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */,
 				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,
 				24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */,
+				DF4C1AAA205AF10900DED50B /* RoundedButton.swift in Sources */,
 				2439CC351E665BF6003326FB /* MenuView.swift in Sources */,
 				2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */,
 				24A9C1F61EF054BF00F2CF64 /* MethodCell.swift in Sources */,
@@ -583,6 +617,7 @@
 				24CB999C1F29059B004EA7FB /* AdjustToContainerView.swift in Sources */,
 				2497CFED1EF40B9100DFD13B /* FormView.swift in Sources */,
 				24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */,
+				DF4C1AA5205AEDFC00DED50B /* SafeAreaViewController.swift in Sources */,
 				249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */,
 				2497CFEE1EF40B9100DFD13B /* FormViewController.swift in Sources */,
 				24A9C1F31EF0542F00F2CF64 /* TableViewExampleViewController.swift in Sources */,
@@ -590,6 +625,7 @@
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				24F246111FA8D4D100B6332E /* CollectionViewExampleViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
+				DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */,
 				241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,

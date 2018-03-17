@@ -25,8 +25,19 @@ public enum LayoutDirection {
     case rtl
 }
 
+/// Control how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
+public enum PinSafeAreaInsetsDidChangeMode {
+    /// PinLayout will call `UIView.safeAreaInsetsDidChange` only if the UIView implement the PinSafeAreaInsetsUpdate protocol.
+    case optIn
+    /// PinLayout will automatically calls `UIView.safeAreaInsetsDidChange` if the view has implemented this method.
+    case always
+}
+
 @objc public class Pin: NSObject {
     public static var layoutDirection = LayoutDirection.ltr
+
+    /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
+    public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn
 
 #if DEBUG
     public static var logWarnings = true

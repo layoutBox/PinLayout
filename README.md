@@ -24,7 +24,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 ### Requirements
 * iOS 8.0+ / tvOS 9.0+
 * Xcode 8.0+ / Xcode 9.0
-* Swift 3.0+ / Swift 4.0 / Objective-C
+* Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent features
 * :star: PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.

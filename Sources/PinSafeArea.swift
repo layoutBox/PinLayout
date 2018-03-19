@@ -143,9 +143,6 @@ extension UIView {
     }
 
     fileprivate func handleSafeAreaInsetsDidChange() {
-        // iOS 11 invalidates the view's layout when the safeAreaInsets change.
-        self.setNeedsLayout()
-
         switch Pin.safeAreaInsetsDidChangeMode {
         case .optIn:
             if let updatable = self as? PinSafeAreaInsetsUpdate {
@@ -160,14 +157,16 @@ extension UIView {
     }
 
     fileprivate func extractMethodFrom(owner: AnyObject, selector: Selector) -> (() -> Void)? {
-        let method = owner is AnyClass ? class_getClassMethod(owner as! AnyClass, selector) :
-                                         class_getInstanceMethod(type(of: owner), selector)
-        guard method != nil else { return nil }
+        guard let method = owner is AnyClass ? class_getClassMethod((owner as! AnyClass), selector) :
+                                               class_getInstanceMethod(type(of: owner), selector)
+            else { return nil }
         let implementation = method_getImplementation(method)
 
         typealias Function = @convention(c) (AnyObject, Selector) -> Void
         let function = unsafeBitCast(implementation, to: Function.self)
 
-        return { bool in function(owner, selector) }
+        return {
+            function(owner, selector)
+        }
     }
 }

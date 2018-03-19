@@ -50,12 +50,12 @@ public enum PinSafeAreaInsetsDidChangeMode {
      `Pin.logMissingLayoutCalls`, this way any missing call to `layout()` will generate
      a warning in the Xcode console..
     */
-    public static var logMissingLayoutCalls = false
+    @objc public static var logMissingLayoutCalls = false
     
     public static func layoutDirection(_ direction: LayoutDirection) {
         self.layoutDirection = direction
     }
     
     // Contains PinLayout last warning's text. Used by PinLayout's Unit Tests.
-    public static var lastWarningText: String?
+    @objc public static var lastWarningText: String?
 }

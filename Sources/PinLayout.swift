@@ -32,11 +32,11 @@ public extension UIView {
         return PinLayoutImpl(view: self, keepTransform: false)
     }
 
-    public var anchor: AnchorList {
+    @objc public var anchor: AnchorList {
         return AnchorListImpl(view: self)
     }
 
-    public var edge: EdgeList {
+    @objc public var edge: EdgeList {
         return EdgeListImpl(view: self)
     }
 }

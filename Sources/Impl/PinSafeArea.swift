@@ -112,7 +112,7 @@ extension UIViewController {
 }
 
 extension UIView {
-    private struct pinlayoutAssociatedKeys {
+    fileprivate struct pinlayoutAssociatedKeys {
         static var pinlayoutSafeAreaInsets = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
     }
 
@@ -132,7 +132,7 @@ extension UIView {
         }
     }
 
-    func pinlayoutComputeSafeAreaInsets() -> UIEdgeInsets {
+    internal func pinlayoutComputeSafeAreaInsets() -> UIEdgeInsets {
         if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
 
         if let _ = self.next as? UIViewController {

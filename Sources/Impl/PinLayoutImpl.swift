@@ -821,6 +821,11 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func marginTop(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginTop(\(percent.description))" }
+        return marginTop(percent, context)
+    }
+
+    @discardableResult
+    private func marginTop(_ percent: Percent, _ context: Context) -> Self {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         marginTop = percent.of(layoutSuperviewRect.height)
         return self
@@ -835,6 +840,11 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func marginLeft(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginLeft(\(percent.description))" }
+        return marginLeft(percent, context)
+    }
+
+    @discardableResult
+    private func marginLeft(_ percent: Percent, _ context: Context) -> Self {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         marginLeft = percent.of(layoutSuperviewRect.width)
         return self
@@ -849,6 +859,11 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func marginBottom(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginBottom(\(percent.description))" }
+        return marginBottom(percent, context)
+    }
+
+    @discardableResult
+    private func marginBottom(_ percent: Percent, _ context: Context) -> Self {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         marginBottom = percent.of(layoutSuperviewRect.height)
         return self
@@ -863,6 +878,11 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func marginRight(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginRight(\(percent.description))" }
+        return marginRight(percent, context)
+    }
+
+    @discardableResult
+    private func marginRight(_ percent: Percent, _ context: Context) -> Self {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         marginRight = percent.of(layoutSuperviewRect.width)
         return self
@@ -875,7 +895,8 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func marginStart(_ percent: Percent) -> PinLayout {
-        return isLTR() ? marginLeft(percent) : marginRight(percent)
+        func context() -> String { return "marginStart(\(percent.description))" }
+        return isLTR() ? marginLeft(percent, context) : marginRight(percent, context)
     }
     
     @discardableResult
@@ -885,7 +906,8 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func marginEnd(_ percent: Percent) -> PinLayout {
-        return isLTR() ? marginRight(percent) : marginLeft(percent)
+        func context() -> String { return "marginEnd(\(percent.description))" }
+        return isLTR() ? marginRight(percent, context) : marginLeft(percent, context)
     }
 
     @discardableResult
@@ -897,7 +919,13 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func marginHorizontal(_ percent: Percent) -> PinLayout {
-        return marginLeft(percent).marginRight(percent)
+        func context() -> String { return "marginHorizontal(\(percent.description))" }
+        return marginHorizontal(percent, context)
+    }
+
+    @discardableResult
+    private func marginHorizontal(_ percent: Percent, _ context: Context) -> Self {
+        return marginLeft(percent, context).marginRight(percent, context)
     }
 
     @discardableResult
@@ -909,7 +937,13 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func marginVertical(_ percent: Percent) -> PinLayout {
-        return marginTop(percent).marginBottom(percent)
+        func context() -> String { return "marginVertical(\(percent.description))" }
+        return marginVertical(percent, context)
+    }
+
+    @discardableResult
+    private func marginVertical(_ percent: Percent, _ context: Context) -> Self {
+        return marginTop(percent, context).marginBottom(percent, context)
     }
     
     @discardableResult
@@ -942,7 +976,11 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func margin(_ percent: Percent) -> PinLayout {
-        return marginTop(percent).marginLeft(percent).marginBottom(percent).marginRight(percent)
+        func context() -> String { return "margin(\(percent.description))" }
+        return marginTop(percent, context)
+            .marginLeft(percent, context)
+            .marginBottom(percent, context)
+            .marginRight(percent, context)
     }
 
     @discardableResult
@@ -956,7 +994,13 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func margin(_ top: Percent, _ left: Percent, _ bottom: Percent, _ right: Percent) -> PinLayout {
-        return marginTop(top).marginLeft(left).marginBottom(bottom).marginRight(right)
+        func context() -> String {
+            return "margin(top: \(top.description), left: \(left.description), bottom: \(bottom.description), right: \(right.description)"
+        }
+        return marginTop(top, context)
+            .marginLeft(left, context)
+            .marginBottom(bottom, context)
+            .marginRight(right, context)
     }
 
     @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout {
@@ -969,7 +1013,8 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func margin(_ vertical: Percent, _ horizontal: Percent) -> PinLayout {
-        return marginVertical(vertical).marginHorizontal(horizontal)
+        func context() -> String { return "margin(vertical: \(vertical.description), horizontal: \(horizontal.description)"}
+        return marginVertical(vertical, context).marginHorizontal(horizontal, context)
     }
 
     @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout {
@@ -982,7 +1027,8 @@ class PinLayoutImpl: PinLayout {
 
     @discardableResult
     func margin(_ top: Percent, _ horizontal: Percent, _ bottom: Percent) -> PinLayout {
-        return marginTop(top).marginHorizontal(horizontal).marginBottom(bottom)
+        func context() -> String { return "margin(top: \(top.description), horizontal: \(horizontal.description), bottom: \(bottom.description)"}
+        return marginTop(top, context).marginHorizontal(horizontal, context).marginBottom(bottom, context)
     }
 
     @discardableResult

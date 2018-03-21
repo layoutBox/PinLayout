@@ -1047,7 +1047,7 @@ class MarginsSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
             }
             
-            if #available(iOS 11.0, *) {
+            if #available(iOS 11.0, tvOS 11.0, *) {
                 it("should adjust the aView") {
                     Pin.layoutDirection(.ltr)
                     aView.pin.top().bottom().start().end().margin(NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 40))

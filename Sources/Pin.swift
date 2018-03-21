@@ -25,8 +25,19 @@ public enum LayoutDirection {
     case rtl
 }
 
+/// Control how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
+public enum PinSafeAreaInsetsDidChangeMode {
+    /// PinLayout will call `UIView.safeAreaInsetsDidChange` only if the UIView implement the PinSafeAreaInsetsUpdate protocol.
+    case optIn
+    /// PinLayout will automatically calls `UIView.safeAreaInsetsDidChange` if the view has implemented this method.
+    case always
+}
+
 @objc public class Pin: NSObject {
     public static var layoutDirection = LayoutDirection.ltr
+
+    /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
+    public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn
 
 #if DEBUG
     public static var logWarnings = true
@@ -39,12 +50,12 @@ public enum LayoutDirection {
      `Pin.logMissingLayoutCalls`, this way any missing call to `layout()` will generate
      a warning in the Xcode console..
     */
-    public static var logMissingLayoutCalls = false
+    @objc public static var logMissingLayoutCalls = false
     
     public static func layoutDirection(_ direction: LayoutDirection) {
         self.layoutDirection = direction
     }
     
     // Contains PinLayout last warning's text. Used by PinLayout's Unit Tests.
-    public static var lastWarningText: String?
+    @objc public static var lastWarningText: String?
 }

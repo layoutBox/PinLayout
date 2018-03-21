@@ -19,7 +19,7 @@
 
 import UIKit
 
-class RelativeViewController: BaseViewController {
+class RelativeViewController: UIViewController {
     fileprivate var mainView: RelativeView {
         return self.view as! RelativeView
     }

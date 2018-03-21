@@ -33,23 +33,4 @@ class PinLayoutTests: XCTestCase {
         rootView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         viewController.view.addSubview(rootView)
     }
-    
-    func testExample() {
-        let child1 = UIView()
-        rootView.addSubview(child1)
-
-//        pin(rootView).topLeft(to: child1.pin.center)
-//        rootView.pin.topLeft(to: child1.pin.center)
-        
-//        child1.pin.pinCenter(of: rootView)
-//        print("child1.frame: \(child1.frame)")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

@@ -120,6 +120,12 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.top(-20%)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: -80.0, width: 200.0, height: 100.0)))
             }
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.top(insets)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 100.0)))
+            }
         }
 
         //
@@ -187,6 +193,12 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.left(-20%).right()
                 expect(aView.frame).to(equal(CGRect(x: -80, y: 100.0, width: 480.0, height: 100.0)))
             }
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.left(insets)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 200.0, height: 100.0)))
+            }
         }
 
         //
@@ -247,6 +259,12 @@ class PinEdgesSpec: QuickSpec {
                 aView.pin.top().bottom(-20%)
                 expect(aView.frame).to(equal(CGRect(x: 140, y: 0.0, width: 200.0, height: 480.0)))
             }
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.bottom(insets)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 270.0, width: 200.0, height: 100.0)))
+            }
         }
 
         //
@@ -306,6 +324,12 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the aView") {
                 aView.pin.left().right(-20%)
                 expect(aView.frame).to(equal(CGRect(x: 0, y: 100.0, width: 480.0, height: 100.0)))
+            }
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.right(insets)
+                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 200.0, height: 100.0)))
             }
         }
         
@@ -481,7 +505,13 @@ class PinEdgesSpec: QuickSpec {
                 bViewChild.pin.all(10)
                 expect(bViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 90.0, height: 60.0)))
             }
-            
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.all(insets)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
+            }
+
             it("should warn") {
                 aView.pin.top(20).all()
                 expect(Pin.lastWarningText).to(contain(["all() top coordinate", "won't be applied", "already been set to 20"]))
@@ -544,7 +574,13 @@ class PinEdgesSpec: QuickSpec {
                 bViewChild.pin.horizontally(10%)
                 expect(bViewChild.frame).to(equal(CGRect(x: 11.0, y: 10.0, width: 88.0, height: 20.0)))
             }
-            
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.horizontally(insets)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 340.0, height: 100.0)))
+            }
+
             it("should warn") {
                 aView.pin.left(20).horizontally()
                 expect(Pin.lastWarningText).to(contain(["horizontally() left coordinate", "won't be applied", "already been set to 20"]))
@@ -603,6 +639,12 @@ class PinEdgesSpec: QuickSpec {
             it("should adjust the bViewChild") {
                 bViewChild.pin.vertically().margin(10)
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: 10.0, width: 60.0, height: 60.0)))
+            }
+
+            it("using insets") {
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.vertically(insets)
+                expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 360.0)))
             }
 
             it("should warn") {

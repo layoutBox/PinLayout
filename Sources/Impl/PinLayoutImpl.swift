@@ -65,14 +65,11 @@ class PinLayoutImpl: PinLayout {
     
     internal var isLayouted = false
 
-    internal let numberFormatter = NumberFormatter()
-
     init(view: UIView, keepTransform: Bool) {
         self.view = view
         self.keepTransform = keepTransform
 
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.decimalSeparator = "."
+        PinSafeArea.enableCompatibilitySafeArea()
     }
     
     deinit {
@@ -81,7 +78,15 @@ class PinLayoutImpl: PinLayout {
         }
         apply()
     }
-    
+
+    var safeArea: UIEdgeInsets {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            return view.safeAreaInsets
+        } else {
+            return view.pinlayoutComputeSafeAreaInsets()
+        }
+    }
+
     //
     // top, left, bottom, right
     //
@@ -102,6 +107,11 @@ class PinLayoutImpl: PinLayout {
         setTop(percent.of(layoutSuperviewRect.height), context)
         return self
     }
+
+    @discardableResult
+    func top(_ insets: UIEdgeInsets) -> PinLayout {
+        return top(insets.top, { return "top(\(insetsDescription(insets))" })
+    }
     
     @discardableResult
     func left() -> PinLayout {
@@ -116,6 +126,11 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func left(_ percent: Percent) -> PinLayout {
         return left(percent, { return "left(\(percent.description))" })
+    }
+
+    @discardableResult
+    func left(_ insets: UIEdgeInsets) -> PinLayout {
+        return left(insets.left, { return "left(\(insetsDescription(insets))" })
     }
     
     @discardableResult
@@ -135,6 +150,12 @@ class PinLayoutImpl: PinLayout {
         func context() -> String { return "start(\(percent.description))" }
         return isLTR() ? left(percent, context) : right(percent, context)
     }
+
+    @discardableResult
+    func start(_ insets: UIEdgeInsets) -> PinLayout {
+        func context() -> String { return "start(\(insetsDescription(insets))" }
+        return isLTR() ? left(insets.left, context) : right(insets.right, context)
+    }
     
     @discardableResult func bottom() -> PinLayout {
         return bottom({ return "bottom()" })
@@ -150,6 +171,11 @@ class PinLayoutImpl: PinLayout {
         return bottom(percent, { return "bottom(\(percent.description))" })
     }
 
+    @discardableResult
+    func bottom(_ insets: UIEdgeInsets) -> PinLayout {
+        return bottom(insets.bottom, { return "bottom(\(insetsDescription(insets))" })
+    }
+
     @discardableResult func right() -> PinLayout {
         return right({ return "right()" })
     }
@@ -162,6 +188,11 @@ class PinLayoutImpl: PinLayout {
     @discardableResult
     func right(_ percent: Percent) -> PinLayout {
         return right(percent, { return "right(\(percent.description))" })
+    }
+
+    @discardableResult
+    func right(_ insets: UIEdgeInsets) -> PinLayout {
+        return right(insets.right, { return "right(\(insetsDescription(insets))" })
     }
     
     @discardableResult func end() -> PinLayout {
@@ -179,6 +210,12 @@ class PinLayoutImpl: PinLayout {
     func end(_ percent: Percent) -> PinLayout {
         func context() -> String { return "end(\(percent.description))" }
         return isLTR() ? right(percent, context) : left(percent, context)
+    }
+
+    @discardableResult
+    func end(_ insets: UIEdgeInsets) -> PinLayout {
+        func context() -> String { return "end(\(insetsDescription(insets))" }
+        return isLTR() ? right(insets.right, context) : left(insets.left, context)
     }
 
     @discardableResult
@@ -246,6 +283,14 @@ class PinLayoutImpl: PinLayout {
         right(value,  { "all(\(value)) right coordinate" })
         return self
     }
+
+    func all(_ insets: UIEdgeInsets) -> PinLayout {
+        top(insets.top,  { "all(\(insets)) top coordinate" })
+        bottom(insets.bottom,  { "all(\(insets)) bottom coordinate" })
+        left(insets.left,  { "all(\(insets)) left coordinate" })
+        right(insets.right,  { "all(\(insets)) right coordinate" })
+        return self
+    }
     
     @discardableResult
     func horizontally() -> PinLayout {
@@ -269,6 +314,13 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
+    func horizontally(_ insets: UIEdgeInsets) -> PinLayout {
+        left(insets.left, { return "horizontally(\(insets)) left coordinate" })
+        right(insets.right, { return "horizontally(\(insets)) right coordinate" })
+        return self
+    }
+
+    @discardableResult
     func vertically() -> PinLayout {
         top({ "vertically() top coordinate" })
         bottom({ "vertically() bottom coordinate" })
@@ -286,6 +338,13 @@ class PinLayoutImpl: PinLayout {
     func vertically(_ percent: Percent) -> PinLayout {
         top(percent, { return "vertically(\(percent.description)) top coordinate" })
         bottom(percent, { return "vertically(\(percent.description)) bottom coordinate" })
+        return self
+    }
+
+    @discardableResult
+    func vertically(_ insets: UIEdgeInsets) -> PinLayout {
+        top(insets.top, { return "vertically(\(insets)) top coordinate" })
+        bottom(insets.bottom, { return "vertically(\(insets)) bottom coordinate" })
         return self
     }
 
@@ -1095,7 +1154,6 @@ extension PinLayoutImpl {
         }
     }
 
-    // CHECK THIS!!!
     internal func referenceSuperview(_ referenceView: UIView, _ context: Context) -> UIView? {
         if let superview = referenceView.superview {
             return superview

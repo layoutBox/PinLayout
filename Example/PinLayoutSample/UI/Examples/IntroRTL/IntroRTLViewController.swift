@@ -19,7 +19,7 @@
 
 import UIKit
 
-class IntroRTLViewController: BaseViewController {
+class IntroRTLViewController: UIViewController {
     fileprivate var mainView: IntroRTLView {
         return self.view as! IntroRTLView
     }

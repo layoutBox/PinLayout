@@ -48,12 +48,13 @@ class RTLSpec: QuickSpec {
             viewController.view.addSubview(rootView)
             
             aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
-            aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
             rootView.addSubview(aView)
             
             bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
-            bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
             rootView.addSubview(bView)
+
+            aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
+            bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
         }
 
         //
@@ -231,6 +232,34 @@ class RTLSpec: QuickSpec {
                 Pin.layoutDirection(.rtl)
                 aView.pin.end(20%)
                 expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+
+            it("using insets") {
+                Pin.layoutDirection(.rtl)
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.start(insets)
+                expect(aView.frame).to(equal(CGRect(x: 260.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+
+            it("using insets") {
+                Pin.layoutDirection(.rtl)
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.end(insets)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+
+            it("using insets") {
+                Pin.layoutDirection(.ltr)
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.start(insets)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
+            }
+
+            it("using insets") {
+                Pin.layoutDirection(.ltr)
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                aView.pin.end(insets)
+                expect(aView.frame).to(equal(CGRect(x: 260.0, y: 100.0, width: 100.0, height: 60.0)))
             }
         }
         

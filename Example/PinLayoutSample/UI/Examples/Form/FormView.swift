@@ -20,12 +20,6 @@
 import UIKit
 import PinLayout
 
-extension PinLayout {
-    func toto() {
-        
-    }
-}
-
 class FormView: BaseFormView {
     
     fileprivate let formContainerView = UIView()
@@ -39,6 +33,7 @@ class FormView: BaseFormView {
 
     override init() {
         super.init()
+        backgroundColor = .white
         
         formContainerView.backgroundColor = UIColor.pinLayoutColor.withAlphaComponent(0.3)
         formContainerView.layer.cornerRadius = 5
@@ -88,7 +83,7 @@ class FormView: BaseFormView {
         formTitleLabel.pin.topCenter().margin(margin)
 
         nameField.pin.below(of: formTitleLabel).left().right().height(40).margin(margin)
-        
+
         ageSwitch.pin.below(of: nameField).left().right().height(40).margin(margin)
         ageField.pin.below(of: ageSwitch).left().right().height(40).margin(margin)
         

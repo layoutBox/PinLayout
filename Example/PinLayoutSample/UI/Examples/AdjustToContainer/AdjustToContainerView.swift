@@ -20,20 +20,18 @@
 import UIKit
 import PinLayout
 
-class AdjustToContainerView: BaseView {
-    fileprivate let contentView = UIView()
+class AdjustToContainerView: UIView {
     fileprivate let languageSelectorView = ChoiceSelectorView(text: "What is your favorite language?", choices: ["Swift", "Objective-C", "C++"])
     fileprivate let swiftOpinionSelector = ChoiceSelectorView(text: "Overall, are you satisfied with the Swift performance in your projects?", choices: ["Yes", "No"])
     fileprivate let swiftUsageSelector = ChoiceSelectorView(text: "How often do you typically use Swift?", choices: ["Daily", "Weekly", "Montly", "Do not use"])
     
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
 
-        addSubview(contentView)
-
-        contentView.addSubview(languageSelectorView)
-        contentView.addSubview(swiftOpinionSelector)
-        contentView.addSubview(swiftUsageSelector)
+        addSubview(languageSelectorView)
+        addSubview(swiftOpinionSelector)
+        addSubview(swiftUsageSelector)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,11 +41,8 @@ class AdjustToContainerView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Layout the contentView using the view's safeArea.
-        contentView.pin.all().margin(safeArea)
-        
-        languageSelectorView.pin.top().left().right().sizeToFit(.width)
-        swiftOpinionSelector.pin.below(of: languageSelectorView, aligned: .left).right().marginTop(10).sizeToFit(.width)
-        swiftUsageSelector.pin.below(of: swiftOpinionSelector, aligned: .left).right().marginTop(10).sizeToFit(.width)
+        languageSelectorView.pin.top(pin.safeArea).horizontally(pin.safeArea).sizeToFit(.width)
+        swiftOpinionSelector.pin.below(of: languageSelectorView).horizontally(pin.safeArea).marginTop(10).sizeToFit(.width)
+        swiftUsageSelector.pin.below(of: swiftOpinionSelector).horizontally(pin.safeArea).marginTop(10).sizeToFit(.width)
     }
 }

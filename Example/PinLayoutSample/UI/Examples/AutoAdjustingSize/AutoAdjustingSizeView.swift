@@ -20,7 +20,7 @@
 import UIKit
 import PinLayout
 
-class AutoAdjustingSizeView: BaseView {
+class AutoAdjustingSizeView: UIView {
 
     fileprivate let contentScrollView = UIScrollView()
 
@@ -42,8 +42,9 @@ class AutoAdjustingSizeView: BaseView {
     var row4Item2 = BasicView(text: "50%", color: .gray)
     var row4Item3 = BasicView(text: "25%", color: .pinLayoutColor)
 
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
 
         contentScrollView.backgroundColor = .white
         addSubview(contentScrollView)
@@ -74,10 +75,9 @@ class AutoAdjustingSizeView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        // Layout the contentScrollView using the view's safeArea.
-        contentScrollView.pin.all().margin(safeArea)
-        
-        row1.pin.top().left().right().height(40)
+        contentScrollView.pin.all()
+
+        row1.pin.top().horizontally(pin.safeArea).height(40)
         row1Item1.pin.top().left().bottom().width(50).margin(2)
         row1Item2.pin.right(of: row1Item1, aligned: .top).bottomRight().margin(0, 2, 2, 2)
 

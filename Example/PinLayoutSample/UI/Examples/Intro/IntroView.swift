@@ -20,35 +20,32 @@
 import UIKit
 import PinLayout
 
-class IntroView: BaseView {
-
-    fileprivate let contentView = UIView()
+class IntroView: UIView {
     fileprivate let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
     fileprivate let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
     fileprivate let textLabel = UILabel()
     fileprivate let separatorView = UIView()
     
-    override init() {
-        super.init()
-        
-        addSubview(contentView)
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
 
         logo.contentMode = .scaleAspectFit
-        contentView.addSubview(logo)
-        
+        addSubview(logo)
+
         segmented.selectedSegmentIndex = 0
         segmented.tintColor = .pinLayoutColor
-        contentView.addSubview(segmented)
+        addSubview(segmented)
         
         textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
         textLabel.font = .systemFont(ofSize: 14)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
-        contentView.addSubview(textLabel)
+        addSubview(textLabel)
         
         separatorView.pin.height(1)
         separatorView.backgroundColor = .pinLayoutColor
-        contentView.addSubview(separatorView)
+        addSubview(separatorView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,13 +54,10 @@ class IntroView: BaseView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        let padding: CGFloat = 10
         
-        // Layout the contentView using the view's safeArea with at least of 10 pixels all around.
-        let containerInsets = safeArea.minInsets(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
-        contentView.pin.all().margin(containerInsets)
-        
-        logo.pin.top().left().width(100).aspectRatio().marginTop(10)
-        segmented.pin.after(of: logo, aligned: .top).right().marginLeft(10)
+        logo.pin.top(pin.safeArea).left(pin.safeArea).width(100).aspectRatio().margin(padding)
+        segmented.pin.after(of: logo, aligned: .top).right(pin.safeArea).marginHorizontal(padding)
         textLabel.pin.below(of: segmented, aligned: .left).width(of: segmented).pinEdges().marginTop(10).sizeToFit(.width)
         separatorView.pin.below(of: [logo, textLabel], aligned: .left).right(to: segmented.edge.right).marginTop(10)
     }

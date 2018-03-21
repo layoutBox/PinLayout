@@ -20,6 +20,13 @@
 #if os(iOS) || os(tvOS)
 import UIKit
 
+fileprivate var numberFormatter: NumberFormatter = {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    numberFormatter.decimalSeparator = "."
+    return numberFormatter
+}()
+
 extension PinLayoutImpl {
     internal func pointContext(method: String, point: CGPoint) -> String {
         return "\(method)(to: CGPoint(x: \(point.x), y: \(point.y)))"
@@ -136,6 +143,10 @@ extension PinLayoutImpl {
     
     internal func viewName(_ view: UIView) -> String {
         return "\(type(of: view))"
+    }
+
+    internal func insetsDescription(_ insets: UIEdgeInsets) -> String {
+        return "UIEdgeInsets(top: \(insets.top), left: \(insets.left), bottom: \(insets.bottom), right: \(insets.right))"
     }
 }
 

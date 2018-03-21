@@ -14,7 +14,7 @@
 
 import UIKit
 
-class CollectionViewExampleView: BaseView {
+class CollectionViewExampleView: UIView {
 
     fileprivate let collectionView: UICollectionView
     fileprivate let flowLayout = UICollectionViewFlowLayout()
@@ -22,15 +22,16 @@ class CollectionViewExampleView: BaseView {
     
     fileprivate var houses: [House] = []
     
-    override init() {
+    init() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         
-        super.init()
+        super.init(frame: .zero)
+        backgroundColor = .white
         
         flowLayout.minimumLineSpacing = 8
         flowLayout.minimumInteritemSpacing = 0
         
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             flowLayout.sectionInsetReference = .fromSafeArea
         }
         
@@ -76,7 +77,7 @@ extension CollectionViewExampleView: UICollectionViewDelegateFlowLayout, UIColle
     }
     
     private func adjustWidthWithSafeArea(_ width: CGFloat) -> CGFloat {
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             return width - safeAreaInsets.left - safeAreaInsets.right
         } else {
             return width

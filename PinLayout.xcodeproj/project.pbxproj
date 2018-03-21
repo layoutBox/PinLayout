@@ -54,7 +54,10 @@
 		24D18D241F3E37DD008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		24D18D261F3E5EA5008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
+		DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
+		DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
+		DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
 /* End PBXBuildFile section */
@@ -124,7 +127,9 @@
 		45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561BC8B0591ACB691B563927 /* Pods-PinLayoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests.release.xcconfig"; sourceTree = "<group>"; };
 		6070E55EDEAA3DC58C0B4CDD /* Pods-PinLayoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSafeAreaTests.swift; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
+		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
 		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
 		DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +239,7 @@
 				DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */,
 				2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */,
 				246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */,
+				DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */,
 				24D18D151F3B42E0008129EF /* RTLSpec.swift */,
 				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
@@ -254,6 +260,7 @@
 				2475B6C41FC37A900054CADD /* PinLayoutImpl+Layouting.swift */,
 				2475B6C91FC37C1C0054CADD /* PinLayoutImpl+Relative.swift */,
 				2475B6C81FC37C1C0054CADD /* PinLayoutImpl+Warning.swift */,
+				DFB3ECB02061602E005F226B /* PinSafeArea.swift */,
 				2475B6D21FC37CD40054CADD /* Coordinates.swift */,
 				243C620E1FC3834B0082C327 /* Percent.swift */,
 				2475B6CE1FC37C570054CADD /* TypesImpl.swift */,
@@ -373,6 +380,7 @@
 					249EFE821E64FB4C00165E39 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4Q596JWQC5;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -479,6 +487,7 @@
 				243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */,
 				243C62071FC37F6C0082C327 /* PinLayoutImpl+Relative.swift in Sources */,
 				243B12BC1FC393580072A9C3 /* Percent.swift in Sources */,
+				DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */,
 				24B02B091F2A713000C18179 /* PinLayout+Filters.swift in Sources */,
 				24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */,
 				243C620B1FC37F6C0082C327 /* UIView+LTR.swift in Sources */,
@@ -506,6 +515,7 @@
 				2475B6D31FC37CD40054CADD /* Coordinates.swift in Sources */,
 				241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */,
 				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,
+				DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */,
 				2475B6CD1FC37C1C0054CADD /* PinLayoutImpl+Relative.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +528,7 @@
 				2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */,
 				243B12C81FC3D06F0072A9C3 /* LayoutMethodSpec.swift in Sources */,
 				2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */,
+				DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */,
 				243B12CB1FC469D00072A9C3 /* ObjectiveCSpec.m in Sources */,
 				248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */,
 				240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */,
@@ -566,7 +577,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -590,7 +601,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -728,7 +739,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -748,7 +759,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -763,6 +774,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -778,6 +790,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

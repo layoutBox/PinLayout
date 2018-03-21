@@ -7,6 +7,21 @@
 
 # Change Log
 
+## [1.6.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.9)
+Released on 2018-02-18
+
+Additions:
+
+* **`UIView.pin.safeArea`**  
+The safe area of a view represent the area not covered by navigation bars, tab bars, toolbars, and other ancestors that obscure a view controller's view.  
+
+* `all(_ insets: UIEdgeInsets)`
+* `horizontally(_ insets: UIEdgeInsets)`
+* `vertically(_ percent: Percent)`
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#122](https://github.com/mirego/PinLayout/pull/122) 
+
+
 ## [1.5.9](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.9)
 Released on 2018-02-18
 

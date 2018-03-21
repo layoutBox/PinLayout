@@ -20,7 +20,7 @@
 import UIKit
 import PinLayout
 
-class RelativeView: BaseView {
+class RelativeView: UIView {
     fileprivate let centerView = UIView()
     
     fileprivate let topLeftView = UIView()
@@ -42,8 +42,9 @@ class RelativeView: BaseView {
     fileprivate let relativeView = UIView()
     fileprivate let childRelativeView = UIView()
     
-    override init() {
-        super.init()
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
         
         centerView.backgroundColor = .pinLayoutColor
         addSubview(centerView)

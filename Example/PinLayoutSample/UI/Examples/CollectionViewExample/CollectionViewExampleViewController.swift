@@ -21,7 +21,7 @@ struct House {
     let mainImageURL: URL
 }
 
-class CollectionViewExampleViewController: BaseViewController {
+class CollectionViewExampleViewController: UIViewController {
     fileprivate var mainView: CollectionViewExampleView {
         return self.view as! CollectionViewExampleView
     }

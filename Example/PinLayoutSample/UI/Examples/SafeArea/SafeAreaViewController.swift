@@ -19,13 +19,23 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+class SafeAreaViewController: UIViewController {
+    fileprivate var mainView: SafeAreaView {
+        return self.view as! SafeAreaView
+    }
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
         
-        if #available(iOS 11.0, *) {
-        } else if let view = view as? BaseView {
-            view.setSafeArea(UIEdgeInsets(top: topLayoutGuide.length, left: 0, bottom: bottomLayoutGuide.length, right: 0))
-        }
+        title = "SafeArea"
+        tabBarItem = UITabBarItem(title: "SafeArea", image: UIImage(named: "Tab1"), tag: 0)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func loadView() {
+        view = SafeAreaView()
     }
 }

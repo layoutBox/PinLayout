@@ -60,9 +60,16 @@ platform :ios do
   end
 
   lane :tests do
-    scan(scheme: "PinLayout", 
-         workspace: "PinLayout.xcworkspace"
-         )
+    scan(
+      scheme: "PinLayoutSample", 
+      workspace: "PinLayout.xcworkspace",
+      devices: [
+        "iPhone 7 (10.2)",
+        "iPhone 7 (11.2)",
+        "iPad Air (11.2)",
+        "iPhone X (11.2)"
+      ]
+    )
   end
 
   lane :doc do 

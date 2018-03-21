@@ -19,7 +19,7 @@
 
 import UIKit
 
-class FormViewController: BaseViewController {
+class FormViewController: UIViewController {
     fileprivate var mainView: FormView {
         return self.view as! FormView
     }

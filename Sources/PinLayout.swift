@@ -32,11 +32,11 @@ public extension UIView {
         return PinLayoutImpl(view: self, keepTransform: false)
     }
 
-    public var anchor: AnchorList {
+    @objc public var anchor: AnchorList {
         return AnchorListImpl(view: self)
     }
 
-    public var edge: EdgeList {
+    @objc public var edge: EdgeList {
         return EdgeListImpl(view: self)
     }
 }
@@ -122,24 +122,30 @@ public extension UIView {
 
 /// PinLayout interface
 public protocol PinLayout {
+    var safeArea: UIEdgeInsets { get }
+
     //
     // MARK: Layout using distances from superview’s edges
     //
     @discardableResult func top() -> PinLayout
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func top(_ percent: Percent) -> PinLayout
+    @discardableResult func top(_ insets: UIEdgeInsets) -> PinLayout
     
     @discardableResult func left() -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
     @discardableResult func left(_ percent: Percent) -> PinLayout
+    @discardableResult func left(_ insets: UIEdgeInsets) -> PinLayout
     
     @discardableResult func bottom() -> PinLayout
     @discardableResult func bottom(_ value: CGFloat) -> PinLayout
     @discardableResult func bottom(_ percent: Percent) -> PinLayout
+    @discardableResult func bottom(_ insets: UIEdgeInsets) -> PinLayout
     
     @discardableResult func right() -> PinLayout
     @discardableResult func right(_ value: CGFloat) -> PinLayout
     @discardableResult func right(_ percent: Percent) -> PinLayout
+    @discardableResult func right(_ insets: UIEdgeInsets) -> PinLayout
     
     @discardableResult func hCenter() -> PinLayout
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayout
@@ -153,9 +159,12 @@ public protocol PinLayout {
     @discardableResult func start() -> PinLayout
     @discardableResult func start(_ value: CGFloat) -> PinLayout
     @discardableResult func start(_ percent: Percent) -> PinLayout
+    @discardableResult func start(_ insets: UIEdgeInsets) -> PinLayout
+
     @discardableResult func end() -> PinLayout
     @discardableResult func end(_ value: CGFloat) -> PinLayout
     @discardableResult func end(_ percent: Percent) -> PinLayout
+    @discardableResult func end(_ insets: UIEdgeInsets) -> PinLayout
     
     // Pin multiple edges at once.
     /**
@@ -165,6 +174,8 @@ public protocol PinLayout {
      */
     @discardableResult func all() -> PinLayout
     @discardableResult func all(_ value: CGFloat) -> PinLayout
+    @discardableResult func all(_ insets: UIEdgeInsets) -> PinLayout
+
     /**
      Pin the left and right edges on its superview's corresponding edges.
      
@@ -173,6 +184,8 @@ public protocol PinLayout {
     @discardableResult func horizontally() -> PinLayout
     @discardableResult func horizontally(_ value: CGFloat) -> PinLayout
     @discardableResult func horizontally(_ percent: Percent) -> PinLayout
+    @discardableResult func horizontally(_ insets: UIEdgeInsets) -> PinLayout
+
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
      
@@ -181,7 +194,13 @@ public protocol PinLayout {
     @discardableResult func vertically() -> PinLayout
     @discardableResult func vertically(_ value: CGFloat) -> PinLayout
     @discardableResult func vertically(_ percent: Percent) -> PinLayout
-    
+    /**
+     Pin the **top and bottom edges** on its superview's corresponding edges.
+     The UIEdgeInsets.top is used to pin the top edge and the UIEdgeInsets.bottom
+     for the bottom edge.
+    */
+    @discardableResult func vertically(_ insets: UIEdgeInsets) -> PinLayout
+
     //
     // MARK: Layout using edges
     //

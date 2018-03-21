@@ -370,7 +370,7 @@ extension PinLayoutImpl {
         return self
     }
     
-    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ referenceView: UIView, _ referenceSuperview: UIView) -> CGPoint {
+    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ referenceSuperview: UIView) -> CGPoint {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
         } else if referenceSuperview == layoutSuperview.superview {
@@ -392,7 +392,7 @@ extension PinLayoutImpl {
             let anchor = anchor as! AnchorImpl
             if let referenceSuperview = referenceSuperview(anchor.view, context) {
                 results.append(computeCoordinates(anchor.point(keepTransform: keepTransform),
-                                                  layoutSuperview, anchor.view, referenceSuperview))
+                                                  layoutSuperview, referenceSuperview))
             }
         })
         
@@ -410,7 +410,7 @@ extension PinLayoutImpl {
         guard let referenceSuperview = referenceSuperview(edge.view, context) else { return nil }
         
         return computeCoordinates(CGPoint(x: edge.x(keepTransform: keepTransform), y: 0),
-                                  layoutSuperview, edge.view, referenceSuperview).x
+                                  layoutSuperview, referenceSuperview).x
     }
     
     internal func computeCoordinate(forEdge edge: VerticalEdge, _ context: Context) -> CGFloat? {
@@ -419,7 +419,7 @@ extension PinLayoutImpl {
         guard let referenceSuperview = referenceSuperview(edge.view, context) else { return nil }
         
         return computeCoordinates(CGPoint(x: 0, y: edge.y(keepTransform: keepTransform)),
-                                  layoutSuperview, edge.view, referenceSuperview).y
+                                  layoutSuperview, referenceSuperview).y
     }
 }
 

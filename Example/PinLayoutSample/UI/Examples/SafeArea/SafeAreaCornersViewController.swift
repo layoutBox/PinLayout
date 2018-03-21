@@ -19,15 +19,16 @@
 
 import UIKit
 
-class AutoAdjustingSizeViewController: BaseViewController {
-    fileprivate var mainView: AutoAdjustingSizeView {
-        return self.view as! AutoAdjustingSizeView
+class SafeAreaCornersViewController: UIViewController {
+    fileprivate var mainView: SafeAreaCornersView {
+        return self.view as! SafeAreaCornersView
     }
 
-    init(pageType: PageType) {
+    init() {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = "SafeArea Corners"
+        tabBarItem = UITabBarItem(title: "SafeArea Corners", image: UIImage(named: "Tab2"), tag: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +36,6 @@ class AutoAdjustingSizeViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = AutoAdjustingSizeView()
+        view = SafeAreaCornersView()
     }
 }

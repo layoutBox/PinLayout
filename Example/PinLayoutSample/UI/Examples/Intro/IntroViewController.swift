@@ -19,7 +19,7 @@
 
 import UIKit
 
-class IntroViewController: BaseViewController {
+class IntroViewController: UIViewController {
     fileprivate var mainView: IntroView {
         return self.view as! IntroView
     }

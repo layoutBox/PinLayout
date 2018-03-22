@@ -146,15 +146,15 @@ This example shows how easily PinLayout can adjust its layout based on the view'
 <a name="performance"></a>
 # PinLayout's Performance 
 
-PinLayout's performance has been measured using the [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark). FlexLayout and [PinLayout](https://github.com/mirego/PinLayout) has been added to this benchmark to compare their performance. 
+PinLayout's performance has been measured using the [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark). 
 
-As you can see in the following chart, PinLayout are faster or equal to manual layouting, and **between 12x and 16x faster than auto layout**, and this for all types of iPhone (5/6/6S/7/8)
+As you can see in the following chart, PinLayout are faster or equal to manual layouting, and **between 8x and 12x faster than auto layout**, and this for all types of iPhone (5S/6/6S/7/8/X)
 
 [See here for more details, results and explanation of the benchmark](docs/Benchmark.md).
 
 <p align="center">
 	<a href="docs/Benchmark.md">
-	  <img src="docs/Benchmark/benchmark_iphone7.png" alt="PinLayout Performance" width=560/>
+	  <img src="docs/Benchmark/benchmark_comparison_all_small.png" alt="PinLayout Performance" width=660/>
 	  </a>
 </p>
 

@@ -423,28 +423,24 @@ public protocol PinLayout {
      Set the top margin.
      */
     @discardableResult func marginTop(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginTop(_ percent: Percent) -> PinLayout
     
     /**
      Set the left margin.
      */
     @discardableResult func marginLeft(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginLeft(_ percent: Percent) -> PinLayout
     
     /**
      Set the bottom margin.
      */
     @discardableResult func marginBottom(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginBottom(_ percent: Percent) -> PinLayout
     
     /**
      Set the right margin.
      */
     @discardableResult func marginRight(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginRight(_ percent: Percent) -> PinLayout
     
     // RTL support
@@ -456,7 +452,6 @@ public protocol PinLayout {
      * In RTL direction, start margin specify the **right** margin.
      */
     @discardableResult func marginStart(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginStart(_ percent: Percent) -> PinLayout
     
     /**
@@ -467,21 +462,18 @@ public protocol PinLayout {
      * In RTL direction, end margin specify the **left** margin.
      */
     @discardableResult func marginEnd(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginEnd(_ percent: Percent) -> PinLayout
     
     /**
      Set the left, right, start and end margins to the specified value.
      */
     @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginHorizontal(_ percent: Percent) -> PinLayout
     
     /**
      Set the top and bottom margins to the specified value.
      */
     @discardableResult func marginVertical(_ value: CGFloat) -> PinLayout
-
     @discardableResult func marginVertical(_ percent: Percent) -> PinLayout
 
     /**
@@ -503,28 +495,24 @@ public protocol PinLayout {
      Set all margins to the specified value.
      */
     @discardableResult func margin(_ value: CGFloat) -> PinLayout
-
     @discardableResult func margin(_ percent: Percent) -> PinLayout
     
     /**
      Set individually vertical margins (top, bottom) and horizontal margins (left, right, start, end).
      */
     @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
-
     @discardableResult func margin(_ vertical: Percent, _ horizontal: Percent) -> PinLayout
     
     /**
      Set individually top, horizontal margins and bottom margin.
      */
     @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
-
     @discardableResult func margin(_ top: Percent, _ horizontal: Percent, _ bottom: Percent) -> PinLayout
     
     /**
      Set individually top, left, bottom and right margins.
      */
     @discardableResult func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout
-
     @discardableResult func margin(_ top: Percent, _ left: Percent, _ bottom: Percent, _ right: Percent) -> PinLayout
 
     /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.

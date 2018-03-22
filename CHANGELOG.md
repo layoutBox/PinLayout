@@ -7,20 +7,46 @@
 
 # Change Log
 
-## [1.6.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.9)
-Released on 2018-02-18
+## [1.6.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.6.0)
+Released on 2018-03-22
 
-Additions:
+### UIView.pin.safeArea
+PinLayout can handle easily iOS 11 UIView.safeAreaInsets, but it goes further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property UIView.pin.safeArea. PinLayout also extend the support of UIView.safeAreaInsetsDidChange() callback on iOS 7/8/9/10.  
 
-* **`UIView.pin.safeArea`**  
-The safe area of a view represent the area not covered by navigation bars, tab bars, toolbars, and other ancestors that obscure a view controller's view.  
+See [UIView.pin.safeArea Documentation](https://github.com/mirego/PinLayout#safeAreaInsets) for more details.
 
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#125](https://github.com/mirego/PinLayout/pull/125) 
+
+
+### Add methods taking UIEdgeInset as parameter
 * `all(_ insets: UIEdgeInsets)`
 * `horizontally(_ insets: UIEdgeInsets)`
-* `vertically(_ percent: Percent)`
+* `vertically(_ insets: UIEdgeInsets)`
+* `top(_ insets: UIEdgeInsets)`
+* `bottom(_ insets: UIEdgeInsets)`
+* `left(_ insets: UIEdgeInsets)`
+* `right(_ insets: UIEdgeInsets)`
 
-Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#122](https://github.com/mirego/PinLayout/pull/122) 
+	See [Layout using distances from superview’s edges](https://github.com/mirego/PinLayout#layout-using-distances-from-superviews-edges) for more details.
 
+	Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#125](https://github.com/mirego/PinLayout/pull/125) 
+
+### Add margins method with percentage parameter
+
+* `marginTop(_ percent: Percent)`
+* `marginLeft(_ percent: Percent)`
+* `marginBottom(_ percent: Percent)`
+* `marginLeft(_ percent: Percent)`
+* `marginStart(_ percent: Percent)`
+* `marginEnd(_ percent: Percent)`
+* `marginHorizontal(_ percent: Percent)`
+* `marginVertical(_ percent: Percent)`
+* `margin(_ percent: Percent)`
+* `margin(_ vertical: Percent, _ horizontal: Percent)`
+* `margin(_ top: Percent, _ horizontal: Percent, _ bottom: Percent)`
+* `margin(_ top: Percent, _ left: Percent, _ bottom: Percent, _ right: Percent)`
+
+	Added by [vandyshev](https://github.com/vandyshev) in Pull Request [#126](https://github.com/mirego/PinLayout/pull/126) 
 
 ## [1.5.9](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.9)
 Released on 2018-02-18

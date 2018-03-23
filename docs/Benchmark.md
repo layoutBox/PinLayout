@@ -24,55 +24,19 @@ The benchmark include the following layout frameworks:
 * [LayoutKit](https://github.com/linkedin/LayoutKit)
 * UIStackViews
 
-<br>
 
-### Benchmark details
+### Benchmark 
+
+As you can see in the following chart, PinLayout are faster or equal to manual layouting, and **between 8x and 12x faster than auto layout**, and this for all types of iPhone (5S/6/6S/7/8/X). 
+
 The benchmark layout UICollectionView and UITableView cells in multiple pass, each pass contains more cells than the previous one. 
 
-<br>
-
-## Results <a name="results"></a>
-
-As you can see in the following charts, PinLayout's performance is as fast as manual layouting, and **between 12x and 16x faster than auto layout**, for all types of iPhone (5/6/6S/7). 
-
-These results means that PinLayout and FlexLayout are faster than any layout frameworks that is built over auto layout (SnapKit, Stevia, PureLayout, ...). 
-
-For example it took 611 miliseconds to render 100 UICollectionView's cells using Auto layout on a iPhone 6 compared to 53 miliseconds for PinLayout. Its 12 time faster.
-
-<br>
-
-### PinLayout and FlexLayout performance compared to Auto layout 
-
-This table shows FlexLayout and PinLayout performance compared to  Auto layout when layouting UICollectionView's cells.
-
-The table shows that **FlexLayout took 23 miliseconds** to render 100 UICollectionView's cells on a iPhone 6 compared to **53 miliseconds for PinLayout** and **611 ms for Auto layout**. Its 26 time faster for FlexLayout and 12 time faster for PinLayout.
-
-|           | Auto layout time  (seconds) |  **PinLayout** time  (seconds) | **PinLayout** performance compared to Auto layout | **FlexLayout** time  (seconds) | **FlexLayout** performance compared to Auto layout |
-|:---------:|:---------:|:---------:|:-----------------------------------------------------------------------:|:---------------------------:|:-------------------------:|
-|  iPhone 5 | 2.074 |  0.126 | 16x Faster | 0.067 | 31x Faster | 
-|  iPhone 6 | 0.611 |  0.053 | 12x Faster| 0.023 | 26x Faster  | 
-| iPhone 6S | 0.344 |  0.029 | 12x Faster| NA | NA  | 
-|  iPhone 7 | 0.293 |  0.021 | 14x Faster| 0.008 | 37x Faster  | 
-
-<br>
-
-### Benchmark charts  
-
-:pushpin: You can see the benchmark raw data in this [spreadsheet](Benchmark/benchmark.xlsx).
-
-
-<!--<p align="center">
-  <a href=""><img src="Benchmark/benchmark_iphone5.png" alt="PinLayout Performance"/></a>
-  
 <p align="center">
-  <a href=""><img src="Benchmark/benchmark_iphone6.png" alt="PinLayout Performance"/></a>
--->
-<p align="center">
-  <a href=""><img src="Benchmark/benchmark_iphone6s.png" alt="PinLayout Performance"/></a>
-  
-<p align="center">
-  <a href=""><img src="Benchmark/benchmark_iphone7.png" alt="PinLayout Performance"/></a>
-  
+  <a href=""><img src="Benchmark/benchmark_comparison_all.png" alt="PinLayout Performance"/></a>
+
+See [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark) for complete details and benchmarks charts for iPhone X/8/7/6S/...
+
+
 <br>
 
 ## Code source comparison <a name="code_source_comparison"></a>

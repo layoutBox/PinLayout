@@ -15,13 +15,13 @@
 ##### LayoutKit Benchmark
 PinLayout and [FlexLayout](https://github.com/layoutBox/FlexLayout) performance has been benchmarked using [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark). 
 
-The benchmark include the following layout frameworks:
+The benchmark includes the following layout frameworks:
 
 * Auto layout
-* Manual layout (i.e. set UIView's frame directly)
 * [FlexLayout](https://github.com/layoutBox/FlexLayout)
-* [PinLayout](https://github.com/mirego/PinLayout)
 * [LayoutKit](https://github.com/linkedin/LayoutKit)
+* Manual layout (i.e. set UIView's frame directly)
+* [PinLayout](https://github.com/mirego/PinLayout)
 * UIStackViews
 
 

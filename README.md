@@ -884,7 +884,7 @@ Set the individually vertical margins (top, bottom) and horizontal margins (left
 * **`margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat)`**  
   **`margin(_ top: Percent, _ horizontal: Percent, _ bottom: Percent)`**  
 Set individually top, horizontal margins and bottom margin
-* **`margin(_ top: CGFloat, _ right: CGFloat, _ bottom: CGFloat, _ left: CGFloat)`**  
+* **`margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat)`**  
   **`margin(_ top: Percent, _ left: Percent, _ bottom: Percent, _ right: Percent)`**
 
 ###### Usage examples:

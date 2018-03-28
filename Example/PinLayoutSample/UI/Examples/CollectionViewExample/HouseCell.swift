@@ -79,12 +79,12 @@ class HouseCell: UICollectionViewCell {
     }
     
     private func layout() {
-        headerView.pin.top().horizontally().height(100)
+        headerView.pin.top().horizontally(pin.safeArea).height(100)
         nameLabel.pin.top().horizontally().margin(padding).sizeToFit(.width)
         
-        mainImage.pin.below(of: nameLabel).horizontally().height(300).marginTop(padding)
+        mainImage.pin.below(of: nameLabel).horizontally(pin.safeArea).height(300).marginTop(padding)
         
-        footerView.pin.below(of: mainImage).horizontally()
+        footerView.pin.below(of: mainImage).horizontally(pin.safeArea)
         priceLabel.pin.top().horizontally().margin(6, padding).sizeToFit(.width)
         distanceLabel.pin.top().after(of: priceLabel).right().margin(6, padding).sizeToFit(.width)
         footerView.pin.height(max(priceLabel.frame.maxY, distanceLabel.frame.maxY) + 6)

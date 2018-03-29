@@ -30,6 +30,7 @@ class TableViewExampleView: UIView {
         super.init(frame: .zero)
         backgroundColor = .white
 
+        tableView.estimatedRowHeight = 10
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -78,8 +79,8 @@ extension TableViewExampleView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Configure a MethodCell and ask its size.
-        methodCellTemplate.configure(method: methods[indexPath.row])
-        return methodCellTemplate.sizeThatFits(CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude)).height
+        // The UITableView will call the cell's sizeThatFit() method to compute the height.
+        // WANRING: You must also set the UITableView.estimatedRowHeight for this to work.
+        return UITableViewAutomaticDimension
     }
 }

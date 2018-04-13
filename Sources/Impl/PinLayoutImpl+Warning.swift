@@ -131,7 +131,11 @@ extension PinLayoutImpl {
             currentView = parent
         }
         if hierarchy.count > 0 {
+            #if swift(>=4.1)
+            displayText += ", Superviews: \(hierarchy.compactMap({ $0 }).joined(separator: " -> "))"
+            #else
             displayText += ", Superviews: \(hierarchy.flatMap({ $0 }).joined(separator: " -> "))"
+            #endif
         }
         
         displayText += ", Tag: \(view.tag))\n"

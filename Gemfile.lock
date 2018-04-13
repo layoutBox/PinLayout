@@ -222,6 +222,7 @@ DEPENDENCIES
   fastlane
   jazzy (= 0.9)
   synx
+  xcpretty-travis-formatter
 
 BUNDLED WITH
    1.16.1

@@ -35,7 +35,6 @@ platform :ios do
       workspace: "PinLayout.xcworkspace",
       scheme: "PinLayout",
       destination: "name=iPhone 8 Plus,OS=11.2",
-      build: true,
       #configuration: "Debug",
       build: true,
       clean: true
@@ -60,7 +59,7 @@ platform :ios do
 
     xcodebuild(
       workspace: "PinLayout.xcworkspace",
-      scheme: "PinLayoutMacOsSample",
+      scheme: "PinLayoutSample",
       build: true,
       clean: true,
       #destination: "name=iPhone 8 Plus,OS=11.2",

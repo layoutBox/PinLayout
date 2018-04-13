@@ -11,7 +11,7 @@ cache: bundler
 
 before_install:
 #  - brew outdated xctool || brew upgrade xctool;
-  - gem install xcpretty-travis-formatter;
+#  - gem install xcpretty-travis-formatter;
 #  - gem install cocoapods -v 1.5.0 --no-document --quiet;
 #  - pod repo update --silent;
 

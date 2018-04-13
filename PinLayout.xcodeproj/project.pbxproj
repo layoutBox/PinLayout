@@ -56,6 +56,8 @@
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
 		DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
 		DF1A5CBD208106C900725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
+		DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
+		DF1A5D0520812DE500725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
@@ -474,10 +476,12 @@
 			files = (
 				243C62081FC37F6C0082C327 /* PinLayoutImpl+Warning.swift in Sources */,
 				24D18D261F3E5EA5008129EF /* Pin.swift in Sources */,
+				DF1A5D0520812DE500725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */,
 				243C62071FC37F6C0082C327 /* PinLayoutImpl+Relative.swift in Sources */,
 				243B12BC1FC393580072A9C3 /* Percent.swift in Sources */,
 				DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */,
+				DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */,
 				24B02B091F2A713000C18179 /* PinLayout+Filters.swift in Sources */,
 				24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */,
 				243C620B1FC37F6C0082C327 /* UIView+LTR.swift in Sources */,
@@ -653,6 +657,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -706,6 +711,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;

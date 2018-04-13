@@ -1,5 +1,6 @@
 language: objective-c
 osx_image: xcode9.2 
+cache: bundler
 
 #env:
   #matrix:
@@ -11,8 +12,11 @@ osx_image: xcode9.2
 before_install:
 #  - brew outdated xctool || brew upgrade xctool;
   - gem install xcpretty-travis-formatter;
-  - gem install cocoapods -v 1.5.0 --no-document --quiet;
+#  - gem install cocoapods -v 1.5.0 --no-document --quiet;
 #  - pod repo update --silent;
+
+install:
+  - bundle install # --deployment # to cache vendor/bundle
   - pod install --repo-update;
 
 script:

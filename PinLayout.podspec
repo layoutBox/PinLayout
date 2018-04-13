@@ -7,17 +7,16 @@
 #
 
 Pod::Spec.new do |spec|
-  spec.name         = "PinLayout"
-  spec.version      = "1.6.1"
-  spec.summary      = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
-  spec.description  = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
-  spec.homepage     = "https://mirego.github.io/PinLayout/"
-  spec.license      = "BSD 3-clause"
-  spec.author       = { 
-    "Luc Dion" => "luc_dion@yahoo.com"
-  }
-  spec.source       = { :git => "https://github.com/mirego/PinLayout.git", :tag => "#{spec.version}" }
+  spec.name          = "PinLayout"
+  spec.version       = "1.6.1"
+  spec.summary       = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast."
+  spec.description   = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
+  spec.homepage      = "https://mirego.github.io/PinLayout/"
+  spec.license       = "BSD 3-clause"
+  spec.author        = { "Luc Dion" => "luc_dion@yahoo.com" }
+  spec.source        = { :git => "https://github.com/mirego/PinLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "Sources/**/*.swift"
+  spec.swift_version = '4.0'
 
   spec.ios.deployment_target  = '8.0'
   spec.ios.frameworks         = 'Foundation', 'CoreGraphics', 'UIKit'

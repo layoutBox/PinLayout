@@ -433,7 +433,6 @@
 				249EFE3D1E64FAFE00165E39 /* Resources */,
 				2460ACCE1E64FD9D000BCAC5 /* Embed Frameworks */,
 				5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */,
-				CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */,
 				24E6547E1E68F88D00A72A8B /* Run Swiftlint */,
 				2468130D1F8D013600462E53 /* Embed App Extensions */,
 			);
@@ -545,7 +544,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/PinLayout-iOS/PinLayout.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-10/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -556,21 +555,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */ = {

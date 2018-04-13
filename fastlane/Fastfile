@@ -57,6 +57,15 @@ platform :ios do
       #destination: "name=iPhone 8 Plus,OS=11.2",
       destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
     )
+
+    xcodebuild(
+      workspace: "PinLayout.xcworkspace",
+      scheme: "PinLayoutMacOsSample",
+      build: true,
+      clean: true,
+      #destination: "name=iPhone 8 Plus,OS=11.2",
+      destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
+    )
   end
 
   lane :tests do

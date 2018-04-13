@@ -19,28 +19,6 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
-import UIKit
-
-// MARK: - PinLayout UIView's extension
-public extension UIView {
-    public var pin: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: true)
-    }
-
-    public var pinFrame: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: false)
-    }
-
-    @objc public var anchor: AnchorList {
-        return AnchorListImpl(view: self)
-    }
-
-    @objc public var edge: EdgeList {
-        return EdgeListImpl(view: self)
-    }
-}
-
 /*
  UIView's anchors point
  ======================
@@ -122,7 +100,11 @@ public extension UIView {
 
 /// PinLayout interface
 public protocol PinLayout {
+
+    #if os(iOS) || os(tvOS)
+    /// Expose a compatible `safeAreaInsets` for all iOS releases (including iOS 7/8/9/10/...). Available only for >= iOS 9
     var safeArea: UIEdgeInsets { get }
+    #endif
 
     //
     // MARK: Layout using distances from superview’s edges
@@ -130,27 +112,43 @@ public protocol PinLayout {
     @discardableResult func top() -> PinLayout
     @discardableResult func top(_ value: CGFloat) -> PinLayout
     @discardableResult func top(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func top(_ insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func top(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
+
     @discardableResult func left() -> PinLayout
     @discardableResult func left(_ value: CGFloat) -> PinLayout
     @discardableResult func left(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func left(_ insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func left(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
+
     @discardableResult func bottom() -> PinLayout
     @discardableResult func bottom(_ value: CGFloat) -> PinLayout
     @discardableResult func bottom(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func bottom(_ insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func bottom(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
+
     @discardableResult func right() -> PinLayout
     @discardableResult func right(_ value: CGFloat) -> PinLayout
     @discardableResult func right(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func right(_ insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func right(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
+
     @discardableResult func hCenter() -> PinLayout
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayout
     @discardableResult func hCenter(_ percent: Percent) -> PinLayout
-    
+
     @discardableResult func vCenter() -> PinLayout
     @discardableResult func vCenter(_ value: CGFloat) -> PinLayout
     @discardableResult func vCenter(_ percent: Percent) -> PinLayout
@@ -159,36 +157,52 @@ public protocol PinLayout {
     @discardableResult func start() -> PinLayout
     @discardableResult func start(_ value: CGFloat) -> PinLayout
     @discardableResult func start(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func start(_ insets: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func start(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
 
     @discardableResult func end() -> PinLayout
     @discardableResult func end(_ value: CGFloat) -> PinLayout
     @discardableResult func end(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func end(_ insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func end(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
+
     // Pin multiple edges at once.
     /**
      Pin all edges on its superview's corresponding edges (top, bottom, left, right).
-     
+
      Similar to calling `view.top().bottom().left().right()`
      */
     @discardableResult func all() -> PinLayout
     @discardableResult func all(_ value: CGFloat) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func all(_ insets: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func all(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
 
     /**
      Pin the left and right edges on its superview's corresponding edges.
-     
+
      Similar to calling `view.left().right()`.
      */
     @discardableResult func horizontally() -> PinLayout
     @discardableResult func horizontally(_ value: CGFloat) -> PinLayout
     @discardableResult func horizontally(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func horizontally(_ insets: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func horizontally(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
 
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
-     
+
      Similar to calling `view.top().bottom()`.
      */
     @discardableResult func vertically() -> PinLayout
@@ -198,8 +212,12 @@ public protocol PinLayout {
      Pin the **top and bottom edges** on its superview's corresponding edges.
      The UIEdgeInsets.top is used to pin the top edge and the UIEdgeInsets.bottom
      for the bottom edge.
-    */
+     */
+    #if os(iOS) || os(tvOS)
     @discardableResult func vertically(_ insets: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func vertically(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
 
     //
     // MARK: Layout using edges
@@ -259,163 +277,218 @@ public protocol PinLayout {
     //
     // MARK: Layout using relative positioning
     //
-    @discardableResult func above(of: UIView) -> PinLayout
-    @discardableResult func above(of: [UIView]) -> PinLayout
-    @discardableResult func above(of: UIView, aligned: HorizontalAlign) -> PinLayout
-    @discardableResult func above(of: [UIView], aligned: HorizontalAlign) -> PinLayout
-    
-    @discardableResult func below(of: UIView) -> PinLayout
-    @discardableResult func below(of: [UIView]) -> PinLayout
-    @discardableResult func below(of: UIView, aligned: HorizontalAlign) -> PinLayout
-    @discardableResult func below(of: [UIView], aligned: HorizontalAlign) -> PinLayout
-    
-    @discardableResult func left(of: UIView) -> PinLayout
-    @discardableResult func left(of: [UIView]) -> PinLayout
-    @discardableResult func left(of: UIView, aligned: VerticalAlign) -> PinLayout
-    @discardableResult func left(of: [UIView], aligned: VerticalAlign) -> PinLayout
-    
-    @discardableResult func right(of: UIView) -> PinLayout
-    @discardableResult func right(of: [UIView]) -> PinLayout
-    @discardableResult func right(of: UIView, aligned: VerticalAlign) -> PinLayout
-    @discardableResult func right(of: [UIView], aligned: VerticalAlign) -> PinLayout
+    #if os(iOS) || os(tvOS)
+        @discardableResult func above(of: UIView) -> PinLayout
+        @discardableResult func above(of: [UIView]) -> PinLayout
+        @discardableResult func above(of: UIView, aligned: HorizontalAlign) -> PinLayout
+        @discardableResult func above(of: [UIView], aligned: HorizontalAlign) -> PinLayout
 
-    // RTL support
-    @discardableResult func before(of: UIView) -> PinLayout
-    @discardableResult func before(of: [UIView]) -> PinLayout
-    @discardableResult func before(of: UIView, aligned: VerticalAlign) -> PinLayout
-    @discardableResult func before(of: [UIView], aligned: VerticalAlign) -> PinLayout
-    @discardableResult func after(of: UIView) -> PinLayout
-    @discardableResult func after(of: [UIView]) -> PinLayout
-    @discardableResult func after(of: UIView, aligned: VerticalAlign) -> PinLayout
-    @discardableResult func after(of: [UIView], aligned: VerticalAlign) -> PinLayout
+        @discardableResult func below(of: UIView) -> PinLayout
+        @discardableResult func below(of: [UIView]) -> PinLayout
+        @discardableResult func below(of: UIView, aligned: HorizontalAlign) -> PinLayout
+        @discardableResult func below(of: [UIView], aligned: HorizontalAlign) -> PinLayout
+
+        @discardableResult func left(of: UIView) -> PinLayout
+        @discardableResult func left(of: [UIView]) -> PinLayout
+        @discardableResult func left(of: UIView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func left(of: [UIView], aligned: VerticalAlign) -> PinLayout
+
+        @discardableResult func right(of: UIView) -> PinLayout
+        @discardableResult func right(of: [UIView]) -> PinLayout
+        @discardableResult func right(of: UIView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func right(of: [UIView], aligned: VerticalAlign) -> PinLayout
+
+        // RTL support
+        @discardableResult func before(of: UIView) -> PinLayout
+        @discardableResult func before(of: [UIView]) -> PinLayout
+        @discardableResult func before(of: UIView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func before(of: [UIView], aligned: VerticalAlign) -> PinLayout
+        @discardableResult func after(of: UIView) -> PinLayout
+        @discardableResult func after(of: [UIView]) -> PinLayout
+        @discardableResult func after(of: UIView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func after(of: [UIView], aligned: VerticalAlign) -> PinLayout
+    #elseif os(macOS)
+        @discardableResult func above(of: NSView) -> PinLayout
+        @discardableResult func above(of: [NSView]) -> PinLayout
+        @discardableResult func above(of: NSView, aligned: HorizontalAlign) -> PinLayout
+        @discardableResult func above(of: [NSView], aligned: HorizontalAlign) -> PinLayout
+
+        @discardableResult func below(of: NSView) -> PinLayout
+        @discardableResult func below(of: [NSView]) -> PinLayout
+        @discardableResult func below(of: NSView, aligned: HorizontalAlign) -> PinLayout
+        @discardableResult func below(of: [NSView], aligned: HorizontalAlign) -> PinLayout
+
+        @discardableResult func left(of: NSView) -> PinLayout
+        @discardableResult func left(of: [NSView]) -> PinLayout
+        @discardableResult func left(of: NSView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func left(of: [NSView], aligned: VerticalAlign) -> PinLayout
+
+        @discardableResult func right(of: NSView) -> PinLayout
+        @discardableResult func right(of: [NSView]) -> PinLayout
+        @discardableResult func right(of: NSView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func right(of: [NSView], aligned: VerticalAlign) -> PinLayout
+
+        // RTL support
+        @discardableResult func before(of: NSView) -> PinLayout
+        @discardableResult func before(of: [NSView]) -> PinLayout
+        @discardableResult func before(of: NSView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func before(of: [NSView], aligned: VerticalAlign) -> PinLayout
+        @discardableResult func after(of: NSView) -> PinLayout
+        @discardableResult func after(of: [NSView]) -> PinLayout
+        @discardableResult func after(of: NSView, aligned: VerticalAlign) -> PinLayout
+        @discardableResult func after(of: [NSView], aligned: VerticalAlign) -> PinLayout
+    #endif
 
     //
     // MARK: justify / align
     //
     @discardableResult func justify(_: HorizontalAlign) -> PinLayout
     @discardableResult func align(_: VerticalAlign) -> PinLayout
-    
+
     //
     // MARK: Width, height and size
     //
     @discardableResult func width(_ width: CGFloat) -> PinLayout
     @discardableResult func width(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func width(of view: UIView) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func width(of view: NSView) -> PinLayout
+    #endif
+
     @discardableResult func minWidth(_ width: CGFloat) -> PinLayout
     @discardableResult func minWidth(_ percent: Percent) -> PinLayout
     @discardableResult func maxWidth(_ width: CGFloat) -> PinLayout
     @discardableResult func maxWidth(_ percent: Percent) -> PinLayout
-    
+
     @discardableResult func height(_ height: CGFloat) -> PinLayout
     @discardableResult func height(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func height(of view: UIView) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func height(of view: NSView) -> PinLayout
+    #endif
+
     @discardableResult func minHeight(_ height: CGFloat) -> PinLayout
     @discardableResult func minHeight(_ percent: Percent) -> PinLayout
     @discardableResult func maxHeight(_ height: CGFloat) -> PinLayout
     @discardableResult func maxHeight(_ percent: Percent) -> PinLayout
-    
+
     @discardableResult func size(_ size: CGSize) -> PinLayout
     @discardableResult func size(_ sideLength: CGFloat) -> PinLayout
     @discardableResult func size(_ percent: Percent) -> PinLayout
+    #if os(iOS) || os(tvOS)
     @discardableResult func size(of view: UIView) -> PinLayout
-    
-//    @discardableResult func wrapSubViews() -> PinLayout
-//    @discardableResult func wrapSubViews(insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func size(of view: NSView) -> PinLayout
+    #endif
+
+    //    @discardableResult func wrapSubViews() -> PinLayout
+    //    @discardableResult func wrapSubViews(insets: UIEdgeInsets) -> PinLayout
+
     /**
      Set the view aspect ratio.
-     
+
      AspectRatio is applied only if a single dimension (either width or height) can be determined,
      in that case the aspect ratio will be used to compute the other dimension.
 
      * AspectRatio is defined as the ratio between the width and the height (width / height).
      * An aspect ratio of 2 means the width is twice the size of the height.
-     * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight) 
+     * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
      dimensions of an item.
      */
     @discardableResult func aspectRatio(_ ratio: CGFloat) -> PinLayout
     /**
-     Set the view aspect ratio using another UIView's aspect ratio. 
-     
+     Set the view aspect ratio using another UIView's aspect ratio.
+
      AspectRatio is applied only if a single dimension (either width or height) can be determined,
      in that case the aspect ratio will be used to compute the other dimension.
-     
+
      * AspectRatio is defined as the ratio between the width and the height (width / height).
      * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
      dimensions of an item.
      */
+    #if os(iOS) || os(tvOS)
     @discardableResult func aspectRatio(of view: UIView) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func aspectRatio(of view: NSView) -> PinLayout
+    #endif
+
     /**
      If the layouted view is an UIImageView, this method will set the aspectRatio using
      the UIImageView's image dimension.
-     
+
      For other types of views, this method as no impact.
      */
+    #if os(iOS) || os(tvOS)
     @discardableResult func aspectRatio() -> PinLayout
-    
+    #endif
+
     /**
      The method adjust the view's size based on the view's `sizeThatFits()` method result.
      PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
-     
+
      Notes:
      * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
      * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
-     
+
      - Parameter fitType: Identify the reference dimension (width / height) that will be used
      to adjust the view's size:
-     
-     .width: The method adjust the view's size based on the **reference width**.
-        * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
-            the **reference width will be determined by these properties**, if not the **current view's width**
-            will be used.
-        * The resulting width will always **match the reference width**.
-     
-     .height: The method adjust the view's size based on the **reference height**.
-         * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
-         the **reference height will be determined by these properties**, if not the **current view's height**
-         will be used.
-         * The resulting height will always **match the reference height**.
-     
-     .widthFlexible: Similar to `.width`, except that PinLayout won't constrain the resulting width to
-        match the reference width. The resulting width may be smaller or bigger depending on the view's
-        sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
-        string is smaller than the reference width.
-     
-     .heightFlexible: Similar to `.height`, except that PinLayout won't constrain the resulting height to
-        match the reference height. The resulting height may be smaller or bigger depending on the view's
-        sizeThatFits(..) method result.
-     
-     Examples:
-     
-         ```
-         // Adjust the view's size based on a width of 100 pixels.
-         // The resulting width will always match the pinned property `width(100)`.
-         view.pin.width(100).sizeToFit(.width)
-     
-         // Adjust the view's size based on view's current width.
-         // The resulting width will always match the view's original width.
-         // The resulting height will never be bigger than the specified `maxHeight`.
-         view.pin.sizeToFit(.width).maxHeight(100)
-     
-         // Adjust the view's size based on 100% of the superview's height.
-         // The resulting height will always match the pinned property `height(100%)`.
-         view.pin.height(100%).sizeToFit(.height)
-     
-        // Adjust the view's size based on view's current height.
-        // The resulting width will always match the view's original height.
-        view.pin.sizeToFit(.height)
 
-        // Since `.widthFlexible` has been specified, its possible that the resulting
-        // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
-        // method result.
-        label.pin.width(100).sizeToFit(.widthFlexible)
+     .width: The method adjust the view's size based on the **reference width**.
+     * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
+     the **reference width will be determined by these properties**, if not the **current view's width**
+     will be used.
+     * The resulting width will always **match the reference width**.
+
+     .height: The method adjust the view's size based on the **reference height**.
+     * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
+     the **reference height will be determined by these properties**, if not the **current view's height**
+     will be used.
+     * The resulting height will always **match the reference height**.
+
+     .widthFlexible: Similar to `.width`, except that PinLayout won't constrain the resulting width to
+     match the reference width. The resulting width may be smaller or bigger depending on the view's
+     sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
+     string is smaller than the reference width.
+
+     .heightFlexible: Similar to `.height`, except that PinLayout won't constrain the resulting height to
+     match the reference height. The resulting height may be smaller or bigger depending on the view's
+     sizeThatFits(..) method result.
+
+     Examples:
+
+     ```
+     // Adjust the view's size based on a width of 100 pixels.
+     // The resulting width will always match the pinned property `width(100)`.
+     view.pin.width(100).sizeToFit(.width)
+
+     // Adjust the view's size based on view's current width.
+     // The resulting width will always match the view's original width.
+     // The resulting height will never be bigger than the specified `maxHeight`.
+     view.pin.sizeToFit(.width).maxHeight(100)
+
+     // Adjust the view's size based on 100% of the superview's height.
+     // The resulting height will always match the pinned property `height(100%)`.
+     view.pin.height(100%).sizeToFit(.height)
+
+     // Adjust the view's size based on view's current height.
+     // The resulting width will always match the view's original height.
+     view.pin.sizeToFit(.height)
+
+     // Since `.widthFlexible` has been specified, its possible that the resulting
+     // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
+     // method result.
+     label.pin.width(100).sizeToFit(.widthFlexible)
      ```
      */
     @discardableResult func sizeToFit(_ fitType: FitType) -> PinLayout
-    
+
+    #if os(iOS) || os(tvOS)
     @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
     @discardableResult func fitSize() -> PinLayout
-    
+    #endif
+
     //
     // MARK: Margins
     //
@@ -424,52 +497,52 @@ public protocol PinLayout {
      */
     @discardableResult func marginTop(_ value: CGFloat) -> PinLayout
     @discardableResult func marginTop(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set the left margin.
      */
     @discardableResult func marginLeft(_ value: CGFloat) -> PinLayout
     @discardableResult func marginLeft(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set the bottom margin.
      */
     @discardableResult func marginBottom(_ value: CGFloat) -> PinLayout
     @discardableResult func marginBottom(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set the right margin.
      */
     @discardableResult func marginRight(_ value: CGFloat) -> PinLayout
     @discardableResult func marginRight(_ percent: Percent) -> PinLayout
-    
+
     // RTL support
     /**
      Set the start margin.
-     
+
      Depends on the value of `Pin.layoutDirection(...)`:
      * In LTR direction, start margin specify the **left** margin.
      * In RTL direction, start margin specify the **right** margin.
      */
     @discardableResult func marginStart(_ value: CGFloat) -> PinLayout
     @discardableResult func marginStart(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set the end margin.
-     
+
      Depends on the value of `Pin.layoutDirection(...)`:
      * In LTR direction, end margin specify the **right** margin.
      * In RTL direction, end margin specify the **left** margin.
      */
     @discardableResult func marginEnd(_ value: CGFloat) -> PinLayout
     @discardableResult func marginEnd(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set the left, right, start and end margins to the specified value.
      */
     @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayout
     @discardableResult func marginHorizontal(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set the top and bottom margins to the specified value.
      */
@@ -477,38 +550,44 @@ public protocol PinLayout {
     @discardableResult func marginVertical(_ percent: Percent) -> PinLayout
 
     /**
-     Set all margins using UIEdgeInsets. 
+     Set all margins using UIEdgeInsets.
      This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
      */
+    #if os(iOS) || os(tvOS)
     @discardableResult func margin(_ insets: UIEdgeInsets) -> PinLayout
-    
+    #elseif os(macOS)
+    @discardableResult func margin(_ insets: NSEdgeInsets) -> PinLayout
+    #endif
+
     /**
      Set margins using NSDirectionalEdgeInsets.
      This method is particularly to set all margins using iOS 11 `UIView.directionalLayoutMargins`.
-     
+
      Available only on iOS 11 and higher.
      */
+    #if os(iOS) || os(tvOS)
     @available(tvOS 11.0, iOS 11.0, *)
     @discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout
+    #endif
 
     /**
      Set all margins to the specified value.
      */
     @discardableResult func margin(_ value: CGFloat) -> PinLayout
     @discardableResult func margin(_ percent: Percent) -> PinLayout
-    
+
     /**
      Set individually vertical margins (top, bottom) and horizontal margins (left, right, start, end).
      */
     @discardableResult func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout
     @discardableResult func margin(_ vertical: Percent, _ horizontal: Percent) -> PinLayout
-    
+
     /**
      Set individually top, horizontal margins and bottom margin.
      */
     @discardableResult func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout
     @discardableResult func margin(_ top: Percent, _ horizontal: Percent, _ bottom: Percent) -> PinLayout
-    
+
     /**
      Set individually top, left, bottom and right margins.
      */
@@ -522,17 +601,17 @@ public protocol PinLayout {
     ///
     /// - Returns: PinLayout
     @discardableResult func pinEdges() -> PinLayout
-    
+
     /**
      The method will execute PinLayout commands immediately. This method is **required only if your
      source codes should also work in Xcode Playgrounds**. Outside of playgrounds, PinLayout executes
      this method implicitly, it is not necessary to call it.
-     
+
      Examples:
-         ```swift
-         view.pin.top(20).width(100).layout()
-         ```
-    */
+     ```swift
+     view.pin.top(20).width(100).layout()
+     ```
+     */
     func layout()
 }
 
@@ -602,5 +681,4 @@ public enum FitType {
      */
     case heightFlexible
 }
-    
-#endif
+

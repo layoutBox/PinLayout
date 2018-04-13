@@ -18,7 +18,10 @@
 //  THE SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-import UIKit
+    import UIKit
+#else
+    import AppKit
+#endif
 
 extension PinLayoutImpl {
     internal func top(_ context: Context) {
@@ -370,7 +373,7 @@ extension PinLayoutImpl {
         return self
     }
     
-    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: UIView, _ referenceSuperview: UIView) -> CGPoint {
+    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: PView, _ referenceSuperview: PView) -> CGPoint {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
         } else if referenceSuperview == layoutSuperview.superview {
@@ -422,5 +425,3 @@ extension PinLayoutImpl {
                                   layoutSuperview, referenceSuperview).y
     }
 }
-
-#endif

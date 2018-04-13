@@ -20,3 +20,10 @@ target 'PinLayoutSample' do
   # Debug only
   pod 'Reveal-SDK', '~> 10', :configurations => ['Debug']
 end
+
+target 'PinLayoutMacOsSample' do
+  platform :osx, '10.9'
+  project 'Example/PinLayoutMacOsSample.xcodeproj'
+
+  pod 'PinLayout', :path => './'
+end

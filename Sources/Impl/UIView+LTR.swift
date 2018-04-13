@@ -33,12 +33,21 @@ extension UIView {
             } else {
                 return true
             }
-        case .ltr:
-            return true
-        case .rtl:
-            return false
+        case .ltr: return true
+        case .rtl: return false
         }
     }
 }
-    
+#else
+import AppKit
+
+extension NSView {
+    func isLTR() -> Bool {
+        switch Pin.layoutDirection {
+        case .auto: return self.userInterfaceLayoutDirection == .leftToRight
+        case .ltr:  return true
+        case .rtl:  return false
+        }
+    }
+}
 #endif

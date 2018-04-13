@@ -20,7 +20,10 @@
 import Foundation
 
 #if os(iOS) || os(tvOS)
-import UIKit
+    import UIKit
+#else
+    import AppKit
+#endif
 
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)
@@ -48,9 +51,9 @@ extension VerticalAlign {
 }
     
 class EdgeListImpl: EdgeList {
-    internal let view: UIView
+    internal let view: PView
 
-    init(view: UIView) {
+    init(view: PView) {
         self.view = view
     }
 
@@ -74,7 +77,7 @@ class HorizontalEdgeImpl: HorizontalEdge {
         case right
     }
 
-    let view: UIView
+    let view: PView
     let type: EdgeType
 
     func x(keepTransform: Bool) -> CGFloat {
@@ -87,7 +90,7 @@ class HorizontalEdgeImpl: HorizontalEdge {
         }
     }
 
-    internal init(view: UIView, type: EdgeType) {
+    internal init(view: PView, type: EdgeType) {
         self.view = view
         self.type = type
     }
@@ -100,7 +103,7 @@ class VerticalEdgeImpl: VerticalEdge {
         case bottom
     }
     
-    internal let view: UIView
+    internal let view: PView
     internal let type: EdgeType
 
     func y(keepTransform: Bool) -> CGFloat {
@@ -114,16 +117,16 @@ class VerticalEdgeImpl: VerticalEdge {
         }
     }
 
-    internal init(view: UIView, type: EdgeType) {
+    internal init(view: PView, type: EdgeType) {
         self.view = view
         self.type = type
     }
 }
 
 class AnchorListImpl: AnchorList {
-    internal let view: UIView
+    internal let view: PView
 
-    internal init(view: UIView) {
+    internal init(view: PView) {
         self.view = view
     }
 
@@ -159,7 +162,7 @@ enum AnchorType: String {
 }
 
 class AnchorImpl: Anchor {
-    let view: UIView
+    let view: PView
     let type: AnchorType
 
     func point(keepTransform: Bool) -> CGPoint {
@@ -176,7 +179,7 @@ class AnchorImpl: Anchor {
         }
     }
 
-    fileprivate init(view: UIView, type: AnchorType) {
+    fileprivate init(view: PView, type: AnchorType) {
         self.view = view
         self.type = type
     }
@@ -220,4 +223,3 @@ internal extension FitType {
     }
 }
 
-#endif

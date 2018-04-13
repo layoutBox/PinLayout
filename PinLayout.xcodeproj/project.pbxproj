@@ -54,6 +54,8 @@
 		24D18D241F3E37DD008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		24D18D261F3E5EA5008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
+		DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
+		DF1A5CBD208106C900725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
@@ -127,6 +129,8 @@
 		45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561BC8B0591ACB691B563927 /* Pods-PinLayoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests.release.xcconfig"; sourceTree = "<group>"; };
 		6070E55EDEAA3DC58C0B4CDD /* Pods-PinLayoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinLayout.swift"; sourceTree = "<group>"; };
+		DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+PinLayout.swift"; sourceTree = "<group>"; };
 		DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSafeAreaTests.swift; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
 		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
 				24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */,
 				24D18D231F3E37DD008129EF /* Pin.swift */,
+				DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */,
+				DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
 				241A277A1F8E958F00B1AD39 /* ObjectiveC */,
 				2475B6D51FC37D270054CADD /* SupportingFiles */,
@@ -345,7 +351,6 @@
 				249EFE811E64FB4C00165E39 /* Resources */,
 				2419623B1E7F58F000A0466C /* CopyFiles */,
 				88D90C444A5D379438EF7792 /* [CP] Embed Pods Frameworks */,
-				BA616C556A4FB1BDABFACB88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -398,8 +403,8 @@
 			projectRoot = "";
 			targets = (
 				249EFE791E64FB4C00165E39 /* PinLayout */,
-				249EFE821E64FB4C00165E39 /* PinLayoutTests */,
 				244DF2F71EF46C500090508B /* PinLayoutTVOS */,
+				249EFE821E64FB4C00165E39 /* PinLayoutTests */,
 			);
 		};
 /* End PBXProject section */
@@ -440,21 +445,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA616C556A4FB1BDABFACB88 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests/Pods-PinLayoutTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C13A14974C1425B4B67ECF64 /* [CP] Check Pods Manifest.lock */ = {
@@ -505,6 +495,7 @@
 				24D18D241F3E37DD008129EF /* Pin.swift in Sources */,
 				2475B6CA1FC37C1C0054CADD /* PinLayoutImpl.swift in Sources */,
 				241A277E1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift in Sources */,
+				DF1A5CBD208106C900725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C620F1FC3834B0082C327 /* Percent.swift in Sources */,
 				2475B6CB1FC37C1C0054CADD /* PinLayoutImpl+Coordinates.swift in Sources */,
 				2475B6C51FC37A900054CADD /* PinLayoutImpl+Layouting.swift in Sources */,
@@ -512,6 +503,7 @@
 				2475B6D11FC37C8C0054CADD /* UIView+LTR.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
 				2475B6CC1FC37C1C0054CADD /* PinLayoutImpl+Warning.swift in Sources */,
+				DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */,
 				2475B6D31FC37CD40054CADD /* Coordinates.swift in Sources */,
 				241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */,
 				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,

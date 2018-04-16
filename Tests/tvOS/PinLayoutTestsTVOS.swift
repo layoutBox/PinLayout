@@ -1,6 +1,6 @@
 //
-//  PinLayoutTests2.swift
-//  PinLayoutTests2
+//  PinLayoutTestsTVOS.swift
+//  PinLayoutTestsTVOS
 //
 //  Created by Luc Dion on 2018-04-16.
 //  Copyright © 2018 mcswiftlayyout.mirego.com. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class PinLayoutTests2: XCTestCase {
+class PinLayoutTestsTVOS: XCTestCase {
     
     override func setUp() {
         super.setUp()

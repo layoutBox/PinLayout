@@ -10,6 +10,22 @@ target 'PinLayoutTests' do
   pod 'Nimble', :inhibit_warnings => true
 end
 
+target 'PinLayoutTestsTVOS' do
+  platform :tvos, "9.0"
+  project 'PinLayout.xcodeproj'
+
+  pod 'Quick'
+  pod 'Nimble', :inhibit_warnings => true
+end
+
+target 'PinLayoutTestsMacOS' do
+  platform :osx, "10.10"
+  project 'PinLayout.xcodeproj'
+
+  pod 'Quick'
+  pod 'Nimble', :inhibit_warnings => true
+end
+
 target 'PinLayoutSample' do
   platform :ios, "8.0"
   project 'Example/PinLayoutSample.xcodeproj'

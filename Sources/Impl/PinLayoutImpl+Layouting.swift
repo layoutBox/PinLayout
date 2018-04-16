@@ -188,10 +188,7 @@ extension PinLayoutImpl {
         var width = computeWidth()
         var height = computeHeight()
 
-        #if os(macOS)
-        legacyFitSize = false
-        #endif
-
+        #if os(iOS) || os(tvOS)
         if legacyFitSize {
             return computeLegacyFitSize(width: width, height: height)
         } else if let fitType = fitType {
@@ -254,6 +251,7 @@ extension PinLayoutImpl {
                 }
             }
         }
+        #endif
         
         width = applyMinMax(toWidth: width)
         height = applyMinMax(toHeight: height)

@@ -22,11 +22,13 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 
 ### Requirements
-* iOS 8.0+ / tvOS 9.0+
+* iOS 8.0+ / tvOS 9.0+ / macOS 10.9+
 * Xcode 8.0+ / Xcode 9.0+
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent features
+* :star: PinLayout now support macOS 10.9+. See [macOS Support](#macos_support) for more information.
+
 * :star: PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
 
 * :star: Methods [`all(:CGFloat)`, `horizontally(:CGFloat)` / `horizontally(:Percent)`, `vertically(:CGFloat)` / `vertically(:Percent)`](#pin_multiple_edges)
@@ -54,6 +56,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Warnings](#warnings)
   * [More examples](#more_examples)
 * [Examples App](#examples_app)
+* [macOS Support](#macos_support)
 * [PinLayout in Xcode Playgrounds](#playgrounds)
 * [PinLayout using Objective-C](#objective_c_interface)
 * [Installation](#installation)
@@ -687,6 +690,7 @@ Set the view’s size to match the referenced view’s size
 
 <br/>
 
+<a name="sizeToFit"></a>
 ### sizeToFit
 
 **Method:**
@@ -1439,6 +1443,18 @@ There is an Example app that expose some usage example on PinLayout, including:
 </p>
 
 This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.
+
+<br>
+
+
+<a name="macos_support"></a>
+## macOS Support 
+
+These methods and property are currently not supported on macOS:
+
+* [`sizeToFit(:FitType)`](#sizeToFit)
+* [`aspectRatio()`](#aspect_ratio) with no parameters
+* [`UIView.pin.safeArea`](#safeAreaInsets)
 
 <br>
 

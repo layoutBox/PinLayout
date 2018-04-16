@@ -482,7 +482,9 @@ public protocol PinLayout {
      label.pin.width(100).sizeToFit(.widthFlexible)
      ```
      */
+    #if os(iOS) || os(tvOS)
     @discardableResult func sizeToFit(_ fitType: FitType) -> PinLayout
+    #endif
 
     #if os(iOS) || os(tvOS)
     @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")

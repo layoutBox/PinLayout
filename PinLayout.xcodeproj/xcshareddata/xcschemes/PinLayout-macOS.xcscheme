@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DF1A5D2B2084CF9700725EF5"
-               BuildableName = "PinLayout_macOS.framework"
+               BuildableName = "PinLayout.framework"
                BlueprintName = "PinLayout-macOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DF1A5D2B2084CF9700725EF5"
-            BuildableName = "PinLayout_macOS.framework"
+            BuildableName = "PinLayout.framework"
             BlueprintName = "PinLayout-macOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DF1A5D2B2084CF9700725EF5"
-            BuildableName = "PinLayout_macOS.framework"
+            BuildableName = "PinLayout.framework"
             BlueprintName = "PinLayout-macOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>

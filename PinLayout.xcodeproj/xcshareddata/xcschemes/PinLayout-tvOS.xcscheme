@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "244DF2F71EF46C500090508B"
-               BuildableName = "PinLayout-tvOS.framework"
+               BuildableName = "PinLayout.framework"
                BlueprintName = "PinLayout-tvOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayout-tvOS.framework"
+            BuildableName = "PinLayout.framework"
             BlueprintName = "PinLayout-tvOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayout-tvOS.framework"
+            BuildableName = "PinLayout.framework"
             BlueprintName = "PinLayout-tvOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayout-tvOS.framework"
+            BuildableName = "PinLayout.framework"
             BlueprintName = "PinLayout-tvOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>

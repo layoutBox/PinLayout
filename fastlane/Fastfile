@@ -8,18 +8,17 @@
 # Update this, if you use features of a newer version
 fastlane_version "2.29.0"
 
-default_platform :ios
+#default_platform :ios
 
+##### iOS platform
+##############################################
 platform :ios do
   before_all do
   end
 
   lane :install do
     bundle_install
-    cocoapods(
-      use_bundle_exec: true,
-      try_repo_update_on_error: true
-    )
+    cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
   end
 
   lane :build do
@@ -49,14 +48,6 @@ platform :ios do
     )
 
     xcodebuild(
-      project: "PinLayout.xcodeproj",
-      scheme: "PinLayout-macOS",
-      #destination: "name=Apple TV",
-      build: true,
-      clean: true
-    )
-
-    xcodebuild(
       workspace: "PinLayout.xcworkspace",
       scheme: "PinLayoutSample",
       build: true,
@@ -64,15 +55,6 @@ platform :ios do
       #destination: "name=iPhone 8 Plus,OS=11.2",
       destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
     )
-
-    #xcodebuild(
-    #  workspace: "PinLayout.xcworkspace",
-    #  scheme: "PinLayoutSample",
-    #  build: true,
-    #  clean: true,
-    #  #destination: "name=iPhone 8 Plus,OS=11.2",
-    #  destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
-    #)
   end
 
   lane :tests do
@@ -97,23 +79,41 @@ platform :ios do
     tests
     pod_lib_lint(allow_warnings: true, verbose: false)
   end
+end
 
-  lane :deploy do
-    ensure_git_branch
-    version = version_bump_podspec(path: "PinLayout.podspec")
-    git_commit(path: ["./PinLayout.podspec"], message: "Bumped to version #{version}")
-    push_to_git_remote(remote_branch: 'master', force: false, tags: true)
-    changelog = changelog_from_git_commits
-    github_release = set_github_release(
-      repository_name: "mirego/PinLayout",
-      api_token: ENV['GITHUB_TOKEN'],
-      name: version,
-      tag_name: version,
-      description: changelog,
-      commitish: "master"
+
+##### MAC platform
+##############################################
+platform :mac do
+  lane :build do
+    xcodebuild(
+      project: "PinLayout.xcodeproj",
+      scheme: "PinLayout-macOS",
+      #destination: "name=Apple TV",
+      build: true,
+      clean: true
     )
-    sh("git fetch --tags")
-    pod_push(allow_warnings: true, verbose: true)
+
+    #xcodebuild(
+    #  workspace: "PinLayout.xcworkspace",
+    #  scheme: "PinLayoutSample",
+    #  build: true,
+    #  clean: true,
+    #  #destination: "name=iPhone 8 Plus,OS=11.2",
+    #  destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
+    #)
   end
 
+  lane :tests do
+    #scan(
+    #  scheme: "PinLayout-macOS", 
+    #  workspace: "PinLayout.xcworkspace",
+    #  devices: [
+    #    "iPhone 7 (10.2)",
+    #    "iPhone 7 (11.2)",
+    #    "iPad Air (11.2)",
+    #    "iPhone X (11.2)"
+    #  ]
+    #)
+  end
 end

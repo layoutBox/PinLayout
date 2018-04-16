@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-               BuildableName = "PinLayout.framework"
-               BlueprintName = "PinLayout"
+               BuildableName = "PinLayout-iOS.framework"
+               BlueprintName = "PinLayout-iOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "249EFE821E64FB4C00165E39"
-               BuildableName = "PinLayoutTests.xctest"
-               BlueprintName = "PinLayoutTests"
+               BuildableName = "PinLayoutTests-iOS.xctest"
+               BlueprintName = "PinLayoutTests-iOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-            BuildableName = "PinLayout.framework"
-            BlueprintName = "PinLayout"
+            BuildableName = "PinLayout-iOS.framework"
+            BlueprintName = "PinLayout-iOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-            BuildableName = "PinLayout.framework"
-            BlueprintName = "PinLayout"
+            BuildableName = "PinLayout-iOS.framework"
+            BlueprintName = "PinLayout-iOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,8 +84,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "249EFE791E64FB4C00165E39"
-            BuildableName = "PinLayout.framework"
-            BlueprintName = "PinLayout"
+            BuildableName = "PinLayout-iOS.framework"
+            BlueprintName = "PinLayout-iOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

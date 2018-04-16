@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "249EFE3E1E64FAFE00165E39"
-               BuildableName = "PinLayoutSample.app"
-               BlueprintName = "PinLayoutSample"
-               ReferencedContainer = "container:PinLayoutSample.xcodeproj">
+               BlueprintIdentifier = "244DF2F71EF46C500090508B"
+               BuildableName = "PinLayout-tvOS.framework"
+               BlueprintName = "PinLayout-tvOS"
+               ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "249EFE821E64FB4C00165E39"
-               BuildableName = "PinLayoutTests-iOS.xctest"
-               BlueprintName = "PinLayoutTests-iOS"
-               ReferencedContainer = "container:../PinLayout.xcodeproj">
+               BlueprintIdentifier = "DFF6F9C12084DCD3004F5AED"
+               BuildableName = "PinLayoutTests-tvOS.xctest"
+               BlueprintName = "PinLayoutTests-tvOS"
+               ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "249EFE3E1E64FAFE00165E39"
-            BuildableName = "PinLayoutSample.app"
-            BlueprintName = "PinLayoutSample"
-            ReferencedContainer = "container:PinLayoutSample.xcodeproj">
+            BlueprintIdentifier = "244DF2F71EF46C500090508B"
+            BuildableName = "PinLayout-tvOS.framework"
+            BlueprintName = "PinLayout-tvOS"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -61,16 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "249EFE3E1E64FAFE00165E39"
-            BuildableName = "PinLayoutSample.app"
-            BlueprintName = "PinLayoutSample"
-            ReferencedContainer = "container:PinLayoutSample.xcodeproj">
+            BlueprintIdentifier = "244DF2F71EF46C500090508B"
+            BuildableName = "PinLayout-tvOS.framework"
+            BlueprintName = "PinLayout-tvOS"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "249EFE3E1E64FAFE00165E39"
-            BuildableName = "PinLayoutSample.app"
-            BlueprintName = "PinLayoutSample"
-            ReferencedContainer = "container:PinLayoutSample.xcodeproj">
+            BlueprintIdentifier = "244DF2F71EF46C500090508B"
+            BuildableName = "PinLayout-tvOS.framework"
+            BlueprintName = "PinLayout-tvOS"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -2,7 +2,7 @@ use_frameworks!
 
 workspace 'PinLayout.xcworkspace'
 
-target 'PinLayoutTests' do
+target 'PinLayoutTests-iOS' do
   platform :ios, "8.0"
   project 'PinLayout.xcodeproj'
 
@@ -10,7 +10,7 @@ target 'PinLayoutTests' do
   pod 'Nimble', :inhibit_warnings => true
 end
 
-target 'PinLayoutTestsTVOS' do
+target 'PinLayoutTests-tvOS' do
   platform :tvos, "9.0"
   project 'PinLayout.xcodeproj'
 
@@ -18,7 +18,7 @@ target 'PinLayoutTestsTVOS' do
   pod 'Nimble', :inhibit_warnings => true
 end
 
-target 'PinLayoutTestsMacOS' do
+target 'PinLayoutTests-macOS' do
   platform :osx, "10.10"
   project 'PinLayout.xcodeproj'
 

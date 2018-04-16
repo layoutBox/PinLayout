@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "244DF2F71EF46C500090508B"
-               BuildableName = "PinLayoutTVOS.framework"
-               BlueprintName = "PinLayoutTVOS"
+               BlueprintIdentifier = "DF1A5D2B2084CF9700725EF5"
+               BuildableName = "PinLayout_macOS.framework"
+               BlueprintName = "PinLayout-macOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DFF6F9C12084DCD3004F5AED"
-               BuildableName = "PinLayoutTestsTVOS.xctest"
-               BlueprintName = "PinLayoutTestsTVOS"
+               BlueprintIdentifier = "DF1A5D1C2084C94700725EF5"
+               BuildableName = "PinLayoutTests-macOS.xctest"
+               BlueprintName = "PinLayoutTests-macOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,10 +42,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayoutTVOS.framework"
-            BlueprintName = "PinLayoutTVOS"
-            ReferencedContainer = "container:PinLayout.xcodeproj">
+            BlueprintIdentifier = "DF4854D82077F1B600DF55AB"
+            BuildableName = "PinLayoutMacOsSample.app"
+            BlueprintName = "PinLayoutMacOsSample"
+            ReferencedContainer = "container:Example/PinLayoutMacOsSample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayoutTVOS.framework"
-            BlueprintName = "PinLayoutTVOS"
+            BlueprintIdentifier = "DF1A5D2B2084CF9700725EF5"
+            BuildableName = "PinLayout_macOS.framework"
+            BlueprintName = "PinLayout-macOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayoutTVOS.framework"
-            BlueprintName = "PinLayoutTVOS"
+            BlueprintIdentifier = "DF1A5D2B2084CF9700725EF5"
+            BuildableName = "PinLayout_macOS.framework"
+            BlueprintName = "PinLayout-macOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

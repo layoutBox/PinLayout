@@ -55,10 +55,26 @@
 		24D18D261F3E5EA5008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		CA6C7C85508320B18B1FC777 /* Pods_PinLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CE7ABE76F48416DE57DF55 /* Pods_PinLayoutTests.framework */; };
 		DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
-		DF1A5CBD208106C900725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
-		DF1A5D0520812DE500725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1A5D202084C94700725EF5 /* PinLayoutTestMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5D1F2084C94700725EF5 /* PinLayoutTestMacOS.swift */; };
+		DF1A5D302084CF9700725EF5 /* PinLayoutMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1A5D2E2084CF9700725EF5 /* PinLayoutMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF1A5D342084CFB300725EF5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
+		DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
+		DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
+		DF1A5D372084CFC200725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
+		DF1A5D382084CFC600725EF5 /* PinLayout+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */; };
+		DF1A5D392084CFC600725EF5 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
+		DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
+		DF1A5D3B2084CFD600725EF5 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C61FC37C1C0054CADD /* PinLayoutImpl.swift */; };
+		DF1A5D3C2084CFD600725EF5 /* PinLayoutImpl+Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C71FC37C1C0054CADD /* PinLayoutImpl+Coordinates.swift */; };
+		DF1A5D3D2084CFD600725EF5 /* PinLayoutImpl+Layouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C41FC37A900054CADD /* PinLayoutImpl+Layouting.swift */; };
+		DF1A5D3E2084CFD600725EF5 /* PinLayoutImpl+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C91FC37C1C0054CADD /* PinLayoutImpl+Relative.swift */; };
+		DF1A5D3F2084CFD600725EF5 /* PinLayoutImpl+Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C81FC37C1C0054CADD /* PinLayoutImpl+Warning.swift */; };
+		DF1A5D402084CFD600725EF5 /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
+		DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6D21FC37CD40054CADD /* Coordinates.swift */; };
+		DF1A5D422084CFD600725EF5 /* Percent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243C620E1FC3834B0082C327 /* Percent.swift */; };
+		DF1A5D432084CFD600725EF5 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6CE1FC37C570054CADD /* TypesImpl.swift */; };
+		DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6D01FC37C8C0054CADD /* UIView+LTR.swift */; };
 		DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
@@ -137,6 +153,9 @@
 		DF1A5D1D2084C94700725EF5 /* PinLayoutTestMacOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTestMacOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1A5D1F2084C94700725EF5 /* PinLayoutTestMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTestMacOS.swift; sourceTree = "<group>"; };
 		DF1A5D212084C94700725EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF1A5D2C2084CF9700725EF5 /* PinLayoutMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayoutMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1A5D2E2084CF9700725EF5 /* PinLayoutMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinLayoutMacOS.h; sourceTree = "<group>"; };
+		DF1A5D2F2084CF9700725EF5 /* InfoMacOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InfoMacOS.plist; sourceTree = "<group>"; };
 		DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSafeAreaTests.swift; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
 		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
@@ -175,6 +194,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF1A5D282084CF9700725EF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -200,8 +226,10 @@
 			children = (
 				2475B6D61FC37D4D0054CADD /* Info.plist */,
 				2475B6D81FC37D4D0054CADD /* InfoTVOS.plist */,
+				DF1A5D2F2084CF9700725EF5 /* InfoMacOS.plist */,
 				2475B6D91FC37D4D0054CADD /* PinLayout.h */,
 				2475B6D71FC37D4D0054CADD /* PinLayoutTVOS.h */,
+				DF1A5D2E2084CF9700725EF5 /* PinLayoutMacOS.h */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -225,6 +253,7 @@
 				249EFE831E64FB4C00165E39 /* PinLayoutTests.xctest */,
 				244DF2F81EF46C500090508B /* PinLayoutTVOS.framework */,
 				DF1A5D1D2084C94700725EF5 /* PinLayoutTestMacOS.xctest */,
+				DF1A5D2C2084CF9700725EF5 /* PinLayoutMacOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,6 +372,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF1A5D292084CF9700725EF5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF1A5D302084CF9700725EF5 /* PinLayoutMacOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -419,6 +456,24 @@
 			productReference = DF1A5D1D2084C94700725EF5 /* PinLayoutTestMacOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DF1A5D2B2084CF9700725EF5 /* PinLayoutMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF1A5D312084CF9700725EF5 /* Build configuration list for PBXNativeTarget "PinLayoutMacOS" */;
+			buildPhases = (
+				DF1A5D272084CF9700725EF5 /* Sources */,
+				DF1A5D282084CF9700725EF5 /* Frameworks */,
+				DF1A5D292084CF9700725EF5 /* Headers */,
+				DF1A5D2A2084CF9700725EF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PinLayoutMacOS;
+			productName = PinLayoutMacOS;
+			productReference = DF1A5D2C2084CF9700725EF5 /* PinLayoutMacOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -447,7 +502,12 @@
 					};
 					DF1A5D1C2084C94700725EF5 = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = F37Y9H9E46;
+						DevelopmentTeam = 4Q596JWQC5;
+						ProvisioningStyle = Automatic;
+					};
+					DF1A5D2B2084CF9700725EF5 = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = 4Q596JWQC5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -466,6 +526,7 @@
 			targets = (
 				249EFE791E64FB4C00165E39 /* PinLayout */,
 				244DF2F71EF46C500090508B /* PinLayoutTVOS */,
+				DF1A5D2B2084CF9700725EF5 /* PinLayoutMacOS */,
 				249EFE821E64FB4C00165E39 /* PinLayoutTests */,
 				DF1A5D1C2084C94700725EF5 /* PinLayoutTestMacOS */,
 			);
@@ -488,6 +549,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DF1A5D1B2084C94700725EF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF1A5D2A2084CF9700725EF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -544,7 +612,7 @@
 			files = (
 				243C62081FC37F6C0082C327 /* PinLayoutImpl+Warning.swift in Sources */,
 				24D18D261F3E5EA5008129EF /* Pin.swift in Sources */,
-				DF1A5D0520812DE500725EF5 /* NSView+PinLayout.swift in Sources */,
+				DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */,
 				243C62071FC37F6C0082C327 /* PinLayoutImpl+Relative.swift in Sources */,
 				243B12BC1FC393580072A9C3 /* Percent.swift in Sources */,
@@ -567,7 +635,7 @@
 				24D18D241F3E37DD008129EF /* Pin.swift in Sources */,
 				2475B6CA1FC37C1C0054CADD /* PinLayoutImpl.swift in Sources */,
 				241A277E1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift in Sources */,
-				DF1A5CBD208106C900725EF5 /* NSView+PinLayout.swift in Sources */,
+				DF1A5D372084CFC200725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C620F1FC3834B0082C327 /* Percent.swift in Sources */,
 				2475B6CB1FC37C1C0054CADD /* PinLayoutImpl+Coordinates.swift in Sources */,
 				2475B6C51FC37A900054CADD /* PinLayoutImpl+Layouting.swift in Sources */,
@@ -617,6 +685,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1A5D202084C94700725EF5 /* PinLayoutTestMacOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF1A5D272084CF9700725EF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF1A5D3F2084CFD600725EF5 /* PinLayoutImpl+Warning.swift in Sources */,
+				DF1A5D342084CFB300725EF5 /* PinLayout.swift in Sources */,
+				DF1A5D3B2084CFD600725EF5 /* PinLayoutImpl.swift in Sources */,
+				DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */,
+				DF1A5D422084CFD600725EF5 /* Percent.swift in Sources */,
+				DF1A5D3E2084CFD600725EF5 /* PinLayoutImpl+Relative.swift in Sources */,
+				DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */,
+				DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
+				DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */,
+				DF1A5D382084CFC600725EF5 /* PinLayout+Filters.swift in Sources */,
+				DF1A5D392084CFC600725EF5 /* Pin.swift in Sources */,
+				DF1A5D3D2084CFD600725EF5 /* PinLayoutImpl+Layouting.swift in Sources */,
+				DF1A5D3C2084CFD600725EF5 /* PinLayoutImpl+Coordinates.swift in Sources */,
+				DF1A5D402084CFD600725EF5 /* PinSafeArea.swift in Sources */,
+				DF1A5D432084CFD600725EF5 /* TypesImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,7 +971,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = F37Y9H9E46;
+				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -905,7 +995,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = F37Y9H9E46;
+				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -913,6 +1003,68 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutTestMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		DF1A5D322084CF9700725EF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4Q596JWQC5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Sources/SupportingFiles/InfoMacOS.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		DF1A5D332084CF9700725EF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4Q596JWQC5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Sources/SupportingFiles/InfoMacOS.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -961,6 +1113,15 @@
 			buildConfigurations = (
 				DF1A5D222084C94700725EF5 /* Debug */,
 				DF1A5D232084C94700725EF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF1A5D312084CF9700725EF5 /* Build configuration list for PBXNativeTarget "PinLayoutMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF1A5D322084CF9700725EF5 /* Debug */,
+				DF1A5D332084CF9700725EF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

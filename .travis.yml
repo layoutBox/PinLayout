@@ -7,8 +7,7 @@ install:
   - pod install --repo-update;
 
 script:
-  - set -o pipefail && bundle exec fastlane mac build
-  # bundle exec fastlane ios travis && 
+  - set -o pipefail && bundle exec fastlane ios travis && bundle exec fastlane mac build
 
 after_success:
   bash <(curl -s https://codecov.io/bash) -J 'PinLayout' -J 'PinLayoutTests'

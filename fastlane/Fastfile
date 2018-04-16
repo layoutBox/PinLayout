@@ -85,7 +85,14 @@ end
 ##### MAC platform
 ##############################################
 platform :mac do
+  lane :install do
+    bundle_install
+    cocoapods(use_bundle_exec: true, try_repo_update_on_error: true)
+  end
+
   lane :build do
+    install
+    
     xcodebuild(
       project: "PinLayout.xcodeproj",
       scheme: "PinLayout-macOS",

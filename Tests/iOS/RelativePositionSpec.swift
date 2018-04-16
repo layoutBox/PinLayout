@@ -23,14 +23,14 @@ import PinLayout
 
 class RelativePositionSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
-        var rootView: UIView!
+        var rootView: BasicView!
         
-        var aView: UIView!
-        var aViewChild: UIView!
+        var aView: BasicView!
+        var aViewChild: BasicView!
         
-        var bView: UIView!
+        var bView: BasicView!
         
         /*
           root
@@ -43,21 +43,22 @@ class RelativePositionSpec: QuickSpec {
         */
 
         beforeEach {
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = UIView()
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = UIView()
+            aView = BasicView()
             aView.frame = CGRect(x: 100, y: 100, width: 200, height: 160)
             rootView.addSubview(aView)
             
-            aViewChild = UIView()
+            aViewChild = BasicView()
             aViewChild.frame = CGRect(x: 45, y: 50, width: 80, height: 80)
             aView.addSubview(aViewChild)
             
-            bView = UIView()
+            bView = BasicView()
             bView.frame = CGRect(x: 160, y: 200, width: 40, height: 40)
             rootView.addSubview(bView)
         }

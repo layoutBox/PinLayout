@@ -60,7 +60,6 @@
 		DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
 		DF1A5D202084C94700725EF5 /* PinLayoutTestMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5D1F2084C94700725EF5 /* PinLayoutTestMacOS.swift */; };
 		DF1A5D302084CF9700725EF5 /* PinLayoutMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1A5D2E2084CF9700725EF5 /* PinLayoutMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF1A5D342084CFB300725EF5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 		DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1A5D372084CFC200725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
@@ -79,10 +78,31 @@
 		DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6D01FC37C8C0054CADD /* UIView+LTR.swift */; };
 		DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
+		DFB288A320853E82001F9588 /* JustifyAlignSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */; };
+		DFB288A420853F32001F9588 /* LayoutMethodSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */; };
+		DFB288A520853F3C001F9588 /* MarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C6E141E776A0C0074FC74 /* MarginsSpec.swift */; };
+		DFB288A820853F8E001F9588 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB288A720853F8E001F9588 /* Types.swift */; };
+		DFB288A920853F8E001F9588 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB288A720853F8E001F9588 /* Types.swift */; };
+		DFB288AA20853F8E001F9588 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB288A720853F8E001F9588 /* Types.swift */; };
+		DFB288AB2085400C001F9588 /* MinMaxWidthHeightSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */; };
+		DFB288AD208540B8001F9588 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
+		DFB288AE208540F2001F9588 /* PinEdgeCoordinateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FB1E74855D00073BEE /* PinEdgeCoordinateSpec.swift */; };
+		DFB288AF20854127001F9588 /* PinPointCoordinatesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246D36471E6C46F50050F202 /* PinPointCoordinatesSpec.swift */; };
+		DFB288B02085416E001F9588 /* RTLSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D151F3B42E0008129EF /* RTLSpec.swift */; };
+		DFB288B12085419B001F9588 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
+		DFB288B2208541B7001F9588 /* RelativePositionMultipleViewsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */; };
+		DFB288B3208541D9001F9588 /* WarningSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */; };
+		DFB288B720854252001F9588 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */; };
 		DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
 		DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
+		DFED154F20852F7E009EF9A7 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
+		DFED15502085304B009EF9A7 /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
+		DFED155120853085009EF9A7 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
+		DFED1552208533DA009EF9A7 /* AspectRatioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */; };
+		DFED15532085349A009EF9A7 /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
+		DFED15542085349B009EF9A7 /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
 		DFF6F9C52084DCD3004F5AED /* PinLayoutTestsTVOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF6F9C42084DCD3004F5AED /* PinLayoutTestsTVOS.swift */; };
 		DFF6F9C72084DCD3004F5AED /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244DF2F81EF46C500090508B /* PinLayout.framework */; };
 		DFF6F9CD2084E15A004F5AED /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
@@ -187,17 +207,16 @@
 		DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+PinLayout.swift"; sourceTree = "<group>"; };
 		DF1A5D1D2084C94700725EF5 /* PinLayoutTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PinLayoutTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1A5D1F2084C94700725EF5 /* PinLayoutTestMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTestMacOS.swift; sourceTree = "<group>"; };
-		DF1A5D212084C94700725EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF1A5D2C2084CF9700725EF5 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1A5D2E2084CF9700725EF5 /* PinLayoutMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinLayoutMacOS.h; sourceTree = "<group>"; };
 		DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSafeAreaTests.swift; sourceTree = "<group>"; };
 		DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinEdgesSpec.swift; sourceTree = "<group>"; };
+		DFB288A720853F8E001F9588 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
 		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
 		DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewSpec.swift; sourceTree = "<group>"; };
 		DFF6F9C22084DCD3004F5AED /* PinLayoutTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PinLayoutTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFF6F9C42084DCD3004F5AED /* PinLayoutTestsTVOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayoutTestsTVOS.swift; sourceTree = "<group>"; };
-		DFF6F9C62084DCD3004F5AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,11 +342,10 @@
 		249EFE871E64FB4C00165E39 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				DFB288A620853F78001F9588 /* Common */,
 				DFF6F9E42084E5B6004F5AED /* tvOS */,
 				DF1A5D262084CA4400725EF5 /* macOS */,
 				DF1A5D252084C9E200725EF5 /* iOS */,
-				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
-				248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -354,7 +372,6 @@
 				245C1DA11FEC4FC6007594F7 /* TransformSpec.swift */,
 				DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */,
 				240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */,
-				249EFE8A1E64FB4C00165E39 /* Info.plist */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -362,7 +379,6 @@
 		DF1A5D262084CA4400725EF5 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				DF1A5D212084C94700725EF5 /* Info.plist */,
 				DF1A5D1F2084C94700725EF5 /* PinLayoutTestMacOS.swift */,
 			);
 			path = macOS;
@@ -385,10 +401,20 @@
 			name = Impl;
 			sourceTree = "<group>";
 		};
+		DFB288A620853F78001F9588 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */,
+				DFB288A720853F8E001F9588 /* Types.swift */,
+				248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */,
+				249EFE8A1E64FB4C00165E39 /* Info.plist */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DFF6F9E42084E5B6004F5AED /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				DFF6F9C62084DCD3004F5AED /* Info.plist */,
 				DFF6F9C42084DCD3004F5AED /* PinLayoutTestsTVOS.swift */,
 			);
 			path = tvOS;
@@ -829,6 +855,7 @@
 				248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */,
 				240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */,
 				245C1DA31FEC4FCC007594F7 /* TransformSpec.swift in Sources */,
+				DFB288A820853F8E001F9588 /* Types.swift in Sources */,
 				DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */,
 				242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */,
 				2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */,
@@ -848,7 +875,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB288A520853F3C001F9588 /* MarginsSpec.swift in Sources */,
 				DF1A5D202084C94700725EF5 /* PinLayoutTestMacOS.swift in Sources */,
+				DFED15502085304B009EF9A7 /* AdjustSizeSpec.swift in Sources */,
+				DFED154F20852F7E009EF9A7 /* BasicView.swift in Sources */,
+				DFB288AF20854127001F9588 /* PinPointCoordinatesSpec.swift in Sources */,
+				DFB288A320853E82001F9588 /* JustifyAlignSpec.swift in Sources */,
+				DFED15532085349A009EF9A7 /* RectNimbleMatcher.swift in Sources */,
+				DFB288B12085419B001F9588 /* RelativePositionSpec.swift in Sources */,
+				DFB288B2208541B7001F9588 /* RelativePositionMultipleViewsSpec.swift in Sources */,
+				DFB288B02085416E001F9588 /* RTLSpec.swift in Sources */,
+				DFB288AB2085400C001F9588 /* MinMaxWidthHeightSpec.swift in Sources */,
+				DFB288A920853F8E001F9588 /* Types.swift in Sources */,
+				DFED1552208533DA009EF9A7 /* AspectRatioTests.swift in Sources */,
+				DFB288AE208540F2001F9588 /* PinEdgeCoordinateSpec.swift in Sources */,
+				DFB288A420853F32001F9588 /* LayoutMethodSpec.swift in Sources */,
+				DFB288B3208541D9001F9588 /* WarningSpec.swift in Sources */,
+				DFB288AD208540B8001F9588 /* PinEdgesSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,7 +900,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1A5D3F2084CFD600725EF5 /* PinLayoutImpl+Warning.swift in Sources */,
-				DF1A5D342084CFB300725EF5 /* PinLayout.swift in Sources */,
 				DF1A5D3B2084CFD600725EF5 /* PinLayoutImpl.swift in Sources */,
 				DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */,
 				DF1A5D422084CFD600725EF5 /* Percent.swift in Sources */,
@@ -865,6 +907,7 @@
 				DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */,
 				DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */,
+				DFED155120853085009EF9A7 /* PinLayout.swift in Sources */,
 				DF1A5D382084CFC600725EF5 /* PinLayout+Filters.swift in Sources */,
 				DF1A5D392084CFC600725EF5 /* Pin.swift in Sources */,
 				DF1A5D3D2084CFD600725EF5 /* PinLayoutImpl+Layouting.swift in Sources */,
@@ -885,7 +928,10 @@
 				DFF6F9D22084E15A004F5AED /* MarginsSpec.swift in Sources */,
 				DFF6F9D02084E15A004F5AED /* JustifyAlignSpec.swift in Sources */,
 				DFF6F9D82084E15A004F5AED /* PinPointCoordinatesSpec.swift in Sources */,
+				DFED15542085349B009EF9A7 /* RectNimbleMatcher.swift in Sources */,
 				DFF6F9CE2084E15A004F5AED /* AdjustSizeSpec.swift in Sources */,
+				DFB288AA20853F8E001F9588 /* Types.swift in Sources */,
+				DFB288B720854252001F9588 /* UIImage+Color.swift in Sources */,
 				DFF6F9DE2084E15A004F5AED /* UIScrollViewSpec.swift in Sources */,
 				DFF6F9D42084E15A004F5AED /* ObjectiveCSpec.m in Sources */,
 				DFF6F9DD2084E15A004F5AED /* TransformSpec.swift in Sources */,
@@ -1132,7 +1178,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Tests/iOS/Info.plist;
+				INFOPLIST_FILE = Tests/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1148,7 +1194,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Tests/iOS/Info.plist;
+				INFOPLIST_FILE = Tests/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1172,7 +1218,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Tests/macOS/Info.plist;
+				INFOPLIST_FILE = Tests/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutTestMacOS;
@@ -1198,7 +1244,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Tests/macOS/Info.plist;
+				INFOPLIST_FILE = Tests/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutTestMacOS;
@@ -1286,7 +1332,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Tests/tvOS/Info.plist;
+				INFOPLIST_FILE = Tests/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutTestsTVOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1311,7 +1357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Tests/tvOS/Info.plist;
+				INFOPLIST_FILE = Tests/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutTestsTVOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -23,7 +23,7 @@ import PinLayout
 
 class WarningSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         var rootView: BasicView!
         var aView: BasicView!
         
@@ -40,13 +40,14 @@ class WarningSpec: QuickSpec {
         beforeEach {
             Pin.lastWarningText = nil
             
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
             aView.sizeThatFitsExpectedArea = 40 * 40
             rootView.addSubview(aView)

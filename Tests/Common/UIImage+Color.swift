@@ -17,31 +17,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Nimble
+
 import UIKit
 
-public func beCloseTo(_ expectedValue: CGRect, within delta: CGFloat = 0.00001) -> Predicate<CGRect> {
-    let errorMessage = "be close to <\(stringify(expectedValue))> (each within \(stringify(delta)))"
-    return Predicate.simple(errorMessage) { actualExpression in
-        if let actual = try actualExpression.evaluate() {
-            if fabs(actual.origin.x - expectedValue.origin.x) > delta {
-                return .doesNotMatch
-            }
-
-            if fabs(actual.origin.y - expectedValue.origin.y) > delta {
-                return .doesNotMatch
-            }
-
-            if fabs(actual.size.width - expectedValue.size.width) > delta {
-                return .doesNotMatch
-            }
-
-            if fabs(actual.size.height - expectedValue.size.height) > delta {
-                return .doesNotMatch
-            }
-
-            return .matches
-        }
-        return .doesNotMatch
+public extension UIImage {
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let cgImage = image?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
     }
 }

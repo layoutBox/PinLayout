@@ -21,13 +21,14 @@ import XCTest
 @testable import PinLayout
 
 class PinLayoutTests: XCTestCase {
-    var viewController: UIViewController!
+    var viewController: PViewController!
     var rootView: UIView!
     
     override func setUp() {
         super.setUp()
         
-        viewController = UIViewController()
+        viewController = PViewController()
+        viewController.view = BasicView()
         
         rootView = UIView()
         rootView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)

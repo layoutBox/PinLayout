@@ -23,15 +23,15 @@ import PinLayout
 
 class RelativePositionMultipleViewsSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
-        var rootView: UIView!
+        var rootView: BasicView!
         
-        var aView: UIView!
-        var aViewChild: UIView!
+        var aView: BasicView!
+        var aViewChild: BasicView!
         
-        var bView: UIView!
-        var bViewChild: UIView!
+        var bView: BasicView!
+        var bViewChild: BasicView!
         
         /*
           root
@@ -48,25 +48,26 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
         beforeEach {
             Pin.lastWarningText = nil
             
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = UIView()
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = UIView()
+            aView = BasicView()
             aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
             rootView.addSubview(aView)
             
-            aViewChild = UIView()
+            aViewChild = BasicView()
             aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
             aView.addSubview(aViewChild)
             
-            bView = UIView()
+            bView = BasicView()
             bView.frame = CGRect(x: 160, y: 120, width: 110, height: 80)
             rootView.addSubview(bView)
             
-            bViewChild = UIView()
+            bViewChild = BasicView()
             bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
             bView.addSubview(bViewChild)
         }
@@ -76,21 +77,21 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
         //
         describe("the result of above(of: UIView...) with multiple relative views") {
             it("should warns the view bottom edge") {
-                let unatachedView = UIView()
+                let unatachedView = PView()
                 bViewChild.pin.above(of: unatachedView)
                 expect(bViewChild.frame).to(equal(CGRect(x: 40, y: 10, width: 60, height: 20)))
                 expect(Pin.lastWarningText).to(contain(["above", "won't be applied", "no valid references"]))
             }
             
             it("should warns the view bottom edge") {
-                let unatachedView = UIView()
+                let unatachedView = PView()
                 bViewChild.pin.above(of: [aView, unatachedView])
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -40.0, width: 60.0, height: 20.0)))
                 expect(Pin.lastWarningText).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))
             }
             
             it("Should warn, but the view should be anyway layout it above") {
-                let unatachedView = UIView()
+                let unatachedView = PView()
                 bViewChild.pin.above(of: [aView, unatachedView])
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -40.0, width: 60.0, height: 20.0)))
                 expect(Pin.lastWarningText).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))

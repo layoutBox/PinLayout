@@ -17,39 +17,41 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+#if os(iOS) || os(tvOS)
 import UIKit
+#else
+import AppKit
+#endif
 
-class BasicView: UIView {
-    fileprivate let label = UILabel()
-    
-    init(text: String? = nil, color: UIColor) {
+class BasicView: PView {
+    #if os(macOS)
+    override var isFlipped: Bool {
+        return true
+    }
+    #endif
+
+    init() {
         super.init(frame: .zero)
-
-        backgroundColor = color
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
-        
-        label.text = text
-        label.font = UIFont.systemFont(ofSize: 7)
-        label.textColor = .white
-        label.sizeToFit()
-        addSubview(label)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-            
-        label.pin.top().left()
-    }
-    
+
     var sizeThatFitsExpectedArea: CGFloat = 40 * 40
     var sizeThatFitSizeOffset: CGFloat = 0
-    
+
+    #if os(iOS) || os(tvOS)
     override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return _sizeThatFits(size)
+    }
+    #else
+    func sizeThatFits(_ size: CGSize) -> CGSize {
+        return _sizeThatFits(size)
+    }
+    #endif
+
+    fileprivate func _sizeThatFits(_ size: CGSize) -> CGSize {
         var newSize = CGSize()
         if size.width != CGFloat.greatestFiniteMagnitude {
             newSize.width = size.width + sizeThatFitSizeOffset
@@ -61,7 +63,7 @@ class BasicView: UIView {
             newSize.width = 40
             newSize.height = sizeThatFitsExpectedArea / newSize.width
         }
-        
+
         return newSize
     }
 }

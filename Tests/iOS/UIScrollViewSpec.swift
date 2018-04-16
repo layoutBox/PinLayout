@@ -23,10 +23,10 @@ import PinLayout
 
 class UIScrollViewSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
         var rootView: BasicView!
-        var scrollView: UIScrollView!
+        var scrollView: PScrollView!
 
         /*
           root
@@ -35,12 +35,13 @@ class UIScrollViewSpec: QuickSpec {
         */
 
         beforeEach {
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             viewController.view.addSubview(rootView)
             
-            scrollView = UIScrollView()
+            scrollView = PScrollView()
             rootView.addSubview(scrollView)
             
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)

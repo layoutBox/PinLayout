@@ -23,7 +23,7 @@ import PinLayout
 
 class RTLSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
         var rootView: BasicView!
         var aView: BasicView!
@@ -41,16 +41,17 @@ class RTLSpec: QuickSpec {
             Pin.lastWarningText = nil
             Pin.layoutDirection(.ltr)
             
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             rootView.addSubview(aView)
             
-            bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+            bView = BasicView()
             rootView.addSubview(bView)
 
             aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
@@ -236,28 +237,28 @@ class RTLSpec: QuickSpec {
 
             it("using insets") {
                 Pin.layoutDirection(.rtl)
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.start(insets)
                 expect(aView.frame).to(equal(CGRect(x: 260.0, y: 100.0, width: 100.0, height: 60.0)))
             }
 
             it("using insets") {
                 Pin.layoutDirection(.rtl)
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.end(insets)
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
             }
 
             it("using insets") {
                 Pin.layoutDirection(.ltr)
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.start(insets)
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 100.0, height: 60.0)))
             }
 
             it("using insets") {
                 Pin.layoutDirection(.ltr)
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.end(insets)
                 expect(aView.frame).to(equal(CGRect(x: 260.0, y: 100.0, width: 100.0, height: 60.0)))
             }

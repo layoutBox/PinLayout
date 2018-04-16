@@ -23,11 +23,14 @@ import PinLayout
 
 class AspectRatioTests: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         var rootView: BasicView!
         var aView: BasicView!
         var bView: BasicView!
+
+        #if os(iOS) || os(tvOS)
         var imageView: UIImageView!
+        #endif
         
         /*
          root
@@ -44,29 +47,33 @@ class AspectRatioTests: QuickSpec {
         beforeEach {
             Pin.lastWarningText = nil
             
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             aView.frame = CGRect(x: 140, y: 100, width: 200, height: 100)
             rootView.addSubview(aView)
             
-            bView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            bView = BasicView()
             bView.frame = CGRect(x: 160, y: 120, width: 120, height: 40)
             rootView.addSubview(bView)
-            
+
+            #if os(iOS) || os(tvOS)
             imageView = UIImageView(image: UIImage(color: UIColor.red, size: CGSize(width: 100, height: 50)))
             imageView.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
             rootView.addSubview(imageView)
+            #endif
         }
         
         //
         // aspectRatio(: CGFloat)
         //
         describe("the result of the aspectRatio(CGFloat)") {
+            #if os(iOS) || os(tvOS)
             it("should warn about fitSize()") {
                 aView.pin.left().width(100%).aspectRatio(2).fitSize()
                 expect(Pin.lastWarningText).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio"]))
@@ -89,6 +96,7 @@ class AspectRatioTests: QuickSpec {
                 expect(Pin.lastWarningText).to(contain(["aspectRatio(2.0) won't be applied", "conflicts", "sizeToFit"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 16.0, height: 100.0)))
             }
+            #endif
             
             it("should warn about aspectRatio(:CGFloat)") {
                 aView.pin.left().aspectRatio(2)
@@ -158,7 +166,8 @@ class AspectRatioTests: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100 * bViewRatio, height: 100.0)))
             }
         }
-        
+
+        #if os(iOS) || os(tvOS)
         //
         // aspectRatio()
         //
@@ -180,6 +189,7 @@ class AspectRatioTests: QuickSpec {
                 expect(imageView.frame).to(beCloseTo(CGRect(x: 0.0, y: 10, width: 200, height: 100), within: 0.5))
             }
         }
+        #endif
         
         //
         // aspectRatio && min/max width/height

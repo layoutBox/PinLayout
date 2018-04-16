@@ -91,18 +91,19 @@ platform :mac do
   end
 
   lane :build do
-    #install
+    install
     
-    sh("cd .. && xcodebuild -project 'PinLayout.xcodeproj' -scheme 'PinLayout-macOS' build clean")
+    #sh("cd .. && xcodebuild -project 'PinLayout.xcodeproj' -scheme 'PinLayout-macOS' build clean")
 
     # Mixing iOS and macOS build on fastlane fails! :-(
-    #xcodebuild(
-    #  project: "PinLayout.xcodeproj",
-    #  scheme: "PinLayout-macOS",
-    #  #destination: "name=Apple TV",
-    #  build: true,
-    #  clean: true
-    #)
+    xcodebuild(
+      project: "PinLayout.xcodeproj",
+      scheme: "PinLayout-macOS",
+      #destination: "name=Apple TV",
+      build: true
+      #clean: true,
+      #destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
+    )
 
     #xcodebuild(
     #  workspace: "PinLayout.xcworkspace",

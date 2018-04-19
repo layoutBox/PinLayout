@@ -48,11 +48,11 @@ class PinPointCoordinatesSpec: QuickSpec {
             viewController = PViewController()
             viewController.view = BasicView()
             
-            rootView = BasicView(isFlipped: true)
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(isFlipped: true)
+            aView = BasicView()
             aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
             rootView.addSubview(aView)
             
@@ -60,7 +60,7 @@ class PinPointCoordinatesSpec: QuickSpec {
             aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
             aView.addSubview(aViewChild)
 
-            bView = BasicView(isFlipped: true)
+            bView = BasicView()
             bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
             rootView.addSubview(bView)
             

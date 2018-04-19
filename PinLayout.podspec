@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.summary       = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast."
   spec.description   = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
   spec.homepage      = "https://mirego.github.io/PinLayout/"
-  spec.license       = "BSD 3-clause"
+  spec.license       = "MIT license"
   spec.author        = { "Luc Dion" => "luc_dion@yahoo.com" }
   spec.source        = { :git => "https://github.com/mirego/PinLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "Sources/**/*.swift"

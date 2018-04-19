@@ -164,19 +164,21 @@ As you can see in the following chart, PinLayout are faster or equal to manual l
 <a name="documentation"></a>
 # Documentation 
 
+### UIKit safeAreaInsets support 
+PinLayout can easily handle iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`. [See here for more details](#safeAreaInsets)
+
 <a name="rtl_support"></a>
-## Right to left languages (RTL) support 
-PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages.  
-[See here for more details](docs/rtl_support.md).
+
+### macOS support 
+PinLayout support macOS 10.9+.
+
+:pushpin: In this documentation, any methods with parameters of type UIView or UIEdgeInsets are also supported on macOS, using NSView and NSEdgeInsets. See [macOS Support](#macos_support) for more information.
+
+### Right to left languages (RTL) support 
+PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. [See here for more details](docs/rtl_support.md).
 
 <br/>
 
-## safeAreaInsets support 
-PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`.
-
-[See here for more details](#safeAreaInsets)
-
-<br/>
 
 <a name="distance_from_superview_edge"></a>
 ## Layout using distances from superview’s edges 
@@ -1026,7 +1028,7 @@ NOTE: In that in that particular situation, the same results could have been ach
 </br>
 
 <a name="safeAreaInsets"></a>
-## safeAreaInsets support 
+## UIKit safeAreaInsets support 
 
 PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`. PinLayout also extend the support of `UIView.safeAreaInsetsDidChange()` callback on iOS 7/8/9/10.
 
@@ -1450,11 +1452,20 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 <a name="macos_support"></a>
 ## macOS Support 
 
-These methods and property are currently not supported on macOS:
+PinLayout **support of macOS is not complete**, see here the particularities of the current implementation:
 
-* [`sizeToFit(:FitType)`](#sizeToFit)
-* [`aspectRatio()`](#aspect_ratio) with no parameters
-* [`UIView.pin.safeArea`](#safeAreaInsets)
+* PinLayout support **only NSViews that uses a flipped coordinate system**, i.e. views for which  the computed property `var isFlipped: Bool` returns true. In a flipped coordinate system, the origin is in the upper-left corner of the view and y-values extend downward. UIKit use this coordinate system. In a non-flipped coordinate system (default mode), the origin is in the lower-left corner of the view and positive y-values extend upward. See [Apple's documentation for more information about `NSView.isFlipped`](https://developer.apple.com/documentation/appkit/nsview/1483532-isflipped)
+
+* These methods are currently not supported on macOS, but they will be implemented soon:
+
+	* [`sizeToFit(:FitType)`](#sizeToFit) (Coming soon)
+	* [`aspectRatio()`](#aspect_ratio) with no parameters (Coming soon)
+
+
+* The following property is not available on macOS:
+	* [`UIView.pin.safeArea`](#safeAreaInsets)
+
+All other PinLayout's methods and properties are available on macOS!
 
 <br>
 

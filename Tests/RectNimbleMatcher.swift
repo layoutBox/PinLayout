@@ -17,21 +17,30 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
-@testable import PinLayout
+import Nimble
 
-class PinLayoutTests: XCTestCase {
-    var viewController: PViewController!
-    var rootView: UIView!
-    
-    override func setUp() {
-        super.setUp()
-        
-        viewController = PViewController()
-        viewController.view = BasicView()
-        
-        rootView = UIView()
-        rootView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        viewController.view.addSubview(rootView)
+public func beCloseTo(_ expectedValue: CGRect, within delta: CGFloat = 0.00001) -> Predicate<CGRect> {
+    let errorMessage = "be close to <\(stringify(expectedValue))> (each within \(stringify(delta)))"
+    return Predicate.simple(errorMessage) { actualExpression in
+        if let actual = try actualExpression.evaluate() {
+            if fabs(actual.origin.x - expectedValue.origin.x) > delta {
+                return .doesNotMatch
+            }
+
+            if fabs(actual.origin.y - expectedValue.origin.y) > delta {
+                return .doesNotMatch
+            }
+
+            if fabs(actual.size.width - expectedValue.size.width) > delta {
+                return .doesNotMatch
+            }
+
+            if fabs(actual.size.height - expectedValue.size.height) > delta {
+                return .doesNotMatch
+            }
+
+            return .matches
+        }
+        return .doesNotMatch
     }
 }

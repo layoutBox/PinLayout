@@ -21,14 +21,10 @@ import Foundation
 
 #if os(iOS) || os(tvOS)
     import UIKit
-#else
-    import AppKit
-#endif
-
-#if os(iOS) || os(tvOS)
     typealias PView = UIView
     typealias PEdgeInsets = UIEdgeInsets
 #else
+    import AppKit
     typealias PView = NSView
     typealias PEdgeInsets = NSEdgeInsets
 #endif

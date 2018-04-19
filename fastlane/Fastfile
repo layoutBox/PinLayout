@@ -91,7 +91,7 @@ platform :mac do
   end
 
   lane :build do
-    
+    install 
     xcodebuild(
       project: "PinLayout.xcodeproj",
       scheme: "PinLayout-macOS",
@@ -112,15 +112,14 @@ platform :mac do
   end
 
   lane :tests do
-    #scan(
-    #  scheme: "PinLayout-macOS", 
-    #  workspace: "PinLayout.xcworkspace",
-    #  devices: [
-    #    "iPhone 7 (10.2)",
-    #    "iPhone 7 (11.2)",
-    #    "iPad Air (11.2)",
-    #    "iPhone X (11.2)"
-    #  ]
-    #)
+    scan(
+      scheme: "PinLayout-macOS", 
+      workspace: "PinLayout.xcworkspace"
+    )
+  end
+
+  lane :travis do
+    build
+    tests
   end
 end

@@ -26,16 +26,16 @@ target 'PinLayoutTests-macOS' do
   pod 'Nimble', :inhibit_warnings => true
 end
 
-#target 'PinLayoutSample' do
-#  platform :ios, "8.0"
-#  project 'Example/PinLayoutSample.xcodeproj'
+target 'PinLayoutSample' do
+  platform :ios, "8.0"
+  project 'Example/PinLayoutSample.xcodeproj'
 
-#  pod 'PinLayout', :path => './'
-#  pod 'SwiftLint'
+  pod 'PinLayout', :path => './'
+  pod 'SwiftLint'
   
   # Debug only
-#  pod 'Reveal-SDK', '~> 10', :configurations => ['Debug']
-#end
+  pod 'Reveal-SDK', '~> 10', :configurations => ['Debug']
+end
 
 #target 'PinLayoutMacOsSample' do
 #  platform :osx, '10.9'

@@ -111,16 +111,16 @@ platform :mac do
     #)
   end
 
-  lane :tests do
-    scan(
-      scheme: "PinLayout-macOS", 
-      workspace: "PinLayout.xcworkspace",
-      destination: "platform=macOS,arch=x86_64"
-    )
-  end
+  #lane :tests do
+  #  scan(
+  #    scheme: "PinLayout-macOS", 
+  #    workspace: "PinLayout.xcworkspace",
+  #    destination: "platform=macOS,arch=x86_64"
+  #  )
+  #end
 
   lane :travis do
     build
-    tests
+   # tests
   end
 end

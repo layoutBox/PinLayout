@@ -114,7 +114,8 @@ platform :mac do
   lane :tests do
     scan(
       scheme: "PinLayout-macOS", 
-      workspace: "PinLayout.xcworkspace"
+      workspace: "PinLayout.xcworkspace",
+      destination: "platform=macOS,arch=x86_64"
     )
   end
 

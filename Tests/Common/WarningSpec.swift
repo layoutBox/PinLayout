@@ -21,49 +21,46 @@ import Quick
 import Nimble
 import PinLayout
 
-class UIScrollViewSpec: QuickSpec {
+class WarningSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
-        
+        var viewController: PViewController!
         var rootView: BasicView!
-        var scrollView: UIScrollView!
-
+        var aView: BasicView!
+        
         /*
           root
            |
-           |- scrollView
+            - aView
         */
+        
+        beforeSuite {
+            _pinlayoutSetUnitTest(displayScale: 2)
+        }
 
         beforeEach {
-            viewController = UIViewController()
+            Pin.lastWarningText = nil
             
-            rootView = BasicView(text: "", color: .white)
+            viewController = PViewController()
+            viewController.view = BasicView()
+            
+            rootView = BasicView()
+            rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            scrollView = UIScrollView()
-            rootView.addSubview(scrollView)
-            
-            rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-            scrollView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+            aView = BasicView()
+            aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
+            aView.sizeThatFitsExpectedArea = 40 * 40
+            rootView.addSubview(aView)
         }
         
-        describe("Layout a UIScrollView") {
-            it("layout the UIScrollView") {
-                scrollView.pin.all()
-                
-                expect(scrollView.frame).to(equal(CGRect(x: 0, y: 0, width: 400.0, height: 400.0)))
-                expect(scrollView.bounds).to(equal(CGRect(x: 0, y: 0, width: 400.0, height: 400.0)))
-                expect(scrollView.contentOffset).to(equal(CGPoint(x: 0, y: 0)))
-            }
-
-            it("should keep the contentOffset") {
-                scrollView.contentOffset = CGPoint(x: 30, y: 30)
-
-                scrollView.pin.all()
-
-                expect(scrollView.frame).to(equal(CGRect(x: 0, y: 0, width: 400.0, height: 400.0)))
-                expect(scrollView.bounds).to(equal(CGRect(x: 30, y: 30, width: 400.0, height: 400.0)))
-                expect(scrollView.contentOffset).to(equal(CGPoint(x: 30, y: 30)))
+        //
+        // pinEdges warnings
+        //
+        describe("pinEdges() should warn ") {
+            it("test when top, left, bottom and right is set") {
+                aView.pin.top().bottom().left().right().width(100%).pinEdges()
+                expect(aView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 400.0, height: 400.0)))
+                expect(Pin.lastWarningText).to(contain(["pinEdges()", "won't be applied", "top, left, bottom and right coordinates are already set"]))
             }
         }
     }

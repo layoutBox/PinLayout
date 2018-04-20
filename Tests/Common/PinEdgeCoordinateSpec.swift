@@ -23,14 +23,14 @@ import PinLayout
 
 class PinEdgeCoordinateSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
-        var rootView: UIView!
+        var viewController: PViewController!
+        var rootView: BasicView!
         
-        var aView: UIView!
-        var aViewChild: UIView!
+        var aView: BasicView!
+        var aViewChild: BasicView!
         
-        var bView: UIView!
-        var bViewChild: UIView!
+        var bView: BasicView!
+        var bViewChild: BasicView!
         
         /*
           root
@@ -45,32 +45,33 @@ class PinEdgeCoordinateSpec: QuickSpec {
         */
 
         beforeEach {
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = UIView()
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = UIView()
+            aView = BasicView()
             aView.frame = CGRect(x: 140, y: 100, width: 100, height: 60)
             rootView.addSubview(aView)
             
-            aViewChild = UIView()
+            aViewChild = BasicView()
             aViewChild.frame = CGRect(x: 10, y: 20, width: 50, height: 30)
             aView.addSubview(aViewChild)
 
-            bView = UIView()
+            bView = BasicView()
             bView.frame = CGRect(x: 160, y: 200, width: 110, height: 80)
             rootView.addSubview(bView)
             
-            bViewChild = UIView()
+            bViewChild = BasicView()
             bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
             bView.addSubview(bViewChild)
         }
 
         describe("the result of the top(edge: VerticalEdge, of: UIView) method") {
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.top(to: aView.edge.top)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))

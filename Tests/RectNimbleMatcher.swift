@@ -18,7 +18,6 @@
 //  THE SOFTWARE.
 
 import Nimble
-import UIKit
 
 public func beCloseTo(_ expectedValue: CGRect, within delta: CGFloat = 0.00001) -> Predicate<CGRect> {
     let errorMessage = "be close to <\(stringify(expectedValue))> (each within \(stringify(delta)))"

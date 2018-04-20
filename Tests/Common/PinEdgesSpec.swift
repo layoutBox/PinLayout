@@ -23,7 +23,7 @@ import PinLayout
 
 class PinEdgesSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
         var rootView: BasicView!
         var aView: BasicView!
@@ -41,18 +41,19 @@ class PinEdgesSpec: QuickSpec {
         beforeEach {
             Pin.lastWarningText = nil
         
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             rootView.addSubview(aView)
             
-            bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+            bView = BasicView()
             rootView.addSubview(bView)
             
-            bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
+            bViewChild = BasicView()
             bView.addSubview(bViewChild)
             
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
@@ -105,7 +106,7 @@ class PinEdgesSpec: QuickSpec {
             }
         
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.top(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
@@ -122,7 +123,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.top(insets)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 100.0)))
             }
@@ -161,14 +162,14 @@ class PinEdgesSpec: QuickSpec {
             }
             
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.left(20.0%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
             }
             
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.left(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
@@ -195,7 +196,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.left(insets)
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 200.0, height: 100.0)))
             }
@@ -234,7 +235,7 @@ class PinEdgesSpec: QuickSpec {
             }
             
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.bottom(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
@@ -261,7 +262,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.bottom(insets)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 270.0, width: 200.0, height: 100.0)))
             }
@@ -300,7 +301,7 @@ class PinEdgesSpec: QuickSpec {
             }
             
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.right(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
@@ -327,7 +328,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.right(insets)
                 expect(aView.frame).to(equal(CGRect(x: 160.0, y: 100.0, width: 200.0, height: 100.0)))
             }
@@ -368,7 +369,7 @@ class PinEdgesSpec: QuickSpec {
             
             // hCenter(%)
             it("should warns that the view is not added to any view") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 10, height: 10))
                 unAttachedView.pin.hCenter(20%)
                 
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 10, height: 10)))
@@ -507,7 +508,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.all(insets)
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
             }
@@ -576,7 +577,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.horizontally(insets)
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 100.0, width: 340.0, height: 100.0)))
             }
@@ -642,7 +643,7 @@ class PinEdgesSpec: QuickSpec {
             }
 
             it("using insets") {
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 aView.pin.vertically(insets)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 10.0, width: 200.0, height: 360.0)))
             }

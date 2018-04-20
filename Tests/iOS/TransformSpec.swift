@@ -23,7 +23,7 @@ import PinLayout
 
 class TransformSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
         var rootView: BasicView!
         var aView: BasicView!
@@ -44,18 +44,19 @@ class TransformSpec: QuickSpec {
         */
 
         beforeEach {
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             rootView.addSubview(aView)
             
-            bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+            bView = BasicView()
             rootView.addSubview(bView)
             
-            bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
+            bViewChild = BasicView()
             bView.addSubview(bViewChild)
             
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)

@@ -23,7 +23,7 @@ import PinLayout
 
 class AdjustSizeSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         var rootView: BasicView!
         
         var aView: BasicView!
@@ -51,22 +51,23 @@ class AdjustSizeSpec: QuickSpec {
         beforeEach {
             Pin.lastWarningText = nil
             
-            viewController = UIViewController()
-            
-            rootView = BasicView(text: "", color: .white)
+            viewController = PViewController()
+            viewController.view = BasicView()
+
+            rootView = BasicView()
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             aView.sizeThatFitsExpectedArea = 40 * 40
             rootView.addSubview(aView)
             
-            aViewChild = BasicView(text: "View A Child", color: UIColor.red.withAlphaComponent(1))
+            aViewChild = BasicView()
             aView.addSubview(aViewChild)
             
-            bView = BasicView(text: "View B", color: UIColor.blue.withAlphaComponent(0.5))
+            bView = BasicView()
             rootView.addSubview(bView)
             
-            bViewChild = BasicView(text: "View B Child", color: UIColor.blue.withAlphaComponent(0.7))
+            bViewChild = BasicView()
             bView.addSubview(bViewChild)
             
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
@@ -103,7 +104,7 @@ class AdjustSizeSpec: QuickSpec {
             }
 
             it("should adjust the width(percent: Percent) of aView") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
                 unAttachedView.pin.width(50%)
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 20, height: 30)))
             }
@@ -136,7 +137,7 @@ class AdjustSizeSpec: QuickSpec {
             }
 
             it("should adjust the height of aView") {
-                let unAttachedView = UIView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
+                let unAttachedView = PView(frame: CGRect(x: 10, y: 10, width: 20, height: 30))
                 unAttachedView.pin.height(50%)
                 expect(unAttachedView.frame).to(equal(CGRect(x: 10, y: 10, width: 20, height: 30)))
             }
@@ -203,6 +204,7 @@ class AdjustSizeSpec: QuickSpec {
         //
         // fitSize
         //
+        #if os(iOS) || os(tvOS)
         describe("the result of the fitSize() method") {
             it("should not adjust the size of aView if width or height has not been specified") {
                 aView.pin.fitSize()
@@ -860,5 +862,6 @@ class AdjustSizeSpec: QuickSpec {
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0), within: 0.5))
             }
         }
+        #endif
     }
 }

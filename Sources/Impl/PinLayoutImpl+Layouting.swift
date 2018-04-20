@@ -18,7 +18,10 @@
 //  THE SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-import UIKit
+    import UIKit
+#else
+    import AppKit
+#endif
 
 // MARK - UIView's frame computation methods
 extension PinLayoutImpl {
@@ -32,7 +35,7 @@ extension PinLayoutImpl {
         isLayouted = true
     }
     
-    private func apply(onView view: UIView) {
+    private func apply(onView view: PView) {
         displayLayoutWarnings()
         
         var newRect = Coordinates.getViewRect(view, keepTransform: keepTransform)
@@ -184,35 +187,13 @@ extension PinLayoutImpl {
     private func computeSize() -> Size {
         var width = computeWidth()
         var height = computeHeight()
-        
+
+        #if os(macOS)
+        assert(!legacyFitSize && fitType == nil)
+        #endif
+
         if legacyFitSize {
-            if width == nil && height == nil {
-                warn("fitSize() won't be applied, neither the width nor the height can be determined.")
-            } else {
-                var fitWidth = CGFloat.greatestFiniteMagnitude
-                var fitHeight = CGFloat.greatestFiniteMagnitude
-                
-                if let width = applyMinMax(toWidth: width) {
-                    fitWidth = width
-                }
-                if let height = applyMinMax(toHeight: height) {
-                    fitHeight = height
-                }
-                
-                let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-                
-                if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
-                    width = fitWidth
-                } else {
-                    width = sizeThatFits.width
-                }
-                
-                if fitHeight != .greatestFiniteMagnitude && (sizeThatFits.height > fitHeight) {
-                    height = fitHeight
-                } else {
-                    height = sizeThatFits.height
-                }
-            }
+            return computeLegacyFitSize(width: width, height: height)
         } else if let fitType = fitType {
             var fitWidth = CGFloat.greatestFiniteMagnitude
             var fitHeight = CGFloat.greatestFiniteMagnitude
@@ -232,9 +213,22 @@ extension PinLayoutImpl {
                     fitHeight = view.bounds.height
                 }
             }
-            
-            let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-            
+
+            #if os(iOS) || os(tvOS)
+                let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
+            #else
+                let sizeThatFits: CGSize
+                if #available(OSX 10.10, *) {
+                    if let control = view as? NSControl {
+                        sizeThatFits = control.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
+                    } else {
+                        sizeThatFits = view.intrinsicContentSize
+                    }
+                } else {
+                    sizeThatFits = view.intrinsicContentSize
+                }
+            #endif
+
             if fitWidth != .greatestFiniteMagnitude {
                 width = fitType.isFlexible ? sizeThatFits.width : fitWidth
             } else {
@@ -260,7 +254,7 @@ extension PinLayoutImpl {
                 }
             }
         }
-        
+
         width = applyMinMax(toWidth: width)
         height = applyMinMax(toHeight: height)
         
@@ -272,6 +266,56 @@ extension PinLayoutImpl {
             height = nil
         }
         
+        return (width, height)
+    }
+
+    private func computeLegacyFitSize(width: CGFloat?, height: CGFloat?) -> Size {
+        var width = width
+        var height = height
+
+        if width == nil && height == nil {
+            warn("fitSize() won't be applied, neither the width nor the height can be determined.")
+        } else {
+            var fitWidth = CGFloat.greatestFiniteMagnitude
+            var fitHeight = CGFloat.greatestFiniteMagnitude
+
+            if let width = applyMinMax(toWidth: width) {
+                fitWidth = width
+            }
+            if let height = applyMinMax(toHeight: height) {
+                fitHeight = height
+            }
+
+            #if os(iOS) || os(tvOS)
+            let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
+            #else
+            let sizeThatFits = view.intrinsicContentSize
+            #endif
+
+            if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
+                width = fitWidth
+            } else {
+                width = sizeThatFits.width
+            }
+
+            if fitHeight != .greatestFiniteMagnitude && (sizeThatFits.height > fitHeight) {
+                height = fitHeight
+            } else {
+                height = sizeThatFits.height
+            }
+
+            width = applyMinMax(toWidth: width)
+            height = applyMinMax(toHeight: height)
+
+            if !validateComputedWidth(width) {
+                width = nil
+            }
+
+            if !validateComputedHeight(height) {
+                height = nil
+            }
+        }
+
         return (width, height)
     }
     
@@ -399,5 +443,4 @@ extension PinLayoutImpl {
         return view.isLTR()
     }
 }
-    
-#endif
+

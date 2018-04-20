@@ -18,7 +18,10 @@
 //  THE SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-import UIKit
+    import UIKit
+#else
+    import AppKit
+#endif
 
 fileprivate var numberFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()
@@ -128,7 +131,11 @@ extension PinLayoutImpl {
             currentView = parent
         }
         if hierarchy.count > 0 {
+            #if swift(>=4.1)
+            displayText += ", Superviews: \(hierarchy.compactMap({ $0 }).joined(separator: " -> "))"
+            #else
             displayText += ", Superviews: \(hierarchy.flatMap({ $0 }).joined(separator: " -> "))"
+            #endif
         }
         
         displayText += ", Tag: \(view.tag))\n"
@@ -137,17 +144,16 @@ extension PinLayoutImpl {
         Pin.lastWarningText = text
     }
     
-    internal func viewDescription(_ view: UIView) -> String {
+    internal func viewDescription(_ view: PView) -> String {
         return "(\(viewName(view)), Frame: \(view.frame))"
     }
     
-    internal func viewName(_ view: UIView) -> String {
+    internal func viewName(_ view: PView) -> String {
         return "\(type(of: view))"
     }
 
-    internal func insetsDescription(_ insets: UIEdgeInsets) -> String {
+    internal func insetsDescription(_ insets: PEdgeInsets) -> String {
         return "UIEdgeInsets(top: \(insets.top), left: \(insets.left), bottom: \(insets.bottom), right: \(insets.right))"
     }
 }
 
-#endif

@@ -9,3 +9,6 @@ data/
 Pods/
 
 docs/1.2
+fastlane/README.md
+fastlane/report.xml
+fastlane/test_output

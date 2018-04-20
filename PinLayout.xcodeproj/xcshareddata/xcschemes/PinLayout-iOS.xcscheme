@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
+            buildForProfiling = "NO"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "244DF2F71EF46C500090508B"
-               BuildableName = "PinLayoutTVOS.framework"
-               BlueprintName = "PinLayoutTVOS"
+               BlueprintIdentifier = "249EFE791E64FB4C00165E39"
+               BuildableName = "PinLayout.framework"
+               BlueprintName = "PinLayout-iOS"
                ReferencedContainer = "container:PinLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,10 +26,39 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "249EFE791E64FB4C00165E39"
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout-iOS"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "249EFE821E64FB4C00165E39"
+               BuildableName = "PinLayoutTests-iOS.xctest"
+               BlueprintName = "PinLayoutTests-iOS"
+               ReferencedContainer = "container:PinLayout.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "249EFE791E64FB4C00165E39"
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout-iOS"
+            ReferencedContainer = "container:PinLayout.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -37,7 +66,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,9 +75,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayoutTVOS.framework"
-            BlueprintName = "PinLayoutTVOS"
+            BlueprintIdentifier = "249EFE791E64FB4C00165E39"
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout-iOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +93,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "244DF2F71EF46C500090508B"
-            BuildableName = "PinLayoutTVOS.framework"
-            BlueprintName = "PinLayoutTVOS"
+            BlueprintIdentifier = "249EFE791E64FB4C00165E39"
+            BuildableName = "PinLayout.framework"
+            BlueprintName = "PinLayout-iOS"
             ReferencedContainer = "container:PinLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

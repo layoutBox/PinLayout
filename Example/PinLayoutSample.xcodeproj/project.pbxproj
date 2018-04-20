@@ -195,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				2439CC241E665858003326FB /* PinLayout.framework */,
-				2439CC261E665858003326FB /* PinLayoutTests.xctest */,
 				24DA374F1EF7F90700D1AB2F /* PinLayoutTVOS.framework */,
+				2439CC261E665858003326FB /* PinLayoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,7 +433,6 @@
 				249EFE3D1E64FAFE00165E39 /* Resources */,
 				2460ACCE1E64FD9D000BCAC5 /* Embed Frameworks */,
 				5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */,
-				CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */,
 				24E6547E1E68F88D00A72A8B /* Run Swiftlint */,
 				2468130D1F8D013600462E53 /* Embed App Extensions */,
 			);
@@ -556,21 +555,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCCCC7EE5AE16BA960D7DB4F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */ = {
@@ -780,7 +764,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayoutSample/UI/Examples/PinLayoutSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -797,7 +781,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayoutSample/UI/Examples/PinLayoutSample-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

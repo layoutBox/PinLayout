@@ -20,10 +20,17 @@
 import Foundation
 
 #if os(iOS) || os(tvOS)
-import UIKit
-    
+    import UIKit
+    typealias PView = UIView
+    typealias PEdgeInsets = UIEdgeInsets
+#else
+    import AppKit
+    typealias PView = NSView
+    typealias PEdgeInsets = NSEdgeInsets
+#endif
+
 class PinLayoutImpl: PinLayout {
-    internal let view: UIView
+    internal let view: PView
     internal let keepTransform: Bool
 
     internal var _top: CGFloat?       // offset from superview's top edge
@@ -65,11 +72,13 @@ class PinLayoutImpl: PinLayout {
     
     internal var isLayouted = false
 
-    init(view: UIView, keepTransform: Bool) {
+    init(view: PView, keepTransform: Bool) {
         self.view = view
         self.keepTransform = keepTransform
 
+        #if os(iOS) || os(tvOS)
         PinSafeArea.enableCompatibilitySafeArea()
+        #endif
     }
     
     deinit {
@@ -79,13 +88,15 @@ class PinLayoutImpl: PinLayout {
         apply()
     }
 
-    var safeArea: UIEdgeInsets {
+    #if os(iOS) || os(tvOS)
+    var safeArea: PEdgeInsets {
         if #available(iOS 11.0, tvOS 11.0, *) {
             return view.safeAreaInsets
         } else {
             return view.pinlayoutComputeSafeAreaInsets()
         }
     }
+    #endif
 
     //
     // top, left, bottom, right
@@ -109,7 +120,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func top(_ insets: UIEdgeInsets) -> PinLayout {
+    func top(_ insets: PEdgeInsets) -> PinLayout {
         return top(insets.top, { return "top(\(insetsDescription(insets))" })
     }
     
@@ -129,7 +140,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func left(_ insets: UIEdgeInsets) -> PinLayout {
+    func left(_ insets: PEdgeInsets) -> PinLayout {
         return left(insets.left, { return "left(\(insetsDescription(insets))" })
     }
     
@@ -152,7 +163,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func start(_ insets: UIEdgeInsets) -> PinLayout {
+    func start(_ insets: PEdgeInsets) -> PinLayout {
         func context() -> String { return "start(\(insetsDescription(insets))" }
         return isLTR() ? left(insets.left, context) : right(insets.right, context)
     }
@@ -172,7 +183,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func bottom(_ insets: UIEdgeInsets) -> PinLayout {
+    func bottom(_ insets: PEdgeInsets) -> PinLayout {
         return bottom(insets.bottom, { return "bottom(\(insetsDescription(insets))" })
     }
 
@@ -191,7 +202,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func right(_ insets: UIEdgeInsets) -> PinLayout {
+    func right(_ insets: PEdgeInsets) -> PinLayout {
         return right(insets.right, { return "right(\(insetsDescription(insets))" })
     }
     
@@ -213,7 +224,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func end(_ insets: UIEdgeInsets) -> PinLayout {
+    func end(_ insets: PEdgeInsets) -> PinLayout {
         func context() -> String { return "end(\(insetsDescription(insets))" }
         return isLTR() ? right(insets.right, context) : left(insets.left, context)
     }
@@ -284,7 +295,7 @@ class PinLayoutImpl: PinLayout {
         return self
     }
 
-    func all(_ insets: UIEdgeInsets) -> PinLayout {
+    func all(_ insets: PEdgeInsets) -> PinLayout {
         top(insets.top,  { "all(\(insets)) top coordinate" })
         bottom(insets.bottom,  { "all(\(insets)) bottom coordinate" })
         left(insets.left,  { "all(\(insets)) left coordinate" })
@@ -314,7 +325,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func horizontally(_ insets: UIEdgeInsets) -> PinLayout {
+    func horizontally(_ insets: PEdgeInsets) -> PinLayout {
         left(insets.left, { return "horizontally(\(insets)) left coordinate" })
         right(insets.right, { return "horizontally(\(insets)) right coordinate" })
         return self
@@ -342,7 +353,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func vertically(_ insets: UIEdgeInsets) -> PinLayout {
+    func vertically(_ insets: PEdgeInsets) -> PinLayout {
         top(insets.top, { return "vertically(\(insets)) top coordinate" })
         bottom(insets.bottom, { return "vertically(\(insets)) bottom coordinate" })
         return self
@@ -713,7 +724,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func width(of view: UIView) -> PinLayout {
+    func width(of view: PView) -> PinLayout {
         return setWidth(view.bounds.width, { return "width(of: \(viewDescription(view)))" })
     }
     
@@ -756,7 +767,7 @@ class PinLayoutImpl: PinLayout {
     }
 
     @discardableResult
-    func height(of view: UIView) -> PinLayout {
+    func height(of view: PView) -> PinLayout {
         return setHeight(view.bounds.height, { return "height(of: \(viewDescription(view)))" })
     }
     
@@ -808,7 +819,7 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func size(of view: UIView) -> PinLayout {
+    func size(of view: PView) -> PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
         return setSize(view.bounds.size, context)
     }
@@ -827,10 +838,11 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func aspectRatio(of view: UIView) -> PinLayout {
+    func aspectRatio(of view: PView) -> PinLayout {
         return setAspectRatio(view.bounds.width / view.bounds.height, context: { "aspectRatio(of: \(viewDescription(view)))" })
     }
     
+    #if os(iOS) || os(tvOS)
     @discardableResult
     func aspectRatio() -> PinLayout {
         func context() -> String { return "aspectRatio()" }
@@ -845,16 +857,19 @@ class PinLayoutImpl: PinLayout {
         }
         return self
     }
+    #endif
     
     @discardableResult
     func sizeToFit(_ fitType: FitType) -> PinLayout {
         return setFitSize(fitType: fitType, { return "sizeToFit(\(fitType.name))" })
     }
 
+    #if os(iOS) || os(tvOS)
     @discardableResult
     func fitSize() -> PinLayout {
         return setFitSize(fitType: nil, { return "fitSize()" })
     }
+    #endif
 
     @discardableResult
     func justify(_ value: HorizontalAlign) -> PinLayout {
@@ -1006,14 +1021,15 @@ class PinLayoutImpl: PinLayout {
     }
     
     @discardableResult
-    func margin(_ insets: UIEdgeInsets) -> PinLayout {
+    func margin(_ insets: PEdgeInsets) -> PinLayout {
         marginTop = insets.top
         marginBottom = insets.bottom
         marginLeft = insets.left
         marginRight = insets.right
         return self
     }
-    
+
+    #if os(iOS) || os(tvOS)
     @available(tvOS 11.0, iOS 11.0, *)
     @discardableResult
     func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout {
@@ -1023,6 +1039,7 @@ class PinLayoutImpl: PinLayout {
         marginEnd(directionalInsets.trailing)
         return self
     }
+    #endif
 
     @discardableResult
     func margin(_ value: CGFloat) -> PinLayout {
@@ -1143,7 +1160,7 @@ extension PinLayoutImpl {
         }
     }
     
-    internal func layoutSuperview(_ context: Context) -> UIView? {
+    internal func layoutSuperview(_ context: Context) -> PView? {
         if let superview = view.superview {
             return superview
         } else {
@@ -1154,7 +1171,7 @@ extension PinLayoutImpl {
         }
     }
 
-    internal func referenceSuperview(_ referenceView: UIView, _ context: Context) -> UIView? {
+    internal func referenceSuperview(_ referenceView: PView, _ context: Context) -> PView? {
         if let superview = referenceView.superview {
             return superview
         } else {
@@ -1164,4 +1181,3 @@ extension PinLayoutImpl {
     }
 }
 
-#endif

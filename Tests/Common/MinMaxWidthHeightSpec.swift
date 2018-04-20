@@ -23,7 +23,7 @@ import PinLayout
 
 class MinMaxWidthHeightSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         var rootView: BasicView!
         var aView: BasicView!
         
@@ -40,13 +40,14 @@ class MinMaxWidthHeightSpec: QuickSpec {
         beforeEach {
             Pin.lastWarningText = nil
             
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
             aView.sizeThatFitsExpectedArea = 40 * 40
             rootView.addSubview(aView)
@@ -259,7 +260,8 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 75.0, y: 100.0, width: 250.0, height: 60.0)))
             }
         }
-        
+
+        #if os(iOS) || os(tvOS)
         //
         // minWidth/maxWidth & fitSize()
         //
@@ -342,6 +344,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 80.0, y: 100.0, width: 250.0, height: 60)))
             }
         }
+        #endif
         
         //
         // minHeight
@@ -554,6 +557,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             }
         }
 
+        #if os(iOS) || os(tvOS)
         //
         // minHeight/maxHeight & fitSize()
         //
@@ -606,5 +610,6 @@ class MinMaxWidthHeightSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 105.0, width: 100.0, height: 200.0)))
             }
         }
+        #endif
     }
 }

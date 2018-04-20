@@ -23,7 +23,7 @@ import PinLayout
 
 class MarginsSpec: QuickSpec {
     override func spec() {
-        var viewController: UIViewController!
+        var viewController: PViewController!
         
         var rootView: BasicView!
         var aView: BasicView!
@@ -37,13 +37,14 @@ class MarginsSpec: QuickSpec {
         */
 
         beforeEach {
-            viewController = UIViewController()
+            viewController = PViewController()
+            viewController.view = BasicView()
             
-            rootView = BasicView(text: "", color: .white)
+            rootView = BasicView()
             rootView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
             viewController.view.addSubview(rootView)
             
-            aView = BasicView(text: "View A", color: UIColor.red.withAlphaComponent(0.5))
+            aView = BasicView()
             aView.frame = CGRect(x: 140, y: 100, width: 200, height: 120)
             rootView.addSubview(aView)
         }
@@ -1043,10 +1044,11 @@ class MarginsSpec: QuickSpec {
         //
         describe("the result of top&bottom margins when the hCenter and vCenter are specified") {
             it("should adjust the aView") {
-                aView.pin.top().bottom().left().right().margin(UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
+                aView.pin.top().bottom().left().right().margin(PEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
             }
-            
+
+            #if os(iOS) || os(tvOS)
             if #available(iOS 11.0, tvOS 11.0, *) {
                 it("should adjust the aView") {
                     Pin.layoutDirection(.ltr)
@@ -1066,6 +1068,7 @@ class MarginsSpec: QuickSpec {
                     expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 340.0, height: 360.0)))
                 }
             }
+            #endif
         }
     }
 }

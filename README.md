@@ -16,7 +16,7 @@
   <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/dt/PinLayout.svg" /></a>
 </p>
 
-Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable.
+Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. 
   
 > "No Auto layout constraints attached"
 
@@ -27,7 +27,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent features
-* :star: PinLayout now support macOS 10.9+. See [macOS Support](#macos_support) for more information.
+* :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
 
 * :star: PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
 
@@ -273,9 +273,9 @@ Another shorter possible solution using `all()`:
 
 ### PinLayout UIView’s edges
 
-PinLayout adds edges properties to UIViews. These properties are used to reference other view’s edges.
+PinLayout adds edges properties to UIView/NSView. These properties are used to reference other view’s edges.
 
-**PinLayout UIView’s edges**:
+**PinLayout View’s edges**:
 
 * `UIView.edge.top`
 * `UIView.edge.vCenter`
@@ -291,7 +291,7 @@ PinLayout adds edges properties to UIViews. These properties are used to referen
 
 ### Layout using edges
 
-PinLayout has methods to attach a UIView's edge (top, left, bottom, right, start or end edge) to another view’s edge.
+PinLayout has methods to attach a View's edge (top, left, bottom, right, start or end edge) to another view’s edge.
 
 **Methods:**
 
@@ -352,11 +352,11 @@ This example center horizontally the view B inside the view A with a top margin 
 <a name="anchors"></a>
 ## Anchors 
 
-### PinLayout UIView’s anchors
+### PinLayout View’s anchors
 
-PinLayout adds anchors properties to UIViews. These properties are used to reference other view’s anchors.
+PinLayout adds anchors properties to UIView/NSView. These properties are used to reference other view’s anchors.
 
-**PinLayout UIView’s anchors**:
+**PinLayout View’s anchors**:
 
 * `UIView.anchor.topLeft` / `UIView.anchor.topCenter` / `UIView.anchor.topRight`
 * `UIView.anchor.topStart` / `UIView.anchor.topEnd`:left_right_arrow:
@@ -620,9 +620,9 @@ This is an equivalent solutions using other methods:
 <br/>
 
 
-### Positioning using only visible relative UIViews 
+### Positioning using only visible relative Views 
 
-All PinLayout's relative methods can accept an array of UIViews (ex: `below(of: [UIView])`). Using these methods its possible to filter the list of relative UIViews before the list is used by PinLayout.
+All PinLayout's relative methods can accept an array of Views (ex: `below(of: [UIView])`). Using these methods its possible to filter the list of relative Views before the list is used by PinLayout.
 
 PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really useful when some views may be visible or hidden depending on the situation.
 

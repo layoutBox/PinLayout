@@ -9,8 +9,8 @@
 Pod::Spec.new do |spec|
   spec.name          = "PinLayout"
   spec.version       = "1.7.0"
-  spec.summary       = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast."
-  spec.description   = "Fast Swift UIViews layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable."
+  spec.summary       = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast. [iOS/macOS/tvOS]"
+  spec.description   = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. [iOS/macOS/tvOS]"
   spec.homepage      = "https://mirego.github.io/PinLayout/"
   spec.license       = "MIT license"
   spec.author        = { "Luc Dion" => "luc_dion@yahoo.com" }

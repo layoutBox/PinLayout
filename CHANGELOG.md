@@ -7,6 +7,31 @@
 
 # Change Log
 
+## [1.7.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.0)
+Released on 2018-04-20
+
+### Add macOS support
+PinLayout now support macOS.
+
+PinLayout **support of macOS is not complete at 100%**, see here the particularities of the current implementation:
+
+* PinLayout support **only views that have a parent (superview) using a flipped coordinate system**, i.e. views for which  the computed property `var isFlipped: Bool` returns true. In a flipped coordinate system, the origin is in the upper-left corner of the view and y-values extend downward. UIKit use this coordinate system. In a non-flipped coordinate system (default mode), the origin is in the lower-left corner of the view and positive y-values extend upward. See [Apple's documentation for more information about `NSView.isFlipped`](https://developer.apple.com/documentation/appkit/nsview/1483532-isflipped). The support of non-flipped coordinate system will be added soon.
+
+* These methods are currently not supported on macOS, but they will be implemented soon:
+
+	* `sizeToFit(:FitType)` (Coming soon)
+	* `aspectRatio()` with no parameters (Coming soon)
+
+* `UIView.pin.safeArea` property is not available, AppKit doesn't have an UIView.safeAreaInsets equivalent.
+
+All other PinLayout's methods and properties are available on macOS!
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#131](https://github.com/mirego/PinLayout/pull/131) 
+
+
+### PinLayout now use MIT license
+The PinLayout license has been changed from **BSD 3-clause "New"** to **MIT License**.
+
 ## [1.6.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.6.0)
 Released on 2018-03-22
 

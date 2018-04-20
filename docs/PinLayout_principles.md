@@ -17,7 +17,7 @@
 * Concise syntax. Layout most views using a single line. 
 
 * Stateless
-	* PinLayout doesn’t add any stored properties to UIViews. It simply computes the UIView.frame property, one view at a time.
+	* PinLayout doesn’t add any stored properties to UIView/NSView. It simply computes the view's frame property, one view at a time.
 	* Since it is stateless, it can be used with any other layout framework without conflicts. 
 Each view can use the layout system that better suit it  (PinLayout, autolayout, flexbox, …)
 

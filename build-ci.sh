@@ -68,18 +68,35 @@ time xcodebuild clean build -workspace PinLayout-tvOS.xcworkspace -scheme PinLay
     | xcpretty &&
 cd ../../.. 
 
+
 echo "===============================" &&
 echo " Carthage: iOS Empty project"    &&
 echo "===============================" &&
 cd TestProjects/carthage/ios &&
 rm -rf $DERIVED_DATA &&
 rm -rf Carthage &&
-rm -rf Cartfile.resolved &&
+rm Cartfile &&
+rm Cartfile.resolved &&
+echo "git \"$TRAVIS_BUILD_DIR\" \"$TRAVIS_BRANCH\"" > Cartfile &&
+more Cartfile &&
 carthage update --use-ssh --platform iOS &&
 time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator11.3  -derivedDataPath $DERIVED_DATA \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     | xcpretty &&
 cd ../../.. 
 
+# echo "==========================================" &&
+# echo " Swift Package Manager: iOS Empty project " &&
+# echo "==========================================" &&
+# cd TestProjects/swift-package-manager/ios &&
+# rm -rf $DERIVED_DATA &&
+# rm -rf .build && 
+# rm Package.pins
+# swift package show-dependencies --format json && 
+# time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator11.3  -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
+#     | xcpretty &&
+# cd ../../.. 
+# 
 # #OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies'
 # xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA  -sdk macosx10.13 &&

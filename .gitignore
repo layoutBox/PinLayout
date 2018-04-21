@@ -12,3 +12,10 @@ docs/1.2
 fastlane/README.md
 fastlane/report.xml
 fastlane/test_output
+
+TestProjects/cocoapods/ios/PinLayout-iOS.xcworkspace/
+TestProjects/cocoapods/ios/Podfile.lock
+TestProjects/cocoapods/macos/PinLayout-macOS.xcworkspace/
+TestProjects/cocoapods/macos/Podfile.lock
+TestProjects/cocoapods/tvos/PinLayout-tvOS.xcworkspace/
+TestProjects/cocoapods/tvos/Podfile.lock

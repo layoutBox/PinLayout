@@ -7,7 +7,7 @@ install:
   - pod install --repo-update;
 
 script:
-  -sh build-ci.sh /tmp/PinLayout
+  - sh build-ci.sh /tmp/PinLayout
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -D /tmp/PinLayout

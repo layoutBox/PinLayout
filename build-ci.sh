@@ -6,19 +6,19 @@ set -o pipefail &&
 rm -rf $DERIVED_DATA &&
 
 echo "===============================" &&
-echo "fastlane iOS travis" &&
+echo "fastlane iOS travis"             &&
 echo "===============================" &&
-time  bundle exec fastlane ios travis && 
+time  bundle exec fastlane ios travis  && 
 
 
 echo "===============================" &&
-echo "fastlane macOS travis" &&
+echo "fastlane macOS travis"           &&
 echo "===============================" &&
 #time  bundle exec fastlane mac travis &&
 
 
 echo "===============================" &&
-echo "iOS unit test" &&
+echo "iOS unit test"                   &&
 echo "===============================" &&
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -derivedDataPath $DERIVED_DATA -sdk iphonesimulator11.3 \
    -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=11.3' \
@@ -28,14 +28,14 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
     
 
 echo "===============================" &&
-echo "macOS unit test" &&
+echo "macOS unit test"                 &&
 echo "===============================" &&
 time  xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA -sdk macosx10.13 \
    | xcpretty 
 
 
 echo "===============================" &&
-echo " Cocoapods: iOS Empty project" &&
+echo " Cocoapods: iOS Empty project"   &&
 echo "===============================" &&
 cd TestProjects/cocoapods/ios &&
 rm -rf $DERIVED_DATA &&
@@ -58,13 +58,26 @@ cd ../../..
 
 
 echo "===============================" &&
-echo " Cocoapods: tvOS Empty project" &&
+echo " Cocoapods: tvOS Empty project"  &&
 echo "===============================" &&
 cd TestProjects/cocoapods/tvos &&
 rm -rf $DERIVED_DATA &&
 pod install &&
 time xcodebuild clean build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator11.3 -derivedDataPath $DERIVED_DATA \
     -destination 'platform=tvOS Simulator,name=Apple TV,OS=11.3' \
+    | xcpretty &&
+cd ../../.. 
+
+echo "===============================" &&
+echo " Carthage: iOS Empty project"    &&
+echo "===============================" &&
+cd TestProjects/carthage/ios &&
+rm -rf $DERIVED_DATA &&
+rm -rf Carthage &&
+rm -rf Cartfile.resolved &&
+carthage update --use-ssh --platform iOS &&
+time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator11.3  -derivedDataPath $DERIVED_DATA \
+    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     | xcpretty &&
 cd ../../.. 
 

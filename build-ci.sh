@@ -76,12 +76,12 @@ cd TestProjects/carthage/ios &&
 rm -rf $DERIVED_DATA &&
 rm Cartfile &&
 echo "git \"$TRAVIS_BUILD_DIR\" \"$TRAVIS_BRANCH\"" > Cartfile &&
-more Cartfile &&
 carthage update --use-ssh --platform iOS &&
 time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator11.3  -derivedDataPath $DERIVED_DATA \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.3' \
     | xcpretty &&
 cd ../../.. 
+
 
 # echo "==========================================" &&
 # echo " Swift Package Manager: iOS Empty project " &&

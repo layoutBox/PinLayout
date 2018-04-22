@@ -35,7 +35,7 @@ class PinSafeAreaSpec: QuickSpec {
         }
 
         afterEach {
-            Pin.safeAreaInsetsDidChangeMode = .optIn
+            Pin.safeAreaInsetsDidChangeMode = .disable
             viewController = nil
             navigationController = nil
             window = nil
@@ -267,7 +267,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
         }
 
         afterEach {
-            Pin.safeAreaInsetsDidChangeMode = .optIn
+            Pin.safeAreaInsetsDidChangeMode = .disable
             viewController = nil
             navigationController = nil
             window = nil
@@ -517,6 +517,8 @@ class PinSafeAreaWithOptInInsetsUpdateModeSpec: QuickSpec {
 
         describe("using Pin.safeAreaInsetsDidChangeMode = .optIn") {
             it("should not call safeAreaInsetsDidChange()") {
+                Pin.safeAreaInsetsDidChangeMode = .optIn
+                
                 let mainView = viewController.mainView
                 var expectedSafeAreaInsetsDidChangeCalledCount: Int {
                     if #available(iOS 11.0, tvOS 11.0, *) { return 1 } else { return 3 }
@@ -534,7 +536,7 @@ class PinSafeAreaWithOptInInsetsUpdateModeSpec: QuickSpec {
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSafeAreaInsetsDidChangeCalledCount))
-                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSubViewSafeAreaInsetsDidChangeCalledCount))
+            expect(mainView.subView.safeAreaInsetsDidChangeCalledCount).to(equal(expectedSubViewSafeAreaInsetsDidChangeCalledCount))
 
                 expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
                 expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
@@ -565,7 +567,7 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
         }
 
         afterEach {
-            Pin.safeAreaInsetsDidChangeMode = .optIn
+            Pin.safeAreaInsetsDidChangeMode = .disable
             viewController = nil
             navigationController = nil
             window = nil
@@ -659,7 +661,7 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
         }
 
         afterEach {
-            Pin.safeAreaInsetsDidChangeMode = .optIn
+            Pin.safeAreaInsetsDidChangeMode = .disable
             viewController = nil
             navigationController = nil
             window = nil

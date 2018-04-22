@@ -30,6 +30,37 @@ fileprivate var numberFormatter: NumberFormatter = {
     return numberFormatter
 }()
 
+internal func pinLayoutDisplayConsoleWarning(_ text: String, _ view: PView) {
+    var displayText = "\n👉 \(text)"
+
+    let x = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.x)))!
+    let y = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.y)))!
+    let width = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.width)))!
+    let height = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.height)))!
+    let viewName = "\(type(of: view))"
+    displayText += "\n(Layouted view info: Type: \(viewName), Frame: x: \(x), y: \(y), width: \(width), height: \(height))"
+
+    var currentView = view
+    var hierarchy: [String] = []
+    while let parent = currentView.superview {
+        hierarchy.insert("\(type(of: parent))", at: 0)
+        currentView = parent
+    }
+    if hierarchy.count > 0 {
+        #if swift(>=4.1)
+        displayText += ", Superviews: \(hierarchy.compactMap({ $0 }).joined(separator: " -> "))"
+        #else
+        displayText += ", Superviews: \(hierarchy.flatMap({ $0 }).joined(separator: " -> "))"
+        #endif
+    }
+
+    displayText += ", Tag: \(view.tag))\n"
+
+    print(displayText)
+    Pin.lastWarningText = text
+}
+
+
 extension PinLayoutImpl {
     internal func pointContext(method: String, point: CGPoint) -> String {
         return "\(method)(to: CGPoint(x: \(point.x), y: \(point.y)))"
@@ -57,17 +88,17 @@ extension PinLayoutImpl {
         
     internal func warn(_ text: String) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Warning: \(text)")
+        pinLayoutDisplayConsoleWarning("PinLayout Warning: \(text)", view)
     }
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGFloat, _ context: Context) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue.description).")
+        pinLayoutDisplayConsoleWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to \(propertyValue.description).", view)
     }
     
     internal func warnPropertyAlreadySet(_ propertyName: String, propertyValue: CGSize, _ context: Context) {
         guard Pin.logWarnings else { return }
-        displayWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width.description), height: \(propertyValue.height.description)).")
+        pinLayoutDisplayConsoleWarning("PinLayout Conflict: \(context()) won't be applied since it value has already been set to CGSize(width: \(propertyValue.width.description), height: \(propertyValue.height.description)).", view)
     }
     
     internal func warnConflict(_ context: Context, _ properties: [String: Any]) {
@@ -83,7 +114,7 @@ extension PinLayoutImpl {
             }
         }
         
-        displayWarning(warning)
+        pinLayoutDisplayConsoleWarning(warning, view)
     }
     
     internal func displayLayoutWarnings() {
@@ -113,37 +144,7 @@ extension PinLayoutImpl {
             }
         }
     }
-    
-    internal func displayWarning(_ text: String) {
-        var displayText = "\n👉 \(text)"
 
-        let x = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.x)))!
-        let y = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.y)))!
-        let width = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.width)))!
-        let height = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.height)))!
-
-        displayText += "\n(Layouted view info: Type: \(viewName(view)), Frame: x: \(x), y: \(y), width: \(width), height: \(height))"
-        
-        var currentView = view
-        var hierarchy: [String] = []
-        while let parent = currentView.superview {
-            hierarchy.insert("\(type(of: parent))", at: 0)
-            currentView = parent
-        }
-        if hierarchy.count > 0 {
-            #if swift(>=4.1)
-            displayText += ", Superviews: \(hierarchy.compactMap({ $0 }).joined(separator: " -> "))"
-            #else
-            displayText += ", Superviews: \(hierarchy.flatMap({ $0 }).joined(separator: " -> "))"
-            #endif
-        }
-        
-        displayText += ", Tag: \(view.tag))\n"
-        
-        print(displayText)
-        Pin.lastWarningText = text
-    }
-    
     internal func viewDescription(_ view: PView) -> String {
         return "(\(viewName(view)), Frame: \(view.frame))"
     }

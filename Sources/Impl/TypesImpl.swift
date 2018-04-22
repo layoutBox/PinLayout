@@ -184,20 +184,7 @@ class AnchorImpl: Anchor {
         self.type = type
     }
 }
-
-extension Percent {
-    func of(_ rhs: CGFloat) -> CGFloat {
-        return rhs * value / 100
-    }
-    public var description: String {
-        if value.truncatingRemainder(dividingBy: 1) == 0.0 {
-            return "\(Int(value))%"
-        } else {
-            return "\(value)%"
-        }
-    }
-}
-    
+ 
 extension CGFloat {
     public var description: String {
         if self.truncatingRemainder(dividingBy: 1) == 0.0 {

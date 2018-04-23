@@ -62,10 +62,14 @@ public enum PinSafeAreaInsetsDidChangeMode {
      a warning in the Xcode console..
     */
     @objc public static var logMissingLayoutCalls = false
-    
+
+    static fileprivate var isInitialized = false
+
     public static func initPinLayout() {
         #if os(iOS) || os(tvOS)
-        PinSafeArea.safeAreaInsetsDidChangeMode = .always
+        guard !Pin.isInitialized else { return }
+        PinSafeArea.initSafeAreaSupport()
+        Pin.isInitialized = true
         #endif
     }
 

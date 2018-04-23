@@ -9,7 +9,7 @@
 
 
 
-## [1.7.1](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.1)
+## [1.7.2](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.2)
 Released on 2018-04-23
 
 ### Fine tune UIView.pin.safeArea support for iOS 8 and "New Relic" framework

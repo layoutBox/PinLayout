@@ -7,6 +7,22 @@
 
 # Change Log
 
+
+
+## [1.7.1](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.1)
+Released on 2018-04-23
+
+### Fine tune UIView.pin.safeArea support for iOS 8 and "New Relic" framework
+Changes:
+
+* On iOS 8, PinLayout compatibility support of UIView.safeAreaInsetsDidChange was causing issues with the device's virtual keyboard. PinLayout still support UIView.pin.safeArea on this iOS release, but UIView.safeAreaInsetsDidChange won't be called on iOS 8
+
+* Fix issue with "New Relic" framework: Add a Pin.initPinLayout() that can be called to initialize PinLayout before the "New Relic" framework is initialized. "New Relic" is conflicting with other popular frameworks including Mixpanel, ReactiveCocoa, Aspect, ..., and PinLayout. To fix the issue, Pin.initPinLayout() must be called BEFORE initializing "New Relic" with NewRelic.start(withApplicationToken:"APP_TOKEN"). See here for more information regarding this issue #130
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#134](https://github.com/mirego/PinLayout/pull/134) 
+
+
+
 ## [1.7.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.0)
 Released on 2018-04-20
 

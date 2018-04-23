@@ -64,7 +64,9 @@ public enum PinSafeAreaInsetsDidChangeMode {
     @objc public static var logMissingLayoutCalls = false
     
     public static func initPinLayout() {
+        #if os(iOS) || os(tvOS)
         PinSafeArea.safeAreaInsetsDidChangeMode = .always
+        #endif
     }
 
     public static func layoutDirection(_ direction: LayoutDirection) {

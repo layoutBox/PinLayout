@@ -77,7 +77,9 @@ class PinLayoutImpl: PinLayout {
         self.keepTransform = keepTransform
 
         #if os(iOS) || os(tvOS)
-        PinSafeArea.enableCompatibilitySafeArea()
+        if #available(iOS 9.0, *) {
+            PinSafeArea.enableCompatibilitySafeArea()
+        }
         #endif
     }
     

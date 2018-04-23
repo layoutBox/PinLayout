@@ -36,8 +36,16 @@ public enum PinSafeAreaInsetsDidChangeMode {
 @objc public class Pin: NSObject {
     public static var layoutDirection = LayoutDirection.ltr
 
+    #if os(iOS) || os(tvOS)
+    // For iOS 8, 'UIView.pin.safeArea' is not enabled by default, this feature is caussing incompatibility issue with the iOS
+    // keyboard. The 'UIView.pin.safeArea' support must be enabled using this method.
+    public static func enableSafeArea() {
+        PinSafeArea.enableCompatibilitySafeArea()
+    }
+
     /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
     public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn
+    #endif
 
 #if DEBUG
     public static var logWarnings = true

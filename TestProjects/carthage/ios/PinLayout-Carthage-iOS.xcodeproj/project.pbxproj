@@ -1,0 +1,361 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2480850F1F8F9DD500C73B8D /* TestObjectiveC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2480850E1F8F9DD500C73B8D /* TestObjectiveC.m */; };
+		24C872FF1EE2D113007BFE47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C872FE1EE2D113007BFE47 /* AppDelegate.swift */; };
+		24C873011EE2D113007BFE47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C873001EE2D113007BFE47 /* ViewController.swift */; };
+		24C873041EE2D113007BFE47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C873021EE2D113007BFE47 /* Main.storyboard */; };
+		24C873061EE2D113007BFE47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C873051EE2D113007BFE47 /* Assets.xcassets */; };
+		24C873091EE2D113007BFE47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C873071EE2D113007BFE47 /* LaunchScreen.storyboard */; };
+		DF98DA62208B566100C86E2D /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF98DA60208B565400C86E2D /* PinLayout.framework */; };
+		DF98DA63208B566100C86E2D /* PinLayout.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = DF98DA60208B565400C86E2D /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DF98DA5D208B549600C86E2D /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF98DA63208B566100C86E2D /* PinLayout.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2480850D1F8F9DD400C73B8D /* PinLayout-Carthage-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinLayout-Carthage-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		2480850E1F8F9DD500C73B8D /* TestObjectiveC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObjectiveC.m; sourceTree = "<group>"; };
+		24C872FB1EE2D113007BFE47 /* PinLayout-Carthage-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PinLayout-Carthage-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C872FE1EE2D113007BFE47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		24C873001EE2D113007BFE47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		24C873031EE2D113007BFE47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		24C873051EE2D113007BFE47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24C873081EE2D113007BFE47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		24C8730A1EE2D113007BFE47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF98DA60208B565400C86E2D /* PinLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PinLayout.framework; path = Carthage/Build/iOS/PinLayout.framework; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24C872F81EE2D113007BFE47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF98DA62208B566100C86E2D /* PinLayout.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24C872F21EE2D113007BFE47 = {
+			isa = PBXGroup;
+			children = (
+				24C872FD1EE2D113007BFE47 /* PinLayout-Carthage-iOS */,
+				DF98DA59208B538700C86E2D /* Frameworks */,
+				24C872FC1EE2D113007BFE47 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		24C872FC1EE2D113007BFE47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24C872FB1EE2D113007BFE47 /* PinLayout-Carthage-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24C872FD1EE2D113007BFE47 /* PinLayout-Carthage-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				24C872FE1EE2D113007BFE47 /* AppDelegate.swift */,
+				24C873001EE2D113007BFE47 /* ViewController.swift */,
+				2480850E1F8F9DD500C73B8D /* TestObjectiveC.m */,
+				24C873021EE2D113007BFE47 /* Main.storyboard */,
+				24C873051EE2D113007BFE47 /* Assets.xcassets */,
+				24C873071EE2D113007BFE47 /* LaunchScreen.storyboard */,
+				24C8730A1EE2D113007BFE47 /* Info.plist */,
+				2480850D1F8F9DD400C73B8D /* PinLayout-Carthage-iOS-Bridging-Header.h */,
+			);
+			path = "PinLayout-Carthage-iOS";
+			sourceTree = "<group>";
+		};
+		DF98DA59208B538700C86E2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF98DA60208B565400C86E2D /* PinLayout.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24C872FA1EE2D113007BFE47 /* PinLayout-Carthage-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24C8730D1EE2D113007BFE47 /* Build configuration list for PBXNativeTarget "PinLayout-Carthage-iOS" */;
+			buildPhases = (
+				24C872F71EE2D113007BFE47 /* Sources */,
+				24C872F81EE2D113007BFE47 /* Frameworks */,
+				24C872F91EE2D113007BFE47 /* Resources */,
+				DF98DA5D208B549600C86E2D /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PinLayout-Carthage-iOS";
+			productName = PinLayoutCarthageTest;
+			productReference = 24C872FB1EE2D113007BFE47 /* PinLayout-Carthage-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24C872F31EE2D113007BFE47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Mirego;
+				TargetAttributes = {
+					24C872FA1EE2D113007BFE47 = {
+						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 24C872F61EE2D113007BFE47 /* Build configuration list for PBXProject "PinLayout-Carthage-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 24C872F21EE2D113007BFE47;
+			productRefGroup = 24C872FC1EE2D113007BFE47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24C872FA1EE2D113007BFE47 /* PinLayout-Carthage-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24C872F91EE2D113007BFE47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C873091EE2D113007BFE47 /* LaunchScreen.storyboard in Resources */,
+				24C873061EE2D113007BFE47 /* Assets.xcassets in Resources */,
+				24C873041EE2D113007BFE47 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24C872F71EE2D113007BFE47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C873011EE2D113007BFE47 /* ViewController.swift in Sources */,
+				2480850F1F8F9DD500C73B8D /* TestObjectiveC.m in Sources */,
+				24C872FF1EE2D113007BFE47 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		24C873021EE2D113007BFE47 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24C873031EE2D113007BFE47 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		24C873071EE2D113007BFE47 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24C873081EE2D113007BFE47 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		24C8730B1EE2D113007BFE47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					FLEXLAYOUT_USE_CARTHAGE,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		24C8730C1EE2D113007BFE47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = FLEXLAYOUT_USE_CARTHAGE;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24C8730E1EE2D113007BFE47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "PinLayout-Carthage-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-Carthage-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-Carthage-iOS/PinLayout-Carthage-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		24C8730F1EE2D113007BFE47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "PinLayout-Carthage-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-Carthage-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-Carthage-iOS/PinLayout-Carthage-iOS-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24C872F61EE2D113007BFE47 /* Build configuration list for PBXProject "PinLayout-Carthage-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24C8730B1EE2D113007BFE47 /* Debug */,
+				24C8730C1EE2D113007BFE47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24C8730D1EE2D113007BFE47 /* Build configuration list for PBXNativeTarget "PinLayout-Carthage-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24C8730E1EE2D113007BFE47 /* Debug */,
+				24C8730F1EE2D113007BFE47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24C872F31EE2D113007BFE47 /* Project object */;
+}

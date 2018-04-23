@@ -27,21 +27,45 @@ public protocol PinSafeAreaInsetsUpdate {
 }
 
 internal class PinSafeArea {
-    fileprivate static var isEnabledCompatibilitySafeAreaInsets = false
+    fileprivate static var currentSafeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode?
 
-    internal static func enableCompatibilitySafeArea() {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            // Do nothing, let the iOS 11+ safeAreaInsets mecanism do his thing
-        } else if !isEnabledCompatibilitySafeAreaInsets {
-            swizzleMethod(UIViewController.self, #selector(UIViewController.viewWillLayoutSubviews), #selector(UIViewController.pinlayout_swizzled_viewWillLayoutSubviews))
-            isEnabledCompatibilitySafeAreaInsets = true
+    /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
+    internal static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .disable {
+        didSet {
+            guard safeAreaInsetsDidChangeMode != currentSafeAreaInsetsDidChangeMode else { return }
+
+            switch safeAreaInsetsDidChangeMode {
+            case .disable:
+                if currentSafeAreaInsetsDidChangeMode != nil && currentSafeAreaInsetsDidChangeMode != .disable {
+                    PinLayoutSwizzling.removeViewWillLayoutSubviewsSwizzle()
+                }
+            case .optIn, .always:
+                if currentSafeAreaInsetsDidChangeMode == nil || currentSafeAreaInsetsDidChangeMode == .disable {
+                    if #available(iOS 11.0, tvOS 11.0, *) {
+                        // Do nothing, let the iOS 11+ safeAreaInsets mecanism do his thing
+                    } else {
+                        PinLayoutSwizzling.swizzleViewWillLayoutSubviews()
+                    }
+                }
+            }
+
+            currentSafeAreaInsetsDidChangeMode = safeAreaInsetsDidChangeMode
         }
     }
 
-    fileprivate static let swizzleMethod: (AnyClass, Selector, Selector) -> () = { forClass, originalSelector, swizzledSelector in
-        if let originalMethod = class_getInstanceMethod(forClass, originalSelector),
-            let swizzledMethod = class_getInstanceMethod(forClass, swizzledSelector) {
-            method_exchangeImplementations(originalMethod, swizzledMethod)
+    internal static func initSafeAreaSupport() {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+            // noop on iOS 11, `UIView.safeAreaInsetsDidChange` is natively supported
+        } else {
+            guard currentSafeAreaInsetsDidChangeMode == nil else { return }
+            if #available(iOS 9.0, tvOS 9.0, *) {
+                PinSafeArea.safeAreaInsetsDidChangeMode = .always
+            } else {
+                // Due to an issue with the keyboard on iOS 8, we don't activate
+                // the support of `UIView.safeAreaInsetsDidChange` on iOS 8. The developper can still
+                // activate it using `Pin.enableSafeArea(true)`
+                PinSafeArea.safeAreaInsetsDidChangeMode = .disable
+            }
         }
     }
 
@@ -72,7 +96,10 @@ internal class PinSafeArea {
     }
 
     fileprivate static func handleSafeAreaInsetsDidChange(view: UIView) {
-        switch Pin.safeAreaInsetsDidChangeMode {
+        guard let currentMode = currentSafeAreaInsetsDidChangeMode else { return }
+        switch currentMode {
+        case .disable:
+            break
         case .optIn:
             if let updatable = view as? PinSafeAreaInsetsUpdate {
                 updatable.safeAreaInsetsDidChange()
@@ -100,15 +127,63 @@ internal class PinSafeArea {
     }
 }
 
-extension UIViewController {
-    @objc fileprivate func pinlayout_swizzled_viewWillLayoutSubviews() {
+struct PinLayoutSwizzling {
+    typealias ViewWillLayoutSubviewsFunction = @convention(c) (UIViewController, Selector) -> Void
+    typealias ViewWillLayoutSubviewsBlock = @convention(block) (UIViewController, Selector) -> Void
+    static var originalImplementation: IMP?
+
+    static fileprivate func swizzleViewWillLayoutSubviews() {
+        let swizzledBlock: ViewWillLayoutSubviewsBlock = { calledViewController, selector in
+            if let originalImplementation = originalImplementation {
+                let viewWillLayoutSubviews: ViewWillLayoutSubviewsFunction = unsafeBitCast(originalImplementation, to: ViewWillLayoutSubviewsFunction.self)
+
+                // WARNING: If you have an Exception on this line, you are probably using "New Relic" iOS agent.
+                //          "New Relic" agent is conflicting with other popular frameworks including Mixpanel,
+                //          ReactiveCocoa, Aspect, ..., and PinLayout.
+                //          To fix this issue, simply call `Pin.initPinLayout()` BEFORE initializing "New Relic" with
+                //          NewRelic.start(withApplicationToken:"APP_TOKEN").
+                //          See here for more information regarding this issue https://github.com/mirego/PinLayout/issues/130
+                viewWillLayoutSubviews(calledViewController, selector)
+            }
+            PinLayoutSwizzling.pinlayoutViewWillLayoutSubviews(viewController: calledViewController)
+        }
+        originalImplementation = swizzleViewWillLayoutSubviews(UIViewController.self, to: swizzledBlock)
+    }
+
+    static fileprivate func removeViewWillLayoutSubviewsSwizzle() {
+        let selector = #selector(UIViewController.viewWillLayoutSubviews)
+        guard let originalImplementation = originalImplementation else { return }
+        guard let method = class_getInstanceMethod(UIViewController.self, selector) else { return }
+
+        method_setImplementation(method, originalImplementation)
+        self.originalImplementation = nil
+    }
+
+    static fileprivate func pinlayoutViewWillLayoutSubviews(viewController: UIViewController) {
         if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
 
-        self.pinlayout_swizzled_viewWillLayoutSubviews()
-        let safeAreaInsets = UIEdgeInsets(top: topLayoutGuide.length, left: 0, bottom: bottomLayoutGuide.length, right: 0)
+        if let view = viewController.view {
+            let safeAreaInsets = UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
+                                              bottom: viewController.bottomLayoutGuide.length, right: 0)
 
-        // Set children safeArea up to 3 level, to limit the performance issue of computing this compatibilitySafeAreaInsets
-        PinSafeArea.setViewSafeAreaInsets(view: view, insets: safeAreaInsets, recursiveLevel: 3)
+            // Set children safeArea up to 3 level, to limit the performance issue of computing this compatibilitySafeAreaInsets
+            PinSafeArea.setViewSafeAreaInsets(view: view, insets: safeAreaInsets, recursiveLevel: 3)
+        }
+    }
+
+    static fileprivate func swizzleViewWillLayoutSubviews(_ class_: AnyClass, to block: @escaping ViewWillLayoutSubviewsBlock) -> IMP? {
+        let selector = #selector(UIViewController.viewWillLayoutSubviews)
+        let method = class_getInstanceMethod(class_, selector)
+        let newImplementation = imp_implementationWithBlock(unsafeBitCast(block, to: AnyObject.self))
+
+        if let method = method {
+            let oldImplementation = method_getImplementation(method)
+            method_setImplementation(method, newImplementation)
+            return oldImplementation
+        } else {
+            class_addMethod(class_, selector, newImplementation, "")
+            return nil
+        }
     }
 }
 
@@ -120,7 +195,21 @@ extension UIView {
     fileprivate(set) var pinlayoutSafeAreaInsets: UIEdgeInsets {
         get {
             if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
-            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutSafeAreaInsets) as? UIEdgeInsets ?? .zero
+
+            if PinSafeArea.currentSafeAreaInsetsDidChangeMode == nil ||
+               PinSafeArea.currentSafeAreaInsetsDidChangeMode == .disable {
+                // UIViewController.viewWillLayoutSubviews hasn't been swizzled, we can return an insets
+                // only if the view is a UIViewController's view.
+                if let viewController = self.next as? UIViewController {
+                    return UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
+                                        bottom: viewController.bottomLayoutGuide.length, right: 0)
+                } else {
+                    return .zero
+                }
+            } else {
+                // Return computed value
+                return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutSafeAreaInsets) as? UIEdgeInsets ?? .zero
+            }
         }
         set {
             if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }

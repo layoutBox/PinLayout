@@ -26,7 +26,11 @@ public enum LayoutDirection {
 }
 
 /// Control how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
+/// This support is usefull only on iOS 8/9/10. On iOS 11 `UIView.safeAreaInsetsDidChange` is supported
+/// natively so this settings have no impact.
 public enum PinSafeAreaInsetsDidChangeMode {
+    /// PinLayout won't call `UIView.safeAreaInsetsDidChange` on iOS 8/9/10.
+    case disable
     /// PinLayout will call `UIView.safeAreaInsetsDidChange` only if the UIView implement the PinSafeAreaInsetsUpdate protocol.
     case optIn
     /// PinLayout will automatically calls `UIView.safeAreaInsetsDidChange` if the view has implemented this method.
@@ -37,15 +41,14 @@ public enum PinSafeAreaInsetsDidChangeMode {
     public static var layoutDirection = LayoutDirection.ltr
 
     #if os(iOS) || os(tvOS)
-    // For iOS 8, 'UIView.pin.safeArea' is not enabled by default, this feature is caussing incompatibility issue with the iOS
-    // keyboard. The 'UIView.pin.safeArea' support must be enabled using this method.
-    public static func enableSafeArea() {
-        PinSafeArea.enableCompatibilitySafeArea()
-    }
-
     /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
-    public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn
+    public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn {
+        didSet {
+            PinSafeArea.safeAreaInsetsDidChangeMode = safeAreaInsetsDidChangeMode
+        }
+    }
     #endif
+
 
 #if DEBUG
     public static var logWarnings = true
@@ -59,11 +62,21 @@ public enum PinSafeAreaInsetsDidChangeMode {
      a warning in the Xcode console..
     */
     @objc public static var logMissingLayoutCalls = false
-    
+
+    static fileprivate var isInitialized = false
+
+    public static func initPinLayout() {
+        #if os(iOS) || os(tvOS)
+        guard !Pin.isInitialized else { return }
+        PinSafeArea.initSafeAreaSupport()
+        Pin.isInitialized = true
+        #endif
+    }
+
     public static func layoutDirection(_ direction: LayoutDirection) {
         self.layoutDirection = direction
     }
-    
+
     // Contains PinLayout last warning's text. Used by PinLayout's Unit Tests.
     @objc public static var lastWarningText: String?
 }

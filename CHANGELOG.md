@@ -17,7 +17,7 @@ Changes:
 
 * On iOS 8, PinLayout compatibility support of UIView.safeAreaInsetsDidChange was causing issues with the device's virtual keyboard. PinLayout still support UIView.pin.safeArea on this iOS release, but UIView.safeAreaInsetsDidChange won't be called on iOS 8
 
-* Fix issue with "New Relic" framework: Add a Pin.initPinLayout() that can be called to initialize PinLayout before the "New Relic" framework is initialized. "New Relic" is conflicting with other popular frameworks including Mixpanel, ReactiveCocoa, Aspect, ..., and PinLayout. To fix the issue, Pin.initPinLayout() must be called BEFORE initializing "New Relic" with NewRelic.start(withApplicationToken:"APP_TOKEN"). See here for more information regarding this issue #130
+* Fix issue with "New Relic" framework: Add a Pin.initPinLayout() that can be called to initialize PinLayout before the "New Relic" framework is initialized. "New Relic" is conflicting with other popular frameworks including Mixpanel, ReactiveCocoa, Aspect, ..., and PinLayout. To fix the issue, `Pin.initPinLayout()` must be called BEFORE initializing "New Relic" with `NewRelic.start(withApplicationToken:"APP_TOKEN")`. See here for more information regarding this issue #130
 
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#134](https://github.com/mirego/PinLayout/pull/134) 
 

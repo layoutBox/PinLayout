@@ -21,13 +21,14 @@
 #import "IntroObjectiveCViewController.h"
 
 #import "IntroObjectiveCView.h"
+@import PinLayout;
 
 @implementation IntroObjectiveCViewController {
 }
 
 - (id) init {
     if (self = [super init]){
-        
+        Pin.safeAreaInsetsDidChangeMode = PinSafeAreaInsetsDidChangeModeAlways;
     }
     return self;
 }

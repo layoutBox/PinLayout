@@ -38,8 +38,16 @@ describe(@"test Objective-C interface", ^{
         Pin.logMissingLayoutCalls = false;
     });
     
-    describe(@"its click", ^{
-        it(@"is loud", ^{
+    describe(@"generic objective-c tests", ^{
+        it(@"Access Pin properties and methods", ^{
+            [Pin initPinLayout];
+            [Pin layoutDirection:LayoutDirectionLtr];
+            Pin.safeAreaInsetsDidChangeMode = PinSafeAreaInsetsDidChangeModeAlways;
+            Pin.layoutDirection = LayoutDirectionLtr;
+            Pin.logWarnings = true;
+        });
+
+        it(@"basic pinlayout calls", ^{
             [[[aView pinObjc] top:10] layout];
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
         });

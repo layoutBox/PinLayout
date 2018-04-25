@@ -1078,34 +1078,37 @@ The safe area of a view represent the area not covered by navigation bars, tab b
 	* **always**: (Default mode) In this mode, PinLayout will call your views `safeAreaInsetsDidChange()` method automatically for iOS releases 7/8/9/10. 
 
 		```swift
-		Pin.safeAreaInsetsDidChangeMode = .always
+		Pin.safeAreaInsetsDidChangeMode = .always // Default mode
 		...
 		
 		class CustomerView: UIView {
 		   override func safeAreaInsetsDidChange() {
-                      // This method will be called on iOS 11, but also on iOS 7/8/9/10 
-                      // because "Pin.safeAreaInsetsDidChangeMode" has been set to ".always".
-		      if #available(iOS 11.0, *) {
-                         super.safeAreaInsetsDidChange()
-                      }
-		      ...
-        	   }
-    	        }
+             // This method will be called on iOS 11, but also on iOS 7/8/9/10 
+             // because "Pin.safeAreaInsetsDidChangeMode" has been set to ".always".
+             if #available(iOS 11.0, *) {
+                super.safeAreaInsetsDidChange()
+             }
+             ...
+          }
+       }
 		```
 		
 	* **optIn**: (Default mode) In this mode PinLayout will call your view's `safeAreaInsetsDidChange()` method only if the view implements the `PinSafeAreaInsetsUpdate` protocol. This ensure that PinLayout doesn't interfere with any source code that expect that `safeAreaInsetsDidChange()` is called only on iOS 11.
 
 		```swift
+		Pin.safeAreaInsetsDidChangeMode = .optIn
+		...
+		
 		class CustomerView: UIView, PinSafeAreaInsetsUpdate {
 		   override func safeAreaInsetsDidChange() {
-                      // This  method will be called on iOS 11, but also on iOS 7/8/9/10 
-                      // because the view implements the protocol PinSafeAreaInsetsUpdate
-		      if #available(iOS 11.0, *) {
-                         super.safeAreaInsetsDidChange()
-                      }
+             // This  method will be called on iOS 11, but also on iOS 7/8/9/10 
+             // because the view implements the protocol PinSafeAreaInsetsUpdate
+             if #available(iOS 11.0, *) {
+                super.safeAreaInsetsDidChange()
+             }
 		      ...
-        	   }
-    	        }
+          }
+       }
 		```
 	* **disable**: In this mode PinLayout won't call `UIView.safeAreaInsetsDidChange` on iOS 8/9/10. Note that this is the default mode on iOS 8.
 			

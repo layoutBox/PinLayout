@@ -19,7 +19,7 @@
 
 import Foundation
 
-public enum LayoutDirection {
+@objc public enum LayoutDirection: Int {
     case auto
     case ltr
     case rtl
@@ -28,7 +28,7 @@ public enum LayoutDirection {
 /// Control how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
 /// This support is usefull only on iOS 8/9/10. On iOS 11 `UIView.safeAreaInsetsDidChange` is supported
 /// natively so this settings have no impact.
-public enum PinSafeAreaInsetsDidChangeMode {
+@objc public enum PinSafeAreaInsetsDidChangeMode: Int {
     /// PinLayout won't call `UIView.safeAreaInsetsDidChange` on iOS 8/9/10.
     case disable
     /// PinLayout will call `UIView.safeAreaInsetsDidChange` only if the UIView implement the PinSafeAreaInsetsUpdate protocol.
@@ -38,11 +38,11 @@ public enum PinSafeAreaInsetsDidChangeMode {
 }
 
 @objc public class Pin: NSObject {
-    public static var layoutDirection = LayoutDirection.ltr
+    @objc public static var layoutDirection = LayoutDirection.ltr
 
     #if os(iOS) || os(tvOS)
     /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
-    public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn {
+    @objc public static var safeAreaInsetsDidChangeMode: PinSafeAreaInsetsDidChangeMode = .optIn {
         didSet {
             PinSafeArea.safeAreaInsetsDidChangeMode = safeAreaInsetsDidChangeMode
         }
@@ -51,9 +51,9 @@ public enum PinSafeAreaInsetsDidChangeMode {
 
 
 #if DEBUG
-    public static var logWarnings = true
+    @objc public static var logWarnings = true
 #else
-    public static var logWarnings = false
+    @objc public static var logWarnings = false
 #endif
     
     /**
@@ -65,7 +65,7 @@ public enum PinSafeAreaInsetsDidChangeMode {
 
     static fileprivate var isInitialized = false
 
-    public static func initPinLayout() {
+    @objc public static func initPinLayout() {
         #if os(iOS) || os(tvOS)
         guard !Pin.isInitialized else { return }
         PinSafeArea.initSafeAreaSupport()
@@ -73,7 +73,7 @@ public enum PinSafeAreaInsetsDidChangeMode {
         #endif
     }
 
-    public static func layoutDirection(_ direction: LayoutDirection) {
+    @objc public static func layoutDirection(_ direction: LayoutDirection) {
         self.layoutDirection = direction
     }
 

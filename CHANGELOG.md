@@ -7,6 +7,18 @@
 
 # Change Log
 
+## [1.7.3](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.2)
+Released on 2018-04-25
+
+### Add few missing Objective-C Interface properties and methods
+These methods and properties are now accessible from Objective-C:
+* `Pin.layoutDirection`
+* `Pin.safeAreaInsetsDidChangeMode`
+* `Pin.logWarnings`
+* `Pin.initPinLayout()`
+* `Pin.layoutDirection()`
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#135](https://github.com/mirego/PinLayout/pull/135) 
 
 
 ## [1.7.2](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.2)

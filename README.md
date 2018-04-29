@@ -1565,4 +1565,4 @@ PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [
 <br>
 
 ## License
-BSD 3-Clause License
+MIT License

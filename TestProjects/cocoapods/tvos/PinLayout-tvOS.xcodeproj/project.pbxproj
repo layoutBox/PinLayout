@@ -11,6 +11,7 @@
 		448160371EA5A76A00FBA809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448160361EA5A76A00FBA809 /* AppDelegate.swift */; };
 		DF4C0F5A2088FBAA00B4C060 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF4C0F592088FBAA00B4C060 /* Main.storyboard */; };
 		DF4C0F5C2088FBC300B4C060 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C0F5B2088FBC300B4C060 /* ViewController.swift */; };
+		DFF222C720B993A900AC2A84 /* TestObjectiveC.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF222C620B993A900AC2A84 /* TestObjectiveC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		779A6A4C5B9EC1AC279D6A24 /* libPods-PinLayout-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinLayout-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF4C0F592088FBAA00B4C060 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DF4C0F5B2088FBC300B4C060 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DFF222BC20B991CF00AC2A84 /* PinLayout-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinLayout-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		DFF222C620B993A900AC2A84 /* TestObjectiveC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjectiveC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +63,9 @@
 				448160361EA5A76A00FBA809 /* AppDelegate.swift */,
 				DF4C0F592088FBAA00B4C060 /* Main.storyboard */,
 				DF4C0F5B2088FBC300B4C060 /* ViewController.swift */,
+				DFF222C620B993A900AC2A84 /* TestObjectiveC.m */,
 				4481603F1EA5A76B00FBA809 /* Info.plist */,
+				DFF222BC20B991CF00AC2A84 /* PinLayout-tvOS-Bridging-Header.h */,
 			);
 			path = "PinLayout-tvOS";
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 				TargetAttributes = {
 					448160321EA5A76A00FBA809 = {
 						CreatedOnToolsVersion = 8.3.1;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -175,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF4C0F5C2088FBC300B4C060 /* ViewController.swift in Sources */,
+				DFF222C720B993A900AC2A84 /* TestObjectiveC.m in Sources */,
 				448160371EA5A76A00FBA809 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,11 +286,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ACDA03AB2AD6F178CB4A934 /* Pods-PinLayout-tvOS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayout-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-tvOS/PinLayout-tvOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -292,11 +302,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D86E0FD61D49B5CC904E75C /* Pods-PinLayout-tvOS.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayout-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-tvOS/PinLayout-tvOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

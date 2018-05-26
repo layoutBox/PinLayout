@@ -209,4 +209,3 @@ internal extension FitType {
         return self == .widthFlexible || self == .heightFlexible
     }
 }
-

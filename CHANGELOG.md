@@ -7,7 +7,15 @@
 
 # Change Log
 
-## [1.7.3](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.2)
+## [1.7.4](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.4)
+Released on 2018-05-26
+
+### Objective-C support for macOS and tvOS
+Add the support of Objective-C to macOS and tvOS.
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#138](https://github.com/mirego/PinLayout/pull/138) 
+
+## [1.7.3](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.3)
 Released on 2018-04-25
 
 ### Add few missing Objective-C Interface properties and methods

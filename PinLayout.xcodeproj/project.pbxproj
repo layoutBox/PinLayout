@@ -102,6 +102,10 @@
 		DFED1552208533DA009EF9A7 /* AspectRatioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */; };
 		DFED15532085349A009EF9A7 /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
 		DFED15542085349B009EF9A7 /* RectNimbleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5031E75DB7600073BEE /* RectNimbleMatcher.swift */; };
+		DFF222B120B877F400AC2A84 /* PinLayoutObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */; };
+		DFF222B220B877F600AC2A84 /* PinLayoutObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */; };
+		DFF222B320B877F800AC2A84 /* PinLayoutObjCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */; };
+		DFF222B420B877F900AC2A84 /* PinLayoutObjCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */; };
 		DFF6F9C72084DCD3004F5AED /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244DF2F81EF46C500090508B /* PinLayout.framework */; };
 		DFF6F9CD2084E15A004F5AED /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
 		DFF6F9CE2084E15A004F5AED /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
@@ -787,6 +791,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				243C62081FC37F6C0082C327 /* PinLayoutImpl+Warning.swift in Sources */,
+				DFF222B420B877F900AC2A84 /* PinLayoutObjCImpl.swift in Sources */,
+				DFF222B220B877F600AC2A84 /* PinLayoutObjC.swift in Sources */,
 				24D18D261F3E5EA5008129EF /* Pin.swift in Sources */,
 				DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */,
@@ -885,6 +891,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1A5D3F2084CFD600725EF5 /* PinLayoutImpl+Warning.swift in Sources */,
+				DFF222B320B877F800AC2A84 /* PinLayoutObjCImpl.swift in Sources */,
+				DFF222B120B877F400AC2A84 /* PinLayoutObjC.swift in Sources */,
 				DF1A5D3B2084CFD600725EF5 /* PinLayoutImpl.swift in Sources */,
 				DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */,
 				DF1A5D422084CFD600725EF5 /* Percent.swift in Sources */,

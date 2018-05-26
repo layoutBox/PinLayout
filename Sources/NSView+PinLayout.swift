@@ -27,5 +27,11 @@ public extension NSView {
     public var edge: EdgeList {
         return EdgeListImpl(view: self)
     }
+
+    // Expose PinLayout's objective-c interface.
+    @objc public var pinObjc: PinLayoutObjC {
+        return PinLayoutObjCImpl(view: self, keepTransform: true)
+    }
 }
+
 #endif

@@ -28,25 +28,21 @@ extension PinLayoutImpl {
     //
     // above(of ...)
     //
-    @discardableResult
     func above(of relativeView: PView) -> PinLayout {
         func context() -> String { return "above(of: \(relativeView))" }
         return above(relativeViews: [relativeView], aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func above(of relativeViews: [PView]) -> PinLayout {
         func context() -> String { return "above(of: \(relativeViews))" }
         return above(relativeViews: relativeViews, aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func above(of relativeView: PView, aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "above(of: \(relativeView), aligned: \(aligned))" }
         return above(relativeViews: [relativeView], aligned: aligned, context: context)
     }
-    
-    @discardableResult
+
     func above(of relativeViews: [PView], aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "above(of: \(relativeViews), aligned: \(aligned))" }
         return above(relativeViews: relativeViews, aligned: aligned, context: context)
@@ -55,25 +51,21 @@ extension PinLayoutImpl {
     //
     // below(of ...)
     //
-    @discardableResult
     func below(of relativeView: PView) -> PinLayout {
         func context() -> String { return "below(of: \(relativeView))" }
         return below(relativeViews: [relativeView], aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func below(of relativeViews: [PView]) -> PinLayout {
         func context() -> String { return "below(of: \(relativeViews))" }
         return below(relativeViews: relativeViews, aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func below(of relativeView: PView, aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "below(of: \(relativeView), aligned: \(aligned))" }
         return below(relativeViews: [relativeView], aligned: aligned, context: context)
     }
-    
-    @discardableResult
+
     func below(of relativeViews: [PView], aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "below(of: \(relativeViews), aligned: \(aligned))" }
         return below(relativeViews: relativeViews, aligned: aligned, context: context)
@@ -82,25 +74,21 @@ extension PinLayoutImpl {
     //
     // left(of ...)
     //
-    @discardableResult
     func left(of relativeView: PView) -> PinLayout {
         func context() -> String { return "left(of: \(relativeView))" }
         return left(relativeViews: [relativeView], aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func left(of relativeViews: [PView]) -> PinLayout {
         func context() -> String { return "left(of: \(relativeViews))" }
         return left(relativeViews: relativeViews, aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func left(of relativeView: PView, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "left(of: \(relativeView), aligned: \(aligned))" }
         return left(relativeViews: [relativeView], aligned: aligned, context: context)
     }
-    
-    @discardableResult
+
     func left(of relativeViews: [PView], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "left(of: \(relativeViews), aligned: \(aligned))" }
         return left(relativeViews: relativeViews, aligned: aligned, context: context)
@@ -109,31 +97,26 @@ extension PinLayoutImpl {
     //
     // right(of ...)
     //
-    @discardableResult
     func right(of relativeView: PView) -> PinLayout {
         func context() -> String { return "right(of: \(relativeView))" }
         return right(relativeViews: [relativeView], aligned: nil, context: context)
     }
-    
-    @discardableResult
+
     func right(of relativeViews: [PView]) -> PinLayout {
         func context() -> String { return "right(of: \(relativeViews))" }
         return right(relativeViews: relativeViews, aligned: nil, context: context)
     }
 
-    @discardableResult
     func right(of relativeView: PView, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "right(of: \(relativeView), aligned: \(aligned))" }
         return right(relativeViews: [relativeView], aligned: aligned, context: context)
     }
-    
-    @discardableResult
+
     func right(of relativeViews: [PView], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "right(of: \(relativeViews), aligned: \(aligned))" }
         return right(relativeViews: relativeViews, aligned: aligned, context: context)
     }
-    
-    @discardableResult
+
     func before(of relativeView: PView) -> PinLayout {
         func context() -> String { return "before(of: \(relativeView))" }
         if isLTR() {
@@ -142,8 +125,7 @@ extension PinLayoutImpl {
             return right(relativeViews: [relativeView], aligned: nil, context: context)
         }
     }
-    
-    @discardableResult
+
     func before(of relativeViews: [PView]) -> PinLayout {
         func context() -> String { return "before(of: \(relativeViews))" }
         if isLTR() {
@@ -152,8 +134,7 @@ extension PinLayoutImpl {
             return right(relativeViews: relativeViews, aligned: nil, context: context)
         }
     }
-    
-    @discardableResult
+
     func before(of relativeView: PView, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "before(of: \(relativeView), aligned: \(aligned))" }
         if isLTR() {
@@ -162,8 +143,7 @@ extension PinLayoutImpl {
             return right(relativeViews: [relativeView], aligned: aligned, context: context)
         }
     }
-    
-    @discardableResult
+
     func before(of relativeViews: [PView], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "before(of: \(relativeViews), aligned: \(aligned))" }
         if isLTR() {
@@ -172,8 +152,7 @@ extension PinLayoutImpl {
             return right(relativeViews: relativeViews, aligned: aligned, context: context)
         }
     }
-    
-    @discardableResult
+
     func after(of relativeView: PView) -> PinLayout {
         func context() -> String { return "after(of: \(relativeView))" }
         if isLTR() {
@@ -182,8 +161,7 @@ extension PinLayoutImpl {
             return left(relativeViews: [relativeView], aligned: nil, context: context)
         }
     }
-    
-    @discardableResult
+
     func after(of relativeViews: [PView]) -> PinLayout {
         func context() -> String { return "after(of: \(relativeViews))" }
         if isLTR() {
@@ -192,8 +170,7 @@ extension PinLayoutImpl {
             return left(relativeViews: relativeViews, aligned: nil, context: context)
         }
     }
-    
-    @discardableResult
+
     func after(of relativeView: PView, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "after(of: \(relativeView))" }
         if isLTR() {
@@ -202,8 +179,7 @@ extension PinLayoutImpl {
             return left(relativeViews: [relativeView], aligned: aligned, context: context)
         }
     }
-    
-    @discardableResult
+
     func after(of relativeViews: [PView], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "after(of: \(relativeViews), aligned: \(aligned))" }
         if isLTR() {
@@ -216,7 +192,6 @@ extension PinLayoutImpl {
 
 // MARK: fileprivate
 extension PinLayoutImpl {
-    @discardableResult
     fileprivate func above(relativeViews: [PView], aligned: HorizontalAlign?, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
         
@@ -240,7 +215,6 @@ extension PinLayoutImpl {
         return self
     }
 
-    @discardableResult
     fileprivate func below(relativeViews: [PView], aligned: HorizontalAlign?, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
         
@@ -391,4 +365,3 @@ extension PinLayoutImpl {
         return relativeViews
     }
 }
-

@@ -47,9 +47,9 @@
 		2482908C1E78CFFC00667D08 /* RelativePositionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */; };
 		248E4C741F7A883800C0E7F7 /* AspectRatioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */; };
 		248E4C771F7A88D200C0E7F7 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */; };
-		24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */; };
+		24949A2E1EF69474003643D3 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* Filters.swift */; };
 		249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EFE7A1E64FB4C00165E39 /* PinLayout.framework */; };
-		24B02B091F2A713000C18179 /* PinLayout+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */; };
+		24B02B091F2A713000C18179 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* Filters.swift */; };
 		24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 		24D18D171F3B4381008129EF /* RTLSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D151F3B42E0008129EF /* RTLSpec.swift */; };
 		24D18D241F3E37DD008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
@@ -62,7 +62,7 @@
 		DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
 		DF1A5D372084CFC200725EF5 /* NSView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */; };
-		DF1A5D382084CFC600725EF5 /* PinLayout+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */; };
+		DF1A5D382084CFC600725EF5 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24949A2D1EF69474003643D3 /* Filters.swift */; };
 		DF1A5D392084CFC600725EF5 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
 		DF1A5D3B2084CFD600725EF5 /* PinLayoutImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6C61FC37C1C0054CADD /* PinLayoutImpl.swift */; };
@@ -106,6 +106,14 @@
 		DFF222B220B877F600AC2A84 /* PinLayoutObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */; };
 		DFF222B320B877F800AC2A84 /* PinLayoutObjCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */; };
 		DFF222B420B877F900AC2A84 /* PinLayoutObjCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277C1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift */; };
+		DFF222C920B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */; };
+		DFF222CA20B9994200AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */; };
+		DFF222CB20B9994300AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */; };
+		DFF222CD20B999BD00AC2A84 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222CC20B999BD00AC2A84 /* Types.swift */; };
+		DFF222CF20B99A6600AC2A84 /* Types+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222CE20B99A6600AC2A84 /* Types+Description.swift */; };
+		DFF222E320BACBBF00AC2A84 /* WrapContentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222E120BACBA800AC2A84 /* WrapContentSpec.swift */; };
+		DFF222E420BACBC000AC2A84 /* WrapContentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222E120BACBA800AC2A84 /* WrapContentSpec.swift */; };
+		DFF222E520BACBC000AC2A84 /* WrapContentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222E120BACBA800AC2A84 /* WrapContentSpec.swift */; };
 		DFF6F9C72084DCD3004F5AED /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244DF2F81EF46C500090508B /* PinLayout.framework */; };
 		DFF6F9CD2084E15A004F5AED /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
 		DFF6F9CE2084E15A004F5AED /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
@@ -188,7 +196,7 @@
 		2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionSpec.swift; sourceTree = "<group>"; };
 		248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectRatioTests.swift; sourceTree = "<group>"; };
 		248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
-		24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PinLayout+Filters.swift"; sourceTree = "<group>"; };
+		24949A2D1EF69474003643D3 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		249EFE7A1E64FB4C00165E39 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE831E64FB4C00165E39 /* PinLayoutTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PinLayoutTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		249EFE8A1E64FB4C00165E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Common/Info.plist; sourceTree = "<group>"; };
@@ -216,6 +224,10 @@
 		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
 		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
 		DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewSpec.swift; sourceTree = "<group>"; };
+		DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PinLayoutImpl+WrapContent.swift"; path = "Impl/PinLayoutImpl+WrapContent.swift"; sourceTree = "<group>"; };
+		DFF222CC20B999BD00AC2A84 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		DFF222CE20B99A6600AC2A84 /* Types+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Types+Description.swift"; sourceTree = "<group>"; };
+		DFF222E120BACBA800AC2A84 /* WrapContentSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapContentSpec.swift; sourceTree = "<group>"; };
 		DFF6F9C22084DCD3004F5AED /* PinLayoutTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PinLayoutTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -327,9 +339,10 @@
 		249EFE7C1E64FB4C00165E39 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				24949A2D1EF69474003643D3 /* Filters.swift */,
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
-				24949A2D1EF69474003643D3 /* PinLayout+Filters.swift */,
 				24D18D231F3E37DD008129EF /* Pin.swift */,
+				DFF222CC20B999BD00AC2A84 /* Types.swift */,
 				DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */,
 				DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
@@ -382,10 +395,12 @@
 				2475B6C41FC37A900054CADD /* PinLayoutImpl+Layouting.swift */,
 				2475B6C91FC37C1C0054CADD /* PinLayoutImpl+Relative.swift */,
 				2475B6C81FC37C1C0054CADD /* PinLayoutImpl+Warning.swift */,
+				DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */,
 				DFB3ECB02061602E005F226B /* PinSafeArea.swift */,
 				2475B6D21FC37CD40054CADD /* Coordinates.swift */,
 				243C620E1FC3834B0082C327 /* Percent.swift */,
 				2475B6CE1FC37C570054CADD /* TypesImpl.swift */,
+				DFF222CE20B99A6600AC2A84 /* Types+Description.swift */,
 				2475B6D01FC37C8C0054CADD /* UIView+LTR.swift */,
 			);
 			name = Impl;
@@ -407,6 +422,7 @@
 				2482908B1E78CFFC00667D08 /* RelativePositionSpec.swift */,
 				242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */,
 				240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */,
+				DFF222E120BACBA800AC2A84 /* WrapContentSpec.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -797,10 +813,11 @@
 				DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */,
 				243C62071FC37F6C0082C327 /* PinLayoutImpl+Relative.swift in Sources */,
+				DFF222CB20B9994300AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */,
 				243B12BC1FC393580072A9C3 /* Percent.swift in Sources */,
 				DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */,
 				DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */,
-				24B02B091F2A713000C18179 /* PinLayout+Filters.swift in Sources */,
+				24B02B091F2A713000C18179 /* Filters.swift in Sources */,
 				24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */,
 				243C620B1FC37F6C0082C327 /* UIView+LTR.swift in Sources */,
 				243C62091FC37F6C0082C327 /* Coordinates.swift in Sources */,
@@ -816,11 +833,14 @@
 			files = (
 				24D18D241F3E37DD008129EF /* Pin.swift in Sources */,
 				2475B6CA1FC37C1C0054CADD /* PinLayoutImpl.swift in Sources */,
+				DFF222CF20B99A6600AC2A84 /* Types+Description.swift in Sources */,
 				241A277E1F8E958F00B1AD39 /* PinLayoutObjCImpl.swift in Sources */,
 				DF1A5D372084CFC200725EF5 /* NSView+PinLayout.swift in Sources */,
+				DFF222CD20B999BD00AC2A84 /* Types.swift in Sources */,
 				243C620F1FC3834B0082C327 /* Percent.swift in Sources */,
 				2475B6CB1FC37C1C0054CADD /* PinLayoutImpl+Coordinates.swift in Sources */,
 				2475B6C51FC37A900054CADD /* PinLayoutImpl+Layouting.swift in Sources */,
+				DFF222C920B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */,
 				2475B6CF1FC37C570054CADD /* TypesImpl.swift in Sources */,
 				2475B6D11FC37C8C0054CADD /* UIView+LTR.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
@@ -828,7 +848,7 @@
 				DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */,
 				2475B6D31FC37CD40054CADD /* Coordinates.swift in Sources */,
 				241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */,
-				24949A2E1EF69474003643D3 /* PinLayout+Filters.swift in Sources */,
+				24949A2E1EF69474003643D3 /* Filters.swift in Sources */,
 				DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */,
 				2475B6CD1FC37C1C0054CADD /* PinLayoutImpl+Relative.swift in Sources */,
 			);
@@ -838,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF222E320BACBBF00AC2A84 /* WrapContentSpec.swift in Sources */,
 				240F88BE1F0C066800280FC8 /* JustifyAlignSpec.swift in Sources */,
 				2469C5001E75D74000073BEE /* AdjustSizeSpec.swift in Sources */,
 				243B12C81FC3D06F0072A9C3 /* LayoutMethodSpec.swift in Sources */,
@@ -872,6 +893,7 @@
 				DFED154F20852F7E009EF9A7 /* BasicView.swift in Sources */,
 				DFB288AF20854127001F9588 /* PinPointCoordinatesSpec.swift in Sources */,
 				DFB288A320853E82001F9588 /* JustifyAlignSpec.swift in Sources */,
+				DFF222E420BACBC000AC2A84 /* WrapContentSpec.swift in Sources */,
 				DFED15532085349A009EF9A7 /* RectNimbleMatcher.swift in Sources */,
 				DFB288B12085419B001F9588 /* RelativePositionSpec.swift in Sources */,
 				DFB288B2208541B7001F9588 /* RelativePositionMultipleViewsSpec.swift in Sources */,
@@ -897,11 +919,12 @@
 				DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */,
 				DF1A5D422084CFD600725EF5 /* Percent.swift in Sources */,
 				DF1A5D3E2084CFD600725EF5 /* PinLayoutImpl+Relative.swift in Sources */,
+				DFF222CA20B9994200AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */,
 				DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */,
 				DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */,
 				DFED155120853085009EF9A7 /* PinLayout.swift in Sources */,
-				DF1A5D382084CFC600725EF5 /* PinLayout+Filters.swift in Sources */,
+				DF1A5D382084CFC600725EF5 /* Filters.swift in Sources */,
 				DF1A5D392084CFC600725EF5 /* Pin.swift in Sources */,
 				DF1A5D3D2084CFD600725EF5 /* PinLayoutImpl+Layouting.swift in Sources */,
 				DF1A5D3C2084CFD600725EF5 /* PinLayoutImpl+Coordinates.swift in Sources */,
@@ -914,6 +937,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF222E520BACBC000AC2A84 /* WrapContentSpec.swift in Sources */,
 				DFF6F9DC2084E15A004F5AED /* RelativePositionMultipleViewsSpec.swift in Sources */,
 				DFABC023208781EE00CB6494 /* Types+UIKit.swift in Sources */,
 				DFF6F9DB2084E15A004F5AED /* RelativePositionSpec.swift in Sources */,

@@ -55,8 +55,8 @@ extension WrapType {
     var description: String {
         switch self {
         case .all: return ".all"
-        case .width: return ".width"
-        case .height: return ".height"
+        case .horizontally: return ".horizontally"
+        case .vertically: return ".vertically"
         }
     }
 }

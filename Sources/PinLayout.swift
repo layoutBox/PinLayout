@@ -308,10 +308,48 @@ public protocol PinLayout {
     @discardableResult func size(of view: NSView) -> PinLayout
     #endif
 
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adjust subviews position to create a tight wrap.
+     */
     @discardableResult func wrapContent() -> PinLayout
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+         - padding: Specify a padding value.
+     */
+    @discardableResult func wrapContent(padding: CGFloat) -> PinLayout
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+         - padding: Specify a padding using an UIEdgeInsets.
+     */
+    @discardableResult func wrapContent(padding: UIEdgeInsets) -> PinLayout
+
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews.
+
+     - Parameters:
+        - type: Specify the wrap type (.all, .horizontally, .vertically)
+     */
     @discardableResult func wrapContent(_ type: WrapType) -> PinLayout
-    @discardableResult func wrapContent(padding: PPadding) -> PinLayout
-    @discardableResult func wrapContent(_ type: WrapType, padding: PPadding) -> PinLayout
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+         - type: Specify the wrap type (.all, .horizontally, .vertically)
+         - padding: Specify a padding value.
+     */
+    @discardableResult func wrapContent(_ type: WrapType, padding: CGFloat) -> PinLayout
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+        - type: Specify the wrap type (.all, .horizontally, .vertically)
+        - padding: Specify a padding using an UIEdgeInsets.
+     */
+    @discardableResult func wrapContent(_ type: WrapType, padding: UIEdgeInsets) -> PinLayout
 
     /**
      Set the view aspect ratio.

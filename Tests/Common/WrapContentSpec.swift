@@ -104,8 +104,8 @@ class WrapContentSpec: QuickSpec {
                 aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
                 aViewChild3.frame = CGRect(x: 360, y: 120, width: 60, height: 60)
 
-                aView.pin.wrapContent(.width)
-                aView.pin.wrapContent(.height)
+                aView.pin.wrapContent(.horizontally)
+                aView.pin.wrapContent(.vertically)
 
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 260.0, height: 60.0)))
                 expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 40.0)))
@@ -133,7 +133,7 @@ class WrapContentSpec: QuickSpec {
                 aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
                 aViewChild3.frame = CGRect(x: 360, y: 120, width: 60, height: 60)
 
-                aView.pin.wrapContent(.width)
+                aView.pin.wrapContent(.horizontally)
 
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 260.0, height: 100.0)))
                 expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 120.0, width: 100.0, height: 40.0)))
@@ -146,7 +146,7 @@ class WrapContentSpec: QuickSpec {
                 aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
                 aViewChild3.frame = CGRect(x: 360, y: 120, width: 60, height: 60)
 
-                aView.pin.wrapContent(.height)
+                aView.pin.wrapContent(.vertically)
 
                 expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 200.0, height: 60.0)))
                 expect(aViewChild.frame).to(equal(CGRect(x: 160.0, y: 0.0, width: 100.0, height: 40.0)))
@@ -194,22 +194,184 @@ class WrapContentSpec: QuickSpec {
                 expect(aViewChild2.frame).to(equal(CGRect(x: 390.0, y: 220.0, width: 60.0, height: 60.0)))
                 expect(aViewChild3.frame).to(equal(CGRect(x: 390.0, y: 0.0, width: 60.0, height: 60.0)))
             }
+        }
+
+        describe("wrapContent with padding") {
             it("wrap and update subviews position") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 120, width: 60, height: 60)
+
+                aView.pin.wrapContent(padding: 10)
+
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 280.0, height: 80.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 110.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 210.0, y: 10.0, width: 60.0, height: 60.0)))
 
             }
-            it("wrap and update subviews position") {
-                // warning
-                aView.pin.wrapContent().width(20)
+            it("wrap and update subviews position + center") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 120, width: 60, height: 60)
+
+                aView.pin.wrapContent(padding: 10).center()
+
+                expect(aView.frame).to(equal(CGRect(x: 60.0, y: 160.0, width: 280.0, height: 80.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 110.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 210.0, y: 10.0, width: 60.0, height: 60.0)))
             }
 
-            it("wrap and update subviews position") {
-                // warning
-                aView.pin.width(20).wrapContent()
+            it("wrap horizontally + padding") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 120, width: 60, height: 60)
+
+                aView.pin.wrapContent(.horizontally, padding: 10)
+
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 280.0, height: 100.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 10.0, y: 120.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 110.0, y: 120.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 210.0, y: 120.0, width: 60.0, height: 60.0)))
             }
 
-            it("wrap and update subviews position") {
-                // warning
-                aView.pin.height(20).wrapContent()
+            it("wrap vertically + padding") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+
+                aView.pin.wrapContent(.vertically, padding: 10)
+
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 200.0, height: 100.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 160.0, y: 10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 260.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 360.0, y: 30.0, width: 60.0, height: 60.0)))
+            }
+
+            it("wrap horizontally + negative padding") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 160, width: 60, height: 60)
+                aView.pin.wrapContent(.horizontally, padding: -10)
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 240.0, height: 100.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: -10.0, y: 120.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 90.0, y: 120.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 190.0, y: 160.0, width: 60.0, height: 60.0)))
+            }
+
+            it("wrap vertically + negative padding") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 160, width: 60, height: 60)
+
+                aView.pin.wrapContent(.vertically, padding: -10)
+                
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 200.0, height: 80.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 160.0, y: -10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 260.0, y: -10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 360.0, y: 30.0, width: 60.0, height: 60.0)))
+            }
+
+
+            it("wrap all + padding UIEdgeInsets") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+                aView.pin.wrapContent(padding: UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 320.0, height: 120.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 120.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 220.0, y: 30.0, width: 60.0, height: 60.0)))
+            }
+
+            it("wrap all + padding UIEdgeInsets") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+                aView.pin.wrapContent(.all, padding: UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 320.0, height: 120.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 120.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 220.0, y: 30.0, width: 60.0, height: 60.0)))
+
+            }
+
+            it("wrap horizontally + padding UIEdgeInsets") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+                aView.pin.wrapContent(.horizontally, padding: UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 320.0, height: 100.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 20.0, y: 120.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 120.0, y: 120.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 220.0, y: 140.0, width: 60.0, height: 60.0)))
+
+            }
+
+
+            it("wrap vertically + padding UIEdgeInsets") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+                aView.pin.wrapContent(.vertically, padding: UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40))
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 200.0, height: 120.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 160.0, y: 10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 260.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 360.0, y: 30.0, width: 60.0, height: 60.0)))
+
+            }
+
+            it("wrap all + negative padding UIEdgeInsets") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 120, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+                aView.pin.wrapContent(.all, padding: UIEdgeInsets(top: -10, left: -20, bottom: -30, right: -40))
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 200.0, height: 40.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: -20.0, y: -10.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 80.0, y: -10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 180.0, y: 10.0, width: 60.0, height: 60.0)))
+            }
+        }
+
+        describe("wrapContent + min/max") {
+            it("wrap all + maxWidth + maxHeight") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 130, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+
+                aView.pin.wrapContent().maxWidth(200).maxHeight(50)
+
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 200.0, height: 50.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 100.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 200.0, y: 20.0, width: 60.0, height: 60.0)))
+            }
+
+            it("wrap all + minWidth + minHeight") {
+                aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
+                aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)
+                aViewChild2.frame = CGRect(x: 260, y: 130, width: 60, height: 60)
+                aViewChild3.frame = CGRect(x: 360, y: 140, width: 60, height: 60)
+
+                aView.pin.wrapContent().minWidth(300).minHeight(100)
+
+                expect(aView.frame).to(equal(CGRect(x: 20.0, y: 10.0, width: 300.0, height: 100.0)))
+                expect(aViewChild.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 100.0, height: 40.0)))
+                expect(aViewChild2.frame).to(equal(CGRect(x: 100.0, y: 10.0, width: 60.0, height: 60.0)))
+                expect(aViewChild3.frame).to(equal(CGRect(x: 200.0, y: 20.0, width: 60.0, height: 60.0)))
             }
         }
     }

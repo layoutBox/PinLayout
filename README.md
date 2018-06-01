@@ -37,6 +37,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent features
+* :star: Add methods `wrapConten(...)` that adjust the view's width & height to wrap all its subviews. See [wrapContent](#wrapCcontent) for more information.
+
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
 
 * :star: PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
@@ -61,6 +63,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Aspect Ratio](#aspect_ratio)
   * [Margins](#margins)
   * [safeAreaInsets support](#safeAreaInsets)
+  * [WrapContent](#wrapCcontent)
   * [justify, align](#justify_align)
   * [UIView's transforms](#uiview_transform)
   * [Warnings](#warnings)
@@ -1134,8 +1137,51 @@ This example runs perfectly on a iPhone X (iOS 11), but it also runs on any devi
 
 <br/>
 
+<a name="wrapCcontent"></a>
+## WrapContent
 
-<a name="aspect_ratio"></a>
+The following methods are useful to adjust the view's width and/or height to wrap all its subviews. These method also adjust subviews position to create a tight wrap.
+
+**Methods:**
+
+* **`wrapContent()`**  
+Bla. 
+* **`wrapContent(padding: CGFloat)`**  
+Bla. 
+* **`wrapContent(padding: UIEdgeInsets)`**  
+Bla. 
+* **`wrapContent(:WrapType)`**  
+Bla. 
+* **`wrapContent(:WrapType, padding: CGFloat)`**  
+Bla. 
+* **`wrapContent(:WrapType, padding: UIEdgeInsets)`**  
+Bla. 
+
+TABLE SHOWING DIFFERENCES!!!
+
+###### Usage examples:
+```swift
+	view.pin.wrapContent().center()   // wrap all subviews and centered the view inside its parent.
+	view.pin.wrapContent(padding: 20) // wrap all subviews with a padding of 20 pixels all around
+```
+
+
+###### Example:
+...:
+
+<img src="docs/pinlayout-example-justify-left.png" width="540"/>
+
+
+```swift
+   viewA.pin.....
+```
+
+<br/>
+
+
+
+
+<a name="justify_align"></a>
 ## justify() / align()
 
 **Methods:**

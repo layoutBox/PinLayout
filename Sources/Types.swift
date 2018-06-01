@@ -167,47 +167,12 @@ public enum FitType {
 }
 
 public enum WrapType {
-    /**
-     */
+    /// Adjust the view's width AND height to wrap all its subviews.
     case all
-    /**
-     */
-    case width
-    /**
-     */
-    case height
-}
-
-public struct PPadding {
-    let top: CGFloat
-    let left: CGFloat
-    let bottom: CGFloat
-    let right: CGFloat
-
-    static var zero: PPadding {
-        return PPadding(0)
-    }
-
-    init(_ all: CGFloat) {
-        top = all
-        left = all
-        bottom = all
-        right = all
-    }
-
-    init(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) {
-        self.top = top
-        self.left = left
-        self.bottom = bottom
-        self.right = right
-    }
-
-    init(h: CGFloat, v: CGFloat) {
-        top = v
-        left = h
-        bottom = v
-        right = h
-    }
+    /// Adjust only the view's width to wrap all its subviews. The view's height won't be modified.
+    case horizontally
+    /// Adjust only the view's height to wrap all its subviews. The view's width won't be modified.
+    case vertically
 }
 
 @objc public enum LayoutDirection: Int {

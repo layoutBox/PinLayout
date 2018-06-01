@@ -28,12 +28,27 @@ extension PinLayoutImpl {
         return wrapContent(.all, padding: .zero, { return "wrapContent()" })
     }
 
+    func wrapContent(padding: CGFloat) -> PinLayout {
+        return wrapContent(.all, padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(padding: \(padding)" })
+    }
+    
+    func wrapContent(padding: UIEdgeInsets) -> PinLayout {
+        return wrapContent(.all, padding: padding, { return "wrapContent(padding: \(insetsDescription(padding))" })
+    }
+
     func wrapContent(_ type: WrapType) -> PinLayout {
         return wrapContent(type, padding: .zero, { return "wrapContent(\(type.description)" })
     }
 
-    @discardableResult
-    private func wrapContent(_ type: WrapType, padding: PPadding, _ context: Context) -> PinLayout {
+    func wrapContent(_ type: WrapType, padding: CGFloat) -> PinLayout {
+        return wrapContent(type, padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(\(type.description), padding: \(padding)" })
+    }
+
+    func wrapContent(_ type: WrapType, padding: UIEdgeInsets) -> PinLayout {
+        return wrapContent(type, padding: padding, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
+    }
+
+    private func wrapContent(_ type: WrapType, padding: UIEdgeInsets, _ context: Context) -> PinLayout {
         let subviews = view.subviews
         guard !subviews.isEmpty else { return self }
         let firstViewFrame = subviews[0].frame
@@ -61,28 +76,22 @@ extension PinLayoutImpl {
         var offsetDx: CGFloat = 0
         var offsetDy: CGFloat = 0
 
-        if type == .all || type == .width {
-            let contentWidth = maxX - minX
+        if type == .all || type == .horizontally {
+            let contentWidth = maxX - minX + padding.left + padding.right
             if contentWidth >= 0 {
                 setWidth(contentWidth, context)
             }
 
-            offsetDx = -minX
-//            let contentWidth = view.subviews.max(by: { subview1, subview2 in
-//                subview1.frame.maxX < subview2.frame.maxX
-//            })?.frame.maxX ?? 0
+            offsetDx = -minX + padding.left
         }
 
-        if type == .all || type == .height {
-            let contentHeight = maxY - minY
+        if type == .all || type == .vertically {
+            let contentHeight = maxY - minY + padding.top + padding.bottom
             if contentHeight >= 0 {
                 setHeight(contentHeight, context)
             }
 
-            offsetDy = -minY
-//            let contentHeight = view.subviews.max(by: { subview1, subview2 in
-//                subview1.frame.maxY < subview2.frame.maxY
-//            })?.frame.maxY ?? 0
+            offsetDy = -minY + padding.top
         }
 
         if offsetDx != 0 || offsetDy != 0 {

@@ -25,30 +25,30 @@ import AppKit
 
 extension PinLayoutImpl {
     func wrapContent() -> PinLayout {
-        return wrapContent(.all, padding: .zero, { return "wrapContent()" })
+        return wrapContent(.all, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), { return "wrapContent()" })
     }
 
     func wrapContent(padding: CGFloat) -> PinLayout {
-        return wrapContent(.all, padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(padding: \(padding)" })
+        return wrapContent(.all, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(padding: \(padding)" })
     }
     
-    func wrapContent(padding: UIEdgeInsets) -> PinLayout {
+    func wrapContent(padding: PEdgeInsets) -> PinLayout {
         return wrapContent(.all, padding: padding, { return "wrapContent(padding: \(insetsDescription(padding))" })
     }
 
     func wrapContent(_ type: WrapType) -> PinLayout {
-        return wrapContent(type, padding: .zero, { return "wrapContent(\(type.description)" })
+        return wrapContent(type, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), { return "wrapContent(\(type.description)" })
     }
 
     func wrapContent(_ type: WrapType, padding: CGFloat) -> PinLayout {
-        return wrapContent(type, padding: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(\(type.description), padding: \(padding)" })
+        return wrapContent(type, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(\(type.description), padding: \(padding)" })
     }
 
-    func wrapContent(_ type: WrapType, padding: UIEdgeInsets) -> PinLayout {
+    func wrapContent(_ type: WrapType, padding: PEdgeInsets) -> PinLayout {
         return wrapContent(type, padding: padding, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
     }
 
-    private func wrapContent(_ type: WrapType, padding: UIEdgeInsets, _ context: Context) -> PinLayout {
+    private func wrapContent(_ type: WrapType, padding: PEdgeInsets, _ context: Context) -> PinLayout {
         let subviews = view.subviews
         guard !subviews.isEmpty else { return self }
         let firstViewFrame = subviews[0].frame
@@ -57,7 +57,7 @@ extension PinLayoutImpl {
         var minY = firstViewFrame.minY
         var maxY = firstViewFrame.maxY
 
-        for var i in 1..<subviews.count {
+        for i in 1..<subviews.count {
             let frame = subviews[i].frame
             if frame.minX < minX {
                 minX = frame.minX

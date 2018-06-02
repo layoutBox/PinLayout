@@ -76,6 +76,10 @@
 		DF1A5D432084CFD600725EF5 /* TypesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6CE1FC37C570054CADD /* TypesImpl.swift */; };
 		DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475B6D01FC37C8C0054CADD /* UIView+LTR.swift */; };
 		DF1E39B520482B200002D0AA /* PinSafeAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */; };
+		DF28022420C2B13800A1833B /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222CC20B999BD00AC2A84 /* Types.swift */; };
+		DF28022520C2B13900A1833B /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222CC20B999BD00AC2A84 /* Types.swift */; };
+		DF28022620C2B15A00A1833B /* Types+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222CE20B99A6600AC2A84 /* Types+Description.swift */; };
+		DF28022720C2B15B00A1833B /* Types+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF222CE20B99A6600AC2A84 /* Types+Description.swift */; };
 		DF7A36BD1E918301000F9856 /* PinEdgesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A36BC1E918301000F9856 /* PinEdgesSpec.swift */; };
 		DFABC01F208781A900CB6494 /* Types+Appkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABC01E208781A900CB6494 /* Types+Appkit.swift */; };
 		DFABC022208781ED00CB6494 /* Types+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFABC020208781C700CB6494 /* Types+UIKit.swift */; };
@@ -590,7 +594,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = mcswiftlayyout.mirego.com;
 				TargetAttributes = {
 					244DF2F71EF46C500090508B = {
@@ -808,8 +812,10 @@
 			files = (
 				243C62081FC37F6C0082C327 /* PinLayoutImpl+Warning.swift in Sources */,
 				DFF222B420B877F900AC2A84 /* PinLayoutObjCImpl.swift in Sources */,
+				DF28022720C2B15B00A1833B /* Types+Description.swift in Sources */,
 				DFF222B220B877F600AC2A84 /* PinLayoutObjC.swift in Sources */,
 				24D18D261F3E5EA5008129EF /* Pin.swift in Sources */,
+				DF28022420C2B13800A1833B /* Types.swift in Sources */,
 				DF1A5D362084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				243C62041FC37F680082C327 /* PinLayoutImpl.swift in Sources */,
 				243C62071FC37F6C0082C327 /* PinLayoutImpl+Relative.swift in Sources */,
@@ -914,8 +920,10 @@
 			files = (
 				DF1A5D3F2084CFD600725EF5 /* PinLayoutImpl+Warning.swift in Sources */,
 				DFF222B320B877F800AC2A84 /* PinLayoutObjCImpl.swift in Sources */,
+				DF28022620C2B15A00A1833B /* Types+Description.swift in Sources */,
 				DFF222B120B877F400AC2A84 /* PinLayoutObjC.swift in Sources */,
 				DF1A5D3B2084CFD600725EF5 /* PinLayoutImpl.swift in Sources */,
+				DF28022520C2B13900A1833B /* Types.swift in Sources */,
 				DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */,
 				DF1A5D422084CFD600725EF5 /* Percent.swift in Sources */,
 				DF1A5D3E2084CFD600725EF5 /* PinLayoutImpl+Relative.swift in Sources */,
@@ -982,7 +990,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1039,6 +1047,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1046,6 +1055,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1102,6 +1112,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1109,6 +1120,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1149,7 +1161,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1279,7 +1291,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1311,7 +1323,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;

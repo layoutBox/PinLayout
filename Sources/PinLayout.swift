@@ -325,7 +325,11 @@ public protocol PinLayout {
      - Parameters:
          - padding: Specify a padding using an UIEdgeInsets.
      */
+    #if os(iOS) || os(tvOS)
     @discardableResult func wrapContent(padding: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func wrapContent(padding: NSEdgeInsets) -> PinLayout
+    #endif
 
     /**
      Adjust the view's width AND/OR height to wrap all its subviews.
@@ -349,7 +353,12 @@ public protocol PinLayout {
         - type: Specify the wrap type (.all, .horizontally, .vertically)
         - padding: Specify a padding using an UIEdgeInsets.
      */
+    #if os(iOS) || os(tvOS)
     @discardableResult func wrapContent(_ type: WrapType, padding: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func wrapContent(_ type: WrapType, padding: NSEdgeInsets) -> PinLayout
+    #endif
+
 
     /**
      Set the view aspect ratio.

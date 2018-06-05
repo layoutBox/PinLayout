@@ -51,47 +51,31 @@ extension PinLayoutImpl {
     private func wrapContent(_ type: WrapType, padding: PEdgeInsets, _ context: Context) -> PinLayout {
         let subviews = view.subviews
         guard !subviews.isEmpty else { return self }
-        let firstViewFrame = subviews[0].frame
-        var minX = firstViewFrame.minX
-        var maxX = firstViewFrame.maxX
-        var minY = firstViewFrame.minY
-        var maxY = firstViewFrame.maxY
 
-        for i in 1..<subviews.count {
-            let frame = subviews[i].frame
-            if frame.minX < minX {
-                minX = frame.minX
-            }
-            if frame.maxX > maxX {
-                maxX = frame.maxX
-            }
-            if frame.minY < minY {
-                minY = frame.minY
-            }
-            if frame.maxY > maxY {
-                maxY = frame.maxY
-            }
-        }
+        let firstViewRect = Coordinates.getViewRect(subviews[0], keepTransform: keepTransform)
+        let boundingRect = subviews.reduce(firstViewRect, { (result, view) in
+            result.union(Coordinates.getViewRect(view, keepTransform: keepTransform))
+        })
 
         var offsetDx: CGFloat = 0
         var offsetDy: CGFloat = 0
 
         if type == .all || type == .horizontally {
-            let contentWidth = maxX - minX + padding.left + padding.right
+            let contentWidth = boundingRect.width + padding.left + padding.right
             if contentWidth >= 0 {
                 setWidth(contentWidth, context)
             }
 
-            offsetDx = -minX + padding.left
+            offsetDx = -boundingRect.minX + padding.left
         }
 
         if type == .all || type == .vertically {
-            let contentHeight = maxY - minY + padding.top + padding.bottom
+            let contentHeight = boundingRect.height + padding.top + padding.bottom
             if contentHeight >= 0 {
                 setHeight(contentHeight, context)
             }
 
-            offsetDy = -minY + padding.top
+            offsetDy = -boundingRect.minY + padding.top
         }
 
         if offsetDx != 0 || offsetDy != 0 {

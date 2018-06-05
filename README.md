@@ -37,7 +37,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent features
-* :star: Add `wrapContent()` methods that adjust view's width & height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
+* :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
 
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
 
@@ -1147,10 +1147,17 @@ The following methods are useful to adjust view's width and/or height to wrap al
 * **`wrapContent()`**  
 **`wrapContent(padding: CGFloat)`**  
 **`wrapContent(padding: UIEdgeInsets)`**   
-Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
+Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews's position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
 * **`wrapContent(:WrapType)`**  
-**`wrapContent(:WrapType, padding: CGFloat)`**  **`wrapContent(:WrapType, padding: UIEdgeInsets)`**   
-Adjust the view's width AND/OR height to wrap all its subviews. WrapType values are `.horizontally`/`.vertically`/`.all` It is also possible to specify an optional padding around all subviews. 
+**`wrapContent(:WrapType, padding: CGFloat)`**  **`wrapContent(:WrapType, padding: UIEdgeInsets)`**  
+Adjust the view's width AND/OR height to wrap all its subviews. Accept a WrapType parameter to define the wrapping type. It is also possible to specify an optional padding around all subviews.
+ 
+**Types:** 
+
+* **`WrapType`** values:
+	* `.horizontally`: Adjust the view's width and update subviews's horizontal position.
+	* `.vertically`: Adjust only the view's height and update subviews's vertical position.
+	* `.all`: Adjust the view's width AND height and update subviews position. This is the default WrapType parameter value `wrapContent()` methods.
 
 ###### Usage examples:
 ```swift

@@ -37,7 +37,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent features
-* :star: Add methods `wrapConten(...)` that adjust the view's width & height to wrap all its subviews. See [wrapContent](#wrapCcontent) for more information.
+* :star: Add `wrapContent()` methods that adjust view's width & height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
 
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
 
@@ -1137,48 +1137,55 @@ This example runs perfectly on a iPhone X (iOS 11), but it also runs on any devi
 
 <br/>
 
-<a name="wrapCcontent"></a>
+<a name="wrapContent"></a>
 ## WrapContent
 
-The following methods are useful to adjust the view's width and/or height to wrap all its subviews. These method also adjust subviews position to create a tight wrap.
+The following methods are useful to adjust view's width and/or height to wrap all its subviews. These methods also adjust subviews position to create a tight wrap.
 
 **Methods:**
 
 * **`wrapContent()`**  
-Bla. 
-* **`wrapContent(padding: CGFloat)`**  
-Bla. 
-* **`wrapContent(padding: UIEdgeInsets)`**  
-Bla. 
+**`wrapContent(padding: CGFloat)`**  
+**`wrapContent(padding: UIEdgeInsets)`**   
+Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
 * **`wrapContent(:WrapType)`**  
-Bla. 
-* **`wrapContent(:WrapType, padding: CGFloat)`**  
-Bla. 
-* **`wrapContent(:WrapType, padding: UIEdgeInsets)`**  
-Bla. 
-
-TABLE SHOWING DIFFERENCES!!!
+**`wrapContent(:WrapType, padding: CGFloat)`**  **`wrapContent(:WrapType, padding: UIEdgeInsets)`**   
+Adjust the view's width AND/OR height to wrap all its subviews. WrapType values are `.horizontally`/`.vertically`/`.all` It is also possible to specify an optional padding around all subviews. 
 
 ###### Usage examples:
 ```swift
 	view.pin.wrapContent().center()   // wrap all subviews and centered the view inside its parent.
 	view.pin.wrapContent(padding: 20) // wrap all subviews with a padding of 20 pixels all around
+	view.pin.wrapContent(.horizontally)
 ```
+
+###### Example:
+This example show the result of different `wrapContent()` method calls.  
+Here is the initial state:
+
+<img src="docs/images/wrapContent_before.png" width="200"/>
+
+| Source code     | Result | Description |
+|---------------------|----------|-------------------|
+| `view.pin.wrapContent()` | <img src="docs/images/wrapContent_all.png" width="200"/> | Adjust the view's height and width to tight fit its subviews. |
+| `view.pin.wrapContent(padding: 10)` | <img src="docs/images/wrapContent_padding.png" width="200"/> | Adjust the view's height and width and add a padding of 10 pixels around its subviews. |
+| `view.pin.wrapContent(.horizontally)` | <img src="docs/images/wrapContent_horizontally.png" width="200"/> | Adjust only the view's width. |
+| `view.pin.wrapContent(.vertically)` | <img src="docs/images/wrapContent_vertically.png" width="200"/> | Adjust only the view's height. |
 
 
 ###### Example:
-...:
+This example shows how a view (`containerView`) with two subviews (`imageView` and `label`), can be adjusted to the size of its subviews and then centered inside its parent.
 
-<img src="docs/pinlayout-example-justify-left.png" width="540"/>
-
+<img src="docs/images/wrapContent_example_1.png" width="540"/>
 
 ```swift
-   viewA.pin.....
+   label.pin.below(of: imageView, aligned: .center).marginTop(4)
+   containerView.pin.wrapContent().center()
 ```
+* Line 1: Position the label below the imageView aligned on its center with a top margin of 4 pixels. 
+* Line 2: Adjust the `containerView`'s size and position its subviews to create a tight wrap around them, and then it center the `containerView` inside its parent (superview).    
 
 <br/>
-
-
 
 
 <a name="justify_align"></a>

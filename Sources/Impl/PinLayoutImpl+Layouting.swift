@@ -23,7 +23,7 @@
     import AppKit
 #endif
 
-// MARK - UIView's frame computation methods
+// MARK: UIView's frame computation methods
 extension PinLayoutImpl {
     public func layout() {
         apply()

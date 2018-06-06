@@ -23,85 +23,6 @@ import UIKit
 import AppKit
 #endif
 
-/*
- UIView's anchors point
- ======================
-
-         topLeft      topCenter       topRight
-            o-------------o--------------o
-            |                            |
-            |                            |
-            |                            |
-            |                            |
-            |                            |
-            |           center           |
- centerLeft o             o              o centerRight
-            |                            |
-            |                            |
-            |                            |
-            |                            |
-            |                            |
-            |                            |
-            o-------------o--------------o
-       bottomLeft    bottomCenter     bottomLeft
-
- */
-
-/// UIViews's anchor definition
-@objc public protocol Anchor {
-}
-
-/// UIViews's list of anchors.
-@objc public protocol AnchorList {
-    var topLeft: Anchor { get }
-    var topCenter: Anchor { get }
-    var topRight: Anchor { get }
-    var centerLeft: Anchor { get }
-    var center: Anchor { get }
-    var centerRight: Anchor { get }
-    var bottomLeft: Anchor { get }
-    var bottomCenter: Anchor { get }
-    var bottomRight: Anchor { get }
-
-    // RTL support
-    var topStart: Anchor { get }
-    var topEnd: Anchor { get }
-    var centerStart: Anchor { get }
-    var centerEnd: Anchor { get }
-    var bottomStart: Anchor { get }
-    var bottomEnd: Anchor { get }
-}
-
-/*
- UIView's Edges
- ======================
-                   top
-          +-----------------+
-          |                 |
-          |                 |
-          |     hCenter     |
-     left |        +        | right
-          |     vCenter     |
-          |                 |
-          |                 |
-          +-----------------+
-                  bottom
-*/
-
-/// UIViews's list of edges
-@objc public protocol EdgeList {
-    var top: VerticalEdge { get }
-    var vCenter: VerticalEdge { get }
-    var bottom: VerticalEdge { get }
-    var left: HorizontalEdge { get }
-    var hCenter: HorizontalEdge { get }
-    var right: HorizontalEdge { get }
-
-    // RTL support
-    var start: HorizontalEdge { get }
-    var end: HorizontalEdge { get }
-}
-
 /// PinLayout interface
 public protocol PinLayout {
 
@@ -387,8 +308,57 @@ public protocol PinLayout {
     @discardableResult func size(of view: NSView) -> PinLayout
     #endif
 
-    //    @discardableResult func wrapSubViews() -> PinLayout
-    //    @discardableResult func wrapSubViews(insets: UIEdgeInsets) -> PinLayout
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adjust subviews position to create a tight wrap.
+     */
+    @discardableResult func wrapContent() -> PinLayout
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+         - padding: Specify a padding value.
+     */
+    @discardableResult func wrapContent(padding: CGFloat) -> PinLayout
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+         - padding: Specify a padding using an UIEdgeInsets.
+     */
+    #if os(iOS) || os(tvOS)
+    @discardableResult func wrapContent(padding: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func wrapContent(padding: NSEdgeInsets) -> PinLayout
+    #endif
+
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews.
+
+     - Parameters:
+        - type: Specify the wrap type (.all, .horizontally, .vertically)
+     */
+    @discardableResult func wrapContent(_ type: WrapType) -> PinLayout
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+         - type: Specify the wrap type (.all, .horizontally, .vertically)
+         - padding: Specify a padding value.
+     */
+    @discardableResult func wrapContent(_ type: WrapType, padding: CGFloat) -> PinLayout
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+        - type: Specify the wrap type (.all, .horizontally, .vertically)
+        - padding: Specify a padding using an UIEdgeInsets.
+     */
+    #if os(iOS) || os(tvOS)
+    @discardableResult func wrapContent(_ type: WrapType, padding: UIEdgeInsets) -> PinLayout
+    #elseif os(macOS)
+    @discardableResult func wrapContent(_ type: WrapType, padding: NSEdgeInsets) -> PinLayout
+    #endif
+
 
     /**
      Set the view aspect ratio.
@@ -620,71 +590,3 @@ public protocol PinLayout {
      */
     func layout()
 }
-
-/// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)
-///
-/// - left: left aligned
-/// - center: center aligned
-/// - right: right aligned
-@objc public enum HorizontalAlign: Int {
-    case left
-    case center
-    case right
-    
-    // RTL support
-    case start
-    case end
-}
-
-/// Vertical alignment used with relative positionning methods: left(of relativeView:, aligned:), right(of relativeView:, aligned:)
-///
-/// - top: top aligned
-/// - center: center aligned
-/// - bottom: bottom aligned
-@objc public enum VerticalAlign: Int {
-    case top
-    case center
-    case bottom
-}
-
-/// UIView's horizontal edges (left/right) definition
-@objc public protocol HorizontalEdge {
-}
-
-/// UIView's vertical edges (top/bottom) definition
-@objc public protocol VerticalEdge {
-}
-    
-public enum FitType {
-    /**
-     **Adjust the view's height** based on the reference width.
-     * If properties related to the width have been pinned (e.g: width, left & right, margins),
-     the **reference width will be determined by these properties**, else the **current view's width**
-     will be used.
-     * The resulting width will always **match the reference width**.
-    */
-    case width
-    /**
-     **Adjust the view's width** based on the reference height.
-     * If properties related to the height have been pinned (e.g: height, top & bottom, margins),
-     the reference height will be determined by these properties, else the **current view's height**
-     will be used.
-     * The resulting height will always **match the reference height*.
-     */
-    case height
-
-    /**
-     Similar to `.width`, except that PinLayout won't constrain the resulting width to
-     match the reference width. The resulting width may be smaller of bigger depending on the view's
-     sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
-     string is smaller than the reference width.
-     */
-    case widthFlexible
-    /**
-     Similar to `.height`, except that PinLayout won't constrain the resulting height to
-     match the reference height. The resulting height may be smaller of bigger depending on the view's
-     sizeThatFits(..) method result.
-     */
-    case heightFlexible
-}
-

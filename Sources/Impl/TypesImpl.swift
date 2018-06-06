@@ -28,28 +28,6 @@ import Foundation
 typealias Context = () -> String
 typealias Size = (width: CGFloat?, height: CGFloat?)
 
-extension HorizontalAlign {
-    var description: String {
-        switch self {
-        case .left: return "left"
-        case .center: return "center"
-        case .right: return "right"
-        case .start: return "start"
-        case .end: return "end"
-        }
-    }
-}
-
-extension VerticalAlign {
-    var description: String {
-        switch self {
-        case .top: return "top"
-        case .center: return "center"
-        case .bottom: return "bottom"
-        }
-    }
-}
-    
 class EdgeListImpl: EdgeList {
     internal let view: PView
 
@@ -185,26 +163,7 @@ class AnchorImpl: Anchor {
     }
 }
  
-extension CGFloat {
-    public var description: String {
-        if self.truncatingRemainder(dividingBy: 1) == 0.0 {
-            return "\(Int(self))"
-        } else {
-            return "\(self)"
-        }
-    }
-}
-    
 internal extension FitType {
-    var name: String {
-        switch self {
-        case .width: return ".width"
-        case .height: return ".height"
-        case .widthFlexible: return ".widthFlexible"
-        case .heightFlexible: return ".heightFlexible"
-        }
-    }
-    
     var isFlexible: Bool {
         return self == .widthFlexible || self == .heightFlexible
     }

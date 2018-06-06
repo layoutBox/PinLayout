@@ -19,24 +19,6 @@
 
 import Foundation
 
-@objc public enum LayoutDirection: Int {
-    case auto
-    case ltr
-    case rtl
-}
-
-/// Control how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.
-/// This support is usefull only on iOS 8/9/10. On iOS 11 `UIView.safeAreaInsetsDidChange` is supported
-/// natively so this settings have no impact.
-@objc public enum PinSafeAreaInsetsDidChangeMode: Int {
-    /// PinLayout won't call `UIView.safeAreaInsetsDidChange` on iOS 8/9/10.
-    case disable
-    /// PinLayout will call `UIView.safeAreaInsetsDidChange` only if the UIView implement the PinSafeAreaInsetsUpdate protocol.
-    case optIn
-    /// PinLayout will automatically calls `UIView.safeAreaInsetsDidChange` if the view has implemented this method.
-    case always
-}
-
 @objc public class Pin: NSObject {
     @objc public static var layoutDirection = LayoutDirection.ltr
 

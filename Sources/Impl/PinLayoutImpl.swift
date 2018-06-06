@@ -728,14 +728,8 @@ class PinLayoutImpl: PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
         return setSize(view.bounds.size, context)
     }
-
-//    func wrapSubViews() -> PinLayout {
-//        let neededWidth = view.subviews.max(by: { subview1, subview2 in subview1.frame.maxX < subview2.frame.maxX })?.frame.maxX ?? 0
-//        let neededHeight = view.subviews.max(by: { subview1, subview2 in subview1.frame.maxY < subview2.frame.maxY })?.frame.maxY ?? 0
-//
-//        return setSize(CGSize(width: neededWidth, height: neededHeight), { return "wrapSubViews()" })
-//    }
-
+    
+    @discardableResult
     func aspectRatio(_ ratio: CGFloat) -> PinLayout {
         return setAspectRatio(ratio, context: { "aspectRatio(\(ratio))" })
     }
@@ -761,7 +755,7 @@ class PinLayoutImpl: PinLayout {
     #endif
 
     func sizeToFit(_ fitType: FitType) -> PinLayout {
-        return setFitSize(fitType: fitType, { return "sizeToFit(\(fitType.name))" })
+        return setFitSize(fitType: fitType, { return "sizeToFit(\(fitType.description))" })
     }
 
     #if os(iOS) || os(tvOS)
@@ -992,7 +986,7 @@ extension PinLayoutImpl {
         } else if fitType != nil && legacyFitSize {
             warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with fitSize().")
         } else if let currentFitType = self.fitType, currentFitType != fitType {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(currentFitType.name)).")
+            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(currentFitType.description)).")
         } else {
             if fitType == nil {
                 legacyFitSize = true
@@ -1006,7 +1000,7 @@ extension PinLayoutImpl {
     @discardableResult
     internal func setAspectRatio(_ ratio: CGFloat, context: Context) -> PinLayout {
         if let fitType = fitType {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(fitType.name)).")
+            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(fitType.description)).")
         } else if legacyFitSize {
             warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with fitSize().")
         } else if ratio <= 0 {

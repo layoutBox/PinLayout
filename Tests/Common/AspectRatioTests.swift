@@ -76,7 +76,7 @@ class AspectRatioTests: QuickSpec {
             #if os(iOS) || os(tvOS)
             it("should warn about fitSize()") {
                 aView.pin.left().width(100%).aspectRatio(2).fitSize()
-                expect(Pin.lastWarningText).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio"]))
+                expect(Pin.lastWarningText).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio(2.0)"]))
             }
             
             it("should warn about fitSize()") {

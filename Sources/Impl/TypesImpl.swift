@@ -26,7 +26,11 @@ import Foundation
 #endif
 
 typealias Context = () -> String
-typealias Size = (width: CGFloat?, height: CGFloat?)
+
+struct Size {
+    var width: CGFloat?
+    var height: CGFloat?
+}
 
 class EdgeListImpl: EdgeList {
     internal let view: PView
@@ -160,11 +164,5 @@ class AnchorImpl: Anchor {
     fileprivate init(view: PView, type: AnchorType) {
         self.view = view
         self.type = type
-    }
-}
- 
-internal extension FitType {
-    var isFlexible: Bool {
-        return self == .widthFlexible || self == .heightFlexible
     }
 }

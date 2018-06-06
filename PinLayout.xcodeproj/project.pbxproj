@@ -100,6 +100,7 @@
 		DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
+		DFEAF71220C8081800E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
 		DFED154F20852F7E009EF9A7 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
 		DFED15502085304B009EF9A7 /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
 		DFED155120853085009EF9A7 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
@@ -228,6 +229,7 @@
 		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
 		DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
 		DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewSpec.swift; sourceTree = "<group>"; };
+		DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PinLayoutImpl+Size.swift"; path = "Impl/PinLayoutImpl+Size.swift"; sourceTree = "<group>"; };
 		DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PinLayoutImpl+WrapContent.swift"; path = "Impl/PinLayoutImpl+WrapContent.swift"; sourceTree = "<group>"; };
 		DFF222CC20B999BD00AC2A84 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		DFF222CE20B99A6600AC2A84 /* Types+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Types+Description.swift"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				2475B6C71FC37C1C0054CADD /* PinLayoutImpl+Coordinates.swift */,
 				2475B6C41FC37A900054CADD /* PinLayoutImpl+Layouting.swift */,
 				2475B6C91FC37C1C0054CADD /* PinLayoutImpl+Relative.swift */,
+				DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */,
 				2475B6C81FC37C1C0054CADD /* PinLayoutImpl+Warning.swift */,
 				DFF222C820B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift */,
 				DFB3ECB02061602E005F226B /* PinSafeArea.swift */,
@@ -603,7 +606,7 @@
 					};
 					249EFE791E64FB4C00165E39 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					249EFE821E64FB4C00165E39 = {
@@ -849,6 +852,7 @@
 				DFF222C920B997A500AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */,
 				2475B6CF1FC37C570054CADD /* TypesImpl.swift in Sources */,
 				2475B6D11FC37C8C0054CADD /* UIView+LTR.swift in Sources */,
+				DFEAF71220C8081800E33147 /* PinLayoutImpl+Size.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
 				2475B6CC1FC37C1C0054CADD /* PinLayoutImpl+Warning.swift in Sources */,
 				DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */,

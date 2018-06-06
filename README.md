@@ -63,7 +63,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Aspect Ratio](#aspect_ratio)
   * [Margins](#margins)
   * [safeAreaInsets support](#safeAreaInsets)
-  * [WrapContent](#wrapCcontent)
+  * [WrapContent](#wrapContent)
   * [justify, align](#justify_align)
   * [UIView's transforms](#uiview_transform)
   * [Warnings](#warnings)

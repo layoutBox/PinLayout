@@ -7,7 +7,30 @@
 
 # Change Log
 
-## [1.7.4](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.4)
+## [1.7.5](https://github.com/mirego/PinLayout/releases/tag/1.7.5)
+Released on 2018-06-05
+
+### Add `wrapContent()` methods that adjust view's width & height to wrap all its subviews
+
+The following methods are useful to adjust view's width and/or height to wrap all its subviews. These methods also adjust subviews position to create a tight wrap.
+
+**Methods:**
+
+* **`wrapContent()`**  
+**`wrapContent(padding: CGFloat)`**  
+**`wrapContent(padding: UIEdgeInsets)`**   
+Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
+* **`wrapContent(:WrapType)`**  
+**`wrapContent(:WrapType, padding: CGFloat)`**  
+**`wrapContent(:WrapType, padding: UIEdgeInsets)`**   
+Adjust the view's width AND/OR height to wrap all its subviews. WrapType values are `.horizontally`/`.vertically`/`.all` It is also possible to specify an optional padding around all subviews. 
+
+See [documentation](https://github.com/mirego/PinLayout#wrapContent) for more information
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#141](https://github.com/mirego/PinLayout/pull/141) 
+
+
+## [1.7.4](https://github.com/mirego/PinLayout/releases/tag/1.7.4)
 Released on 2018-05-26
 
 ### Objective-C support for macOS and tvOS
@@ -15,7 +38,7 @@ Add the support of Objective-C to macOS and tvOS.
 
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#138](https://github.com/mirego/PinLayout/pull/138) 
 
-## [1.7.3](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.3)
+## [1.7.3](https://github.com/mirego/PinLayout/releases/tag/1.7.3)
 Released on 2018-04-25
 
 ### Add few missing Objective-C Interface properties and methods
@@ -29,7 +52,7 @@ These methods and properties are now accessible from Objective-C:
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#135](https://github.com/mirego/PinLayout/pull/135) 
 
 
-## [1.7.2](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.2)
+## [1.7.2](https://github.com/mirego/PinLayout/releases/tag/1.7.2)
 Released on 2018-04-23
 
 ### Fine tune UIView.pin.safeArea support for iOS 8 and "New Relic" framework
@@ -43,7 +66,7 @@ Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#134](https://g
 
 
 
-## [1.7.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.7.0)
+## [1.7.0](https://github.com/mirego/PinLayout/releases/tag/1.7.0)
 Released on 2018-04-20
 
 ### Add macOS support
@@ -68,7 +91,7 @@ Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#131](https://g
 ### PinLayout now use MIT license
 The PinLayout license has been changed from **BSD 3-clause "New"** to **MIT License**.
 
-## [1.6.0](https://github.com/layoutBox/FlexLayout/releases/tag/1.6.0)
+## [1.6.0](https://github.com/mirego/PinLayout/releases/tag/1.6.0)
 Released on 2018-03-22
 
 ### UIView.pin.safeArea
@@ -109,7 +132,7 @@ Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#125](https://g
 
 	Added by [vandyshev](https://github.com/vandyshev) in Pull Request [#126](https://github.com/mirego/PinLayout/pull/126) 
 
-## [1.5.9](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.9)
+## [1.5.9](https://github.com/mirego/PinLayout/releases/tag/1.5.9)
 Released on 2018-02-18
 
 #### **`UIView.pin`** versus **`UIView.pinFrame`**
@@ -124,13 +147,13 @@ See https://github.com/mirego/PinLayout#uiviews-transforms for more informations
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#122](https://github.com/mirego/PinLayout/pull/122) 
 
 
-## [1.5.8](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.8)
+## [1.5.8](https://github.com/mirego/PinLayout/releases/tag/1.5.8)
 Released on 2018-01-20
 
 * Handle layout relative to a view with a transform and/or a modified anchorPoint.  
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#116](https://github.com/mirego/PinLayout/pull/116) 
 
-## [1.5.7](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.7)
+## [1.5.7](https://github.com/mirego/PinLayout/releases/tag/1.5.7)
 Released on 2018-01-19
 
 * Fix an issue that was affecting UIScrollViews. PinLayout now set only the bounds's size and keep the origin.  
@@ -139,7 +162,7 @@ Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#115](https://g
 * Handle correctly view's `layer.anchorPoint`. PinLayout now update correctly the view position when the view's layer.anchorPoint has been modified, i.e. when it is not its default value (0.5, 0.5).
 Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#114](https://github.com/mirego/PinLayout/pull/114) 
 
-## [1.5.5](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.5)
+## [1.5.5](https://github.com/mirego/PinLayout/releases/tag/1.5.5)
 Released on 2018-01-12
 
 Add methods:
@@ -157,21 +180,21 @@ The value specifies the ** top and bottom edges** on its superview's correspondi
 Similar to calling `view.top(value).bottom(value)`. 
 	* Added by [Olivier Pineau](https://github.com/OlivierPineau) in Pull Request [#111](https://github.com/mirego/PinLayout/pull/111) 
 
-## [1.5.4](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.4)
+## [1.5.4](https://github.com/mirego/PinLayout/releases/tag/1.5.4)
 Released on 2017-12-28
 
 * PinLayout now handle correctly more situations with view with transforms.
 	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#110](https://github.com/mirego/PinLayout/pull/110) 
 
 
-## [1.5.3](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.3)
+## [1.5.3](https://github.com/mirego/PinLayout/releases/tag/1.5.3)
 Released on 2017-12-28
 
 * PinLayout now handle correctly parents (superviews) with transforms.
 	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#108](https://github.com/mirego/PinLayout/pull/108) 
 
 
-## [1.5.2](https://github.com/layoutBox/FlexLayout/releases/tag/1.5.2)
+## [1.5.2](https://github.com/mirego/PinLayout/releases/tag/1.5.2)
 Released on 2017-12-22
 
 * POSSIBLE BREAKING CHANGE: PinLayout now keeps UIView's transform (scale, rotation, ...)    

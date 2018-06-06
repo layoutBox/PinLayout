@@ -185,10 +185,6 @@ extension PinLayoutImpl {
     }
     
     private func computeSize() -> Size {
-        #if os(macOS)
-        assert(!legacyFitSize && fitType == nil)
-        #endif
-
         var size = resolveSize()
 
         if let adjustSizeType = adjustSizeType {

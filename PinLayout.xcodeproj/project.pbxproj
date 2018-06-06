@@ -101,6 +101,8 @@
 		DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
 		DFEAF71220C8081800E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
+		DFEAF73520C8817500E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
+		DFEAF73620C8817600E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
 		DFED154F20852F7E009EF9A7 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C5011E75D88500073BEE /* BasicView.swift */; };
 		DFED15502085304B009EF9A7 /* AdjustSizeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */; };
 		DFED155120853085009EF9A7 /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */; };
@@ -825,6 +827,7 @@
 				DFF222CB20B9994300AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */,
 				243B12BC1FC393580072A9C3 /* Percent.swift in Sources */,
 				DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */,
+				DFEAF73620C8817600E33147 /* PinLayoutImpl+Size.swift in Sources */,
 				DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */,
 				24B02B091F2A713000C18179 /* Filters.swift in Sources */,
 				24B02B0A1F2A713300C18179 /* PinLayout.swift in Sources */,
@@ -934,6 +937,7 @@
 				DFF222CA20B9994200AC2A84 /* PinLayoutImpl+WrapContent.swift in Sources */,
 				DF1A5D442084CFD600725EF5 /* UIView+LTR.swift in Sources */,
 				DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
+				DFEAF73520C8817500E33147 /* PinLayoutImpl+Size.swift in Sources */,
 				DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */,
 				DFED155120853085009EF9A7 /* PinLayout.swift in Sources */,
 				DF1A5D382084CFC600725EF5 /* Filters.swift in Sources */,

@@ -359,7 +359,6 @@ public protocol PinLayout {
     @discardableResult func wrapContent(_ type: WrapType, padding: NSEdgeInsets) -> PinLayout
     #endif
 
-
     /**
      Set the view aspect ratio.
 

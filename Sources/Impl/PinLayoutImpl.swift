@@ -48,12 +48,10 @@ class PinLayoutImpl: PinLayout {
     internal var minHeight: CGFloat?
     internal var maxHeight: CGFloat?
 
-    internal var fitType: FitType?
-    internal var legacyFitSize = false
-    internal var _aspectRatio: CGFloat?
+    internal var adjustSizeType: AdjustSizeType?
 
     internal var shouldKeepViewDimension: Bool {
-        return fitType == nil && !legacyFitSize && _aspectRatio == nil
+        return adjustSizeType == nil
     }
     
     internal var marginTop: CGFloat?
@@ -707,63 +705,8 @@ class PinLayoutImpl: PinLayout {
     }
     
     //
-    // size, sizeToFit
+    // justify, align
     //
-    func size(_ size: CGSize) -> PinLayout {
-        return setSize(size, { return "size(CGSize(width: \(size.width), height: \(size.height)))" })
-    }
-
-    func size(_ sideLength: CGFloat) -> PinLayout {
-        return setSize(CGSize(width: sideLength, height: sideLength), { return "size(sideLength: \(sideLength))" })
-    }
-
-    func size(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "size(\(percent.description))" }
-        guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
-        let size = CGSize(width: percent.of(layoutSuperviewRect.width), height: percent.of(layoutSuperviewRect.height))
-        return setSize(size, context)
-    }
-
-    func size(of view: PView) -> PinLayout {
-        func context() -> String { return "size(of \(viewDescription(view)))" }
-        return setSize(view.bounds.size, context)
-    }
-    
-    @discardableResult
-    func aspectRatio(_ ratio: CGFloat) -> PinLayout {
-        return setAspectRatio(ratio, context: { "aspectRatio(\(ratio))" })
-    }
-
-    func aspectRatio(of view: PView) -> PinLayout {
-        return setAspectRatio(view.bounds.width / view.bounds.height, context: { "aspectRatio(of: \(viewDescription(view)))" })
-    }
-    
-    #if os(iOS) || os(tvOS)
-    func aspectRatio() -> PinLayout {
-        func context() -> String { return "aspectRatio()" }
-        if let imageView = view as? UIImageView {
-            if let imageSize = imageView.image?.size {
-                setAspectRatio(imageSize.width / imageSize.height, context: context)
-            } else {
-                warnWontBeApplied("the layouted UIImageView's image hasn't been set", context)
-            }
-        } else {
-            warnWontBeApplied("the layouted must be an UIImageView() to use the aspectRatio() method without parameter.", context)
-        }
-        return self
-    }
-    #endif
-
-    func sizeToFit(_ fitType: FitType) -> PinLayout {
-        return setFitSize(fitType: fitType, { return "sizeToFit(\(fitType.description))" })
-    }
-
-    #if os(iOS) || os(tvOS)
-    func fitSize() -> PinLayout {
-        return setFitSize(fitType: nil, { return "fitSize()" })
-    }
-    #endif
-
     func justify(_ value: HorizontalAlign) -> PinLayout {
         justify = value
         return self
@@ -980,37 +923,6 @@ class PinLayoutImpl: PinLayout {
 // MARK: Private methods
 //
 extension PinLayoutImpl {
-    internal func setFitSize(fitType: FitType?, _ context: Context) -> PinLayout {
-        if let aspectRatio = _aspectRatio {
-            warnConflict(context, ["aspectRatio": aspectRatio])
-        } else if fitType != nil && legacyFitSize {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with fitSize().")
-        } else if let currentFitType = self.fitType, currentFitType != fitType {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(currentFitType.description)).")
-        } else {
-            if fitType == nil {
-                legacyFitSize = true
-            } else {
-                self.fitType = fitType
-            }
-        }
-        return self
-    }
-
-    @discardableResult
-    internal func setAspectRatio(_ ratio: CGFloat, context: Context) -> PinLayout {
-        if let fitType = fitType {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with sizeToFit(\(fitType.description)).")
-        } else if legacyFitSize {
-            warn("PinLayout Conflict: \(context()) won't be applied since it conflicts with fitSize().")
-        } else if ratio <= 0 {
-            warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
-        } else {
-            _aspectRatio = ratio
-        }
-        return self
-    }
-    
     internal func layoutSuperviewRect(_ context: Context) -> CGRect? {
         if let superview = view.superview {
             return Coordinates.getViewRect(superview, keepTransform: keepTransform)

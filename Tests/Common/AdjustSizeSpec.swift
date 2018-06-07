@@ -639,7 +639,7 @@ class AdjustSizeSpec: QuickSpec {
         
             it("should warn method") {
                 aView.pin.width(100).aspectRatio(2).sizeToFit(.width)
-                expect(Pin.lastWarningText).to(contain(["sizeToFit(.width)", "won't be applied", "aspectRatio: 2"]))
+                expect(Pin.lastWarningText).to(contain(["sizeToFit(.width)", "won't be applied", "aspectRatio(2.0)"]))
             }
             
             it("should warn method") {

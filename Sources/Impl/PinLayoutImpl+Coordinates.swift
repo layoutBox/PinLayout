@@ -367,12 +367,6 @@ extension PinLayoutImpl {
         }
     }
     
-    internal func setSize(_ size: CGSize, _ context: Context) -> PinLayout {
-        setWidth(size.width, { return "\(context())'s width" })
-        setHeight(size.height, { return "\(context())'s height" })
-        return self
-    }
-    
     fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: PView, _ referenceSuperview: PView) -> CGPoint {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.

@@ -142,7 +142,7 @@ struct PinLayoutSwizzling {
                 //          ReactiveCocoa, Aspect, ..., and PinLayout.
                 //          To fix this issue, simply call `Pin.initPinLayout()` BEFORE initializing "New Relic" with
                 //          NewRelic.start(withApplicationToken:"APP_TOKEN").
-                //          See here for more information regarding this issue https://github.com/mirego/PinLayout/issues/130
+                //          See here for more information regarding this issue https://github.com/layoutBox/PinLayout/issues/130
                 viewWillLayoutSubviews(calledViewController, selector)
             }
             PinLayoutSwizzling.pinlayoutViewWillLayoutSubviews(viewController: calledViewController)

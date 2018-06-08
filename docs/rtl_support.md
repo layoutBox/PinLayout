@@ -37,4 +37,4 @@ override func layoutSubviews() {
 }
 ``` 
 
-:pushpin: The complete RTL "Introduction example" [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/IntroRTL/IntroRTLView.swift). This example is available in the [Examples App](#examples_app)
+:pushpin: The complete RTL "Introduction example" [source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/IntroRTL/IntroRTLView.swift). This example is available in the [Examples App](#examples_app)

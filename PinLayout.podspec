@@ -11,10 +11,10 @@ Pod::Spec.new do |spec|
   spec.version       = "1.7.6"
   spec.summary       = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast. [iOS/macOS/tvOS]"
   spec.description   = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. [iOS/macOS/tvOS]"
-  spec.homepage      = "https://mirego.github.io/PinLayout/"
+  spec.homepage      = "https://github.com/layoutBox/PinLayout"
   spec.license       = "MIT license"
   spec.author        = { "Luc Dion" => "luc_dion@yahoo.com" }
-  spec.source        = { :git => "https://github.com/mirego/PinLayout.git", :tag => "#{spec.version}" }
+  spec.source        = { :git => "https://github.com/layoutBox/PinLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "Sources/**/*.swift"
   spec.swift_version = '4.0'
 

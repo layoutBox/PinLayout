@@ -3,7 +3,7 @@ platform :tvos, '10.3'
 
 target 'PinLayout-tvOS' do
     #pod 'PinLayout'
-    #pod 'PinLayout', :git => 'https://github.com/mirego/PinLayout.git', :commit => 'f29519b08890da144772fe9b082cd6499b5d82c1'
+    #pod 'PinLayout', :git => 'https://github.com/layoutBox/PinLayout.git', :commit => 'f29519b08890da144772fe9b082cd6499b5d82c1'
     pod 'PinLayout', :path => '../../..'
 end
 

@@ -1502,12 +1502,12 @@ dependencies: [
 There is an Example app that expose some usage example on PinLayout, including:
 
 * The [introduction example](#intro_usage_example) presented previously in this README.
-* UITableView example with variable height cells.
-* UICollectionView example.
-* An example using PinLayout's [`UIView.pin.safeArea`](#safeAreaInsets)
-* An RTL enabled version of the [introduction example](#intro_usage_example)
-* An example showing of the right-to-left (RTL) language support. Similar to the Intro example.
-* Example showing a form
+* Example using a UITableView with variable height cells.
+* Example using a UICollectionView with variable height cells.
+* Example using [`UIView.pin.safeArea`](#safeAreaInsets)
+* Example using [`wrapContent()`](#wrapContent)
+* Example showing right-to-left (RTL) language support. Similar to the Intro example.
+* Example showing a simple form example
 * Example showing relative positioning.
 * Example using Objective-C
 * ...
@@ -1520,6 +1520,7 @@ There is an Example app that expose some usage example on PinLayout, including:
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" alt="PinLayout example" width=120/></a>  
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/WrapContent/WrapContentView.swift"><img src="docs/pinlayout_example_wrapContent.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/> </a> 

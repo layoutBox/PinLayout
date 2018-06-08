@@ -42,9 +42,7 @@ extension PinLayoutImpl {
     }
     
     internal func setTop(_ value: CGFloat, _ context: Context) {
-        if let _bottom = _bottom, let height = height {
-            warnConflict(context, ["bottom": _bottom, "height": height])
-        } else if let _vCenter = _vCenter {
+        if let _vCenter = _vCenter {
             warnConflict(context, ["Vertical Center": _vCenter])
         } else if let _top = _top, _top != value {
             warnPropertyAlreadySet("top", propertyValue: _top, context)
@@ -73,9 +71,7 @@ extension PinLayoutImpl {
     }
     
     internal func setLeft(_ value: CGFloat, _ context: Context) {
-        if let _right = _right, let width = width {
-            warnConflict(context, ["right": _right, "width": width])
-        } else if let _hCenter = _hCenter {
+        if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _left = _left, _left != value {
             warnPropertyAlreadySet("left", propertyValue: _left, context)
@@ -114,9 +110,7 @@ extension PinLayoutImpl {
     }
     
     internal func setRight(_ value: CGFloat, _ context: Context) {
-        if let _left = _left, let width = width {
-            warnConflict(context, ["left": _left, "width": width])
-        } else if let _hCenter = _hCenter {
+        if let _hCenter = _hCenter {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _right = _right, _right != value {
             if let superview = view.superview {
@@ -159,9 +153,7 @@ extension PinLayoutImpl {
     }
     
     internal func setBottom(_ value: CGFloat, _ context: Context) {
-        if let _top = _top, let height = height {
-            warnConflict(context, ["top": _top, "height": height])
-        } else if let _vCenter = _vCenter {
+        if let _vCenter = _vCenter {
             warnConflict(context, ["Vertical Center": _vCenter])
         } else if let _bottom = _bottom, _bottom != value {
             if let superview = view.superview {

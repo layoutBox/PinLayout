@@ -19,7 +19,22 @@
 
 import UIKit
 
-extension UIColor {
-    class var pinLayoutColor: UIColor { return UIColor(red: 90.0 / 255.0, green: 171.0 / 255.0, blue: 243.0 / 255.0, alpha: 1.0) }
-    class var lightColor: UIColor { return UIColor(red: 230.0 / 255.0, green: 240.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0) }
+class WrapContentViewController: UIViewController {
+    fileprivate var mainView: WrapContentView {
+        return self.view as! WrapContentView
+    }
+
+    init(pageType: PageType) {
+        super.init(nibName: nil, bundle: nil)
+        
+        title = pageType.text
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func loadView() {
+        view = WrapContentView()
+    }
 }

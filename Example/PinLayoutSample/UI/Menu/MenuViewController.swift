@@ -25,6 +25,7 @@ enum PageType: Int {
     case tableView
     case collectionView
     case safeArea
+    case wrapContent
     case form
     case relativePositions
     case multiRelativePositions
@@ -41,6 +42,7 @@ enum PageType: Int {
         case .tableView:              return "UITableView with variable cell's height"
         case .collectionView:         return "UICollectionView Example"
         case .safeArea:               return "SafeArea"
+        case .wrapContent:            return "wrapContent Example"
         case .form:                   return "Form Example"
         case .relativePositions:      return "Relative Positionning"
         case .multiRelativePositions: return "Multiple Relatives Positionning"
@@ -65,6 +67,8 @@ enum PageType: Int {
             let tabbarController = UITabBarController()
             tabbarController.setViewControllers([SafeAreaViewController(), SafeAreaCornersViewController()], animated: false)
             return tabbarController
+        case .wrapContent:
+            return WrapContentViewController(pageType: self)
         case .form:
             return FormViewController(pageType: self)
         case .relativePositions:

@@ -59,7 +59,6 @@ class PinSafeAreaSpec: QuickSpec {
                     offsetView.pin.top(10).width(100).height(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackOpaque
                 navigationController.navigationBar.isTranslucent = false
                 setupWindow(with: navigationController)
 
@@ -95,7 +94,7 @@ class PinSafeAreaSpec: QuickSpec {
                 let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
                 let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 if #available(iOS 11.0, tvOS 11.0, *) {
@@ -124,7 +123,7 @@ class PinSafeAreaSpec: QuickSpec {
                 let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
                 let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 if #available(iOS 11.0, tvOS 11.0, *) {
@@ -150,7 +149,7 @@ class PinSafeAreaSpec: QuickSpec {
                     offsetView.pin.all().margin(parent.pin.safeArea)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 let expectedSafeAreaInsets: UIEdgeInsets
@@ -203,7 +202,8 @@ class PinSafeAreaSpec: QuickSpec {
                     expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
                     expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
                 }
-                navigationController.navigationBar.barStyle = .blackTranslucent
+
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 if #available(iOS 11.0, tvOS 11.0, *) {
@@ -297,7 +297,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
                     subView.pin.top(10).left(10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -325,7 +325,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
                     subView.pin.top(10).left(-10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -353,7 +353,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
                     subView.pin.top(10).right(10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -382,7 +382,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
                     subView.pin.top(10).right(-10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -411,7 +411,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
                     subView.pin.top(-20).left(-10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -470,7 +470,7 @@ class PinSafeAreaWithOptInModeSpec: QuickSpec {
                     subView.pin.top(10).left(10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -531,7 +531,7 @@ class PinSafeAreaWithOptInInsetsUpdateModeSpec: QuickSpec {
                     subView.pin.top(10).left(10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -597,7 +597,8 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
                     subView.pin.top(10).left(10).size(100)
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+//                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -629,7 +630,7 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
                     subView.pin.all()
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!
@@ -684,7 +685,7 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
                     if #available(iOS 11.0, tvOS 11.0, *) { return 1 } else { return 3 }
                 }
 
-                navigationController.navigationBar.barStyle = .blackTranslucent
+                navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
                 // MATCH safeAreaInsets!

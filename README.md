@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/layoutBox/PinLayout"><img src="docs/pinlayout-logo-text.png" alt="PinLayout" width="200" /></a>
+  <a href="https://github.com/layoutBox/PinLayout"><img src="docs/pinlayout-logo-text.png" width="200" /></a>
 </p>
  
 <p align="center">
@@ -36,7 +36,9 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Xcode 8.0+ / Xcode 9.0+
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
-### Recent features
+### Recent changes/features
+* :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization. See other **[layoutBox](https://github.com/layoutBox)** projects.
+
 * :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
 
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
@@ -81,11 +83,11 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 :pushpin: PinLayout is actively updated. So please come often to see latest changes. You can also **Star** it to be able to retrieve it easily later.
 
 
-### PinLayout + FlexLayout
+### PinLayout and layoutBox
 
-<a href="https://github.com/layoutBox/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="200"/></a>
+<a href="https://github.com/layoutBox/PinLayout"><img src="docs/images/pinlayout_plus_layoutBox.png" width="200"/></a>
 
-**PinLayout** is a companion of **[FlexLayout](https://github.com/layoutBox/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation. A view can layouts its subviews using PinLayout, FlexLayout, or both! FlexLayout it is particularly useful in situations where you need to layouts many views but don't require the PinLayout's finest control nor complex animations. 
+**PinLayout** is part of the **layoutBox** organization containing few Open Source projects related to layout using Swift. See  **[layoutBox](https://github.com/layoutBox)**. 
 
 ### PinLayout + Autolayout
 You don't need to choose, you can layout some views using PinLayout and some other with autolayout. Your views just to need to implement the autolayout `intrinsicContentSize` properties.
@@ -170,7 +172,7 @@ As you can see in the following chart, PinLayout are faster or equal to manual l
 
 <p align="center">
 	<a href="docs/Benchmark.md">
-	  <img src="docs/Benchmark/benchmark_comparison_all_small.png" alt="PinLayout Performance" width=660/>
+	  <img src="docs/Benchmark/benchmark_comparison_all_small.png" width=660/>
 	  </a>
 </p>
 
@@ -1515,16 +1517,16 @@ There is an Example app that expose some usage example on PinLayout, including:
 :pushpin: Tap on images to see the example's source code.
 
 <p align="center">
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png" alt="PinLayout example" width=420/></a>
-  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift"><img src="docs/images/pinlayout_safearea_example_iphonex.png" alt="PinLayout example" width=420/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" alt="PinLayout example" width=120/></a>  
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png" width=420/></a>
+  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift"><img src="docs/images/pinlayout_safearea_example_iphonex.png" width=420/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" width=120/></a>  
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/WrapContent/WrapContentView.swift"><img src="docs/pinlayout_example_wrapContent.png" width=120/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/> </a> 
-  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" width=120/> </a> 
+  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" width=120/></a>
 </p>
 
 This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.

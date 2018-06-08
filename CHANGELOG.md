@@ -16,7 +16,6 @@ PinLayout is now part of the same organization as other open source projects rel
 #### Refactor source code that handle size adjustment.
 * Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#143](https://github.com/layoutBox/PinLayout/pull/143) 
 
-
 ## [1.7.5](https://github.com/layoutBox/PinLayout/releases/tag/1.7.5)
 Released on 2018-06-05
 

@@ -9,7 +9,7 @@ PinLayout can also be used from Objective-C. The PinLayout interface is slightly
 ###### Example 1:
 This example implement the PinLayout's Intro example using objective-c 
 
-<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="images/pinlayout_intro_example_iphonex.png"/></a>
+<a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="images/pinlayout_intro_example_iphonex.png"/></a>
 
 ```
 - (void) layoutSubviews {
@@ -23,7 +23,7 @@ This example implement the PinLayout's Intro example using objective-c
 
 ``` 
 
-:pushpin: This example is available in the Examples App. See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/IntroObjectiveC/IntroObjectiveCView.m)
+:pushpin: This example is available in the Examples App. See example complete [source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/IntroObjectiveC/IntroObjectiveCView.m)
 
 ## Important notes about PinLayout's Objective-c interface
 

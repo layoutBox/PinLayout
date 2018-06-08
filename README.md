@@ -1,19 +1,19 @@
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout"><img src="docs/pinlayout-logo-text.png" alt="PinLayout" width="200" /></a>
+  <a href="https://github.com/layoutBox/PinLayout"><img src="docs/pinlayout-logo-text.png" alt="PinLayout" width="200" /></a>
 </p>
  
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout"><img src="https://img.shields.io/badge/platforms-iOS%20%7C%20tvOS%20%7C%20macOS-red.svg"/></a>
-  <a href="https://github.com/mirego/PinLayout"><img src="https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-red.svg"/></a>
+  <a href="https://github.com/layoutBox/PinLayout"><img src="https://img.shields.io/badge/platforms-iOS%20%7C%20tvOS%20%7C%20macOS-red.svg"/></a>
+  <a href="https://github.com/layoutBox/PinLayout"><img src="https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-red.svg"/></a>
 </p>
 
 <p align="center">
   <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg?style=flat" />	 
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" /></a>
   <a href="https://swift.org/package-manager/"><img src="https://camo.githubusercontent.com/57aa80b42087a088cdf607fb98c0224bccf1b441/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73706d2d636f6d70617469626c652d627269676874677265656e2e7376673f7374796c653d666c6174" /></a>
-  <a href="https://travis-ci.org/mirego/PinLayout"><img src="https://travis-ci.org/mirego/PinLayout.svg?branch=master&colorB=28B9FE" /></a>
-  <a href="https://codecov.io/gh/mirego/PinLayout"><img src="https://codecov.io/gh/mirego/PinLayout/branch/master/graph/badge.svg"/></a>
-  <a href="https://raw.githubusercontent.com/mirego/PinLayout/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/PinLayout.svg" /></a>
+  <a href="https://travis-ci.org/layoutBox/PinLayout"><img src="https://travis-ci.org/layoutBox/PinLayout.svg?branch=master&colorB=28B9FE" /></a>
+  <a href="https://codecov.io/gh/layoutBox/PinLayout"><img src="https://codecov.io/gh/layoutBox/PinLayout/branch/master/graph/badge.svg"/></a>
+  <a href="https://raw.githubusercontent.com/layoutBox/PinLayout/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/PinLayout.svg" /></a>
 </p>
 
 <!--p align="center">
@@ -23,7 +23,7 @@
   <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/at/PinLayout.svg?label=Apps%20Using%20PinLayout&colorB=317cb0"/></a>
 </p-->
 
-<!--<a href="https://github.com/mirego/PinLayout/issues"><img src="https://img.shields.io/github/issues/mirego/PinLayout.svg?style=flat" /></a>-->
+<!--<a href="https://github.com/layoutBox/PinLayout/issues"><img src="https://img.shields.io/github/issues/layoutBox/PinLayout.svg?style=flat" /></a>-->
 
 
 Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. 
@@ -83,7 +83,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### PinLayout + FlexLayout
 
-<a href="https://github.com/mirego/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="200"/></a>
+<a href="https://github.com/layoutBox/PinLayout"><img src="docs/images/pinlayout_plus_flexlayout_small.png" alt="FlexLayout" width="200"/></a>
 
 **PinLayout** is a companion of **[FlexLayout](https://github.com/layoutBox/FlexLayout)**. They share a similar syntax and method names. FlexLayout is a flexbox implementation. A view can layouts its subviews using PinLayout, FlexLayout, or both! FlexLayout it is particularly useful in situations where you need to layouts many views but don't require the PinLayout's finest control nor complex animations. 
 
@@ -104,7 +104,7 @@ This example layout an image, a UISegmentedControl, a label and a line separator
 * **Separator** is below the UIImageView and the UILabel, i.e. below the tallest one. The separator has a top margin of 10 pixels, left-aligned to the UIImageView and right-aligned to the UISegmentedControl.
 
 
-<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png"/></a>  
+<a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png"/></a>  
 
 ```swift
 override func layoutSubviews() {
@@ -121,7 +121,7 @@ override func layoutSubviews() {
 * 4 views, 4 lines
 * PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
 * PinLayout doesn't use auto layout constraints, it is a framework that manually layout views. For that reason you need to update the layout inside either `UIView.layoutSubviews()` or `UIViewController.viewDidLayoutSubviews()` to handle container size's changes, including device rotation. You'll also need to handle UITraitCollection changes for app's that support multitasking. In the example above PinLayout's commands are inside UIView's `layoutSubviews()` method.
-* This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift)
+* This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift)
 
 <br/>
 
@@ -131,7 +131,7 @@ This example shows how easily PinLayout can adjust its layout based on the view'
 * If the container's width is smaller than 500 pixels, the label takes the full width and the UISegmentedControl is placed below it.
 * If the container's width is greater or equal to 500 pixels, the UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
 
-<a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container2.png" width="640"/></a>
+<a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container2.png" width="640"/></a>
 
 
 ```swift
@@ -146,7 +146,7 @@ This example shows how easily PinLayout can adjust its layout based on the view'
   }
 ``` 
 
-:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift)
+:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift)
 
 
 <a name="introduction"></a>
@@ -1132,7 +1132,7 @@ This example layout 4 subviews inside the safeArea. The UINavigationBar and UITa
 
 This example runs perfectly on a iPhone X (iOS 11), but it also runs on any devices with iOS 7, 8, 9 and 10.
 
-:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift)
+:pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift)
 
 
 <br/>
@@ -1181,16 +1181,16 @@ Here is the initial state:
 
 
 ###### Example:
-This example shows how a view (`containerView`) with two subviews (`imageView` and `label`), can be adjusted to the size of its subviews and then centered inside its parent.
+This example shows how a view (`containerView`) that has subviews (`imageView` and `label`) can be adjusted to the size of its subviews and then centered inside its parent.
 
-<img src="docs/images/wrapContent_example_1.png" width="540"/>
+<img src="docs/images/wrapContent_example.png" width="540"/>
 
 ```swift
    label.pin.below(of: imageView, aligned: .center).marginTop(4)
-   containerView.pin.wrapContent().center()
+   containerView.pin.wrapContent(padding: 10).center()
 ```
 * Line 1: Position the label below the imageView aligned on its center with a top margin of 4 pixels. 
-* Line 2: Adjust the `containerView`'s size and position its subviews to create a tight wrap around them, and then it center the `containerView` inside its parent (superview).    
+* Line 2: Adjust the `containerView`'s size and position its subviews to create a tight wrap around them with a padding of 10 pixels all around. The `containerView` is also centered inside its parent (superview).
 
 <br/>
 
@@ -1480,7 +1480,7 @@ Then, run `pod install`.
 To integrate PinLayout into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```
-github "mirego/PinLayout"
+github "layoutBox/PinLayout"
 ```
 
 Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
@@ -1491,7 +1491,7 @@ Once you have your Swift package set up, you only need to add PinLayout as a dep
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/mirego/PinLayout.git", majorVersion: 1)
+    .Package(url: "https://github.com/layoutBox/PinLayout.git", majorVersion: 1)
 ]
 ```
 
@@ -1515,16 +1515,16 @@ There is an Example app that expose some usage example on PinLayout, including:
 :pushpin: Tap on images to see the example's source code.
 
 <p align="center">
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png" width=420/></a>
-  <a href="https://github.com/mirego/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift"><img src="docs/images/pinlayout_safearea_example_iphonex.png" width=420/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/WrapContent/WrapContentView.swift"><img src="docs/pinlayout_example_wrapContent.png" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" width=120/></a>
-  <a href="https://github.com/mirego/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" width=120/> </a> 
-  <a href="https://github.com/mirego/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png" alt="PinLayout example" width=420/></a>
+  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift"><img src="docs/images/pinlayout_safearea_example_iphonex.png" alt="PinLayout example" width=420/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" alt="PinLayout example" width=120/></a>  
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/WrapContent/WrapContentView.swift"><img src="docs/pinlayout_example_wrapContent.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" alt="PinLayout example" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" alt="PinLayout example" width=120/> </a> 
+  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" alt="PinLayout example" width=120/></a>
 </p>
 
 This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.
@@ -1600,9 +1600,9 @@ All example in the [Examples App](#examples_app) handle correctly the `safeAreaI
 
 <a name="comments"></a>
 ## Questions, comments, ideas, suggestions, issues, .... 
-If you have questions, you can checks already [answered questions here.](https://github.com/mirego/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
+If you have questions, you can checks already [answered questions here.](https://github.com/layoutBox/PinLayout/issues?q=is%3Aissue+is%3Aclosed+label%3Aquestion)
 
-For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/mirego/PinLayout/issues).
+For any **comments**, **ideas**, **suggestions**, **issues**, simply open an [issue](https://github.com/layoutBox/PinLayout/issues).
 
 If you find PinLayout interesting, thanks to **Star** it. You'll be able to retrieve it easily later.
 
@@ -1622,7 +1622,7 @@ PinLayout was inspired by other great layout frameworks, including:
 <br>
 
 ## History
-PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [GitHub Releases](https://github.com/mirego/PinLayout/releases).
+PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [GitHub Releases](https://github.com/layoutBox/PinLayout/releases).
 
 <br>
 

@@ -8,7 +8,7 @@
 # Change Log
 
 ## [1.7.6](https://github.com/mirego/PinLayout/releases/tag/1.7.5)
-Released on 2018-06-06
+Released on 2018-06-06 
 
 ##### Refactor source code that handle size adjustment.
 

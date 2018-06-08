@@ -7,10 +7,14 @@
 
 # Change Log
 
-## [1.7.6](https://github.com/layoutBox/PinLayout/releases/tag/1.7.5)
-Released on 2018-06-06
+## [1.7.6](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
+Released on 2018-06-07
 
-##### Refactor source code that handle size adjustment.
+### PinLayout has moved to the **layoutBox** organization
+PinLayout is now part of the same organization as other open source projects related to layout using Swift.
+
+#### Refactor source code that handle size adjustment.
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#143](https://github.com/layoutBox/PinLayout/pull/143) 
 
 
 ## [1.7.5](https://github.com/layoutBox/PinLayout/releases/tag/1.7.5)

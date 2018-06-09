@@ -82,7 +82,7 @@ extension PinLayoutImpl {
 
     func size(of view: PView) -> PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
-        return setSize(Coordinates.getViewRect(view, keepTransform: keepTransform).size, context)
+        return setSize(view.getRect(keepTransform: keepTransform).size, context)
     }
 
     @discardableResult
@@ -91,7 +91,7 @@ extension PinLayoutImpl {
     }
 
     func aspectRatio(of view: PView) -> PinLayout {
-        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        let rect = view.getRect(keepTransform: keepTransform)
         return setAdjustSizeType(.aspectRatio(rect.width / rect.height), { "aspectRatio(of: \(viewDescription(view)))" })
     }
 

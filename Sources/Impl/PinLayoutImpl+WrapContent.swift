@@ -52,9 +52,9 @@ extension PinLayoutImpl {
         let subviews = view.subviews
         guard !subviews.isEmpty else { return self }
 
-        let firstViewRect = Coordinates.getViewRect(subviews[0], keepTransform: keepTransform)
+        let firstViewRect = subviews[0].getRect(keepTransform: keepTransform)
         let boundingRect = subviews.reduce(firstViewRect, { (result, view) in
-            result.union(Coordinates.getViewRect(view, keepTransform: keepTransform))
+            result.union(view.getRect(keepTransform: keepTransform))
         })
 
         var offsetDx: CGFloat = 0
@@ -80,9 +80,9 @@ extension PinLayoutImpl {
 
         if offsetDx != 0 || offsetDy != 0 {
             subviews.forEach { (view) in
-                let viewRect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+                let viewRect = view.getRect(keepTransform: keepTransform)
                 let newRect = viewRect.offsetBy(dx: offsetDx, dy: offsetDy)
-                Coordinates.setViewRect(view, toRect: newRect, keepTransform: keepTransform)
+                view.setRect(newRect, keepTransform: keepTransform)
             }
         }
 

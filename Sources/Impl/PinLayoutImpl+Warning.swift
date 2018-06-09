@@ -115,7 +115,7 @@ extension PinLayoutImpl {
     }
 
     internal func viewDescription(_ view: PView) -> String {
-        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        let rect = view.getRect(keepTransform: keepTransform)
         return "(\(viewName(view)), Frame: \(rect))"
     }
     
@@ -130,7 +130,7 @@ extension PinLayoutImpl {
     internal func pinLayoutDisplayConsoleWarning(_ text: String, _ view: PView) {
         var displayText = "\n👉 \(text)"
 
-        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        let rect = view.getRect(keepTransform: keepTransform)
         let x = numberFormatter.string(from: NSNumber(value: Float(rect.origin.x)))!
         let y = numberFormatter.string(from: NSNumber(value: Float(rect.origin.y)))!
         let width = numberFormatter.string(from: NSNumber(value: Float(rect.size.width)))!

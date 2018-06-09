@@ -40,9 +40,9 @@ public extension UIView {
     }
 
     // Expose PinLayout's objective-c interface.
-    @objc public var pinObjc: PinLayoutObjC {
-        return PinLayoutObjCImpl(view: self, keepTransform: true)
-    }
+//    @objc public var pinObjc: PinLayoutObjC {
+//        return PinLayoutObjCImpl(view: self, keepTransform: true)
+//    }
 }
 
 #endif

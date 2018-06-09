@@ -114,7 +114,7 @@ extension PinLayoutImpl {
             warnConflict(context, ["Horizontal Center": _hCenter])
         } else if let _right = _right, _right != value {
             if let superview = view.superview {
-                let rect = Coordinates.getViewRect(superview, keepTransform: keepTransform)
+                let rect = superview.getRect(keepTransform: keepTransform)
                 warnPropertyAlreadySet("right", propertyValue: rect.width - _right, context)
             } else {
                 warnPropertyAlreadySet("right", propertyValue: _right, context)
@@ -158,7 +158,7 @@ extension PinLayoutImpl {
             warnConflict(context, ["Vertical Center": _vCenter])
         } else if let _bottom = _bottom, _bottom != value {
             if let superview = view.superview {
-                let rect = Coordinates.getViewRect(superview, keepTransform: keepTransform)
+                let rect = superview.getRect(keepTransform: keepTransform)
                 warnPropertyAlreadySet("bottom", propertyValue: rect.height - _bottom, context)
             } else {
                 warnPropertyAlreadySet("bottom", propertyValue: _bottom, context)
@@ -365,7 +365,7 @@ extension PinLayoutImpl {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
         } else if referenceSuperview == layoutSuperview.superview {
-            let layoutSuperviewRect = Coordinates.getViewRect(layoutSuperview, keepTransform: keepTransform)
+            let layoutSuperviewRect = layoutSuperview.getRect(keepTransform: keepTransform)
             return CGPoint(x: point.x - layoutSuperviewRect.origin.x,
                            y: point.y - layoutSuperviewRect.origin.y)
         // TOOD: Handle all cases. computeCoordinates should compute coordinates using only untransformed

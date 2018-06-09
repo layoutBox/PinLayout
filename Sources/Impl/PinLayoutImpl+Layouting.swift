@@ -38,7 +38,7 @@ extension PinLayoutImpl {
     private func apply(onView view: PView) {
         displayLayoutWarnings()
         
-        var newRect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        var newRect = view.getRect(keepTransform: keepTransform)
         
         handlePinEdges()
         
@@ -117,11 +117,11 @@ extension PinLayoutImpl {
         }
         
         if !validateComputedWidth(newRect.size.width) {
-            newRect.size.width = Coordinates.getViewRect(view, keepTransform: keepTransform).width
+            newRect.size.width = view.getRect(keepTransform: keepTransform).width
         }
         
         if !validateComputedHeight(newRect.size.height) {
-            newRect.size.height = Coordinates.getViewRect(view, keepTransform: keepTransform).height
+            newRect.size.height = view.getRect(keepTransform: keepTransform).height
         }
         
         /*
@@ -130,7 +130,7 @@ extension PinLayoutImpl {
          By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
          the view's transform. So view's transforms won't be affected/altered by PinLayout.
         */
-        Coordinates.setViewRect(view, toRect: newRect, keepTransform: keepTransform)
+        view.setRect(newRect, keepTransform: keepTransform)
     }
     
     private func handlePinEdges() {
@@ -211,7 +211,7 @@ extension PinLayoutImpl {
             size.width = right - left - _marginLeft - _marginRight
         } else if shouldKeepViewDimension {
             // No width has been specified (and won't be computed by a sizeToFit) => use the current view's width
-            size.width = Coordinates.getViewRect(view, keepTransform: keepTransform).width
+            size.width = view.getRect(keepTransform: keepTransform).width
         }
 
         // Height
@@ -220,7 +220,7 @@ extension PinLayoutImpl {
         } else if let top = _top, let bottom = _bottom {
             size.height = bottom - top - _marginTop - _marginBottom
         } else if shouldKeepViewDimension {
-            size.height = Coordinates.getViewRect(view, keepTransform: keepTransform).height
+            size.height = view.getRect(keepTransform: keepTransform).height
         }
 
         return size
@@ -275,13 +275,13 @@ extension PinLayoutImpl {
             if let width = applyMinMax(toWidth: size.width) {
                 fitWidth = width
             } else {
-                fitWidth = Coordinates.getViewRect(view, keepTransform: keepTransform).width
+                fitWidth = view.getRect(keepTransform: keepTransform).width
             }
         case .fitTypeHeight, .fitTypeHeightFlexible:
             if let height = applyMinMax(toHeight: size.height) {
                 fitHeight = height
             } else {
-                fitHeight = Coordinates.getViewRect(view, keepTransform: keepTransform).height
+                fitHeight = view.getRect(keepTransform: keepTransform).height
             }
         default:
             assertionFailure("Should not occured")

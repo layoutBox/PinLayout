@@ -71,10 +71,10 @@ extension PinLayoutImpl {
             newRect.origin.x = left + _marginLeft
         } else if let right = _right {
             // Only right is set
-            newRect.origin.x = right - view.bounds.width - _marginRight
+            newRect.origin.x = right - newRect.width - _marginRight
         } else if let _hCenter = _hCenter {
             // Only hCenter is set
-            newRect.origin.x = (_hCenter - (view.bounds.width / 2)) + _marginLeft - _marginRight
+            newRect.origin.x = (_hCenter - (newRect.width / 2)) + _marginLeft - _marginRight
         } else if let width = newSize.width {
             // Only width is set
             newRect.size.width = width
@@ -107,21 +107,21 @@ extension PinLayoutImpl {
             newRect.origin.y = top + _marginTop
         } else if let bottom = _bottom {
             // Only bottom is set
-            newRect.origin.y = bottom - view.bounds.height - _marginBottom
+            newRect.origin.y = bottom - newRect.height - _marginBottom
         } else if let _vCenter = _vCenter {
             // Only vCenter is set
-            newRect.origin.y = (_vCenter - (view.bounds.height / 2)) + _marginTop - _marginBottom
+            newRect.origin.y = (_vCenter - (newRect.height / 2)) + _marginTop - _marginBottom
         } else if let height = newSize.height {
             // Only height is set
             newRect.size.height = height
         }
         
         if !validateComputedWidth(newRect.size.width) {
-            newRect.size.width = view.bounds.width
+            newRect.size.width = Coordinates.getViewRect(view, keepTransform: keepTransform).width
         }
         
         if !validateComputedHeight(newRect.size.height) {
-            newRect.size.height = view.bounds.height
+            newRect.size.height = Coordinates.getViewRect(view, keepTransform: keepTransform).height
         }
         
         /*
@@ -275,13 +275,13 @@ extension PinLayoutImpl {
             if let width = applyMinMax(toWidth: size.width) {
                 fitWidth = width
             } else {
-                fitWidth = view.bounds.width
+                fitWidth = Coordinates.getViewRect(view, keepTransform: keepTransform).width
             }
         case .fitTypeHeight, .fitTypeHeightFlexible:
             if let height = applyMinMax(toHeight: size.height) {
                 fitHeight = height
             } else {
-                fitHeight = view.bounds.height
+                fitHeight = Coordinates.getViewRect(view, keepTransform: keepTransform).height
             }
         default:
             assertionFailure("Should not occured")

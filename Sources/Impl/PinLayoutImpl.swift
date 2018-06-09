@@ -643,7 +643,8 @@ class PinLayoutImpl: PinLayout {
     }
 
     func width(of view: PView) -> PinLayout {
-        return setWidth(view.bounds.width, { return "width(of: \(viewDescription(view)))" })
+        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        return setWidth(rect.width, { return "width(of: \(viewDescription(view)))" })
     }
 
     func minWidth(_ width: CGFloat) -> PinLayout {
@@ -679,7 +680,8 @@ class PinLayoutImpl: PinLayout {
     }
 
     func height(of view: PView) -> PinLayout {
-        return setHeight(view.bounds.height, { return "height(of: \(viewDescription(view)))" })
+        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        return setHeight(rect.height, { return "height(of: \(viewDescription(view)))" })
     }
 
     func minHeight(_ height: CGFloat) -> PinLayout {

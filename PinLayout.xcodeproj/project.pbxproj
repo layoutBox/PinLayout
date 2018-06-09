@@ -101,7 +101,6 @@
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
 		DFEAF71220C8081800E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
 		DFEAF75020C9661B00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
-		DFEAF75120C9661C00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
 		DFEAF75220C9661D00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
 		DFEAF75320C9667C00E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
 		DFEAF75420C9667D00E33147 /* PinLayoutImpl+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF71120C8081800E33147 /* PinLayoutImpl+Size.swift */; };
@@ -911,7 +910,6 @@
 				DFF222E420BACBC000AC2A84 /* WrapContentSpec.swift in Sources */,
 				DFED15532085349A009EF9A7 /* RectNimbleMatcher.swift in Sources */,
 				DFB288B12085419B001F9588 /* RelativePositionSpec.swift in Sources */,
-				DFEAF75120C9661C00E33147 /* ObjectiveCSpec.m in Sources */,
 				DFB288B2208541B7001F9588 /* RelativePositionMultipleViewsSpec.swift in Sources */,
 				DFB288B02085416E001F9588 /* RTLSpec.swift in Sources */,
 				DFB288AB2085400C001F9588 /* MinMaxWidthHeightSpec.swift in Sources */,

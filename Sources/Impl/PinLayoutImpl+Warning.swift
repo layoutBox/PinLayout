@@ -30,37 +30,6 @@ fileprivate var numberFormatter: NumberFormatter = {
     return numberFormatter
 }()
 
-internal func pinLayoutDisplayConsoleWarning(_ text: String, _ view: PView) {
-    var displayText = "\n👉 \(text)"
-
-    let x = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.x)))!
-    let y = numberFormatter.string(from: NSNumber(value: Float(view.frame.origin.y)))!
-    let width = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.width)))!
-    let height = numberFormatter.string(from: NSNumber(value: Float(view.frame.size.height)))!
-    let viewName = "\(type(of: view))"
-    displayText += "\n(Layouted view info: Type: \(viewName), Frame: x: \(x), y: \(y), width: \(width), height: \(height))"
-
-    var currentView = view
-    var hierarchy: [String] = []
-    while let parent = currentView.superview {
-        hierarchy.insert("\(type(of: parent))", at: 0)
-        currentView = parent
-    }
-    if hierarchy.count > 0 {
-        #if swift(>=4.1)
-        displayText += ", Superviews: \(hierarchy.compactMap({ $0 }).joined(separator: " -> "))"
-        #else
-        displayText += ", Superviews: \(hierarchy.flatMap({ $0 }).joined(separator: " -> "))"
-        #endif
-    }
-
-    displayText += ", Tag: \(view.tag))\n"
-
-    print(displayText)
-    Pin.lastWarningText = text
-}
-
-
 extension PinLayoutImpl {
     internal func pointContext(method: String, point: CGPoint) -> String {
         return "\(method)(to: CGPoint(x: \(point.x), y: \(point.y)))"
@@ -146,7 +115,8 @@ extension PinLayoutImpl {
     }
 
     internal func viewDescription(_ view: PView) -> String {
-        return "(\(viewName(view)), Frame: \(view.frame))"
+        let rect = view.getRect(keepTransform: keepTransform)
+        return "(\(viewName(view)), Frame: \(rect))"
     }
     
     internal func viewName(_ view: PView) -> String {
@@ -155,5 +125,36 @@ extension PinLayoutImpl {
 
     internal func insetsDescription(_ insets: PEdgeInsets) -> String {
         return "UIEdgeInsets(top: \(insets.top), left: \(insets.left), bottom: \(insets.bottom), right: \(insets.right))"
+    }
+
+    internal func pinLayoutDisplayConsoleWarning(_ text: String, _ view: PView) {
+        var displayText = "\n👉 \(text)"
+
+        let rect = view.getRect(keepTransform: keepTransform)
+        let x = numberFormatter.string(from: NSNumber(value: Float(rect.origin.x)))!
+        let y = numberFormatter.string(from: NSNumber(value: Float(rect.origin.y)))!
+        let width = numberFormatter.string(from: NSNumber(value: Float(rect.size.width)))!
+        let height = numberFormatter.string(from: NSNumber(value: Float(rect.size.height)))!
+        let viewName = "\(type(of: view))"
+        displayText += "\n(Layouted view info: Type: \(viewName), Frame: x: \(x), y: \(y), width: \(width), height: \(height))"
+
+        var currentView = view
+        var hierarchy: [String] = []
+        while let parent = currentView.superview {
+            hierarchy.insert("\(type(of: parent))", at: 0)
+            currentView = parent
+        }
+        if hierarchy.count > 0 {
+            #if swift(>=4.1)
+            displayText += ", Superviews: \(hierarchy.compactMap({ $0 }).joined(separator: " -> "))"
+            #else
+            displayText += ", Superviews: \(hierarchy.flatMap({ $0 }).joined(separator: " -> "))"
+            #endif
+        }
+
+        displayText += ", Tag: \(view.tag))\n"
+
+        print(displayText)
+        Pin.lastWarningText = text
     }
 }

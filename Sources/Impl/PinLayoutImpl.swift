@@ -643,7 +643,8 @@ class PinLayoutImpl: PinLayout {
     }
 
     func width(of view: PView) -> PinLayout {
-        return setWidth(view.bounds.width, { return "width(of: \(viewDescription(view)))" })
+        let rect = view.getRect(keepTransform: keepTransform)
+        return setWidth(rect.width, { return "width(of: \(viewDescription(view)))" })
     }
 
     func minWidth(_ width: CGFloat) -> PinLayout {
@@ -679,7 +680,8 @@ class PinLayoutImpl: PinLayout {
     }
 
     func height(of view: PView) -> PinLayout {
-        return setHeight(view.bounds.height, { return "height(of: \(viewDescription(view)))" })
+        let rect = view.getRect(keepTransform: keepTransform)
+        return setHeight(rect.height, { return "height(of: \(viewDescription(view)))" })
     }
 
     func minHeight(_ height: CGFloat) -> PinLayout {
@@ -925,7 +927,7 @@ class PinLayoutImpl: PinLayout {
 extension PinLayoutImpl {
     internal func layoutSuperviewRect(_ context: Context) -> CGRect? {
         if let superview = view.superview {
-            return Coordinates.getViewRect(superview, keepTransform: keepTransform)
+            return superview.getRect(keepTransform: keepTransform)
         } else {
             // Disable this warning: Using XIB, layoutSubview() is called even before views have been
             // added, and there is no way to modify that strange behaviour of UIKit.

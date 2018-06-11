@@ -63,7 +63,7 @@ class HorizontalEdgeImpl: HorizontalEdge {
     let type: EdgeType
 
     func x(keepTransform: Bool) -> CGFloat {
-        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        let rect = view.getRect(keepTransform: keepTransform)
         
         switch type {
         case .left:    return rect.origin.x
@@ -89,7 +89,7 @@ class VerticalEdgeImpl: VerticalEdge {
     internal let type: EdgeType
 
     func y(keepTransform: Bool) -> CGFloat {
-        let rect = Coordinates.getViewRect(view, keepTransform: keepTransform)
+        let rect = view.getRect(keepTransform: keepTransform)
         
         switch type {
         case .top:     return rect.origin.y

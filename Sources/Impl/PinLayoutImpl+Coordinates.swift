@@ -23,7 +23,7 @@
     import AppKit
 #endif
 
-extension PinLayoutImpl {
+extension PinLayout {
     internal func top(_ context: Context) {
         setTop(0, context)
     }

@@ -30,7 +30,7 @@ fileprivate var numberFormatter: NumberFormatter = {
     return numberFormatter
 }()
 
-extension PinLayoutImpl {
+extension PinLayout {
     internal func pointContext(method: String, point: CGPoint) -> String {
         return "\(method)(to: CGPoint(x: \(point.x), y: \(point.y)))"
     }

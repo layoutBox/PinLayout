@@ -24,10 +24,10 @@ import AppKit
 #endif
 
 @objc class PinLayoutObjCImpl: NSObject, PinLayoutObjC {
-    fileprivate var impl: PinLayoutImpl?
+    fileprivate var impl: PinLayout?
     
     init(view: PView, keepTransform: Bool) {
-        impl = PinLayoutImpl(view: view, keepTransform: keepTransform)
+        impl = PinLayout(view: view, keepTransform: keepTransform)
     }
     
     deinit {

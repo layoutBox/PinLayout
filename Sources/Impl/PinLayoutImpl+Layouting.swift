@@ -24,7 +24,7 @@
 #endif
 
 // MARK: UIView's frame computation methods
-extension PinLayoutImpl {
+extension PinLayout {
     public func layout() {
         apply()
     }

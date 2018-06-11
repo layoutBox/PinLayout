@@ -24,11 +24,11 @@ import AppKit
 
 public extension NSView {
     public var pin: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: true)
+        return PinLayout(view: self, keepTransform: true)
     }
 
     public var pinFrame: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: false)
+        return PinLayout(view: self, keepTransform: false)
     }
 
     public var anchor: AnchorList {

@@ -24,11 +24,11 @@ import UIKit
 
 public extension UIView {
     public var pin: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: true)
+        return PinLayout(view: self, keepTransform: true)
     }
 
     public var pinFrame: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: false)
+        return PinLayout(view: self, keepTransform: false)
     }
 
     @objc public var anchor: AnchorList {

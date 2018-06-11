@@ -64,39 +64,39 @@ extension FitType {
     }
 }
 
-extension PinLayoutImpl {
-    func size(_ size: CGSize) -> PinLayout {
+extension PinLayout {
+    public func size(_ size: CGSize) -> PinLayout {
         return setSize(size, { return "size(CGSize(width: \(size.width), height: \(size.height)))" })
     }
 
-    func size(_ sideLength: CGFloat) -> PinLayout {
+    public func size(_ sideLength: CGFloat) -> PinLayout {
         return setSize(CGSize(width: sideLength, height: sideLength), { return "size(sideLength: \(sideLength))" })
     }
 
-    func size(_ percent: Percent) -> PinLayout {
+    public func size(_ percent: Percent) -> PinLayout {
         func context() -> String { return "size(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         let size = CGSize(width: percent.of(layoutSuperviewRect.width), height: percent.of(layoutSuperviewRect.height))
         return setSize(size, context)
     }
 
-    func size(of view: PView) -> PinLayout {
+    public func size(of view: PView) -> PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
         return setSize(view.getRect(keepTransform: keepTransform).size, context)
     }
 
     @discardableResult
-    func aspectRatio(_ ratio: CGFloat) -> PinLayout {
+    public func aspectRatio(_ ratio: CGFloat) -> PinLayout {
         return setAdjustSizeType(.aspectRatio(ratio), { "aspectRatio(\(ratio))" })
     }
 
-    func aspectRatio(of view: PView) -> PinLayout {
+    public func aspectRatio(of view: PView) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setAdjustSizeType(.aspectRatio(rect.width / rect.height), { "aspectRatio(of: \(viewDescription(view)))" })
     }
 
     #if os(iOS) || os(tvOS)
-    func aspectRatio() -> PinLayout {
+    public func aspectRatio() -> PinLayout {
         func context() -> String { return "aspectRatio()" }
         guard let imageView = view as? UIImageView else {
             warnWontBeApplied("the layouted must be an UIImageView() to use the aspectRatio() method without parameter.", context)
@@ -112,12 +112,12 @@ extension PinLayoutImpl {
     }
     #endif
 
-    func sizeToFit(_ fitType: FitType) -> PinLayout {
+    public func sizeToFit(_ fitType: FitType) -> PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }
 
     #if os(iOS) || os(tvOS)
-    func fitSize() -> PinLayout {
+    public func fitSize() -> PinLayout {
         return setAdjustSizeType(.fitSizeLegacy, { return "fitSize()" })
     }
     #endif
@@ -125,7 +125,7 @@ extension PinLayoutImpl {
 
 //
 // MARK: Private methods
-extension PinLayoutImpl {
+extension PinLayout {
     internal func setSize(_ size: CGSize, _ context: Context) -> PinLayout {
         setWidth(size.width, { return "\(context())'s width" })
         setHeight(size.height, { return "\(context())'s height" })

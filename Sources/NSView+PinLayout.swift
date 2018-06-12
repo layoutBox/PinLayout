@@ -29,18 +29,15 @@ extension NSView: Layoutable {
         return convert(point, to: view)
     }
 
-    public func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize.zero
-    }
-
-    public func sizeToFit() {
-
-    }
-
     // Expose PinLayout's objective-c interface.
     @objc public var pinObjc: PinLayoutObjC {
         return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
+}
+
+@available(OSX 10.10, *)
+extension NSControl: SizeCalculable {
+
 }
 
 #endif

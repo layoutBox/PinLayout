@@ -183,11 +183,11 @@ extension PinLayout {
             }
         }
     }
-    
+
     private func computeSize() -> Size {
         var size = resolveSize()
 
-        if let adjustSizeType = adjustSizeType {
+        if #available(OSX 10.10, *), let adjustSizeType = adjustSizeType {
             switch adjustSizeType {
             case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
@@ -226,7 +226,12 @@ extension PinLayout {
         return size
     }
 
+    @available(OSX 10.10, *)
     private func computeLegacyFitSize(size: Size) -> Size {
+        guard let sizeCalculableView = view as? SizeCalculable else {
+            warn("fitSize() won't be applied, view does not conform to protocol SizeCalculable.")
+            return size
+        }
         guard size.width != nil || size.height != nil else {
             warn("fitSize() won't be applied, neither the width nor the height can be determined.")
             return size
@@ -243,7 +248,7 @@ extension PinLayout {
             fitHeight = height
         }
 
-        let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
+        let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
         if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
             size.width = fitWidth
@@ -260,7 +265,13 @@ extension PinLayout {
         return size
     }
 
+    @available(OSX 10.10, *)
     private func computeSizeToFit(adjustSizeType: AdjustSizeType, size: Size) -> Size {
+        guard let sizeCalculableView = view as? SizeCalculable else {
+            warn("fitSize() won't be applied, view does not conform to protocol SizeCalculable.")
+            return size
+        }
+
         var fitWidth = CGFloat.greatestFiniteMagnitude
         var fitHeight = CGFloat.greatestFiniteMagnitude
         var size = size
@@ -283,7 +294,7 @@ extension PinLayout {
             assertionFailure("Should not occured")
         }
 
-        let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
+        let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
         if fitWidth != .greatestFiniteMagnitude {
             size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth

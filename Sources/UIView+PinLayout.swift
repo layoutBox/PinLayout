@@ -22,7 +22,7 @@ import Foundation
 #if os(iOS) || os(tvOS)
 import UIKit
 
-extension UIView: Layoutable {
+extension UIView: Layoutable, SizeCalculable {
     public typealias View = UIView
     
     public func convert(_ point: CGPoint, toView view: UIView) -> CGPoint {

@@ -621,6 +621,7 @@ import AppKit
     }
     #endif
 
+    @available(OSX 10.10, *)
     func sizeToFit(_ fitType: Fit) -> PinLayoutObjC {
         let type: FitType
         switch fitType {

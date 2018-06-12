@@ -22,21 +22,11 @@ import Foundation
 #if os(iOS) || os(tvOS)
 import UIKit
 
-public extension UIView {
-    public var pin: PinLayout {
-        return PinLayout(view: self, keepTransform: true)
-    }
-
-    public var pinFrame: PinLayout {
-        return PinLayout(view: self, keepTransform: false)
-    }
-
-    @objc public var anchor: AnchorList {
-        return AnchorListImpl(view: self)
-    }
-
-    @objc public var edge: EdgeList {
-        return EdgeListImpl(view: self)
+extension UIView: Layoutable {
+    public typealias View = UIView
+    
+    public func convert(_ point: CGPoint, toView view: UIView) -> CGPoint {
+        return convert(point, to: view)
     }
 
     // Expose PinLayout's objective-c interface.

@@ -53,10 +53,10 @@ class BasicView: PView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return _sizeThatFits(size)
     }
-    #else
-    func sizeThatFits(_ size: CGSize) -> CGSize {
-        return _sizeThatFits(size)
-    }
+//    #else
+//    @objc func sizeThatFits(_ size: CGSize) -> CGSize {
+//        return _sizeThatFits(size)
+//    }
     #endif
 
     fileprivate func _sizeThatFits(_ size: CGSize) -> CGSize {

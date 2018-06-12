@@ -41,7 +41,7 @@ class WrapContentSpec: QuickSpec {
         var aViewChild3: BasicView!
 
         beforeSuite {
-            _pinlayoutSetUnitTest(displayScale: 2)
+            _pinlayoutSetUnitTest(scale: 2)
         }
 
         beforeEach {

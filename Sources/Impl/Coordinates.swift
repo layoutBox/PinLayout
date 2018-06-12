@@ -23,69 +23,69 @@ import UIKit
 import AppKit
 #endif
 
-public func _pinlayoutSetUnitTest(displayScale: CGFloat) {
-    Coordinates.displayScale = displayScale
+#if os(iOS) || os(tvOS)
+internal var displayScale: CGFloat = UIScreen.main.scale
+#elseif os(OSX)
+internal var displayScale: CGFloat = NSScreen.main?.backingScaleFactor ?? 2.0
+#endif
+internal var onePixelLength: CGFloat = 1 / displayScale
+
+public func _pinlayoutSetUnitTest(scale: CGFloat) {
+    displayScale = scale
 }
 
-final class Coordinates {
-    #if os(iOS) || os(tvOS)
-    internal static var displayScale: CGFloat = UIScreen.main.scale
-    #elseif os(OSX)
-    internal static var displayScale: CGFloat = NSScreen.main?.backingScaleFactor ?? 2.0
-    #endif
-    internal static var onePixelLength: CGFloat = 1 / displayScale
-
-    static func hCenter(_ view: PView, keepTransform: Bool) -> CGFloat {
+final class Coordinates<View: Layoutable> {
+    static func hCenter(_ view: View, keepTransform: Bool) -> CGFloat {
         let rect = view.getRect(keepTransform: keepTransform)
         return rect.minX + (rect.width / 2)
     }
 
-    static func vCenter(_ view: PView, keepTransform: Bool) -> CGFloat {
+    static func vCenter(_ view: View, keepTransform: Bool) -> CGFloat {
         let rect = view.getRect(keepTransform: keepTransform)
         return rect.minY + (rect.height / 2)
     }
 
-    static func topLeft(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func topLeft(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX, y: rect.minY)
     }
 
-    static func topCenter(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func topCenter(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + (rect.width / 2), y: rect.minY)
     }
 
-    static func topRight(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func topRight(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + rect.width, y: rect.minY)
     }
 
-    static func centerLeft(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func centerLeft(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX, y: rect.minY + (rect.height / 2))
     }
     
-    static func center(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func center(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + (rect.width / 2), y: rect.minY + (rect.height / 2))
     }
 
-    static func centerRight(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func centerRight(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + rect.width, y: rect.minY + (rect.height / 2))
     }
     
-    static func bottomLeft(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func bottomLeft(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX, y: rect.minY + rect.height)
     }
 
-    static func bottomCenter(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func bottomCenter(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + (rect.width / 2), y: rect.minY + rect.height)
     }
 
-    static func bottomRight(_ view: PView, keepTransform: Bool) -> CGPoint {
+    static func bottomRight(_ view: View, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + rect.width, y: rect.minY + rect.height)
     }

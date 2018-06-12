@@ -21,16 +21,14 @@ import Foundation
 
 #if os(iOS) || os(tvOS)
     import UIKit
-    public typealias PView = UIView
     public typealias PEdgeInsets = UIEdgeInsets
 #else
     import AppKit
-    public typealias PView = NSView
     public typealias PEdgeInsets = NSEdgeInsets
 #endif
 
-public class PinLayout {
-    internal let view: PView
+public class PinLayout<View: Layoutable> {
+    internal let view: View
     internal let keepTransform: Bool
 
     internal var _top: CGFloat?       // offset from superview's top edge
@@ -70,7 +68,7 @@ public class PinLayout {
     
     internal var isLayouted = false
 
-    init(view: PView, keepTransform: Bool) {
+    init(view: View, keepTransform: Bool) {
         self.view = view
         self.keepTransform = keepTransform
 
@@ -88,10 +86,14 @@ public class PinLayout {
 
     #if os(iOS) || os(tvOS)
     public var safeArea: PEdgeInsets {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-            return view.safeAreaInsets
+        if let view = view as? UIView {
+            if #available(iOS 11.0, tvOS 11.0, *) {
+                return view.safeAreaInsets
+            } else {
+                return view.pinlayoutComputeSafeAreaInsets()
+            }
         } else {
-            return view.pinlayoutComputeSafeAreaInsets()
+            return PEdgeInsets.zero
         }
     }
     #endif
@@ -642,7 +644,7 @@ public class PinLayout {
         return setWidth(percent.of(layoutSuperviewRect.width), context)
     }
 
-    public func width(of view: PView) -> PinLayout {
+    public func width(of view: View) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setWidth(rect.width, { return "width(of: \(viewDescription(view)))" })
     }
@@ -679,7 +681,7 @@ public class PinLayout {
         return setHeight(percent.of(layoutSuperviewRect.height), context)
     }
 
-    public func height(of view: PView) -> PinLayout {
+    public func height(of view: View) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setHeight(rect.height, { return "height(of: \(viewDescription(view)))" })
     }
@@ -936,9 +938,9 @@ extension PinLayout {
         }
     }
     
-    internal func layoutSuperview(_ context: Context) -> PView? {
+    internal func layoutSuperview(_ context: Context) -> View? {
         if let superview = view.superview {
-            return superview
+            return superview as? View
         } else {
             // Disable this warning: Using XIB, layoutSubview() is called even before views have been
             // added, and there is no way to modify that strange behaviour of UIKit.
@@ -947,9 +949,9 @@ extension PinLayout {
         }
     }
 
-    internal func referenceSuperview(_ referenceView: PView, _ context: Context) -> PView? {
+    internal func referenceSuperview(_ referenceView: View, _ context: Context) -> View? {
         if let superview = referenceView.superview {
-            return superview
+            return superview as? View
         } else {
             warnWontBeApplied("the reference view \(viewDescription(referenceView)) must be added as a sub-view before being used as a reference.", context)
             return nil

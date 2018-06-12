@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func getRect(keepTransform: Bool) -> CGRect {
+    public func getRect(keepTransform: Bool) -> CGRect {
         if keepTransform {
             /*
              To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
@@ -31,8 +31,8 @@ extension UIView {
         }
     }
 
-    func setRect(_ rect: CGRect, keepTransform: Bool) {
-        let adjustedRect = Coordinates.adjustRectToDisplayScale(rect)
+    public func setRect(_ rect: CGRect, keepTransform: Bool) {
+        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
 
         if keepTransform {
             /*
@@ -57,7 +57,7 @@ extension UIView {
 import AppKit
 
 extension NSView {
-    func getRect(keepTransform: Bool) -> CGRect {
+    public func getRect(keepTransform: Bool) -> CGRect {
         if let superview = superview, !superview.isFlipped {
             var flippedRect = frame
             flippedRect.origin.y = superview.frame.height - flippedRect.height - flippedRect.origin.y
@@ -67,8 +67,8 @@ extension NSView {
         }
     }
 
-    func setRect(_ rect: CGRect, keepTransform: Bool) {
-        let adjustedRect = Coordinates.adjustRectToDisplayScale(rect)
+    public func setRect(_ rect: CGRect, keepTransform: Bool) {
+        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
 
         if let superview = superview, !superview.isFlipped {
             var flippedRect = adjustedRect

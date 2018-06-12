@@ -36,17 +36,17 @@ extension PinLayout {
     }
     
     internal func relativeEdgeContext(method: String, edge: VerticalEdge) -> String {
-        let edge = edge as! VerticalEdgeImpl
+        let edge = edge as! VerticalEdgeImpl<View>
         return "\(method)(to: .\(edge.type.rawValue), of: \(viewDescription(edge.view)))"
     }
     
     internal func relativeEdgeContext(method: String, edge: HorizontalEdge) -> String {
-        let edge = edge as! HorizontalEdgeImpl
+        let edge = edge as! HorizontalEdgeImpl<View>
         return "\(method)(to: .\(edge.type.rawValue), of: \(viewDescription(edge.view))"
     }
     
     internal func relativeAnchorContext(method: String, anchor: Anchor) -> String {
-        let anchor = anchor as! AnchorImpl
+        let anchor = anchor as! AnchorImpl<View>
         return "\(method)(to: .\(anchor.type.rawValue), of: \(viewDescription(anchor.view)))"
     }
     
@@ -114,12 +114,12 @@ extension PinLayout {
         }
     }
 
-    internal func viewDescription(_ view: PView) -> String {
+    internal func viewDescription(_ view: View) -> String {
         let rect = view.getRect(keepTransform: keepTransform)
         return "(\(viewName(view)), Frame: \(rect))"
     }
     
-    internal func viewName(_ view: PView) -> String {
+    internal func viewName(_ view: View) -> String {
         return "\(type(of: view))"
     }
 
@@ -127,7 +127,7 @@ extension PinLayout {
         return "UIEdgeInsets(top: \(insets.top), left: \(insets.left), bottom: \(insets.bottom), right: \(insets.right))"
     }
 
-    internal func pinLayoutDisplayConsoleWarning(_ text: String, _ view: PView) {
+    internal func pinLayoutDisplayConsoleWarning(_ text: String, _ view: View) {
         var displayText = "\n👉 \(text)"
 
         let rect = view.getRect(keepTransform: keepTransform)
@@ -142,7 +142,7 @@ extension PinLayout {
         var hierarchy: [String] = []
         while let parent = currentView.superview {
             hierarchy.insert("\(type(of: parent))", at: 0)
-            currentView = parent
+            currentView = parent as! View
         }
         if hierarchy.count > 0 {
             #if swift(>=4.1)
@@ -152,7 +152,8 @@ extension PinLayout {
             #endif
         }
 
-        displayText += ", Tag: \(view.tag))\n"
+        // Removed, layoutable tag should probably not be exposed
+        //displayText += ", Tag: \(view.tag))\n"
 
         print(displayText)
         Pin.lastWarningText = text

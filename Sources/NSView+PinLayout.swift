@@ -22,21 +22,19 @@ import Foundation
 #if os(macOS)
 import AppKit
 
-public extension NSView {
-    public var pin: PinLayout {
-        return PinLayout(view: self, keepTransform: true)
+extension NSView: Layoutable {
+    public typealias View = NSView
+
+    public func convert(_ point: CGPoint, toView view: NSView) -> CGPoint {
+        return convert(point, to: view)
     }
 
-    public var pinFrame: PinLayout {
-        return PinLayout(view: self, keepTransform: false)
+    public func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize.zero
     }
 
-    public var anchor: AnchorList {
-        return AnchorListImpl(view: self)
-    }
+    public func sizeToFit() {
 
-    public var edge: EdgeList {
-        return EdgeListImpl(view: self)
     }
 
     // Expose PinLayout's objective-c interface.

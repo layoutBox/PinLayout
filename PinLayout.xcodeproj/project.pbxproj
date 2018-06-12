@@ -53,6 +53,9 @@
 		24D18D241F3E37DD008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		24D18D261F3E5EA5008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		32A65F57D5D8D5204831FF3A /* Pods_PinLayoutTests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417E52FC81E208F91CF03C1D /* Pods_PinLayoutTests_iOS.framework */; };
+		C82DC20C20CE9F6800B7ACF5 /* Layoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */; };
+		C82DC20D20CE9F6800B7ACF5 /* Layoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */; };
+		C82DC20E20CE9F6800B7ACF5 /* Layoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */; };
 		DF1A5CBB208106A900725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
 		DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */; };
 		DF1A5D202084C94700725EF5 /* PinLayoutTestMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A5D1F2084C94700725EF5 /* PinLayoutTestMacOS.swift */; };
@@ -219,6 +222,7 @@
 		A02D58138C6BA063EB3E8E66 /* Pods-PinLayoutTests-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B7A69A7C17E9071CF457C39A /* Pods_PinLayoutTests_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC74F9FA5B66BF5C299B7581 /* Pods-PinLayoutTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutable.swift; sourceTree = "<group>"; };
 		C8BDEE8FC7F6D6F36D69AE89 /* Pods-PinLayoutTests-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinLayout.swift"; sourceTree = "<group>"; };
 		DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+PinLayout.swift"; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 				DFC97CA61E8A8F2C001545D5 /* PinLayout.swift */,
 				24D18D231F3E37DD008129EF /* Pin.swift */,
 				DFF222CC20B999BD00AC2A84 /* Types.swift */,
+				C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */,
 				DF1A5CBA208106A900725EF5 /* UIView+PinLayout.swift */,
 				DF1A5CBC208106C900725EF5 /* NSView+PinLayout.swift */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
@@ -834,6 +839,7 @@
 				243B12BC1FC393580072A9C3 /* Percent.swift in Sources */,
 				DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */,
 				DF96F30B20CB5DDD007CA714 /* View+Rect.swift in Sources */,
+				C82DC20E20CE9F6800B7ACF5 /* Layoutable.swift in Sources */,
 				DFEAF75420C9667D00E33147 /* PinLayoutImpl+Size.swift in Sources */,
 				DF1A5D0420812DE100725EF5 /* UIView+PinLayout.swift in Sources */,
 				24B02B091F2A713000C18179 /* Filters.swift in Sources */,
@@ -863,6 +869,7 @@
 				2475B6D11FC37C8C0054CADD /* View+LTR.swift in Sources */,
 				DF96F30920CB5DB7007CA714 /* View+Rect.swift in Sources */,
 				DFEAF71220C8081800E33147 /* PinLayoutImpl+Size.swift in Sources */,
+				C82DC20C20CE9F6800B7ACF5 /* Layoutable.swift in Sources */,
 				DF96F30E20CB6362007CA714 /* PinLayoutObjCImpl.swift in Sources */,
 				DFC97CA71E8A8F2C001545D5 /* PinLayout.swift in Sources */,
 				2475B6CC1FC37C1C0054CADD /* PinLayoutImpl+Warning.swift in Sources */,
@@ -946,6 +953,7 @@
 				DF1A5D442084CFD600725EF5 /* View+LTR.swift in Sources */,
 				DF1A5D352084CFC100725EF5 /* NSView+PinLayout.swift in Sources */,
 				DF96F30A20CB5DDC007CA714 /* View+Rect.swift in Sources */,
+				C82DC20D20CE9F6800B7ACF5 /* Layoutable.swift in Sources */,
 				DFEAF75320C9667C00E33147 /* PinLayoutImpl+Size.swift in Sources */,
 				DF1A5D3A2084CFC600725EF5 /* UIView+PinLayout.swift in Sources */,
 				DFED155120853085009EF9A7 /* PinLayout.swift in Sources */,

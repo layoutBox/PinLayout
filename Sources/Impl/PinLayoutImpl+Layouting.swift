@@ -35,7 +35,7 @@ extension PinLayout {
         isLayouted = true
     }
     
-    private func apply(onView view: PView) {
+    private func apply(onView view: View) {
         displayLayoutWarnings()
         
         var newRect = view.getRect(keepTransform: keepTransform)
@@ -243,11 +243,7 @@ extension PinLayout {
             fitHeight = height
         }
 
-        #if os(iOS) || os(tvOS)
         let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-        #else
-        let sizeThatFits = view.intrinsicContentSize
-        #endif
 
         if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
             size.width = fitWidth
@@ -287,20 +283,7 @@ extension PinLayout {
             assertionFailure("Should not occured")
         }
 
-        #if os(iOS) || os(tvOS)
         let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-        #else
-        let sizeThatFits: CGSize
-        if #available(OSX 10.10, *) {
-            if let control = view as? NSControl {
-                sizeThatFits = control.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-            } else {
-                sizeThatFits = view.intrinsicContentSize
-            }
-        } else {
-            sizeThatFits = view.intrinsicContentSize
-        }
-        #endif
 
         if fitWidth != .greatestFiniteMagnitude {
             size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth

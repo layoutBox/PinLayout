@@ -23,7 +23,7 @@ import Foundation
 import UIKit
     
 extension UIView {
-    func isLTR() -> Bool {
+    public func isLTR() -> Bool {
         switch Pin.layoutDirection {
         case .auto:
             if #available(iOS 9.0, *) {
@@ -42,7 +42,7 @@ extension UIView {
 import AppKit
 
 extension NSView {
-    func isLTR() -> Bool {
+    public func isLTR() -> Bool {
         switch Pin.layoutDirection {
         case .auto: return self.userInterfaceLayoutDirection == .leftToRight
         case .ltr:  return true

@@ -25,8 +25,38 @@ import AppKit
 extension NSView: Layoutable {
     public typealias View = NSView
 
+    public func getRect(keepTransform: Bool) -> CGRect {
+        if let superview = superview, !superview.isFlipped {
+            var flippedRect = frame
+            flippedRect.origin.y = superview.frame.height - flippedRect.height - flippedRect.origin.y
+            return flippedRect
+        } else {
+            return frame
+        }
+    }
+
+    public func setRect(_ rect: CGRect, keepTransform: Bool) {
+        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+
+        if let superview = superview, !superview.isFlipped {
+            var flippedRect = adjustedRect
+            flippedRect.origin.y = superview.frame.height - flippedRect.height - flippedRect.origin.y
+            frame = flippedRect
+        } else {
+            frame = adjustedRect
+        }
+    }
+
     public func convert(_ point: CGPoint, toView view: NSView) -> CGPoint {
         return convert(point, to: view)
+    }
+
+    public func isLTR() -> Bool {
+        switch Pin.layoutDirection {
+        case .auto: return self.userInterfaceLayoutDirection == .leftToRight
+        case .ltr:  return true
+        case .rtl:  return false
+        }
     }
 
     // Expose PinLayout's objective-c interface.

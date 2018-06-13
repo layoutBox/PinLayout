@@ -24,9 +24,64 @@ import UIKit
 
 extension UIView: Layoutable, SizeCalculable {
     public typealias View = UIView
-    
+
+    public func getRect(keepTransform: Bool) -> CGRect {
+        if keepTransform {
+            /*
+             To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
+             view's transform (UIView.transform).
+             By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
+             the view's transform. So view's transforms won't be affected/altered by PinLayout.
+             */
+            let size = bounds.size
+            // See setRect(...) for details about this calculation.
+            let origin = CGPoint(x: center.x - (size.width * layer.anchorPoint.x),
+                                 y: center.y - (size.height * layer.anchorPoint.y))
+
+            return CGRect(origin: origin, size: size)
+        } else {
+            return frame
+        }
+    }
+
+    public func setRect(_ rect: CGRect, keepTransform: Bool) {
+        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+
+        if keepTransform {
+            /*
+             To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
+             view's transform (UIView.transform).
+             By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
+             the view's transform. So view's transforms won't be affected/altered by PinLayout.
+             */
+
+            // NOTE: The center is offset by the layer.anchorPoint, so we have to take it into account.
+            center = CGPoint(x: adjustedRect.origin.x + (adjustedRect.width * layer.anchorPoint.x),
+                             y: adjustedRect.origin.y + (adjustedRect.height * layer.anchorPoint.y))
+            // NOTE: We must set only the bounds's size and keep the origin.
+            bounds.size = adjustedRect.size
+        } else {
+            frame = adjustedRect
+        }
+    }
+
     public func convert(_ point: CGPoint, toView view: UIView) -> CGPoint {
         return convert(point, to: view)
+    }
+
+    public func isLTR() -> Bool {
+        switch Pin.layoutDirection {
+        case .auto:
+            if #available(iOS 9.0, *) {
+                return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
+            } else if let shared = UIApplication.value(forKey: "sharedApplication") as? UIApplication {
+                return shared.userInterfaceLayoutDirection == .leftToRight
+            } else {
+                return true
+            }
+        case .ltr: return true
+        case .rtl: return false
+        }
     }
 
     // Expose PinLayout's objective-c interface.

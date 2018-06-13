@@ -229,7 +229,7 @@ extension PinLayout {
     @available(OSX 10.10, *)
     private func computeLegacyFitSize(size: Size) -> Size {
         guard let sizeCalculableView = view as? SizeCalculable else {
-            warn("fitSize() won't be applied, view does not conform to protocol SizeCalculable.")
+            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
             return size
         }
         guard size.width != nil || size.height != nil else {
@@ -268,7 +268,7 @@ extension PinLayout {
     @available(OSX 10.10, *)
     private func computeSizeToFit(adjustSizeType: AdjustSizeType, size: Size) -> Size {
         guard let sizeCalculableView = view as? SizeCalculable else {
-            warn("fitSize() won't be applied, view does not conform to protocol SizeCalculable.")
+            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
             return size
         }
 

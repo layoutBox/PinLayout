@@ -42,6 +42,15 @@ enum AdjustSizeType {
         }
     }
 
+    internal var requiresSizeCalculable: Bool {
+        switch self {
+        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitSizeLegacy:
+            return true
+        case .aspectRatio(_):
+            return false
+        }
+    }
+
     func toFitType() -> FitType? {
         switch self {
         case .fitTypeWidth: return .width
@@ -139,9 +148,14 @@ extension PinLayout {
             return self
         }
 
-        if let type = type, case let AdjustSizeType.aspectRatio(ratio) = type, ratio <= 0 {
-            warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
-            return self
+        if let type = type {
+            if case let AdjustSizeType.aspectRatio(ratio) = type, ratio <= 0 {
+                warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
+                return self
+            } else if type.requiresSizeCalculable, !(view is SizeCalculable) {
+                warnWontBeApplied("the view must conform to protocol SizeCalculable for it's size to be computed.", context)
+                return self
+            }
         }
 
         adjustSizeType = type

@@ -23,6 +23,28 @@ import UIKit
 import AppKit
 #endif
 
+#if os(iOS) || os(tvOS)
+@objc extension UIView {
+    public var anchor: AnchorList {
+        return AnchorListImpl(view: self)
+    }
+
+    public var edge: EdgeList {
+        return EdgeListImpl(view: self)
+    }
+}
+#else
+@objc extension NSView {
+    public var anchor: AnchorList {
+        return AnchorListImpl(view: self)
+    }
+
+    public var edge: EdgeList {
+        return EdgeListImpl(view: self)
+    }
+}
+#endif
+
 @objc class PinLayoutObjCImpl: NSObject, PinLayoutObjC {
     #if os(iOS) || os(tvOS)
     typealias PView = UIView

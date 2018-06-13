@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Layoutable: AnyObject, Equatable {
+public protocol Layoutable: AnyObject, Equatable, CustomDebugStringConvertible {
     associatedtype View: Layoutable
 
     var superview: View? { get }
@@ -17,7 +17,7 @@ public protocol Layoutable: AnyObject, Equatable {
     func getRect(keepTransform: Bool) -> CGRect
     func setRect(_ rect: CGRect, keepTransform: Bool)
 
-    func convert(_ point: CGPoint, toView view: View) -> CGPoint
+    func convert(_ point: CGPoint, to view: View?) -> CGPoint
 
     func isLTR() -> Bool
 }

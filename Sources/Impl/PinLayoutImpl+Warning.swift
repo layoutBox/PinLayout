@@ -152,8 +152,7 @@ extension PinLayout {
             #endif
         }
 
-        // Removed, layoutable tag should probably not be exposed
-        //displayText += ", Tag: \(view.tag))\n"
+        displayText += ", Debug description: \(view.debugDescription))\n"
 
         print(displayText)
         Pin.lastWarningText = text

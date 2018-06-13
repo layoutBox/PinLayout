@@ -372,7 +372,7 @@ extension PinLayout {
         //       coordinates, but UIView.convert(...) below use transformed coordinates!
         //       Currently we only support 1 and 2 levels.
         } else {
-            return referenceSuperview.convert(point, toView: layoutSuperview as! View.View)
+            return referenceSuperview.convert(point, to: layoutSuperview as? View.View)
         }
     }
     

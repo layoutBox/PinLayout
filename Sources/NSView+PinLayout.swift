@@ -47,10 +47,6 @@ extension NSView: Layoutable {
         }
     }
 
-    public func convert(_ point: CGPoint, toView view: NSView) -> CGPoint {
-        return convert(point, to: view)
-    }
-
     public func isLTR() -> Bool {
         switch Pin.layoutDirection {
         case .auto: return self.userInterfaceLayoutDirection == .leftToRight

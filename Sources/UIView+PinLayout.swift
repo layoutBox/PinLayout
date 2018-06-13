@@ -65,10 +65,6 @@ extension UIView: Layoutable, SizeCalculable {
         }
     }
 
-    public func convert(_ point: CGPoint, toView view: UIView) -> CGPoint {
-        return convert(point, to: view)
-    }
-
     public func isLTR() -> Bool {
         switch Pin.layoutDirection {
         case .auto:

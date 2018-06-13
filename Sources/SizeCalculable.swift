@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(OSX 10.10, *)
 public protocol SizeCalculable {
     func sizeThatFits(_ size: CGSize) -> CGSize
     func sizeToFit()

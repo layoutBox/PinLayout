@@ -197,7 +197,7 @@ extension PinLayout {
     private func computeSize() -> Size {
         var size = resolveSize()
 
-        if #available(OSX 10.10, *), let adjustSizeType = adjustSizeType {
+        if let adjustSizeType = adjustSizeType {
             switch adjustSizeType {
             case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
@@ -236,7 +236,6 @@ extension PinLayout {
         return size
     }
 
-    @available(OSX 10.10, *)
     private func computeLegacyFitSize(size: Size) -> Size {
         guard let sizeCalculableView = view as? SizeCalculable else {
             assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
@@ -275,7 +274,6 @@ extension PinLayout {
         return size
     }
 
-    @available(OSX 10.10, *)
     private func computeSizeToFit(adjustSizeType: AdjustSizeType, size: Size) -> Size {
         guard let sizeCalculableView = view as? SizeCalculable else {
             assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")

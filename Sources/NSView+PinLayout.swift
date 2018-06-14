@@ -61,7 +61,6 @@ extension NSView: Layoutable {
     }
 }
 
-@available(OSX 10.10, *)
 extension NSControl: SizeCalculable {
 
 }

@@ -206,7 +206,6 @@ extension PinLayout {
      label.pin.width(100).sizeToFit(.widthFlexible)
      ```
      */
-    @available(OSX 10.10, *)
     public func sizeToFit(_ fitType: FitType) -> PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }

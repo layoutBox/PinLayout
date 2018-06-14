@@ -24,26 +24,61 @@ import AppKit
 #endif
 
 extension PinLayout {
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adjust subviews position to create a tight wrap.
+     */
     public func wrapContent() -> PinLayout {
         return wrapContent(.all, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), { return "wrapContent()" })
     }
 
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+     - padding: Specify a padding value.
+     */
     public func wrapContent(padding: CGFloat) -> PinLayout {
         return wrapContent(.all, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(padding: \(padding)" })
     }
     
+    /**
+     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+     - padding: Specify a padding using an UIEdgeInsets.
+     */
     public func wrapContent(padding: PEdgeInsets) -> PinLayout {
         return wrapContent(.all, padding: padding, { return "wrapContent(padding: \(insetsDescription(padding))" })
     }
 
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews.
+
+     - Parameters:
+     - type: Specify the wrap type (.all, .horizontally, .vertically)
+     */
     public func wrapContent(_ type: WrapType) -> PinLayout {
         return wrapContent(type, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), { return "wrapContent(\(type.description)" })
     }
 
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+     - type: Specify the wrap type (.all, .horizontally, .vertically)
+     - padding: Specify a padding value.
+     */
     public func wrapContent(_ type: WrapType, padding: CGFloat) -> PinLayout {
         return wrapContent(type, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(\(type.description), padding: \(padding)" })
     }
 
+    /**
+     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+
+     - Parameters:
+     - type: Specify the wrap type (.all, .horizontally, .vertically)
+     - padding: Specify a padding using an UIEdgeInsets.
+     */
     public func wrapContent(_ type: WrapType, padding: PEdgeInsets) -> PinLayout {
         return wrapContent(type, padding: padding, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
     }

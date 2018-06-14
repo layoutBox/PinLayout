@@ -25,6 +25,16 @@
 
 // MARK: UIView's frame computation methods
 extension PinLayout {
+    /**
+     The method will execute PinLayout commands immediately. This method is **required only if your
+     source codes should also work in Xcode Playgrounds**. Outside of playgrounds, PinLayout executes
+     this method implicitly, it is not necessary to call it.
+
+     Examples:
+     ```swift
+     view.pin.top(20).width(100).layout()
+     ```
+     */
     public func layout() {
         apply()
     }

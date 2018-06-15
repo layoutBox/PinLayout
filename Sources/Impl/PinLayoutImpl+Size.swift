@@ -42,6 +42,15 @@ enum AdjustSizeType {
         }
     }
 
+    internal var requiresSizeCalculable: Bool {
+        switch self {
+        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitSizeLegacy:
+            return true
+        case .aspectRatio(_):
+            return false
+        }
+    }
+
     func toFitType() -> FitType? {
         switch self {
         case .fitTypeWidth: return .width
@@ -64,39 +73,66 @@ extension FitType {
     }
 }
 
-extension PinLayoutImpl {
-    func size(_ size: CGSize) -> PinLayout {
+extension PinLayout {
+    public func size(_ size: CGSize) -> PinLayout {
         return setSize(size, { return "size(CGSize(width: \(size.width), height: \(size.height)))" })
     }
 
-    func size(_ sideLength: CGFloat) -> PinLayout {
+    public func size(_ sideLength: CGFloat) -> PinLayout {
         return setSize(CGSize(width: sideLength, height: sideLength), { return "size(sideLength: \(sideLength))" })
     }
 
-    func size(_ percent: Percent) -> PinLayout {
+    public func size(_ percent: Percent) -> PinLayout {
         func context() -> String { return "size(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         let size = CGSize(width: percent.of(layoutSuperviewRect.width), height: percent.of(layoutSuperviewRect.height))
         return setSize(size, context)
     }
 
-    func size(of view: PView) -> PinLayout {
+    public func size(of view: View) -> PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
         return setSize(view.getRect(keepTransform: keepTransform).size, context)
     }
 
+    /**
+     Set the view aspect ratio.
+
+     AspectRatio is applied only if a single dimension (either width or height) can be determined,
+     in that case the aspect ratio will be used to compute the other dimension.
+
+     * AspectRatio is defined as the ratio between the width and the height (width / height).
+     * An aspect ratio of 2 means the width is twice the size of the height.
+     * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
+     dimensions of an item.
+     */
     @discardableResult
-    func aspectRatio(_ ratio: CGFloat) -> PinLayout {
+    public func aspectRatio(_ ratio: CGFloat) -> PinLayout {
         return setAdjustSizeType(.aspectRatio(ratio), { "aspectRatio(\(ratio))" })
     }
 
-    func aspectRatio(of view: PView) -> PinLayout {
+    /**
+     Set the view aspect ratio using another UIView's aspect ratio.
+
+     AspectRatio is applied only if a single dimension (either width or height) can be determined,
+     in that case the aspect ratio will be used to compute the other dimension.
+
+     * AspectRatio is defined as the ratio between the width and the height (width / height).
+     * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
+     dimensions of an item.
+     */
+    public func aspectRatio(of view: View) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setAdjustSizeType(.aspectRatio(rect.width / rect.height), { "aspectRatio(of: \(viewDescription(view)))" })
     }
 
+    /**
+     If the layouted view is an UIImageView, this method will set the aspectRatio using
+     the UIImageView's image dimension.
+
+     For other types of views, this method as no impact.
+     */
     #if os(iOS) || os(tvOS)
-    func aspectRatio() -> PinLayout {
+    public func aspectRatio() -> PinLayout {
         func context() -> String { return "aspectRatio()" }
         guard let imageView = view as? UIImageView else {
             warnWontBeApplied("the layouted must be an UIImageView() to use the aspectRatio() method without parameter.", context)
@@ -112,12 +148,71 @@ extension PinLayoutImpl {
     }
     #endif
 
-    func sizeToFit(_ fitType: FitType) -> PinLayout {
+    /**
+     The method adjust the view's size based on the view's `sizeThatFits()` method result.
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
+
+     Notes:
+     * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
+     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
+
+     - Parameter fitType: Identify the reference dimension (width / height) that will be used
+     to adjust the view's size:
+
+     .width: The method adjust the view's size based on the **reference width**.
+     * If properties related to the width have been pinned (e.g: width, left & right, margins, ...),
+     the **reference width will be determined by these properties**, if not the **current view's width**
+     will be used.
+     * The resulting width will always **match the reference width**.
+
+     .height: The method adjust the view's size based on the **reference height**.
+     * If properties related to the height have been pinned (e.g: height, top & bottom, margins, ...),
+     the **reference height will be determined by these properties**, if not the **current view's height**
+     will be used.
+     * The resulting height will always **match the reference height**.
+
+     .widthFlexible: Similar to `.width`, except that PinLayout won't constrain the resulting width to
+     match the reference width. The resulting width may be smaller or bigger depending on the view's
+     sizeThatFits(..) method result. For example a single line UILabel may returns a smaller width if its
+     string is smaller than the reference width.
+
+     .heightFlexible: Similar to `.height`, except that PinLayout won't constrain the resulting height to
+     match the reference height. The resulting height may be smaller or bigger depending on the view's
+     sizeThatFits(..) method result.
+
+     Examples:
+
+     ```
+     // Adjust the view's size based on a width of 100 pixels.
+     // The resulting width will always match the pinned property `width(100)`.
+     view.pin.width(100).sizeToFit(.width)
+
+     // Adjust the view's size based on view's current width.
+     // The resulting width will always match the view's original width.
+     // The resulting height will never be bigger than the specified `maxHeight`.
+     view.pin.sizeToFit(.width).maxHeight(100)
+
+     // Adjust the view's size based on 100% of the superview's height.
+     // The resulting height will always match the pinned property `height(100%)`.
+     view.pin.height(100%).sizeToFit(.height)
+
+     // Adjust the view's size based on view's current height.
+     // The resulting width will always match the view's original height.
+     view.pin.sizeToFit(.height)
+
+     // Since `.widthFlexible` has been specified, its possible that the resulting
+     // width will be smaller or bigger than 100 pixels, based of the label's sizeThatFits()
+     // method result.
+     label.pin.width(100).sizeToFit(.widthFlexible)
+     ```
+     */
+    public func sizeToFit(_ fitType: FitType) -> PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }
 
     #if os(iOS) || os(tvOS)
-    func fitSize() -> PinLayout {
+    @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
+    public func fitSize() -> PinLayout {
         return setAdjustSizeType(.fitSizeLegacy, { return "fitSize()" })
     }
     #endif
@@ -125,7 +220,7 @@ extension PinLayoutImpl {
 
 //
 // MARK: Private methods
-extension PinLayoutImpl {
+extension PinLayout {
     internal func setSize(_ size: CGSize, _ context: Context) -> PinLayout {
         setWidth(size.width, { return "\(context())'s width" })
         setHeight(size.height, { return "\(context())'s height" })
@@ -138,9 +233,14 @@ extension PinLayoutImpl {
             return self
         }
 
-        if let type = type, case let AdjustSizeType.aspectRatio(ratio) = type, ratio <= 0 {
-            warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
-            return self
+        if let type = type {
+            if case let AdjustSizeType.aspectRatio(ratio) = type, ratio <= 0 {
+                warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
+                return self
+            } else if type.requiresSizeCalculable, !(view is SizeCalculable) {
+                warnWontBeApplied("the view must conform to protocol SizeCalculable for it's size to be computed.", context)
+                return self
+            }
         }
 
         adjustSizeType = type

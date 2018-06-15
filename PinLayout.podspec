@@ -24,6 +24,6 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target = '9.0'
   spec.tvos.frameworks        = 'Foundation', 'CoreGraphics', 'UIKit'
 
-  spec.osx.deployment_target  = '10.9'
+  spec.osx.deployment_target  = '10.10'
   spec.osx.frameworks         = 'Foundation', 'CoreGraphics', 'AppKit'
 end

@@ -22,27 +22,47 @@ import Foundation
 #if os(macOS)
 import AppKit
 
-public extension NSView {
-    public var pin: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: true)
+extension NSView: Layoutable {
+    public typealias View = NSView
+
+    public func getRect(keepTransform: Bool) -> CGRect {
+        if let superview = superview, !superview.isFlipped {
+            var flippedRect = frame
+            flippedRect.origin.y = superview.frame.height - flippedRect.height - flippedRect.origin.y
+            return flippedRect
+        } else {
+            return frame
+        }
     }
 
-    public var pinFrame: PinLayout {
-        return PinLayoutImpl(view: self, keepTransform: false)
+    public func setRect(_ rect: CGRect, keepTransform: Bool) {
+        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+
+        if let superview = superview, !superview.isFlipped {
+            var flippedRect = adjustedRect
+            flippedRect.origin.y = superview.frame.height - flippedRect.height - flippedRect.origin.y
+            frame = flippedRect
+        } else {
+            frame = adjustedRect
+        }
     }
 
-    public var anchor: AnchorList {
-        return AnchorListImpl(view: self)
-    }
-
-    public var edge: EdgeList {
-        return EdgeListImpl(view: self)
+    public func isLTR() -> Bool {
+        switch Pin.layoutDirection {
+        case .auto: return self.userInterfaceLayoutDirection == .leftToRight
+        case .ltr:  return true
+        case .rtl:  return false
+        }
     }
 
     // Expose PinLayout's objective-c interface.
     @objc public var pinObjc: PinLayoutObjC {
         return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
+}
+
+extension NSControl: SizeCalculable {
+
 }
 
 #endif

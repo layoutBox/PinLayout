@@ -34,7 +34,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
         */
         
         beforeSuite {
-            _pinlayoutSetUnitTest(displayScale: 2)
+            _pinlayoutSetUnitTest(scale: 2)
         }
 
         beforeEach {

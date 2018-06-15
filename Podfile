@@ -38,7 +38,7 @@ target 'PinLayoutSample' do
 end
 
 #target 'PinLayoutMacOsSample' do
-#  platform :osx, '10.9'
+#  platform :osx, '10.10'
 #  project 'Example/PinLayoutMacOsSample.xcodeproj'
 #
 #  pod 'PinLayout', :path => './'

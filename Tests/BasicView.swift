@@ -23,6 +23,8 @@ import UIKit
 import AppKit
 #endif
 
+import PinLayout
+
 class BasicView: PView {
     #if os(macOS)
     fileprivate var _isFlipped: Bool = true
@@ -53,10 +55,6 @@ class BasicView: PView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return _sizeThatFits(size)
     }
-    #else
-    func sizeThatFits(_ size: CGSize) -> CGSize {
-        return _sizeThatFits(size)
-    }
     #endif
 
     fileprivate func _sizeThatFits(_ size: CGSize) -> CGSize {
@@ -75,3 +73,15 @@ class BasicView: PView {
         return newSize
     }
 }
+
+#if os(macOS)
+extension BasicView: SizeCalculable {
+    func sizeThatFits(_ size: CGSize) -> CGSize {
+        return _sizeThatFits(size)
+    }
+
+    func sizeToFit() {
+        // Do nothing
+    }
+}
+#endif

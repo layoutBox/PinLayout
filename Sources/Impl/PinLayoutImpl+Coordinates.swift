@@ -23,7 +23,7 @@
     import AppKit
 #endif
 
-extension PinLayoutImpl {
+extension PinLayout {
     internal func top(_ context: Context) {
         setTop(0, context)
     }
@@ -361,10 +361,10 @@ extension PinLayoutImpl {
         }
     }
     
-    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: PView, _ referenceSuperview: PView) -> CGPoint {
+    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: View, _ referenceSuperview: View) -> CGPoint {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
-        } else if referenceSuperview == layoutSuperview.superview {
+        } else if referenceSuperview == layoutSuperview.superview as? View {
             let layoutSuperviewRect = layoutSuperview.getRect(keepTransform: keepTransform)
             return CGPoint(x: point.x - layoutSuperviewRect.origin.x,
                            y: point.y - layoutSuperviewRect.origin.y)
@@ -372,7 +372,7 @@ extension PinLayoutImpl {
         //       coordinates, but UIView.convert(...) below use transformed coordinates!
         //       Currently we only support 1 and 2 levels.
         } else {
-            return referenceSuperview.convert(point, to: layoutSuperview)
+            return referenceSuperview.convert(point, to: layoutSuperview as? View.View)
         }
     }
     
@@ -380,7 +380,7 @@ extension PinLayoutImpl {
         guard let layoutSuperview = layoutSuperview(context) else { return nil }
         var results: [CGPoint] = []
         anchors.forEach({ (anchor) in
-            let anchor = anchor as! AnchorImpl
+            let anchor = anchor as! AnchorImpl<View>
             if let referenceSuperview = referenceSuperview(anchor.view, context) {
                 results.append(computeCoordinates(anchor.point(keepTransform: keepTransform),
                                                   layoutSuperview, referenceSuperview))
@@ -396,7 +396,7 @@ extension PinLayoutImpl {
     }
     
     internal func computeCoordinate(forEdge edge: HorizontalEdge, _ context: Context) -> CGFloat? {
-        let edge = edge as! HorizontalEdgeImpl
+        let edge = edge as! HorizontalEdgeImpl<View>
         guard let layoutSuperview = layoutSuperview(context) else { return nil }
         guard let referenceSuperview = referenceSuperview(edge.view, context) else { return nil }
         
@@ -405,7 +405,7 @@ extension PinLayoutImpl {
     }
     
     internal func computeCoordinate(forEdge edge: VerticalEdge, _ context: Context) -> CGFloat? {
-        let edge = edge as! VerticalEdgeImpl
+        let edge = edge as! VerticalEdgeImpl<View>
         guard let layoutSuperview = layoutSuperview(context) else { return nil }
         guard let referenceSuperview = referenceSuperview(edge.view, context) else { return nil }
         

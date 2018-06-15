@@ -24,7 +24,17 @@
 #endif
 
 // MARK: UIView's frame computation methods
-extension PinLayoutImpl {
+extension PinLayout {
+    /**
+     The method will execute PinLayout commands immediately. This method is **required only if your
+     source codes should also work in Xcode Playgrounds**. Outside of playgrounds, PinLayout executes
+     this method implicitly, it is not necessary to call it.
+
+     Examples:
+     ```swift
+     view.pin.top(20).width(100).layout()
+     ```
+     */
     public func layout() {
         apply()
     }
@@ -35,7 +45,7 @@ extension PinLayoutImpl {
         isLayouted = true
     }
     
-    private func apply(onView view: PView) {
+    private func apply(onView view: View) {
         displayLayoutWarnings()
         
         var newRect = view.getRect(keepTransform: keepTransform)
@@ -183,7 +193,7 @@ extension PinLayoutImpl {
             }
         }
     }
-    
+
     private func computeSize() -> Size {
         var size = resolveSize()
 
@@ -227,6 +237,10 @@ extension PinLayoutImpl {
     }
 
     private func computeLegacyFitSize(size: Size) -> Size {
+        guard let sizeCalculableView = view as? SizeCalculable else {
+            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
+            return size
+        }
         guard size.width != nil || size.height != nil else {
             warn("fitSize() won't be applied, neither the width nor the height can be determined.")
             return size
@@ -243,11 +257,7 @@ extension PinLayoutImpl {
             fitHeight = height
         }
 
-        #if os(iOS) || os(tvOS)
-        let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-        #else
-        let sizeThatFits = view.intrinsicContentSize
-        #endif
+        let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
         if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
             size.width = fitWidth
@@ -265,6 +275,11 @@ extension PinLayoutImpl {
     }
 
     private func computeSizeToFit(adjustSizeType: AdjustSizeType, size: Size) -> Size {
+        guard let sizeCalculableView = view as? SizeCalculable else {
+            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
+            return size
+        }
+
         var fitWidth = CGFloat.greatestFiniteMagnitude
         var fitHeight = CGFloat.greatestFiniteMagnitude
         var size = size
@@ -287,20 +302,7 @@ extension PinLayoutImpl {
             assertionFailure("Should not occured")
         }
 
-        #if os(iOS) || os(tvOS)
-        let sizeThatFits = view.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-        #else
-        let sizeThatFits: CGSize
-        if #available(OSX 10.10, *) {
-            if let control = view as? NSControl {
-                sizeThatFits = control.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-            } else {
-                sizeThatFits = view.intrinsicContentSize
-            }
-        } else {
-            sizeThatFits = view.intrinsicContentSize
-        }
-        #endif
+        let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
         if fitWidth != .greatestFiniteMagnitude {
             size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth

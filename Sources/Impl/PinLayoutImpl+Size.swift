@@ -74,14 +74,17 @@ extension FitType {
 }
 
 extension PinLayout {
+    @discardableResult
     public func size(_ size: CGSize) -> PinLayout {
         return setSize(size, { return "size(CGSize(width: \(size.width), height: \(size.height)))" })
     }
 
+    @discardableResult
     public func size(_ sideLength: CGFloat) -> PinLayout {
         return setSize(CGSize(width: sideLength, height: sideLength), { return "size(sideLength: \(sideLength))" })
     }
 
+    @discardableResult
     public func size(_ percent: Percent) -> PinLayout {
         func context() -> String { return "size(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -89,6 +92,7 @@ extension PinLayout {
         return setSize(size, context)
     }
 
+    @discardableResult
     public func size(of view: View) -> PinLayout {
         func context() -> String { return "size(of \(viewDescription(view)))" }
         return setSize(view.getRect(keepTransform: keepTransform).size, context)
@@ -120,6 +124,7 @@ extension PinLayout {
      * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
      dimensions of an item.
      */
+    @discardableResult
     public func aspectRatio(of view: View) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setAdjustSizeType(.aspectRatio(rect.width / rect.height), { "aspectRatio(of: \(viewDescription(view)))" })
@@ -132,6 +137,7 @@ extension PinLayout {
      For other types of views, this method as no impact.
      */
     #if os(iOS) || os(tvOS)
+    @discardableResult
     public func aspectRatio() -> PinLayout {
         func context() -> String { return "aspectRatio()" }
         guard let imageView = view as? UIImageView else {
@@ -206,12 +212,14 @@ extension PinLayout {
      label.pin.width(100).sizeToFit(.widthFlexible)
      ```
      */
+    @discardableResult
     public func sizeToFit(_ fitType: FitType) -> PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }
 
     #if os(iOS) || os(tvOS)
     @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
+    @discardableResult
     public func fitSize() -> PinLayout {
         return setAdjustSizeType(.fitSizeLegacy, { return "fitSize()" })
     }

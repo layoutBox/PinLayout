@@ -104,15 +104,18 @@ public class PinLayout<View: Layoutable> {
     // top, left, bottom, right
     //
 
+    @discardableResult
     public func top() -> PinLayout {
         top({ return "top()" })
         return self
     }
 
+    @discardableResult
     public func top(_ value: CGFloat) -> PinLayout {
         return top(value, { return "top(\(value))" })
     }
 
+    @discardableResult
     public func top(_ percent: Percent) -> PinLayout {
         func context() -> String { return "top(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -120,98 +123,120 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func top(_ insets: PEdgeInsets) -> PinLayout {
         return top(insets.top, { return "top(\(insetsDescription(insets))" })
     }
 
+    @discardableResult
     public func left() -> PinLayout {
         return left({ return "left()" })
     }
 
+    @discardableResult
     public func left(_ value: CGFloat) -> PinLayout {
         return left(value, { return "left(\(value))" })
     }
 
+    @discardableResult
     public func left(_ percent: Percent) -> PinLayout {
         return left(percent, { return "left(\(percent.description))" })
     }
 
+    @discardableResult
     public func left(_ insets: PEdgeInsets) -> PinLayout {
         return left(insets.left, { return "left(\(insetsDescription(insets))" })
     }
 
+    @discardableResult
     public func start() -> PinLayout {
         func context() -> String { return "start()" }
         return isLTR() ? left(context) : right(context)
     }
 
+    @discardableResult
     public func start(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "start(\(value))" }
         return isLTR() ? left(value, context) : right(value, context)
     }
 
+    @discardableResult
     public func start(_ percent: Percent) -> PinLayout {
         func context() -> String { return "start(\(percent.description))" }
         return isLTR() ? left(percent, context) : right(percent, context)
     }
 
+    @discardableResult
     public func start(_ insets: PEdgeInsets) -> PinLayout {
         func context() -> String { return "start(\(insetsDescription(insets))" }
         return isLTR() ? left(insets.left, context) : right(insets.right, context)
     }
     
+    @discardableResult
     public func bottom() -> PinLayout {
         return bottom({ return "bottom()" })
     }
 
+    @discardableResult
     public func bottom(_ value: CGFloat) -> PinLayout {
         return bottom(value, { return "bottom(\(value))" })
     }
 
+    @discardableResult
     public func bottom(_ percent: Percent) -> PinLayout {
         return bottom(percent, { return "bottom(\(percent.description))" })
     }
 
+    @discardableResult
     public func bottom(_ insets: PEdgeInsets) -> PinLayout {
         return bottom(insets.bottom, { return "bottom(\(insetsDescription(insets))" })
     }
 
+    @discardableResult
     public func right() -> PinLayout {
         return right({ return "right()" })
     }
 
+    @discardableResult
     public func right(_ value: CGFloat) -> PinLayout {
         return right(value, { return "right(\(value))" })
     }
 
+    @discardableResult
     public func right(_ percent: Percent) -> PinLayout {
         return right(percent, { return "right(\(percent.description))" })
     }
 
+    @discardableResult
     public func right(_ insets: PEdgeInsets) -> PinLayout {
         return right(insets.right, { return "right(\(insetsDescription(insets))" })
     }
     
+    @discardableResult
     public func end() -> PinLayout {
         func context() -> String { return "end()" }
         return isLTR() ? right(context) : left(context)
     }
 
+    @discardableResult
     public func end(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "end(\(value))" }
         return isLTR() ? right(value, context) : left(value, context)
     }
 
+    @discardableResult
     public func end(_ percent: Percent) -> PinLayout {
         func context() -> String { return "end(\(percent.description))" }
         return isLTR() ? right(percent, context) : left(percent, context)
     }
 
+    @discardableResult
     public func end(_ insets: PEdgeInsets) -> PinLayout {
         func context() -> String { return "end(\(insetsDescription(insets))" }
         return isLTR() ? right(insets.right, context) : left(insets.left, context)
     }
 
+    @discardableResult
     public func hCenter() -> PinLayout {
         func context() -> String { return "hCenter()" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -219,6 +244,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func hCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "hCenter(\(value))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -226,6 +252,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func hCenter(_ percent: Percent) -> PinLayout {
         func context() -> String { return "hCenter(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -233,6 +260,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func vCenter() -> PinLayout {
         func context() -> String { return "vCenter()" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -240,6 +268,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func vCenter(_ value: CGFloat) -> PinLayout {
         func context() -> String { return "vCenter(\(value))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -247,6 +276,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func vCenter(_ percent: Percent) -> PinLayout {
         func context() -> String { return "vCenter(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -261,6 +291,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.top().bottom().left().right()`
      */
+    @discardableResult
     public func all() -> PinLayout {
         top({ "all() top coordinate" })
         bottom({ "all() bottom coordinate" })
@@ -274,6 +305,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.top().bottom().left().right()`
      */
+    @discardableResult
     public func all(_ value: CGFloat) -> PinLayout {
         top(value,  { "all(\(value)) top coordinate" })
         bottom(value,  { "all(\(value)) bottom coordinate" })
@@ -287,6 +319,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.top().bottom().left().right()`
      */
+    @discardableResult
     public func all(_ insets: PEdgeInsets) -> PinLayout {
         top(insets.top,  { "all(\(insets)) top coordinate" })
         bottom(insets.bottom,  { "all(\(insets)) bottom coordinate" })
@@ -300,6 +333,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.left().right()`.
      */
+    @discardableResult
     public func horizontally() -> PinLayout {
         right({ "horizontally() right coordinate" })
         left({ "horizontally() left coordinate" })
@@ -311,6 +345,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.left().right()`.
      */
+    @discardableResult
     public func horizontally(_ value: CGFloat) -> PinLayout {
         left(value, { return "horizontally(\(value)) left coordinate" })
         right(value, { return "horizontally(\(value)) right coordinate" })
@@ -322,6 +357,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.left().right()`.
      */
+    @discardableResult
     public func horizontally(_ percent: Percent) -> PinLayout {
         left(percent, { return "horizontally(\(percent.description)) left coordinate" })
         right(percent, { return "horizontally(\(percent.description)) right coordinate" })
@@ -333,6 +369,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.left().right()`.
      */
+    @discardableResult
     public func horizontally(_ insets: PEdgeInsets) -> PinLayout {
         left(insets.left, { return "horizontally(\(insets)) left coordinate" })
         right(insets.right, { return "horizontally(\(insets)) right coordinate" })
@@ -344,6 +381,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.top().bottom()`.
      */
+    @discardableResult
     public func vertically() -> PinLayout {
         top({ "vertically() top coordinate" })
         bottom({ "vertically() bottom coordinate" })
@@ -355,6 +393,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.top().bottom()`.
      */
+    @discardableResult
     public func vertically(_ value: CGFloat) -> PinLayout {
         top(value, { return "vertically(\(value)) top coordinate" })
         bottom(value, { return "vertically(\(value)) bottom coordinate" })
@@ -366,6 +405,7 @@ public class PinLayout<View: Layoutable> {
 
      Similar to calling `view.top().bottom()`.
      */
+    @discardableResult
     public func vertically(_ percent: Percent) -> PinLayout {
         top(percent, { return "vertically(\(percent.description)) top coordinate" })
         bottom(percent, { return "vertically(\(percent.description)) bottom coordinate" })
@@ -377,6 +417,7 @@ public class PinLayout<View: Layoutable> {
      The UIEdgeInsets.top is used to pin the top edge and the UIEdgeInsets.bottom
      for the bottom edge.
      */
+    @discardableResult
     public func vertically(_ insets: PEdgeInsets) -> PinLayout {
         top(insets.top, { return "vertically(\(insets)) top coordinate" })
         bottom(insets.bottom, { return "vertically(\(insets)) bottom coordinate" })
@@ -389,6 +430,7 @@ public class PinLayout<View: Layoutable> {
     // top, left, bottom, right
     //
 
+    @discardableResult
     public func top(to edge: VerticalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "top", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -397,6 +439,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func vCenter(to edge: VerticalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "vCenter", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -405,6 +448,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottom(to edge: VerticalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "bottom", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -413,6 +457,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func left(to edge: HorizontalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "left", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -421,6 +466,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func hCenter(to edge: HorizontalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "hCenter", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -429,6 +475,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func right(to edge: HorizontalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "right", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -437,6 +484,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func start(to edge: HorizontalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "start", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -445,6 +493,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func end(to edge: HorizontalEdge) -> PinLayout {
         func context() -> String { return relativeEdgeContext(method: "end", edge: edge) }
         if let coordinate = computeCoordinate(forEdge: edge, context) {
@@ -461,6 +510,7 @@ public class PinLayout<View: Layoutable> {
     // bottomLeft, bottomCenter, bottomRight,
     //
 
+    @discardableResult
     public func topLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topLeft", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -469,6 +519,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topLeft() -> PinLayout {
         return topLeft({ return "topLeft()" })
     }
@@ -478,6 +529,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topStart(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topStart", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -487,11 +539,13 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topStart() -> PinLayout {
         func context() -> String { return "topStart()" }
         return isLTR() ? topLeft(context) : topRight(context)
     }
 
+    @discardableResult
     public func topCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topCenter", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -500,6 +554,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topCenter() -> PinLayout {
         func context() -> String { return "topCenter()" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -507,6 +562,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topRight", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -525,6 +581,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topEnd(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topEnd", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -534,11 +591,13 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func topEnd() -> PinLayout {
         func context() -> String { return "topEnd()" }
         return isLTR() ? topRight(context) : topLeft(context)
     }
 
+    @discardableResult
     public func centerLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerLeft", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -547,6 +606,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerLeft() -> PinLayout {
         return centerLeft({ return "centerLeft()" })
     }
@@ -557,6 +617,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerStart(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerStart", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -566,11 +627,13 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerStart() -> PinLayout {
         func context() -> String { return "centerStart()" }
         return isLTR() ? centerLeft(context) : centerRight(context)
     }
 
+    @discardableResult
     public func center(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "center", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -579,6 +642,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func center() -> PinLayout {
         func context() -> String { return "center()" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -586,6 +650,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerRight", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -594,6 +659,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerRight() -> PinLayout {
         return centerRight({ return "centerRight()" })
     }
@@ -604,6 +670,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerEnd(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerEnd", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -613,11 +680,13 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func centerEnd() -> PinLayout {
         func context() -> String { return "centerEnd()" }
         return isLTR() ? centerRight(context) : centerLeft(context)
     }
 
+    @discardableResult
     public func bottomLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomLeft", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -626,6 +695,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomLeft() -> PinLayout {
         return bottomLeft({ return "bottomLeft()" })
     }
@@ -636,6 +706,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomStart(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomStart", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -645,11 +716,13 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomStart() -> PinLayout {
         func context() -> String { return "bottomStart()" }
         return isLTR() ? bottomLeft(context) : bottomRight(context)
     }
 
+    @discardableResult
     public func bottomCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomCenter", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -658,6 +731,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomCenter() -> PinLayout {
         func context() -> String { return "bottomCenter()" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -665,6 +739,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomRight", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -673,6 +748,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomRight() -> PinLayout {
         return bottomRight({ return "bottomRight()" })
     }
@@ -683,6 +759,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomEnd(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomEnd", anchor: anchor) }
         if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
@@ -692,6 +769,7 @@ public class PinLayout<View: Layoutable> {
         return self
     }
 
+    @discardableResult
     public func bottomEnd() -> PinLayout {
         func context() -> String { return "bottomEnd()" }
         return isLTR() ? bottomRight(context) : bottomLeft(context)
@@ -701,74 +779,88 @@ public class PinLayout<View: Layoutable> {
     // MARK: Width, height
     //
 
+    @discardableResult
     public func width(_ width: CGFloat) -> PinLayout {
         return setWidth(width, { return "width(\(width))" })
     }
 
+    @discardableResult
     public func width(_ percent: Percent) -> PinLayout {
         func context() -> String { return "width(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         return setWidth(percent.of(layoutSuperviewRect.width), context)
     }
 
+    @discardableResult
     public func width(of view: View) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setWidth(rect.width, { return "width(of: \(viewDescription(view)))" })
     }
 
+    @discardableResult
     public func minWidth(_ width: CGFloat) -> PinLayout {
         setMinWidth(width, { return "minWidth(\(width))" })
         return self
     }
 
+    @discardableResult
     public func minWidth(_ percent: Percent) -> PinLayout {
         func context() -> String { return "minWidth(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         return setMinWidth(percent.of(layoutSuperviewRect.width), context)
     }
 
+    @discardableResult
     public func maxWidth(_ width: CGFloat) -> PinLayout {
         setMaxWidth(width, { return "maxWidth(\(width))" })
         return self
     }
 
+    @discardableResult
     public func maxWidth(_ percent: Percent) -> PinLayout {
         func context() -> String { return "maxWidth(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         return setMaxWidth(percent.of(layoutSuperviewRect.width), context)
     }
 
+    @discardableResult
     public func height(_ height: CGFloat) -> PinLayout {
         return setHeight(height, { return "height(\(height))" })
     }
 
+    @discardableResult
     public func height(_ percent: Percent) -> PinLayout {
         func context() -> String { return "height(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         return setHeight(percent.of(layoutSuperviewRect.height), context)
     }
 
+    @discardableResult
     public func height(of view: View) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setHeight(rect.height, { return "height(of: \(viewDescription(view)))" })
     }
 
+    @discardableResult
     public func minHeight(_ height: CGFloat) -> PinLayout {
         setMinHeight(height, { return "minHeight(\(height))" })
         return self
     }
 
+    @discardableResult
     public func minHeight(_ percent: Percent) -> PinLayout {
         func context() -> String { return "minHeight(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         return setMinHeight(percent.of(layoutSuperviewRect.height), context)
     }
 
+    @discardableResult
     public func maxHeight(_ height: CGFloat) -> PinLayout {
         setMaxHeight(height, { return "maxHeight(\(height))" })
         return self
     }
 
+    @discardableResult
     public func maxHeight(_ percent: Percent) -> PinLayout {
         func context() -> String { return "maxHeight(\(percent.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
@@ -779,11 +871,13 @@ public class PinLayout<View: Layoutable> {
     // MARK: justify / align
     //
 
+    @discardableResult
     public func justify(_ value: HorizontalAlign) -> PinLayout {
         justify = value
         return self
     }
 
+    @discardableResult
     public func align(_ value: VerticalAlign) -> PinLayout {
         align = value
         return self
@@ -796,6 +890,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the top margin.
      */
+    @discardableResult
     public func marginTop(_ value: CGFloat) -> PinLayout {
         marginTop = value
         return self
@@ -804,6 +899,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the top margin.
      */
+    @discardableResult
     public func marginTop(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginTop(\(percent.description))" }
         return marginTop(percent, context)
@@ -818,6 +914,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the left margin.
      */
+    @discardableResult
     public func marginLeft(_ value: CGFloat) -> PinLayout {
         marginLeft = value
         return self
@@ -826,6 +923,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the left margin.
      */
+    @discardableResult
     public func marginLeft(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginLeft(\(percent.description))" }
         return marginLeft(percent, context)
@@ -840,6 +938,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the bottom margin.
      */
+    @discardableResult
     public func marginBottom(_ value: CGFloat) -> PinLayout {
         marginBottom = value
         return self
@@ -848,6 +947,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the bottom margin.
      */
+    @discardableResult
     public func marginBottom(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginBottom(\(percent.description))" }
         return marginBottom(percent, context)
@@ -862,6 +962,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the right margin.
      */
+    @discardableResult
     public func marginRight(_ value: CGFloat) -> PinLayout {
         marginRight = value
         return self
@@ -870,6 +971,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the right margin.
      */
+    @discardableResult
     public func marginRight(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginRight(\(percent.description))" }
         return marginRight(percent, context)
@@ -902,6 +1004,7 @@ public class PinLayout<View: Layoutable> {
      * In LTR direction, start margin specify the **left** margin.
      * In RTL direction, start margin specify the **right** margin.
      */
+    @discardableResult
     public func marginStart(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginStart(\(percent.description))" }
         return isLTR() ? marginLeft(percent, context) : marginRight(percent, context)
@@ -926,6 +1029,7 @@ public class PinLayout<View: Layoutable> {
      * In LTR direction, end margin specify the **right** margin.
      * In RTL direction, end margin specify the **left** margin.
      */
+    @discardableResult
     public func marginEnd(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginEnd(\(percent.description))" }
         return isLTR() ? marginRight(percent, context) : marginLeft(percent, context)
@@ -934,6 +1038,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the left, right, start and end margins to the specified value.
      */
+    @discardableResult
     public func marginHorizontal(_ value: CGFloat) -> PinLayout {
         marginLeft = value
         marginRight = value
@@ -943,6 +1048,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the left, right, start and end margins to the specified value.
      */
+    @discardableResult
     public func marginHorizontal(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginHorizontal(\(percent.description))" }
         return marginHorizontal(percent, context)
@@ -955,6 +1061,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the top and bottom margins to the specified value.
      */
+    @discardableResult
     public func marginVertical(_ value: CGFloat) -> PinLayout {
         marginTop = value
         marginBottom = value
@@ -964,6 +1071,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set the top and bottom margins to the specified value.
      */
+    @discardableResult
     public func marginVertical(_ percent: Percent) -> PinLayout {
         func context() -> String { return "marginVertical(\(percent.description))" }
         return marginVertical(percent, context)
@@ -977,6 +1085,7 @@ public class PinLayout<View: Layoutable> {
      Set all margins using UIEdgeInsets.
      This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
      */
+    @discardableResult
     public func margin(_ insets: PEdgeInsets) -> PinLayout {
         marginTop = insets.top
         marginBottom = insets.bottom
@@ -993,6 +1102,7 @@ public class PinLayout<View: Layoutable> {
      */
     #if os(iOS) || os(tvOS)
     @available(tvOS 11.0, iOS 11.0, *)
+    @discardableResult
     public func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayout {
         marginTop = directionalInsets.top
         marginBottom = directionalInsets.bottom
@@ -1005,6 +1115,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set all margins to the specified value.
      */
+    @discardableResult
     public func margin(_ value: CGFloat) -> PinLayout {
         marginTop = value
         marginLeft = value
@@ -1016,6 +1127,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set all margins to the specified value.
      */
+    @discardableResult
     public func margin(_ percent: Percent) -> PinLayout {
         func context() -> String { return "margin(\(percent.description))" }
         return marginTop(percent, context)
@@ -1027,6 +1139,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set individually top, horizontal margins and bottom margin.
      */
+    @discardableResult
     public func margin(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayout {
         marginTop = top
         marginLeft = left
@@ -1038,6 +1151,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set individually top, horizontal margins and bottom margin.
      */
+    @discardableResult
     public func margin(_ top: Percent, _ left: Percent, _ bottom: Percent, _ right: Percent) -> PinLayout {
         func context() -> String {
             return "margin(top: \(top.description), left: \(left.description), bottom: \(bottom.description), right: \(right.description)"
@@ -1051,6 +1165,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set individually vertical margins (top, bottom) and horizontal margins (left, right, start, end).
      */
+    @discardableResult
     public func margin(_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayout {
         marginTop = vertical
         marginLeft = horizontal
@@ -1062,6 +1177,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set individually vertical margins (top, bottom) and horizontal margins (left, right, start, end).
      */
+    @discardableResult
     public func margin(_ vertical: Percent, _ horizontal: Percent) -> PinLayout {
         func context() -> String { return "margin(vertical: \(vertical.description), horizontal: \(horizontal.description)"}
         return marginVertical(vertical, context).marginHorizontal(horizontal, context)
@@ -1070,6 +1186,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set individually top, horizontal margins and bottom margin.
      */
+    @discardableResult
     public func margin(_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayout {
         marginTop = top
         marginLeft = horizontal
@@ -1081,6 +1198,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Set individually top, horizontal margins and bottom margin.
      */
+    @discardableResult
     public func margin(_ top: Percent, _ horizontal: Percent, _ bottom: Percent) -> PinLayout {
         func context() -> String { return "margin(top: \(top.description), horizontal: \(horizontal.description), bottom: \(bottom.description)"}
         return marginTop(top, context).marginHorizontal(horizontal, context).marginBottom(bottom, context)
@@ -1092,6 +1210,7 @@ public class PinLayout<View: Layoutable> {
     /// moving the view.
     ///
     /// - Returns: PinLayout
+    @discardableResult
     public func pinEdges() -> PinLayout {
         shouldPinEdges = true
         return self

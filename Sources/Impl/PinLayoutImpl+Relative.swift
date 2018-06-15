@@ -28,21 +28,25 @@ extension PinLayout {
     //
     // above(of ...)
     //
+    @discardableResult
     public func above(of relativeView: View) -> PinLayout {
         func context() -> String { return "above(of: \(relativeView))" }
         return above(relativeViews: [relativeView], aligned: nil, context: context)
     }
 
+    @discardableResult
     public func above(of relativeViews: [View]) -> PinLayout {
         func context() -> String { return "above(of: \(relativeViews))" }
         return above(relativeViews: relativeViews, aligned: nil, context: context)
     }
 
+    @discardableResult
     public func above(of relativeView: View, aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "above(of: \(relativeView), aligned: \(aligned))" }
         return above(relativeViews: [relativeView], aligned: aligned, context: context)
     }
 
+    @discardableResult
     public func above(of relativeViews: [View], aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "above(of: \(relativeViews), aligned: \(aligned))" }
         return above(relativeViews: relativeViews, aligned: aligned, context: context)
@@ -51,21 +55,25 @@ extension PinLayout {
     //
     // below(of ...)
     //
+    @discardableResult
     public func below(of relativeView: View) -> PinLayout {
         func context() -> String { return "below(of: \(relativeView))" }
         return below(relativeViews: [relativeView], aligned: nil, context: context)
     }
 
+    @discardableResult
     public func below(of relativeViews: [View]) -> PinLayout {
         func context() -> String { return "below(of: \(relativeViews))" }
         return below(relativeViews: relativeViews, aligned: nil, context: context)
     }
 
+    @discardableResult
     public func below(of relativeView: View, aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "below(of: \(relativeView), aligned: \(aligned))" }
         return below(relativeViews: [relativeView], aligned: aligned, context: context)
     }
 
+    @discardableResult
     public func below(of relativeViews: [View], aligned: HorizontalAlign) -> PinLayout {
         func context() -> String { return "below(of: \(relativeViews), aligned: \(aligned))" }
         return below(relativeViews: relativeViews, aligned: aligned, context: context)
@@ -74,21 +82,25 @@ extension PinLayout {
     //
     // left(of ...)
     //
+    @discardableResult
     public func left(of relativeView: View) -> PinLayout {
         func context() -> String { return "left(of: \(relativeView))" }
         return left(relativeViews: [relativeView], aligned: nil, context: context)
     }
 
+    @discardableResult
     public func left(of relativeViews: [View]) -> PinLayout {
         func context() -> String { return "left(of: \(relativeViews))" }
         return left(relativeViews: relativeViews, aligned: nil, context: context)
     }
 
+    @discardableResult
     public func left(of relativeView: View, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "left(of: \(relativeView), aligned: \(aligned))" }
         return left(relativeViews: [relativeView], aligned: aligned, context: context)
     }
 
+    @discardableResult
     public func left(of relativeViews: [View], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "left(of: \(relativeViews), aligned: \(aligned))" }
         return left(relativeViews: relativeViews, aligned: aligned, context: context)
@@ -97,26 +109,31 @@ extension PinLayout {
     //
     // right(of ...)
     //
+    @discardableResult
     public func right(of relativeView: View) -> PinLayout {
         func context() -> String { return "right(of: \(relativeView))" }
         return right(relativeViews: [relativeView], aligned: nil, context: context)
     }
 
+    @discardableResult
     public func right(of relativeViews: [View]) -> PinLayout {
         func context() -> String { return "right(of: \(relativeViews))" }
         return right(relativeViews: relativeViews, aligned: nil, context: context)
     }
 
+    @discardableResult
     public func right(of relativeView: View, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "right(of: \(relativeView), aligned: \(aligned))" }
         return right(relativeViews: [relativeView], aligned: aligned, context: context)
     }
 
+    @discardableResult
     public func right(of relativeViews: [View], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "right(of: \(relativeViews), aligned: \(aligned))" }
         return right(relativeViews: relativeViews, aligned: aligned, context: context)
     }
 
+    @discardableResult
     public func before(of relativeView: View) -> PinLayout {
         func context() -> String { return "before(of: \(relativeView))" }
         if isLTR() {
@@ -126,6 +143,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func before(of relativeViews: [View]) -> PinLayout {
         func context() -> String { return "before(of: \(relativeViews))" }
         if isLTR() {
@@ -135,6 +153,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func before(of relativeView: View, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "before(of: \(relativeView), aligned: \(aligned))" }
         if isLTR() {
@@ -144,6 +163,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func before(of relativeViews: [View], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "before(of: \(relativeViews), aligned: \(aligned))" }
         if isLTR() {
@@ -153,6 +173,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func after(of relativeView: View) -> PinLayout {
         func context() -> String { return "after(of: \(relativeView))" }
         if isLTR() {
@@ -162,6 +183,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func after(of relativeViews: [View]) -> PinLayout {
         func context() -> String { return "after(of: \(relativeViews))" }
         if isLTR() {
@@ -171,6 +193,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func after(of relativeView: View, aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "after(of: \(relativeView))" }
         if isLTR() {
@@ -180,6 +203,7 @@ extension PinLayout {
         }
     }
 
+    @discardableResult
     public func after(of relativeViews: [View], aligned: VerticalAlign) -> PinLayout {
         func context() -> String { return "after(of: \(relativeViews), aligned: \(aligned))" }
         if isLTR() {

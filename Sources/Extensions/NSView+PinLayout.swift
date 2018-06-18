@@ -25,6 +25,18 @@ import AppKit
 extension NSView: Layoutable {
     public typealias View = NSView
 
+    public var pin: PinLayout<NSView> {
+        return PinLayout(view: self, keepTransform: true)
+    }
+
+    public var pinFrame: PinLayout<NSView> {
+        return PinLayout(view: self, keepTransform: false)
+    }
+
+    @objc public var pinObjc: PinLayoutObjC {
+        return PinLayoutObjCImpl(view: self, keepTransform: true)
+    }
+
     public func getRect(keepTransform: Bool) -> CGRect {
         if let superview = superview, !superview.isFlipped {
             var flippedRect = frame
@@ -53,11 +65,6 @@ extension NSView: Layoutable {
         case .ltr:  return true
         case .rtl:  return false
         }
-    }
-
-    // Expose PinLayout's objective-c interface.
-    @objc public var pinObjc: PinLayoutObjC {
-        return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
 }
 

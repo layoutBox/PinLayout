@@ -25,6 +25,18 @@ import UIKit
 extension UIView: Layoutable, SizeCalculable {
     public typealias View = UIView
 
+    public var pin: PinLayout<UIView> {
+        return PinLayout(view: self, keepTransform: true)
+    }
+
+    public var pinFrame: PinLayout<UIView> {
+        return PinLayout(view: self, keepTransform: false)
+    }
+
+    @objc public var pinObjc: PinLayoutObjC {
+        return PinLayoutObjCImpl(view: self, keepTransform: true)
+    }
+
     public func getRect(keepTransform: Bool) -> CGRect {
         if keepTransform {
             /*
@@ -78,11 +90,6 @@ extension UIView: Layoutable, SizeCalculable {
         case .ltr: return true
         case .rtl: return false
         }
-    }
-
-    // Expose PinLayout's objective-c interface.
-    @objc public var pinObjc: PinLayoutObjC {
-        return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
 }
 

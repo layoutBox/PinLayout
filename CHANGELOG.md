@@ -7,6 +7,15 @@
 
 # Change Log
 
+## [1.7.7](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
+Released on 2018-06-18
+
+#### Refactoring using generics
+Refactoring to avoid having to deal directly with view types, making it easier to extend layouting to other APIs (e.g: CALayer)
+
+* Added by [Antoine Lamy](https://github.com/antoinelamy) in Pull Request [#148](https://github.com/layoutBox/PinLayout/pull/148) 
+
+
 ## [1.7.6](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
 Released on 2018-06-07
 

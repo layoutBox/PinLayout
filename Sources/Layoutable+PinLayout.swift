@@ -9,14 +9,6 @@
 import Foundation
 
 extension Layoutable {
-    public var pin: PinLayout<View> {
-        return PinLayout(view: self as! Self.View, keepTransform: true)
-    }
-
-    public var pinFrame: PinLayout<View> {
-        return PinLayout(view: self as! Self.View, keepTransform: false)
-    }
-
     public var anchor: AnchorList {
         return AnchorListImpl(view: self as! View)
     }

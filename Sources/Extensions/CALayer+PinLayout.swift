@@ -19,6 +19,14 @@ extension CALayer: Layoutable {
         return sublayers ?? []
     }
 
+    public var pin: PinLayout<CALayer> {
+        return PinLayout(view: self, keepTransform: true)
+    }
+
+    public var pinFrame: PinLayout<CALayer> {
+        return PinLayout(view: self, keepTransform: false)
+    }
+
     public func getRect(keepTransform: Bool) -> CGRect {
         if keepTransform {
             /*

@@ -7,7 +7,7 @@
 
 # Change Log
 
-## [1.7.8](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
+## [1.7.8](https://github.com/layoutBox/PinLayout/releases/tag/1.7.8)
 Released on 2018-06-26
 
 #### Add support for CALayer layout

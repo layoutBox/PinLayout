@@ -7,6 +7,21 @@
 
 # Change Log
 
+## [1.7.8](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
+Released on 2018-06-26
+
+#### Add support for CALayer layout
+PinLayout can now layouts **CALayer**'s. All PinLayout's properties and methods are available, with the following exceptions:
+
+* `sizeToFit(:FitType)` is not supported. Support for `sizeToFit(:FitType)` can be added to your custom CALayer subclasses, just make those layers conform to the `SizeCalculable` protocol and implement the two required functions.
+* `CALayer.pin.safeArea` property is not available.
+* `aspectRatio()` with no parameters
+
+See [CALayer Support documentation](https://github.com/layoutBox/PinLayout#calayer-support) for more information
+
+* Added by [Antoine Lamy](https://github.com/antoinelamy) in Pull Request [#151](https://github.com/layoutBox/PinLayout/pull/151) 
+
+
 ## [1.7.7](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
 Released on 2018-06-19
 
@@ -17,13 +32,21 @@ Refactoring to avoid having to deal directly with view types, making it easier t
 
 
 ## [1.7.6](https://github.com/layoutBox/PinLayout/releases/tag/1.7.6)
-Released on 2018-06-07
+Released on 2018-06-12
 
 ### PinLayout has moved to the **layoutBox** organization
 PinLayout is now part of the same organization as other open source projects related to layout using Swift.
 
 #### Refactor source code that handle size adjustment.
 * Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#143](https://github.com/layoutBox/PinLayout/pull/143) 
+
+#### Add an example using `wrapContent()` methods
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#145](https://github.com/layoutBox/PinLayout/pull/145) 
+
+#### Refactor views frame/bounds access
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#147](https://github.com/layoutBox/PinLayout/pull/147) 
+
+
 
 ## [1.7.5](https://github.com/layoutBox/PinLayout/releases/tag/1.7.5)
 Released on 2018-06-05

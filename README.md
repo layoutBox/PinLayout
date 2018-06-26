@@ -26,7 +26,8 @@
 <!--<a href="https://github.com/layoutBox/PinLayout/issues"><img src="https://img.shields.io/github/issues/layoutBox/PinLayout.svg?style=flat" /></a>-->
 
 
-Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. 
+Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. PinLayout can layouts UIView, NSView and CALayer.
+
   
 > "No Auto layout constraints attached"
 
@@ -38,16 +39,10 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### Recent changes/features
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
-
 * :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization. See other **[layoutBox](https://github.com/layoutBox)** projects.
-
 * :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
-
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
-
 * :star: PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
-
-* :star: Methods [`all(:CGFloat)`, `horizontally(:CGFloat)` / `horizontally(:Percent)`, `vertically(:CGFloat)` / `vertically(:Percent)`](#pin_multiple_edges)
 
 
 
@@ -1540,21 +1535,15 @@ This app is available in the `Example` folder. Note that you must do a `pod inst
 <a name="macos_support"></a>
 ## macOS Support 
 
-PinLayout **support of macOS is not complete**, see here the particularities of the current implementation:
+PinLayout can layout **NSView**'s on macOS. All PinLayout's properties and methods are available, with the following exceptions:
 
-* PinLayout supports ** only views that have a parent (superview) using a flipped coordinate system**, i.e. views for which  the computed property `var isFlipped: Bool` returns true. In a flipped coordinate system, the origin is in the upper-left corner of the view and y-values extend downward. UIKit use this coordinate system. In a non-flipped coordinate system (default mode), the origin is in the lower-left corner of the view and positive y-values extend upward. See [Apple's documentation for more information about `NSView.isFlipped`](https://developer.apple.com/documentation/appkit/nsview/1483532-isflipped). The support of non-flipped coordinate system will be added soon.
+* PinLayout supports **only views that have a parent (superview) using a flipped coordinate system**, i.e. views for which  the computed property `var isFlipped: Bool` returns true. In a flipped coordinate system, the origin is in the upper-left corner of the view and y-values extend downward. UIKit use this coordinate system. In a non-flipped coordinate system (default mode), the origin is in the lower-left corner of the view and positive y-values extend upward. See [Apple's documentation for more information about `NSView.isFlipped`](https://developer.apple.com/documentation/appkit/nsview/1483532-isflipped). The support of non-flipped coordinate system will be added soon.
 
-* These methods are currently not supported on macOS, but they will be implemented soon:
+* [`sizeToFit(:FitType)`](#sizeToFit) is supported only for instances that inherits from NSControl. Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom NSView subclasses, just make those views conform to the `SizeCalculable` protocol and implement the two required functions.
 
-	* [`sizeToFit(:FitType)`](#sizeToFit) on any view that is not a subclass of NSControl
-	* [`aspectRatio()`](#aspect_ratio) with no parameters (Coming soon)
-    
-* Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom NSView subclasses. Just make those views conform to the `SizeCalculable` protocol and implement the two required functions.
+* [`NSView.pin.safeArea`](#safeAreaInsets) property is not available, AppKit doesn't have an `UIView.safeAreaInsets` equivalent.
 
-
-* [`UIView.pin.safeArea`](#safeAreaInsets) property is not available, AppKit doesn't have an UIView.safeAreaInsets equivalent.
-
-All other PinLayout's methods and properties are available on macOS!
+* [`aspectRatio()`](#aspect_ratio) with no parameters.
 
 <br>
 
@@ -1562,15 +1551,11 @@ All other PinLayout's methods and properties are available on macOS!
 <a name="calayer_support"></a>
 ## CALayer Support 
 
-PinLayout can also layouts **CALayer**'s. All PinLayout's properties and methods are available, with the following exceptions:
+PinLayout can layouts **CALayer**'s. All PinLayout's properties and methods are available, with the following exceptions:
 
-* These methods are currently not supported for CALayers
-
-	* [`sizeToFit(:FitType)`](#sizeToFit) is not supported.
-	* [`aspectRatio()`](#aspect_ratio) with no parameters.
-	* [`CALayer.pin.safeArea`](#safeAreaInsets)
-
-* Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom CALayer subclasses. Just make those layers conform to the `SizeCalculable` protocol and implement the two required functions.
+* [`sizeToFit(:FitType)`](#sizeToFit) is not supported. Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom CALayer subclasses, just make those layers conform to the `SizeCalculable` protocol and implement the two required functions.
+* [`CALayer.pin.safeArea`](#safeAreaInsets) property is not available.
+* [`aspectRatio()`](#aspect_ratio) with no parameters
 
 ###### Usage Examples:
 

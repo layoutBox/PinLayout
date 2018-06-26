@@ -33,11 +33,8 @@ class MinMaxWidthHeightSpec: QuickSpec {
             - aView
         */
         
-        beforeSuite {
-            _pinlayoutSetUnitTest(scale: 2)
-        }
-
         beforeEach {
+            _pinlayoutSetUnitTest(scale: 2)
             Pin.lastWarningText = nil
             
             viewController = PViewController()

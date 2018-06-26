@@ -39,6 +39,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### Recent changes/features
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
+* :star: PinLayout is in the Top 10 of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
 * :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization. See other **[layoutBox](https://github.com/layoutBox)** projects.
 * :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.

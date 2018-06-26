@@ -49,6 +49,8 @@
 		DF4C1AAA205AF10900DED50B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA7205AF10900DED50B /* RoundedButton.swift */; };
 		DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */; };
 		DF4C1AAF205AF78A00DED50B /* SafeAreaCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */; };
+		DF9E25B320DE645B0086EA0D /* UnitTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E25AC20DE645B0086EA0D /* UnitTestsViewController.swift */; };
+		DF9E25B420DE645B0086EA0D /* UnitTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E25AD20DE645B0086EA0D /* UnitTestsView.swift */; };
 		DFEAF74A20C9648A00E33147 /* WrapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74920C9648A00E33147 /* WrapContentView.swift */; };
 		DFEAF74C20C9649F00E33147 /* WrapContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74B20C9649F00E33147 /* WrapContentViewController.swift */; };
 /* End PBXBuildFile section */
@@ -179,6 +181,8 @@
 		DF4C1AA7205AF10900DED50B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaCornersViewController.swift; sourceTree = "<group>"; };
 		DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaCornersView.swift; sourceTree = "<group>"; };
+		DF9E25AC20DE645B0086EA0D /* UnitTestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTestsViewController.swift; sourceTree = "<group>"; };
+		DF9E25AD20DE645B0086EA0D /* UnitTestsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTestsView.swift; sourceTree = "<group>"; };
 		DFEAF74920C9648A00E33147 /* WrapContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapContentView.swift; sourceTree = "<group>"; };
 		DFEAF74B20C9649F00E33147 /* WrapContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,6 +258,7 @@
 				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2439CC631E66606D003326FB /* RelativeView */,
+				DF9E25AB20DE645B0086EA0D /* UnitTests */,
 				24CD1E8D1F8E4B0A00C3A54D /* PinLayoutSample-Bridging-Header.h */,
 			);
 			path = Examples;
@@ -438,6 +443,15 @@
 				24A9C2021EF16A3E00F2CF64 /* AutoAdjustingSizeViewController.swift */,
 			);
 			path = AutoAdjustingSize;
+			sourceTree = "<group>";
+		};
+		DF9E25AB20DE645B0086EA0D /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF9E25AC20DE645B0086EA0D /* UnitTestsViewController.swift */,
+				DF9E25AD20DE645B0086EA0D /* UnitTestsView.swift */,
+			);
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		DFEAF71520C840F300E33147 /* WrapContent */ = {
@@ -648,9 +662,11 @@
 				241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
+				DF9E25B420DE645B0086EA0D /* UnitTestsView.swift in Sources */,
 				247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */,
 				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
 				DFEAF74C20C9649F00E33147 /* WrapContentViewController.swift in Sources */,
+				DF9E25B320DE645B0086EA0D /* UnitTestsViewController.swift in Sources */,
 				24F246121FA8D4D100B6332E /* HouseCell.swift in Sources */,
 				DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */,
 				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,

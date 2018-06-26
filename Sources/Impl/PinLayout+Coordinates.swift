@@ -336,14 +336,6 @@ extension PinLayout {
         }
     }
     
-    internal func validateComputedWidth(_ width: CGFloat?) -> Bool {
-        if let width = width, width < 0 {
-            return false
-        } else {
-            return true
-        }
-    }
-    
     internal func validateHeight(_ height: CGFloat, context: Context) -> Bool {
         if height < 0 {
             warnWontBeApplied("the height (\(height)) must be greater than or equal to zero.", context)
@@ -352,13 +344,39 @@ extension PinLayout {
             return true
         }
     }
-    
-    internal func validateComputedHeight(_ height: CGFloat?) -> Bool {
-        if let height = height, height < 0 {
-            return false
-        } else {
-            return true
+
+    internal func validateDimension(_ dimension: CGFloat?) -> Bool {
+        return dimension == nil || dimension! >= 0
+    }
+
+    internal func validateValue(_ position: CGFloat) -> Bool {
+        return !position.isNaN && position.isFinite
+    }
+
+    internal func validateNewRect(_ newRect: CGRect, view: View) -> CGRect {
+        var rect = newRect
+
+        if !validateValue(rect.origin.x) {
+            warn("the computed view's x coordinate (\(rect.origin.x)) is not valid and won't be applied.")
+            rect.origin.x = view.getRect(keepTransform: keepTransform).origin.x
         }
+
+        if !validateValue(rect.origin.y) {
+            warn("the computed view's y coordinate (\(rect.origin.y)) is not valid and won't be applied.")
+            rect.origin.y = view.getRect(keepTransform: keepTransform).origin.y
+        }
+
+        if !validateValue(rect.size.width) {
+            warn("the computed view's width (\(rect.size.width)) is not valid and won't be applied.")
+            rect.size.width = view.getRect(keepTransform: keepTransform).width
+        }
+
+        if !validateValue(rect.size.height) {
+            warn("the computed view's height (\(rect.size.height)) is not valid and won't be applied.")
+            rect.size.height = view.getRect(keepTransform: keepTransform).height
+        }
+
+        return rect
     }
     
     fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: View, _ referenceSuperview: View) -> CGPoint {

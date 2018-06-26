@@ -125,14 +125,10 @@ extension PinLayout {
             // Only height is set
             newRect.size.height = height
         }
-        
-        if !validateComputedWidth(newRect.size.width) {
-            newRect.size.width = view.getRect(keepTransform: keepTransform).width
-        }
-        
-        if !validateComputedHeight(newRect.size.height) {
-            newRect.size.height = view.getRect(keepTransform: keepTransform).height
-        }
+
+        // TODO: add unit test for Nan and +Inf and -Inf values, for x, y, width and height
+        // Mais ultimement une vue retourne `CGFloat.greatestFiniteMagnitude` dans son height et on essais de faire un `pin.bellow` cette vue
+        newRect = validateNewRect(newRect, view: view)
         
         /*
          To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
@@ -201,6 +197,8 @@ extension PinLayout {
             switch adjustSizeType {
             case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
+            case .sizeToFit:
+                size = computeSizeToFit(size: size)
             case .fitSizeLegacy:
                 size = computeLegacyFitSize(size: size)
             case .aspectRatio(let ratio):
@@ -234,6 +232,17 @@ extension PinLayout {
         }
 
         return size
+    }
+
+    private func computeSizeToFit(size: Size) -> Size {
+        guard let sizeCalculableView = view as? SizeCalculable else {
+            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
+            return size
+        }
+        sizeCalculableView.sizeToFit()
+
+        let viewRect = view.getRect(keepTransform: keepTransform)
+        return Size(width: viewRect.width, height: viewRect.height)
     }
 
     private func computeLegacyFitSize(size: Size) -> Size {
@@ -344,11 +353,11 @@ extension PinLayout {
         size.width = applyMinMax(toWidth: size.width)
         size.height = applyMinMax(toHeight: size.height)
 
-        if !validateComputedWidth(size.width) {
+        if !validateDimension(size.width) {
             size.width = nil
         }
 
-        if !validateComputedHeight(size.height) {
+        if !validateDimension(size.height) {
             size.height = nil
         }
 

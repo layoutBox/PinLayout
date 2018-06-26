@@ -37,6 +37,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.0 / Objective-C
 
 ### Recent changes/features
+* :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
+
 * :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization. See other **[layoutBox](https://github.com/layoutBox)** projects.
 
 * :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
@@ -72,6 +74,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [More examples](#more_examples)
 * [Examples App](#examples_app)
 * [macOS Support](#macos_support)
+* [CALayer Support](#calayer_support)
 * [PinLayout in Xcode Playgrounds](#playgrounds)
 * [PinLayout using Objective-C](#objective_c_interface)
 * [Installation](#installation)
@@ -1543,13 +1546,44 @@ PinLayout **support of macOS is not complete**, see here the particularities of 
 
 * These methods are currently not supported on macOS, but they will be implemented soon:
 
-	* [`sizeToFit(:FitType)`](#sizeToFit) (Coming soon)
+	* [`sizeToFit(:FitType)`](#sizeToFit) on any view that is not a subclass of NSControl
 	* [`aspectRatio()`](#aspect_ratio) with no parameters (Coming soon)
+    
+* Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom NSView subclasses. Just make those views conform to the `SizeCalculable` protocol and implement the two required functions.
 
 
 * [`UIView.pin.safeArea`](#safeAreaInsets) property is not available, AppKit doesn't have an UIView.safeAreaInsets equivalent.
 
 All other PinLayout's methods and properties are available on macOS!
+
+<br>
+
+
+<a name="calayer_support"></a>
+## CALayer Support 
+
+PinLayout can also layouts **CALayer**'s. All PinLayout's properties and methods are available, with the following exceptions:
+
+* These methods are currently not supported for CALayers
+
+	* [`sizeToFit(:FitType)`](#sizeToFit) is not supported.
+	* [`aspectRatio()`](#aspect_ratio) with no parameters.
+	* [`CALayer.pin.safeArea`](#safeAreaInsets)
+
+* Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom CALayer subclasses. Just make those layers conform to the `SizeCalculable` protocol and implement the two required functions.
+
+###### Usage Examples:
+
+```swift
+aLayer = CALayer()
+bLayer = CALayer()
+view.layer.addSublayer(aLayer)
+view.layer.addSublayer(bLayer)
+...
+
+aLayer.pin.top(10).left(10).width(20%).height(80%)
+bLayer.pin.below(of: aLayer, aligned: .left).size(of: aLayer)
+```
 
 <br>
 

@@ -7,6 +7,15 @@
 
 # Change Log
 
+## [1.7.9](https://github.com/layoutBox/PinLayout/releases/tag/1.7.9)
+Released on 2018-06-26
+
+#### Fix a regression
+The recent changes to PinLayout that enable the layout of CALayer has impacted the layout of UIViews.
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#152](https://github.com/layoutBox/PinLayout/pull/152) 
+
+
 ## [1.7.8](https://github.com/layoutBox/PinLayout/releases/tag/1.7.8)
 Released on 2018-06-26
 

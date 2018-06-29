@@ -204,11 +204,11 @@ extension UIView {
                     return UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
                                         bottom: viewController.bottomLayoutGuide.length, right: 0)
                 } else {
-                    return .zero
+                    return .nonCrashZero
                 }
             } else {
                 // Return computed value
-                return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutSafeAreaInsets) as? UIEdgeInsets ?? .zero
+                return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutSafeAreaInsets) as? UIEdgeInsets ?? .nonCrashZero
             }
         }
         set {
@@ -237,8 +237,8 @@ extension UIView {
             // 1) Reach the UIViewController's UIView to get its compatibilitySafeAreaInsets, which is the
             //    only one we are sure its value is valid.
             while (topParent.next as? UIViewController) == nil {
-                guard let parent = topParent.superview  else { return .zero }  // The view is not attached
-                guard !(parent is UIScrollView) else { return .zero }          // scrollview's children don't have safeAreaInsets
+                guard let parent = topParent.superview  else { return .nonCrashZero }  // The view is not attached
+                guard !(parent is UIScrollView) else { return .nonCrashZero }          // scrollview's children don't have safeAreaInsets
                 topParent = parent
 
                 if (topParent.next as? UIViewController) == nil {

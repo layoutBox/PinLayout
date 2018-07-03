@@ -22,9 +22,19 @@ import Foundation
 #if os(iOS) || os(tvOS)
     import UIKit
     public typealias PEdgeInsets = UIEdgeInsets
+
+    public extension UIEdgeInsets {
+        // using .zero crashes compiler. https://bugs.swift.org/browse/SR-7879
+        static let nonCrashZero = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
 #else
     import AppKit
     public typealias PEdgeInsets = NSEdgeInsets
+
+    public extension NSEdgeInsets {
+        // using .zero crashes compiler. https://bugs.swift.org/browse/SR-7879
+        static let nonCrashZero = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
 #endif
 
 public class PinLayout<View: Layoutable> {
@@ -93,7 +103,7 @@ public class PinLayout<View: Layoutable> {
                 return view.pinlayoutComputeSafeAreaInsets()
             }
         } else {
-            return PEdgeInsets.zero
+            return PEdgeInsets.nonCrashZero
         }
     }
     #endif

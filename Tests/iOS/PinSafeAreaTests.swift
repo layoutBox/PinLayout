@@ -62,8 +62,8 @@ class PinSafeAreaSpec: QuickSpec {
                 navigationController.navigationBar.isTranslucent = false
                 setupWindow(with: navigationController)
 
-                let expectedSafeAreaInsets = UIEdgeInsets.zero
-                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+                let expectedSafeAreaInsets = UIEdgeInsets.nonCrashZero
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.nonCrashZero
 
                 if #available(iOS 11.0, tvOS 11.0, *) {
                     expect(viewController.view.safeAreaInsets).to(equal(expectedSafeAreaInsets))
@@ -89,7 +89,7 @@ class PinSafeAreaSpec: QuickSpec {
                 }
 
                 let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.nonCrashZero
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
@@ -151,12 +151,12 @@ class PinSafeAreaSpec: QuickSpec {
                 if #available(iOS 11.0, tvOS 11.0, *) {
                     viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
                     expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.nonCrashZero
                     expectedOffsetViewFrame = CGRect(x: 0, y: 44, width: screenSize.width,
                                                      height: screenSize.height - 44)
                 } else {
                     expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.nonCrashZero
                     expectedOffsetViewFrame = CGRect(x: 0, y: 44, width: screenSize.width,
                                                      height: screenSize.height - expectedSafeAreaInsets.top)
                 }

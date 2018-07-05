@@ -15,7 +15,7 @@
 ##### LayoutKit Benchmark
 PinLayout and [FlexLayout](https://github.com/layoutBox/FlexLayout) performance has been benchmarked using [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark). 
 
-The benchmark includes the following layout frameworks:
+The benchmark includes also many other layout frameworks, including:
 
 * Auto layout
 * [FlexLayout](https://github.com/layoutBox/FlexLayout)
@@ -23,6 +23,7 @@ The benchmark includes the following layout frameworks:
 * Manual layout (i.e. set UIView's frame directly)
 * [PinLayout](https://github.com/layoutBox/PinLayout)
 * UIStackViews
+* ...
 
 
 ### Benchmark 
@@ -32,7 +33,7 @@ As you can see in the following chart, PinLayout are faster or equal to manual l
 The benchmark layout UICollectionView and UITableView cells in multiple pass, each pass contains more cells than the previous one. 
 
 <p align="center">
-  <a href=""><img src="Benchmark/benchmark_comparison_all.png" alt="PinLayout Performance"/></a>
+  <a href=""><img src="Benchmark/benchmark_comparison_all_small.png" alt="PinLayout Performance"/></a>
 
 See [Layout Framework Benchmark](https://github.com/layoutBox/LayoutFrameworkBenchmark) for complete details and benchmarks charts for iPhone X/8/7/6S/...
 
@@ -55,30 +56,29 @@ override func layoutSubviews() {
     super.layoutSubviews()
     
     let hMargin: CGFloat = 8
-    let vMargin: CGFloat = 2
+    let vMargin: CGFloat = 4
     
     optionsLabel.pin.topRight().margin(hMargin)
     actionLabel.pin.topLeft().margin(hMargin)
     
     posterImageView.pin.below(of: actionLabel, aligned: .left).marginTop(10)
-    posterNameLabel.pin.right(of: posterImageView, aligned: .top).margin(-6, 6).right(hMargin).sizeToFit()
-    posterHeadlineLabel.pin.below(of: posterNameLabel, aligned: .left).right(hMargin).marginTop(1).sizeToFit()
-    posterTimeLabel.pin.below(of: posterHeadlineLabel, aligned: .left).right(hMargin).marginTop(1).sizeToFit()
     
-    posterCommentLabel.pin.below(of: posterTimeLabel).left(hMargin).right().right(hMargin)
-        .marginTop(vMargin).sizeToFit()
+    posterHeadlineLabel.pin.after(of: posterImageView, aligned: .center).marginLeft(4)
+    posterNameLabel.pin.above(of: posterHeadlineLabel, aligned: .left).marginBottom(vMargin)
+    posterTimeLabel.pin.below(of: posterHeadlineLabel, aligned: .left).marginTop(vMargin)
     
-    contentImageView.pin.below(of: posterCommentLabel).hCenter().width(100%).sizeToFit()
-    contentTitleLabel.pin.below(of: contentImageView).left().right().marginHorizontal(hMargin).sizeToFit()
-    contentDomainLabel.pin.below(of: contentTitleLabel, aligned: .left).right().marginRight(hMargin)
-        .sizeToFit()
+    posterCommentLabel.pin.below(of: posterTimeLabel).left(hMargin).marginTop(vMargin)
+    
+    contentImageView.pin.below(of: posterCommentLabel, aligned: .left).right().marginTop(vMargin).marginRight(hMargin)
+    contentTitleLabel.pin.below(of: contentImageView).left().marginHorizontal(hMargin)
+    contentDomainLabel.pin.below(of: contentTitleLabel, aligned: .left)
     
     likeLabel.pin.below(of: contentDomainLabel, aligned: .left).marginTop(vMargin)
-    commentLabel.pin.top(to: likeLabel.edge.top).hCenter(50%)
+    commentLabel.pin.top(to: likeLabel.edge.top).hCenter()
     shareLabel.pin.top(to: likeLabel.edge.top).right().marginRight(hMargin)
     
     actorImageView.pin.below(of: likeLabel, aligned: .left).marginTop(vMargin)
-    actorCommentLabel.pin.right(of: actorImageView, aligned: .center).marginLeft(4)
+    actorCommentLabel.pin.after(of: actorImageView, aligned: .center).marginLeft(4)
 }
 ```
 

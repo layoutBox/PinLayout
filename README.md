@@ -718,7 +718,7 @@ The resulting size will always respect [`minWidth`/`maxWidth`/`minHeight`/`maxHe
 **Methods:**
 
 * **`sizeToFit()`**  
-The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. 
+The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. Particularly useful for controls/views that have an intrinsic size (label, button, ...).
 
 * **`sizeToFit(: FitType)`**  
 The method adjust the view's size based on the result of the method `sizeThatFits(:CGSize)`.  

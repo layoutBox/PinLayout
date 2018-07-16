@@ -125,10 +125,14 @@ extension PinLayout {
             // Only height is set
             newRect.size.height = height
         }
-
-        // TODO: add unit test for Nan and +Inf and -Inf values, for x, y, width and height
-        // Mais ultimement une vue retourne `CGFloat.greatestFiniteMagnitude` dans son height et on essais de faire un `pin.bellow` cette vue
-        newRect = validateNewRect(newRect, view: view)
+        
+        if !validateComputedWidth(newRect.size.width) {
+            newRect.size.width = view.getRect(keepTransform: keepTransform).width
+        }
+        
+        if !validateComputedHeight(newRect.size.height) {
+            newRect.size.height = view.getRect(keepTransform: keepTransform).height
+        }
         
         /*
          To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
@@ -353,11 +357,11 @@ extension PinLayout {
         size.width = applyMinMax(toWidth: size.width)
         size.height = applyMinMax(toHeight: size.height)
 
-        if !validateDimension(size.width) {
+        if !validateComputedWidth(size.width) {
             size.width = nil
         }
 
-        if !validateDimension(size.height) {
+        if !validateComputedHeight(size.height) {
             size.height = nil
         }
 

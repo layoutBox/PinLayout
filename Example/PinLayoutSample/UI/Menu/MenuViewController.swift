@@ -56,7 +56,7 @@ enum PageType: Int {
     var viewController: UIViewController {
         switch self {
         case .intro:
-            return UnitTestsViewController(pageType: self)
+            return IntroViewController(pageType: self)
         case .adjustToContainer:
             return AdjustToContainerViewController(pageType: self)
         case .tableView:
@@ -108,7 +108,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        didSelect(pageType: .intro)
+//        didSelect(pageType: .safeArea)
     }
 }
 

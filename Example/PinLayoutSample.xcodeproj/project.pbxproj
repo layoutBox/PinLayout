@@ -49,8 +49,6 @@
 		DF4C1AAA205AF10900DED50B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA7205AF10900DED50B /* RoundedButton.swift */; };
 		DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */; };
 		DF4C1AAF205AF78A00DED50B /* SafeAreaCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */; };
-		DF9E25B320DE645B0086EA0D /* UnitTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E25AC20DE645B0086EA0D /* UnitTestsViewController.swift */; };
-		DF9E25B420DE645B0086EA0D /* UnitTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E25AD20DE645B0086EA0D /* UnitTestsView.swift */; };
 		DFEAF74A20C9648A00E33147 /* WrapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74920C9648A00E33147 /* WrapContentView.swift */; };
 		DFEAF74C20C9649F00E33147 /* WrapContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74B20C9649F00E33147 /* WrapContentViewController.swift */; };
 /* End PBXBuildFile section */

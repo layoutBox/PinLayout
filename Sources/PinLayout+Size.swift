@@ -255,7 +255,6 @@ extension PinLayout {
                 warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
                 return self
             } else if type.requiresSizeCalculable, !(view is SizeCalculable) {
-                // Add unit test for this warning
                 warnWontBeApplied("PinLayout cannot comptute this view's size. This type of views doesn't conform to the protocol SizeCalculable.", context)
                 return self
             }

@@ -712,19 +712,18 @@ Set the view’s size to match the referenced view’s size
 
 PinLayout has methods to adjust the view’s size based on their content. 
 
+The resulting size will always respect [`minWidth`/`maxWidth`/`minHeight`/`maxHeight`](#minmax_width_height_size) values.
+ 
 
 **Methods:**
 
 * **`sizeToFit()`**  
-The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. The size will respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`. 
+The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. 
 
-* **`sizeToFit(_ fitType: FitType)`**  
+* **`sizeToFit(: FitType)`**  
 The method adjust the view's size based on the result of the method `sizeThatFits(:CGSize)`.  
-     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
-     
-     Notes:
-     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
-     * If margins have been specified, they will be applied before calling the view's `sizeThatFits(:CGSize)` method.
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.  
+     If margins are specified, they will be applied before calling the view's `sizeThatFits(:CGSize)` method.
      
 	**Parameter `fitType`:** Identify the reference dimension (width / height) that will be used to adjust the view's size.  
 

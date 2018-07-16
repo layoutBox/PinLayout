@@ -492,7 +492,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = Mirego;
+				ORGANIZATIONNAME = layoutbox;
 				TargetAttributes = {
 					249EFE3E1E64FAFE00165E39 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -821,7 +821,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayoutSample/UI/Examples/PinLayoutSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -839,7 +839,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayoutSample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.layoutbox.PinLayoutSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayoutSample/UI/Examples/PinLayoutSample-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

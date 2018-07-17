@@ -44,11 +44,8 @@ class AdjustSizeSpec: QuickSpec {
                  - bViewChild
         */
         
-        beforeSuite {
-            _pinlayoutSetUnitTest(scale: 2)
-        }
-
         beforeEach {
+            _pinlayoutSetUnitTest(scale: 2)
             Pin.lastWarningText = nil
             
             viewController = PViewController()
@@ -860,6 +857,18 @@ class AdjustSizeSpec: QuickSpec {
                 aView.frame.size = CGSize(width: 50, height: 0)
                 aView.pin.sizeToFit(.width)
                 expect(aView.frame).to(beCloseTo(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 32.0), within: 0.5))
+            }
+        }
+
+        //
+        // sizeToFit()
+        //
+        describe("the result of the sizeToFit()") {
+            it("should adjust the aView") {
+                _pinlayoutSetUnitTest(scale: 3)
+
+                aView.pin.sizeToFit().center()
+                expect(aView.frame).to(beCloseTo(CGRect(x: 182.6667, y: 177.6667, width: 35.0, height: 45.0), within: 0.1))
             }
         }
         #endif

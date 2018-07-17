@@ -39,6 +39,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### Recent changes/features
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
+* :star: PinLayout is in the Top 10 of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
 * :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization. See other **[layoutBox](https://github.com/layoutBox)** projects.
 * :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
@@ -58,6 +59,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Anchors](#anchors)
   * [Relative positioning](#relative_positioning)
   * [Width, height and size](#width_height_size)
+  * [Adjusting size](#adjusting_size)
   * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
   * [Aspect Ratio](#aspect_ratio)
   * [Margins](#margins)
@@ -705,18 +707,23 @@ Set the view’s size to match the referenced view’s size
 
 <br/>
 
-<a name="sizeToFit"></a>
-### sizeToFit
+<a name="adjusting_size"></a>
+### Adjusting size
 
-**Method:**
+PinLayout has methods to adjust the view’s size based on their content. 
 
-* **`sizeToFit(_ fitType: FitType)`**  
-The method adjust the view's size based on the view's `sizeThatFits()` method result.  
-     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.
-     
-     Notes:
-     * If margin rules apply, margins will be applied when determining the reference dimension (width/height).
-     * The resulting size will always respect `minWidth` / `maxWidth` / `minHeight` / `maxHeight`.
+The resulting size will always respect [`minWidth`/`maxWidth`/`minHeight`/`maxHeight`](#minmax_width_height_size) values.
+ 
+
+**Methods:**
+
+* **`sizeToFit()`**  
+The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. Particularly useful for controls/views that have an intrinsic size (label, button, ...).
+
+* **`sizeToFit(: FitType)`**  
+The method adjust the view's size based on the result of the method `sizeThatFits(:CGSize)`.  
+     PinLayout will adjust either the view's width or height based on the `fitType` parameter value.  
+     If margins are specified, they will be applied before calling the view's `sizeThatFits(:CGSize)` method.
      
 	**Parameter `fitType`:** Identify the reference dimension (width / height) that will be used to adjust the view's size.  
 
@@ -736,6 +743,9 @@ The method adjust the view's size based on the view's `sizeThatFits()` method re
 ###### Usage examples:
 
 ```swift
+     // Adjust the view's size based on the result of `UIView.sizeToFit()` and center it.
+     view.pin.center().sizeToFit()
+
      // Adjust the view's size based on a width of 100 pixels.
      // The resulting width will always match the pinned property `width(100)`.
      view.pin.width(100).sizeToFit(.width)

@@ -201,6 +201,8 @@ extension PinLayout {
             switch adjustSizeType {
             case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
+            case .sizeToFit:
+                size = computeSizeToFit(size: size)
             case .fitSizeLegacy:
                 size = computeLegacyFitSize(size: size)
             case .aspectRatio(let ratio):
@@ -234,6 +236,17 @@ extension PinLayout {
         }
 
         return size
+    }
+
+    private func computeSizeToFit(size: Size) -> Size {
+        guard let sizeCalculableView = view as? SizeCalculable else {
+            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
+            return size
+        }
+        sizeCalculableView.sizeToFit()
+
+        let viewRect = view.getRect(keepTransform: keepTransform)
+        return Size(width: viewRect.width, height: viewRect.height)
     }
 
     private func computeLegacyFitSize(size: Size) -> Size {

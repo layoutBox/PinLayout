@@ -7,6 +7,15 @@
 
 # Change Log
 
+## [1.7.10](https://github.com/layoutBox/PinLayout/releases/tag/1.7.10)
+Released on 2018-07-17
+
+#### Add `sizeToFit()` method.
+The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. Particularly useful for controls/views that have an intrinsic size (label, button, ...).
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#158](https://github.com/layoutBox/PinLayout/pull/158) 
+
+
 ## [1.7.9](https://github.com/layoutBox/PinLayout/releases/tag/1.7.9)
 Released on 2018-06-28
 

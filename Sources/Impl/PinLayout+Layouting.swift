@@ -199,7 +199,7 @@ extension PinLayout {
 
         if let adjustSizeType = adjustSizeType {
             switch adjustSizeType {
-            case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
+            case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
             case .fitSizeLegacy:
                 size = computeLegacyFitSize(size: size)
@@ -298,6 +298,10 @@ extension PinLayout {
             } else {
                 fitHeight = view.getRect(keepTransform: keepTransform).height
             }
+        case .fitTypeContent:
+            let fitSize = view.getRect(keepTransform: keepTransform).size
+            fitWidth = fitSize.width
+            fitHeight = fitSize.height
         default:
             assertionFailure("Should not occured")
         }

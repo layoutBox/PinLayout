@@ -110,6 +110,11 @@ class MenuViewController: UIViewController {
         super.viewDidAppear(true)
 //        didSelect(pageType: .safeArea)
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mainView.tableView.reloadData()
+    }
 }
 
 // MARK: MenuViewDelegate

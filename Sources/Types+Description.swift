@@ -62,6 +62,7 @@ extension FitType {
         case .height: return ".height"
         case .widthFlexible: return ".widthFlexible"
         case .heightFlexible: return ".heightFlexible"
+        case .content: return ".content"
         }
     }
 }

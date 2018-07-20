@@ -278,6 +278,8 @@ import AppKit
     @discardableResult func aspectRatio() -> PinLayoutObjC
     #endif
 
+    @discardableResult func sizeToFit() -> PinLayoutObjC
+
     @discardableResult func sizeToFit(_ fitType: Fit) -> PinLayoutObjC
 
     //
@@ -386,4 +388,5 @@ import AppKit
     case height
     case widthFlexible
     case heightFlexible
+    case content
 }

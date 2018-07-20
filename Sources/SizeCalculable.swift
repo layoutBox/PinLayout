@@ -14,5 +14,4 @@ import AppKit
 
 public protocol SizeCalculable {
     func sizeThatFits(_ size: CGSize) -> CGSize
-    func sizeToFit()
 }

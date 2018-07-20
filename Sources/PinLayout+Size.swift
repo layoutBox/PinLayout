@@ -28,6 +28,7 @@ enum AdjustSizeType {
     case fitTypeHeight
     case fitTypeWidthFlexible
     case fitTypeHeightFlexible
+    case fitTypeContent
 
     case fitSizeLegacy
     case aspectRatio(CGFloat)
@@ -44,7 +45,7 @@ enum AdjustSizeType {
 
     internal var requiresSizeCalculable: Bool {
         switch self {
-        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitSizeLegacy:
+        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent, .fitSizeLegacy:
             return true
         case .aspectRatio(_):
             return false
@@ -69,6 +70,7 @@ extension FitType {
         case .height: return .fitTypeHeight
         case .widthFlexible: return .fitTypeWidthFlexible
         case .heightFlexible: return .fitTypeHeightFlexible
+        case .content: return .fitTypeContent
         }
     }
 }
@@ -213,7 +215,7 @@ extension PinLayout {
      ```
      */
     @discardableResult
-    public func sizeToFit(_ fitType: FitType) -> PinLayout {
+    public func sizeToFit(_ fitType: FitType = .content) -> PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }
 
@@ -262,6 +264,8 @@ extension PinLayout {
         switch adjustSizeType {
         case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
             conflict = "sizeToFit(\(adjustSizeType.toFitType()!.description))."
+        case .fitTypeContent:
+            conflict = "sizeToFit()"
         case .fitSizeLegacy:
             conflict = "fitSize()"
         case .aspectRatio(let ratio):

@@ -55,10 +55,11 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * [Performance](#performance)
 * [Documentation](#documentation)
   * [Right to left languages (RTL) support](#rtl_support)
-  * [Layout using distances from superview’s edges](#distance_from_superview_edge) 
+  * [Edges layout](#layout_edges) 
+  * [Relative Edges layout](#relative_edges_layout)
+	  * [Relative Edges with alignment layout](#relative_edges_layout_w_alignment)
   * [Edges](#edges)
   * [Anchors](#anchors)
-  * [Relative positioning](#relative_positioning)
   * [Width, height and size](#width_height_size)
   * [Adjusting size](#adjusting_size)
   * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
@@ -196,75 +197,10 @@ PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. [See h
 <br/>
 
 
-<a name="distance_from_superview_edge"></a>
-## Layout using distances from superview’s edges 
+<a name="layout_edges"></a>
+## Edges layout
 
 PinLayout can position a view’s edge relative to its superview edges.
-
-**Methods**:
-
-* **`top(:CGFloat)`** / **`top(:Percent)`** /  **`top()`** / **`top(:UIEdgeInsets)`**  
-The value specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height). `top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge. `top(:UIEdgeInsets)` use the `UIEdgeInsets.top` property, is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-* **`bottom(:CGFloat)`** / **`bottom(:Percent)`** / **`bottom()`** / **`bottom(:UIEdgeInsets)`**   
-The value specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height). `bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge. `bottom(:UIEdgeInsets)` use the `UIEdgeInsets.bottom` property, it is is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-* **`left(:CGFloat)`** / **`left(:Percent)`** / **`left()`** / **`left(:UIEdgeInsets)`**   
-The value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). `left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge. `left(:UIEdgeInsets)` use the `UIEdgeInsets.left` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-* **`right(:CGFloat)`** / **`right(:Percent)`** / **`right()`** / **`right(:UIEdgeInsets)`**   
-The value specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width). `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge. `right(:UIEdgeInsets)` use the `UIEdgeInsets. right` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-* **`vCenter(:CGFloat)`** / **`vCenter(:Percent)`** / **`vCenter()`**  
-The value specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive value move the view down and a negative value move it up relative to the superview's center. `vCenter()` is similar to calling `vCenter(0)`, it position vertically the view's center directly on its superview vertical center.
-
-* **`hCenter(:CGFloat)`** / **`hCenter(:Percent)`** / **`hCenter()`**  
-The value specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). A positive value move the view to the right and a negative value move it to the left relative to the superview's center. `hCenter()` is similar to calling `hCenter(0)`, it position horizontally the view's center directly on its superview horizontal center. 
-
-* **`start(:CGFloat)`** / **`start(:Percent)`** / **`start()`** / **`start(:UIEdgeInsets)`** :left_right_arrow:  
-In LTR direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).   
-In RTL direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
-`start()` is similar to calling `start(0)`. `start(:UIEdgeInsets)` use the `UIEdgeInsets.left` property in LTR direction and `UIEdgeInsets.right` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-* **`end(:CGFloat)`** / **`end(:Percent)`** / **`end()`** / **`end(:UIEdgeInsets)`** :left_right_arrow:  
-In LTR direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
-In RTL direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).  `end()` is similar to calling `end(0)`. `end(:UIEdgeInsets)` use the `UIEdgeInsets.right` property in LTR direction and `UIEdgeInsets.left` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-<a name="pin_multiple_edges"></a>
-**Methods pinning multiple edges**:
-
-* **`all(:CGFloat)`** / **`all(:UIEdgeInsets)`** / **`all()`**  
-The value/insets specifies the **top, bottom, left and right edges** distance from the superview's corresponding edge in pixels. Similar to calling `view.top(value).bottom(value).left(value).right(value)`.  
-`all()` is similar to calling `all(0)`.  
-`all(:UIEdgeInsets)` is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
-
-* **`horizontally(:CGFloat)`** / **`horizontally(:Percent)`** /  
-**`horizontally(:UIEdgeInsets)`** / **`horizontally()`**  
-The value specifies the **left and right edges** on its superview's corresponding edges in pixels (or in percentage of its superview's width).  
-`horizontally()` is similar to calling `horizontally(0)`.  
-`horizontally(:UIEdgeInsets)` use the UIEdgeInsets's left and right value to pin left and right edges.
-
-* **`vertically(:CGFloat)`** / **`vertically(:Percent)`**   
-**`vertically(:UIEdgeInsets)`** / **`vertically()`**  
-The value specifies the **top and bottom edges** on its superview's corresponding edges in pixels (or in percentage of its superview's height).  
-`vertically()` is similar to calling `vertically(0)`.  
-`vertically(:UIEdgeInsets)` use the UIEdgeInsets's top and bottom value to pin top and bottom edges.
-
-
-
-###### Usage Examples:
-
-```swift
-   view.pin.top(20).bottom(20)   // The view has a top margin and a bottom margin of 20 pixels 
-   view.pin.top().left()         // The view is pinned directly on its parent top and left edge
-   view.pin.all()                // The view fill completely its parent (horizontally and vertically)
-   view.pin.all(pin.safeArea)    // The view fill completely its parent safeArea 
-   view.pin.top(25%).hCenter()   // The view is centered horizontally with a top margin of 25%
-   view.pin.left(12).vCenter()   // The view is centered vertically
-   view.pin.start(20).end(20)    // Support right-to-left languages.
-   view.pin.horizontally(20)     // The view is filling its parent width with a left and right margin.
-   view.pin.top().horizontally() // The view is pinned at the top edge of its parent and fill it horizontally.
-```
 
 ###### Example:
 This example layout the view A to fit its superview frame with a margin of 10 pixels. It pins the top, left, bottom and right edges.
@@ -282,7 +218,339 @@ Another shorter possible solution using `all()`:
     view.pin.all(10)
 ```
 
+**Methods**:
+
+The following methods are used to position a view’s edge relative to its superview edges. 
+
+Note that the margin parameter in the following methods can be either positive and negative. In general cases positive values are used.
+
+* **`top(_ margin: CGFloat)`** / **`top(_ margin: Percent)`** /  **`top()`** / **`top(_ margin: UIEdgeInsets)`**  
+Position the top edge. The margin specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height). `top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge. `top(:UIEdgeInsets)` use the `UIEdgeInsets.top` property, is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+* **`bottom(_ margin: CGFloat)`** / **`bottom(_ margin: Percent)`** / **`bottom()`** / **`bottom(_ margin: UIEdgeInsets)`**   
+Position the bottom edge. The margin specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height). `bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge. `bottom(:UIEdgeInsets)` use the `UIEdgeInsets.bottom` property, it is is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+* **`left(_ margin: CGFloat)`** / **`left(_ margin: Percent)`** / **`left()`** / **`left(_ margin: UIEdgeInsets)`**   
+Position the left edge. The margin specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). `left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge. `left(:UIEdgeInsets)` use the `UIEdgeInsets.left` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+* **`right(_ margin: CGFloat)`** / **`right(_ margin: Percent)`** / **`right()`** / **`right(_ margin: UIEdgeInsets)`**   
+Position the right edge. The margin specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width). `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge. `right(:UIEdgeInsets)` use the `UIEdgeInsets. right` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+* **`vCenter(_ margin: CGFloat)`** / **`vCenter(_ margin: Percent)`** / **`vCenter()`**  
+Position the vertical center (center.y). The margin specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive margin move the view down and a negative value move it up relative to the superview's center. `vCenter()` is similar to calling `vCenter(0)`, it position vertically the view's center directly on its superview vertical center.
+
+* **`hCenter(_ margin: CGFloat)`** / **`hCenter(_ margin: Percent)`** / **`hCenter()`**  
+Position the horizontal center (center.x). The margin specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). A positive value move the view to the right and a negative value move it to the left relative to the superview's center. `hCenter()` is similar to calling `hCenter(0)`, it position horizontally the view's center directly on its superview horizontal center. 
+
+##### Methods supporting LTR (left-to-right) and RTL (right-to-left) languages.
+
+* **`start(_ margin: CGFloat)`** / **`start(_ margin: Percent)`** / **`start()`** / **`start(_ margin: UIEdgeInsets)`** :left_right_arrow:  
+Position the left or right edge depending of the LTR language direction. In LTR direction the margin specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). In RTL direction the margin specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
+`start()` is similar to calling `start(0)`. `start(:UIEdgeInsets)` use the `UIEdgeInsets.left` property in LTR direction and `UIEdgeInsets.right` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+* **`end(_ margin: CGFloat)`** / **`end(_ margin: Percent)`** / **`end()`** / **`end(_ margin: UIEdgeInsets)`** :left_right_arrow:  
+Position the left or right edge depending of the LTR language direction. In LTR direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width). In RTL direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).  `end()` is similar to calling `end(0)`. `end(:UIEdgeInsets)` use the `UIEdgeInsets.right` property in LTR direction and `UIEdgeInsets.left` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+<a name="pin_multiple_edges"></a>
+**Methods pinning multiple edges**:
+
+* **`all(_ margin: CGFloat)`** / **`all()`** / **`all(_ margin: UIEdgeInsets)`**   
+Position the top, left, bottom and right edges. The margin specifies the **top, bottom, left and right edges** distance from the superview's corresponding edge in pixels. Similar to calling `view.top(value).bottom(value).left(value).right(value)`.  
+`all()` is similar to calling `all(0)`.  
+`all(:UIEdgeInsets)` is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+
+* **`horizontally(_ margin: CGFloat)`** / **`horizontally(_ margin: Percent)`** / **`horizontally()`** / **`horizontally(_ margin: UIEdgeInsets)`**   
+Position the left and right edges. The margin specifies the **left and right edges** distance from its superview's corresponding edges in pixels (or in percentage of its superview's width).  
+`horizontally()` is similar to calling `horizontally(0)`.  
+`horizontally(:UIEdgeInsets)` use the UIEdgeInsets's left and right value to pin left and right edges.
+
+* **`vertically(_ margin: CGFloat)`** / **`vertically(_ margin: Percent)`** / **`vertically()`** / **`vertically(_ margin: UIEdgeInsets)`**  
+Position the top and bottom edges. The margin specifies the **top and bottom edges** distance from on its superview's corresponding edges in pixels (or in percentage of its superview's height).  
+`vertically()` is similar to calling `vertically(0)`.  
+`vertically(:UIEdgeInsets)` use the UIEdgeInsets's top and bottom value to pin top and bottom edges.
+
+
+###### Usage Examples:
+
+```swift
+   view.pin.top(20).bottom(20)   // The view has a top margin and a bottom margin of 20 pixels 
+   view.pin.top().left()         // The view is pinned directly on its parent top and left edge
+   view.pin.all()                // The view fill completely its parent (horizontally and vertically)
+   view.pin.all(pin.safeArea)    // The view fill completely its parent safeArea 
+   view.pin.top(25%).hCenter()   // The view is centered horizontally with a top margin of 25%
+   view.pin.left(12).vCenter()   // The view is centered vertically
+   view.pin.start(20).end(20)    // Support right-to-left languages.
+   view.pin.horizontally(20)     // The view is filling its parent width with a left and right margin.
+   view.pin.top().horizontally() // The view is pinned at the top edge of its parent and fill it horizontally.
+```
+
 <br/>
+
+#### Layout multiple edges relative to superview
+
+This section describe methods that are similar to methods describe in the previous section [Edges layout](#layout_edges), except that they position 2 edges simultaneously. They can be used as shortcuts to set 2 consecutive edges.
+
+<img src="docs/pinlayout-anchors.png" width="400"/>
+
+###### Example:
+This example position the view’s on the top-right corner of its superview’s topRight and set its size to 100 pixels.
+
+<img src="docs/images/pinlayout_example_topRight.png" width="600"/>
+
+
+```swift
+	viewA.pin.topRight().size(100)
+``` 
+
+This is equivalent to:
+
+```swift
+	viewA.pin.top().right().size(100)
+```
+**Methods:**
+
+* **`topLeft(_ margin: CGFloat)`** / **`topLeft()`**  
+Position the top and left edges. The margin specifies the distance from their superview's corresponding edges in pixels. `topLeft()` is similar to calling `topLeft(0)`.
+
+* **`topCenter(_ marginTop: CGFloat)`** / **`topCenter()`**  
+Position the top and horizontal center (center.x). The margin specifies the top edge distance from the superview's top edge in pixels. `topCenter()` is similar to calling `topCenter(0)`.
+
+* **`topRight(_ margin: CGFloat)`** / **`topRight()`**  
+Position the top and right edges. The margin specifies the distance from their superview's corresponding edges in pixels. `topRight()` is similar to calling `topRight(0)`.
+
+
+* **`centerLeft(_ marginLeft: CGFloat)`** / **`centerLeft()`**  
+Position the vertical center (center.y) and the left edge. The margin specifies the left edge distance from the superview's left edge in pixels. `centerLeft()` is similar to calling `centerLeft(0)`.
+
+* **`center(_ margin: CGFloat)`** / **`center()`**  
+Position the horizontal and vertical center (center.y). The margin specify an offset from the superview's center in pixels. `center()` is similar to calling `center(0)`.
+
+* **`centerRight(_ marginRight: CGFloat)`** / **`centerRight()`**  
+Position the vertical center (center.y) and the right edge. The margin specifies the right edge distance from the superview's right edge in pixels. `centerRight()` is similar to calling `centerRight(0)`.
+
+
+* **`bottomLeft(_ margin: CGFloat)`** / **`bottomLeft()`**  
+Position the bottom and left edges. The margin specifies the distance from their superview's corresponding edges in pixels. `bottomLeft()` is similar to calling `bottomLeft(0)`.
+
+* **`bottomCenter(_ marginBottom: CGFloat)`** / **`bottomCenter()`**  
+Position the bottom and horizontal center (center.x). The margin specifies the bottom edge distance from the superview's bottom edge in pixels. `bottomCenter()` is similar to calling `bottomCenter(0)`.
+
+* **`bottomRight(_ margin: CGFloat)`** / **`bottomRight()`**  
+Position the bottom and right edges. The margin specifies the distance from their superview's corresponding edges in pixels. `bottomRight()` is similar to calling `bottomRight(0)`.
+
+
+##### Methods supporting LTR (left-to-right) and RTL (right-to-left) languages.
+
+* **`topStart(_ margin: CGFloat)`** / **`topStart()`** :left_right_arrow:  
+In LTR direction position the top and left edges.
+In RTL direction position the top and right edges.
+
+* **`topEnd(_ margin: CGFloat)`** / **`topEnd()`** :left_right_arrow:  
+In LTR direction position the top and right edges.
+In RTL direction position the top and left edges.
+
+* **`bottomStart(_ margin: CGFloat)`** / **`bottomStart()`** :left_right_arrow:  
+In LTR direction position the bottom and left edges.
+In RTL direction position the bottom and right edges.
+
+* **`bottomEnd(_ margin: CGFloat)`** / **`bottomEnd()`** :left_right_arrow:  
+In LTR direction position the bottom and right edges.
+In RTL direction position the bottom and left edges.
+
+* **`centerStart(_ margin: CGFloat)`** / **`centerStart()`** :left_right_arrow:  
+In LTR direction position the vertical center (center.y) and the left edge.
+In RTL direction position the vertical center (center.y) and the right edge.
+
+* **`centerEnd(_ margin: CGFloat)`** / **`centerEnd()`** :left_right_arrow:  
+In LTR direction position the vertical center (center.y) and the right edge.
+In RTL direction position the vertical center (center.y) and the left edge.
+
+<br/>
+
+<a name="relative_edges_layout"></a>
+## Relative Edges layout 
+
+### Layout using edge relative positioning
+
+PinLayout also has methods to position relative to other views. The view can be layouted relative to **one or many relative views**.
+
+**Methods:**
+
+* **`above(of: UIView)`**  / **`above(of: [UIView])`**  
+Position the view above the specified view(s). One or many relative views can be specified. This method position the view’s bottom edge.  
+* **`below(of: UIView)`** / **`below(of: [UIView])`**  
+Position the view below the specified view(s). One or many relative views can be specified. This method position the view’s top edge.  
+* **`before(of: UIView)`** / **`before(of: [UIView])`** :left_right_arrow:  
+In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified.
+* **`after(of: UIView)`** / **`after(of: [UIView])`**:left_right_arrow:  
+In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
+* **`left(of: UIView)`** / **`left(of: [UIView])`**  
+Position the view left of the specified view(s). Similar to `before(of:)`. One or many relative views can be specified. This method position the view’s right edge.  
+* **`right(of: UIView)`** / **`right(of: [UIView])`**  
+Position the view right of the specified view(s). Similar to `after(of:)`. One or many relative views can be specified. This method position the view’s left edge.
+
+:pushpin: **Multiple relative views**: If for example a call to `below(of: [...]) specify multiple relative views, the view will be layouted below *ALL* these views. 
+
+:pushpin: These methods **set the position of a view's edge**: top, left, bottom or right. For example `below(of ...)` set the view's top edge, `right(of ...) set the view's left edge, ...
+
+:pushpin: These methods can pin a view’s relative to any views, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
+
+###### Usage examples:
+```swift
+	view.pin.after(of: view4).before(of: view1).below(of: view3)
+	view.pin.after(of: view2)
+	view.pin.below(of: [view2, view3, view4])
+```
+
+###### Example:
+The following example will position the view C between the view A and B with margins of 10px using relative positioning methods.
+
+<img src="docs/pinlayout-relative.png" width="600"/>
+
+
+```swift
+	viewC.pin.top().after(of: viewA).before(of: viewB).margin(10)
+```
+This is an equivalent solution using [edges](#edge):
+
+```swift
+	viewC.pin.top().left(to: viewA.edge.right).right(to: viewB.edge.left).margin(10)
+```
+
+This is also an equivalent solution using [Relative Edges and alignment layout](#relative_edges_layout_w_alignment) explained in the next section:
+
+```swift
+	viewC.pin.after(of: viewA, aligned: .top).before(of: viewB, aligned: top).marginHorizontal(10)
+```
+
+
+<br/>
+
+<a name="relative_edges_layout_w_alignment"></a>
+### Layout using Relative Edges and alignment layout 
+
+PinLayout also has methods to position relative to other views but with also the ability to specify the **alignment**. The view can be layouted relative to **one or many relative views**.
+
+
+**Methods:**
+
+* **`above(of: UIView, aligned: HorizontalAlignment)`**  
+**`above(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view above the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: bottomLeft, bottomCenter or bottomRight.  
+  
+* **`below(of: UIView, aligned: HorizontalAlignment)`**  
+**`below(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view below the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, topCenter or topRight.  
+  
+* **`before(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
+**`before(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
+In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified. 
+
+* **`after(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
+**`after(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
+In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
+
+* **`left(of: UIView, aligned: VerticalAlignment)`**  
+**`left(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `before(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topRight, centerRight or bottomRight.  
+  
+* **`right(of: UIView, aligned: VerticalAlignment)`**  
+**`right(of: [UIView], aligned: HorizontalAlignment)`**  
+Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `after(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, centerLeft or bottomLeft.
+
+
+**How alignment is applied:**
+
+* **`HorizontalAlignment.left`**: The view's left edge will be aligned to the left most relative view.
+* **`HorizontalAlignment.center`**: The view's hCenter edge will be aligned with the average hCenter of all relative views.
+*  **`HorizontalAlignment.right`**: The view's right edge will be aligned to the right most relative view.
+* **`HorizontalAlignment.start`**:left_right_arrow::  
+In LTR direction the view's left edge will be aligned to the left most relative view.  
+In RTL direction the view's right edge will be aligned to the right most relative view.
+* **`HorizontalAlignment.end`**:left_right_arrow::  
+In LTR direction the view's right edge will be aligned to the right most relative view.  
+In RTL direction the view's left edge will be aligned to the right most relative view.
+*  **`VerticalAlignment.top`**: The view's top edge will be aligned to the top most relative view.
+*  **`VerticalAlignment.center`**: The view's vCenter edge will be aligned with the average vCenter of all relative views.
+*  **`VerticalAlignment.bottom`**: The view's bottom edge will be aligned to the bottom most relative view.
+
+:pushpin: **Multiple relative views**: If for example a call to `below(of: [...], aligned:) specify multiple relative views, the view will be layouted below *ALL* these views. The alignment will be applied using all relative view
+
+:pushpin: These methods **set the position of a view's anchor**: topLeft, topCenter, topRight, centerLeft, .... For example `below(of ..., aligned: .right)` set the view's topRight anchor, `right(of ..., aligned: .center) set the view's centerLeft anchor, ...
+
+:pushpin: These methods **set the position of a view's edge**: top, left, bottom or right. For example `below(of ...)` set the view's top edge, `right(of ...) set the view's left edge, ...
+
+
+###### Usage examples:
+```swift
+	view.pin.above(of: view2, aligned: .left)
+	view.pin.below(of: [view2, view3, view4], aligned: .left)
+	view.pin.after(of: view2, aligned: .top).before(of: view3, aligned: .bottom)
+```
+
+###### Example:
+The following example layout the view B below the view A aligned on its center.
+
+<img src="docs/pinlayout-relative-with-alignment.png" width="600"/>
+
+
+```swift
+	viewB.pin.below(of: viewA, aligned: .center)
+```
+This is an equivalent solution using anchors:
+
+```swift
+	viewB.pin.topCenter(to: viewA.anchor.bottomCenter)
+```
+
+###### Example:
+The following example layout the view A **below the UIImageView and the UILabel**.
+View A should be left aligned to the UIImageView and right aligned to the UILabel, with a top margin of 10 pixels.
+
+<img src="docs/pinlayout-relative-multi.png" width="600"/>
+
+
+```swift
+	a.pin.below(of: [imageView, label], aligned: .left).right(to: label.edge.right).marginTop(10)
+```
+This is an equivalent solutions using other methods:
+
+```swift
+   let maxY = max(imageView.frame.maxY, label.frame.maxY)  // Not so nice
+   a.pin.top(maxY).left(to: imageView.edge.left).right(to: label.edge.right).marginTop(10)
+```
+
+<br/>
+
+
+### Positioning using only visible relative Views 
+
+All PinLayout's relative methods can accept an array of Views (ex: `below(of: [UIView])`). Using these methods its possible to filter the list of relative Views before the list is used by PinLayout.
+
+PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really useful when some views may be visible or hidden depending on the situation.
+
+###### Example:
+The following example contains a UISwitch. Below a UITextField that is visible only when the UISwitch is set to ON. And then follow another UITextField. This example use the `visible(views: [UIView]) -> [UIView]` filter method that returns only views with `UIView.isHidden` set to false or `UIView.alpha` greater than 0.
+
+<img src="docs/pinlayout-relative-visible.png" width="600"/>
+
+
+
+```swift
+   formTitleLabel.pin.topCenter().marginTop(margin)
+   nameField.pin.below(of: formTitleLabel).horizontally().height(40).margin(margin)
+        
+   ageSwitch.pin.below(of: nameField).horizontally().height(40).margin(margin)
+   ageField.pin.below(of: ageSwitch).horizontally().height(40).margin(margin)
+       
+   // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
+   addressField.pin.below(of: visibles([ageSwitch, ageField])).horizontally().height(40).margin(margin)
+``` 
+
+Note that this example is extracted from the **Form** example, see [Examples App](#examples_app)
+
+<br/>
+
 
 <a name="edges"></a>
 ## Edges 
@@ -442,225 +710,6 @@ It is also possible to combine two anchors to pin the position and the size of a
 	viewC.pin.topLeft(to: viewA.anchor.topRight)
 	         .bottomRight(to: viewB.anchor.bottomLeft).marginHorizontal(10)
 ``` 
-
-<br/>
-
-### Layout using superview’s anchors
-
-PinLayout also has a shorter version that pins a view's anchor **directly** on it's corresponding superview’s anchor.
-
-The following methods position the corresponding view's anchor on another view’s anchor.
-
-**Methods:**
-
-* `topLeft()` / `topCenter()` / `topRight()`
-* `topStart()` / `topEnd()` :left_right_arrow:
-* `centerLeft()` / `center()` / `centerRight()`
-* `centerStart()` / `centerEnd()` :left_right_arrow:
-* `bottomLeft()` / `bottomCenter()` / `bottomRight()`
-* `bottomStart()` / `bottomEnd()` :left_right_arrow:
-
-###### Example:
-For example .topRight() will pin the view’s topRight anchor on its superview’s topRight anchor.
-
-<img src="docs/example-superview-anchors.png" width="600"/>
-
-
-```swift
-	viewA.pin.topRight()
-``` 
-
-This is equivalent to:
-
-```swift
-	viewA.pin.topRight(to: superview.anchor.topRight)
-	// OR
-	viewA.pin.top().right()
-```
-
-<br/>
-
-<a name="relative_positioning"></a>
-## Relative positioning 
-
-### Layout using edges relative positioning
-
-PinLayout also has methods to position relative to other views. The view can be layouted relative to **one or many relative views**.
-
-**Methods:**
-
-* **`above(of: UIView)`**  / **`above(of: [UIView])`**  
-Position the view above the specified view(s). One or many relative views can be specified. This method position the view’s bottom edge.  
-* **`below(of: UIView)`** / **`below(of: [UIView])`**  
-Position the view below the specified view(s). One or many relative views can be specified. This method position the view’s top edge.  
-* **`before(of: UIView)`** / **`before(of: [UIView])`** :left_right_arrow:  
-In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified.
-* **`after(of: UIView)`** / **`after(of: [UIView])`**:left_right_arrow:  
-In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
-* **`left(of: UIView)`** / **`left(of: [UIView])`**  
-Position the view left of the specified view(s). Similar to `before(of:)`. One or many relative views can be specified. This method position the view’s right edge.  
-* **`right(of: UIView)`** / **`right(of: [UIView])`**  
-Position the view right of the specified view(s). Similar to `after(of:)`. One or many relative views can be specified. This method position the view’s left edge.
-
-:pushpin: **Multiple relative views**: If for example a call to `below(of: [...]) specify multiple relative views, the view will be layouted below *ALL* these views. 
-
-:pushpin: These methods **set the position of a view's edge**: top, left, bottom or right. For example `below(of ...)` set the view's top edge, `right(of ...) set the view's left edge, ...
-
-:pushpin: These methods can pin a view’s relative to any views, even if don't have the same direct superview! It works with any views that have at some point the same ancestor. 
-
-###### Usage examples:
-```swift
-	view.pin.after(of: view4).before(of: view1).below(of: view3)
-	view.pin.after(of: view2)
-	view.pin.below(of: [view2, view3, view4])
-```
-
-###### Example:
-The following example will position the view C between the view A and B with margins of 10px using relative positioning methods.
-
-<img src="docs/pinlayout-relative.png" width="600"/>
-
-
-```swift
-	viewC.pin.top().after(of: viewA).before(of: viewB).margin(10)
-```
-This is an equivalent solution using [edges](#edge):
-
-```swift
-	viewC.pin.top().left(to: viewA.edge.right).right(to: viewB.edge.left).margin(10)
-```
-
-This is also an equivalent solution using [relative positioning and alignment](#relative_positioning_w_alignment) explained in the next section:
-
-```swift
-	viewC.pin.after(of: viewA, aligned: .top).before(of: viewB, aligned: top).marginHorizontal(10)
-```
-
-
-<br/>
-
-<a name="relative_positioning_w_alignment"></a>
-### Layout using relative positioning and alignment 
-
-PinLayout also has methods to position relative to other views but with also the ability to specify the **alignment**. The view can be layouted relative to **one or many relative views**.
-
-
-**Methods:**
-
-* **`above(of: UIView, aligned: HorizontalAlignment)`**  
-**`above(of: [UIView], aligned: HorizontalAlignment)`**  
-Position the view above the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: bottomLeft, bottomCenter or bottomRight.  
-  
-* **`below(of: UIView, aligned: HorizontalAlignment)`**  
-**`below(of: [UIView], aligned: HorizontalAlignment)`**  
-Position the view below the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, topCenter or topRight.  
-  
-* **`before(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
-**`before(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
-In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified. 
-
-* **`after(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
-**`after(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
-In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
-
-* **`left(of: UIView, aligned: VerticalAlignment)`**  
-**`left(of: [UIView], aligned: HorizontalAlignment)`**  
-Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `before(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topRight, centerRight or bottomRight.  
-  
-* **`right(of: UIView, aligned: VerticalAlignment)`**  
-**`right(of: [UIView], aligned: HorizontalAlignment)`**  
-Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `after(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, centerLeft or bottomLeft.
-
-
-**How alignment is applied:**
-
-* **`HorizontalAlignment.left`**: The view's left edge will be aligned to the left most relative view.
-* **`HorizontalAlignment.center`**: The view's hCenter edge will be aligned with the average hCenter of all relative views.
-*  **`HorizontalAlignment.right`**: The view's right edge will be aligned to the right most relative view.
-* **`HorizontalAlignment.start`**:left_right_arrow::  
-In LTR direction the view's left edge will be aligned to the left most relative view.  
-In RTL direction the view's right edge will be aligned to the right most relative view.
-* **`HorizontalAlignment.end`**:left_right_arrow::  
-In LTR direction the view's right edge will be aligned to the right most relative view.  
-In RTL direction the view's left edge will be aligned to the right most relative view.
-*  **`VerticalAlignment.top`**: The view's top edge will be aligned to the top most relative view.
-*  **`VerticalAlignment.center`**: The view's vCenter edge will be aligned with the average vCenter of all relative views.
-*  **`VerticalAlignment.bottom`**: The view's bottom edge will be aligned to the bottom most relative view.
-
-:pushpin: **Multiple relative views**: If for example a call to `below(of: [...], aligned:) specify multiple relative views, the view will be layouted below *ALL* these views. The alignment will be applied using all relative view
-
-:pushpin: These methods **set the position of a view's anchor**: topLeft, topCenter, topRight, centerLeft, .... For example `below(of ..., aligned: .right)` set the view's topRight anchor, `right(of ..., aligned: .center) set the view's centerLeft anchor, ...
-
-:pushpin: These methods **set the position of a view's edge**: top, left, bottom or right. For example `below(of ...)` set the view's top edge, `right(of ...) set the view's left edge, ...
-
-
-###### Usage examples:
-```swift
-	view.pin.above(of: view2, aligned: .left)
-	view.pin.below(of: [view2, view3, view4], aligned: .left)
-	view.pin.after(of: view2, aligned: .top).before(of: view3, aligned: .bottom)
-```
-
-###### Example:
-The following example layout the view B below the view A aligned on its center.
-
-<img src="docs/pinlayout-relative-with-alignment.png" width="600"/>
-
-
-```swift
-	viewB.pin.below(of: viewA, aligned: .center)
-```
-This is an equivalent solution using anchors:
-
-```swift
-	viewB.pin.topCenter(to: viewA.anchor.bottomCenter)
-```
-
-###### Example:
-The following example layout the view A **below the UIImageView and the UILabel**.
-View A should be left aligned to the UIImageView and right aligned to the UILabel, with a top margin of 10 pixels.
-
-<img src="docs/pinlayout-relative-multi.png" width="600"/>
-
-
-```swift
-	a.pin.below(of: [imageView, label], aligned: .left).right(to: label.edge.right).marginTop(10)
-```
-This is an equivalent solutions using other methods:
-
-```swift
-   let maxY = max(imageView.frame.maxY, label.frame.maxY)  // Not so nice
-   a.pin.top(maxY).left(to: imageView.edge.left).right(to: label.edge.right).marginTop(10)
-```
-
-<br/>
-
-
-### Positioning using only visible relative Views 
-
-All PinLayout's relative methods can accept an array of Views (ex: `below(of: [UIView])`). Using these methods its possible to filter the list of relative Views before the list is used by PinLayout.
-
-PinLayout has a filter method called `visible` that can be used to layout a view related to only visible views. This can be really useful when some views may be visible or hidden depending on the situation.
-
-###### Example:
-The following example contains a UISwitch. Below a UITextField that is visible only when the UISwitch is set to ON. And then follow another UITextField. This example use the `visible(views: [UIView]) -> [UIView]` filter method that returns only views with `UIView.isHidden` set to false or `UIView.alpha` greater than 0.
-
-<img src="docs/pinlayout-relative-visible.png" width="600"/>
-
-
-
-```swift
-   formTitleLabel.pin.topCenter().marginTop(margin)
-   nameField.pin.below(of: formTitleLabel).horizontally().height(40).margin(margin)
-        
-   ageSwitch.pin.below(of: nameField).horizontally().height(40).margin(margin)
-   ageField.pin.below(of: ageSwitch).horizontally().height(40).margin(margin)
-       
-   // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
-   addressField.pin.below(of: visibles([ageSwitch, ageField])).horizontally().height(40).margin(margin)
-``` 
-
-Note that this example is extracted from the **Form** example, see [Examples App](#examples_app)
 
 <br/>
 
@@ -1519,7 +1568,7 @@ There is an Example app that expose some usage example on PinLayout, including:
 * Example using [`wrapContent()`](#wrapContent)
 * Example showing right-to-left (RTL) language support. Similar to the Intro example.
 * Example showing a simple form example
-* Example showing relative positioning.
+* Example showing Relative Edges layout.
 * Example using Objective-C
 * ...
 

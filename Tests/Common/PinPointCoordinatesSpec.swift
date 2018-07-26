@@ -198,7 +198,7 @@ class PinPointCoordinatesSpec: QuickSpec {
 
             it("should position the aView's topCenter corner on its parent's topCenter corner") {
                 aView.pin.topCenter(10)
-                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 10.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 10.0, width: 100.0, height: 60.0)))
             }
             
             it("should position the aViewChild's topCenter corner on the specified view's topCenter corner") {
@@ -337,7 +337,7 @@ class PinPointCoordinatesSpec: QuickSpec {
 
             it("should position the aView's centerLeft corner at the specified position") {
                 aView.pin.centerLeft(10)
-                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 180.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 10.0, y: 170.0, width: 100.0, height: 60.0)))
             }
             
             it("should position the aView's centerLeft corner at the specified position") {
@@ -471,7 +471,7 @@ class PinPointCoordinatesSpec: QuickSpec {
 
             it("should position the aView's centerRight corner at the specified position") {
                 aView.pin.centerRight(10)
-                expect(aView.frame).to(equal(CGRect(x: 290.0, y: 180.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 290.0, y: 170.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's centerRight corner at the specified position") {
@@ -595,7 +595,7 @@ class PinPointCoordinatesSpec: QuickSpec {
 
             it("should position the aView's bottomCenter corner at the specified position") {
                 aView.pin.bottomCenter(10)
-                expect(aView.frame).to(equal(CGRect(x: 160.0, y: 330.0, width: 100.0, height: 60.0)))
+                expect(aView.frame).to(equal(CGRect(x: 150.0, y: 330.0, width: 100.0, height: 60.0)))
             }
 
             it("should position the aView's bottomCenter corner at the specified position") {

@@ -63,8 +63,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [Width, height and size](#width_height_size)
   * [Adjusting size](#adjusting_size)
   * [minWidth, maxWidth, minHeight, maxHeight](#minmax_width_height_size)
-  * [Aspect Ratio](#aspect_ratio)
   * [Margins](#margins)
+  * [Aspect Ratio](#aspect_ratio)
   * [safeAreaInsets support](#safeAreaInsets)
   * [WrapContent](#wrapContent)
   * [justify, align](#justify_align)
@@ -222,34 +222,34 @@ Another shorter possible solution using `all()`:
 
 The following methods are used to position a view’s edge relative to its superview edges. 
 
-Note that the margin parameter in the following methods can be either positive and negative. In general cases positive values are used.
+:pushpin: The offset/margin parameter in the following methods can be either positive and negative. In general cases positive values are used.
 
-* **`top(_ margin: CGFloat)`** / **`top(_ margin: Percent)`** /  **`top()`** / **`top(_ margin: UIEdgeInsets)`**  
-Position the top edge. The margin specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height). `top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge. `top(:UIEdgeInsets)` use the `UIEdgeInsets.top` property, is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+* **`top(_ offset: CGFloat)`** / **`top(_ offset: Percent)`** /  **`top()`** / **`top(_ margin: UIEdgeInsets)`**  
+Position the top edge. The offset specifies the top edge distance from the superview's top edge in pixels (or in percentage of its superview's height). `top()` is similar to calling `top(0)`, it position the view top edge directly on its superview top edge. `top(:UIEdgeInsets)` use the `UIEdgeInsets.top` property, is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`bottom(_ margin: CGFloat)`** / **`bottom(_ margin: Percent)`** / **`bottom()`** / **`bottom(_ margin: UIEdgeInsets)`**   
-Position the bottom edge. The margin specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height). `bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge. `bottom(:UIEdgeInsets)` use the `UIEdgeInsets.bottom` property, it is is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+* **`bottom(_ offset: CGFloat)`** / **`bottom(_ offset: Percent)`** / **`bottom()`** / **`bottom(_ margin: UIEdgeInsets)`**   
+Position the bottom edge. The offset specifies the bottom edge **distance from the superview's bottom edge** in pixels (or in percentage of its superview's height). `bottom()` is similar to calling `bottom(0)`, it position the view bottom edge directly on its superview top edge. `bottom(:UIEdgeInsets)` use the `UIEdgeInsets.bottom` property, it is is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`left(_ margin: CGFloat)`** / **`left(_ margin: Percent)`** / **`left()`** / **`left(_ margin: UIEdgeInsets)`**   
-Position the left edge. The margin specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). `left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge. `left(:UIEdgeInsets)` use the `UIEdgeInsets.left` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+* **`left(_ offset: CGFloat)`** / **`left(_ offset: Percent)`** / **`left()`** / **`left(_ margin: UIEdgeInsets)`**   
+Position the left edge. The offset specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). `left()` is similar to calling `left(0)`, it position the view left edge directly on its superview left edge. `left(:UIEdgeInsets)` use the `UIEdgeInsets.left` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`right(_ margin: CGFloat)`** / **`right(_ margin: Percent)`** / **`right()`** / **`right(_ margin: UIEdgeInsets)`**   
-Position the right edge. The margin specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width). `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge. `right(:UIEdgeInsets)` use the `UIEdgeInsets. right` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+* **`right(_ offset: CGFloat)`** / **`right(_ offset: Percent)`** / **`right()`** / **`right(_ margin: UIEdgeInsets)`**   
+Position the right edge. The offset specifies the right edge **distance from the superview's right edge** in pixels (or in percentage of its superview's width). `right()` is similar to calling `right(0)`, it position the view right edge directly on its superview right edge. `right(:UIEdgeInsets)` use the `UIEdgeInsets. right` property, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`vCenter(_ margin: CGFloat)`** / **`vCenter(_ margin: Percent)`** / **`vCenter()`**  
-Position the vertical center (center.y). The margin specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive margin move the view down and a negative value move it up relative to the superview's center. `vCenter()` is similar to calling `vCenter(0)`, it position vertically the view's center directly on its superview vertical center.
+* **`vCenter(_ offset: CGFloat)`** / **`vCenter(_ offset: Percent)`** / **`vCenter()`**  
+Position the vertical center (center.y). The offset specifies the distance vertically of the view's center related to the superview's center in pixels (or in percentage of its superview's height). A positive offset move the view down and a negative value move it up relative to the superview's center. `vCenter()` is similar to calling `vCenter(0)`, it position vertically the view's center directly on its superview vertical center.
 
-* **`hCenter(_ margin: CGFloat)`** / **`hCenter(_ margin: Percent)`** / **`hCenter()`**  
-Position the horizontal center (center.x). The margin specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). A positive value move the view to the right and a negative value move it to the left relative to the superview's center. `hCenter()` is similar to calling `hCenter(0)`, it position horizontally the view's center directly on its superview horizontal center. 
+* **`hCenter(_ offset: CGFloat)`** / **`hCenter(_ offset: Percent)`** / **`hCenter()`**  
+Position the horizontal center (center.x). The offset specifies the distance horizontally of the view's center related to the superview's center in pixels (or in percentage of its superview's width). A positive offset move the view to the right and a negative offset move it to the left relative to the superview's center. `hCenter()` is similar to calling `hCenter(0)`, it position horizontally the view's center directly on its superview horizontal center. 
 
 ##### Methods supporting LTR (left-to-right) and RTL (right-to-left) languages.
 
-* **`start(_ margin: CGFloat)`** / **`start(_ margin: Percent)`** / **`start()`** / **`start(_ margin: UIEdgeInsets)`** :left_right_arrow:  
-Position the left or right edge depending of the LTR language direction. In LTR direction the margin specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). In RTL direction the margin specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
+* **`start(_ offset: CGFloat)`** / **`start(_ offset: Percent)`** / **`start()`** / **`start(_ margin: UIEdgeInsets)`** :left_right_arrow:  
+Position the left or right edge depending of the LTR language direction. In LTR direction the offset specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width). In RTL direction the offset specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width).  
 `start()` is similar to calling `start(0)`. `start(:UIEdgeInsets)` use the `UIEdgeInsets.left` property in LTR direction and `UIEdgeInsets.right` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
-* **`end(_ margin: CGFloat)`** / **`end(_ margin: Percent)`** / **`end()`** / **`end(_ margin: UIEdgeInsets)`** :left_right_arrow:  
-Position the left or right edge depending of the LTR language direction. In LTR direction the value specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width). In RTL direction the value specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).  `end()` is similar to calling `end(0)`. `end(:UIEdgeInsets)` use the `UIEdgeInsets.right` property in LTR direction and `UIEdgeInsets.left` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
+* **`end(_ offset: CGFloat)`** / **`end(_ offset: Percent)`** / **`end()`** / **`end(_ margin: UIEdgeInsets)`** :left_right_arrow:  
+Position the left or right edge depending of the LTR language direction. In LTR direction the offset specifies the right edge distance from the superview's right edge in pixels (or in percentage of its superview's width). In RTL direction the offset specifies the left edge distance from the superview's left edge in pixels (or in percentage of its superview's width).  `end()` is similar to calling `end(0)`. `end(:UIEdgeInsets)` use the `UIEdgeInsets.right` property in LTR direction and `UIEdgeInsets.left` in RTL direction, it is particularly useful with [`UIView.pin.safeArea`](#safeAreaInsets) or `UIView.safeAreaInsets`.
 
 <a name="pin_multiple_edges"></a>
 **Methods pinning multiple edges**:
@@ -309,59 +309,61 @@ This is equivalent to:
 ```
 **Methods:**
 
-* **`topLeft(_ margin: CGFloat)`** / **`topLeft()`**  
-Position the top and left edges. The margin specifies the distance from their superview's corresponding edges in pixels. `topLeft()` is similar to calling `topLeft(0)`.
+:pushpin: The offset parameter in the following methods can be either positive and negative. In general cases positive values are used.
 
-* **`topCenter(_ marginTop: CGFloat)`** / **`topCenter()`**  
-Position the top and horizontal center (center.x). The margin specifies the top edge distance from the superview's top edge in pixels. `topCenter()` is similar to calling `topCenter(0)`.
+* **`topLeft(_ offset: CGFloat)`** / **`topLeft()`**  
+Position the top and left edges. The offset specifies the distance from their superview's corresponding edges in pixels. `topLeft()` is similar to calling `topLeft(0)`.
 
-* **`topRight(_ margin: CGFloat)`** / **`topRight()`**  
-Position the top and right edges. The margin specifies the distance from their superview's corresponding edges in pixels. `topRight()` is similar to calling `topRight(0)`.
+* **`topCenter(_ topOffset: CGFloat)`** / **`topCenter()`**  
+Position the top and horizontal center (center.x). The offset specifies the top edge distance from the superview's top edge in pixels. `topCenter()` is similar to calling `topCenter(0)`.
 
-
-* **`centerLeft(_ marginLeft: CGFloat)`** / **`centerLeft()`**  
-Position the vertical center (center.y) and the left edge. The margin specifies the left edge distance from the superview's left edge in pixels. `centerLeft()` is similar to calling `centerLeft(0)`.
-
-* **`center(_ margin: CGFloat)`** / **`center()`**  
-Position the horizontal and vertical center (center.y). The margin specify an offset from the superview's center in pixels. `center()` is similar to calling `center(0)`.
-
-* **`centerRight(_ marginRight: CGFloat)`** / **`centerRight()`**  
-Position the vertical center (center.y) and the right edge. The margin specifies the right edge distance from the superview's right edge in pixels. `centerRight()` is similar to calling `centerRight(0)`.
+* **`topRight(_ offset: CGFloat)`** / **`topRight()`**  
+Position the top and right edges. The offset specifies the distance from their superview's corresponding edges in pixels. `topRight()` is similar to calling `topRight(0)`.
 
 
-* **`bottomLeft(_ margin: CGFloat)`** / **`bottomLeft()`**  
-Position the bottom and left edges. The margin specifies the distance from their superview's corresponding edges in pixels. `bottomLeft()` is similar to calling `bottomLeft(0)`.
+* **`centerLeft(_ leftOffset: CGFloat)`** / **`centerLeft()`**  
+Position the vertical center (center.y) and the left edge. The offset specifies the left edge distance from the superview's left edge in pixels. `centerLeft()` is similar to calling `centerLeft(0)`.
 
-* **`bottomCenter(_ marginBottom: CGFloat)`** / **`bottomCenter()`**  
-Position the bottom and horizontal center (center.x). The margin specifies the bottom edge distance from the superview's bottom edge in pixels. `bottomCenter()` is similar to calling `bottomCenter(0)`.
+* **`center(_ offset: CGFloat)`** / **`center()`**  
+Position the horizontal and vertical center (center.y). The offset specifies an offset from the superview's center in pixels. `center()` is similar to calling `center(0)`.
 
-* **`bottomRight(_ margin: CGFloat)`** / **`bottomRight()`**  
-Position the bottom and right edges. The margin specifies the distance from their superview's corresponding edges in pixels. `bottomRight()` is similar to calling `bottomRight(0)`.
+* **`centerRight(_ rightOffset: CGFloat)`** / **`centerRight()`**  
+Position the vertical center (center.y) and the right edge. The offset specifies the right edge distance from the superview's right edge in pixels. `centerRight()` is similar to calling `centerRight(0)`.
+
+
+* **`bottomLeft(_ offset: CGFloat)`** / **`bottomLeft()`**  
+Position the bottom and left edges. The offset specifies the distance from their superview's corresponding edges in pixels. `bottomLeft()` is similar to calling `bottomLeft(0)`.
+
+* **`bottomCenter(_ bottomOffset: CGFloat)`** / **`bottomCenter()`**  
+Position the bottom and horizontal center (center.x). The offset specifies the bottom edge distance from the superview's bottom edge in pixels. `bottomCenter()` is similar to calling `bottomCenter(0)`.
+
+* **`bottomRight(_ offset: CGFloat)`** / **`bottomRight()`**  
+Position the bottom and right edges. The offset specifies the distance from their superview's corresponding edges in pixels. `bottomRight()` is similar to calling `bottomRight(0)`.
 
 
 ##### Methods supporting LTR (left-to-right) and RTL (right-to-left) languages.
 
-* **`topStart(_ margin: CGFloat)`** / **`topStart()`** :left_right_arrow:  
+* **`topStart(_ offset: CGFloat)`** / **`topStart()`** :left_right_arrow:  
 In LTR direction position the top and left edges.
 In RTL direction position the top and right edges.
 
-* **`topEnd(_ margin: CGFloat)`** / **`topEnd()`** :left_right_arrow:  
+* **`topEnd(_ offset: CGFloat)`** / **`topEnd()`** :left_right_arrow:  
 In LTR direction position the top and right edges.
 In RTL direction position the top and left edges.
 
-* **`bottomStart(_ margin: CGFloat)`** / **`bottomStart()`** :left_right_arrow:  
+* **`bottomStart(_ offset: CGFloat)`** / **`bottomStart()`** :left_right_arrow:  
 In LTR direction position the bottom and left edges.
 In RTL direction position the bottom and right edges.
 
-* **`bottomEnd(_ margin: CGFloat)`** / **`bottomEnd()`** :left_right_arrow:  
+* **`bottomEnd(_ offset: CGFloat)`** / **`bottomEnd()`** :left_right_arrow:  
 In LTR direction position the bottom and right edges.
 In RTL direction position the bottom and left edges.
 
-* **`centerStart(_ margin: CGFloat)`** / **`centerStart()`** :left_right_arrow:  
+* **`centerStart(_ offset: CGFloat)`** / **`centerStart()`** :left_right_arrow:  
 In LTR direction position the vertical center (center.y) and the left edge.
 In RTL direction position the vertical center (center.y) and the right edge.
 
-* **`centerEnd(_ margin: CGFloat)`** / **`centerEnd()`** :left_right_arrow:  
+* **`centerEnd(_ offset: CGFloat)`** / **`centerEnd()`** :left_right_arrow:  
 In LTR direction position the vertical center (center.y) and the right edge.
 In RTL direction position the vertical center (center.y) and the left edge.
 
@@ -885,49 +887,6 @@ This is an equivalent solutions using the `justify()` method. This method is exp
 
 <br/>
 
-
-<a name="aspect_ratio"></a>
-## Aspect Ratio 
-Set the view aspect ratio. 
-AspectRatio solves the problem of knowing one dimension of an element and an aspect ratio, this is particularly useful for images. 
-     
-AspectRatio is applied only if a single dimension (either width or height) can be determined, in that case the aspect ratio will be used to compute the other dimension.
-
-* AspectRatio is defined as the ratio between the width and the height (width / height).
-* An aspect ratio of 2 means the width is twice the size of the height.
-* AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight) 
- dimensions of an item.
-     
-**Methods:**
-
-* **`aspectRatio(_ ratio: CGFloat)`**:  
-Set the view aspect ratio using a CGFloat. AspectRatio is defined as the ratio between the width and the height (width / height). 
-
-* **`aspectRatio(of view: UIView)`**:  
-Set the view aspect ratio using another UIView's aspect ratio.      
-
-* **`aspectRatio()`**:  
-If the layouted view is an UIImageView, this method will set the aspectRatio using the UIImageView's image dimension. For other types of views, this method as no impact.
-     
-###### Usage examples:
-```swift
-	aView.pin.left().width(100%).aspectRatio(2)
-	imageView.pin.left().width(200).aspectRatio()
-```
-
-###### Example:
-This example layout an UIImageView at the top and center it horizontally, it also adjust its width to 50%. The view’s height will be adjusted automatically using the image aspect ratio.
-
-<img src="docs/pinlayout_example_aspectratio.png" width="540"/>
-
-
-```swift
-   imageView.pin.top().hCenter().width(50%).aspectRatio()
-```
-
-
-</br>
-
 <a name="margins"></a>
 ## Margins 
 
@@ -1099,6 +1058,49 @@ NOTE: In that in that particular situation, the same results could have been ach
 ```
 
 </br>
+
+
+<a name="aspect_ratio"></a>
+## Aspect Ratio 
+Set the view aspect ratio. 
+AspectRatio solves the problem of knowing one dimension of an element and an aspect ratio, this is particularly useful for images. 
+     
+AspectRatio is applied only if a single dimension (either width or height) can be determined, in that case the aspect ratio will be used to compute the other dimension.
+
+* AspectRatio is defined as the ratio between the width and the height (width / height).
+* An aspect ratio of 2 means the width is twice the size of the height.
+* AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight) 
+ dimensions of an item.
+     
+**Methods:**
+
+* **`aspectRatio(_ ratio: CGFloat)`**:  
+Set the view aspect ratio using a CGFloat. AspectRatio is defined as the ratio between the width and the height (width / height). 
+
+* **`aspectRatio(of view: UIView)`**:  
+Set the view aspect ratio using another UIView's aspect ratio.      
+
+* **`aspectRatio()`**:  
+If the layouted view is an UIImageView, this method will set the aspectRatio using the UIImageView's image dimension. For other types of views, this method as no impact.
+     
+###### Usage examples:
+```swift
+	aView.pin.left().width(100%).aspectRatio(2)
+	imageView.pin.left().width(200).aspectRatio()
+```
+
+###### Example:
+This example layout an UIImageView at the top and center it horizontally, it also adjust its width to 50%. The view’s height will be adjusted automatically using the image aspect ratio.
+
+<img src="docs/pinlayout_example_aspectratio.png" width="540"/>
+
+
+```swift
+   imageView.pin.top().hCenter().width(50%).aspectRatio()
+```
+
+</br>
+
 
 <a name="safeAreaInsets"></a>
 ## UIKit safeAreaInsets support 

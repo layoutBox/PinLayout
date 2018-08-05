@@ -106,11 +106,11 @@ public class PinLayout<View: Layoutable> {
 
     /// Position the view's top edge.
     ///
-    /// - Parameter margin: (Optional, default value is 0). Specifies a distance from the superview's
+    /// - Parameter offset: (Optional, default value is 0). Specifies a distance from the superview's
     ///                     top edge in pixels.
     @discardableResult
-    public func top(_ margin: CGFloat = 0) -> PinLayout {
-        return top(margin, { return "top(\(margin))" })
+    public func top(_ offset: CGFloat = 0) -> PinLayout {
+        return top(offset, { return "top(\(offset.optionnalDescription))" })
     }
 
     /// Position the top edge.
@@ -138,20 +138,20 @@ public class PinLayout<View: Layoutable> {
 
     /// Position the left edge.
     ///
-    /// - Parameter margin: (Optional, default value is 0). Specifies a distance from the superview's
+    /// - Parameter offset: (Optional, default value is 0). Specifies a distance from the superview's
     ///                     left edge in pixels
     @discardableResult
-    public func left(_ margin: CGFloat = 0) -> PinLayout {
-        return left(margin, { return "left(\(margin.optionnalDescription))" })
+    public func left(_ offset: CGFloat = 0) -> PinLayout {
+        return left(offset, { return "left(\(offset.optionnalDescription))" })
     }
 
     /// Position the left edge.
     ///
-    /// - Parameter percent: specifies the left edge distance from the superview's left edge in
-    ///                      percentage of its superview's width.
+    /// - Parameter offset: specifies the left edge distance from the superview's left edge in
+    ///                     percentage of its superview's width.
     @discardableResult
-    public func left(_ percent: Percent) -> PinLayout {
-        return left(percent, { return "left(\(percent.description))" })
+    public func left(_ offset: Percent) -> PinLayout {
+        return left(offset, { return "left(\(offset.description))" })
     }
 
     /// Position the left edge.
@@ -167,24 +167,24 @@ public class PinLayout<View: Layoutable> {
     /// Position the left edge In LTR direction.
     /// Position the right edge In RTL direction.
     ///
-    /// - Parameter margin: (Optional, default value is 0) In LTR direction the value specifies the left
+    /// - Parameter offset: (Optional, default value is 0) In LTR direction the value specifies the left
     ///                     edge distance from the superview's left edge in pixels. In RTL direction the
     ///                     value specifies the right edge distance from the superview's right edge in pixels.
     @discardableResult
-    public func start(_ margin: CGFloat = 0) -> PinLayout {
-        func context() -> String { return "start(\(margin.optionnalDescription))" }
-        return isLTR() ? left(margin, context) : right(margin, context)
+    public func start(_ offset: CGFloat = 0) -> PinLayout {
+        func context() -> String { return "start(\(offset.optionnalDescription))" }
+        return isLTR() ? left(offset, context) : right(offset, context)
     }
 
     /// In LTR direction, position the left edge.
     /// In RTL direction, position the right edge.
     ///
-    /// - Parameter margin: (Optional, default value is 0) Specifies a distance from the superview's
+    /// - Parameter offset: (Optional, default value is 0) Specifies a distance from the superview's
     ///                     corresponding edge in percentage of its superview's width.
     @discardableResult
-    public func start(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "start(\(percent.description))" }
-        return isLTR() ? left(percent, context) : right(percent, context)
+    public func start(_ offset: Percent) -> PinLayout {
+        func context() -> String { return "start(\(offset.description))" }
+        return isLTR() ? left(offset, context) : right(offset, context)
     }
 
     @discardableResult
@@ -194,13 +194,13 @@ public class PinLayout<View: Layoutable> {
     }
     
     @discardableResult
-    public func bottom(_ margin: CGFloat = 0) -> PinLayout {
-        return bottom(margin, { return "bottom(\(margin.optionnalDescription))" })
+    public func bottom(_ offset: CGFloat = 0) -> PinLayout {
+        return bottom(offset, { return "bottom(\(offset.optionnalDescription))" })
     }
 
     @discardableResult
-    public func bottom(_ percent: Percent) -> PinLayout {
-        return bottom(percent, { return "bottom(\(percent.description))" })
+    public func bottom(_ offset: Percent) -> PinLayout {
+        return bottom(offset, { return "bottom(\(offset.description))" })
     }
 
     @discardableResult
@@ -209,13 +209,13 @@ public class PinLayout<View: Layoutable> {
     }
 
     @discardableResult
-    public func right(_ margin: CGFloat = 0) -> PinLayout {
-        return right(margin, { return "right(\(margin.optionnalDescription))" })
+    public func right(_ offset: CGFloat = 0) -> PinLayout {
+        return right(offset, { return "right(\(offset.optionnalDescription))" })
     }
 
     @discardableResult
-    public func right(_ percent: Percent) -> PinLayout {
-        return right(percent, { return "right(\(percent.description))" })
+    public func right(_ offset: Percent) -> PinLayout {
+        return right(offset, { return "right(\(offset.description))" })
     }
 
     @discardableResult
@@ -230,9 +230,9 @@ public class PinLayout<View: Layoutable> {
     }
 
     @discardableResult
-    public func end(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "end(\(percent.description))" }
-        return isLTR() ? right(percent, context) : left(percent, context)
+    public func end(_ offset: Percent) -> PinLayout {
+        func context() -> String { return "end(\(offset.description))" }
+        return isLTR() ? right(offset, context) : left(offset, context)
     }
 
     @discardableResult
@@ -250,10 +250,10 @@ public class PinLayout<View: Layoutable> {
     }
 
     @discardableResult
-    public func hCenter(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "hCenter(\(percent.description))" }
+    public func hCenter(_ offset: Percent) -> PinLayout {
+        func context() -> String { return "hCenter(\(offset.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
-        setHorizontalCenter((layoutSuperviewRect.width / 2) + percent.of(layoutSuperviewRect.width), context)
+        setHorizontalCenter((layoutSuperviewRect.width / 2) + offset.of(layoutSuperviewRect.width), context)
         return self
     }
 
@@ -266,10 +266,10 @@ public class PinLayout<View: Layoutable> {
     }
 
     @discardableResult
-    public func vCenter(_ percent: Percent) -> PinLayout {
-        func context() -> String { return "vCenter(\(percent.description))" }
+    public func vCenter(_ offset: Percent) -> PinLayout {
+        func context() -> String { return "vCenter(\(offset.description))" }
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
-        setVerticalCenter((layoutSuperviewRect.height / 2) + percent.of(layoutSuperviewRect.height), context)
+        setVerticalCenter((layoutSuperviewRect.height / 2) + offset.of(layoutSuperviewRect.height), context)
         return self
     }
 

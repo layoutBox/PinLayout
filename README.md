@@ -367,6 +367,17 @@ In RTL direction position the vertical center (center.y) and the right edge.
 In LTR direction position the vertical center (center.y) and the right edge.
 In RTL direction position the vertical center (center.y) and the left edge.
 
+
+###### Usage Examples:
+
+```swift
+   // Position a view at the top left corner with a top and left margin of 10 pixels
+   view.pin.topLeft(10)
+
+   // Position the 4 edges with a margin of 10 pixels.
+   view.pin.topLeft(10).bottomCenter(10)
+```
+
 <br/>
 
 <a name="relative_edges_layout"></a>

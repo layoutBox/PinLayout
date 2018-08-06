@@ -46,12 +46,16 @@ extension VerticalAlign {
 }
 
 extension CGFloat {
-    public var description: String {
+    var description: String {
         if self.truncatingRemainder(dividingBy: 1) == 0.0 {
             return "\(Int(self))"
         } else {
             return "\(self)"
         }
+    }
+
+    var optionnalDescription: String {
+        return self == 0 ? "" : self.description
     }
 }
 

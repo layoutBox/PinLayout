@@ -7,6 +7,38 @@
 
 # Change Log
 
+## [1.7.11](https://github.com/layoutBox/PinLayout/releases/tag/1.7.11)
+Released on 2018-08-05
+
+#### Method that position multiple edges now accept an `offset` parameter.
+The `offset` parameter that specifies the distance from their superview's corresponding edges in pixels.
+
+**New methods:**
+
+* `topLeft(_ offset: CGFloat)`
+* `topCenter(_ topOffset: CGFloat)`
+* `topRight(_ offset: CGFloat)`
+
+* `centerLeft(_ leftOffset: CGFloat)`
+* `center(_ offset: CGFloat)`
+* `centerRight(_ rightOffset offset: CGFloat)`
+
+* `bottomLeft(_ offset: CGFloat)`
+* `bottomCenter(_ bottomOffset: CGFloat)`
+* `bottomRight(_ offset: CGFloat)`
+
+For example, to position a view at the top left corner with a top and left margin of 10 pixels:
+
+```
+   view.pin.topLeft(10)
+```
+
+#### Other change
+Cleanup the interface by using default value parameters.
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#163](https://github.com/layoutBox/PinLayout/pull/163) 
+
+
 ## [1.7.10](https://github.com/layoutBox/PinLayout/releases/tag/1.7.10)
 Released on 2018-07-17
 

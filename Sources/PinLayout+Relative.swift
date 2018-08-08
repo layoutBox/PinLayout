@@ -214,9 +214,9 @@ extension PinLayout {
     }
 }
 
-// MARK: fileprivate
+// MARK: private
 extension PinLayout {
-    fileprivate func above(relativeViews: [View], aligned: HorizontalAlign?, context: Context) -> PinLayout {
+    private func above(relativeViews: [View], aligned: HorizontalAlign?, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
         
         let anchors: [Anchor]
@@ -239,7 +239,7 @@ extension PinLayout {
         return self
     }
 
-    fileprivate func below(relativeViews: [View], aligned: HorizontalAlign?, context: Context) -> PinLayout {
+    private func below(relativeViews: [View], aligned: HorizontalAlign?, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
         
         let anchors: [Anchor]
@@ -262,7 +262,7 @@ extension PinLayout {
         return self
     }
     
-    fileprivate func left(relativeViews: [View], aligned: VerticalAlign?, context: Context) -> PinLayout {
+    private func left(relativeViews: [View], aligned: VerticalAlign?, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
         
         let anchors: [Anchor]
@@ -283,7 +283,7 @@ extension PinLayout {
         return self
     }
     
-    fileprivate func right(relativeViews: [View], aligned: VerticalAlign?, context: Context) -> PinLayout {
+    private func right(relativeViews: [View], aligned: VerticalAlign?, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
         
         let anchors: [Anchor]
@@ -304,7 +304,7 @@ extension PinLayout {
         return self
     }
     
-    fileprivate func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinatesList: [CGPoint], context: Context) {
+    private func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinatesList: [CGPoint], context: Context) {
         if let aligned = aligned {
             switch aligned {
             case .left:   setLeft(getLeftMostCoordinate(list: coordinatesList), context)
@@ -321,7 +321,7 @@ extension PinLayout {
         }
     }
     
-    fileprivate func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinatesList: [CGPoint], context: Context) {
+    private func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinatesList: [CGPoint], context: Context) {
         if let aligned = aligned {
             switch aligned {
             case .top:    setTop(getTopMostCoordinate(list: coordinatesList), context)
@@ -331,7 +331,7 @@ extension PinLayout {
         }
     }
     
-    fileprivate func getTopMostCoordinate(list: [CGPoint]) -> CGFloat {
+    private func getTopMostCoordinate(list: [CGPoint]) -> CGFloat {
         assert(list.count > 0)
         let firstCoordinate = list[0].y
         return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
@@ -339,7 +339,7 @@ extension PinLayout {
         })
     }
     
-    fileprivate func getBottomMostCoordinate(list: [CGPoint]) -> CGFloat {
+    private func getBottomMostCoordinate(list: [CGPoint]) -> CGFloat {
         assert(list.count > 0)
         let firstCoordinate = list[0].y
         return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
@@ -347,7 +347,7 @@ extension PinLayout {
         })
     }
     
-    fileprivate func getLeftMostCoordinate(list: [CGPoint]) -> CGFloat {
+    private func getLeftMostCoordinate(list: [CGPoint]) -> CGFloat {
         assert(list.count > 0)
         let firstCoordinate = list[0].x
         return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
@@ -355,7 +355,7 @@ extension PinLayout {
         })
     }
     
-    fileprivate func getRightMostCoordinate(list: [CGPoint]) -> CGFloat {
+    private func getRightMostCoordinate(list: [CGPoint]) -> CGFloat {
         assert(list.count > 0)
         let firstCoordinate = list[0].x
         return list.dropFirst().reduce(firstCoordinate, { (bestCoordinate, otherCoordinates) -> CGFloat in
@@ -363,7 +363,7 @@ extension PinLayout {
         })
     }
     
-    fileprivate func getAverageHCenterCoordinate(list: [CGPoint]) -> CGFloat {
+    private func getAverageHCenterCoordinate(list: [CGPoint]) -> CGFloat {
         assert(list.count > 0)
         let sum = list.reduce(0, { (result, point) -> CGFloat in
             return result + point.x
@@ -371,7 +371,7 @@ extension PinLayout {
         return sum / CGFloat(list.count)
     }
     
-    fileprivate func getAverageVCenterCoordinate(list: [CGPoint]) -> CGFloat {
+    private func getAverageVCenterCoordinate(list: [CGPoint]) -> CGFloat {
         assert(list.count > 0)
         let sum = list.reduce(0, { (result, point) -> CGFloat in
             return result + point.y
@@ -379,7 +379,7 @@ extension PinLayout {
         return sum / CGFloat(list.count)
     }
     
-    fileprivate func validateRelativeViews(_ relativeViews: [View], context: Context) -> [View]? {
+    private func validateRelativeViews(_ relativeViews: [View], context: Context) -> [View]? {
         guard let _ = layoutSuperview(context) else { return nil }
         guard relativeViews.count > 0 else {
             warnWontBeApplied("At least one view must be visible (i.e. UIView.isHidden != true) ", context)

@@ -20,7 +20,7 @@
 import UIKit
 
 class IntroRTLViewController: UIViewController {
-    fileprivate var mainView: IntroRTLView {
+    private var mainView: IntroRTLView {
         return self.view as! IntroRTLView
     }
 

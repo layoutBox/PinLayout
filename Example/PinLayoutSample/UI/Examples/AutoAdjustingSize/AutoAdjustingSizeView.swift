@@ -22,7 +22,7 @@ import PinLayout
 
 class AutoAdjustingSizeView: UIView {
 
-    fileprivate let contentScrollView = UIScrollView()
+    private let contentScrollView = UIScrollView()
 
     var row1 = BasicView(text: "", color: .lightGray)
     var row1Item1 = BasicView(text: "50px", color: .gray)

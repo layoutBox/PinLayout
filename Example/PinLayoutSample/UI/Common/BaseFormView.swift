@@ -67,12 +67,12 @@ class BaseFormView: UIView {
         resetScrollOffset()
     }
     
-    fileprivate func resetScrollOffset() {
+    private func resetScrollOffset() {
         guard formScrollView.contentInset != .zero else { return }
         setFormScrollView(bottomInset: 0)
     }
     
-    fileprivate func setFormScrollView(bottomInset: CGFloat) {
+    private func setFormScrollView(bottomInset: CGFloat) {
         formScrollView.contentInset = UIEdgeInsets(top: formScrollView.contentInset.top, left: 0,
                                                    bottom: bottomInset, right: 0)
     }

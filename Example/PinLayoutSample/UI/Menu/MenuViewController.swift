@@ -26,6 +26,7 @@ enum PageType: Int {
     case collectionView
     case safeArea
     case wrapContent
+    case animations
     case form
     case relativePositions
     case multiRelativePositions
@@ -43,6 +44,7 @@ enum PageType: Int {
         case .collectionView:         return "UICollectionView Example"
         case .safeArea:               return "SafeArea"
         case .wrapContent:            return "wrapContent Example"
+        case .animations:             return "Animation Example"
         case .form:                   return "Form Example"
         case .relativePositions:      return "Relative Positionning"
         case .multiRelativePositions: return "Multiple Relatives Positionning"
@@ -69,6 +71,8 @@ enum PageType: Int {
             return tabbarController
         case .wrapContent:
             return WrapContentViewController(pageType: self)
+        case .animations:
+            return AnimationsViewController(pageType: self)
         case .form:
             return FormViewController(pageType: self)
         case .relativePositions:
@@ -88,7 +92,7 @@ enum PageType: Int {
 }
 
 class MenuViewController: UIViewController {
-    fileprivate var mainView: MenuView {
+    private var mainView: MenuView {
         return self.view as! MenuView
     }
 
@@ -108,7 +112,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        didSelect(pageType: .safeArea)
+        didSelect(pageType: .animations)
     }
 }
 

@@ -20,7 +20,7 @@
 import UIKit
 
 class RelativeViewController: UIViewController {
-    fileprivate var mainView: RelativeView {
+    private var mainView: RelativeView {
         return self.view as! RelativeView
     }
 

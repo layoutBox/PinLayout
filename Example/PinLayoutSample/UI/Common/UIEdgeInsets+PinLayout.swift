@@ -38,7 +38,7 @@ extension UIEdgeInsets {
                             right: minValue(self.right, minValue: dx))
     }
     
-    fileprivate func minValue(_ value: CGFloat, minValue: CGFloat) -> CGFloat {
+    private func minValue(_ value: CGFloat, minValue: CGFloat) -> CGFloat {
         return value >= minValue ? value : minValue
     }
 }

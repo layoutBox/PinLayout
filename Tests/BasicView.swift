@@ -27,7 +27,7 @@ import PinLayout
 
 class BasicView: PView {
     #if os(macOS)
-    fileprivate var _isFlipped: Bool = true
+    private var _isFlipped: Bool = true
     override var isFlipped: Bool {
         return _isFlipped
     }
@@ -61,7 +61,7 @@ class BasicView: PView {
     }
     #endif
 
-    fileprivate func _sizeThatFits(_ size: CGSize) -> CGSize {
+    private func _sizeThatFits(_ size: CGSize) -> CGSize {
         var newSize = CGSize()
         if size.width != CGFloat.greatestFiniteMagnitude {
             newSize.width = size.width + sizeThatFitSizeOffset

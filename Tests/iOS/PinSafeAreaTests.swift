@@ -670,7 +670,7 @@ class TestView2: UIView {
         layoutSubView()
     }
 
-    fileprivate func layoutSubView() {
+    private func layoutSubView() {
         assert(layoutOffsetViewClosure != nil)
         layoutOffsetViewClosure?(subView, self)
 
@@ -752,7 +752,7 @@ class TestInsetsUpdateView: UIView, PinSafeAreaInsetsUpdate {
         layoutSubView()
     }
 
-    fileprivate func layoutSubView() {
+    private func layoutSubView() {
         assert(layoutOffsetViewClosure != nil)
         layoutOffsetViewClosure?(subView, self)
 
@@ -789,7 +789,7 @@ class TestScrollView: UIView {
         layoutSubView()
     }
 
-    fileprivate func layoutSubView() {
+    private func layoutSubView() {
         super.layoutSubviews()
 
         scrollView.pin.all()

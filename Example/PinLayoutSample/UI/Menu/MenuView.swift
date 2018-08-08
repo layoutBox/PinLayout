@@ -27,8 +27,8 @@ protocol MenuViewDelegate: class {
 class MenuView: UIView {
     weak var delegate: MenuViewDelegate?
 
-    fileprivate let tableView = UITableView()
-    fileprivate let cellIdentifier = "MenuViewCell"
+    private let tableView = UITableView()
+    private let cellIdentifier = "MenuViewCell"
 
     init() {
         super.init(frame: .zero)

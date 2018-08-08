@@ -21,10 +21,10 @@ import UIKit
 
 class TableViewExampleView: UIView {
 
-    fileprivate let tableView = UITableView()
-    fileprivate let methodCellTemplate = MethodCell()
+    private let tableView = UITableView()
+    private let methodCellTemplate = MethodCell()
     
-    fileprivate var methods: [Method] = []
+    private var methods: [Method] = []
     
     init() {
         super.init(frame: .zero)

@@ -21,9 +21,9 @@ import UIKit
 import PinLayout
 
 class AdjustToContainerView: UIView {
-    fileprivate let languageSelectorView = ChoiceSelectorView(text: "What is your favorite language?", choices: ["Swift", "Objective-C", "C++"])
-    fileprivate let swiftOpinionSelector = ChoiceSelectorView(text: "Overall, are you satisfied with the Swift performance in your projects?", choices: ["Yes", "No"])
-    fileprivate let swiftUsageSelector = ChoiceSelectorView(text: "How often do you typically use Swift?", choices: ["Daily", "Weekly", "Montly", "Do not use"])
+    private let languageSelectorView = ChoiceSelectorView(text: "What is your favorite language?", choices: ["Swift", "Objective-C", "C++"])
+    private let swiftOpinionSelector = ChoiceSelectorView(text: "Overall, are you satisfied with the Swift performance in your projects?", choices: ["Yes", "No"])
+    private let swiftUsageSelector = ChoiceSelectorView(text: "How often do you typically use Swift?", choices: ["Daily", "Weekly", "Montly", "Do not use"])
     
     init() {
         super.init(frame: .zero)

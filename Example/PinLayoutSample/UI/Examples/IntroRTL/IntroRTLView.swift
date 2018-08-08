@@ -21,10 +21,10 @@ import UIKit
 import PinLayout
 
 class IntroRTLView: UIView {
-    fileprivate let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
-    fileprivate let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
-    fileprivate let textLabel = UILabel()
-    fileprivate let separatorView = UIView()
+    private let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
+    private let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
+    private let textLabel = UILabel()
+    private let separatorView = UIView()
     
     init() {
         super.init(frame: .zero)

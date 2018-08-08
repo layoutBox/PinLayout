@@ -16,25 +16,20 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
 import UIKit
 
-class WrapContentViewController: UIViewController {
-    private var mainView: WrapContentView {
-        return self.view as! WrapContentView
+extension UITabBarController {
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if let selected = selectedViewController {
+            return selected.supportedInterfaceOrientations
+        }
+        return super.supportedInterfaceOrientations
     }
 
-    init(pageType: PageType) {
-        super.init(nibName: nil, bundle: nil)
-        
-        title = pageType.text
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override func loadView() {
-        view = WrapContentView()
+    open override var shouldAutorotate: Bool {
+        if let selected = selectedViewController {
+            return selected.shouldAutorotate
+        }
+        return super.shouldAutorotate
     }
 }

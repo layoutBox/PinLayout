@@ -112,7 +112,7 @@ internal class PinSafeArea {
         }
     }
 
-    fileprivate static func extractMethodFrom(owner: AnyObject, selector: Selector) -> (() -> Void)? {
+    private static func extractMethodFrom(owner: AnyObject, selector: Selector) -> (() -> Void)? {
         guard let method = owner is AnyClass ? class_getClassMethod((owner as! AnyClass), selector) :
             class_getInstanceMethod(type(of: owner), selector)
             else { return nil }
@@ -159,7 +159,7 @@ struct PinLayoutSwizzling {
         self.originalImplementation = nil
     }
 
-    static fileprivate func pinlayoutViewWillLayoutSubviews(viewController: UIViewController) {
+    static private func pinlayoutViewWillLayoutSubviews(viewController: UIViewController) {
         if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
 
         if let view = viewController.view {
@@ -171,7 +171,7 @@ struct PinLayoutSwizzling {
         }
     }
 
-    static fileprivate func swizzleViewWillLayoutSubviews(_ class_: AnyClass, to block: @escaping ViewWillLayoutSubviewsBlock) -> IMP? {
+    static private func swizzleViewWillLayoutSubviews(_ class_: AnyClass, to block: @escaping ViewWillLayoutSubviewsBlock) -> IMP? {
         let selector = #selector(UIViewController.viewWillLayoutSubviews)
         let method = class_getInstanceMethod(class_, selector)
         let newImplementation = imp_implementationWithBlock(unsafeBitCast(block, to: AnyObject.self))

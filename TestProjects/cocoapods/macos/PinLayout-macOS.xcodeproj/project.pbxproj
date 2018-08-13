@@ -310,7 +310,7 @@
 				INFOPLIST_FILE = "PinLayout-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.layoutbox.project.PinLayout-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-macOS/PinLayout-macOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -328,7 +328,7 @@
 				INFOPLIST_FILE = "PinLayout-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.layoutbox.project.PinLayout-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-macOS/PinLayout-macOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  PinLayoutTvOsExample
-//
-//  Created by DION, Luc (MTL) on 2017-06-16.
-//  Copyright © 2017 Mirego. All rights reserved.
-//
 
 import UIKit
 import PinLayout

@@ -64,4 +64,8 @@ class BasicView: UIView {
         
         return newSize
     }
+
+    override func sizeToFit() {
+        pin.width(35).height(45)
+    }
 }

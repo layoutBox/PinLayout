@@ -1,10 +1,21 @@
+//  Copyright (c) 2017 Luc Dion
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  CALayer+PinLayout.swift
-//  PinLayout
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-//  Created by Antoine Lamy on 2018-06-20.
-//  Copyright © 2018 mcswiftlayyout.mirego.com. All rights reserved.
-//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
 import QuartzCore
 
@@ -30,12 +41,11 @@ extension CALayer: Layoutable {
     public func getRect(keepTransform: Bool) -> CGRect {
         if keepTransform {
             /*
-             To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
-             view's transform (UIView.transform).
-             By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
-             the view's transform. So view's transforms won't be affected/altered by PinLayout.
+             To adjust the layer's position and size, we don't set the layer's frame directly, because we want to keep the
+             layer's transform.
+             By setting the layer's center and bounds we really set the frame of the non-transformed layer, and this keep
+             the layer's transform. So layer's transforms won't be affected/altered by PinLayout.
              */
-
             let size = bounds.size
             // See setRect(...) for details about this calculation.
             let origin = CGPoint(x: position.x - (size.width * anchorPoint.x),
@@ -52,10 +62,10 @@ extension CALayer: Layoutable {
 
         if keepTransform {
             /*
-             To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
-             view's transform (UIView.transform).
-             By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
-             the view's transform. So view's transforms won't be affected/altered by PinLayout.
+             To adjust the layer's position and size, we don't set the layer's frame directly, because we want to keep the
+             layer's transform.
+             By setting the layer's center and bounds we really set the frame of the non-transformed layer, and this keep
+             the layer's transform. So layer's transforms won't be affected/altered by PinLayout.
              */
 
             // NOTE: The center is offset by the layer.anchorPoint, so we have to take it into account.

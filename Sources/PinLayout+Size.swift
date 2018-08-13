@@ -28,7 +28,7 @@ enum AdjustSizeType {
     case fitTypeHeight
     case fitTypeWidthFlexible
     case fitTypeHeightFlexible
-    case fitTypeContent
+    case sizeToFit
 
     case fitSizeLegacy
     case aspectRatio(CGFloat)
@@ -45,7 +45,9 @@ enum AdjustSizeType {
 
     internal var requiresSizeCalculable: Bool {
         switch self {
-        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent, .fitSizeLegacy:
+        case .fitTypeWidth, .fitTypeHeight,
+             .fitTypeWidthFlexible, .fitTypeHeightFlexible,
+             .sizeToFit, .fitSizeLegacy:
             return true
         case .aspectRatio(_):
             return false
@@ -219,6 +221,11 @@ extension PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }
 
+    @discardableResult
+    public func sizeToFit() -> PinLayout {
+        return setAdjustSizeType(.sizeToFit, { return "sizeToFit()" })
+    }
+
     #if os(iOS) || os(tvOS)
     @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
     @discardableResult
@@ -248,7 +255,7 @@ extension PinLayout {
                 warnWontBeApplied("the aspectRatio (\(ratio)) must be greater than zero.", context)
                 return self
             } else if type.requiresSizeCalculable, !(view is SizeCalculable) {
-                warnWontBeApplied("the view must conform to protocol SizeCalculable for it's size to be computed.", context)
+                warnWontBeApplied("PinLayout cannot comptute this view's size. This type of views doesn't conform to the protocol SizeCalculable.", context)
                 return self
             }
         }
@@ -264,7 +271,7 @@ extension PinLayout {
         switch adjustSizeType {
         case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
             conflict = "sizeToFit(\(adjustSizeType.toFitType()!.description))."
-        case .fitTypeContent:
+        case .sizeToFit:
             conflict = "sizeToFit()"
         case .fitSizeLegacy:
             conflict = "fitSize()"

@@ -55,6 +55,10 @@ class BasicView: PView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return _sizeThatFits(size)
     }
+
+    override func sizeToFit() {
+        pin.width(35).height(45)
+    }
     #endif
 
     fileprivate func _sizeThatFits(_ size: CGSize) -> CGSize {
@@ -81,7 +85,7 @@ extension BasicView: SizeCalculable {
     }
 
     func sizeToFit() {
-        // Do nothing
+        pin.width(35).height(45)
     }
 }
 #endif

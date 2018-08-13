@@ -123,7 +123,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = Mirego;
+				ORGANIZATIONNAME = LayoutBox;
 				TargetAttributes = {
 					24C872DC1EE2CE0B007BFE47 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -339,7 +339,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayout-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.layoutbox.project.PinLayout-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-iOS/PinLayout-iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -356,7 +356,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayout-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.layoutbox.project.PinLayout-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-iOS/PinLayout-iOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

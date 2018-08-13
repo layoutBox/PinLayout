@@ -290,7 +290,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayout-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.layoutbox.project.PinLayout-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-tvOS/PinLayout-tvOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -306,7 +306,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "PinLayout-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.project.PinLayout-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.layoutbox.project.PinLayout-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PinLayout-tvOS/PinLayout-tvOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

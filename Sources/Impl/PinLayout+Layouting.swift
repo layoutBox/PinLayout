@@ -201,8 +201,6 @@ extension PinLayout {
             switch adjustSizeType {
             case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
-            case .sizeToFit:
-                size = computeSizeToFit(size: size)
             case .fitSizeLegacy:
                 size = computeLegacyFitSize(size: size)
             case .aspectRatio(let ratio):
@@ -236,17 +234,6 @@ extension PinLayout {
         }
 
         return size
-    }
-
-    private func computeSizeToFit(size: Size) -> Size {
-        guard let sizeCalculableView = view as? SizeCalculable else {
-            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
-            return size
-        }
-        sizeCalculableView.sizeToFit()
-
-        let viewRect = view.getRect(keepTransform: keepTransform)
-        return Size(width: viewRect.width, height: viewRect.height)
     }
 
     private func computeLegacyFitSize(size: Size) -> Size {
@@ -321,16 +308,18 @@ extension PinLayout {
 
         let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
-        if fitWidth != .greatestFiniteMagnitude {
-            size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth
-        } else {
-            size.width = sizeThatFits.width
-        }
+        if case .fitTypeContent = adjustSizeType {} else {
+            if fitWidth != .greatestFiniteMagnitude {
+                size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth
+            } else {
+                size.width = sizeThatFits.width
+            }
 
-        if fitHeight != .greatestFiniteMagnitude {
-            size.height = adjustSizeType.isFlexible ? sizeThatFits.height : fitHeight
-        } else {
-            size.height = sizeThatFits.height
+            if fitHeight != .greatestFiniteMagnitude {
+                size.height = adjustSizeType.isFlexible ? sizeThatFits.height : fitHeight
+            } else {
+                size.height = sizeThatFits.height
+            }
         }
 
         return size

@@ -28,7 +28,7 @@ enum AdjustSizeType {
     case fitTypeHeight
     case fitTypeWidthFlexible
     case fitTypeHeightFlexible
-    case sizeToFit
+    case fitTypeContent
 
     case fitSizeLegacy
     case aspectRatio(CGFloat)
@@ -47,7 +47,7 @@ enum AdjustSizeType {
         switch self {
         case .fitTypeWidth, .fitTypeHeight,
              .fitTypeWidthFlexible, .fitTypeHeightFlexible,
-             .sizeToFit, .fitSizeLegacy:
+             .fitTypeContent, .fitSizeLegacy:
             return true
         case .aspectRatio(_):
             return false
@@ -221,11 +221,6 @@ extension PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
     }
 
-    @discardableResult
-    public func sizeToFit() -> PinLayout {
-        return setAdjustSizeType(.sizeToFit, { return "sizeToFit()" })
-    }
-
     #if os(iOS) || os(tvOS)
     @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
     @discardableResult
@@ -269,10 +264,8 @@ extension PinLayout {
         guard let adjustSizeType = adjustSizeType else { return }
         let conflict: String
         switch adjustSizeType {
-        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible:
+        case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent:
             conflict = "sizeToFit(\(adjustSizeType.toFitType()!.description))."
-        case .sizeToFit:
-            conflict = "sizeToFit()"
         case .fitSizeLegacy:
             conflict = "fitSize()"
         case .aspectRatio(let ratio):

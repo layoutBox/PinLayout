@@ -22,14 +22,14 @@ import UIKit
 enum PageType: Int {
     case intro
     case adjustToContainer
-    case tableView
-    case collectionView
-    case safeArea
-    case wrapContent
-    case animations
-    case form
     case relativePositions
     case multiRelativePositions
+    case tableView
+    case collectionView
+    case animations
+    case safeArea
+    case wrapContent
+    case form
     case autoAdjustingSize
     case introRTL
     case introObjC
@@ -40,16 +40,16 @@ enum PageType: Int {
         switch self {
         case .intro:                  return "Introduction example"
         case .adjustToContainer:      return "Adjust to container size"
-        case .tableView:              return "UITableView with variable cell's height"
-        case .collectionView:         return "UICollectionView Example"
-        case .safeArea:               return "SafeArea"
-        case .wrapContent:            return "wrapContent Example"
-        case .animations:             return "Animation Example"
-        case .form:                   return "Form Example"
         case .relativePositions:      return "Relative Positionning"
         case .multiRelativePositions: return "Multiple Relatives Positionning"
+        case .tableView:              return "UITableView with variable cell's height"
+        case .collectionView:         return "UICollectionView Example"
+        case .animations:             return "Animation Example"
+        case .safeArea:               return "SafeArea"
+        case .wrapContent:            return "wrapContent Example"
+        case .form:                   return "Form Example"
         case .autoAdjustingSize:      return "Auto adjusting size"
-        case .introRTL:               return "PinLayout's right-to-left language support"
+        case .introRTL:               return "Right-to-left language support"
         case .introObjC:              return "Objective-C PinLayout Example"
         case .count:                  return ""
         }
@@ -99,6 +99,8 @@ class MenuViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "PinLayout Examples"
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -112,7 +114,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        didSelect(pageType: .animations)
+//        didSelect(pageType: .animations)
     }
 }
 

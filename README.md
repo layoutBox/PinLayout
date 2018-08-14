@@ -1490,6 +1490,7 @@ Multiple strategies can be used to animate layout using PinLayout.
 
 [See here for more details](docs/animations.md)
 
+The following animation example is available in the [Examples App](#examples_app).
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Animations/AnimationsView.swift"><img src="docs/images/example-animations.gif" width=120/></a> 
 
 <br/>
@@ -1575,37 +1576,23 @@ Then, run `carthage update` to build the framework and drag the built `PinLayout
 
 <a name="examples_app"></a>
 ## Examples App 
-There is an Example app that expose some usage example on PinLayout, including:
 
-* The [introduction example](#intro_usage_example) presented previously in this README.
-* Example using a UITableView with variable height cells.
-* Example using a UICollectionView with variable height cells.
-* Example using [`UIView.pin.safeArea`](#safeAreaInsets)
-* Example showing animations using PinLayout
-* Example using [`wrapContent()`](#wrapContent)
-* Example showing right-to-left (RTL) language support. Similar to the Intro example.
-* Example showing a simple form example
-* Example showing Relative Edges layout.
-* Example using Objective-C
-* ...
+The PinLayout's Example App exposes some usage example of PinLayout.   
+[See the Example App section to get more information](docs_markdown/examples.md).
 
 :pushpin: Tap on images to see the example's source code.
 
 <p align="center">
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift"><img src="docs/images/pinlayout_intro_example_iphonex.png" width=420/></a>
-  <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift"><img src="docs/images/pinlayout_safearea_example_iphonex.png" width=420/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift"><img src="docs/pinlayout_example_adjust_to_container-portrait.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift"><img src="docs/pinlayout_exampleapp_tableview.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift"><img src="docs/pinlayout_exampleapp_collectionview.png" width=120/></a>   
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Animations/AnimationsView.swift"><img src="docs/images/example-animations.gif" width=120/></a> 
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/WrapContent/WrapContentView.swift"><img src="docs/pinlayout_example_wrapContent.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift"><img src="docs/pinlayout_example_form.gif" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" width=120/> </a> 
   <a href="https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" width=120/></a>
 </p>
-
-This app is available in the `Example` folder. Note that you must do a `pod install` before running the example project.
 
 <br>
 

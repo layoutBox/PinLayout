@@ -4,8 +4,15 @@
 
 <h1 align="center" style="color: #376C9D; font-family: Arial Black, Gadget, sans-serif; font-size: 1.5em">Animations using PinLayout</h1>
 
-#### PinLayout is stateless
-It is important that PinLayout is stateless, i.e. PinLayout always start from the view's current position and size (frame) when layouting a view. You don't need to reset anything to animate a view using PinLayout.
+## Basic Swift animations
+Before explaining how to use PinLayout to animate views, you can check these two nice tutorials to learn the basic of animations:
+
+* [iOS Animation Tutorial: Getting Started](https://www.raywenderlich.com/363-ios-animation-tutorial-getting-started)
+* [Basic UIView Animation Tutorial: Getting Started](https://www.raywenderlich.com/5255-basic-uiview-animation-tutorial-getting-started)
+
+
+## PinLayout is stateless
+It is important to remember that PinLayout is stateless, i.e. PinLayout always start from the view's current position and size (frame) when layouting a view. You don't need to reset anything to animate a view using PinLayout.
 
 This also means that you can modify only the property you want to animate, for example the following code will only animate the view's width:
  
@@ -15,88 +22,157 @@ This also means that you can modify only the property you want to animate, for e
    }
 ``` 
 
-#### Layout strategies
+## Layout strategies
 Multiple strategies can be used to animate layout using PinLayout. The choice is  a question of preferences and the kind of animations you want to achieve.
 
-Some possible possible strategies will be shown below using a really simple example. The example 
+Some possible strategies will be shown below using a simple example. The example animates a view position from left to right when the user tap a button.
+
+<img src="images/pinlayout_animation_example1.gif" width=220/>
+
+Note that in the following source code the view's size was set to 150 px (`view.pin.size(150)`) in the initialization.
 
 
-All examples below animate the appearance of an UIImageView.
+### Basic strategy: Using `UIView.setNeedsLayout` and  `UIView.layoutIfNeeded`
+In this strategy, to force a call to layoutSubviews(), we call `UIView.setNeedsLayout` and  `UIView.layoutIfNeeded` from the animation block.
 
-**1- Basic: Using UIView.setNeedsLayout + UIView.layoutIfNeeded.**
+```swift
+var isViewLeftDocked = true
 
-```
-var isImageVisible = false
-
-func layoutSubviews() {
+override func layoutSubviews() {
    super.layoutSubviews()
 
-   let imageLeftPosition = isImageVisible ? 0 : -imageView.frame.width
-   imageView.pin.left(imageLeftPosition).vCenter() 
-   ...
-}
-
-func didTapTogglemage() {
-   UIView.animate(withDuration: 0.2) { 
-         self.isImageVisible = !self.isImageVisible
-         self.setNeedsLayout()
-         self.layoutIfNeeded()
-    }
-}
-```
-
-**2- Using a layout method.**
-
-```
-var isImageVisible = false
-
-func layoutSubviews() {
-   super.layoutSubviews()
-   layoutImageView()
-   ...
-}
-
-func layoutImageView() {
-   let imageLeftPosition = isImageVisible ? 0 : -imageView.frame.width
-   imageView.pin.left(imageLeftPosition).vCenter() 
-}
-
-func didTapTogglemage() {
-   UIView.animate(withDuration: 0.2) { 
-         self.isImageVisible = !self.isImageVisible
-         self.layoutImageView()
-    }
-}
-```
-
-**3- Using a state and having multiple separates layout methods.**
-
-```
-enum State {
-   case initial
-   case imageVisible
-}
-var state = State.initial
-
-func layoutSubviews() {
-   super.layoutSubviews()
-
-   switch state {
-   case .initial: layoutInitialState()
-   case .imageVisible: layoutImageVisibleState()
+   if isViewLeftDocked {
+      view.pin.top().left()
+   } else {
+      view.pin.top().right()
    }
 }
 
-func layoutInitialState() {
-   imageView.pin.left(-imageView.frame.width).vCenter() 
-   ...
-}
-
-func layoutImageVisibleState() {
-   imageView.pin.left(0).vCenter() 
-   ...
+func didTapTogglePosition() {
+   isViewLeftDocked = !isViewLeftDocked
+      
+   UIView.animate(withDuration: 0.3) {
+      self.setNeedsLayout()
+      self.layoutIfNeeded()
+   }
 }
 ```
 
+### Using a layout method
+This strategy use a private method to layout the animated view (`layoutAnimatedView()`). The advantage of this solution is that it is not required to call `UIView.setNeedsLayout` and  `UIView.layoutIfNeeded` to relayout the view. 
 
-<a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Animations/AnimationsView.swift"><img src="images/example-animations.gif" width=120/></a> 
+```swift
+var isViewLeftDocked = true
+
+override func layoutSubviews() {
+   super.layoutSubviews()
+   
+   layoutAnimatedView()
+}
+
+private func layoutAnimatedView() {
+   if isViewLeftDocked {
+      view.pin.top().left()
+   } else {
+      view.pin.top().right()
+   }
+}
+
+func didTapTogglePosition() {
+   isViewLeftDocked = !isViewLeftDocked
+   
+   UIView.animate(withDuration: 0.3) { 
+      self.layoutAnimatedView()
+   }
+}
+```
+
+### Using an animation state
+This strategy is similar to the previous one, but use an enumeration to keep the animation state.
+
+```swift
+enum AnimationState {
+   case leftDocked
+   case rightDocked
+}
+
+var animationState = AnimationState.leftDocked
+
+override func layoutSubviews() {
+   super.layoutSubviews()
+   
+   layoutAnimatedView()
+}
+
+private func layoutAnimatedView() {
+   switch animationState {
+   case .leftDocked:
+      view.pin.top().left()
+   case .rightDocked:
+      view.pin.top().right()
+   }
+}
+
+func didTapTogglePosition() {
+   switch animationState {
+   case .leftDocked: animationState = .rightDocked
+   case .rightDocked: animationState = .leftDocked
+   }
+   
+   UIView.animate(withDuration: 0.3) {
+      self.layoutAnimatedView()
+   }
+}
+```
+
+### Other strategies
+It's really up to you to think of animation's strategies that match your situation. With PinLayout you are always in control of everything, including animations.
+
+
+## Collision between animations and `layoutSubViews()`
+In some particular situation it is possible that `layoutSubViews()` may be called during the animation is in progress, this can occur particularly on long animation. To handle this kind of situation it is possible to use a boolean indicating if an animation is in progress, and to block temporarely the layout of animated views in `layoutSubViews()`.
+
+Here is an example: 
+
+```swift
+enum AnimationState {
+   case leftDocked
+   case rightDocked
+}
+
+var animationState = AnimationState.leftDocked
+var isAnimating = false
+
+override func layoutSubviews() {
+   super.layoutSubviews()
+   
+   // If an animation of the view is in progress, we don't update animated
+   // view's position.
+   guard !isAnimating else { return }
+   layoutAnimatedView()
+}
+
+private func layoutAnimatedView() {
+   switch animationState {
+   case .leftDocked:
+      view.pin.top().left()
+   case .rightDocked:
+      view.pin.top().right()
+   }
+}
+
+func didTapTogglePosition() {
+   switch animationState {
+   case .leftDocked: animationState = .rightDocked
+   case .rightDocked: animationState = .leftDocked
+   }
+   
+   UIView.animate(withDuration: 0.3, animations: {
+      self.isAnimating = true
+      self.layoutAnimatedView()
+   }, completion: { (_) in
+      self.isAnimating = false
+   })
+}
+```
+

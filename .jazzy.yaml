@@ -1,0 +1,18 @@
+clean: true
+output: docs/1.2
+module_version: 1.2
+
+# framework_root: Sources/
+# podspec: FlexLayout.podspec
+author: lucdion
+author_url: https://github.com/lucdion
+module: PinLayout
+# readme: README.md
+# documentation: docs/benchmark/*.md
+github_url: https://github.com/layoutBox/PinLayout
+github_file_prefix: https://github.com/layoutBox/PinLayout/tree/master
+xcodebuild_arguments: [-scheme,PinLayout]
+theme: apple
+exclude: [Sources/PinLayoutGlobals.swift,Sources/Impl/Global.swift,Sources/Percent.swift,Sources/PinLayout+Filters.swift,Sources/TypesImpl.swift]
+readme: docs_api/API.md
+# root_url:

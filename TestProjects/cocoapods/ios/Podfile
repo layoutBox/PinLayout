@@ -7,5 +7,10 @@ target 'PinLayout-iOS' do
     #pod 'PinLayout'
     #pod 'PinLayout', :git => 'https://github.com/layoutBox/PinLayout.git', :commit => 'f29519b08890da144772fe9b082cd6499b5d82c1'
     pod 'PinLayout', :path => '../../..'
+
+
+    # Include popular libraries that include UIKit classes extensions to check conflicts with PinLayout.
+    pod 'SwifterSwift'
+
 end
 

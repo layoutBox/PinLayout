@@ -265,13 +265,13 @@ class MinMaxWidthHeightSpec: QuickSpec {
         describe("the result of the minWidth/maxWidth & fitSize()") {
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).fitSize()
+                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).sizeToFit(.width)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).fitSize()
+                aView.pin.left().width(100%).maxWidth(250).maxHeight(20).sizeToFit(.width)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
@@ -283,7 +283,7 @@ class MinMaxWidthHeightSpec: QuickSpec {
             
             it("should adjust the width when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.left().width(100%).maxWidth(250).height(14).maxHeight(20).fitSize()
+                aView.pin.left().width(100%).maxWidth(250).height(14).maxHeight(20).sizeToFit(.width)
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 250.0, height: 6.5)))
             }
             
@@ -561,43 +561,43 @@ class MinMaxWidthHeightSpec: QuickSpec {
         describe("the result of the minHeight/maxWidth & fitSize()") {
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().height(100%).maxHeight(200).fitSize()
+                aView.pin.top().height(100%).maxHeight(200).sizeToFit(.height)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 8.0, height: 200.0)))
             }
 
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().height(100%).maxHeight(200).fitSize().align(.top)
+                aView.pin.top().height(100%).maxHeight(200).sizeToFit(.height).align(.top)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 8.0, height: 200.0)))
             }
 
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().bottom().height(100%).maxHeight(200).fitSize().align(.bottom)
+                aView.pin.top().bottom().height(100%).maxHeight(200).sizeToFit(.height).align(.bottom)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 200.0, width: 8.0, height: 200.0)))
             }
 
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().bottom().maxHeight(200).fitSize().align(.center)
+                aView.pin.top().bottom().maxHeight(200).sizeToFit(.height).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 8.0, height: 200.0)))
             }
 
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().height(10).minHeight(200).fitSize()
+                aView.pin.top().height(10).minHeight(200).sizeToFit(.height)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 0.0, width: 8.0, height: 200.0)))
             }
 
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().bottom().height(10).minHeight(200).fitSize().align(.center)
+                aView.pin.top().bottom().height(10).minHeight(200).sizeToFit(.height).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 100.0, width: 8.0, height: 200.0)))
             }
 
             it("should adjust the height when using fitSize") {
                 aView.sizeThatFitsExpectedArea = 40 * 40
-                aView.pin.top().bottom().height(10).minHeight(200).marginTop(10).fitSize().align(.center)
+                aView.pin.top().bottom().height(10).minHeight(200).marginTop(10).sizeToFit(.height).align(.center)
                 expect(aView.frame).to(equal(CGRect(x: 40.0, y: 105.0, width: 8.0, height: 200.0)))
             }
 

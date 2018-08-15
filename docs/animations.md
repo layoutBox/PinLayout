@@ -146,8 +146,7 @@ var isAnimating = false
 override func layoutSubviews() {
    super.layoutSubviews()
    
-   // If an animation of the view is in progress, we don't update animated
-   // view's position.
+   // If an animation of the view is in progress, we don't update animated views position.
    guard !isAnimating else { return }
    layoutAnimatedView()
 }

@@ -1486,11 +1486,12 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 <a name="animations"></a>
 ## Animations using PinLayout
 
-Multiple strategies can be used to animate layout using PinLayout.
+PinLayout can easily animates Views. Multiple strategies can be used to animate layout using PinLayout.
 
-[See here for more details](docs/animations.md)
+[See the section Animations using PinLayout for more details](docs/animations.md)
 
 The following animation example is available in the [Examples App](#examples_app).
+
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Animations/AnimationsView.swift"><img src="docs/images/example-animations.gif" width=120/></a> 
 
 <br/>

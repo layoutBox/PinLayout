@@ -46,15 +46,15 @@ time xcodebuild clean build -workspace PinLayout-iOS.xcworkspace -scheme PinLayo
 cd ../../.. 
 
 
-echo "===============================" &&
-echo " Cocoapods: macOS Empty project" &&
-echo "===============================" &&
-cd TestProjects/cocoapods/macos &&
-rm -rf $DERIVED_DATA &&
-pod install &&
-time xcodebuild clean build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx10.13 -derivedDataPath $DERIVED_DATA \
-    | xcpretty &&
-cd ../../.. 
+# echo "===============================" &&
+# echo " Cocoapods: macOS Empty project" &&
+# echo "===============================" &&
+# cd TestProjects/cocoapods/macos &&
+# rm -rf $DERIVED_DATA &&
+# pod install &&
+# time xcodebuild clean build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx10.13 -derivedDataPath $DERIVED_DATA \
+#     | xcpretty &&
+# cd ../../.. 
 
 
 echo "===============================" &&

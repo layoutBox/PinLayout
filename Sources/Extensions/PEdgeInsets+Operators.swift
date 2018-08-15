@@ -2,27 +2,27 @@
 public extension PEdgeInsets {
     public func inset(_ value: CGFloat) -> PEdgeInsets {
         return PEdgeInsets(top: self.top + value,
-                            left: self.left + value,
-                            bottom: self.bottom + value,
-                            right: self.right + value)
+                           left: self.left + value,
+                           bottom: self.bottom + value,
+                           right: self.right + value)
     }
 
-    func insetBy(dx: CGFloat, dy: CGFloat) -> PEdgeInsets {
+    public func insetBy(dx: CGFloat, dy: CGFloat) -> PEdgeInsets {
         return PEdgeInsets(top: self.top + dy, left: self.left + dx, bottom: self.bottom + dy, right: self.right + dx)
     }
 
-    func minInsets(_ insets: PEdgeInsets) -> PEdgeInsets {
+    public func minInsets(_ insets: PEdgeInsets) -> PEdgeInsets {
         return PEdgeInsets(top: minValue(self.top, minValue: insets.top),
-                            left: minValue(self.left, minValue: insets.left),
-                            bottom: minValue(self.bottom, minValue: insets.bottom),
-                            right: minValue(self.right, minValue: insets.right))
+                           left: minValue(self.left, minValue: insets.left),
+                           bottom: minValue(self.bottom, minValue: insets.bottom),
+                           right: minValue(self.right, minValue: insets.right))
     }
 
-    func minInsets(dx: CGFloat, dy: CGFloat) -> PEdgeInsets {
+    public func minInsets(dx: CGFloat, dy: CGFloat) -> PEdgeInsets {
         return PEdgeInsets(top: minValue(self.top, minValue: dy),
-                            left: minValue(self.left, minValue: dx),
-                            bottom: minValue(self.bottom, minValue: dy),
-                            right: minValue(self.right, minValue: dx))
+                           left: minValue(self.left, minValue: dx),
+                           bottom: minValue(self.bottom, minValue: dy),
+                           right: minValue(self.right, minValue: dx))
     }
 
     private func minValue(_ value: CGFloat, minValue: CGFloat) -> CGFloat {

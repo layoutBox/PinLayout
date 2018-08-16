@@ -501,7 +501,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? topLeft(margin, context: context) : topRight(margin, context: context)
     }
 
-    fileprivate func topLeft(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func topLeft(_ margin: CGFloat, context: Context) -> PinLayout {
         setTopLeft(CGPoint(x: margin, y: margin), context)
         return self
     }
@@ -553,7 +553,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? topRight(margin, context: context) : topLeft(margin, context: context)
     }
 
-    fileprivate func topRight(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func topRight(_ margin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setTopRight(CGPoint(x: layoutSuperviewRect.width - margin, y: margin), context)
         return self
@@ -589,7 +589,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? centerLeft(startMargin, context: context) : centerRight(startMargin, context: context)
     }
 
-    fileprivate func centerLeft(_ leftMargin: CGFloat, context: Context) -> PinLayout {
+    private func centerLeft(_ leftMargin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setCenterLeft(CGPoint(x: leftMargin, y: layoutSuperviewRect.height / 2), context)
         return self
@@ -642,7 +642,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? centerRight(endMargin, context: context) : centerLeft(endMargin, context: context)
     }
 
-    fileprivate func centerRight(_ rightMargin: CGFloat, context: Context) -> PinLayout {
+    private func centerRight(_ rightMargin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setCenterRight(CGPoint(x: layoutSuperviewRect.width - rightMargin, y: layoutSuperviewRect.height / 2), context)
         return self
@@ -662,7 +662,7 @@ public class PinLayout<View: Layoutable> {
         return bottomLeft(margin, context: { return "bottomLeft(\(margin.optionnalDescription))" })
     }
 
-    fileprivate func bottomLeft(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func bottomLeft(_ margin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setBottomLeft(CGPoint(x: margin, y: layoutSuperviewRect.height - margin), context)
         return self
@@ -715,7 +715,7 @@ public class PinLayout<View: Layoutable> {
         return bottomRight(margin, context: { return "bottomRight(\(margin.optionnalDescription))" })
     }
 
-    fileprivate func bottomRight(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func bottomRight(_ margin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setBottomRight(CGPoint(x: layoutSuperviewRect.width - margin, y: layoutSuperviewRect.height - margin), context)
         return self

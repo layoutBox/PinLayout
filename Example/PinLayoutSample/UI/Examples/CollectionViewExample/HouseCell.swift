@@ -18,15 +18,15 @@ import PinLayout
 class HouseCell: UICollectionViewCell {
     static let reuseIdentifier = "HouseCell"
     
-    fileprivate let headerView = UIView()
-    fileprivate let nameLabel = UILabel()
-    fileprivate let mainImage = UIImageView()
+    private let headerView = UIView()
+    private let nameLabel = UILabel()
+    private let mainImage = UIImageView()
     
-    fileprivate let footerView = UIView()
-    fileprivate let priceLabel = UILabel()
-    fileprivate let distanceLabel = UILabel()
+    private let footerView = UIView()
+    private let priceLabel = UILabel()
+    private let distanceLabel = UILabel()
     
-    fileprivate let padding: CGFloat = 8
+    private let padding: CGFloat = 8
     
     override init(frame: CGRect) {
         super.init(frame: frame)

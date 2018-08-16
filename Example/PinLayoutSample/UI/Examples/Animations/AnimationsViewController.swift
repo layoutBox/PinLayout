@@ -19,9 +19,9 @@
 
 import UIKit
 
-class WrapContentViewController: UIViewController {
-    private var mainView: WrapContentView {
-        return self.view as! WrapContentView
+class AnimationsViewController: UIViewController {
+    private var mainView: AnimationsView {
+        return self.view as! AnimationsView
     }
 
     init(pageType: PageType) {
@@ -35,6 +35,6 @@ class WrapContentViewController: UIViewController {
     }
     
     override func loadView() {
-        view = WrapContentView()
+        view = AnimationsView()
     }
 }

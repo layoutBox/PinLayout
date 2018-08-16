@@ -265,7 +265,7 @@ extension PinLayout {
         return self
     }
 
-    fileprivate func warnAdjustSizeConflict(context: Context) {
+    private func warnAdjustSizeConflict(context: Context) {
         guard let adjustSizeType = adjustSizeType else { return }
         let conflict: String
         switch adjustSizeType {

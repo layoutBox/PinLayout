@@ -45,7 +45,7 @@ import Foundation
     */
     @objc public static var logMissingLayoutCalls = false
 
-    static fileprivate var isInitialized = false
+    static private var isInitialized = false
 
     @objc public static func initPinLayout() {
         #if os(iOS) || os(tvOS)

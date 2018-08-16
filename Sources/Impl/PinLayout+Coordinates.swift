@@ -361,7 +361,7 @@ extension PinLayout {
         }
     }
     
-    fileprivate func computeCoordinates(_ point: CGPoint, _ layoutSuperview: View, _ referenceSuperview: View) -> CGPoint {
+    private func computeCoordinates(_ point: CGPoint, _ layoutSuperview: View, _ referenceSuperview: View) -> CGPoint {
         if layoutSuperview == referenceSuperview {
             return point   // same superview => no coordinates conversion required.
         } else if referenceSuperview == layoutSuperview.superview as? View {

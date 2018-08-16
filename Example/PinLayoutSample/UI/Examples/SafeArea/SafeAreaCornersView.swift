@@ -21,21 +21,21 @@ import UIKit
 import PinLayout
 
 class SafeAreaCornersView: UIView {
-    fileprivate let safeAreaZoneView = UIView()
+    private let safeAreaZoneView = UIView()
 
-    fileprivate let centerImageView = UIImageView(image: UIImage(named: "Center")!)
+    private let centerImageView = UIImageView(image: UIImage(named: "Center")!)
 
     // Corners
-    fileprivate let topLeftImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
-    fileprivate let topRightImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
-    fileprivate let bottomRightImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
-    fileprivate let bottomLeftImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
+    private let topLeftImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
+    private let topRightImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
+    private let bottomRightImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
+    private let bottomLeftImageView = UIImageView(image: UIImage(named: "ArrowCorner")!)
 
     // Edges
-    fileprivate let topImageView = UIImageView(image: UIImage(named: "Arrow")!)
-    fileprivate let rightImageView = UIImageView(image: UIImage(named: "Arrow")!)
-    fileprivate let bottomImageView = UIImageView(image: UIImage(named: "Arrow")!)
-    fileprivate let leftImageView = UIImageView(image: UIImage(named: "Arrow")!)
+    private let topImageView = UIImageView(image: UIImage(named: "Arrow")!)
+    private let rightImageView = UIImageView(image: UIImage(named: "Arrow")!)
+    private let bottomImageView = UIImageView(image: UIImage(named: "Arrow")!)
+    private let leftImageView = UIImageView(image: UIImage(named: "Arrow")!)
 
     init() {
         super.init(frame: .zero)

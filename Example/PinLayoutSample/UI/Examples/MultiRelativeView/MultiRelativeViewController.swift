@@ -20,7 +20,7 @@
 import UIKit
 
 class MultiRelativeViewController: UIViewController {
-    fileprivate var mainView: MultiRelativeView {
+    private var mainView: MultiRelativeView {
         return self.view as! MultiRelativeView
     }
 

@@ -20,7 +20,7 @@
 import UIKit
 
 class SafeAreaCornersViewController: UIViewController {
-    fileprivate var mainView: SafeAreaCornersView {
+    private var mainView: SafeAreaCornersView {
         return self.view as! SafeAreaCornersView
     }
 

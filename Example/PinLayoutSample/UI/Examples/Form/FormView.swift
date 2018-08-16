@@ -22,14 +22,14 @@ import PinLayout
 
 class FormView: BaseFormView {
     
-    fileprivate let formContainerView = UIView()
-    fileprivate let formTitleLabel = UILabel()
-    fileprivate let nameField = UITextField()
+    private let formContainerView = UIView()
+    private let formTitleLabel = UILabel()
+    private let nameField = UITextField()
     
-    fileprivate let ageSwitch = UISwitch()
-    fileprivate let ageField = UITextField()
+    private let ageSwitch = UISwitch()
+    private let ageField = UITextField()
     
-    fileprivate let addressField = UITextField()
+    private let addressField = UITextField()
 
     override init() {
         super.init()
@@ -74,7 +74,7 @@ class FormView: BaseFormView {
         layoutFormFields()
     }
     
-    fileprivate func layoutFormFields() {
+    private func layoutFormFields() {
         let margin: CGFloat = 12
         
         // Layout the formContainerView using the view's safeArea.

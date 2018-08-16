@@ -25,7 +25,7 @@ struct Method {
 }
 
 class TableViewExampleViewController: UIViewController {
-    fileprivate var mainView: TableViewExampleView {
+    private var mainView: TableViewExampleView {
         return self.view as! TableViewExampleView
     }
 

@@ -20,7 +20,7 @@
 import UIKit
 
 class IntroViewController: UIViewController {
-    fileprivate var mainView: IntroView {
+    private var mainView: IntroView {
         return self.view as! IntroView
     }
 

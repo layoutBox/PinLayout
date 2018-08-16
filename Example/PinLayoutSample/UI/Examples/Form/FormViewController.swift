@@ -20,7 +20,7 @@
 import UIKit
 
 class FormViewController: UIViewController {
-    fileprivate var mainView: FormView {
+    private var mainView: FormView {
         return self.view as! FormView
     }
 

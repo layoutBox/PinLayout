@@ -52,7 +52,7 @@ import AppKit
     typealias PView = NSView
     #endif
 
-    fileprivate var impl: PinLayout<PView>?
+    private var impl: PinLayout<PView>?
     
     init(view: PView, keepTransform: Bool) {
         impl = PinLayout<PView>(view: view, keepTransform: keepTransform)

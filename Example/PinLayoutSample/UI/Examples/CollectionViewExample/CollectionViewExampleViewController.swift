@@ -22,7 +22,7 @@ struct House {
 }
 
 class CollectionViewExampleViewController: UIViewController {
-    fileprivate var mainView: CollectionViewExampleView {
+    private var mainView: CollectionViewExampleView {
         return self.view as! CollectionViewExampleView
     }
 

@@ -23,7 +23,7 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
     static let reuseIdentifier = "MethodGroupHeader"
     static let height: CGFloat = 50
     
-    fileprivate let titleLabel = UILabel()
+    private let titleLabel = UILabel()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

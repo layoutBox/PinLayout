@@ -21,10 +21,10 @@ import UIKit
 import PinLayout
 
 class SafeAreaView: UIView {
-    fileprivate let topTextLabel = UILabel()
-    fileprivate let scanButton = RoundedButton(text: "Scan", icon: UIImage(named: "Barcode")!)
-    fileprivate let iconImageView = UIImageView(image: UIImage(named: "IconOrder")!)
-    fileprivate let textLabel = UILabel()
+    private let topTextLabel = UILabel()
+    private let scanButton = RoundedButton(text: "Scan", icon: UIImage(named: "Barcode")!)
+    private let iconImageView = UIImageView(image: UIImage(named: "IconOrder")!)
+    private let textLabel = UILabel()
 
     init() {
         super.init(frame: .zero)

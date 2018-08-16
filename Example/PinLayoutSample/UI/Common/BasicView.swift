@@ -20,7 +20,7 @@
 import UIKit
 
 class BasicView: UIView {
-    fileprivate let label = UILabel()
+    private let label = UILabel()
     
     init(text: String? = nil, color: UIColor) {
         super.init(frame: .zero)

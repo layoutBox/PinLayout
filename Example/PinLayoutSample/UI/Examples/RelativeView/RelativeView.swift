@@ -21,26 +21,26 @@ import UIKit
 import PinLayout
 
 class RelativeView: UIView {
-    fileprivate let centerView = UIView()
+    private let centerView = UIView()
     
-    fileprivate let topLeftView = UIView()
-    fileprivate let topCenterView = UIView()
-    fileprivate let topRightView = UIView()
+    private let topLeftView = UIView()
+    private let topCenterView = UIView()
+    private let topRightView = UIView()
     
-    fileprivate let leftTopView = UIView()
-    fileprivate let leftCenterView = UIView()
-    fileprivate let leftBottomView = UIView()
+    private let leftTopView = UIView()
+    private let leftCenterView = UIView()
+    private let leftBottomView = UIView()
     
-    fileprivate let bottomLeftView = UIView()
-    fileprivate let bottomCenterView = UIView()
-    fileprivate let bottomRightView = UIView()
+    private let bottomLeftView = UIView()
+    private let bottomCenterView = UIView()
+    private let bottomRightView = UIView()
     
-    fileprivate let rightTopView = UIView()
-    fileprivate let rightCenterView = UIView()
-    fileprivate let rightBottomView = UIView()
+    private let rightTopView = UIView()
+    private let rightCenterView = UIView()
+    private let rightBottomView = UIView()
     
-    fileprivate let relativeView = UIView()
-    fileprivate let childRelativeView = UIView()
+    private let relativeView = UIView()
+    private let childRelativeView = UIView()
     
     init() {
         super.init(frame: .zero)
@@ -66,7 +66,7 @@ class RelativeView: UIView {
         addSquare(rightBottomView, color: .lightGray)
     }
     
-    fileprivate func addSquare(_ view: UIView, color: UIColor) {
+    private func addSquare(_ view: UIView, color: UIColor) {
         view.backgroundColor = color
         view.pin.size(40)
         addSubview(view)

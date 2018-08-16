@@ -21,23 +21,23 @@ import UIKit
 import PinLayout
 
 class WrapContentView: UIView {
-    fileprivate let topContainer = UIView()
-    fileprivate let topLogo = UIImageView(image: UIImage(named: "PinLayout-logo"))
-    fileprivate let topLabel = UILabel()
+    private let topContainer = UIView()
+    private let topLogo = UIImageView(image: UIImage(named: "PinLayout-logo"))
+    private let topLabel = UILabel()
 
-    fileprivate let separatorView1 = UIView()
+    private let separatorView1 = UIView()
 
-    fileprivate let middleContainer = UIView()
-    fileprivate let middleLabel = UILabel()
-    fileprivate let button1 = UIButton(type: .custom)
-    fileprivate let button2 = UIButton(type: .custom)
-    fileprivate let button3 = UIButton(type: .custom)
+    private let middleContainer = UIView()
+    private let middleLabel = UILabel()
+    private let button1 = UIButton(type: .custom)
+    private let button2 = UIButton(type: .custom)
+    private let button3 = UIButton(type: .custom)
 
-    fileprivate let separatorView2 = UIView()
+    private let separatorView2 = UIView()
 
-    fileprivate let bottomContainer = UIView()
-    fileprivate let bottomLogo = UIImageView(image: UIImage(named: "PinLayout-logo"))
-    fileprivate let bottomLabel = UILabel()
+    private let bottomContainer = UIView()
+    private let bottomLogo = UIImageView(image: UIImage(named: "PinLayout-logo"))
+    private let bottomLabel = UILabel()
 
     init() {
         super.init(frame: .zero)

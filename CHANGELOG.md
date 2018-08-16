@@ -7,6 +7,20 @@
 
 # Change Log
 
+## [1.7.12](https://github.com/layoutBox/PinLayout/releases/tag/1.7.12)
+Released on 2018-08-16
+
+#### Add Animations documentation and example
+Add documentation that explains how PinLayout can handle view's animations.
+
+* Show few strategies that can be used to animate views.
+* Add an Animation example in the Example app.
+* Add an new "Examples" markdown page showing all PinLayout's examples.
+* Convert `fileprivate` to `private` declarations
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#165](https://github.com/layoutBox/PinLayout/pull/165) 
+
+
 ## [1.7.11](https://github.com/layoutBox/PinLayout/releases/tag/1.7.11)
 Released on 2018-08-05
 

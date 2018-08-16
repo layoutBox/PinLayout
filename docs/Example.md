@@ -17,32 +17,42 @@ The Example App is available in the [`Example`](https://github.com/layoutBox/Pin
 </br>
 
 ## Intro Example
-PinLayout introduction example.  
+PinLayout introduction example presented in the README.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Intro/IntroView.swift)
 
 <img src="images/pinlayout_intro_example_iphonex.png" width=420/>
 
 ## Relative Edges Layout Example 
+Example showing how to layout views relative to other views.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift)
 
 <img src="pinlayout_exampleapp_relative_position.png" width=180/>
 
 ## Multi Relative Edges Layout Example
+Example showing how to layout a view relative to many other views.
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView)
 
 <img src="pinlayout_exampleapp_multi_relative_position.png" width=180/>
 
 ## UITableView Example
+Example using a UITableView with variable height cells.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift)
 
 <img src="pinlayout_exampleapp_tableview.png" width=180/>
 
 ## UICollectionView Example
+Example using a UICollectionView with variable height cells.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/CollectionViewExample/HouseCell.swift)
 
 <img src="pinlayout_exampleapp_collectionview.png" width=180/>
 
 ## Animations Example
+Example showing how to animate views with PinLayout.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Animations/AnimationsView.swift)
 
 <img src="images/example-animations.gif" width=180/>
@@ -56,26 +66,41 @@ This example show how PinLayout can support simultaneously Left to right and rig
 
 
 ## pin.safeArea example
+Example showing the usage of `UIView.pin.safeArea`] with UINavigationController and UITabViewController.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift)
 
 <img src="images/pinlayout_safearea_example_iphonex.png" width=420/>
+<img src="images/pinlayout_safearea_2_example_iphonex.png" width=420/>
+
 
 ## Adjust To Container Example
+Example showing how PinLayout can be used to adjust the layout depending of the space available.
+
+In this example the UISegmentedControl is shown below its label if the available width is smaller than 500 pixels, or on the same line as the label if the width is wider.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift")
 
-<img src="pinlayout_example_adjust_to_container-portrait.png" width=180/>
+<img src="pinlayout_example_adjust_to_container2.png" width=420/>
+
 
 ## wrapContent Example
+This example show how to use the `wrapContent()` method. This method is particularly useful to wrap a group of views and center them.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/WrapContent/WrapContentView.swift)
 
 <img src="pinlayout_example_wrapContent.png" width=180/>
 
 ## Form Example
+This example is a basic form containing 4 fields. 
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Form/FormView.swift)
 
 <img src="pinlayout_example_form.gif" width=180/>
 
 ## Auto Adjusting Size Example
+This example show how fixed size views and expandable views can be layouted using PinLayout to fill the available space.
+
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift)
 
 <img src="pinlayout_exampleapp_auto_adjusting_size.png" width=180/>

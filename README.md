@@ -162,7 +162,7 @@ This example shows how easily PinLayout can adjust its layout based on the view'
 * Full control: You're in the middle of the layout process, no magic black box. 
 * Layout one view at a time. Make it simple to code and debug.
 * Concise syntax. Layout most views using a single line. 
-* [See the complete list here....](docs/PinLayout_principles.md)
+* [**See the complete list here....**](docs/PinLayout_principles.md)
 
 <a name="performance"></a>
 # PinLayout's Performance 
@@ -171,7 +171,7 @@ PinLayout's performance has been measured using the [Layout Framework Benchmark]
 
 As you can see in the following chart, PinLayout are faster or equal to manual layouting, and **between 8x and 12x faster than auto layout**, and this for all types of iPhone (5S/6/6S/7/8/X)
 
-[See here for more details, results and explanation of the benchmark](docs/Benchmark.md).
+#### [See here for more details, results and explanation of the benchmark](docs/Benchmark.md).
 
 <p align="center">
 	<a href="docs/Benchmark.md">
@@ -194,7 +194,7 @@ PinLayout support macOS 10.9+.
 
 ### Right to left languages (RTL) support 
 PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. 
-[See here for more details](docs/rtl_support.md).
+#### [See here for more details](docs/rtl_support.md).
 
 <br/>
 
@@ -1488,7 +1488,7 @@ Warnings can be disabled also in debug mode by setting the boolean Pin.logWarnin
 
 PinLayout can easily animates Views. Multiple strategies can be used to animate layout using PinLayout.
 
-[See the section Animations using PinLayout for more details](docs/animations.md)
+#### [See the section Animations using PinLayout for more details](docs/animations.md)
 
 The following animation example is available in the [Examples App](#examples_app).
 
@@ -1574,12 +1574,28 @@ github "layoutBox/PinLayout"
 
 Then, run `carthage update` to build the framework and drag the built `PinLayout.framework` into your Xcode project.
 
+<br>
 
 <a name="examples_app"></a>
 ## Examples App 
 
 The PinLayout's Example App exposes some usage example of PinLayout.   
-[See the Example App section to get more information](docs_markdown/examples.md).
+
+#### [See the Example App section to get more information](docs_markdown/examples.md)
+
+Included examples:
+
+* The [introduction example](#intro_usage_example) presented previously in this README.	
+* Example using a UITableView with variable height cells.
+* Example using a UICollectionView with variable height cells.
+* Example showing how to animate with PinLayout.
+* Example using [`UIView.pin.safeArea`](#safeAreaInsets)
+* Example using [`wrapContent()`](#wrapContent)
+* Example showing right-to-left (RTL) language support.
+* Example showing a simple form example	
+* Example showing Relative Edges layout.
+* Example using Objective-C	
+* ...
 
 :pushpin: Tap on images to see the example's source code.
 
@@ -1643,7 +1659,7 @@ bLayer.pin.below(of: aLayer, aligned: .left).size(of: aLayer)
 
 PinLayout layouts views immediately after the line containing `.pin` has been fully executed, thanks to ARC (Automatic Reference Counting) this works perfectly on iOS/tvOS/macOS simulators and devices. But in Xcode Playgrounds, ARC doesn't work as expected, object references are kept much longer. This is a well documented issue and have a little impact on the PinLayout behaviour.
 
-[See here for more details about using PinLayout in Xcode playgrounds](docs/xcode_playground.md)
+#### [See here for more details about using PinLayout in Xcode playgrounds](docs/xcode_playground.md)
 
 <br>
 
@@ -1651,7 +1667,7 @@ PinLayout layouts views immediately after the line containing `.pin` has been fu
 ## PinLayout using Objective-C 
 PinLayout also expose an Objective-C interface slightly different than the Swift interface. 
 
-[See here for more details](docs/objective_c.md)
+#### [See here for more details](docs/objective_c.md)
 
 <br>
 

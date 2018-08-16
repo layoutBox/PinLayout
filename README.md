@@ -1581,7 +1581,7 @@ Then, run `carthage update` to build the framework and drag the built `PinLayout
 
 The PinLayout's Example App exposes some usage example of PinLayout.   
 
-#### [See the Example App section to get more information](docs_markdown/examples.md)
+#### [See the Example App section to get more information](docs/examples.md)
 
 Included examples:
 

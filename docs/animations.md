@@ -22,6 +22,8 @@ This also means that you can modify only the property you want to animate, for e
    }
 ``` 
 
+</br>
+
 ## Layout strategies
 Multiple strategies can be used to animate layout using PinLayout. The choice is  a question of preferences and the kind of animations you want to achieve.
 
@@ -128,6 +130,7 @@ func didTapTogglePosition() {
 ### Other strategies
 It's really up to you to think of animation's strategies that match your situation. With PinLayout you are always in control of everything, including animations.
 
+</br>
 
 ## Collision between animations and `layoutSubViews()`
 In some particular situation it is possible that `layoutSubViews()` may be called during the animation is in progress, this can occur particularly on long animation. To handle this kind of situation it is possible to use a boolean indicating if an animation is in progress, and to block temporarely the layout of animated views in `layoutSubViews()`.
@@ -174,4 +177,14 @@ func didTapTogglePosition() {
    })
 }
 ```
+
+</br>
+
+## Animation Example
+You can check the animation example available in the [PinLayout's Example App](https://github.com/layoutBox/PinLayout/blob/master/docs/examples.md):
+
+[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/Animations/AnimationsView.swift)
+
+<img src="images/example-animations.gif" width=160/>
+
 

@@ -44,7 +44,7 @@ class MultiRelativeView: UIView {
         
         view1.pin.top(pin.safeArea).left(pin.safeArea).width(20%).height(50%)
         view2.pin.top(pin.safeArea).right(pin.safeArea).width(20%).height(50%)
-        
-        view.pin.right(of: view1, aligned: .top).left(of: view2, aligned: .bottom).marginHorizontal(10)
+
+        view.pin.after(of: view1, aligned: .top).before(of: view2, aligned: .bottom).marginHorizontal(10)
     }
 }

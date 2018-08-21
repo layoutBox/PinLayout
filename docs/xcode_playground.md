@@ -16,7 +16,7 @@ The method will execute PinLayout commands immediately. This method is **require
 
 ```swift
     view.pin.top(20).bottom(20).width(100).layout()
-    view2.pin.below(of: view).left().right().layout()
+    view2.pin.below(of: view).horizontally().layout()
 ```
 
 **TIP**: If your codes needs to work in Xcode playgrounds, you may set to `true` the property `Pin.logMissingLayoutCalls`, this way any missing call to `layout()` will generate a warning in the Xcode console.

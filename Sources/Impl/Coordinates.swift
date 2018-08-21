@@ -30,8 +30,16 @@ internal var displayScale: CGFloat = NSScreen.main?.backingScaleFactor ?? 2.0
 #endif
 internal var onePixelLength: CGFloat = 1 / displayScale
 
-public func _pinlayoutSetUnitTest(scale: CGFloat) {
-    displayScale = scale
+public func _pinlayoutSetUnitTest(scale: CGFloat?) {
+    if let scale = scale {
+        displayScale = scale
+    } else {
+        #if os(iOS) || os(tvOS)
+        displayScale = UIScreen.main.scale
+        #elseif os(OSX)
+        displayScale = NSScreen.main?.backingScaleFactor ?? 2.0
+        #endif
+    }
 }
 
 final class Coordinates<View: Layoutable> {

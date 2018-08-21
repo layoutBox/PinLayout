@@ -474,20 +474,24 @@ Position the view left of the specified view(s) and aligned it using the specifi
 Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `after(of:)`. One or many relative views can be specified. This method is similar to pinning one view’s anchor: topLeft, centerLeft or bottomLeft.
 
 
-**How alignment is applied:**
+**How HorizontalAlignment is applied:**
 
-* **`HorizontalAlignment.left`**: The view's left edge will be aligned to the left most relative view.
-* **`HorizontalAlignment.center`**: The view's hCenter edge will be aligned with the average hCenter of all relative views.
-*  **`HorizontalAlignment.right`**: The view's right edge will be aligned to the right most relative view.
+* **`HorizontalAlignment.left`**: The view's left edge will be left-aligned with the relative view (or the left most view if a list of relative views is specified).
+* **`HorizontalAlignment.center`**: The view's will be horizontally centered with the relative view (or the average hCenter if a list of relative views is used).
+*  **`HorizontalAlignment.right`**: The view's right edge will be right-aligned with the relative view (or the right most view if a list of relative views is specified).
 * **`HorizontalAlignment.start`**:left_right_arrow::  
-In LTR direction the view's left edge will be aligned to the left most relative view.  
-In RTL direction the view's right edge will be aligned to the right most relative view.
+In LTR direction, similar to using HorizontalAlignment.left.
+In RTL direction, similar to using HorizontalAlignment.right.
 * **`HorizontalAlignment.end`**:left_right_arrow::  
-In LTR direction the view's right edge will be aligned to the right most relative view.  
-In RTL direction the view's left edge will be aligned to the right most relative view.
-*  **`VerticalAlignment.top`**: The view's top edge will be aligned to the top most relative view.
-*  **`VerticalAlignment.center`**: The view's vCenter edge will be aligned with the average vCenter of all relative views.
-*  **`VerticalAlignment.bottom`**: The view's bottom edge will be aligned to the bottom most relative view.
+In LTR direction, similar to using HorizontalAlignment.right.
+In RTL direction, similar to using HorizontalAlignment.left.
+
+**How VerticalAlignment is applied:**
+
+
+*  **`VerticalAlignment.top`**: The view's top edge will be top-aligned with the relative view (or the top most view if a list of relative views is specified).
+*  **`VerticalAlignment.center`**: The view's will be vertically centered with the relative view (or the average vCenter if a list of relative views is used).
+*  **`VerticalAlignment.bottom`**: The view's bottom edge will be bottom-aligned with the relative view (or the bottom most view if a list of relative views is specified).
 
 :pushpin: **Multiple relative views**: If for example a call to `below(of: [...], aligned:) specify multiple relative views, the view will be layouted below *ALL* these views. The alignment will be applied using all relative view
 
@@ -1726,6 +1730,10 @@ PinLayout was inspired by other great layout frameworks, including:
 
 ## History
 PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [GitHub Releases](https://github.com/layoutBox/PinLayout/releases).
+
+### Recent breaking change
+
+* `fitSize()` has been removed after being deprecated for 10 months. `sizeToFit(...)` should now be used instead. See [Adjusting size](#adjusting_size). (2018-08-21)
 
 <br>
 

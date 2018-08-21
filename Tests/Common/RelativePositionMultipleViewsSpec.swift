@@ -46,8 +46,9 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
         */
 
         beforeEach {
+            _pinlayoutSetUnitTest(scale: 2)
             Pin.lastWarningText = nil
-            
+
             viewController = PViewController()
             viewController.view = BasicView()
             
@@ -71,6 +72,10 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
             bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
             bView.addSubview(bViewChild)
         }
+
+        afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
+        }
         
         //
         // above(of: UIViews.....) warnings
@@ -80,7 +85,14 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
                 let unatachedView = PView()
                 bViewChild.pin.above(of: unatachedView)
                 expect(bViewChild.frame).to(equal(CGRect(x: 40, y: 10, width: 60, height: 20)))
-                expect(Pin.lastWarningText).to(contain(["above", "won't be applied", "no valid references"]))
+                expect(Pin.lastWarningText).to(contain(["above(of: ", ")", "won't be applied", "no valid references"]))
+            }
+
+            it("should warns the view bottom edge") {
+                let unatachedView = PView()
+                bViewChild.pin.above(of: unatachedView, aligned: .left)
+                expect(bViewChild.frame).to(equal(CGRect(x: 40, y: 10, width: 60, height: 20)))
+                expect(Pin.lastWarningText).to(contain(["above(of: ", ", aligned: .left)", "won't be applied", "no valid references"]))
             }
             
             it("should warns the view bottom edge") {
@@ -94,7 +106,14 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
                 let unatachedView = PView()
                 bViewChild.pin.above(of: [aView, unatachedView])
                 expect(bViewChild.frame).to(equal(CGRect(x: 40.0, y: -40.0, width: 60.0, height: 20.0)))
-                expect(Pin.lastWarningText).to(contain(["above", "won't be applied", "the reference view", "must be added", "as a reference"]))
+                expect(Pin.lastWarningText).to(contain(["above(of: [", "])", "won't be applied", "the reference view", "must be added", "as a reference"]))
+            }
+
+            it("Should warn, but the view should be anyway layout it above") {
+                let unatachedView = PView()
+                bViewChild.pin.above(of: [aView, unatachedView], aligned: .center)
+                expect(bViewChild.frame).to(equal(CGRect(x: -100.0, y: -40.0, width: 60.0, height: 20.0)))
+                expect(Pin.lastWarningText).to(contain(["above(of: [", "], aligned: .center)", "won't be applied", "the reference view", "must be added", "as a reference"]))
             }
         }
         

@@ -7,6 +7,22 @@
 
 # Change Log
 
+## [1.8.0](https://github.com/layoutBox/PinLayout/releases/tag/1.8.0)
+Released on 2018-08-21
+
+#### Deprecated method `fitSize()` has been removed
+`fitSize()` has been removed after being deprecated for 10 months. `sizeToFit(:FitType)` should now be used instead. See [Adjusting size](https://github.com/layoutBox/PinLayout#adjusting_size).
+
+Plus:
+
+* Refactor relative positioning methods source code (above(...), after(...), ...) using a default parameter value for the alignment parameter.
+* Fix unit test screen density.
+* Update few examples source code.
+
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#167](https://github.com/layoutBox/PinLayout/pull/167) 
+
+
 ## [1.7.12](https://github.com/layoutBox/PinLayout/releases/tag/1.7.12)
 Released on 2018-08-16
 

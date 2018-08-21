@@ -85,16 +85,16 @@ class RelativeView: UIView {
         topCenterView.pin.above(of: centerView, aligned: .center).marginBottom(10)
         topRightView.pin.above(of: centerView, aligned: .right).marginBottom(10)
         
-        rightTopView.pin.right(of: centerView, aligned: .top).marginLeft(10)
-        rightCenterView.pin.right(of: centerView, aligned: .center).marginLeft(10)
-        rightBottomView.pin.right(of: centerView, aligned: .bottom).marginLeft(10)
+        rightTopView.pin.after(of: centerView, aligned: .top).marginLeft(10)
+        rightCenterView.pin.after(of: centerView, aligned: .center).marginLeft(10)
+        rightBottomView.pin.after(of: centerView, aligned: .bottom).marginLeft(10)
         
         bottomLeftView.pin.below(of: centerView, aligned: .left).marginTop(10)
         bottomCenterView.pin.below(of: centerView, aligned: .center).marginTop(10)
         bottomRightView.pin.below(of: centerView, aligned: .right).marginTop(10)
 
-        leftTopView.pin.left(of: centerView, aligned: .top).marginRight(10)
-        leftCenterView.pin.left(of: centerView, aligned: .center).marginRight(10)
-        leftBottomView.pin.left(of: centerView, aligned: .bottom).marginRight(10)
+        leftTopView.pin.before(of: centerView, aligned: .top).marginRight(10)
+        leftCenterView.pin.before(of: centerView, aligned: .center).marginRight(10)
+        leftBottomView.pin.before(of: centerView, aligned: .bottom).marginRight(10)
     }
 }

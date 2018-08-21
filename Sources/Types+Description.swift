@@ -31,6 +31,7 @@ extension HorizontalAlign {
         case .right: return "right"
         case .start: return "start"
         case .end: return "end"
+        case .none: return "none"
         }
     }
 }
@@ -41,6 +42,7 @@ extension VerticalAlign {
         case .top: return "top"
         case .center: return "center"
         case .bottom: return "bottom"
+        case .none: return "none"
         }
     }
 }

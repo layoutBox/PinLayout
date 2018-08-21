@@ -31,7 +31,6 @@ enum AdjustSizeType {
 
     case sizeToFit
 
-    case fitSizeLegacy
     case aspectRatio(CGFloat)
 
     var isFlexible: Bool {
@@ -48,7 +47,7 @@ enum AdjustSizeType {
         switch self {
         case .fitTypeWidth, .fitTypeHeight,
              .fitTypeWidthFlexible, .fitTypeHeightFlexible,
-             .sizeToFit, .fitSizeLegacy:
+             .sizeToFit:
             return true
         case .aspectRatio(_):
             return false
@@ -225,14 +224,6 @@ extension PinLayout {
     public func sizeToFit() -> PinLayout {
         return setAdjustSizeType(.sizeToFit, { return "sizeToFit()" })
     }
-
-    #if os(iOS) || os(tvOS)
-    @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
-    @discardableResult
-    public func fitSize() -> PinLayout {
-        return setAdjustSizeType(.fitSizeLegacy, { return "fitSize()" })
-    }
-    #endif
 }
 
 //
@@ -273,8 +264,6 @@ extension PinLayout {
             conflict = "sizeToFit(\(adjustSizeType.toFitType()!.description))."
         case .sizeToFit:
             conflict = "sizeToFit()"
-        case .fitSizeLegacy:
-            conflict = "fitSize()"
         case .aspectRatio(let ratio):
             conflict = "aspectRatio(\(ratio))"
         }

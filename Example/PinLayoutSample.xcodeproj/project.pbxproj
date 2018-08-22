@@ -260,6 +260,7 @@
 		2439CC371E665C5E003326FB /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				DFF82B2A212C42A100E822E5 /* UnitTests */,
 				24F75B581EE5642C008DB567 /* Intro */,
 				24CB99991F290591004EA7FB /* AdjustToContainer */,
 				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */,
@@ -500,6 +501,15 @@
 			path = WrapContent;
 			sourceTree = "<group>";
 		};
+		DFF82B2A212C42A100E822E5 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF8EA3E7212C42E3004EEDDA /* UnitTestsView.swift */,
+				DF8EA3ED212C42E3004EEDDA /* UnitTestsViewController.swift */,
+			);
+			name = UnitTests;
+			sourceTree = "<group>";
+		};
 		F143180314A617EFD07C5709 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +708,7 @@
 				24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */,
 				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
 				241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */,
+				DF8EA3EF212C42E3004EEDDA /* UnitTestsViewController.swift in Sources */,
 				DF390898211900320049FD56 /* AnimationsView.swift in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
@@ -732,6 +743,7 @@
 				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
 				DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */,
 				241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */,
+				DF8EA3EE212C42E3004EEDDA /* UnitTestsView.swift in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
 				DFD31BA0212EE4F200566CA4 /* TableViewReadableContentView.swift in Sources */,

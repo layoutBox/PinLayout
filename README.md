@@ -1784,7 +1784,7 @@ PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [
 
 ### Recent breaking change
 
-* `fitSize()` has been removed after being deprecated for 10 months. `sizeToFit(...)` should now be used instead. See [Adjusting size](#adjusting_size). (2018-08-21)
+* `fitSize()` has been removed after being deprecated for 10 months. `sizeToFit(:FitType)` should now be used instead. See [Adjusting size](#adjusting_size). (2018-08-21)
 
 <br>
 

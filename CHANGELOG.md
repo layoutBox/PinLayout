@@ -8,6 +8,15 @@
 # Change Log
 
 ## [1.8.0](https://github.com/layoutBox/PinLayout/releases/tag/1.8.0)
+Released on 2018-08-23
+
+#### PinLayout Swift 3 support
+PinLayout supports Swift 3 and Swift 4
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#169](https://github.com/layoutBox/PinLayout/pull/169) 
+
+
+## [1.8.0](https://github.com/layoutBox/PinLayout/releases/tag/1.8.0)
 Released on 2018-08-21
 
 #### Deprecated method `fitSize()` has been removed

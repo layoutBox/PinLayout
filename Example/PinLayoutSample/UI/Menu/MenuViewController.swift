@@ -31,6 +31,7 @@ enum PageType: Int {
     case wrapContent
     case form
     case autoAdjustingSize
+    case tableViewWithReadable
     case introRTL
     case introObjC
     
@@ -49,6 +50,7 @@ enum PageType: Int {
         case .wrapContent:            return "wrapContent Example"
         case .form:                   return "Form Example"
         case .autoAdjustingSize:      return "Auto adjusting size"
+        case .tableViewWithReadable:  return "UITableView using readableMargins"
         case .introRTL:               return "Right-to-left language support"
         case .introObjC:              return "Objective-C PinLayout Example"
         case .count:                  return ""
@@ -81,6 +83,8 @@ enum PageType: Int {
             return MultiRelativeViewController(pageType: self)
         case .autoAdjustingSize:
             return AutoAdjustingSizeViewController(pageType: self)
+        case .tableViewWithReadable:
+            return TableViewReadableContentViewController(pageType: self)
         case .introRTL:
             return IntroRTLViewController(pageType: self)
         case .introObjC:
@@ -114,7 +118,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        didSelect(pageType: .animations)
+//        didSelect(pageType: .tableViewWithReadable)
     }
 }
 

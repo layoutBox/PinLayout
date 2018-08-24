@@ -102,6 +102,8 @@ public class PinLayout<View: Layoutable> {
         guard let view = view as? UIView else { return .zero }
 
         let layoutFrame = view.readableContentGuide.layoutFrame
+        guard !layoutFrame.isEmpty else { return .zero }
+        
         return UIEdgeInsets(top: layoutFrame.origin.y, left: layoutFrame.origin.x,
                             bottom: view.frame.height - layoutFrame.origin.y - layoutFrame.height,
                             right: view.frame.width - layoutFrame.origin.x - layoutFrame.width)

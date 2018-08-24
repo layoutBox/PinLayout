@@ -49,10 +49,11 @@
 		DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */; };
 		DF4C1AA5205AEDFC00DED50B /* SafeAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA1205AEDFC00DED50B /* SafeAreaViewController.swift */; };
 		DF4C1AAA205AF10900DED50B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA7205AF10900DED50B /* RoundedButton.swift */; };
-		DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */; };
-		DF4C1AAF205AF78A00DED50B /* SafeAreaCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */; };
+		DF4C1AAE205AF78A00DED50B /* SafeAreaAndMarginsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAC205AF78A00DED50B /* SafeAreaAndMarginsViewController.swift */; };
+		DF4C1AAF205AF78A00DED50B /* SafeAreaAndMarginsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AAD205AF78A00DED50B /* SafeAreaAndMarginsView.swift */; };
 		DFBCAEFB213012930025F7BF /* MethodReadableInsetsGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEF9213012930025F7BF /* MethodReadableInsetsGroupHeader.swift */; };
 		DFBCAEFC213012930025F7BF /* MethodReadableInsetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEFA213012930025F7BF /* MethodReadableInsetsCell.swift */; };
+		DFBCAEFE2130146C0025F7BF /* AreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEFD2130146C0025F7BF /* AreaView.swift */; };
 		DFD27841211B1A710056BD93 /* UINavigationController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD27840211B1A700056BD93 /* UINavigationController+Orientation.swift */; };
 		DFD27848211B1D090056BD93 /* UITabBarController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD27847211B1D090056BD93 /* UITabBarController+Orientation.swift */; };
 		DFD31BA0212EE4F200566CA4 /* TableViewReadableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD31B9E212EE4F100566CA4 /* TableViewReadableContentView.swift */; };
@@ -187,10 +188,11 @@
 		DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaView.swift; sourceTree = "<group>"; };
 		DF4C1AA1205AEDFC00DED50B /* SafeAreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaViewController.swift; sourceTree = "<group>"; };
 		DF4C1AA7205AF10900DED50B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaCornersViewController.swift; sourceTree = "<group>"; };
-		DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaCornersView.swift; sourceTree = "<group>"; };
+		DF4C1AAC205AF78A00DED50B /* SafeAreaAndMarginsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaAndMarginsViewController.swift; sourceTree = "<group>"; };
+		DF4C1AAD205AF78A00DED50B /* SafeAreaAndMarginsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaAndMarginsView.swift; sourceTree = "<group>"; };
 		DFBCAEF9213012930025F7BF /* MethodReadableInsetsGroupHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodReadableInsetsGroupHeader.swift; sourceTree = "<group>"; };
 		DFBCAEFA213012930025F7BF /* MethodReadableInsetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodReadableInsetsCell.swift; sourceTree = "<group>"; };
+		DFBCAEFD2130146C0025F7BF /* AreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaView.swift; sourceTree = "<group>"; };
 		DFD27840211B1A700056BD93 /* UINavigationController+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Orientation.swift"; sourceTree = "<group>"; };
 		DFD27847211B1D090056BD93 /* UITabBarController+Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Orientation.swift"; sourceTree = "<group>"; };
 		DFD31B9E212EE4F100566CA4 /* TableViewReadableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewReadableContentView.swift; sourceTree = "<group>"; };
@@ -269,7 +271,7 @@
 				2439CC631E66606D003326FB /* RelativeView */,
 				2439CC5F1E665F66003326FB /* MultiRelativeView */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
-				DFD31B9D212EE4D600566CA4 /* ReadableMargins */,
+				DFD31B9D212EE4D600566CA4 /* TableViewReadableContent */,
 				24D18D181F3DECD6008129EF /* IntroRTL */,
 				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
 				24CD1E8D1F8E4B0A00C3A54D /* PinLayoutSample-Bridging-Header.h */,
@@ -446,8 +448,8 @@
 				DF4C1AAB205AF10C00DED50B /* Subviews */,
 				DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */,
 				DF4C1AA1205AEDFC00DED50B /* SafeAreaViewController.swift */,
-				DF4C1AAD205AF78A00DED50B /* SafeAreaCornersView.swift */,
-				DF4C1AAC205AF78A00DED50B /* SafeAreaCornersViewController.swift */,
+				DF4C1AAD205AF78A00DED50B /* SafeAreaAndMarginsView.swift */,
+				DF4C1AAC205AF78A00DED50B /* SafeAreaAndMarginsViewController.swift */,
 			);
 			path = SafeArea;
 			sourceTree = "<group>";
@@ -455,6 +457,7 @@
 		DF4C1AAB205AF10C00DED50B /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				DFBCAEFD2130146C0025F7BF /* AreaView.swift */,
 				DF4C1AA7205AF10900DED50B /* RoundedButton.swift */,
 			);
 			path = Subviews;
@@ -478,14 +481,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		DFD31B9D212EE4D600566CA4 /* ReadableMargins */ = {
+		DFD31B9D212EE4D600566CA4 /* TableViewReadableContent */ = {
 			isa = PBXGroup;
 			children = (
 				DFBCAEF82130127F0025F7BF /* Cells */,
 				DFD31B9E212EE4F100566CA4 /* TableViewReadableContentView.swift */,
 				DFD31B9F212EE4F200566CA4 /* TableViewReadableContentViewController.swift */,
 			);
-			path = ReadableMargins;
+			path = TableViewReadableContent;
 			sourceTree = "<group>";
 		};
 		DFEAF71520C840F300E33147 /* WrapContent */ = {
@@ -689,7 +692,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF4C1AAF205AF78A00DED50B /* SafeAreaCornersView.swift in Sources */,
+				DF4C1AAF205AF78A00DED50B /* SafeAreaAndMarginsView.swift in Sources */,
 				24F246141FA8D57100B6332E /* UIImageView+Download.swift in Sources */,
 				DFBCAEFC213012930025F7BF /* MethodReadableInsetsCell.swift in Sources */,
 				24DA374B1EF7F90600D1AB2F /* BaseFormView.swift in Sources */,
@@ -702,9 +705,10 @@
 				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
 				DFEAF74C20C9649F00E33147 /* WrapContentViewController.swift in Sources */,
 				24F246121FA8D4D100B6332E /* HouseCell.swift in Sources */,
-				DF4C1AAE205AF78A00DED50B /* SafeAreaCornersViewController.swift in Sources */,
+				DF4C1AAE205AF78A00DED50B /* SafeAreaAndMarginsViewController.swift in Sources */,
 				24A9C2031EF16A3E00F2CF64 /* AutoAdjustingSizeView.swift in Sources */,
 				DFD27848211B1D090056BD93 /* UITabBarController+Orientation.swift in Sources */,
+				DFBCAEFE2130146C0025F7BF /* AreaView.swift in Sources */,
 				24D18D1D1F3DED0D008129EF /* IntroRTLView.swift in Sources */,
 				DF4C1AAA205AF10900DED50B /* RoundedButton.swift in Sources */,
 				2439CC351E665BF6003326FB /* MenuView.swift in Sources */,

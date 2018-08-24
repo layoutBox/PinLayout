@@ -32,7 +32,7 @@ class TableViewExampleViewController: UIViewController {
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -19,15 +19,15 @@
 
 import UIKit
 
-class WrapContentViewController: UIViewController {
-    private var mainView: WrapContentView {
-        return self.view as! WrapContentView
+class SafeAreaAndMarginsViewController: UIViewController {
+    private var mainView: SafeAreaAndMarginsView {
+        return self.view as! SafeAreaAndMarginsView
     }
 
-    init(pageType: PageType) {
+    init() {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.title
+        tabBarItem = UITabBarItem(title: "Layout areas", image: UIImage(named: "Tab2"), tag: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +35,6 @@ class WrapContentViewController: UIViewController {
     }
     
     override func loadView() {
-        view = WrapContentView()
+        view = SafeAreaAndMarginsView()
     }
 }

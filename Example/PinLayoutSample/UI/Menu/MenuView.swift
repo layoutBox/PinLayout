@@ -61,7 +61,7 @@ extension MenuView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = PageType(rawValue: indexPath.row)?.text ?? "PinLayout Example"
+        cell.textLabel?.text = PageType(rawValue: indexPath.row)?.title ?? "PinLayout Example"
         cell.textLabel?.font = .systemFont(ofSize: 12)
         return cell
     }

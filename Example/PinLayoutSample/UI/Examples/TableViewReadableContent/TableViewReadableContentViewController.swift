@@ -19,14 +19,9 @@
 
 import UIKit
 
-struct Method {
-    let name: String
-    let description: String
-}
-
-class TableViewExampleViewController: UIViewController {
-    private var mainView: TableViewExampleView {
-        return self.view as! TableViewExampleView
+class TableViewReadableContentViewController: UIViewController {
+    fileprivate var mainView: TableViewReadableContentView {
+        return self.view as! TableViewReadableContentView
     }
 
     init(pageType: PageType) {
@@ -40,7 +35,7 @@ class TableViewExampleViewController: UIViewController {
     }
     
     override func loadView() {
-        view = TableViewExampleView()
+        view = TableViewReadableContentView()
         mainView.configure(methods: [
             Method(name: "top(_ value: CGFloat)", description: "The value specifies the top edge distance from the superview's top edge in pixels."),
             Method(name: "top(_ percent: Percent)", description: "The value specifies the top edge distance from the superview's top edge in percentage of its superview's height."),

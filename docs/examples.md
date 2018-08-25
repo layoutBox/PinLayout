@@ -43,6 +43,15 @@ Example using a UITableView with variable height cells.
 
 <img src="pinlayout_exampleapp_tableview.png" width=180/>
 
+
+## UITableView Example with cells using  `pin.readableMargins`
+Similar to the UITableView Example, but in this one cells use `pin.readableMargins` to layout their content inside the zone defined by `UIView.readableContentGuide`.
+
+[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/TableViewExample/TableViewExampleView.swift)
+
+<img src="images/pinlayout_example_tableview_readable_content_all.png" width=420/>
+
+
 ## UICollectionView Example
 Example using a UICollectionView with variable height cells.
 
@@ -66,12 +75,17 @@ This example show how PinLayout can support simultaneously Left to right and rig
 
 
 ## pin.safeArea example
-Example showing the usage of `UIView.pin.safeArea`] with UINavigationController and UITabViewController.
+Example showing the usage of `UIView.pin.safeArea`] with UINavigationController and UITabViewController:
 
 [Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift)
 
 <img src="images/pinlayout_safearea_example_iphonex.png" width=420/>
-<img src="images/pinlayout_safearea_2_example_iphonex.png" width=420/>
+
+Also display the usage of `pin.readableMargins` and `pin.layoutMargins`:
+
+[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaAndMarginsView.swift)
+
+<img src="images/pinlayout_example_layout_margins_all.png" width=420/>
 
 
 ## Adjust To Container Example

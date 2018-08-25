@@ -27,7 +27,6 @@ class SafeAreaViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        title = "SafeArea"
         tabBarItem = UITabBarItem(title: "SafeArea", image: UIImage(named: "Tab1"), tag: 0)
     }
     

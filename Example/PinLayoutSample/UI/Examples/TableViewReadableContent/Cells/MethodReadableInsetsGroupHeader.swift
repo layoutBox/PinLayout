@@ -19,22 +19,33 @@
 
 import UIKit
 
-class WrapContentViewController: UIViewController {
-    private var mainView: WrapContentView {
-        return self.view as! WrapContentView
-    }
+class MethodReadableInsetsGroupHeader: UITableViewHeaderFooterView {
+    static let reuseIdentifier = "MethodReadableInsetsGroupHeader"
+    static let height: CGFloat = 50
+    
+    fileprivate let titleLabel = UILabel()
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
 
-    init(pageType: PageType) {
-        super.init(nibName: nil, bundle: nil)
+        preservesSuperviewLayoutMargins = false
         
-        title = pageType.title
+        titleLabel.font = .systemFont(ofSize: 20)
+        contentView.addSubview(titleLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        view = WrapContentView()
+    func configure(title: String) {
+        titleLabel.text = title
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.pin.horizontally(pin.readableMargins)
+        titleLabel.pin.horizontally().vCenter().sizeToFit(.width)
     }
 }

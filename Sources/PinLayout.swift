@@ -93,8 +93,25 @@ public class PinLayout<View: Layoutable> {
                 return view.pinlayoutComputeSafeAreaInsets()
             }
         } else {
-            return PEdgeInsets.zero
+            return .zero
         }
+    }
+
+    public var readableMargins: PEdgeInsets {
+        guard #available(iOS 9.0, *) else { return .zero }
+        guard let view = view as? UIView else { return .zero }
+
+        let layoutFrame = view.readableContentGuide.layoutFrame
+        guard !layoutFrame.isEmpty else { return .zero }
+        
+        return UIEdgeInsets(top: layoutFrame.origin.y, left: layoutFrame.origin.x,
+                            bottom: view.frame.height - layoutFrame.origin.y - layoutFrame.height,
+                            right: view.frame.width - layoutFrame.origin.x - layoutFrame.width)
+    }
+
+    public var layoutMargins: PEdgeInsets {
+        guard let view = view as? UIView else { return .zero }
+        return view.layoutMargins
     }
     #endif
 

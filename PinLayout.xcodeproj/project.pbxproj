@@ -117,6 +117,8 @@
 		DFB288B720854252001F9588 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E4C751F7A88CF00C0E7F7 /* UIImage+Color.swift */; };
 		DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
 		DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
+		DFBCAF01213023D10025F7BF /* ReadableLayoutMarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */; };
+		DFBCAF02213023D30025F7BF /* ReadableLayoutMarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */; };
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
 		DFEAF75020C9661B00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
 		DFEAF75220C9661D00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
@@ -247,6 +249,7 @@
 		DFABC01E208781A900CB6494 /* Types+Appkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Types+Appkit.swift"; sourceTree = "<group>"; };
 		DFABC020208781C700CB6494 /* Types+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Types+UIKit.swift"; sourceTree = "<group>"; };
 		DFB3ECB02061602E005F226B /* PinSafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinSafeArea.swift; path = Impl/PinSafeArea.swift; sourceTree = "<group>"; };
+		DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadableLayoutMarginsSpec.swift; sourceTree = "<group>"; };
 		DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewSpec.swift; sourceTree = "<group>"; };
 		DFD2783E211A52C60056BD93 /* PEdgeInsets+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PEdgeInsets+Operators.swift"; sourceTree = "<group>"; };
 		DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCSpec.m; sourceTree = "<group>"; };
@@ -402,9 +405,10 @@
 			children = (
 				243B12C91FC469550072A9C3 /* ObjectiveCSpec.m */,
 				DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */,
+				DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */,
 				245C1DA11FEC4FC6007594F7 /* TransformSpec.swift */,
-				DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */,
 				DFABC020208781C700CB6494 /* Types+UIKit.swift */,
+				DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -920,6 +924,7 @@
 				245C1DA31FEC4FCC007594F7 /* TransformSpec.swift in Sources */,
 				DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */,
 				242E8DC31EED5AB2005935FB /* RelativePositionMultipleViewsSpec.swift in Sources */,
+				DFBCAF01213023D10025F7BF /* ReadableLayoutMarginsSpec.swift in Sources */,
 				2469C5041E75DB7600073BEE /* RectNimbleMatcher.swift in Sources */,
 				242723731F008BF7006A5C3A /* MinMaxWidthHeightSpec.swift in Sources */,
 				2469C4FC1E74855D00073BEE /* PinEdgeCoordinateSpec.swift in Sources */,
@@ -1010,6 +1015,7 @@
 				C83588C320DBC65600D6E8F9 /* CALayerSpec.swift in Sources */,
 				DFF6F9D32084E15A004F5AED /* MinMaxWidthHeightSpec.swift in Sources */,
 				DFF6F9CD2084E15A004F5AED /* BasicView.swift in Sources */,
+				DFBCAF02213023D30025F7BF /* ReadableLayoutMarginsSpec.swift in Sources */,
 				DFF6F9DA2084E15A004F5AED /* RTLSpec.swift in Sources */,
 				DFF6F9CF2084E15A004F5AED /* AspectRatioTests.swift in Sources */,
 				DFF6F9D72084E15A004F5AED /* PinEdgeCoordinateSpec.swift in Sources */,

@@ -31,12 +31,13 @@ enum PageType: Int {
     case wrapContent
     case form
     case autoAdjustingSize
+    case tableViewWithReadable
     case introRTL
     case introObjC
     
     case count
     
-    var text: String {
+    var title: String {
         switch self {
         case .intro:                  return "Introduction example"
         case .adjustToContainer:      return "Adjust to container size"
@@ -45,10 +46,11 @@ enum PageType: Int {
         case .tableView:              return "UITableView with variable cell's height"
         case .collectionView:         return "UICollectionView Example"
         case .animations:             return "Animation Example"
-        case .safeArea:               return "SafeArea"
+        case .safeArea:               return "SafeArea & readableMargins"
         case .wrapContent:            return "wrapContent Example"
         case .form:                   return "Form Example"
         case .autoAdjustingSize:      return "Auto adjusting size"
+        case .tableViewWithReadable:  return "UITableView using readableMargins"
         case .introRTL:               return "Right-to-left language support"
         case .introObjC:              return "Objective-C PinLayout Example"
         case .count:                  return ""
@@ -67,7 +69,8 @@ enum PageType: Int {
             return CollectionViewExampleViewController(pageType: self)
         case .safeArea:
             let tabbarController = UITabBarController()
-            tabbarController.setViewControllers([SafeAreaViewController(), SafeAreaCornersViewController()], animated: false)
+            tabbarController.title = self.title
+            tabbarController.setViewControllers([SafeAreaViewController(), SafeAreaAndMarginsViewController()], animated: false)
             return tabbarController
         case .wrapContent:
             return WrapContentViewController(pageType: self)
@@ -81,6 +84,8 @@ enum PageType: Int {
             return MultiRelativeViewController(pageType: self)
         case .autoAdjustingSize:
             return AutoAdjustingSizeViewController(pageType: self)
+        case .tableViewWithReadable:
+            return TableViewReadableContentViewController(pageType: self)
         case .introRTL:
             return IntroRTLViewController(pageType: self)
         case .introObjC:
@@ -114,7 +119,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        didSelect(pageType: .animations)
+        //didSelect(pageType: .safeArea)
     }
 }
 

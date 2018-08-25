@@ -7,7 +7,26 @@
 
 # Change Log
 
-## [1.8.0](https://github.com/layoutBox/PinLayout/releases/tag/1.8.0)
+## [1.8.2](https://github.com/layoutBox/PinLayout/releases/tag/1.8.2)
+Released on 2018-08-25
+
+#### Add `pin.readableMargins` and `pin.layoutmargins`
+Add properties: 
+
+* **`pin.readableMargins: UIEdgeInset`**:  
+PinLayout's `UIView.pin.readableMargins` property expose UIKit [`UIView.readableContentGuide`](https://developer.apple.com/documentation/uikit/uiview/1622644-readablecontentguide) as an UIEdgeInsets. This is really useful since UIKit only expose the readableContent area to Auto Layout using UILayoutGuide.
+
+* **`pin.layoutmargins: UIEdgeInset`**  
+PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIKit [`UIView.layoutMargins`](https://developer.apple.com/documentation/uikit/uiview/1622566-layoutmargins). The property exists only to be consistent with the other areas: `pin.safeArea`, `pin.readableMargins` and `pin.layoutmargins`. So its usage is not necessary.
+
+**Add examples using these properties:**
+![pinlayout_example_layout_margins_all](https://user-images.githubusercontent.com/14981341/44617938-51475900-a83a-11e8-96eb-d24f5561dab2.png)
+
+![pinlayout_example_tableview_readable_content_all](https://user-images.githubusercontent.com/14981341/44617939-51475900-a83a-11e8-9cc6-fe2aac499ce8.png)
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#169](https://github.com/layoutBox/PinLayout/pull/169) 
+
+## [1.8.1](https://github.com/layoutBox/PinLayout/releases/tag/1.8.1)
 Released on 2018-08-23
 
 #### PinLayout Swift 3 support

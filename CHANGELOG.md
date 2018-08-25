@@ -24,7 +24,7 @@ PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIK
 
 ![pinlayout_example_tableview_readable_content_all](https://user-images.githubusercontent.com/14981341/44617939-51475900-a83a-11e8-9cc6-fe2aac499ce8.png)
 
-* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#169](https://github.com/layoutBox/PinLayout/pull/169) 
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#170](https://github.com/layoutBox/PinLayout/pull/170) 
 
 ## [1.8.1](https://github.com/layoutBox/PinLayout/releases/tag/1.8.1)
 Released on 2018-08-23

@@ -203,14 +203,14 @@ extension PinLayout {
         case .none:   anchors = relativeViews.map({ $0.anchor.topRight })
         }
 
-        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
-            setLeft(getRightMostCoordinate(list: coordinatesList), context)
-            applyVerticalAlignment(aligned, coordinatesList: coordinatesList, context: context)
+        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
+            setLeft(getRightMostCoordinate(list: coordinates), context)
+            applyVerticalAlignment(aligned, coordinates: coordinates, context: context)
         }
         return self
     }
 
-    private func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinatesList: [CGPoint], context: Context) {
+    private func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinates: [CGPoint], context: Context) {
         guard let aligned = aligned, aligned != .none else { return }
         switch aligned {
         case .left:   setLeft(getLeftMostCoordinate(list: coordinates), context)
@@ -226,7 +226,7 @@ extension PinLayout {
         }
     }
 
-    private func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinatesList: [CGPoint], context: Context) {
+    private func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinates: [CGPoint], context: Context) {
         guard let aligned = aligned, aligned != .none else { return }
         switch aligned {
         case .top:    setTop(getTopMostCoordinate(list: coordinates), context)
@@ -313,7 +313,7 @@ extension PinLayout {
         if let aligned = aligned {
             return "\(type)(of: \(relativeViewsText), aligned: .\(aligned))"
         } else {
-            return "\(type)(of: \(relativeView))"
+            return "\(type)(of: \(relativeViewsText))"
         }
     }
 }

@@ -393,14 +393,19 @@ PinLayout also has methods to position relative to other views. The view can be 
 
 * **`above(of: UIView)`**  / **`above(of: [UIView])`**  
 Position the view above the specified view(s). One or many relative views can be specified. This method position the view’s bottom edge.  
+
 * **`below(of: UIView)`** / **`below(of: [UIView])`**  
 Position the view below the specified view(s). One or many relative views can be specified. This method position the view’s top edge.  
+
 * **`before(of: UIView)`** / **`before(of: [UIView])`** :left_right_arrow:  
 In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified.
+
 * **`after(of: UIView)`** / **`after(of: [UIView])`**:left_right_arrow:  
 In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
+
 * **`left(of: UIView)`** / **`left(of: [UIView])`**  
 Position the view left of the specified view(s). Similar to `before(of:)`. One or many relative views can be specified. This method position the view’s right edge.  
+
 * **`right(of: UIView)`** / **`right(of: [UIView])`**  
 Position the view right of the specified view(s). Similar to `after(of:)`. One or many relative views can be specified. This method position the view’s left edge.
 

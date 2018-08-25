@@ -387,7 +387,7 @@ extension PinLayout {
             }
         })
         
-        guard results.count == anchors.count else { return nil }
+        guard results.count > 0 else { return nil }
         return results
     }
     

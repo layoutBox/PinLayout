@@ -26,11 +26,11 @@
 extension PinLayout {
 
     //
-    // betweenH(of ...)
+    // horizontallyBetween(...)
     //
     @discardableResult
-    public func betweenH(_ view1: View, and view2: View, aligned: VerticalAlign = .none) -> PinLayout {
-        func context() -> String { return betweenContext("betweenH", view1, view2, aligned) }
+    public func horizontallyBetween(_ view1: View, and view2: View, aligned: VerticalAlign = .none) -> PinLayout {
+        func context() -> String { return betweenContext("horizontallyBetween", view1, view2, aligned) }
         guard self.view != view1 && self.view != view2 else {
             warnWontBeApplied("the view being layouted cannot be used as one of the references.", context)
             return self
@@ -41,63 +41,103 @@ extension PinLayout {
             return self
         }
 
-        /// TODO!
-//        let view1Rect = view1.getRect(keepTransform: keepTransform)
-//        let view2Rect = view2.getRect(keepTransform: keepTransform)
-        let anchors = [view1.anchor.topLeft, view1.anchor.topRight, view2.anchor.topLeft, view2.anchor.topRight]
+        let anchors: [Anchor]
+        switch aligned {
+        case .top:    anchors = [view1.anchor.topLeft, view1.anchor.topRight, view2.anchor.topLeft, view2.anchor.topRight]
+        case .center: anchors = [view1.anchor.centerLeft, view1.anchor.centerRight, view2.anchor.centerLeft, view2.anchor.centerRight]
+        case .bottom: anchors = [view1.anchor.bottomLeft, view1.anchor.bottomRight, view2.anchor.bottomLeft, view2.anchor.bottomRight]
+        case .none:   anchors = [view1.anchor.topLeft, view1.anchor.topRight, view2.anchor.topLeft, view2.anchor.topRight]
+        }
 
-        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
-            //coordinates.count == anchors.count {
-            let view1MinX = coordinates[0].x
-            let view1MaxX = coordinates[1].x
-            let view2MinX = coordinates[2].x
-            let view2MaxX = coordinates[3].x
-            //setLeft(getRightMostCoordinate(list: coordinates), context)
-            //applyVerticalAlignment(aligned, coordinates: coordinates, context: context)
+        guard let coordinates = computeCoordinates(forAnchors: anchors, context),
+            coordinates.count == anchors.count else { return self }
 
-            if view1MaxX <= view2MinX {
-                setLeft(view1MaxX, context)
-                setRight(view2MinX, context)
-//                right(of: [view1], aligned: aligned, context: context)
-//                left(of: [view2], aligned: .none, context: context)
-            } else if view2MaxX <= view1MinX {
-                setLeft(view2MaxX, context)
-                setRight(view1MinX, context)
-//                right(of: [view2], aligned: .none, context: context)
-//                left(of: [view1], aligned: aligned, context: context)
-            } /*else if view1 == (view.superview as? View) {
-                setLeft(view1MinX, context)
-                setRight(view2MinX, context)
-            } else if view2 == (view.superview as? View) {
-                setLeft(view1MaxX, context)
-                setRight(view2MaxX, context)
-            }*/ else {
-//                setLeft(view1MaxX, context)
-//                setRight(view1MaxX, context)
-                warnWontBeApplied("there is no horizontal space between these views.", context)
-                // warning, not valid, would produce a view with a size smaller than 0.
-            }
+        let view1MinX = coordinates[0].x
+        let view1MaxX = coordinates[1].x
+        let view2MinX = coordinates[2].x
+        let view2MaxX = coordinates[3].x
+
+        if view1MaxX <= view2MinX {
+            setLeft(view1MaxX, context)
+            setRight(view2MinX, context)
+            applyVerticalAlignment(aligned, coordinates: [coordinates[0]], context: context)
+        } else if view2MaxX <= view1MinX {
+            setLeft(view2MaxX, context)
+            setRight(view1MinX, context)
+            applyVerticalAlignment(aligned, coordinates: [coordinates[1]], context: context)
         } else {
-            // TODO
-            warnWontBeApplied("TODO.", context)
+            warnWontBeApplied("there is no horizontal space between these views.", context)
+        }
+
+        return self
+    }
+
+    //
+    // verticallyBetween(...)
+    //
+    @discardableResult
+    public func verticallyBetween(_ view1: View, and view2: View, aligned: HorizontalAlign = .none) -> PinLayout {
+        func context() -> String { return betweenContext("verticallyBetween", view1, view2, aligned) }
+        guard self.view != view1 && self.view != view2 else {
+            warnWontBeApplied("the view being layouted cannot be used as one of the references.", context)
             return self
         }
 
+        guard view1 != view2 else {
+            warnWontBeApplied("reference views must be different.", context)
+            return self
+        }
 
-//        if view1Rect.maxX <= view2Rect.minX {
-//            right(of: [view1], aligned: aligned, context: context)
-//            left(of: [view2], aligned: .none, context: context)
-//        } else if view2Rect.maxX <= view1Rect.minX {
-//            right(of: [view2], aligned: .none, context: context)
-//            left(of: [view1], aligned: aligned, context: context)
-//        } else if view1 == (view.superview as? View) {
-//
-//        } else if view2 == (view.superview as? View) {
-//
-//        } else {
-//            warnWontBeApplied("there is no horizontal space between these views.", context)
-//            // warning, not valid, would produce a view with a size smaller than 0.
+        let anchors: [Anchor]
+        switch aligned {
+        case .left:   anchors = [view1.anchor.topLeft, view1.anchor.bottomLeft, view2.anchor.topLeft, view2.anchor.bottomLeft]
+        case .center: anchors = [view1.anchor.topCenter, view1.anchor.bottomCenter, view2.anchor.topCenter, view2.anchor.bottomCenter]
+        case .right:  anchors = [view1.anchor.topRight, view1.anchor.bottomRight, view2.anchor.topRight, view2.anchor.bottomRight]
+        case .start:  anchors = isLTR() ?
+                                  [view1.anchor.topLeft, view1.anchor.bottomLeft, view2.anchor.topLeft, view2.anchor.bottomLeft] :
+                                  [view1.anchor.topRight, view1.anchor.bottomRight, view2.anchor.topRight, view2.anchor.bottomRight]
+        case .end:    anchors = isLTR() ?
+                                  [view1.anchor.topRight, view1.anchor.bottomRight, view2.anchor.topRight, view2.anchor.bottomRight] :
+                                  [view1.anchor.topLeft, view1.anchor.bottomLeft, view2.anchor.topLeft, view2.anchor.bottomLeft]
+        case .none:   anchors = [view1.anchor.topLeft, view1.anchor.bottomLeft, view2.anchor.topLeft, view2.anchor.bottomLeft]
+        }
+
+//        let anchors: [Anchor]
+//        switch aligned {
+//        case .left:   anchors = relativeViews.map({ $0.anchor.topLeft })
+//        case .center: anchors = relativeViews.map({ $0.anchor. })
+//        case .right:  anchors = relativeViews.map({ $0.anchor.topRight })
+//        case .start:  anchors = isLTR() ? relativeViews.map({ $0.anchor.topLeft }) : relativeViews.map({ $0.anchor.topRight })
+//        case .end:    anchors = isLTR() ? relativeViews.map({ $0.anchor.topRight }) : relativeViews.map({ $0.anchor.topLeft })
+//        case .none:   anchors = relativeViews.map({ $0.anchor.topLeft })
 //        }
+
+
+//        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
+//            setBottom(getTopMostCoordinate(list: coordinates), context)
+//            applyHorizontalAlignment(aligned, coordinates: coordinates, context: context)
+//        }
+
+
+        guard let coordinates = computeCoordinates(forAnchors: anchors, context),
+            coordinates.count == anchors.count else { return self }
+
+        let view1MinY = coordinates[0].y
+        let view1MaxY = coordinates[1].y
+        let view2MinY = coordinates[2].y
+        let view2MaxY = coordinates[3].y
+
+        if view1MaxY <= view2MinY {
+            setTop(view1MaxY, context)
+            setBottom(view2MinY, context)
+            applyHorizontalAlignment(aligned, coordinates: [coordinates[0]], context: context)
+        } else if view2MaxY <= view1MinY {
+            setTop(view2MaxY, context)
+            setBottom(view1MinY, context)
+            applyHorizontalAlignment(aligned, coordinates: [coordinates[1]], context: context)
+        } else {
+            warnWontBeApplied("there is no vertical space between these views.", context)
+        }
 
         return self
     }

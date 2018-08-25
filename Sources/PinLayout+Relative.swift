@@ -210,7 +210,7 @@ extension PinLayout {
         return self
     }
 
-    private func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinates: [CGPoint], context: Context) {
+    internal func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinates: [CGPoint], context: Context) {
         guard let aligned = aligned, aligned != .none else { return }
         switch aligned {
         case .left:   setLeft(getLeftMostCoordinate(list: coordinates), context)
@@ -226,7 +226,7 @@ extension PinLayout {
         }
     }
 
-    private func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinates: [CGPoint], context: Context) {
+    internal func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinates: [CGPoint], context: Context) {
         guard let aligned = aligned, aligned != .none else { return }
         switch aligned {
         case .top:    setTop(getTopMostCoordinate(list: coordinates), context)

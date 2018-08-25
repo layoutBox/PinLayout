@@ -461,6 +461,7 @@
 				2469C4FF1E75D74000073BEE /* AdjustSizeSpec.swift */,
 				248E4C721F7A83FA00C0E7F7 /* AspectRatioTests.swift */,
 				DF10846A212D8B4B00C23B80 /* BetweenSpec.swift */,
+				C83588BF20DBC5E600D6E8F9 /* CALayerSpec.swift */,
 				240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */,
 				243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */,
 				244C6E141E776A0C0074FC74 /* MarginsSpec.swift */,
@@ -474,7 +475,6 @@
 				242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */,
 				240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */,
 				DFF222E120BACBA800AC2A84 /* WrapContentSpec.swift */,
-				C83588BF20DBC5E600D6E8F9 /* CALayerSpec.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";

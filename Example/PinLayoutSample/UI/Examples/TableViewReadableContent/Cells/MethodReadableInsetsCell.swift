@@ -42,7 +42,7 @@ class MethodReadableInsetsCell: UITableViewCell {
 
     private func layout() {
         // 1) Layout the contentView
-        contentView.pin.top(layoutMargins).horizontally(pin.readableMargins)
+        contentView.pin.top(margin).horizontally(pin.readableMargins)
 
         // 2) Layout contentView's childs
         iconImageView.pin.top().left().size(30)
@@ -61,6 +61,6 @@ class MethodReadableInsetsCell: UITableViewCell {
         layout()
 
         // 3) Returns a size that contains all views
-        return CGSize(width: size.width, height: contentView.frame.maxY + margin + layoutMargins.bottom)
+        return CGSize(width: size.width, height: contentView.frame.maxY + margin)
     }
 }

@@ -38,13 +38,14 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.1 / Objective-C
 
 ### Recent changes/features
+* :star: Add [`pin.readableMargins` and `pin.layoutMargins`](#layout_margins) properties.
 * :star: Add `sizeToFit()` method. See [Adjusting size](#adjusting_size).
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
 * :star: PinLayout is in the Top 10 of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
 * :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization. See other **[layoutBox](https://github.com/layoutBox)** projects.
 * :star: Add `wrapContent()` methods that adjust view's width and height to wrap all its subviews. See [wrapContent](#wrapContent) for more information.
 * :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
-* :star: PinLayout expose the `safeAreaInsets` through [`UIView.pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
+* :star: PinLayout expose the `safeAreaInsets` through [`pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
 
 
 
@@ -185,13 +186,12 @@ As you can see in the following chart, PinLayout are faster or equal to manual l
 ### UIKit safeAreaInsets support 
 PinLayout can easily handle iOS 11 `UIView.safeAreaInsets`, but it goes even further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`. [See here for more details](#safeAreaInsets)
 
-<a name="rtl_support"></a>
-
 ### macOS support 
 PinLayout support macOS 10.9+.
 
 :pushpin: In this documentation, any methods with parameters of type UIView or UIEdgeInsets are also supported on macOS, using NSView and NSEdgeInsets. See [macOS Support](#macos_support) for more information.
 
+<a name="rtl_support"></a>
 ### Right to left languages (RTL) support 
 PinLayout supports left-to-right (LTR) and right-to-left (RTL) languages. 
 #### [See here for more details](docs/rtl_support.md).
@@ -1120,7 +1120,22 @@ This example layout an UIImageView at the top and center it horizontally, it als
 
 
 <a name="safeAreaInsets"></a>
-## UIKit safeAreaInsets support 
+## UIKit safeArea, readable and layout margins
+
+UIKit expose 3 kind of areas/guides that can be used to layout views.
+PinLayout expose them using these properties:
+
+1. **`UIView.pin.safeArea`**: Expose UIKit `UIView.safeAreaInsets` / `UIView.safeAreaLayoutGuide`. 
+2. **`UIView.pin.readableMargins`**: Expose UIKit `UIView.readableContentGuide`. 
+3. **`UIView.pin.layoutMargins`**: Expose UIKit `UIView.layoutMargins` / `UIView.layoutMarginsGuide`. 
+
+The following image display the 3 areas on an iPad in landscape mode. 
+
+<img src="docs/images/pinlayout_example_layout_margins_landscape.png" width="440" />
+
+See the **SafeArea & readableMargins** example in the [Examples App](#examples_app). 
+
+### 1. pin.safeArea 
 
 PinLayout can handle easily iOS 11 `UIView.safeAreaInsets`, but it goes further by supporting safeAreaInsets for previous iOS releases (including iOS 7/8/9/10) by adding a property `UIView.pin.safeArea`. PinLayout also extends the support of `UIView.safeAreaInsetsDidChange()` callback on iOS 7/8/9/10.
 
@@ -1145,8 +1160,6 @@ The safe area of a view represent the area not covered by navigation bars, tab b
    // its view safeArea using 'view.pin.safeArea'.
    button.pin.top(view.pin.safeArea)
 ```
-
-
 
 ##### UIView.safeAreaInsetsDidChange():
 
@@ -1194,8 +1207,6 @@ The safe area of a view represent the area not covered by navigation bars, tab b
        }
 		```
 	* **disable**: In this mode PinLayout won't call `UIView.safeAreaInsetsDidChange` on iOS 8/9/10. Note that this is the default mode on iOS 8.
-			
-<br>
 
 ###### Example using  `UIView.pin.safeArea`
 This example layout 4 subviews inside the safeArea. The UINavigationBar and UITabBar are translucent, so even if the container UIView goes under both, we can use its `UIView.pin.safeArea` to keeps its subviews within the safeArea.
@@ -1213,6 +1224,38 @@ This example runs perfectly on a iPhone X (iOS 11), but it also runs on any devi
 
 :pushpin: This example is available in the [Examples App](#examples_app). See example complete [source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/SafeArea/SafeAreaView.swift)
 
+
+<br/>
+
+<a name="readableMargins"></a>
+### 2. pin.readableMargins
+
+##### Property:
+* **`pin.readableMargins: UIEdgeInset`**:  
+PinLayout's `UIView.pin.readableMargins` property expose UIKit [`UIView.readableContentGuide`](https://developer.apple.com/documentation/uikit/uiview/1622644-readablecontentguide) as an UIEdgeInsets. This is really useful since UIKit only expose the readableContent area to Auto Layout using UILayoutGuide.
+
+###### Usage examples:
+```swift
+	label.pin.horizontally(pin.readableMargins)   // the label fill horizontally the readable area.
+	view.pin.all(container.pin.readableMargins)   // the view fill its parent's readable area.
+	view.pin.left(pin.readableMargins)
+```
+
+:pushpin: The [Examples App](#examples_app) contains some examples using `pin.readableMargins`.
+
+<br/>
+
+### 3. pin.layoutmargins
+
+##### Property:
+* **`pin.layoutmargins: UIEdgeInset`**  
+PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIKit [`UIView.layoutMargins`](https://developer.apple.com/documentation/uikit/uiview/1622566-layoutmargins). The property exists only to be consistent with the other areas: `pin.safeArea`, `pin.readableMargins` and `pin.layoutmargins`. So its usage is not necessary.
+
+###### Usage example:
+```swift
+	view.pin.left(container.pin.layoutmargins)
+	view.pin.left(container.layoutmargins)     // Similar to the previous line
+```
 
 <br/>
 
@@ -1593,7 +1636,7 @@ Included examples:
 * Example using a UITableView with variable height cells.
 * Example using a UICollectionView with variable height cells.
 * Example showing how to animate with PinLayout.
-* Example using [`UIView.pin.safeArea`](#safeAreaInsets)
+* Example using [`pin.safeArea`, `pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets)
 * Example using [`wrapContent()`](#wrapContent)
 * Example showing right-to-left (RTL) language support.
 * Example showing a simple form example	

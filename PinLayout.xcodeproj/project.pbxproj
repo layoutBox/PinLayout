@@ -123,6 +123,8 @@
 		DFB3ECB72062A937005F226B /* PinSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3ECB02061602E005F226B /* PinSafeArea.swift */; };
 		DFBCAF01213023D10025F7BF /* ReadableLayoutMarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */; };
 		DFBCAF02213023D30025F7BF /* ReadableLayoutMarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */; };
+		DFBCAF1A2132C55A0025F7BF /* PinLayout+Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10846F212D8E8700C23B80 /* PinLayout+Between.swift */; };
+		DFBCAF1B2132C55B0025F7BF /* PinLayout+Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10846F212D8E8700C23B80 /* PinLayout+Between.swift */; };
 		DFCA5F1620111E0B00180CD7 /* UIScrollViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA5F1420111BCF00180CD7 /* UIScrollViewSpec.swift */; };
 		DFEAF75020C9661B00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
 		DFEAF75220C9661D00E33147 /* ObjectiveCSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = DFEAF74D20C965DC00E33147 /* ObjectiveCSpec.m */; };
@@ -862,6 +864,7 @@
 				C8C4928F20DA7DA700048357 /* CALayer+PinLayout.swift in Sources */,
 				DF28022720C2B15B00A1833B /* Types+Description.swift in Sources */,
 				DFF222B220B877F600AC2A84 /* PinLayoutObjC.swift in Sources */,
+				DFBCAF1B2132C55B0025F7BF /* PinLayout+Between.swift in Sources */,
 				DF702D9E20D33CF20062045C /* PinLayout+Relative.swift in Sources */,
 				24D18D261F3E5EA5008129EF /* Pin.swift in Sources */,
 				DF28022420C2B13800A1833B /* Types.swift in Sources */,
@@ -984,6 +987,7 @@
 				C8C4928E20DA7DA700048357 /* CALayer+PinLayout.swift in Sources */,
 				DF28022620C2B15A00A1833B /* Types+Description.swift in Sources */,
 				DFF222B120B877F400AC2A84 /* PinLayoutObjC.swift in Sources */,
+				DFBCAF1A2132C55A0025F7BF /* PinLayout+Between.swift in Sources */,
 				DF702D9A20D33CF10062045C /* PinLayout+Relative.swift in Sources */,
 				DF28022520C2B13900A1833B /* Types.swift in Sources */,
 				DF1A5D412084CFD600725EF5 /* Coordinates.swift in Sources */,

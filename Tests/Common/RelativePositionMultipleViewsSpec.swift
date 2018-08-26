@@ -85,7 +85,7 @@ class RelativePositionMultipleViewsSpec: QuickSpec {
                 let unatachedView = PView()
                 bViewChild.pin.above(of: unatachedView)
                 expect(bViewChild.frame).to(equal(CGRect(x: 40, y: 10, width: 60, height: 20)))
-                expect(Pin.lastWarningText).to(contain(["above(of: (UIView", ")", "won't be applied",
+                expect(Pin.lastWarningText).to(contain(["above(of: (", ")", "won't be applied",
                                                         "must be added as a sub-view before being used as a reference."]))
             }
 

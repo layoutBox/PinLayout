@@ -60,8 +60,7 @@ enum PageType: Int {
     var viewController: UIViewController {
         switch self {
         case .intro:
-            //return IntroViewController(pageType: self)
-            return UnitTestsViewController(pageType: self)
+            return IntroViewController(pageType: self)
         case .adjustToContainer:
             return AdjustToContainerViewController(pageType: self)
         case .tableView:

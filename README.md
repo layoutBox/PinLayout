@@ -1591,6 +1591,8 @@ Few individual warnings can also be enabled/disabled individually:
 
 * **`Pin.activeWarnings.noSpaceAvailableBetweenViews: Boolean`**  
 If true, a warning is displayed if there is no space available between views specified in a call to `horizontallyBetween(...)` or `verticallyBetween(...)`
+* **`Pin.activeWarnings. aspectRatioImageNotSet: Boolean`**  
+If true, a warning is displayed if 'aspectRatio()' is called on a UIImageView without a valid UIImage.
 
 <br/>
 

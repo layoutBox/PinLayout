@@ -66,7 +66,7 @@ extension PinLayout {
             setRight(view1MinX, context)
             applyVerticalAlignment(aligned, coordinates: [coordinates[1]], context: context)
         } else {
-            guard Pin.activeWarnings.noSpaceAvailableBetweenViews else { return self }
+            guard Pin.logWarnings && Pin.activeWarnings.noSpaceAvailableBetweenViews else { return self }
             warnWontBeApplied("there is no horizontal space between these views. (noSpaceAvailableBetweenViews)", context)
         }
 
@@ -120,7 +120,7 @@ extension PinLayout {
             setBottom(view1MinY, context)
             applyHorizontalAlignment(aligned, coordinates: [coordinates[1]], context: context)
         } else {
-            guard Pin.activeWarnings.noSpaceAvailableBetweenViews else { return self }
+            guard Pin.logWarnings && Pin.activeWarnings.noSpaceAvailableBetweenViews else { return self }
             warnWontBeApplied("there is no vertical space between these views. (noSpaceAvailableBetweenViews)", context)
         }
 

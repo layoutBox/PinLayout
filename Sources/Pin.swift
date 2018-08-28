@@ -76,7 +76,10 @@ import Foundation
 }
 
 @objc public class ActiveWarnings: NSObject {
-    /// When set to true, a warning will be issue in Debug if there is no space available between views
-    /// specified in a call to `horizontallyBetween(...)` or `verticallyBetween(...)`
+    /// When set to true, a warning is displayed if there is no space available between views
+    /// specified in a call to `horizontallyBetween(...)` or `verticallyBetween(...)`.
     public var noSpaceAvailableBetweenViews = true
+
+    /// When set to true, a warning is displayed if 'aspectRatio()' is called on a UIImageView without a valid UIImage.
+    public var aspectRatioImageNotSet = true
 }

@@ -144,12 +144,13 @@ extension PinLayout {
     public func aspectRatio() -> PinLayout {
         func context() -> String { return "aspectRatio()" }
         guard let imageView = view as? UIImageView else {
-            warnWontBeApplied("the layouted must be an UIImageView() to use the aspectRatio() method without parameter.", context)
+            warnWontBeApplied("the layouted view must be an UIImageView() to use the aspectRatio() method without parameter.", context)
             return self
         }
 
         guard let imageSize = imageView.image?.size else {
-            warnWontBeApplied("the layouted UIImageView's image hasn't been set", context)
+            guard Pin.logWarnings && Pin.activeWarnings.aspectRatioImageNotSet else { return self }
+            warnWontBeApplied("the layouted UIImageView's image hasn't been set (aspectRatioImageNotSet)", context)
             return self
         }
 

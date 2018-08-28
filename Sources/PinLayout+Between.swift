@@ -66,7 +66,8 @@ extension PinLayout {
             setRight(view1MinX, context)
             applyVerticalAlignment(aligned, coordinates: [coordinates[1]], context: context)
         } else {
-            warnWontBeApplied("there is no horizontal space between these views.", context)
+            guard Pin.activeWarnings.noSpaceAvailableBetweenViews else { return self }
+            warnWontBeApplied("there is no horizontal space between these views. (noSpaceAvailableBetweenViews)", context)
         }
 
         return self
@@ -102,23 +103,6 @@ extension PinLayout {
         case .none:   anchors = [view1.anchor.topLeft, view1.anchor.bottomLeft, view2.anchor.topLeft, view2.anchor.bottomLeft]
         }
 
-//        let anchors: [Anchor]
-//        switch aligned {
-//        case .left:   anchors = relativeViews.map({ $0.anchor.topLeft })
-//        case .center: anchors = relativeViews.map({ $0.anchor. })
-//        case .right:  anchors = relativeViews.map({ $0.anchor.topRight })
-//        case .start:  anchors = isLTR() ? relativeViews.map({ $0.anchor.topLeft }) : relativeViews.map({ $0.anchor.topRight })
-//        case .end:    anchors = isLTR() ? relativeViews.map({ $0.anchor.topRight }) : relativeViews.map({ $0.anchor.topLeft })
-//        case .none:   anchors = relativeViews.map({ $0.anchor.topLeft })
-//        }
-
-
-//        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
-//            setBottom(getTopMostCoordinate(list: coordinates), context)
-//            applyHorizontalAlignment(aligned, coordinates: coordinates, context: context)
-//        }
-
-
         guard let coordinates = computeCoordinates(forAnchors: anchors, context),
             coordinates.count == anchors.count else { return self }
 
@@ -136,7 +120,8 @@ extension PinLayout {
             setBottom(view1MinY, context)
             applyHorizontalAlignment(aligned, coordinates: [coordinates[1]], context: context)
         } else {
-            warnWontBeApplied("there is no vertical space between these views.", context)
+            guard Pin.activeWarnings.noSpaceAvailableBetweenViews else { return self }
+            warnWontBeApplied("there is no vertical space between these views. (noSpaceAvailableBetweenViews)", context)
         }
 
         return self

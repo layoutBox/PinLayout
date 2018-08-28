@@ -32,19 +32,6 @@ import Foundation
     #endif
 
 
-#if DEBUG
-    @objc public static var logWarnings = true
-#else
-    @objc public static var logWarnings = false
-#endif
-    
-    /**
-     If your codes need to work in Xcode playgrounds, you may set to `true` the property
-     `Pin.logMissingLayoutCalls`, this way any missing call to `layout()` will generate
-     a warning in the Xcode console..
-    */
-    @objc public static var logMissingLayoutCalls = false
-
     static private var isInitialized = false
 
     @objc public static func initPinLayout() {
@@ -59,6 +46,37 @@ import Foundation
         self.layoutDirection = direction
     }
 
+    //
+    // Warnings
+    //
+    #if DEBUG
+        @objc public static var logWarnings = true
+    #else
+        @objc public static var logWarnings = false
+    #endif
+
+    @objc public static var activeWarnings = ActiveWarnings()
+
+    /**
+     If your codes need to work in Xcode playgrounds, you may set to `true` the property
+     `Pin.logMissingLayoutCalls`, this way any missing call to `layout()` will generate
+     a warning in the Xcode console..
+     */
+    @objc public static var logMissingLayoutCalls = false
+
     // Contains PinLayout last warning's text. Used by PinLayout's Unit Tests.
     @objc public static var lastWarningText: String?
+
+    public static func resetWarnings() {
+    #if DEBUG
+        logWarnings = true
+    #endif
+        activeWarnings = ActiveWarnings()
+    }
+}
+
+@objc public class ActiveWarnings: NSObject {
+    /// When set to true, a warning will be issue in Debug if there is no space available between views
+    /// specified in a call to `horizontallyBetween(...)` or `verticallyBetween(...)`
+    public var noSpaceAvailableBetweenViews = true
 }

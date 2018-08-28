@@ -51,6 +51,7 @@ class BetweenSpec: QuickSpec {
             _pinlayoutSetUnitTest(scale: 2)
             Pin.lastWarningText = nil
 
+
             viewController = PViewController()
             viewController.view = BasicView()
             
@@ -76,6 +77,7 @@ class BetweenSpec: QuickSpec {
 
         afterEach {
             _pinlayoutSetUnitTest(scale: nil)
+            Pin.resetWarnings()
         }
         
         //
@@ -106,6 +108,15 @@ class BetweenSpec: QuickSpec {
                 bView.pin.horizontallyBetween(aView, and: cView)
                 expect(Pin.lastWarningText).to(contain(["horizontallyBetween((BasicView, Frame: (40.0, 100.0, 200.0, 100.0)), ",
                                                         " won't be applied", "there is no horizontal space between these views"]))
+                expect(bView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)))
+            }
+
+            it("should not warns because Pin.activeLogWarnings.betweenNoSpaceAvailableBetweenViews is set to false") {
+                Pin.activeWarnings.noSpaceAvailableBetweenViews  = false
+                aView.frame = CGRect(x: 40, y: 100, width: 200, height: 100)
+                cView.frame = CGRect(x: 160, y: 140, width: 110, height: 80)
+                bView.pin.horizontallyBetween(aView, and: cView)
+                expect(Pin.lastWarningText).to(beNil())
                 expect(bView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)))
             }
 
@@ -336,6 +347,14 @@ class BetweenSpec: QuickSpec {
                 expect(bView.frame).to(equal(CGRect(x: 10.0, y: 10.0, width: 11.0, height: 12.0)))
             }
 
+            it("should not warns because Pin.activeLogWarnings.betweenNoSpaceAvailableBetweenViews is set to false") {
+                Pin.activeWarnings.noSpaceAvailableBetweenViews  = false
+                aView.frame = CGRect(x: 40, y: 100, width: 200, height: 100)
+                cView.frame = CGRect(x: 160, y: 140, width: 110, height: 80)
+                bView.pin.verticallyBetween(aView, and: cView)
+                expect(Pin.lastWarningText).to(beNil())
+                expect(bView.frame).to(equal(CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)))
+            }
 
             it("should vertically layout between") {
                 aView.frame = CGRect(x: 10, y: 10, width: 120, height: 150)

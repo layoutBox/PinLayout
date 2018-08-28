@@ -38,13 +38,13 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Swift 3.2+ / Swift 4.1 / Objective-C
 
 ### Recent changes/features
+* :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).
 * :star: Add [`pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets) properties.
 * :star: Add `sizeToFit()` method. See [Adjusting size](#adjusting_size).
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
 * :star: PinLayout is in the Top 10 of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
 * :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization.
 * :star: Add [`wrapContent()`](#wrapContent) methods that adjust view's width and height to wrap all its subviews.
-* :star: PinLayout now support macOS. See [macOS Support](#macos_support) for more information.
 * :star: PinLayout expose the `safeAreaInsets` through [`pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
 * See [Changelog](https://github.com/layoutBox/PinLayout/blob/master/CHANGELOG.md) for all changes.
 

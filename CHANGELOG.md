@@ -7,6 +7,40 @@
 
 # Change Log
 
+## [1.8.3](https://github.com/layoutBox/PinLayout/releases/tag/1.8.3)
+Released on 2018-08-28
+
+#### Add methods to layout a view between two other views
+Add methods to position a view between two other views, either horizontally or vertically. 
+
+**New Methods:**
+
+* **`horizontallyBetween(:UIView, and: UIView)`**  
+Position the view between the two specified views horizontally. The method layout the view's left and right edges. The order of the reference views is irrelevant.
+Note that the layout will be applied only if there is horizontal space between the specified views. 
+
+* **`horizontallyBetween(:UIView, and: UIView, aligned: VerticalAlign)`**  
+Position the view between the two specified views horizontally and aligned it using the specified VerticalAlign. The view will be aligned related to the first specified reference view. Note that the layout will be applied only if there is horizontal space between the specified views. 
+
+* **`verticallyBetween(:UIView, and: UIView)`**  
+Position the view between the two specified views vertically. The method layout the view's top and bottom edges. The order of the reference views is irrelevant. Note that the layout will be applied only if there is vertical space between the specified views. 
+
+* **`verticallyBetween(:UIView, and: UIView, aligned: HorizontalAlign)`**  
+Position the view between the two specified views vertically and aligned it using the specified HorizontalAlign. The view will be aligned related to the first specified reference view. Note that the layout will be applied only if there is vertical space between the specified views. 
+
+###### Example:
+
+<img src="docs/images/pinlayout_verticallyBetween.png" width="600"/>
+
+```swift
+   view.pin.verticallyBetween(viewA, and: viewB, aligned: .center).marginVertical(10)
+```
+
+See [Readme for more information](https://github.com/layoutBox/PinLayout#layout_between)
+
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#172](https://github.com/layoutBox/PinLayout/pull/172) 
+
 ## [1.8.2](https://github.com/layoutBox/PinLayout/releases/tag/1.8.2)
 Released on 2018-08-25
 

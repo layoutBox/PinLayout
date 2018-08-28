@@ -30,14 +30,14 @@ extension PinLayout {
     //
     @discardableResult
     public func above(of relativeView: View, aligned: HorizontalAlign = .none) -> PinLayout {
-        func context() -> String { return relativeContext("above", relativeView, aligned) }
-        return above(relativeViews: [relativeView], aligned: aligned, context: context)
+        func context() -> String { return relativeContext("above", [relativeView], aligned) }
+        return above(of: [relativeView], aligned: aligned, context: context)
     }
 
     @discardableResult
     public func above(of relativeViews: [View], aligned: HorizontalAlign = .none) -> PinLayout {
         func context() -> String { return relativeContext("above", relativeViews, aligned) }
-        return above(relativeViews: relativeViews, aligned: aligned, context: context)
+        return above(of: relativeViews, aligned: aligned, context: context)
     }
 
     //
@@ -45,14 +45,14 @@ extension PinLayout {
     //
     @discardableResult
     public func below(of relativeView: View, aligned: HorizontalAlign = .none) -> PinLayout {
-        func context() -> String { return relativeContext("below", relativeView, aligned) }
-        return below(relativeViews: [relativeView], aligned: aligned, context: context)
+        func context() -> String { return relativeContext("below", [relativeView], aligned) }
+        return below(of: [relativeView], aligned: aligned, context: context)
     }
 
     @discardableResult
     public func below(of relativeViews: [View], aligned: HorizontalAlign = .none) -> PinLayout {
         func context() -> String { return relativeContext("below", relativeViews, aligned) }
-        return below(relativeViews: relativeViews, aligned: aligned, context: context)
+        return below(of: relativeViews, aligned: aligned, context: context)
     }
 
     //
@@ -60,14 +60,14 @@ extension PinLayout {
     //
     @discardableResult
     public func left(of relativeView: View, aligned: VerticalAlign = .none) -> PinLayout {
-        func context() -> String { return relativeContext("left", relativeView, aligned) }
-        return left(relativeViews: [relativeView], aligned: aligned, context: context)
+        func context() -> String { return relativeContext("left", [relativeView], aligned) }
+        return left(of: [relativeView], aligned: aligned, context: context)
     }
 
     @discardableResult
     public func left(of relativeViews: [View], aligned: VerticalAlign = .none) -> PinLayout {
         func context() -> String { return relativeContext("left", relativeViews, aligned) }
-        return left(relativeViews: relativeViews, aligned: aligned, context: context)
+        return left(of: relativeViews, aligned: aligned, context: context)
     }
 
     //
@@ -75,14 +75,14 @@ extension PinLayout {
     //
     @discardableResult
     public func right(of relativeView: View, aligned: VerticalAlign = .none) -> PinLayout {
-        func context() -> String { return relativeContext("right", relativeView, aligned) }
-        return right(relativeViews: [relativeView], aligned: aligned, context: context)
+        func context() -> String { return relativeContext("right", [relativeView], aligned) }
+        return right(of: [relativeView], aligned: aligned, context: context)
     }
 
     @discardableResult
     public func right(of relativeViews: [View], aligned: VerticalAlign = .none) -> PinLayout {
         func context() -> String { return relativeContext("right", relativeViews, aligned) }
-        return right(relativeViews: relativeViews, aligned: aligned, context: context)
+        return right(of: relativeViews, aligned: aligned, context: context)
     }
 
     //
@@ -90,11 +90,11 @@ extension PinLayout {
     //
     @discardableResult
     public func before(of relativeView: View, aligned: VerticalAlign = .none) -> PinLayout {
-        func context() -> String { return relativeContext("before", relativeView, aligned) }
+        func context() -> String { return relativeContext("before", [relativeView], aligned) }
         if isLTR() {
-            return left(relativeViews: [relativeView], aligned: aligned, context: context)
+            return left(of: [relativeView], aligned: aligned, context: context)
         } else {
-            return right(relativeViews: [relativeView], aligned: aligned, context: context)
+            return right(of: [relativeView], aligned: aligned, context: context)
         }
     }
 
@@ -102,9 +102,9 @@ extension PinLayout {
     public func before(of relativeViews: [View], aligned: VerticalAlign = .none) -> PinLayout {
         func context() -> String { return relativeContext("before", relativeViews, aligned) }
         if isLTR() {
-            return left(relativeViews: relativeViews, aligned: aligned, context: context)
+            return left(of: relativeViews, aligned: aligned, context: context)
         } else {
-            return right(relativeViews: relativeViews, aligned: aligned, context: context)
+            return right(of: relativeViews, aligned: aligned, context: context)
         }
     }
 
@@ -113,11 +113,11 @@ extension PinLayout {
     //
     @discardableResult
     public func after(of relativeView: View, aligned: VerticalAlign = .none) -> PinLayout {
-        func context() -> String { return relativeContext("after", relativeView, aligned) }
+        func context() -> String { return relativeContext("after", [relativeView], aligned) }
         if isLTR() {
-            return right(relativeViews: [relativeView], aligned: aligned, context: context)
+            return right(of: [relativeView], aligned: aligned, context: context)
         } else {
-            return left(relativeViews: [relativeView], aligned: aligned, context: context)
+            return left(of: [relativeView], aligned: aligned, context: context)
         }
     }
 
@@ -125,16 +125,16 @@ extension PinLayout {
     public func after(of relativeViews: [View], aligned: VerticalAlign = .none) -> PinLayout {
         func context() -> String { return relativeContext("after", relativeViews, aligned) }
         if isLTR() {
-            return right(relativeViews: relativeViews, aligned: aligned, context: context)
+            return right(of: relativeViews, aligned: aligned, context: context)
         } else {
-            return left(relativeViews: relativeViews, aligned: aligned, context: context)
+            return left(of: relativeViews, aligned: aligned, context: context)
         }
     }
 }
 
 // MARK: private
 extension PinLayout {
-    fileprivate func above(relativeViews: [View], aligned: HorizontalAlign, context: Context) -> PinLayout {
+    fileprivate func above(of relativeViews: [View], aligned: HorizontalAlign, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
 
         let anchors: [Anchor]
@@ -147,14 +147,14 @@ extension PinLayout {
         case .none:   anchors = relativeViews.map({ $0.anchor.topLeft })
         }
 
-        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
-            setBottom(getTopMostCoordinate(list: coordinatesList), context)
-            applyHorizontalAlignment(aligned, coordinatesList: coordinatesList, context: context)
+        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
+            setBottom(getTopMostCoordinate(list: coordinates), context)
+            applyHorizontalAlignment(aligned, coordinates: coordinates, context: context)
         }
         return self
     }
 
-    fileprivate func below(relativeViews: [View], aligned: HorizontalAlign, context: Context) -> PinLayout {
+    fileprivate func below(of relativeViews: [View], aligned: HorizontalAlign, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
 
         let anchors: [Anchor]
@@ -167,14 +167,14 @@ extension PinLayout {
         case .none:   anchors = relativeViews.map({ $0.anchor.bottomLeft })
         }
 
-        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
-            setTop(getBottomMostCoordinate(list: coordinatesList), context)
-            applyHorizontalAlignment(aligned, coordinatesList: coordinatesList, context: context)
+        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
+            setTop(getBottomMostCoordinate(list: coordinates), context)
+            applyHorizontalAlignment(aligned, coordinates: coordinates, context: context)
         }
         return self
     }
 
-    fileprivate func left(relativeViews: [View], aligned: VerticalAlign, context: Context) -> PinLayout {
+    fileprivate func left(of relativeViews: [View], aligned: VerticalAlign, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
 
         let anchors: [Anchor]
@@ -185,14 +185,14 @@ extension PinLayout {
         case .none:   anchors = relativeViews.map({ $0.anchor.topLeft })
         }
 
-        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
-            setRight(getLeftMostCoordinate(list: coordinatesList), context)
-            applyVerticalAlignment(aligned, coordinatesList: coordinatesList, context: context)
+        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
+            setRight(getLeftMostCoordinate(list: coordinates), context)
+            applyVerticalAlignment(aligned, coordinates: coordinates, context: context)
         }
         return self
     }
 
-    fileprivate func right(relativeViews: [View], aligned: VerticalAlign, context: Context) -> PinLayout {
+    fileprivate func right(of relativeViews: [View], aligned: VerticalAlign, context: Context) -> PinLayout {
         guard let relativeViews = validateRelativeViews(relativeViews, context: context) else { return self }
 
         let anchors: [Anchor]
@@ -203,35 +203,35 @@ extension PinLayout {
         case .none:   anchors = relativeViews.map({ $0.anchor.topRight })
         }
 
-        if let coordinatesList = computeCoordinates(forAnchors: anchors, context) {
-            setLeft(getRightMostCoordinate(list: coordinatesList), context)
-            applyVerticalAlignment(aligned, coordinatesList: coordinatesList, context: context)
+        if let coordinates = computeCoordinates(forAnchors: anchors, context) {
+            setLeft(getRightMostCoordinate(list: coordinates), context)
+            applyVerticalAlignment(aligned, coordinates: coordinates, context: context)
         }
         return self
     }
 
-    private func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinatesList: [CGPoint], context: Context) {
+    internal func applyHorizontalAlignment(_ aligned: HorizontalAlign?, coordinates: [CGPoint], context: Context) {
         guard let aligned = aligned, aligned != .none else { return }
         switch aligned {
-        case .left:   setLeft(getLeftMostCoordinate(list: coordinatesList), context)
-        case .center: setHorizontalCenter(getAverageHCenterCoordinate(list: coordinatesList), context)
-        case .right:  setRight(getRightMostCoordinate(list: coordinatesList), context)
+        case .left:   setLeft(getLeftMostCoordinate(list: coordinates), context)
+        case .center: setHorizontalCenter(getAverageHCenterCoordinate(list: coordinates), context)
+        case .right:  setRight(getRightMostCoordinate(list: coordinates), context)
         case .start:
-            isLTR() ? setLeft(getLeftMostCoordinate(list: coordinatesList), context) :
-                      setRight(getRightMostCoordinate(list: coordinatesList), context)
+            isLTR() ? setLeft(getLeftMostCoordinate(list: coordinates), context) :
+                      setRight(getRightMostCoordinate(list: coordinates), context)
         case .end:
-            isLTR() ? setRight(getRightMostCoordinate(list: coordinatesList), context) :
-                      setLeft(getLeftMostCoordinate(list: coordinatesList), context)
+            isLTR() ? setRight(getRightMostCoordinate(list: coordinates), context) :
+                      setLeft(getLeftMostCoordinate(list: coordinates), context)
         case .none:   break
         }
     }
 
-    private func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinatesList: [CGPoint], context: Context) {
+    internal func applyVerticalAlignment(_ aligned: VerticalAlign?, coordinates: [CGPoint], context: Context) {
         guard let aligned = aligned, aligned != .none else { return }
         switch aligned {
-        case .top:    setTop(getTopMostCoordinate(list: coordinatesList), context)
-        case .center: setVerticalCenter(getAverageVCenterCoordinate(list: coordinatesList), context)
-        case .bottom: setBottom(getBottomMostCoordinate(list: coordinatesList), context)
+        case .top:    setTop(getTopMostCoordinate(list: coordinates), context)
+        case .center: setVerticalCenter(getAverageVCenterCoordinate(list: coordinates), context)
+        case .bottom: setBottom(getBottomMostCoordinate(list: coordinates), context)
         case .none:   break
         }
     }
@@ -294,27 +294,26 @@ extension PinLayout {
         return relativeViews
     }
 
-    fileprivate func relativeContext(_ type: String, _ relativeView: View, _ aligned: VerticalAlign?) -> String {
-        return relativeContext(type, "\(relativeView)", aligned: aligned == VerticalAlign.none ? nil : aligned?.description)
+    fileprivate func relativeContext(_ type: String, _ relativeViews: [View], _ aligned: HorizontalAlign) -> String {
+        return relativeContext(type, relativeViews, aligned: aligned == HorizontalAlign.none ? nil : aligned.description)
     }
 
-    fileprivate func relativeContext(_ type: String, _ relativeViews: [View], _ aligned: VerticalAlign?) -> String {
-        return relativeContext(type, "\(relativeViews)", aligned: aligned == VerticalAlign.none ? nil : aligned?.description)
+    fileprivate func relativeContext(_ type: String, _ relativeViews: [View], _ aligned: VerticalAlign) -> String {
+        return relativeContext(type, relativeViews, aligned: aligned == VerticalAlign.none ? nil : aligned.description)
     }
 
-    fileprivate func relativeContext(_ type: String, _ relativeView: View, _ aligned: HorizontalAlign?) -> String {
-        return relativeContext(type, "\(relativeView)", aligned: aligned == HorizontalAlign.none ? nil : aligned?.description)
-    }
-
-    fileprivate func relativeContext(_ type: String, _ relativeViews: [View], _ aligned: HorizontalAlign?) -> String {
-        return relativeContext(type, "\(relativeViews)", aligned: aligned == HorizontalAlign.none ? nil : aligned?.description)
-    }
-
-    private func relativeContext(_ type: String, _ relativeView: String, aligned: String?) -> String {
-        if let aligned = aligned {
-            return "\(type)(of: \(relativeView), aligned: .\(aligned))"
+    fileprivate func relativeContext(_ type: String, _ relativeViews: [View], aligned: String?) -> String {
+        let relativeViewsText: String
+        if relativeViews.count == 1 {
+            relativeViewsText = viewDescription(relativeViews[0])
         } else {
-            return "\(type)(of: \(relativeView))"
+            relativeViewsText = "[\(relativeViews.map({ viewDescription($0) }).joined(separator: ", "))]"
+        }
+
+        if let aligned = aligned {
+            return "\(type)(of: \(relativeViewsText), aligned: .\(aligned))"
+        } else {
+            return "\(type)(of: \(relativeViewsText))"
         }
     }
 }

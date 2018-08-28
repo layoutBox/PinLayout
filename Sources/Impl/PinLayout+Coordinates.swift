@@ -387,11 +387,7 @@ extension PinLayout {
             }
         })
         
-        guard results.count > 0 else {
-            warnWontBeApplied("no valid references", context)
-            return nil
-        }
-        
+        guard results.count > 0 else { return nil }
         return results
     }
     

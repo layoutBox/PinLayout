@@ -82,13 +82,13 @@ class FormView: BaseFormView {
         
         formTitleLabel.pin.topCenter().margin(margin)
 
-        nameField.pin.below(of: formTitleLabel).left().right().height(40).margin(margin)
+        nameField.pin.below(of: formTitleLabel).horizontally().height(40).margin(margin)
 
-        ageSwitch.pin.below(of: nameField).left().right().height(40).margin(margin)
-        ageField.pin.below(of: ageSwitch).left().right().height(40).margin(margin)
+        ageSwitch.pin.below(of: nameField).horizontally().height(40).margin(margin)
+        ageField.pin.below(of: ageSwitch).horizontally().height(40).margin(margin)
         
         // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
-        addressField.pin.below(of: visible([ageSwitch, ageField])).left().right().height(40).margin(margin)
+        addressField.pin.below(of: visible([ageSwitch, ageField])).horizontally().height(40).margin(margin)
         
         // Adjust the form container bottom to contains all its childrens
         formContainerView.pin.height(addressField.frame.maxY + margin)

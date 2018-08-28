@@ -626,5 +626,13 @@ class RTLSpec: QuickSpec {
                 expect(aView.frame).to(equal(CGRect(x: 160.0, y: 200.0, width: 100.0, height: 60.0)))
             }
         }
+
+        // TODO
+//        cView.pin.verticallyBetween(aView, and: bView, aligned: .start)
+//        cView.pin.verticallyBetween(bView, and: aView, aligned: .start)
+//
+//        cView.pin.verticallyBetween(aView, and: bView, aligned: .end)
+//        cView.pin.verticallyBetween(bView, and: aView, aligned: .end)
+
     }
 }

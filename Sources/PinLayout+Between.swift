@@ -130,11 +130,11 @@ extension PinLayout {
 
 // MARK: private
 extension PinLayout {
-    private func betweenContext(_ type: String, _ view1: View, _ view2: View, _ aligned: HorizontalAlign) -> String {
+    fileprivate func betweenContext(_ type: String, _ view1: View, _ view2: View, _ aligned: HorizontalAlign) -> String {
         return betweenContext(type, view1, view2, aligned: aligned == HorizontalAlign.none ? nil : aligned.description)
     }
 
-    private func betweenContext(_ type: String, _ view1: View, _ view2: View, _ aligned: VerticalAlign) -> String {
+    fileprivate func betweenContext(_ type: String, _ view1: View, _ view2: View, _ aligned: VerticalAlign) -> String {
         return betweenContext(type, view1, view2, aligned: aligned == VerticalAlign.none ? nil : aligned.description)
     }
 

@@ -21,6 +21,8 @@ import UIKit
 import PinLayout
 
 class WrapContentView: UIView {
+    private let scrollView = UIScrollView()
+
     private let topContainer = UIView()
     private let topLogo = UIImageView(image: UIImage(named: "PinLayout-logo"))
     private let topLabel = UILabel()
@@ -43,8 +45,10 @@ class WrapContentView: UIView {
         super.init(frame: .zero)
         backgroundColor = .white
 
+        addSubview(scrollView)
+
         topContainer.backgroundColor = .lightColor
-        addSubview(topContainer)
+        scrollView.addSubview(topContainer)
 
         //
         // Top section
@@ -58,13 +62,13 @@ class WrapContentView: UIView {
         // Separator 1
         separatorView1.pin.height(1)
         separatorView1.backgroundColor = .pinLayoutColor
-        addSubview(separatorView1)
+        scrollView.addSubview(separatorView1)
 
         //
         // Middle section
         //
         middleContainer.backgroundColor = .lightColor
-        addSubview(middleContainer)
+        scrollView.addSubview(middleContainer)
 
         configureLabel(middleLabel, text: "This view use 'pin.wrapContent()' to wrap its subviews (1 label and 3 buttons). This view is horizontally centered.")
         middleContainer.addSubview(middleLabel)
@@ -87,13 +91,13 @@ class WrapContentView: UIView {
         // Separator 2
         separatorView2.pin.height(1)
         separatorView2.backgroundColor = .pinLayoutColor
-        addSubview(separatorView2)
+        scrollView.addSubview(separatorView2)
 
         //
         // Bottom section
         //
         bottomContainer.backgroundColor = .lightColor
-        addSubview(bottomContainer)
+        scrollView.addSubview(bottomContainer)
 
         bottomLogo.contentMode = .scaleAspectFit
         bottomContainer.addSubview(bottomLogo)
@@ -109,6 +113,8 @@ class WrapContentView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let padding: CGFloat = 10
+
+        scrollView.pin.all()
         
         // Top section
         topLogo.pin.width(100).aspectRatio()
@@ -128,9 +134,11 @@ class WrapContentView: UIView {
         separatorView2.pin.below(of: middleContainer, aligned: .center).width(80%).marginTop(padding)
 
         // Bottom section
-        bottomLogo.pin.width(100).aspectRatio()
-        bottomLabel.pin.after(of: bottomLogo, aligned: .top).width(200).sizeToFit(.width)
-        bottomContainer.pin.wrapContent(padding: 4).below(of: separatorView2).bottom().align(.center).hCenter()
+        bottomLogo.pin.width(50).aspectRatio()
+        bottomLabel.pin.after(of: bottomLogo, aligned: .top).width(200).marginLeft(10).sizeToFit(.width)
+        bottomContainer.pin.wrapContent(padding: 30).below(of: separatorView2).hCenter().marginTop(padding)
+
+        scrollView.contentSize = CGSize(width: frame.width, height: bottomContainer.frame.maxY)
     }
 
     private func configureLabel(_ label: UILabel, text: String) {

@@ -435,15 +435,14 @@ The following example will position the view C between the view A and B with mar
 This is an equivalent solution using [edges](#edge):
 
 ```swift
-	viewC.pin.top().left(to: viewA.edge.right).right(to: viewB.edge.left).margin(10)
+	viewC.pin.top().left(to: viewA.edge.right).right(to: viewB.edge.left). margin(10)
 ```
 
-This is also an equivalent solution using [Relative Edges and alignment layout](#relative_edges_layout_w_alignment) explained in the next section:
+This is also an equivalent solution using [horizontallyBetween()](#layout_between_w_alignment). See section [Layout between other views](#layout_between):
 
 ```swift
-	viewC.pin.after(of: viewA, aligned: .top).before(of: viewB, aligned: top).marginHorizontal(10)
+	viewC.pin.horizontallyBetween(viewA, and: viewB, aligned: .top).marginHorizontal(10)
 ```
-
 
 <br/>
 
@@ -792,7 +791,7 @@ Following methods position the corresponding view anchor on another view’s anc
     view.pin.topLeft(to: view1.anchor.topLeft).bottomRight(to: view1.anchor.center)
 ```
 
-###### Example:
+###### Example 1:
 
 Layout using an anchor. This example pins the view B topLeft anchor on the view A topRight anchor.
 
@@ -803,13 +802,20 @@ Layout using an anchor. This example pins the view B topLeft anchor on the view 
 	viewB.pin.topLeft(to: viewA.anchor.topRight)
 ``` 
 
-<br/>
+###### Example 2:
 
-###### Example:
+This example center the view B on the view A's top-right anchor.
 
-Layout using multiple anchors.
- 
-It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with horizontal margins of 10px.
+<img src="docs/images/pinlayout_example_anchor_center.png" width="620"/>
+
+
+```swift
+	viewB.pin.center(to: viewA.anchor.topRight)
+``` 
+
+###### Example 3:
+
+Layout using multiple anchors. It is also possible to combine two anchors to pin the position and the size of a view. The following example will position the view C between the view A and B with horizontal margins of 10px.
 
 <img src="docs/example-multiple-anchors.png" width="620"/>
 
@@ -818,6 +824,12 @@ It is also possible to combine two anchors to pin the position and the size of a
 	viewC.pin.topLeft(to: viewA.anchor.topRight)
 	         .bottomRight(to: viewB.anchor.bottomLeft).marginHorizontal(10)
 ``` 
+
+This is an another possible solution using [horizontallyBetween()](#layout_between_w_alignment):
+
+```swift
+	viewC.pin.horizontallyBetween(viewA, and: viewB, aligned: .top).height(of: viewA).marginHorizontal(10)
+```
 
 <br/>
 
@@ -1657,8 +1669,8 @@ Cell A:
 * A2 fills the remaining space
 
 ```swift
-	a1.pin.top().bottom().left().width(50)
-	a2.pin.after(of: a1, aligned: .top).bottom().right().marginLeft(10)
+   a1.pin.vertically().left().width(50)
+   a2.pin.after(of: a1, aligned: .top).bottomRight().marginLeft(10)
 ```
 
 Cell B:
@@ -1667,8 +1679,8 @@ Cell B:
 * B1 fills the remaining space
 
 ```swift
-	b2.pin.top().bottom().right().width(50)
-	b1.pin.before(of: b2, aligned: .top).bottom().left().marginRight(10)
+   b2.pin.vertically().right().width(50)
+   b1.pin.before(of: b2, aligned: .top).bottom().left().marginRight(10)
 ```
 
 Cell C:
@@ -1678,9 +1690,9 @@ Cell C:
 * C3 fills the remaining right space
 
 ```swift
-	c2.pin.topCenter().width(50).bottom()
-	c1.pin.before(of: c2, aligned: .top).bottom().left().marginRight(10)
-	c3.pin.after(of: c2, aligned: .top).bottom().right().marginLeft(10)
+   c2.pin.vertically().hCenter().width(50)
+   c1.pin.before(of: c2, aligned: .top).bottom().left().marginRight(10)
+   c3.pin.after(of: c2, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 Cell D:
@@ -1690,9 +1702,9 @@ Cell D:
 * D3 fills the remaining space
 
 ```swift
-	d1.pin.topLeft().bottom().width(25%)
-	d2.pin.after(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
-	d3.pin.after(of: d2, aligned: .top).bottom().right().marginLeft(10)
+   d1.pin.vertically().left().width(25%)
+   d2.pin.after(of: d1, aligned: .top).bottom().width(50%).marginLeft(10)
+   d3.pin.after(of: d2, aligned: .top).bottom().right().marginLeft(10)
 ```
 
 <br>
@@ -1859,9 +1871,6 @@ If you find PinLayout interesting, thanks to **Star** it. You'll be able to retr
 
 If you'd like to contribute, you're welcome!
 
-<br>
-
-
 ## Thanks
 PinLayout was inspired by other great layout frameworks, including:
 
@@ -1870,16 +1879,12 @@ PinLayout was inspired by other great layout frameworks, including:
 * Qt: Anchors and edges management.
 * [SnapKit](https://github.com/SnapKit/SnapKit): Clean interface for anchors.
 
-<br>
-
 ## History
 PinLayout recent history is available in the [CHANGELOG](CHANGELOG.md) also in [GitHub Releases](https://github.com/layoutBox/PinLayout/releases).
 
 ### Recent breaking change
 
 * `fitSize()` has been removed after being deprecated for 10 months. `sizeToFit(...)` should now be used instead. See [Adjusting size](#adjusting_size). (2018-08-21)
-
-<br>
 
 ## License
 MIT License

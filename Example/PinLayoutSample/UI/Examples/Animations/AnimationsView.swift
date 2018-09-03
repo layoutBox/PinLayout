@@ -107,11 +107,10 @@ class AnimationsView: UIView {
         case .imageLeft:
             houseImageView.pin.below(of: segmented).left(margin).marginTop(margin).size(140)
             titleLabel.pin.after(of: houseImageView, aligned: .top).marginLeft(margin).sizeToFit()
-            descriptionLabel.pin.below(of: titleLabel, aligned: .left).right(margin)
-                .marginTop(margin).sizeToFit(.width)
+            descriptionLabel.pin.below(of: titleLabel, aligned: .left).right(margin).marginTop(margin).sizeToFit(.width)
 
         case .imageRight:
-            houseImageView.pin.below(of: segmented).right(margin).size(140).marginTop(margin)
+            houseImageView.pin.below(of: segmented).right(margin).marginTop(margin).size(140)
             titleLabel.pin.below(of: segmented, aligned: .left).margin(margin).sizeToFit()
             descriptionLabel.pin.below(of: titleLabel, aligned: .left).before(of: houseImageView).marginTop(margin).marginRight(margin).sizeToFit(.width)
 

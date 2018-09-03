@@ -22,15 +22,15 @@ import UIKit
 enum PageType: Int {
     case intro
     case adjustToContainer
-    case relativePositions
-    case multiRelativePositions
     case tableView
     case collectionView
     case animations
-    case safeArea
-    case wrapContent
-    case form
     case autoAdjustingSize
+    case safeArea
+    case relativePositions
+    case between
+    case form
+    case wrapContent
     case tableViewWithReadable
     case introRTL
     case introObjC
@@ -41,15 +41,15 @@ enum PageType: Int {
         switch self {
         case .intro:                  return "Introduction example"
         case .adjustToContainer:      return "Adjust to container size"
-        case .relativePositions:      return "Relative Positionning"
-        case .multiRelativePositions: return "Multiple Relatives Positionning"
         case .tableView:              return "UITableView with variable cell's height"
         case .collectionView:         return "UICollectionView Example"
         case .animations:             return "Animation Example"
-        case .safeArea:               return "SafeArea & readableMargins"
-        case .wrapContent:            return "wrapContent Example"
-        case .form:                   return "Form Example"
         case .autoAdjustingSize:      return "Auto adjusting size"
+        case .safeArea:               return "SafeArea & readableMargins"
+        case .relativePositions:      return "Relative Positionning"
+        case .between:                return "Between Example"
+        case .form:                   return "Form Example"
+        case .wrapContent:            return "wrapContent Example"
         case .tableViewWithReadable:  return "UITableView using readableMargins"
         case .introRTL:               return "Right-to-left language support"
         case .introObjC:              return "Objective-C PinLayout Example"
@@ -72,18 +72,18 @@ enum PageType: Int {
             tabbarController.title = self.title
             tabbarController.setViewControllers([SafeAreaViewController(), SafeAreaAndMarginsViewController()], animated: false)
             return tabbarController
-        case .wrapContent:
-            return WrapContentViewController(pageType: self)
         case .animations:
             return AnimationsViewController(pageType: self)
-        case .form:
-            return FormViewController(pageType: self)
-        case .relativePositions:
-            return RelativeViewController(pageType: self)
-        case .multiRelativePositions:
-            return MultiRelativeViewController(pageType: self)
         case .autoAdjustingSize:
             return AutoAdjustingSizeViewController(pageType: self)
+        case .relativePositions:
+            return RelativeViewController(pageType: self)
+        case .between:
+            return BetweenViewController(pageType: self)
+        case .form:
+            return FormViewController(pageType: self)
+        case .wrapContent:
+            return WrapContentViewController(pageType: self)
         case .tableViewWithReadable:
             return TableViewReadableContentViewController(pageType: self)
         case .introRTL:

@@ -14,8 +14,8 @@
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
 		2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC341E665BF6003326FB /* MenuViewController.swift */; };
 		2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC381E665C6B003326FB /* BasicView.swift */; };
-		2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC3F1E665C6B003326FB /* MultiRelativeView.swift */; };
-		2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */; };
+		2439CC521E665C6B003326FB /* BetweenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC3F1E665C6B003326FB /* BetweenView.swift */; };
+		2439CC531E665C6B003326FB /* BetweenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC401E665C6B003326FB /* BetweenViewController.swift */; };
 		2439CC541E665C6B003326FB /* RelativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC411E665C6B003326FB /* RelativeView.swift */; };
 		2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC421E665C6B003326FB /* RelativeViewController.swift */; };
 		247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247157931F87BD680003424F /* UIEdgeInsets+PinLayout.swift */; };
@@ -147,8 +147,8 @@
 		2439CC331E665BF6003326FB /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2439CC341E665BF6003326FB /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2439CC381E665C6B003326FB /* BasicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
-		2439CC3F1E665C6B003326FB /* MultiRelativeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiRelativeView.swift; sourceTree = "<group>"; };
-		2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiRelativeViewController.swift; sourceTree = "<group>"; };
+		2439CC3F1E665C6B003326FB /* BetweenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetweenView.swift; sourceTree = "<group>"; };
+		2439CC401E665C6B003326FB /* BetweenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetweenViewController.swift; sourceTree = "<group>"; };
 		2439CC411E665C6B003326FB /* RelativeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeView.swift; sourceTree = "<group>"; };
 		2439CC421E665C6B003326FB /* RelativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeViewController.swift; sourceTree = "<group>"; };
 		246812FC1F8D013500462E53 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -262,15 +262,15 @@
 			children = (
 				24F75B581EE5642C008DB567 /* Intro */,
 				24CB99991F290591004EA7FB /* AdjustToContainer */,
-				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */,
 				24A9C1EF1EF0542500F2CF64 /* TableViewExample */,
 				24F2460C1FA8D4D100B6332E /* CollectionViewExample */,
-				DF4C1A9F205AEDFC00DED50B /* SafeArea */,
-				DFEAF71520C840F300E33147 /* WrapContent */,
 				DF3908912118FFF20049FD56 /* Animations */,
+				DF66F9D61E8493D400ADB8D5 /* AutoAdjustingSize */,
+				DF4C1A9F205AEDFC00DED50B /* SafeArea */,
 				2439CC631E66606D003326FB /* RelativeView */,
-				2439CC5F1E665F66003326FB /* MultiRelativeView */,
+				2439CC5F1E665F66003326FB /* BetweenView */,
 				2497CFEA1EF40B8100DFD13B /* Form */,
+				DFEAF71520C840F300E33147 /* WrapContent */,
 				DFD31B9D212EE4D600566CA4 /* TableViewReadableContent */,
 				24D18D181F3DECD6008129EF /* IntroRTL */,
 				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
@@ -293,13 +293,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		2439CC5F1E665F66003326FB /* MultiRelativeView */ = {
+		2439CC5F1E665F66003326FB /* BetweenView */ = {
 			isa = PBXGroup;
 			children = (
-				2439CC3F1E665C6B003326FB /* MultiRelativeView.swift */,
-				2439CC401E665C6B003326FB /* MultiRelativeViewController.swift */,
+				2439CC3F1E665C6B003326FB /* BetweenView.swift */,
+				2439CC401E665C6B003326FB /* BetweenViewController.swift */,
 			);
-			path = MultiRelativeView;
+			path = BetweenView;
 			sourceTree = "<group>";
 		};
 		2439CC631E66606D003326FB /* RelativeView */ = {
@@ -729,14 +729,14 @@
 				24CB99981F290540004EA7FB /* MethodGroupHeader.swift in Sources */,
 				2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */,
 				24F246111FA8D4D100B6332E /* CollectionViewExampleViewController.swift in Sources */,
-				2439CC531E665C6B003326FB /* MultiRelativeViewController.swift in Sources */,
+				2439CC531E665C6B003326FB /* BetweenViewController.swift in Sources */,
 				DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */,
 				241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
 				DFD31BA0212EE4F200566CA4 /* TableViewReadableContentView.swift in Sources */,
 				DF39089A211900480049FD56 /* AnimationsViewController.swift in Sources */,
-				2439CC521E665C6B003326FB /* MultiRelativeView.swift in Sources */,
+				2439CC521E665C6B003326FB /* BetweenView.swift in Sources */,
 				24F246101FA8D4D100B6332E /* CollectionViewExampleView.swift in Sources */,
 				24A9C1F21EF0542F00F2CF64 /* TableViewExampleView.swift in Sources */,
 				24CB999D1F29059B004EA7FB /* AdjustToContainerViewController.swift in Sources */,

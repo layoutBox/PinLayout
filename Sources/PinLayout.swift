@@ -296,7 +296,7 @@ public class PinLayout<View: Layoutable> {
      Pin all edges on its superview's corresponding edges (top, bottom, left, right).
      The optionnal value specifies edges distance from the superview's corresponding edge in pixels.
 
-     Similar to calling `view.top().bottom().left().right()`
+     Similar to calling `view.top(margin).bottom(margin).left(margin).right(margin)`
      */
     @discardableResult
     public func all(_ margin: CGFloat = 0) -> PinLayout {
@@ -310,7 +310,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Pin all edges on its superview's corresponding edges (top, bottom, left, right).
 
-     Similar to calling `view.top().bottom().left().right()`
+     Similar to calling `view.top(insets).bottom(insets).left(insets).right(insets)`
      */
     @discardableResult
     public func all(_ insets: PEdgeInsets) -> PinLayout {
@@ -360,7 +360,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
 
-     Similar to calling `view.top().bottom()`.
+     Similar to calling `view.top(margin).bottom(margin)`.
      */
     @discardableResult
     public func vertically(_ margin: CGFloat = 0) -> PinLayout {
@@ -372,7 +372,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
 
-     Similar to calling `view.top().bottom()`.
+     Similar to calling `view.top(percent).bottom(percent)`.
      */
     @discardableResult
     public func vertically(_ percent: Percent) -> PinLayout {

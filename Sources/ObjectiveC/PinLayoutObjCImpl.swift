@@ -53,7 +53,13 @@ import AppKit
     #endif
 
     private var impl: PinLayout<PView>?
-    
+
+    #if os(iOS) || os(tvOS)
+    var safeArea: PEdgeInsets {
+        return impl?.safeArea ?? .zero
+    }
+    #endif
+
     init(view: PView, keepTransform: Bool) {
         impl = PinLayout<PView>(view: view, keepTransform: keepTransform)
     }
@@ -64,10 +70,6 @@ import AppKit
         }
     }
 
-    var safeArea: PEdgeInsets {
-        return impl?.safeArea ?? .zero
-    }
-    
     func layout() {
         // With objective-c PinLayoutObjCImpl instance are sometimes deallocated only after the context has been quit. For this reason
         // developpers must call the layout: method implicetely.

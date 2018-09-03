@@ -30,7 +30,9 @@ import AppKit
  feature not available to objective-c, including overloading.
  */
 @objc public protocol PinLayoutObjC {
+    #if os(iOS) || os(tvOS)
     var safeArea: PEdgeInsets { get }
+    #endif
 
     /**
      With the Objective-C interface, you must call the \"layout\" method to ensure the view is layouted correctly.

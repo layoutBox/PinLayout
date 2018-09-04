@@ -18,33 +18,23 @@
 //  THE SOFTWARE.
 
 import UIKit
-import PinLayout
 
-class MultiRelativeView: UIView {
-    private let view1 = BasicView(text: "Relative view 1 (width: 20%, height: 50%)", color: .lightGray)
-    private let view2 = BasicView(text: "Relative view 2 (width: 20%, height: 50%)", color: .lightGray)
-    private let view = BasicView(text: "View layouted using two relative views: \n  - right(of: view1, aligned: .top)\n  - left(of: view2, aligned: .bottom)",
-                                 color: .pinLayoutColor)
-    
-    init() {
-        super.init(frame: .zero)
-        backgroundColor = .white
-    
-        addSubview(view1)
-        addSubview(view2)
-        addSubview(view)
+class BetweenViewController: UIViewController {
+    private var mainView: BetweenView {
+        return self.view as! BetweenView
+    }
+
+    init(pageType: PageType) {
+        super.init(nibName: nil, bundle: nil)
+        
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        view1.pin.top(pin.safeArea).left(pin.safeArea).width(20%).height(50%)
-        view2.pin.top(pin.safeArea).right(pin.safeArea).width(20%).height(50%)
-
-        view.pin.after(of: view1, aligned: .top).before(of: view2, aligned: .bottom).marginHorizontal(10)
+    override func loadView() {
+        view = BetweenView()
     }
 }

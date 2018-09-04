@@ -43,6 +43,6 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleLabel.pin.horizontally().vCenter().margin(10).sizeToFit(.width)
+        titleLabel.pin.horizontally(10).vCenter().sizeToFit(.width)
     }
 }

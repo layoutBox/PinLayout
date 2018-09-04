@@ -53,7 +53,13 @@ import AppKit
     #endif
 
     private var impl: PinLayout<PView>?
-    
+
+    #if os(iOS) || os(tvOS)
+    var safeArea: PEdgeInsets {
+        return impl?.safeArea ?? .zero
+    }
+    #endif
+
     init(view: PView, keepTransform: Bool) {
         impl = PinLayout<PView>(view: view, keepTransform: keepTransform)
     }
@@ -63,7 +69,7 @@ import AppKit
             impl?.warn("With the Objective-C interface, you must call the \"layout\" method to ensure the view is layouted correctly (ex: [[[textLabel.pin_objc top] left] layout];")
         }
     }
-    
+
     func layout() {
         // With objective-c PinLayoutObjCImpl instance are sometimes deallocated only after the context has been quit. For this reason
         // developpers must call the layout: method implicetely.
@@ -85,6 +91,11 @@ import AppKit
         _ = impl?.top(percent%)
         return self
     }
+
+    func top(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.top(insets)
+        return self
+    }
     
     func left() -> PinLayoutObjC {
         _ = impl?.left()
@@ -98,6 +109,11 @@ import AppKit
     
     func left(percent: CGFloat) -> PinLayoutObjC {
         _ = impl?.left(percent%)
+        return self
+    }
+
+    func left(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.left(insets)
         return self
     }
     
@@ -115,6 +131,11 @@ import AppKit
         _ = impl?.bottom(percent%)
         return self
     }
+
+    func bottom(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.bottom(insets)
+        return self
+    }
     
     func right() -> PinLayoutObjC {
         _ = impl?.right()
@@ -128,6 +149,11 @@ import AppKit
     
     func right(percent: CGFloat) -> PinLayoutObjC {
         _ = impl?.right(percent%)
+        return self
+    }
+
+    func right(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.right(insets)
         return self
     }
     
@@ -175,6 +201,11 @@ import AppKit
         _ = impl?.start(percent%)
         return self
     }
+
+    func start(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.start(insets)
+        return self
+    }
     
     func end() -> PinLayoutObjC {
         _ = impl?.end()
@@ -188,6 +219,11 @@ import AppKit
     
     func end(percent: CGFloat) -> PinLayoutObjC {
         _ = impl?.end(percent%)
+        return self
+    }
+
+    func end(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.end(insets)
         return self
     }
     

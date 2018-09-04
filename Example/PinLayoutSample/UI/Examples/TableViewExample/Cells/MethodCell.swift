@@ -60,7 +60,7 @@ class MethodCell: UITableViewCell {
     }
     
     private func layout() {
-        iconImageView.pin.top().left().size(30).margin(padding)
+        iconImageView.pin.topLeft(padding).size(30)
         nameLabel.pin.after(of: iconImageView, aligned: .center).right().marginHorizontal(padding).sizeToFit(.width)
         descriptionLabel.pin.below(of: [iconImageView, nameLabel]).horizontally().margin(padding).sizeToFit(.width)
     }

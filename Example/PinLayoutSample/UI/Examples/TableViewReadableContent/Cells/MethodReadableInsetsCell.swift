@@ -45,7 +45,7 @@ class MethodReadableInsetsCell: UITableViewCell {
         contentView.pin.top(margin).horizontally(pin.readableMargins)
 
         // 2) Layout contentView's childs
-        iconImageView.pin.top().left().size(30)
+        iconImageView.pin.topLeft().size(30)
         nameLabel.pin.after(of: iconImageView, aligned: .center).right().marginHorizontal(margin).sizeToFit(.width)
         descriptionLabel.pin.below(of: [iconImageView, nameLabel]).horizontally().marginTop(margin).sizeToFit(.width)
 

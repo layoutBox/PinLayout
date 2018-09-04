@@ -30,9 +30,9 @@ Example showing how to layout views relative to other views.
 
 <img src="pinlayout_exampleapp_relative_position.png" width=180/>
 
-## Multi Relative Edges Layout Example
-Example showing how to layout a view relative to many other views.
-[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/MultiRelativeView)
+## Between Example
+Example showing how to use [`horizontallyBetween()`](https://github.com/layoutBox/PinLayout#layout-between-other-views) to position a view between two other views.
+[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/BetweenView/BetweenView.swift)
 
 <img src="pinlayout_exampleapp_multi_relative_position.png" width=180/>
 

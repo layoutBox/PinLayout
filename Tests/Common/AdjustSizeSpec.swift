@@ -866,6 +866,17 @@ class AdjustSizeSpec: QuickSpec {
                 label.sizeToFit()
                 expect(size).to(equal(label.bounds.size))
             }
+
+            it("should produce the same size as the built-in sizeToFit() method when there is a transform applied") {
+                let label = PLabel(frame: CGRect.zero)
+                label.text = "Lorem ipsum dolor sit amet"
+                label.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                label.pin.sizeToFit()
+                let size = label.bounds.size
+                label.bounds.size = CGSize.zero
+                label.sizeToFit()
+                expect(size).to(equal(label.bounds.size))
+            }
         }
         #endif
     }

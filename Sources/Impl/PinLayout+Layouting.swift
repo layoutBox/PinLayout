@@ -308,7 +308,8 @@ extension PinLayout {
 
         let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
-        if case .fitTypeContent = adjustSizeType {} else {
+        switch adjustSizeType {
+        case .fitTypeWidth, .fitTypeWidthFlexible, .fitTypeHeight, .fitTypeHeightFlexible, .fitSizeLegacy, .aspectRatio(_):
             if fitWidth != .greatestFiniteMagnitude {
                 size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth
             } else {
@@ -320,6 +321,8 @@ extension PinLayout {
             } else {
                 size.height = sizeThatFits.height
             }
+        case .fitTypeContent:
+            size = Size(width: sizeThatFits.width, height: sizeThatFits.height)
         }
 
         return size

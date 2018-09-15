@@ -20,14 +20,14 @@
 import UIKit
 
 class WrapContentViewController: UIViewController {
-    fileprivate var mainView: WrapContentView {
+    private var mainView: WrapContentView {
         return self.view as! WrapContentView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

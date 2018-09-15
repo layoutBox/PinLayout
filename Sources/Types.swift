@@ -99,30 +99,43 @@ import Foundation
     var end: HorizontalEdge { get }
 }
 
-/// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:)
+/// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:), ...
 ///
 /// - left: left aligned
 /// - center: center aligned
 /// - right: right aligned
 @objc public enum HorizontalAlign: Int {
+    /// The view's left edge will be left-aligned with the relative view (or the left most view if a list of relative views is specified).
     case left
+    /// The view's will be horizontally centered with the relative view (or the average hCenter if a list of relative views is used).
     case center
+    /// The view's right edge will be right-aligned with the relative view (or the right most view if a list of relative views is specified).
     case right
-
+    /// No alignment will be applied.
+    case none
     // RTL support
+    /// In LTR direction, similar to using HorizontalAlignment.left.
+    /// In RTL direction, similar to using HorizontalAlignment.right.
     case start
+    /// In LTR direction, similar to using HorizontalAlignment.right.
+    /// In RTL direction, similar to using HorizontalAlignment.left.
     case end
 }
 
-/// Vertical alignment used with relative positionning methods: left(of relativeView:, aligned:), right(of relativeView:, aligned:)
+/// Vertical alignment used with relative positionning methods: after(of relativeView:, aligned:), before(of relativeView:, aligned:), ...
 ///
 /// - top: top aligned
 /// - center: center aligned
 /// - bottom: bottom aligned
 @objc public enum VerticalAlign: Int {
+    /// The view's top edge will be top-aligned with the relative view (or the top most view if a list of relative views is specified).
     case top
+    /// The view's will be vertically centered with the relative view (or the average vCenter if a list of relative views is used).
     case center
+    /// The view's bottom edge will be bottom-aligned with the relative view (or the bottom most view if a list of relative views is specified).
     case bottom
+    /// No alignment will be applied.
+    case none
 }
 
 /// UIView's horizontal edges (left/right) definition

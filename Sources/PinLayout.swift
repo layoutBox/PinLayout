@@ -93,8 +93,25 @@ public class PinLayout<View: Layoutable> {
                 return view.pinlayoutComputeSafeAreaInsets()
             }
         } else {
-            return PEdgeInsets.zero
+            return .zero
         }
+    }
+
+    public var readableMargins: PEdgeInsets {
+        guard #available(iOS 9.0, *) else { return .zero }
+        guard let view = view as? UIView else { return .zero }
+
+        let layoutFrame = view.readableContentGuide.layoutFrame
+        guard !layoutFrame.isEmpty else { return .zero }
+        
+        return UIEdgeInsets(top: layoutFrame.origin.y, left: layoutFrame.origin.x,
+                            bottom: view.frame.height - layoutFrame.origin.y - layoutFrame.height,
+                            right: view.frame.width - layoutFrame.origin.x - layoutFrame.width)
+    }
+
+    public var layoutMargins: PEdgeInsets {
+        guard let view = view as? UIView else { return .zero }
+        return view.layoutMargins
     }
     #endif
 
@@ -279,7 +296,7 @@ public class PinLayout<View: Layoutable> {
      Pin all edges on its superview's corresponding edges (top, bottom, left, right).
      The optionnal value specifies edges distance from the superview's corresponding edge in pixels.
 
-     Similar to calling `view.top().bottom().left().right()`
+     Similar to calling `view.top(margin).bottom(margin).left(margin).right(margin)`
      */
     @discardableResult
     public func all(_ margin: CGFloat = 0) -> PinLayout {
@@ -293,7 +310,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Pin all edges on its superview's corresponding edges (top, bottom, left, right).
 
-     Similar to calling `view.top().bottom().left().right()`
+     Similar to calling `view.top(insets).bottom(insets).left(insets).right(insets)`
      */
     @discardableResult
     public func all(_ insets: PEdgeInsets) -> PinLayout {
@@ -343,7 +360,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
 
-     Similar to calling `view.top().bottom()`.
+     Similar to calling `view.top(margin).bottom(margin)`.
      */
     @discardableResult
     public func vertically(_ margin: CGFloat = 0) -> PinLayout {
@@ -355,7 +372,7 @@ public class PinLayout<View: Layoutable> {
     /**
      Pin the **top and bottom edges** on its superview's corresponding edges.
 
-     Similar to calling `view.top().bottom()`.
+     Similar to calling `view.top(percent).bottom(percent)`.
      */
     @discardableResult
     public func vertically(_ percent: Percent) -> PinLayout {
@@ -465,8 +482,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func topLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topLeft", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setTopLeft(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setTopLeft(coordinates[0], context)
         }
         return self
     }
@@ -483,9 +500,9 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func topStart(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topStart", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setTop(coordinatesList[0].y, context)
-            setStart(coordinatesList[0].x, context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setTop(coordinates[0].y, context)
+            setStart(coordinates[0].x, context)
         }
         return self
     }
@@ -501,7 +518,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? topLeft(margin, context: context) : topRight(margin, context: context)
     }
 
-    fileprivate func topLeft(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func topLeft(_ margin: CGFloat, context: Context) -> PinLayout {
         setTopLeft(CGPoint(x: margin, y: margin), context)
         return self
     }
@@ -509,8 +526,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func topCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topCenter", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setTopCenter(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setTopCenter(coordinates[0], context)
         }
         return self
     }
@@ -526,8 +543,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func topRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topRight", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setTopRight(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setTopRight(coordinates[0], context)
         }
         return self
     }
@@ -540,9 +557,9 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func topEnd(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "topEnd", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setTop(coordinatesList[0].y, context)
-            setEnd(coordinatesList[0].x, context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setTop(coordinates[0].y, context)
+            setEnd(coordinates[0].x, context)
         }
         return self
     }
@@ -553,7 +570,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? topRight(margin, context: context) : topLeft(margin, context: context)
     }
 
-    fileprivate func topRight(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func topRight(_ margin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setTopRight(CGPoint(x: layoutSuperviewRect.width - margin, y: margin), context)
         return self
@@ -562,8 +579,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func centerLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerLeft", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setCenterLeft(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setCenterLeft(coordinates[0], context)
         }
         return self
     }
@@ -576,9 +593,9 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func centerStart(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerStart", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setVerticalCenter(coordinatesList[0].y, context)
-            setStart(coordinatesList[0].x, context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setVerticalCenter(coordinates[0].y, context)
+            setStart(coordinates[0].x, context)
         }
         return self
     }
@@ -589,7 +606,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? centerLeft(startMargin, context: context) : centerRight(startMargin, context: context)
     }
 
-    fileprivate func centerLeft(_ leftMargin: CGFloat, context: Context) -> PinLayout {
+    private func centerLeft(_ leftMargin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setCenterLeft(CGPoint(x: leftMargin, y: layoutSuperviewRect.height / 2), context)
         return self
@@ -598,8 +615,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func center(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "center", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setCenter(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setCenter(coordinates[0], context)
         }
         return self
     }
@@ -615,8 +632,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func centerRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerRight", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setCenterRight(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setCenterRight(coordinates[0], context)
         }
         return self
     }
@@ -629,9 +646,9 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func centerEnd(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "centerEnd", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setVerticalCenter(coordinatesList[0].y, context)
-            setEnd(coordinatesList[0].x, context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setVerticalCenter(coordinates[0].y, context)
+            setEnd(coordinates[0].x, context)
         }
         return self
     }
@@ -642,7 +659,7 @@ public class PinLayout<View: Layoutable> {
         return isLTR() ? centerRight(endMargin, context: context) : centerLeft(endMargin, context: context)
     }
 
-    fileprivate func centerRight(_ rightMargin: CGFloat, context: Context) -> PinLayout {
+    private func centerRight(_ rightMargin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setCenterRight(CGPoint(x: layoutSuperviewRect.width - rightMargin, y: layoutSuperviewRect.height / 2), context)
         return self
@@ -651,8 +668,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func bottomLeft(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomLeft", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setBottomLeft(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setBottomLeft(coordinates[0], context)
         }
         return self
     }
@@ -662,7 +679,7 @@ public class PinLayout<View: Layoutable> {
         return bottomLeft(margin, context: { return "bottomLeft(\(margin.optionnalDescription))" })
     }
 
-    fileprivate func bottomLeft(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func bottomLeft(_ margin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setBottomLeft(CGPoint(x: margin, y: layoutSuperviewRect.height - margin), context)
         return self
@@ -671,9 +688,9 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func bottomStart(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomStart", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setBottom(coordinatesList[0].y, context)
-            setStart(coordinatesList[0].x, context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setBottom(coordinates[0].y, context)
+            setStart(coordinates[0].x, context)
         }
         return self
     }
@@ -687,8 +704,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func bottomCenter(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomCenter", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setBottomCenter(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setBottomCenter(coordinates[0], context)
         }
         return self
     }
@@ -704,8 +721,8 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func bottomRight(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomRight", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setBottomRight(coordinatesList[0], context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setBottomRight(coordinates[0], context)
         }
         return self
     }
@@ -715,7 +732,7 @@ public class PinLayout<View: Layoutable> {
         return bottomRight(margin, context: { return "bottomRight(\(margin.optionnalDescription))" })
     }
 
-    fileprivate func bottomRight(_ margin: CGFloat, context: Context) -> PinLayout {
+    private func bottomRight(_ margin: CGFloat, context: Context) -> PinLayout {
         guard let layoutSuperviewRect = layoutSuperviewRect(context) else { return self }
         setBottomRight(CGPoint(x: layoutSuperviewRect.width - margin, y: layoutSuperviewRect.height - margin), context)
         return self
@@ -724,9 +741,9 @@ public class PinLayout<View: Layoutable> {
     @discardableResult
     public func bottomEnd(to anchor: Anchor) -> PinLayout {
         func context() -> String { return relativeAnchorContext(method: "bottomEnd", anchor: anchor) }
-        if let coordinatesList = computeCoordinates(forAnchors: [anchor], context) {
-            setBottom(coordinatesList[0].y, context)
-            setEnd(coordinatesList[0].x, context)
+        if let coordinates = computeCoordinates(forAnchors: [anchor], context) {
+            setBottom(coordinates[0].y, context)
+            setEnd(coordinates[0].x, context)
         }
         return self
     }

@@ -23,7 +23,7 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
     static let reuseIdentifier = "MethodGroupHeader"
     static let height: CGFloat = 50
     
-    fileprivate let titleLabel = UILabel()
+    private let titleLabel = UILabel()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -43,6 +43,6 @@ class MethodGroupHeader: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleLabel.pin.horizontally().vCenter().margin(10).sizeToFit(.width)
+        titleLabel.pin.horizontally(10).vCenter().sizeToFit(.width)
     }
 }

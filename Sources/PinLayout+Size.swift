@@ -30,7 +30,6 @@ enum AdjustSizeType {
     case fitTypeHeightFlexible
     case fitTypeContent
 
-    case fitSizeLegacy
     case aspectRatio(CGFloat)
 
     var isFlexible: Bool {
@@ -47,7 +46,7 @@ enum AdjustSizeType {
         switch self {
         case .fitTypeWidth, .fitTypeHeight,
              .fitTypeWidthFlexible, .fitTypeHeightFlexible,
-             .fitTypeContent, .fitSizeLegacy:
+             .fitTypeContent:
             return true
         case .aspectRatio(_):
             return false
@@ -145,12 +144,13 @@ extension PinLayout {
     public func aspectRatio() -> PinLayout {
         func context() -> String { return "aspectRatio()" }
         guard let imageView = view as? UIImageView else {
-            warnWontBeApplied("the layouted must be an UIImageView() to use the aspectRatio() method without parameter.", context)
+            warnWontBeApplied("the layouted view must be an UIImageView() to use the aspectRatio() method without parameter.", context)
             return self
         }
 
         guard let imageSize = imageView.image?.size else {
-            warnWontBeApplied("the layouted UIImageView's image hasn't been set", context)
+            guard Pin.logWarnings && Pin.activeWarnings.aspectRatioImageNotSet else { return self }
+            warnWontBeApplied("the layouted UIImageView's image hasn't been set (aspectRatioImageNotSet)", context)
             return self
         }
 
@@ -219,16 +219,7 @@ extension PinLayout {
     @discardableResult
     public func sizeToFit(_ fitType: FitType = .content) -> PinLayout {
         return setAdjustSizeType(fitType.toAdjustSizeType(), { return "sizeToFit(\(fitType.description))" })
-    }
-
-    #if os(iOS) || os(tvOS)
-    @available(*, deprecated, message: "fitSize() is deprecated, please use sizeToFit(fitType: FitType)")
-    @discardableResult
-    public func fitSize() -> PinLayout {
-        return setAdjustSizeType(.fitSizeLegacy, { return "fitSize()" })
-    }
-    #endif
-}
+    }}
 
 //
 // MARK: Private methods
@@ -260,14 +251,12 @@ extension PinLayout {
         return self
     }
 
-    fileprivate func warnAdjustSizeConflict(context: Context) {
+    private func warnAdjustSizeConflict(context: Context) {
         guard let adjustSizeType = adjustSizeType else { return }
         let conflict: String
         switch adjustSizeType {
         case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent:
             conflict = "sizeToFit(\(adjustSizeType.toFitType()!.description))."
-        case .fitSizeLegacy:
-            conflict = "fitSize()"
         case .aspectRatio(let ratio):
             conflict = "aspectRatio(\(ratio))"
         }

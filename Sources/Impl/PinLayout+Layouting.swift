@@ -201,8 +201,6 @@ extension PinLayout {
             switch adjustSizeType {
             case .fitTypeWidth, .fitTypeHeight, .fitTypeWidthFlexible, .fitTypeHeightFlexible, .fitTypeContent:
                 size = computeSizeToFit(adjustSizeType: adjustSizeType, size: size)
-            case .fitSizeLegacy:
-                size = computeLegacyFitSize(size: size)
             case .aspectRatio(let ratio):
                 size = computeAspectRatio(ratio, size: size)
             }
@@ -231,44 +229,6 @@ extension PinLayout {
             size.height = bottom - top - _marginTop - _marginBottom
         } else if shouldKeepViewDimension {
             size.height = view.getRect(keepTransform: keepTransform).height
-        }
-
-        return size
-    }
-
-    private func computeLegacyFitSize(size: Size) -> Size {
-        guard let sizeCalculableView = view as? SizeCalculable else {
-            assertionFailure("Should not occurs, protocol conformance is checked before assigning adjustSizeType")
-            return size
-        }
-        guard size.width != nil || size.height != nil else {
-            warn("fitSize() won't be applied, neither the width nor the height can be determined.")
-            return size
-        }
-
-        var size = size
-        var fitWidth = CGFloat.greatestFiniteMagnitude
-        var fitHeight = CGFloat.greatestFiniteMagnitude
-
-        if let width = applyMinMax(toWidth: size.width) {
-            fitWidth = width
-        }
-        if let height = applyMinMax(toHeight: size.height) {
-            fitHeight = height
-        }
-
-        let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
-
-        if fitWidth != .greatestFiniteMagnitude && (sizeThatFits.width > fitWidth) {
-            size.width = fitWidth
-        } else {
-            size.width = sizeThatFits.width
-        }
-
-        if fitHeight != .greatestFiniteMagnitude && (sizeThatFits.height > fitHeight) {
-            size.height = fitHeight
-        } else {
-            size.height = sizeThatFits.height
         }
 
         return size
@@ -309,7 +269,7 @@ extension PinLayout {
         let sizeThatFits = sizeCalculableView.sizeThatFits(CGSize(width: fitWidth, height: fitHeight))
 
         switch adjustSizeType {
-        case .fitTypeWidth, .fitTypeWidthFlexible, .fitTypeHeight, .fitTypeHeightFlexible, .fitSizeLegacy, .aspectRatio(_):
+        case .fitTypeWidth, .fitTypeWidthFlexible, .fitTypeHeight, .fitTypeHeightFlexible, .aspectRatio(_):
             if fitWidth != .greatestFiniteMagnitude {
                 size.width = adjustSizeType.isFlexible ? sizeThatFits.width : fitWidth
             } else {
@@ -385,7 +345,7 @@ extension PinLayout {
         let remainingWidth = containerWidth - rect.width
         var justifyType = HorizontalAlign.left
         
-        if let justify = justify {
+        if let justify = justify, justify != .none {
             justifyType = justify
         }
         
@@ -411,6 +371,8 @@ extension PinLayout {
             } else {
                 rect.origin.x = left + _marginLeft
             }
+        case .none:
+            break
         }
         
         return rect
@@ -437,7 +399,7 @@ extension PinLayout {
         let remainingHeight = containerHeight - rect.height
         var alignType = VerticalAlign.top
         
-        if let align = align {
+        if let align = align, align != .none {
             alignType = align
         }
         
@@ -450,6 +412,8 @@ extension PinLayout {
             rect.origin.y = top + _marginTop + remainingHeight / 2
         case .bottom:
             rect.origin.y = bottom - _marginBottom - rect.height
+        case .none:
+            break
         }
         
         return rect

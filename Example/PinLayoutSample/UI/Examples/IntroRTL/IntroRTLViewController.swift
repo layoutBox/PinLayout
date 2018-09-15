@@ -20,14 +20,14 @@
 import UIKit
 
 class IntroRTLViewController: UIViewController {
-    fileprivate var mainView: IntroRTLView {
+    private var mainView: IntroRTLView {
         return self.view as! IntroRTLView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

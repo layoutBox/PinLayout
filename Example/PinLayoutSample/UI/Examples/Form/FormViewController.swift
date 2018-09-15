@@ -20,14 +20,14 @@
 import UIKit
 
 class FormViewController: UIViewController {
-    fileprivate var mainView: FormView {
+    private var mainView: FormView {
         return self.view as! FormView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

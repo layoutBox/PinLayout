@@ -20,14 +20,14 @@
 import UIKit
 
 class RelativeViewController: UIViewController {
-    fileprivate var mainView: RelativeView {
+    private var mainView: RelativeView {
         return self.view as! RelativeView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

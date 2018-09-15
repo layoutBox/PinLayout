@@ -30,6 +30,10 @@ import AppKit
  feature not available to objective-c, including overloading.
  */
 @objc public protocol PinLayoutObjC {
+    #if os(iOS) || os(tvOS)
+    var safeArea: PEdgeInsets { get }
+    #endif
+
     /**
      With the Objective-C interface, you must call the \"layout\" method to ensure the view is layouted correctly.
      Ex:
@@ -37,23 +41,27 @@ import AppKit
          [[[textLabel.pin_objc top] left] layout];"
      */
     func layout()
-    
+
     @discardableResult func top() -> PinLayoutObjC
     @discardableResult func top(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func top(percent: CGFloat) -> PinLayoutObjC
+    @discardableResult func top(insets: PEdgeInsets) -> PinLayoutObjC
     
     @discardableResult func left() -> PinLayoutObjC
     @discardableResult func left(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func left(percent: CGFloat) -> PinLayoutObjC
-    
+    @discardableResult func left(insets: PEdgeInsets) -> PinLayoutObjC
+
     @discardableResult func bottom() -> PinLayoutObjC
     @discardableResult func bottom(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func bottom(percent: CGFloat) -> PinLayoutObjC
-    
+    @discardableResult func bottom(insets: PEdgeInsets) -> PinLayoutObjC
+
     @discardableResult func right() -> PinLayoutObjC
     @discardableResult func right(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func right(percent: CGFloat) -> PinLayoutObjC
-    
+    @discardableResult func right(insets: PEdgeInsets) -> PinLayoutObjC
+
     @discardableResult func hCenter() -> PinLayoutObjC
     @discardableResult func hCenter(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func hCenter(percent: CGFloat) -> PinLayoutObjC
@@ -66,9 +74,12 @@ import AppKit
     @discardableResult func start() -> PinLayoutObjC
     @discardableResult func start(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func start(percent: CGFloat) -> PinLayoutObjC
+    @discardableResult func start(insets: PEdgeInsets) -> PinLayoutObjC
+
     @discardableResult func end() -> PinLayoutObjC
     @discardableResult func end(_ value: CGFloat) -> PinLayoutObjC
     @discardableResult func end(percent: CGFloat) -> PinLayoutObjC
+    @discardableResult func end(insets: PEdgeInsets) -> PinLayoutObjC
     
     // Pin multiple edges at once.
     @discardableResult func all() -> PinLayoutObjC

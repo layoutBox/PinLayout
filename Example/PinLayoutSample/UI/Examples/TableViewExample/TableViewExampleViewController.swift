@@ -25,14 +25,14 @@ struct Method {
 }
 
 class TableViewExampleViewController: UIViewController {
-    fileprivate var mainView: TableViewExampleView {
+    private var mainView: TableViewExampleView {
         return self.view as! TableViewExampleView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

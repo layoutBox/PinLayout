@@ -23,10 +23,10 @@ import PinLayout
 class MethodCell: UITableViewCell {
     static let reuseIdentifier = "MethodCell"
     
-    fileprivate let iconImageView = UIImageView(image: UIImage(named: "method"))
-    fileprivate let nameLabel = UILabel()
-    fileprivate let descriptionLabel = UILabel()
-    fileprivate let padding: CGFloat = 10
+    private let iconImageView = UIImageView(image: UIImage(named: "method"))
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let padding: CGFloat = 10
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -59,9 +59,9 @@ class MethodCell: UITableViewCell {
         layout()
     }
     
-    fileprivate func layout() {
-        iconImageView.pin.top().left().size(30).margin(padding)
-        nameLabel.pin.right(of: iconImageView, aligned: .center).right().marginHorizontal(padding).sizeToFit(.width)
+    private func layout() {
+        iconImageView.pin.topLeft(padding).size(30)
+        nameLabel.pin.after(of: iconImageView, aligned: .center).right().marginHorizontal(padding).sizeToFit(.width)
         descriptionLabel.pin.below(of: [iconImageView, nameLabel]).horizontally().margin(padding).sizeToFit(.width)
     }
     

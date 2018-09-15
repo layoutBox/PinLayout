@@ -65,17 +65,17 @@ class AspectRatioTests: QuickSpec {
             rootView.addSubview(imageView)
             #endif
         }
+
+        afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
+            Pin.resetWarnings()
+        }
         
         //
         // aspectRatio(: CGFloat)
         //
         describe("the result of the aspectRatio(CGFloat)") {
             #if os(iOS) || os(tvOS)
-            it("should warn about fitSize()") {
-                aView.pin.left().width(100%).aspectRatio(2).fitSize()
-                expect(Pin.lastWarningText).to(contain(["fitSize() won't be applied", "conflicts", "aspectRatio(2.0)"]))
-            }
-            
             it("should warn about fitSize()") {
                 aView.pin.left().height(100).aspectRatio(2).sizeToFit(.width)
                 expect(Pin.lastWarningText).to(contain(["sizeToFit(.width) won't be applied", "conflicts", "aspectRatio"]))
@@ -171,9 +171,27 @@ class AspectRatioTests: QuickSpec {
         describe("the result of the aspectRatio(CGFloat)") {
             it("should warn about aspectRatio()") {
                 aView.pin.left().width(100).aspectRatio()
-                expect(Pin.lastWarningText).to(contain(["aspectRatio() won't be applied", "the layouted must be an UIImageView()"]))
+                expect(Pin.lastWarningText).to(contain(["aspectRatio() won't be applied", "the layouted view must be an UIImageView()"]))
                 expect(aView.frame).to(equal(CGRect(x: 0.0, y: 100.0, width: 100.0, height: 100.0)))
             }
+
+            it("should warn about aspectRatio() if no image is set") {
+                imageView.image = nil
+                imageView.pin.left().width(100).aspectRatio()
+                expect(Pin.lastWarningText).to(contain(["aspectRatio() won't be applied", "the layouted UIImageView's image hasn't been set (aspectRatioImageNotSet)"]))
+            }
+
+            it("should not warn about aspectRatio() if no image is set") {
+                Pin.activeWarnings.aspectRatioImageNotSet = false
+                imageView.image = nil
+                imageView.pin.left().width(100).aspectRatio()
+                expect(Pin.lastWarningText).to(beNil())
+                expect(imageView.frame).to(equal(CGRect(x: 0.0, y: 10.0, width: 100.0, height: 60.0)))
+            }
+
+//            guard Pin.logWarnings &&  else { return self }
+//            warnWontBeApplied(")", context)
+
             
             it("should warn about aspectRatio()") {
                 imageView.pin.left().aspectRatio()

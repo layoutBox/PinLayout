@@ -16,11 +16,11 @@ import UIKit
 
 class CollectionViewExampleView: UIView {
 
-    fileprivate let collectionView: UICollectionView
-    fileprivate let flowLayout = UICollectionViewFlowLayout()
-    fileprivate let cellTemplate = HouseCell()
+    private let collectionView: UICollectionView
+    private let flowLayout = UICollectionViewFlowLayout()
+    private let cellTemplate = HouseCell()
     
-    fileprivate var houses: [House] = []
+    private var houses: [House] = []
     
     init() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)

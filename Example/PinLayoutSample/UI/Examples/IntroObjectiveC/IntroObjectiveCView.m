@@ -64,11 +64,14 @@
 
 - (void) layoutSubviews {
     [super layoutSubviews];
+
+    CGFloat margin = 10;
+    UIEdgeInsets safeArea = self.pinObjc.safeArea;
     
-    [[[[[[logo.pinObjc top] left] width:100] aspectRatio] marginWithTop:topLayoutGuide + 10 horizontal:10 bottom:10] layout];
-    [[[[segmented.pinObjc rightOf:logo aligned:VerticalAlignTop] right] marginHorizontal:10] layout];
-    [[[[[[textLabel.pinObjc belowOf:segmented aligned:HorizontalAlignLeft] widthOf:segmented] pinEdges] marginTop:10] sizeToFit:FitWidth] layout];
-    [[[[[separatorView.pinObjc belowOfViews:@[logo, textLabel] aligned:HorizontalAlignLeft] rightTo:segmented.edge.right] height:1] marginTop:10] layout];
+    [[[[[[logo.pinObjc topWithInsets:safeArea] leftWithInsets:safeArea] width:100] aspectRatio] margin:margin] layout];
+    [[[[segmented.pinObjc rightOf:logo aligned:VerticalAlignTop] rightWithInsets:safeArea] marginHorizontal:margin] layout];
+    [[[[[[textLabel.pinObjc belowOf:segmented aligned:HorizontalAlignLeft] widthOf:segmented] pinEdges] marginTop:margin] sizeToFit:FitWidth] layout];
+    [[[[[separatorView.pinObjc belowOfViews:@[logo, textLabel] aligned:HorizontalAlignLeft] rightTo:segmented.edge.right] height:1] marginTop:margin] layout];
 }
 
 - (void) setLayoutGuidesTop:(CGFloat)top {

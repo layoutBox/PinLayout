@@ -18,15 +18,15 @@ import PinLayout
 class HouseCell: UICollectionViewCell {
     static let reuseIdentifier = "HouseCell"
     
-    fileprivate let headerView = UIView()
-    fileprivate let nameLabel = UILabel()
-    fileprivate let mainImage = UIImageView()
+    private let headerView = UIView()
+    private let nameLabel = UILabel()
+    private let mainImage = UIImageView()
     
-    fileprivate let footerView = UIView()
-    fileprivate let priceLabel = UILabel()
-    fileprivate let distanceLabel = UILabel()
+    private let footerView = UIView()
+    private let priceLabel = UILabel()
+    private let distanceLabel = UILabel()
     
-    fileprivate let padding: CGFloat = 8
+    private let margin: CGFloat = 8
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,15 +79,15 @@ class HouseCell: UICollectionViewCell {
     }
     
     private func layout() {
-        headerView.pin.top().horizontally(pin.safeArea).height(100)
-        nameLabel.pin.top().horizontally().margin(padding).sizeToFit(.width)
+        headerView.pin.top().horizontally(pin.safeArea).height(40)
+        nameLabel.pin.vCenter().horizontally(margin).sizeToFit(.width)
         
-        mainImage.pin.below(of: nameLabel).horizontally(pin.safeArea).height(300).marginTop(padding)
+        mainImage.pin.below(of: headerView).horizontally(pin.safeArea).height(300)
         
         footerView.pin.below(of: mainImage).horizontally(pin.safeArea)
-        priceLabel.pin.top().horizontally().margin(6, padding).sizeToFit(.width)
-        distanceLabel.pin.top().after(of: priceLabel).right().margin(6, padding).sizeToFit(.width)
-        footerView.pin.height(max(priceLabel.frame.maxY, distanceLabel.frame.maxY) + 6)
+        priceLabel.pin.top().horizontally().margin(margin).sizeToFit(.widthFlexible)
+        distanceLabel.pin.top().after(of: priceLabel).right().margin(margin).sizeToFit(.width)
+        footerView.pin.wrapContent(.vertically, padding: margin)
         
         contentView.pin.height(footerView.frame.maxY)
     }

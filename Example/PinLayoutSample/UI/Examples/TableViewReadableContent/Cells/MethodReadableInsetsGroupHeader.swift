@@ -19,22 +19,33 @@
 
 import UIKit
 
-class MultiRelativeViewController: UIViewController {
-    fileprivate var mainView: MultiRelativeView {
-        return self.view as! MultiRelativeView
-    }
+class MethodReadableInsetsGroupHeader: UITableViewHeaderFooterView {
+    static let reuseIdentifier = "MethodReadableInsetsGroupHeader"
+    static let height: CGFloat = 50
+    
+    fileprivate let titleLabel = UILabel()
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
 
-    init(pageType: PageType) {
-        super.init(nibName: nil, bundle: nil)
+        preservesSuperviewLayoutMargins = false
         
-        title = pageType.text
+        titleLabel.font = .systemFont(ofSize: 20)
+        contentView.addSubview(titleLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        view = MultiRelativeView()
+    func configure(title: String) {
+        titleLabel.text = title
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.pin.horizontally(pin.readableMargins)
+        titleLabel.pin.horizontally().vCenter().sizeToFit(.width)
     }
 }

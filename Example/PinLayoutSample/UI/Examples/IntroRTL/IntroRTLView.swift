@@ -21,10 +21,10 @@ import UIKit
 import PinLayout
 
 class IntroRTLView: UIView {
-    fileprivate let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
-    fileprivate let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
-    fileprivate let textLabel = UILabel()
-    fileprivate let separatorView = UIView()
+    private let logo = UIImageView(image: UIImage(named: "PinLayout-logo"))
+    private let segmented = UISegmentedControl(items: ["Intro", "1", "2"])
+    private let textLabel = UILabel()
+    private let separatorView = UIView()
     
     init() {
         super.init(frame: .zero)
@@ -41,8 +41,13 @@ class IntroRTLView: UIView {
         segmented.selectedSegmentIndex = 0
         segmented.tintColor = .pinLayoutColor
         addSubview(segmented)
-        
-        textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
+
+        if isLTR() {
+            textLabel.text = "Swift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable.\n\nSwift manual views layouting without auto layout, no magic, pure code, full control. Concise syntax, readable & chainable."
+        } else {
+            textLabel.text = "ان هذا وكسبت وقدّموا التاريخ،, قد مكن ووصف يعبأ واُسدل. لإنعدام الأبرياء أسر ان. فقد و أراض إتفاقية, حدى و غضون وبولندا الأوروبيّون, لم العصبة معاملة مما. بـ يكن أمّا واُسدل مهمّات. بأيدي الفرنسي بـ نفس, تصفح لفرنسا بها في. لان قد الأوروبي الأوروبية, قد جُل أحدث وحرمان اليميني."
+        }
+
         textLabel.font = .systemFont(ofSize: 14)
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping

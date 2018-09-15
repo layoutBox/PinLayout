@@ -20,14 +20,13 @@
 import UIKit
 
 class SafeAreaViewController: UIViewController {
-    fileprivate var mainView: SafeAreaView {
+    private var mainView: SafeAreaView {
         return self.view as! SafeAreaView
     }
 
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        title = "SafeArea"
         tabBarItem = UITabBarItem(title: "SafeArea", image: UIImage(named: "Tab1"), tag: 0)
     }
     

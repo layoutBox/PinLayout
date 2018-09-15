@@ -22,8 +22,8 @@ import PinLayout
 
 class ChoiceSelectorView: UIView {
 
-    fileprivate let textLabel = UILabel()
-    fileprivate let segmentedControl = UISegmentedControl()
+    private let textLabel = UILabel()
+    private let segmentedControl = UISegmentedControl()
     
     init(text: String, choices: [String]) {
         super.init(frame: .zero)
@@ -57,7 +57,7 @@ class ChoiceSelectorView: UIView {
         return layout()
     }
     
-    fileprivate func layout() -> CGSize {
+    private func layout() -> CGSize {
         let margin: CGFloat = 12
         
         if frame.width > 500 {

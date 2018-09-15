@@ -18,24 +18,40 @@
 //  THE SOFTWARE.
 
 import UIKit
+import PinLayout
 
-class SafeAreaCornersViewController: UIViewController {
-    fileprivate var mainView: SafeAreaCornersView {
-        return self.view as! SafeAreaCornersView
-    }
+class SafeAreaAndMarginsView: UIView {
+    private let safeAreaView = AreaView(name: "pin.safeArea",
+                                        color: UIColor(red: 0.02, green: 0.20, blue: 0.29, alpha: 1))
+    private let layoutMarginsAreaView = AreaView(name: "pin.layoutMargins",
+                                                 color: UIColor(red: 0.1, green: 0.49, blue: 0.58, alpha: 1))
+    private let readableMarginsView = AreaView(name: "                                  pin.readableMargins",
+                                               color: UIColor(red: 0.15, green: 0.60, blue: 0.89, alpha: 1))
 
     init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        title = "SafeArea Corners"
-        tabBarItem = UITabBarItem(title: "SafeArea Corners", image: UIImage(named: "Tab2"), tag: 0)
+        super.init(frame: .zero)
+        backgroundColor = .white
+
+        addSubview(safeAreaView)
+        addSubview(layoutMarginsAreaView)
+        addSubview(readableMarginsView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+        }
+    }
     
-    override func loadView() {
-        view = SafeAreaCornersView()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        safeAreaView.pin.all(pin.safeArea)
+        layoutMarginsAreaView.pin.all(pin.layoutMargins)
+        readableMarginsView.pin.all(pin.readableMargins)
     }
 }

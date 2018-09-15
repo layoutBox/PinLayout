@@ -20,14 +20,14 @@
 import UIKit
 
 class AdjustToContainerViewController: UIViewController {
-    fileprivate var mainView: AdjustToContainerView {
+    private var mainView: AdjustToContainerView {
         return self.view as! AdjustToContainerView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

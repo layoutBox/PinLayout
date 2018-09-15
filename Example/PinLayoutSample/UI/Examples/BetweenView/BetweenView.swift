@@ -20,11 +20,11 @@
 import UIKit
 import PinLayout
 
-class MultiRelativeView: UIView {
-    fileprivate let view1 = BasicView(text: "Relative view 1 (width: 20%, height: 50%)", color: .lightGray)
-    fileprivate let view2 = BasicView(text: "Relative view 2 (width: 20%, height: 50%)", color: .lightGray)
-    fileprivate let view = BasicView(text: "View layouted using two relative views: \n  - right(of: view1, aligned: .top)\n  - left(of: view2, aligned: .bottom)",
-                                     color: .pinLayoutColor)
+class BetweenView: UIView {
+    private let view1 = BasicView(text: "Relative view 1 (width: 20%, height: 50%)", color: .lightGray)
+    private let view2 = BasicView(text: "Relative view 2 (width: 20%, height: 50%)", color: .lightGray)
+    private let view = BasicView(text: "View layouted using method horizontallyBetween: \n  - horizontallyBetween(view1, and: view2, aligned: .top)",
+                                 color: .pinLayoutColor)
     
     init() {
         super.init(frame: .zero)
@@ -44,7 +44,7 @@ class MultiRelativeView: UIView {
         
         view1.pin.top(pin.safeArea).left(pin.safeArea).width(20%).height(50%)
         view2.pin.top(pin.safeArea).right(pin.safeArea).width(20%).height(50%)
-        
-        view.pin.right(of: view1, aligned: .top).left(of: view2, aligned: .bottom).marginHorizontal(10)
+
+        view.pin.horizontallyBetween(view1, and: view2, aligned: .top).height(of: view1).marginHorizontal(10)
     }
 }

@@ -27,8 +27,8 @@ protocol MenuViewDelegate: class {
 class MenuView: UIView {
     weak var delegate: MenuViewDelegate?
 
-    fileprivate let tableView = UITableView()
-    fileprivate let cellIdentifier = "MenuViewCell"
+    private let tableView = UITableView()
+    private let cellIdentifier = "MenuViewCell"
 
     init() {
         super.init(frame: .zero)
@@ -61,7 +61,7 @@ extension MenuView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = PageType(rawValue: indexPath.row)?.text ?? "PinLayout Example"
+        cell.textLabel?.text = PageType(rawValue: indexPath.row)?.title ?? "PinLayout Example"
         cell.textLabel?.font = .systemFont(ofSize: 12)
         return cell
     }

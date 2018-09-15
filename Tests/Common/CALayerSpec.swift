@@ -36,11 +36,8 @@ class CALayerSpec: QuickSpec {
             bLayer
          */
 
-        beforeSuite {
-            _pinlayoutSetUnitTest(scale: 2)
-        }
-
         beforeEach {
+            _pinlayoutSetUnitTest(scale: 2)
             Pin.lastWarningText = nil
             Pin.logMissingLayoutCalls = false
 
@@ -72,6 +69,7 @@ class CALayerSpec: QuickSpec {
         }
 
         afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
             Pin.logMissingLayoutCalls = false
         }
 

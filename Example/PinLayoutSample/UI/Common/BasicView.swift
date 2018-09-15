@@ -20,7 +20,7 @@
 import UIKit
 
 class BasicView: UIView {
-    fileprivate let label = UILabel()
+    private let label = UILabel()
     
     init(text: String? = nil, color: UIColor) {
         super.init(frame: .zero)
@@ -43,7 +43,7 @@ class BasicView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
             
-        label.pin.top().left().right().margin(4).sizeToFit(.width)
+        label.pin.top().horizontally().margin(4).sizeToFit(.width)
     }
     
     var sizeThatFitsExpectedArea: CGFloat = 40 * 40

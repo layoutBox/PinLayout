@@ -22,14 +22,14 @@ struct House {
 }
 
 class CollectionViewExampleViewController: UIViewController {
-    fileprivate var mainView: CollectionViewExampleView {
+    private var mainView: CollectionViewExampleView {
         return self.view as! CollectionViewExampleView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
 
         // This property is used only on iOS 7/8/9/10. See https://developer.apple.com/documentation/uikit/uiviewcontroller/1621372-automaticallyadjustsscrollviewin
         automaticallyAdjustsScrollViewInsets = false

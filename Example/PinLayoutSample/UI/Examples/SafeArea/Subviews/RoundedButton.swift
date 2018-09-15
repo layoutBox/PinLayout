@@ -21,8 +21,8 @@ import UIKit
 import PinLayout
 
 class RoundedButton: UIButton {
-    fileprivate let iconImageView = UIImageView()
-    fileprivate let label = UILabel()
+    private let iconImageView = UIImageView()
+    private let label = UILabel()
 
     override var isHighlighted: Bool {
         didSet {

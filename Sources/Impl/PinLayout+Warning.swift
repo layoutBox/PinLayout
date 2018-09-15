@@ -23,7 +23,7 @@
     import AppKit
 #endif
 
-fileprivate var numberFormatter: NumberFormatter = {
+private var numberFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()
     numberFormatter.numberStyle = .decimal
     numberFormatter.decimalSeparator = "."

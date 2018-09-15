@@ -7,6 +7,98 @@
 
 # Change Log
 
+## [1.8.3](https://github.com/layoutBox/PinLayout/releases/tag/1.8.3)
+Released on 2018-08-28
+
+#### Add methods to layout a view between two other views
+Add methods to position a view between two other views, either horizontally or vertically. 
+
+**New Methods:**
+
+* **`horizontallyBetween(:UIView, and: UIView)`**  
+Position the view between the two specified views horizontally. The method layout the view's left and right edges. The order of the reference views is irrelevant.
+Note that the layout will be applied only if there is horizontal space between the specified views. 
+
+* **`horizontallyBetween(:UIView, and: UIView, aligned: VerticalAlign)`**  
+Position the view between the two specified views horizontally and aligned it using the specified VerticalAlign. The view will be aligned related to the first specified reference view. Note that the layout will be applied only if there is horizontal space between the specified views. 
+
+* **`verticallyBetween(:UIView, and: UIView)`**  
+Position the view between the two specified views vertically. The method layout the view's top and bottom edges. The order of the reference views is irrelevant. Note that the layout will be applied only if there is vertical space between the specified views. 
+
+* **`verticallyBetween(:UIView, and: UIView, aligned: HorizontalAlign)`**  
+Position the view between the two specified views vertically and aligned it using the specified HorizontalAlign. The view will be aligned related to the first specified reference view. Note that the layout will be applied only if there is vertical space between the specified views. 
+
+###### Example:
+
+<img src="docs/images/pinlayout_verticallyBetween.png" width="600"/>
+
+```swift
+   view.pin.verticallyBetween(viewA, and: viewB, aligned: .center).marginVertical(10)
+```
+
+See [Readme for more information](https://github.com/layoutBox/PinLayout#layout_between)
+
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#172](https://github.com/layoutBox/PinLayout/pull/172) 
+
+## [1.8.2](https://github.com/layoutBox/PinLayout/releases/tag/1.8.2)
+Released on 2018-08-25
+
+#### Add `pin.readableMargins` and `pin.layoutmargins`
+Add properties: 
+
+* **`pin.readableMargins: UIEdgeInset`**:  
+PinLayout's `UIView.pin.readableMargins` property expose UIKit [`UIView.readableContentGuide`](https://developer.apple.com/documentation/uikit/uiview/1622644-readablecontentguide) as an UIEdgeInsets. This is really useful since UIKit only expose the readableContent area to Auto Layout using UILayoutGuide.
+
+* **`pin.layoutmargins: UIEdgeInset`**  
+PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIKit [`UIView.layoutMargins`](https://developer.apple.com/documentation/uikit/uiview/1622566-layoutmargins). The property exists only to be consistent with the other areas: `pin.safeArea`, `pin.readableMargins` and `pin.layoutmargins`. So its usage is not necessary.
+
+**Add examples using these properties:**
+![pinlayout_example_layout_margins_all](https://user-images.githubusercontent.com/14981341/44617938-51475900-a83a-11e8-96eb-d24f5561dab2.png)
+
+![pinlayout_example_tableview_readable_content_all](https://user-images.githubusercontent.com/14981341/44617939-51475900-a83a-11e8-9cc6-fe2aac499ce8.png)
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#170](https://github.com/layoutBox/PinLayout/pull/170) 
+
+## [1.8.1](https://github.com/layoutBox/PinLayout/releases/tag/1.8.1)
+Released on 2018-08-23
+
+#### PinLayout Swift 3 support
+PinLayout supports Swift 3 and Swift 4
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#169](https://github.com/layoutBox/PinLayout/pull/169) 
+
+
+## [1.8.0](https://github.com/layoutBox/PinLayout/releases/tag/1.8.0)
+Released on 2018-08-21
+
+#### Deprecated method `fitSize()` has been removed
+`fitSize()` has been removed after being deprecated for 10 months. `sizeToFit(:FitType)` should now be used instead. See [Adjusting size](https://github.com/layoutBox/PinLayout#adjusting_size).
+
+Plus:
+
+* Refactor relative positioning methods source code (above(...), after(...), ...) using a default parameter value for the alignment parameter.
+* Fix unit test screen density.
+* Update few examples source code.
+
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#167](https://github.com/layoutBox/PinLayout/pull/167) 
+
+
+## [1.7.12](https://github.com/layoutBox/PinLayout/releases/tag/1.7.12)
+Released on 2018-08-16
+
+#### Add Animations documentation and example
+Add documentation that explains how PinLayout can handle view's animations.
+
+* Show few strategies that can be used to animate views.
+* Add an Animation example in the Example app.
+* Add an new "Examples" markdown page showing all PinLayout's examples.
+* Convert `fileprivate` to `private` declarations
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#165](https://github.com/layoutBox/PinLayout/pull/165) 
+
+
 ## [1.7.11](https://github.com/layoutBox/PinLayout/releases/tag/1.7.11)
 Released on 2018-08-05
 

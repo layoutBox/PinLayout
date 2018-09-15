@@ -20,14 +20,14 @@
 import UIKit
 
 class AutoAdjustingSizeViewController: UIViewController {
-    fileprivate var mainView: AutoAdjustingSizeView {
+    private var mainView: AutoAdjustingSizeView {
         return self.view as! AutoAdjustingSizeView
     }
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
         
-        title = pageType.text
+        title = pageType.title
     }
     
     required init?(coder aDecoder: NSCoder) {

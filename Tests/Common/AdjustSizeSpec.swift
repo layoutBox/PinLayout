@@ -856,6 +856,16 @@ class AdjustSizeSpec: QuickSpec {
                 aView.pin.sizeToFit().center()
                 expect(aView.frame).to(beCloseTo(CGRect(x: 182.6667, y: 177.6667, width: 35.0, height: 45.0), within: 0.1))
             }
+
+            it("should produce the same size as the built-in sizeToFit() method") {
+                let label = PLabel(frame: CGRect.zero)
+                label.text = "Lorem ipsum dolor sit amet"
+                label.pin.sizeToFit()
+                let size = label.bounds.size
+                label.bounds.size = CGSize.zero
+                label.sizeToFit()
+                expect(size).to(equal(label.bounds.size))
+            }
         }
         #endif
     }

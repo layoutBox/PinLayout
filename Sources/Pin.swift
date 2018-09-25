@@ -20,7 +20,7 @@
 import Foundation
 
 @objc public class Pin: NSObject {
-    @objc static var layoutDirection = LayoutDirection.ltr
+    @objc public static var layoutDirection = LayoutDirection.ltr
 
     #if os(iOS) || os(tvOS)
     /// Controls how PinLayout will calls `UIView.safeAreaInsetsDidChange` when the `UIView.pin.safeArea` change.

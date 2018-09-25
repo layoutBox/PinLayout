@@ -61,6 +61,10 @@ class IntroRTLView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    deinit {
+        Pin.layoutDirection(.ltr)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()

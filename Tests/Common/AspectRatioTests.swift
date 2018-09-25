@@ -191,7 +191,6 @@ class AspectRatioTests: QuickSpec {
 
 //            guard Pin.logWarnings &&  else { return self }
 //            warnWontBeApplied(")", context)
-
             
             it("should warn about aspectRatio()") {
                 imageView.pin.left().aspectRatio()

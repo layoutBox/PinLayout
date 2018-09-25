@@ -91,6 +91,9 @@ class WrapContentView: UIView {
         // Separator 2
         separatorView2.pin.height(1)
         separatorView2.backgroundColor = .pinLayoutColor
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } 
         scrollView.addSubview(separatorView2)
 
         //

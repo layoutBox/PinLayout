@@ -34,16 +34,16 @@ class FormView: BaseFormView {
     override init() {
         super.init()
         backgroundColor = .white
-        
+
         formContainerView.backgroundColor = UIColor.pinLayoutColor.withAlphaComponent(0.3)
         formContainerView.layer.cornerRadius = 5
         formScrollView.addSubview(formContainerView)
-    
+
         formTitleLabel.text = "Simple Form Example"
         formTitleLabel.font = .boldSystemFont(ofSize: 14)
         formTitleLabel.sizeToFit()
         formContainerView.addSubview(formTitleLabel)
-        
+
         nameField.placeholder = "Name"
         nameField.layer.borderColor = UIColor.gray.cgColor
         nameField.layer.borderWidth = 1
@@ -52,31 +52,31 @@ class FormView: BaseFormView {
         ageSwitch.tintColor = .lightGray
         ageSwitch.addTarget(self, action: #selector(didChangeAgeSwitch), for: .valueChanged)
         formContainerView.addSubview(ageSwitch)
-        
+
         ageField.placeholder = "Age"
         ageField.alpha = 0
         ageField.layer.borderColor = UIColor.gray.cgColor
         ageField.layer.borderWidth = 1
         formContainerView.addSubview(ageField)
-        
+
         addressField.placeholder = "Address"
         addressField.layer.borderColor = UIColor.gray.cgColor
         addressField.layer.borderWidth = 1
         formContainerView.addSubview(addressField)
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutFormFields()
     }
-    
+
     private func layoutFormFields() {
         let margin: CGFloat = 12
-        
+
         // Layout the formContainerView using the view's safeArea.
         formContainerView.pin.top().hCenter().width(100%).maxWidth(400).pinEdges().margin(margin)
         
@@ -86,13 +86,13 @@ class FormView: BaseFormView {
 
         ageSwitch.pin.below(of: nameField, aligned: .left).marginTop(margin).sizeToFit()
         ageField.pin.below(of: ageSwitch).horizontally().height(40).margin(margin)
-        
+
         // Layout the Address UITextField below the last visible view, either ageSwitch or ageField.
         addressField.pin.below(of: visible([ageSwitch, ageField])).horizontally().height(40).margin(margin)
-        
+
         // Adjust the form container bottom to contains all its childrens
         formContainerView.pin.wrapContent(.vertically, padding: margin)
-        
+
         // Adjust UIScrollView contentSize
         formScrollView.contentSize = formContainerView.frame.size
     }

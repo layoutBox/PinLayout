@@ -278,7 +278,6 @@ import AppKit
     @discardableResult func aspectRatio(of view: NSView) -> PinLayoutObjC
     #endif
 
-
     /**
      If the layouted view is an UIImageView, this method will set the aspectRatio using
      the UIImageView's image dimension.

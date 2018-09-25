@@ -51,7 +51,6 @@ class BetweenSpec: QuickSpec {
             _pinlayoutSetUnitTest(scale: 2)
             Pin.lastWarningText = nil
 
-
             viewController = PViewController()
             viewController.view = BasicView()
             
@@ -112,7 +111,7 @@ class BetweenSpec: QuickSpec {
             }
 
             it("should not warns because Pin.activeLogWarnings.betweenNoSpaceAvailableBetweenViews is set to false") {
-                Pin.activeWarnings.noSpaceAvailableBetweenViews  = false
+                Pin.activeWarnings.noSpaceAvailableBetweenViews = false
                 aView.frame = CGRect(x: 40, y: 100, width: 200, height: 100)
                 cView.frame = CGRect(x: 160, y: 140, width: 110, height: 80)
                 bView.pin.horizontallyBetween(aView, and: cView)
@@ -315,7 +314,6 @@ class BetweenSpec: QuickSpec {
             }
         }
 
-
         //
         // verticallyBetween(...)
         //
@@ -348,7 +346,7 @@ class BetweenSpec: QuickSpec {
             }
 
             it("should not warns because Pin.activeLogWarnings.betweenNoSpaceAvailableBetweenViews is set to false") {
-                Pin.activeWarnings.noSpaceAvailableBetweenViews  = false
+                Pin.activeWarnings.noSpaceAvailableBetweenViews = false
                 aView.frame = CGRect(x: 40, y: 100, width: 200, height: 100)
                 cView.frame = CGRect(x: 160, y: 140, width: 110, height: 80)
                 bView.pin.verticallyBetween(aView, and: cView)

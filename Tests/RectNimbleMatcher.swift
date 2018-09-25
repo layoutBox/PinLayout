@@ -23,19 +23,19 @@ public func beCloseTo(_ expectedValue: CGRect, within delta: CGFloat = 0.00001) 
     let errorMessage = "be close to <\(stringify(expectedValue))> (each within \(stringify(delta)))"
     return Predicate.simple(errorMessage) { actualExpression in
         if let actual = try actualExpression.evaluate() {
-            if fabs(actual.origin.x - expectedValue.origin.x) > delta {
+            if abs(actual.origin.x - expectedValue.origin.x) > delta {
                 return .doesNotMatch
             }
 
-            if fabs(actual.origin.y - expectedValue.origin.y) > delta {
+            if abs(actual.origin.y - expectedValue.origin.y) > delta {
                 return .doesNotMatch
             }
 
-            if fabs(actual.size.width - expectedValue.size.width) > delta {
+            if abs(actual.size.width - expectedValue.size.width) > delta {
                 return .doesNotMatch
             }
 
-            if fabs(actual.size.height - expectedValue.size.height) > delta {
+            if abs(actual.size.height - expectedValue.size.height) > delta {
                 return .doesNotMatch
             }
 

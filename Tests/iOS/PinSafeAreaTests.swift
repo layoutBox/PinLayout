@@ -646,7 +646,6 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
     }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 fileprivate class TestViewController2: UIViewController {
     var mainView: TestView2 { return self.view as! TestView2 }
@@ -728,7 +727,6 @@ fileprivate class TestScrollViewController: UIViewController {
     }
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 fileprivate class TestInsetsUpdateViewController: UIViewController {
     var mainView: TestInsetsUpdateView { return self.view as! TestInsetsUpdateView }
@@ -770,7 +768,6 @@ class TestInsetsUpdateView: UIView, PinSafeAreaInsetsUpdate {
         subView.subViewB?.layoutIfNeeded()
     }
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TestScrollView: UIView {

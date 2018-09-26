@@ -24,7 +24,7 @@ public extension PEdgeInsets {
     }
 }
 
-public func +(lhs: PEdgeInsets, rhs: Int) -> PEdgeInsets {
+public func + (lhs: PEdgeInsets, rhs: Int) -> PEdgeInsets {
     let rhsf = CGFloat(rhs)
     return PEdgeInsets(top: lhs.top + rhsf,
                        left: lhs.left + rhsf,
@@ -32,10 +32,9 @@ public func +(lhs: PEdgeInsets, rhs: Int) -> PEdgeInsets {
                        right: lhs.right + rhsf)
 }
 
-public func +(lhs: PEdgeInsets, rhs: CGFloat) -> PEdgeInsets {
+public func + (lhs: PEdgeInsets, rhs: CGFloat) -> PEdgeInsets {
     return PEdgeInsets(top: lhs.top + rhs,
                        left: lhs.left + rhs,
                        bottom: lhs.bottom + rhs,
                        right: lhs.right + rhs)
 }
-

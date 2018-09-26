@@ -40,7 +40,7 @@ class AdjustToContainerView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         languageSelectorView.pin.top(pin.safeArea).horizontally(pin.safeArea).sizeToFit(.width)
         swiftOpinionSelector.pin.below(of: languageSelectorView).horizontally(pin.safeArea).marginTop(10).sizeToFit(.width)
         swiftUsageSelector.pin.below(of: swiftOpinionSelector).horizontally(pin.safeArea).marginTop(10).sizeToFit(.width)

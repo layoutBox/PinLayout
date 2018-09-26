@@ -54,7 +54,6 @@ describe(@"test Objective-C interface", ^{
             [Pin initPinLayout];
             [Pin layoutDirection:LayoutDirectionLtr];
             Pin.safeAreaInsetsDidChangeMode = PinSafeAreaInsetsDidChangeModeAlways;
-            Pin.layoutDirection = LayoutDirectionLtr;
             Pin.logWarnings = true;
         });
 

@@ -22,10 +22,10 @@ import PinLayout
 
 class BaseFormView: UIView {
     let formScrollView = UIScrollView()
-    
+
     init() {
         super.init(frame: .zero)
-        
+
         formScrollView.showsVerticalScrollIndicator = false
         formScrollView.keyboardDismissMode = .onDrag
         
@@ -35,7 +35,7 @@ class BaseFormView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -46,7 +46,7 @@ class BaseFormView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         formScrollView.pin.all()
     }
 
@@ -55,23 +55,23 @@ class BaseFormView: UIView {
         guard let sizeValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
         setFormScrollView(bottomInset: sizeValue.cgRectValue.height)
     }
-    
+
     @objc
     internal func keyboardWillHide(notification: Notification) {
         resetScrollOffset()
     }
-    
+
     @objc
     internal func didTapScrollView() {
         endEditing(true)
         resetScrollOffset()
     }
-    
+
     private func resetScrollOffset() {
         guard formScrollView.contentInset != .zero else { return }
         setFormScrollView(bottomInset: 0)
     }
-    
+
     private func setFormScrollView(bottomInset: CGFloat) {
         formScrollView.contentInset = UIEdgeInsets(top: formScrollView.contentInset.top, left: 0,
                                                    bottom: bottomInset, right: 0)

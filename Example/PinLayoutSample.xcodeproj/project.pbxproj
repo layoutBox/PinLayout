@@ -104,20 +104,6 @@
 			remoteInfo = "PinLayoutTests-tvOS";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2468130D1F8D013600462E53 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		241637701F8E4BC200EE703A /* IntroObjectiveCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroObjectiveCViewController.h; sourceTree = "<group>"; };
 		241637711F8E4BC200EE703A /* IntroObjectiveCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroObjectiveCViewController.m; sourceTree = "<group>"; };
@@ -499,9 +485,8 @@
 				249EFE3B1E64FAFE00165E39 /* Sources */,
 				249EFE3C1E64FAFE00165E39 /* Frameworks */,
 				249EFE3D1E64FAFE00165E39 /* Resources */,
-				5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */,
 				24E6547E1E68F88D00A72A8B /* Run Swiftlint */,
-				2468130D1F8D013600462E53 /* Embed App Extensions */,
+				A57F7C48B21998F5C851B138 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -624,7 +609,7 @@
 			shellPath = /bin/sh;
 			shellScript = ../Pods/SwiftLint/swiftlint;
 		};
-		5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */ = {
+		A57F7C48B21998F5C851B138 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -632,7 +617,7 @@
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-17/iOS/RevealServer.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -848,6 +833,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -865,6 +851,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";

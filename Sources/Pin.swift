@@ -31,7 +31,6 @@ import Foundation
     }
     #endif
 
-
     static private var isInitialized = false
 
     @objc public static func initPinLayout() {

@@ -7,6 +7,17 @@
 
 # Change Log
 
+## [1.8.4](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
+Released on 2018-09-25
+
+#### Minor changes
+
+* Cleanup .xcodeproj
+* Removed Swiftlint warnings
+* Fix an issue with PinLayoutSample app related to IntroRTLView example
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#177](https://github.com/layoutBox/PinLayout/pull/177) 
+
 ## [1.8.3](https://github.com/layoutBox/PinLayout/releases/tag/1.8.3)
 Released on 2018-08-28
 

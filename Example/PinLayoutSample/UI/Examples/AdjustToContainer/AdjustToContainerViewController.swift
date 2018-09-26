@@ -26,14 +26,14 @@ class AdjustToContainerViewController: UIViewController {
 
     init(pageType: PageType) {
         super.init(nibName: nil, bundle: nil)
-        
+
         title = pageType.title
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func loadView() {
         view = AdjustToContainerView()
     }

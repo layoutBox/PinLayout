@@ -51,7 +51,10 @@ class BasicView: UIView {
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var newSize = CGSize()
-        if size.width != CGFloat.greatestFiniteMagnitude {
+        if size.width != CGFloat.greatestFiniteMagnitude && size.height != CGFloat.greatestFiniteMagnitude {
+            newSize.width = 35
+            newSize.height = 45
+        } else if size.width != CGFloat.greatestFiniteMagnitude {
             newSize.width = size.width + sizeThatFitSizeOffset
             newSize.height = sizeThatFitsExpectedArea / newSize.width
         } else if size.height != CGFloat.greatestFiniteMagnitude {
@@ -63,9 +66,5 @@ class BasicView: UIView {
         }
 
         return newSize
-    }
-
-    override func sizeToFit() {
-        pin.width(35).height(45)
     }
 }

@@ -176,6 +176,13 @@ public enum FitType {
      sizeThatFits(..) method result.
      */
     case heightFlexible
+
+    /**
+     Adjust the view's size based on it's content size requirements so that it uses the
+     most appropriate amount of space. This fit type has the same effect as calling **sizeToFit()** on a view.
+     The resulting size come from sizeThatFits(..) being called with the current view bounds.
+     */
+    case content
 }
 
 public enum WrapType {

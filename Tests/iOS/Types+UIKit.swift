@@ -24,3 +24,4 @@ typealias PScrollView = UIScrollView
 typealias PEdgeInsets = UIEdgeInsets
 typealias PViewController = UIViewController
 typealias PColor = UIColor
+typealias PLabel = UILabel

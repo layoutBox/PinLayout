@@ -679,6 +679,10 @@ import AppKit
     }
     #endif
 
+    func sizeToFit() -> PinLayoutObjC {
+        return sizeToFit(.content)
+    }
+
     func sizeToFit(_ fitType: Fit) -> PinLayoutObjC {
         let type: FitType
         switch fitType {
@@ -686,6 +690,7 @@ import AppKit
         case .height: type = .height
         case .widthFlexible: type = .widthFlexible
         case .heightFlexible: type = .heightFlexible
+        case .content: type = .content
         }
         _ = impl?.sizeToFit(type)
         return self

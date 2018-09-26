@@ -888,7 +888,7 @@ The resulting size will always respect [`minWidth`/`maxWidth`/`minHeight`/`maxHe
 **Methods:**
 
 * **`sizeToFit()`**  
-The method adjust the view's size based on the result of the method `UIView.sizeToFit()`. Particularly useful for controls/views that have an intrinsic size (label, button, ...).
+The method adjust the view's size based on it's content requirements so that it uses the most appropriate amount of space. This fit type has the same effect as calling **sizeToFit()** on a view. The resulting size come from sizeThatFits(..) being called with the current view bounds. Particularly useful for controls/views that have an intrinsic size (label, button, ...).
 
 * **`sizeToFit(: FitType)`**  
 The method adjust the view's size based on the result of the method `sizeThatFits(:CGSize)`.  
@@ -1777,7 +1777,7 @@ PinLayout can layout **NSView**'s on macOS. All PinLayout's properties and metho
 
 * PinLayout supports **only views that have a parent (superview) using a flipped coordinate system**, i.e. views for which  the computed property `var isFlipped: Bool` returns true. In a flipped coordinate system, the origin is in the upper-left corner of the view and y-values extend downward. UIKit use this coordinate system. In a non-flipped coordinate system (default mode), the origin is in the lower-left corner of the view and positive y-values extend upward. See [Apple's documentation for more information about `NSView.isFlipped`](https://developer.apple.com/documentation/appkit/nsview/1483532-isflipped). The support of non-flipped coordinate system will be added soon.
 
-* [`sizeToFit(:FitType)`](#sizeToFit) is supported only for instances that inherits from NSControl. Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom NSView subclasses, just make those views conform to the `SizeCalculable` protocol and implement the two required functions.
+* [`sizeToFit(:FitType)`](#sizeToFit) is supported only for instances that inherits from NSControl. Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom NSView subclasses, just make those views conform to the `SizeCalculable` protocol and implement the required `sizeThatFits(:CGSize)` function.
 
 * [`NSView.pin.safeArea` and ](#safeAreaInsets) property is not available, AppKit doesn't have an `UIView.safeAreaInsets` equivalent.
 
@@ -1793,7 +1793,7 @@ PinLayout can layout **NSView**'s on macOS. All PinLayout's properties and metho
 
 PinLayout can layouts **CALayer**'s. All PinLayout's properties and methods are available, with the following exceptions:
 
-* [`sizeToFit(:FitType)`](#sizeToFit) is not supported. Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom CALayer subclasses, just make those layers conform to the `SizeCalculable` protocol and implement the two required functions.
+* [`sizeToFit(:FitType)`](#sizeToFit) is not supported. Support for [`sizeToFit(:FitType)`](#sizeToFit) can be added to your custom CALayer subclasses, just make those layers conform to the `SizeCalculable` protocol and implement the required `sizeThatFits(:CGSize)` function.
 * [`CALayer.pin.safeArea` and `CALayer.pin.readableMargins`](#safeAreaInsets) properties are not available.
 * [`aspectRatio()`](#aspect_ratio) with no parameters
 

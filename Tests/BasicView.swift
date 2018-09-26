@@ -55,15 +55,14 @@ class BasicView: PView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return _sizeThatFits(size)
     }
-
-    override func sizeToFit() {
-        pin.width(35).height(45)
-    }
     #endif
 
     private func _sizeThatFits(_ size: CGSize) -> CGSize {
         var newSize = CGSize()
-        if size.width != CGFloat.greatestFiniteMagnitude {
+        if size.width != CGFloat.greatestFiniteMagnitude && size.height != CGFloat.greatestFiniteMagnitude {
+            newSize.width = 35
+            newSize.height = 45
+        } else if size.width != CGFloat.greatestFiniteMagnitude {
             newSize.width = size.width + sizeThatFitSizeOffset
             newSize.height = sizeThatFitsExpectedArea / newSize.width
         } else if size.height != CGFloat.greatestFiniteMagnitude {
@@ -82,10 +81,6 @@ class BasicView: PView {
 extension BasicView: SizeCalculable {
     func sizeThatFits(_ size: CGSize) -> CGSize {
         return _sizeThatFits(size)
-    }
-
-    func sizeToFit() {
-        pin.width(35).height(45)
     }
 }
 #endif

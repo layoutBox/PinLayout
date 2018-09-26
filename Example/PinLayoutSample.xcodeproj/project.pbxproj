@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 241637711F8E4BC200EE703A /* IntroObjectiveCViewController.m */; };
 		241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 241637761F8E4F9100EE703A /* IntroObjectiveCView.m */; };
-		2439CC281E6658C3003326FB /* PinLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2439CC2B1E6658CC003326FB /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2439CC241E665858003326FB /* PinLayout.framework */; };
 		2439CC351E665BF6003326FB /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC331E665BF6003326FB /* MenuView.swift */; };
 		2439CC361E665BF6003326FB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC341E665BF6003326FB /* MenuViewController.swift */; };
 		2439CC4B1E665C6B003326FB /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439CC381E665C6B003326FB /* BasicView.swift */; };
@@ -114,30 +112,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2460ACCE1E64FD9D000BCAC5 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2439CC281E6658C3003326FB /* PinLayout.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2468130D1F8D013600462E53 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		241637701F8E4BC200EE703A /* IntroObjectiveCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroObjectiveCViewController.h; sourceTree = "<group>"; };
 		241637711F8E4BC200EE703A /* IntroObjectiveCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroObjectiveCViewController.m; sourceTree = "<group>"; };
@@ -206,7 +180,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2439CC2B1E6658CC003326FB /* PinLayout.framework in Frameworks */,
 				DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,10 +493,8 @@
 				249EFE3B1E64FAFE00165E39 /* Sources */,
 				249EFE3C1E64FAFE00165E39 /* Frameworks */,
 				249EFE3D1E64FAFE00165E39 /* Resources */,
-				2460ACCE1E64FD9D000BCAC5 /* Embed Frameworks */,
-				5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */,
 				24E6547E1E68F88D00A72A8B /* Run Swiftlint */,
-				2468130D1F8D013600462E53 /* Embed App Extensions */,
+				A57F7C48B21998F5C851B138 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -647,7 +618,7 @@
 			shellPath = /bin/sh;
 			shellScript = ../Pods/SwiftLint/swiftlint;
 		};
-		5D3C4568AFC08267110D9971 /* [CP] Embed Pods Frameworks */ = {
+		A57F7C48B21998F5C851B138 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -655,7 +626,7 @@
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-17/iOS/RevealServer.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -879,7 +850,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -897,7 +868,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";

@@ -285,7 +285,7 @@ extension PinLayout {
     }
 
     private func validateRelativeViews(_ relativeViews: [View], context: Context) -> [View]? {
-        guard let _ = layoutSuperview(context) else { return nil }
+        guard layoutSuperview(context) != nil else { return nil }
         guard relativeViews.count > 0 else {
             warnWontBeApplied("At least one view must be visible (i.e. UIView.isHidden != true) ", context)
             return nil

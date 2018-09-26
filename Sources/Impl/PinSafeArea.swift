@@ -112,13 +112,13 @@ internal class PinSafeArea {
         }
     }
 
+    typealias Function = @convention(c) (AnyObject, Selector) -> Void
     private static func extractMethodFrom(owner: AnyObject, selector: Selector) -> (() -> Void)? {
         guard let method = owner is AnyClass ? class_getClassMethod((owner as! AnyClass), selector) :
             class_getInstanceMethod(type(of: owner), selector)
             else { return nil }
         let implementation = method_getImplementation(method)
 
-        typealias Function = @convention(c) (AnyObject, Selector) -> Void
         let function = unsafeBitCast(implementation, to: Function.self)
 
         return {
@@ -225,7 +225,7 @@ extension UIView {
     internal func pinlayoutComputeSafeAreaInsets() -> UIEdgeInsets {
         if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
 
-        if let _ = self.next as? UIViewController {
+        if self.next as? UIViewController != nil {
             // The UIView is the UIViewController's UIView, its compatibilitySafeAreaInsets don't need to be recomputed.
             return self.pinlayoutSafeAreaInsets
         } else {

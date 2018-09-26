@@ -21,6 +21,10 @@ disabled_rules: # rule identifiers to exclude from running
   - identifier_name
   - line_length
   - empty_count
+  - todo
+  - private_over_fileprivate
 
 excluded: # paths to ignore during linting. overridden by `included`.
   - Pods
+  - Example/PinLayoutExampleMacOS
+  - TestProjects

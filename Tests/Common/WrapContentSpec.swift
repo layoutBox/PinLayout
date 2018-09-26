@@ -314,7 +314,6 @@ class WrapContentSpec: QuickSpec {
 
             }
 
-
             it("wrap vertically + padding PEdgeInsets") {
                 aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)
                 aViewChild.frame = CGRect(x: 160, y: 120, width: 100, height: 40)

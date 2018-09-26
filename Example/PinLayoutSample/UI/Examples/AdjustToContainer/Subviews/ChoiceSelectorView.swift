@@ -24,7 +24,7 @@ class ChoiceSelectorView: UIView {
 
     private let textLabel = UILabel()
     private let segmentedControl = UISegmentedControl()
-    
+
     init(text: String, choices: [String]) {
         super.init(frame: .zero)
 
@@ -33,33 +33,33 @@ class ChoiceSelectorView: UIView {
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
         addSubview(textLabel)
-        
+
         choices.forEach({ segmentedControl.insertSegment(withTitle: $0, at: segmentedControl.numberOfSegments, animated: false) })
         segmentedControl.tintColor = .pinLayoutColor
         segmentedControl.sizeToFit()
         addSubview(segmentedControl)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         _ = layout()
     }
-    
+
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         // 1) Set the width to the specified width
         self.pin.width(size.width)
-        
+
         // 2) Layout the contentView's controls
         return layout()
     }
-    
+
     private func layout() -> CGSize {
         let margin: CGFloat = 12
-        
+
         if frame.width > 500 {
             // The UISegmentedControl is at the top-right corner and the label takes the remaining horizontal space.
             segmentedControl.pin.top().right().margin(margin)
@@ -69,7 +69,7 @@ class ChoiceSelectorView: UIView {
             textLabel.pin.top().horizontally().margin(margin).sizeToFit(.width)
             segmentedControl.pin.below(of: textLabel).right().margin(margin)
         }
-        
+
         return CGSize(width: frame.width, height: max(textLabel.frame.maxY, segmentedControl.frame.maxY) + margin)
     }
 }

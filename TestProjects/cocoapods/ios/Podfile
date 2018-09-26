@@ -10,7 +10,7 @@ target 'PinLayout-iOS' do
 
 
     # Include popular libraries that include UIKit classes extensions to check conflicts with PinLayout.
-    pod 'SwifterSwift'
+    pod 'SwifterSwift', '4.3'
 
 end
 

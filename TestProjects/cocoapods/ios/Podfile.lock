@@ -1,0 +1,37 @@
+PODS:
+  - PinLayout (1.8.3)
+  - SwifterSwift (4.3.0):
+    - SwifterSwift/AppKit (= 4.3.0)
+    - SwifterSwift/CoreGraphics (= 4.3.0)
+    - SwifterSwift/CoreLocation (= 4.3.0)
+    - SwifterSwift/Foundation (= 4.3.0)
+    - SwifterSwift/MapKit (= 4.3.0)
+    - SwifterSwift/SwiftStdlib (= 4.3.0)
+    - SwifterSwift/UIKit (= 4.3.0)
+  - SwifterSwift/AppKit (4.3.0)
+  - SwifterSwift/CoreGraphics (4.3.0)
+  - SwifterSwift/CoreLocation (4.3.0)
+  - SwifterSwift/Foundation (4.3.0)
+  - SwifterSwift/MapKit (4.3.0)
+  - SwifterSwift/SwiftStdlib (4.3.0)
+  - SwifterSwift/UIKit (4.3.0)
+
+DEPENDENCIES:
+  - PinLayout (from `../../..`)
+  - SwifterSwift (= 4.3)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwifterSwift
+
+EXTERNAL SOURCES:
+  PinLayout:
+    :path: "../../.."
+
+SPEC CHECKSUMS:
+  PinLayout: 1330ea0c6324556e7bdb9b36af32a262a97d2ff2
+  SwifterSwift: f3fce2b9fc5b9d8fda6eec33825e5243c60aebba
+
+PODFILE CHECKSUM: 8c3f74fbbf7e58ac79bf9c175662d4aa74b1a668
+
+COCOAPODS: 1.5.3

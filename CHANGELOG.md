@@ -7,6 +7,16 @@
 
 # Change Log
 
+## [1.8.5](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
+Released on 2018-09-27
+
+#### Minor internal changes
+Remove `sizeToFit()` from SizeCalculable protocol. 
+This change ensure that PinLayout `pin.sizeToFit()` method behave correctly. As per the iOS documentation, we should not directly override sizeToFit() but rather always only implement sizeThatFits(_:) for auto-sizing needs. This update aim to remove the sizeToFit() requirement in the SizeCalculable protocol.
+
+* Added by [Antoine Lamy](https://github.com/antoinelamy) in Pull Request [#164](https://github.com/layoutBox/PinLayout/pull/164) 
+
+
 ## [1.8.4](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
 Released on 2018-09-25
 

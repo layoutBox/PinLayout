@@ -108,12 +108,12 @@ final class Coordinates<View: Layoutable> {
 
 private func getDisplayScale() -> CGFloat {
     #if os(iOS) || os(tvOS)
-    return UIScreen.main.scale
+        return UIScreen.main.scale
     #elseif os(OSX)
-    #if swift(>=4.2)
-    return NSScreen.main()?.backingScaleFactor ?? 2.0
-    #else
-    return NSScreen.main?.backingScaleFactor ?? 2.0
-    #endif
+        #if swift(>=4.1)
+        return NSScreen.main?.backingScaleFactor ?? 2.0
+        #else
+        return NSScreen.main()?.backingScaleFactor ?? 2.0
+        #endif
     #endif
 }

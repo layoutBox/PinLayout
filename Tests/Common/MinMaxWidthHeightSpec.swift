@@ -50,6 +50,10 @@ class MinMaxWidthHeightSpec: QuickSpec {
             rootView.addSubview(aView)
         }
 
+        afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
+        }
+
         //
         // minWidth
         //

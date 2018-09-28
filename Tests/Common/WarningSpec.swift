@@ -49,6 +49,10 @@ class WarningSpec: QuickSpec {
             aView.sizeThatFitsExpectedArea = 40 * 40
             rootView.addSubview(aView)
         }
+
+        afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
+        }
         
         //
         // pinEdges warnings

@@ -49,8 +49,9 @@ class LayoutMethodSpec: QuickSpec {
             aView.frame = CGRect(x: 40, y: 100, width: 100, height: 60)
             rootView.addSubview(aView)
         }
-        
+
         afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
             Pin.logMissingLayoutCalls = false
         }
         

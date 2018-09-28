@@ -20,10 +20,15 @@ echo "iOS unit test"                   &&
 echo "===============================" &&
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -derivedDataPath $DERIVED_DATA -sdk iphonesimulator11.4 \
    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'  \
+   | xcpretty &&
+
+time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -derivedDataPath $DERIVED_DATA -sdk iphonesimulator11.4 \
    -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' \
-   -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.4' \
    | xcpretty &&
     
+time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -derivedDataPath $DERIVED_DATA -sdk iphonesimulator11.4 \
+   -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.4' \
+   | xcpretty &&
 
 echo "===============================" &&
 echo "tvOS unit test"                   &&

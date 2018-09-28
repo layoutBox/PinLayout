@@ -86,7 +86,7 @@ carthage update --use-ssh --platform iOS &&
 time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator11.4  -derivedDataPath $DERIVED_DATA \
     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4' \
     | xcpretty &&
-cd ../../.. &&
+cd ../../.. 
 
 
 # echo "==========================================" &&

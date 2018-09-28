@@ -63,9 +63,9 @@ platform :ios do
       workspace: "PinLayout.xcworkspace",
       devices: [
         "iPhone 7 (10.2)",
-        "iPhone 7 (11.2)",
-        "iPad Air (11.2)",
-        "iPhone X (11.2)"
+        "iPhone 8 (11.4)",
+        "iPad Air (11.4)",
+        "iPhone X (11.4)"
       ]
     )
   end

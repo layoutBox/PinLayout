@@ -23,22 +23,14 @@ import UIKit
 import AppKit
 #endif
 
-#if os(iOS) || os(tvOS)
-internal var displayScale: CGFloat = UIScreen.main.scale
-#elseif os(OSX)
-internal var displayScale: CGFloat = NSScreen.main?.backingScaleFactor ?? 2.0
-#endif
+internal var displayScale: CGFloat = getDisplayScale()
 internal var onePixelLength: CGFloat = 1 / displayScale
 
 public func _pinlayoutSetUnitTest(scale: CGFloat?) {
     if let scale = scale {
         displayScale = scale
     } else {
-        #if os(iOS) || os(tvOS)
-        displayScale = UIScreen.main.scale
-        #elseif os(OSX)
-        displayScale = NSScreen.main?.backingScaleFactor ?? 2.0
-        #endif
+        displayScale = getDisplayScale()
     }
 }
 
@@ -112,4 +104,16 @@ final class Coordinates<View: Layoutable> {
     static func ceilFloatToDisplayScale(_ pointValue: CGFloat) -> CGFloat {
         return CGFloat(ceilf(Float(pointValue * displayScale))) / displayScale
     }
+}
+
+private func getDisplayScale() -> CGFloat {
+    #if os(iOS) || os(tvOS)
+        return UIScreen.main.scale
+    #elseif os(OSX)
+        #if swift(>=4.1)
+        return NSScreen.main?.backingScaleFactor ?? 2.0
+        #else
+        return NSScreen.main()?.backingScaleFactor ?? 2.0
+        #endif
+    #endif
 }

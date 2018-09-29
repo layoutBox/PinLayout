@@ -18,7 +18,6 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-//#import <Cocoa/Cocoa.h>
 
 //! Project version number for PinLayoutMacOS.
 FOUNDATION_EXPORT double PinLayoutMacOSVersionNumber;

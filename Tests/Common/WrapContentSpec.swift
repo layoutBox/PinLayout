@@ -66,6 +66,10 @@ class WrapContentSpec: QuickSpec {
             rootView.frame = CGRect(x: 0, y: 100, width: 400, height: 400)
         }
 
+        afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
+        }
+
         describe("wrapContent") {
             it("wrap and update subviews position") {
                 aView.frame = CGRect(x: 20, y: 10, width: 200, height: 100)

@@ -74,6 +74,10 @@ class AdjustSizeSpec: QuickSpec {
             bViewChild.frame = CGRect(x: 40, y: 10, width: 60, height: 20)
         }
 
+        afterEach {
+            _pinlayoutSetUnitTest(scale: nil)
+        }
+
         describe("the result of the width(...) methods") {
             it("should adjust the width of aView") {
                 aView.pin.width(35)
@@ -858,16 +862,22 @@ class AdjustSizeSpec: QuickSpec {
             }
 
             it("should produce the same size as the built-in sizeToFit() method") {
+                _pinlayoutSetUnitTest(scale: nil)
+                
                 let label = PLabel(frame: CGRect.zero)
                 label.text = "Lorem ipsum dolor sit amet"
                 label.pin.sizeToFit()
                 let size = label.bounds.size
+
                 label.bounds.size = CGSize.zero
                 label.sizeToFit()
+
                 expect(size).to(equal(label.bounds.size))
             }
 
             it("should produce the same size as the built-in sizeToFit() method when there is a transform applied") {
+                _pinlayoutSetUnitTest(scale: nil)
+
                 let label = PLabel(frame: CGRect.zero)
                 label.text = "Lorem ipsum dolor sit amet"
                 label.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)

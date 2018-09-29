@@ -7,7 +7,7 @@
 
 # Change Log
 
-## [1.8.6](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
+## [1.8.6](https://github.com/layoutBox/PinLayout/releases/tag/1.8.6)
 Released on 2018-09-29
 
 #### Update support for Swift 4.2
@@ -20,7 +20,7 @@ PinLayout supports Swift versions:
 * Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#178](https://github.com/layoutBox/PinLayout/pull/178) 
 
 
-## [1.8.5](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
+## [1.8.5](https://github.com/layoutBox/PinLayout/releases/tag/1.8.5)
 Released on 2018-09-27
 
 #### Minor internal changes

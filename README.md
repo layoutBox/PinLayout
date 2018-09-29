@@ -34,8 +34,8 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 ### Requirements
 * iOS 8.0+ / tvOS 9.0+ / macOS 10.9+
-* Xcode 8.0+ / Xcode 9.0+
-* Swift 3.2+ / Swift 4.1 / Objective-C
+* Swift 4.* / Swift 3.* / Objective-C
+* Xcode 10 / Xcode 9.* / Xcode 8.* 
 
 ### Recent changes/features
 * :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).

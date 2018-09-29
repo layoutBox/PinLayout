@@ -7,6 +7,19 @@
 
 # Change Log
 
+## [1.8.6](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
+Released on 2018-09-29
+
+#### Update support for Swift 4.2
+The PinLayout pod doesn't specify anymore the Swift language version. 
+
+PinLayout supports Swift versions:
+* Swift 4.2 / 4.1 / 4.0
+* Swift 3.*
+
+* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#178](https://github.com/layoutBox/PinLayout/pull/178) 
+
+
 ## [1.8.5](https://github.com/layoutBox/PinLayout/releases/tag/1.8.4)
 Released on 2018-09-27
 

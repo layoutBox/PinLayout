@@ -81,6 +81,6 @@ extension TableViewExampleView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // The UITableView will call the cell's sizeThatFit() method to compute the height.
         // WANRING: You must also set the UITableView.estimatedRowHeight for this to work.
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 }

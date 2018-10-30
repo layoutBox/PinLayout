@@ -28,7 +28,7 @@ class MethodCell: UITableViewCell {
     private let descriptionLabel = UILabel()
     private let padding: CGFloat = 10
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none

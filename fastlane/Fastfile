@@ -33,7 +33,7 @@ platform :ios do
     xcodebuild(
       project: "PinLayout.xcodeproj",
       scheme: "PinLayout-iOS",
-      destination: "name=iPhone 8 Plus,OS=11.2",
+      destination: "name=iPhone 8 Plus,OS=12.0",
       #configuration: "Debug",
       build: true,
       clean: true
@@ -52,7 +52,7 @@ platform :ios do
       scheme: "PinLayoutSample",
       build: true,
       clean: true,
-      #destination: "name=iPhone 8 Plus,OS=11.2",
+      #destination: "name=iPhone 8 Plus,OS=12.0",
       destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
     )
   end
@@ -65,7 +65,7 @@ platform :ios do
         "iPhone 7 (10.2)",
         "iPhone 8 (11.4)",
         "iPad Air (11.4)",
-        "iPhone X (11.4)"
+        "iPhone XS (12.0)"
       ]
     )
   end
@@ -106,7 +106,7 @@ platform :mac do
     #  scheme: "PinLayoutSample",
     #  build: true,
     #  clean: true,
-    #  #destination: "name=iPhone 8 Plus,OS=11.2",
+    #  #destination: "name=iPhone 8 Plus,OS=12.0",
     #  destination: "generic/platform=iOS\" CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\""
     #)
   end

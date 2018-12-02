@@ -39,19 +39,19 @@ enum PageType: Int {
     
     var title: String {
         switch self {
-        case .intro:                  return "Introduction example"
-        case .adjustToContainer:      return "Adjust to container size"
-        case .tableView:              return "UITableView with variable cell's height"
+        case .intro:                  return "Introduction Example"
+        case .adjustToContainer:      return "Adjust to Container Size"
+        case .tableView:              return "UITableView with Variable Cell's Height"
         case .collectionView:         return "UICollectionView Example"
         case .animations:             return "Animation Example"
-        case .autoAdjustingSize:      return "Auto adjusting size"
+        case .autoAdjustingSize:      return "Auto Adjusting Size"
         case .safeArea:               return "SafeArea & readableMargins"
-        case .relativePositions:      return "Relative Positionning"
+        case .relativePositions:      return "Relative Positioning"
         case .between:                return "Between Example"
         case .form:                   return "Form Example"
         case .wrapContent:            return "wrapContent Example"
         case .tableViewWithReadable:  return "UITableView using readableMargins"
-        case .introRTL:               return "Right-to-left language support"
+        case .introRTL:               return "Right-to-left Language Support"
         case .introObjC:              return "Objective-C PinLayout Example"
         case .count:                  return ""
         }

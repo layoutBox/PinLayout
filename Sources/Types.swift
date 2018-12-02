@@ -98,7 +98,7 @@ import Foundation
     var end: HorizontalEdge { get }
 }
 
-/// Horizontal alignment used with relative positionning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:), ...
+/// Horizontal alignment used with relative positioning methods: above(of relativeView:, aligned:), below(of relativeView:, aligned:), ...
 ///
 /// - left: left aligned
 /// - center: center aligned
@@ -121,7 +121,7 @@ import Foundation
     case end
 }
 
-/// Vertical alignment used with relative positionning methods: after(of relativeView:, aligned:), before(of relativeView:, aligned:), ...
+/// Vertical alignment used with relative positioning methods: after(of relativeView:, aligned:), before(of relativeView:, aligned:), ...
 ///
 /// - top: top aligned
 /// - center: center aligned

@@ -617,7 +617,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 			);
@@ -628,7 +628,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */ = {

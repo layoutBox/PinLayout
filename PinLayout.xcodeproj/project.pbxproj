@@ -763,7 +763,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble-tvOS/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick-tvOS/Quick.framework",
 			);
@@ -774,7 +774,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		41F720B3B7874CC3847A48CC /* [CP] Check Pods Manifest.lock */ = {
@@ -801,7 +801,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble-iOS/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick-iOS/Quick.framework",
 			);
@@ -812,7 +812,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A143968F873D85D48BABCDBF /* [CP] Embed Pods Frameworks */ = {
@@ -821,7 +821,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble-macOS/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick-macOS/Quick.framework",
 			);
@@ -832,7 +832,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C13A14974C1425B4B67ECF64 /* [CP] Check Pods Manifest.lock */ = {
@@ -1274,7 +1274,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8BDEE8FC7F6D6F36D69AE89 /* Pods-PinLayoutTests-iOS.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Common/Info.plist;
@@ -1289,7 +1289,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A02D58138C6BA063EB3E8E66 /* Pods-PinLayoutTests-iOS.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 4Q596JWQC5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Common/Info.plist;

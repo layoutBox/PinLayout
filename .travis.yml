@@ -5,11 +5,6 @@ cache:
   - bundler
   - cocoapods
 
-addons:
-   homebrew:
-     update: true
-     brewfile: true
-
 install:
   - bundle install # --deployment # to cache vendor/bundle
   - pod install --repo-update;

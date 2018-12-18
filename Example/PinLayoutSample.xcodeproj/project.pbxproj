@@ -619,7 +619,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

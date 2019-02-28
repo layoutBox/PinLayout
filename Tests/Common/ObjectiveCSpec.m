@@ -74,6 +74,15 @@ describe(@"test Objective-C interface", ^{
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
             expect(Pin.lastWarningText).to(beNil());
         });
+        
+        it(@"check the access to PinLayout methods from objective-c", ^{
+            [[[rootView pinObjc] wrapContent] layout];
+            [[[rootView pinObjc] wrapContentWithType:WrapTypeVertically] layout];
+            [[[rootView pinObjc] wrapContentWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)] layout];
+            [[[rootView pinObjc] wrapContentWithType:WrapTypeAll insets:UIEdgeInsetsMake(0, 0, 0, 0)] layout];
+            [[[rootView pinObjc] wrapContentWithPadding:10] layout];
+            [[[rootView pinObjc] wrapContentWithType:WrapTypeHorizontally padding:10] layout];            
+        });
     });
 });
 

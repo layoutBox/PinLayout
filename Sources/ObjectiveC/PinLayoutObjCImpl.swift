@@ -662,6 +662,36 @@ import AppKit
         return self
     }
     
+    func wrapContent() -> PinLayoutObjC {
+        _ = impl?.wrapContent()
+        return self
+    }
+    
+    func wrapContent(padding: CGFloat) -> PinLayoutObjC {
+        _ = impl?.wrapContent(padding: padding)
+        return self
+    }
+    
+    func wrapContent(insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.wrapContent(padding: insets)
+        return self
+    }
+    
+    func wrapContent(type: WrapType) -> PinLayoutObjC {
+        _ = impl?.wrapContent(type)
+        return self
+    }
+    
+    func wrapContent(type: WrapType, padding: CGFloat) -> PinLayoutObjC {
+        _ = impl?.wrapContent(type, padding: padding)
+        return self
+    }
+    
+    func wrapContent(type: WrapType, insets: PEdgeInsets) -> PinLayoutObjC {
+        _ = impl?.wrapContent(type, padding: insets)
+        return self
+    }
+    
     func aspectRatio(_ ratio: CGFloat) -> PinLayoutObjC {
         _ = impl?.aspectRatio(ratio)
         return self

@@ -32,9 +32,6 @@ target 'PinLayoutSample' do
 
   pod 'PinLayout', :path => './'
   pod 'SwiftLint'
-  
-  # Debug only
-  pod 'Reveal-SDK', :configurations => ['Debug']
 end
 
 #target 'PinLayoutMacOsSample' do

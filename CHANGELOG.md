@@ -7,6 +7,19 @@
 
 # Change Log
 
+## [1.8.7](https://github.com/layoutBox/PinLayout/releases/tag/1.8.7)
+Released on 2019-03-02
+
+#### Add missing Objective-C API methods
+
+* wrapContent
+* wrapContentWithPadding:(CGFloat)
+* wrapContentWithInsets:(PEdgeInsets)
+* wrapContentWithType:(WrapType)
+* wrapContentWithType:(WrapType) padding:(CGFloat)
+* wrapContentWithType:(WrapType) insets:(PEdgeInsets)
+
+
 ## [1.8.6](https://github.com/layoutBox/PinLayout/releases/tag/1.8.6)
 Released on 2018-09-29
 

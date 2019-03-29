@@ -198,7 +198,6 @@
 		242723711F008B85006A5C3A /* MinMaxWidthHeightSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMaxWidthHeightSpec.swift; sourceTree = "<group>"; };
 		242E8DC11EED5982005935FB /* RelativePositionMultipleViewsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePositionMultipleViewsSpec.swift; sourceTree = "<group>"; };
 		243B12C41FC3CFC10072A9C3 /* LayoutMethodSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutMethodSpec.swift; sourceTree = "<group>"; };
-		243B12C91FC469550072A9C3 /* ObjectiveCSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCSpec.m; sourceTree = "<group>"; };
 		243C620E1FC3834B0082C327 /* Percent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Percent.swift; path = Impl/Percent.swift; sourceTree = "<group>"; };
 		244C6E141E776A0C0074FC74 /* MarginsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginsSpec.swift; sourceTree = "<group>"; };
 		244DF2F81EF46C500090508B /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -412,7 +411,6 @@
 		DF1A5D252084C9E200725EF5 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				243B12C91FC469550072A9C3 /* ObjectiveCSpec.m */,
 				DF1E39B420482B1F0002D0AA /* PinSafeAreaTests.swift */,
 				DFBCAEFF213023700025F7BF /* ReadableLayoutMarginsSpec.swift */,
 				245C1DA11FEC4FC6007594F7 /* TransformSpec.swift */,

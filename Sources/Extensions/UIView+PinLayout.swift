@@ -33,9 +33,11 @@ extension UIView: Layoutable, SizeCalculable {
         return PinLayout(view: self, keepTransform: false)
     }
 
-    @objc public var pinObjc: PinLayoutObjC {
-        return PinLayoutObjCImpl(view: self, keepTransform: true)
-    }
+    #if !STATIC
+        @objc public var pinObjc: PinLayoutObjC {
+            return PinLayoutObjCImpl(view: self, keepTransform: true)
+        }
+    #endif
 
     public func getRect(keepTransform: Bool) -> CGRect {
         if keepTransform {

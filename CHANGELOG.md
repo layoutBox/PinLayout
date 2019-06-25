@@ -7,6 +7,17 @@
 
 # Change Log
 
+## [1.8.8](https://github.com/layoutBox/PinLayout/releases/tag/1.8.8)
+Released on 2019-06-25
+
+#### Update Swift Package Manager support for Xcode 11 
+
+* Updated PinLayout to be used with Xcode 11's Swift Package Manager.
+    * Added by [Hal Lee](https://github.com/hallee) in Pull Request [#192](https://github.com/layoutBox/PinLayout/pull/192) 
+ 
+* Fix Warnings: `public' modifier is redundant for instance method declared in a public extension`.
+    * Added by [MontakOleg](https://github.com/MontakOleg) in Pull Request [#193](https://github.com/layoutBox/PinLayout/pull/193) 
+
 ## [1.8.7](https://github.com/layoutBox/PinLayout/releases/tag/1.8.7)
 Released on 2019-03-02
 
@@ -18,7 +29,6 @@ Released on 2019-03-02
 * wrapContentWithType:(WrapType)
 * wrapContentWithType:(WrapType) padding:(CGFloat)
 * wrapContentWithType:(WrapType) insets:(PEdgeInsets)
-
 
 ## [1.8.6](https://github.com/layoutBox/PinLayout/releases/tag/1.8.6)
 Released on 2018-09-29

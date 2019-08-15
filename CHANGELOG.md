@@ -7,6 +7,18 @@
 
 # Change Log
 
+## [1.8.9](https://github.com/layoutBox/PinLayout/releases/tag/1.8.9)
+Released on 2019-08-16
+
+#### Upgrade to Swift 5 
+
+* Upgrade project to Swift 5
+* Update Pods
+* Apply xcodeproj migration
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#195](https://github.com/layoutBox/PinLayout/pull/195) 
+
+
 ## [1.8.8](https://github.com/layoutBox/PinLayout/releases/tag/1.8.8)
 Released on 2019-06-25
 

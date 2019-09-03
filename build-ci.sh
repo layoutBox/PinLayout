@@ -8,7 +8,7 @@ echo "===============================" &&
 echo "PinLayout-iOS"                   &&
 echo "===============================" &&
 time xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.1 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'  \
    | xcpretty &&
 
@@ -16,8 +16,8 @@ echo "===============================" &&
 echo "PinLayout-tvOS"                  &&
 echo "===============================" &&
 time xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS \
-   -derivedDataPath $DERIVED_DATA -sdk appletvsimulator12.1 \
-   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=12.1' \
+   -derivedDataPath $DERIVED_DATA -sdk appletvsimulator12.4 \
+   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=12.4' \
    | xcpretty &&
 
 echo "===============================" &&
@@ -31,7 +31,7 @@ echo "===============================" &&
 echo "PinLayoutSample"                 &&
 echo "===============================" &&
 time xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.1 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'  \
    | xcpretty &&
 
@@ -40,36 +40,36 @@ echo "===============================" &&
 echo "iOS unit test"                   &&
 echo "===============================" &&
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.1 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'  \
    | xcpretty &&
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.1 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
    -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' \
    | xcpretty &&
     
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.1 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
    -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.4' \
    | xcpretty &&
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.1 \
-   -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1' \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
+   -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.4' \
    | xcpretty &&
 
 echo "===============================" &&
 echo "tvOS unit test"                   &&
 echo "===============================" &&
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS \
-   -derivedDataPath $DERIVED_DATA -sdk appletvsimulator12.1 \
+   -derivedDataPath $DERIVED_DATA -sdk appletvsimulator12.4 \
    -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=11.4' \
    | xcpretty &&
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS \
-   -derivedDataPath $DERIVED_DATA -sdk appletvsimulator12.1 \
-   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=12.1' \
+   -derivedDataPath $DERIVED_DATA -sdk appletvsimulator12.4 \
+   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=12.4' \
    | xcpretty &&
 
 echo "===============================" &&
@@ -87,8 +87,8 @@ cd TestProjects/cocoapods/ios &&
 rm -rf $DERIVED_DATA &&
 pod install &&
 time xcodebuild clean build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS \
-    -sdk iphonesimulator12.1  -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.1' \
+    -sdk iphonesimulator12.4  -derivedDataPath $DERIVED_DATA \
+    -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.4' \
     | xcpretty &&
 cd ../../.. &&
 
@@ -112,8 +112,8 @@ cd TestProjects/cocoapods/tvos &&
 rm -rf $DERIVED_DATA &&
 pod install &&
 time xcodebuild clean build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS \
-    -sdk appletvsimulator12.1 -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=tvOS Simulator,name=Apple TV,OS=12.1' \
+    -sdk appletvsimulator12.4 -derivedDataPath $DERIVED_DATA \
+    -destination 'platform=tvOS Simulator,name=Apple TV,OS=12.4' \
     | xcpretty &&
 cd ../../.. &&
 
@@ -127,9 +127,9 @@ rm Cartfile &&
 echo "git \"$TRAVIS_BUILD_DIR\" \"$TRAVIS_BRANCH\"" > Cartfile &&
 carthage update --use-ssh --platform iOS &&
 time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
-    -scheme PinLayout-Carthage-iOS -sdk iphonesimulator12.1  \
+    -scheme PinLayout-Carthage-iOS -sdk iphonesimulator12.4  \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.1' \
+    -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.4' \
     | xcpretty &&
 cd ../../.. 
 
@@ -146,8 +146,8 @@ time bundle exec pod lib lint --allow-warnings
 # rm -rf .build && 
 # rm Package.pins
 # swift package show-dependencies --format json && 
-# time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator12.1  -derivedDataPath $DERIVED_DATA \
-#     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.1' \
+# time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator12.4  -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.4' \
 #     | xcpretty &&
 # cd ../../.. 
 # 

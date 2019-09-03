@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0862040479C5CDB1087DD5BE /* Pods_PinLayoutTests_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A69A7C17E9071CF457C39A /* Pods_PinLayoutTests_tvOS.framework */; };
-		111A0F2DFE45A60621382616 /* Pods_PinLayoutTests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D973E3CEE5E4BD40167AFED /* Pods_PinLayoutTests_macOS.framework */; };
+		1F8FB170B7D7E593FCB8CFDD /* libPods-PinLayoutTests-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B67E09B689A60972BCFA0161 /* libPods-PinLayoutTests-tvOS.a */; };
 		240F88BE1F0C066800280FC8 /* JustifyAlignSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F88BC1F0C042500280FC8 /* JustifyAlignSpec.swift */; };
 		240F88C11F0C1F5000280FC8 /* WarningSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F88BF1F0C1ED900280FC8 /* WarningSpec.swift */; };
 		241A277D1F8E958F00B1AD39 /* PinLayoutObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241A277B1F8E958F00B1AD39 /* PinLayoutObjC.swift */; };
@@ -39,7 +38,8 @@
 		24D18D171F3B4381008129EF /* RTLSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D151F3B42E0008129EF /* RTLSpec.swift */; };
 		24D18D241F3E37DD008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
 		24D18D261F3E5EA5008129EF /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D18D231F3E37DD008129EF /* Pin.swift */; };
-		32A65F57D5D8D5204831FF3A /* Pods_PinLayoutTests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 417E52FC81E208F91CF03C1D /* Pods_PinLayoutTests_iOS.framework */; };
+		37E99D9053D6D8BB501B158B /* libPods-PinLayoutTests-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 966F4617611F28024F644B3F /* libPods-PinLayoutTests-iOS.a */; };
+		C05F159C8521DEC345A49397 /* libPods-PinLayoutTests-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B1865AA4A1AE8188923020 /* libPods-PinLayoutTests-macOS.a */; };
 		C80435D320D0891C00EB1BD7 /* SizeCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80435D220D0891C00EB1BD7 /* SizeCalculable.swift */; };
 		C80435D520D0898000EB1BD7 /* Layoutable+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80435D420D0898000EB1BD7 /* Layoutable+PinLayout.swift */; };
 		C80435D620D08A2B00EB1BD7 /* SizeCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80435D220D0891C00EB1BD7 /* SizeCalculable.swift */; };
@@ -222,13 +222,13 @@
 		24D18D151F3B42E0008129EF /* RTLSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLSpec.swift; sourceTree = "<group>"; };
 		24D18D231F3E37DD008129EF /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		27D858B9204FFE057EEF11A1 /* Pods-PinLayoutTests-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		2D973E3CEE5E4BD40167AFED /* Pods_PinLayoutTests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AAADE2A4B6590E3AD4FA54 /* Pods-PinLayoutTests-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		417E52FC81E208F91CF03C1D /* Pods_PinLayoutTests_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69594AA5081BC60D0E3D6D1A /* Pods-PinLayoutTests-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		966F4617611F28024F644B3F /* libPods-PinLayoutTests-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinLayoutTests-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02D58138C6BA063EB3E8E66 /* Pods-PinLayoutTests-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		B7A69A7C17E9071CF457C39A /* Pods_PinLayoutTests_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutTests_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B67E09B689A60972BCFA0161 /* libPods-PinLayoutTests-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinLayoutTests-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC74F9FA5B66BF5C299B7581 /* Pods-PinLayoutTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C3B1865AA4A1AE8188923020 /* libPods-PinLayoutTests-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PinLayoutTests-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80435D220D0891C00EB1BD7 /* SizeCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculable.swift; sourceTree = "<group>"; };
 		C80435D420D0898000EB1BD7 /* Layoutable+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layoutable+PinLayout.swift"; sourceTree = "<group>"; };
 		C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutable.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				249EFE841E64FB4C00165E39 /* PinLayout.framework in Frameworks */,
-				32A65F57D5D8D5204831FF3A /* Pods_PinLayoutTests_iOS.framework in Frameworks */,
+				37E99D9053D6D8BB501B158B /* libPods-PinLayoutTests-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				111A0F2DFE45A60621382616 /* Pods_PinLayoutTests_macOS.framework in Frameworks */,
+				C05F159C8521DEC345A49397 /* libPods-PinLayoutTests-macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFF6F9C72084DCD3004F5AED /* PinLayout.framework in Frameworks */,
-				0862040479C5CDB1087DD5BE /* Pods_PinLayoutTests_tvOS.framework in Frameworks */,
+				1F8FB170B7D7E593FCB8CFDD /* libPods-PinLayoutTests-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,9 +320,9 @@
 		138A1F602470415292B7194B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				417E52FC81E208F91CF03C1D /* Pods_PinLayoutTests_iOS.framework */,
-				2D973E3CEE5E4BD40167AFED /* Pods_PinLayoutTests_macOS.framework */,
-				B7A69A7C17E9071CF457C39A /* Pods_PinLayoutTests_tvOS.framework */,
+				966F4617611F28024F644B3F /* libPods-PinLayoutTests-iOS.a */,
+				C3B1865AA4A1AE8188923020 /* libPods-PinLayoutTests-macOS.a */,
+				B67E09B689A60972BCFA0161 /* libPods-PinLayoutTests-tvOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -566,7 +566,6 @@
 				249EFE801E64FB4C00165E39 /* Frameworks */,
 				249EFE811E64FB4C00165E39 /* Resources */,
 				2419623B1E7F58F000A0466C /* CopyFiles */,
-				88D90C444A5D379438EF7792 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -586,7 +585,6 @@
 				DF1A5D192084C94700725EF5 /* Sources */,
 				DF1A5D1A2084C94700725EF5 /* Frameworks */,
 				DF1A5D1B2084C94700725EF5 /* Resources */,
-				A143968F873D85D48BABCDBF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -623,7 +621,6 @@
 				DFF6F9BE2084DCD3004F5AED /* Sources */,
 				DFF6F9BF2084DCD3004F5AED /* Frameworks */,
 				DFF6F9C02084DCD3004F5AED /* Resources */,
-				23E0897A994CD18AE81019CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -756,26 +753,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		23E0897A994CD18AE81019CE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble-tvOS/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick-tvOS/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		41F720B3B7874CC3847A48CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -792,46 +769,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		88D90C444A5D379438EF7792 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble-iOS/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick-iOS/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A143968F873D85D48BABCDBF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble-macOS/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick-macOS/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutTests-macOS/Pods-PinLayoutTests-macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C13A14974C1425B4B67ECF64 /* [CP] Check Pods Manifest.lock */ = {

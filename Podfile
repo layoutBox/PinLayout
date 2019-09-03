@@ -1,3 +1,5 @@
+use_frameworks!
+
 workspace 'PinLayout.xcworkspace'
 
 target 'PinLayoutTests-iOS' do

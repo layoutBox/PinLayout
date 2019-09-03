@@ -46,7 +46,7 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator12.4 \
-   -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' \
+   -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' \
    | xcpretty &&
     
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \

@@ -41,7 +41,7 @@
 		24F246141FA8D57100B6332E /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F246131FA8D57100B6332E /* UIImageView+Download.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
 		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
-		DD420429E7D4CE34667AD0F3 /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB74F1E54B53415F41BFDD29 /* Pods_PinLayoutSample.framework */; };
+		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
 		DF390898211900320049FD56 /* AnimationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF390897211900320049FD56 /* AnimationsView.swift */; };
 		DF39089A211900480049FD56 /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF390899211900480049FD56 /* AnimationsViewController.swift */; };
 		DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */; };
@@ -148,8 +148,8 @@
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
+		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
-		CB74F1E54B53415F41BFDD29 /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF390897211900320049FD56 /* AnimationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationsView.swift; path = PinLayoutSample/UI/Examples/Animations/AnimationsView.swift; sourceTree = SOURCE_ROOT; };
 		DF390899211900480049FD56 /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
 		DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaView.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD420429E7D4CE34667AD0F3 /* Pods_PinLayoutSample.framework in Frameworks */,
+				DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,8 +183,8 @@
 		160FB83905049FCEDD18DC8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */,
 				246812FC1F8D013500462E53 /* NotificationCenter.framework */,
-				CB74F1E54B53415F41BFDD29 /* Pods_PinLayoutSample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -487,7 +487,7 @@
 				249EFE3C1E64FAFE00165E39 /* Frameworks */,
 				249EFE3D1E64FAFE00165E39 /* Resources */,
 				24E6547E1E68F88D00A72A8B /* Run Swiftlint */,
-				12105BFACA8AD3E1A2F2FB7B /* [CP] Embed Pods Frameworks */,
+				A57F7C48B21998F5C851B138 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -597,7 +597,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12105BFACA8AD3E1A2F2FB7B /* [CP] Embed Pods Frameworks */ = {
+		24E6547E1E68F88D00A72A8B /* Run Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swiftlint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ../Pods/SwiftLint/swiftlint;
+		};
+		A57F7C48B21998F5C851B138 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -614,20 +628,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		24E6547E1E68F88D00A72A8B /* Run Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Swiftlint";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = ../Pods/SwiftLint/swiftlint;
 		};
 		DDE1EE639E8C959FEBC41FDC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

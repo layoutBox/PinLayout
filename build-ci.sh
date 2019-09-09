@@ -23,7 +23,7 @@ echo "PinLayout-iOS"
 echo "===============================" 
 time xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.0 \
-   -destination 'platform=iOS Simulator,name=iPhone Xs,OS=13.0'  \
+   -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.0'  \
    | xcpretty 
 
 echo "===============================" 
@@ -65,12 +65,12 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
     
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.0 \
-   -destination 'platform=iOS Simulator,name=iPhone Xs,OS=12.2' \
+   -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2' \
    | xcpretty 
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.0 \
-   -destination 'platform=iOS Simulator,name=iPhone XS,OS=13.0' \
+   -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.0' \
    | xcpretty 
 
 echo "===============================" 
@@ -102,7 +102,7 @@ rm -rf $DERIVED_DATA
 pod install 
 time xcodebuild clean build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS \
     -sdk iphonesimulator13.0  -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone Xs,OS=13.0' \
+    -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.0' \
     | xcpretty 
 cd ../../.. 
 
@@ -143,7 +143,7 @@ carthage update --use-ssh --platform iOS
 time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
     -scheme PinLayout-Carthage-iOS -sdk iphonesimulator13.0  \
     -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone Xs,OS=13.0' \
+    -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.0' \
     | xcpretty 
 cd ../../.. 
 

@@ -45,6 +45,7 @@ class PinSafeAreaSpec: QuickSpec {
             window = UIWindow()
             window.rootViewController = viewController
             window.addSubview(viewController.view)
+            window.makeKeyAndVisible();
 
             // Testing UIViewController's layout methods is kind of bad
             // but needed in our case so we need to wait some time
@@ -265,6 +266,7 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
             window = UIWindow()
             window.rootViewController = viewController
             window.addSubview(viewController.view)
+            window.makeKeyAndVisible();
 
             // Testing UIViewController's layout methods is kind of bad
             // but needed in our case so we need to wait some time
@@ -409,6 +411,7 @@ class PinSafeAreaWithOptInModeSpec: QuickSpec {
             window = UIWindow()
             window.rootViewController = viewController
             window.addSubview(viewController.view)
+            window.makeKeyAndVisible();
 
             // Testing UIViewController's layout methods is kind of bad
             // but needed in our case so we need to wait some time
@@ -470,6 +473,7 @@ class PinSafeAreaWithOptInInsetsUpdateModeSpec: QuickSpec {
             window = UIWindow()
             window.rootViewController = viewController
             window.addSubview(viewController.view)
+            window.makeKeyAndVisible();
 
             // Testing UIViewController's layout methods is kind of bad
             // but needed in our case so we need to wait some time
@@ -532,6 +536,7 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
             window = UIWindow()
             window.rootViewController = viewController
             window.addSubview(viewController.view)
+            window.makeKeyAndVisible();
 
             // Testing UIViewController's layout methods is kind of bad
             // but needed in our case so we need to wait some time
@@ -615,6 +620,7 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
             window = UIWindow()
             window.rootViewController = viewController
             window.addSubview(viewController.view)
+            window.makeKeyAndVisible();
 
             // Testing UIViewController's layout methods is kind of bad
             // but needed in our case so we need to wait some time

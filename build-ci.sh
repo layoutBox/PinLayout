@@ -81,12 +81,12 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
 #    -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=13.0' \
 #    | xcpretty 
 
-echo "===============================" 
-echo "macOS unit test"                 
-echo "==============================="  
-time  xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS \
-   -derivedDataPath $DERIVED_DATA -sdk macosx10.15 \
-   | xcpretty 
+# echo "===============================" 
+# echo "macOS unit test"                 
+# echo "==============================="  
+# time  xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS \
+#    -derivedDataPath $DERIVED_DATA -sdk macosx10.15 \
+#    | xcpretty 
 
 
 echo "===============================" 

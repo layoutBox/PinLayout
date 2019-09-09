@@ -38,7 +38,7 @@ echo "==============================="
 echo "PinLayout-macOS"                 
 echo "===============================" 
 time  xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS \
-   -derivedDataPath $DERIVED_DATA -sdk macosx10.14 \
+   -derivedDataPath $DERIVED_DATA -sdk macosx10.14.4 \
    | xcpretty 
 
 echo "===============================" 
@@ -90,7 +90,7 @@ echo "==============================="
 echo "macOS unit test"                 
 echo "==============================="  
 time  xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS \
-   -derivedDataPath $DERIVED_DATA -sdk macosx10.14 \
+   -derivedDataPath $DERIVED_DATA -sdk macosx10.14.4 \
    | xcpretty 
 
 
@@ -114,7 +114,7 @@ cd TestProjects/cocoapods/macos
 rm -rf $DERIVED_DATA 
 pod install 
 time xcodebuild clean build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS \
-    -sdk macosx10.14 -derivedDataPath $DERIVED_DATA \
+    -sdk macosx10.14.4 -derivedDataPath $DERIVED_DATA \
     | xcpretty 
 cd ../../.. 
 
@@ -166,4 +166,4 @@ time bundle exec pod lib lint --allow-warnings
 # cd ../../.. 
 # 
 # #OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies'
-# xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA  -sdk macosx10.14 
+# xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA  -sdk macosx10.14.4 

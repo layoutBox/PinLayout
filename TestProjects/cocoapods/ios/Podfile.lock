@@ -1,24 +1,28 @@
 PODS:
-  - PinLayout (1.8.3)
-  - SwifterSwift (4.3.0):
-    - SwifterSwift/AppKit (= 4.3.0)
-    - SwifterSwift/CoreGraphics (= 4.3.0)
-    - SwifterSwift/CoreLocation (= 4.3.0)
-    - SwifterSwift/Foundation (= 4.3.0)
-    - SwifterSwift/MapKit (= 4.3.0)
-    - SwifterSwift/SwiftStdlib (= 4.3.0)
-    - SwifterSwift/UIKit (= 4.3.0)
-  - SwifterSwift/AppKit (4.3.0)
-  - SwifterSwift/CoreGraphics (4.3.0)
-  - SwifterSwift/CoreLocation (4.3.0)
-  - SwifterSwift/Foundation (4.3.0)
-  - SwifterSwift/MapKit (4.3.0)
-  - SwifterSwift/SwiftStdlib (4.3.0)
-  - SwifterSwift/UIKit (4.3.0)
+  - PinLayout (1.8.9)
+  - SwifterSwift (5.0.0):
+    - SwifterSwift/AppKit (= 5.0.0)
+    - SwifterSwift/CoreGraphics (= 5.0.0)
+    - SwifterSwift/CoreLocation (= 5.0.0)
+    - SwifterSwift/Dispatch (= 5.0.0)
+    - SwifterSwift/Foundation (= 5.0.0)
+    - SwifterSwift/MapKit (= 5.0.0)
+    - SwifterSwift/SpriteKit (= 5.0.0)
+    - SwifterSwift/SwiftStdlib (= 5.0.0)
+    - SwifterSwift/UIKit (= 5.0.0)
+  - SwifterSwift/AppKit (5.0.0)
+  - SwifterSwift/CoreGraphics (5.0.0)
+  - SwifterSwift/CoreLocation (5.0.0)
+  - SwifterSwift/Dispatch (5.0.0)
+  - SwifterSwift/Foundation (5.0.0)
+  - SwifterSwift/MapKit (5.0.0)
+  - SwifterSwift/SpriteKit (5.0.0)
+  - SwifterSwift/SwiftStdlib (5.0.0)
+  - SwifterSwift/UIKit (5.0.0)
 
 DEPENDENCIES:
   - PinLayout (from `../../..`)
-  - SwifterSwift (= 4.3)
+  - SwifterSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -29,9 +33,9 @@ EXTERNAL SOURCES:
     :path: "../../.."
 
 SPEC CHECKSUMS:
-  PinLayout: 1330ea0c6324556e7bdb9b36af32a262a97d2ff2
-  SwifterSwift: f3fce2b9fc5b9d8fda6eec33825e5243c60aebba
+  PinLayout: f7237c104696f409470947fee3ac82e239cac367
+  SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
 
-PODFILE CHECKSUM: 8c3f74fbbf7e58ac79bf9c175662d4aa74b1a668
+PODFILE CHECKSUM: 0a7937525b5b2e43e75becef489afdd364e0e4ff
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.5

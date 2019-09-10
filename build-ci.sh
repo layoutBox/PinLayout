@@ -1,8 +1,6 @@
 DERIVED_DATA=${1:-/tmp/PinLayout}
 
-trap 'abort' 0 &&
 set -e  &&
-
 set -o pipefail  &&
 rm -rf $DERIVED_DATA &&
 

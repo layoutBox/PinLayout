@@ -1,16 +1,4 @@
-
 DERIVED_DATA=${1:-/tmp/PinLayout}
-
-abort()
-{
-    echo >&2 '
-***************
-*** ABORTED ***
-***************
-'
-    echo "An error occurred. Exiting..." >&2
-    exit 1
-}
 
 trap 'abort' 0 &&
 set -e  &&
@@ -49,7 +37,6 @@ time xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
    | xcpretty  &&
 
-
 echo "==============================="  &&
 echo "iOS unit test"                    &&
 echo "==============================="  &&
@@ -87,7 +74,6 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
 # time  xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS \
 #    -derivedDataPath $DERIVED_DATA -sdk macosx10.15 \
 #    | xcpretty 
-
 
 echo "==============================="  &&
 echo " Cocoapods: iOS Empty project"    &&

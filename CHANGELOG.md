@@ -10,7 +10,7 @@
 ## [1.8.10](https://github.com/layoutBox/PinLayout/releases/tag/1.8.10)
 Released on 2019-09-16
 
-#### Upgrade to Swift 5 
+#### Usage `UIView.effectiveUserInterfaceLayoutDirection` to detect RTL
 
 * Use `UIView.effectiveUserInterfaceLayoutDirection` to detect RTL on iOS 10 and above. This is recommended approach to detect layout direction taking into account view's semantic content attribute, trait environment and UIApplication layout direction.
 	* Added by [MontakOleg](https://github.com/MontakOleg) in Pull Request [#200](https://github.com/layoutBox/PinLayout/pull/200) 

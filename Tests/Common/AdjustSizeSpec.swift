@@ -114,6 +114,42 @@ class AdjustSizeSpec: QuickSpec {
                 aView.pin.width(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 50.0, height: 60.0)))
             }
+            
+            it("should accept a width of 0") {
+                aView.pin.width(0)
+                expect(Pin.lastWarningText).to(beNil())
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 0.0, height: 60.0)))
+            }
+            
+            it("should warn about negative width value") {
+                aView.pin.width(-2)
+                expect(Pin.lastWarningText).to(contain(["width", "won't be applied", "the width", "must be greater than or equal to zero"]))
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about NaN width value") {
+                aView.pin.width(CGFloat.nan)
+               expect(Pin.lastWarningText).to(contain(["width", "nan", "won't be applied", "the width", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about -NaN width value") {
+                aView.pin.width(-CGFloat.nan)
+               expect(Pin.lastWarningText).to(contain(["width", "nan", "won't be applied", "the width", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about infinity width value") {
+                aView.pin.width(CGFloat.infinity)
+               expect(Pin.lastWarningText).to(contain(["width", "inf", "won't be applied", "the width", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about -infinity width value") {
+                aView.pin.width(-CGFloat.infinity)
+               expect(Pin.lastWarningText).to(contain(["width", "inf", "won't be applied", "the width", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
         }
         
         describe("the result of the height(...) methods") {
@@ -146,6 +182,42 @@ class AdjustSizeSpec: QuickSpec {
             it("should adjust the height of aView") {
                 aView.pin.height(of: aViewChild)
                 expect(aView.frame).to(equal(CGRect(x: 140.0, y: 100.0, width: 100.0, height: 30.0)))
+            }
+            
+            it("should accept a height of 0") {
+                aView.pin.height(0)
+                expect(Pin.lastWarningText).to(beNil())
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 0.0)))
+            }
+            
+            it("should warn about negative height value") {
+                aView.pin.height(-2)
+                expect(Pin.lastWarningText).to(contain(["height", "won't be applied", "the height", "must be greater than or equal to zero"]))
+                expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about NaN height value") {
+                aView.pin.height(CGFloat.nan)
+               expect(Pin.lastWarningText).to(contain(["height", "nan", "won't be applied", "the height", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about -NaN height value") {
+                aView.pin.height(-CGFloat.nan)
+               expect(Pin.lastWarningText).to(contain(["height", "nan", "won't be applied", "the height", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about infinity height value") {
+                aView.pin.height(CGFloat.infinity)
+               expect(Pin.lastWarningText).to(contain(["height", "inf", "won't be applied", "the height", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
+            }
+            
+            it("should warn about -infinity height value") {
+                aView.pin.height(-CGFloat.infinity)
+               expect(Pin.lastWarningText).to(contain(["height", "inf", "won't be applied", "the height", "must be greater than or equal to zero"]))
+               expect(aView.frame).to(equal(CGRect(x: 140, y: 100.0, width: 100.0, height: 60.0)))
             }
         }
         

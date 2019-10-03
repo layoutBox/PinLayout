@@ -7,6 +7,15 @@
 
 # Change Log
 
+## [1.8.11](https://github.com/layoutBox/PinLayout/releases/tag/1.8.11)
+Released on 2019-10-03
+
+#### Improve method that validates `width` and `height` values 
+
+* Method that set the `width` and `height` now validates even more parameter, by checking NaN and Infinity values.
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#206](https://github.com/layoutBox/PinLayout/pull/206) 
+
+
 ## [1.8.10](https://github.com/layoutBox/PinLayout/releases/tag/1.8.10)
 Released on 2019-09-16
 

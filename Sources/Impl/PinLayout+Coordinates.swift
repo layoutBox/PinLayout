@@ -328,7 +328,7 @@ extension PinLayout {
     }
     
     internal func validateWidth(_ width: CGFloat, context: Context) -> Bool {
-        guard width.isNormal && width >= 0  else {
+        guard width >= 0, width.isFinite else {
             warnWontBeApplied("the width (\(width)) must be greater than or equal to zero.", context)
             return false
         }
@@ -337,7 +337,7 @@ extension PinLayout {
     }
     
     internal func validateComputedWidth(_ width: CGFloat?) -> Bool {
-        if let width = width, !width.isNormal || width < 0 {
+        if let width = width, !width.isFinite || width < 0 {
             return false
         } else {
             return true
@@ -345,7 +345,7 @@ extension PinLayout {
     }
     
     internal func validateHeight(_ height: CGFloat, context: Context) -> Bool {
-        guard height.isNormal && height >= 0 else {
+        guard height >= 0, height.isFinite else {
             warnWontBeApplied("the height (\(height)) must be greater than or equal to zero.", context)
             return false
         }
@@ -354,7 +354,7 @@ extension PinLayout {
     }
     
     internal func validateComputedHeight(_ height: CGFloat?) -> Bool {
-        if let height = height, !height.isNormal || height < 0 {
+        if let height = height, !height.isFinite || height < 0 {
             return false
         } else {
             return true

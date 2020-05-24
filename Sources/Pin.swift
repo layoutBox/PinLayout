@@ -45,6 +45,8 @@ import Foundation
         self.layoutDirection = direction
     }
 
+    internal static var autoSizingInProgress: Bool = false
+
     //
     // Warnings
     //

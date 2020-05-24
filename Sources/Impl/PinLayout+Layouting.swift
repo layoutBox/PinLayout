@@ -133,7 +133,13 @@ extension PinLayout {
         if !validateComputedHeight(newRect.size.height) {
             newRect.size.height = view.getRect(keepTransform: keepTransform).height
         }
-        
+
+        if Pin.autoSizingInProgress, var autoSizeCalculable = view as? AutoSizeCalculable {
+            let marginInsets = UIEdgeInsets(top: -_marginTop, left: -_marginLeft, bottom: -_marginBottom, right: -_marginRight)
+            let rectWithMargins = newRect.inset(by: marginInsets)
+            autoSizeCalculable.autoSizingRectWithMargins = rectWithMargins
+        }
+
         /*
          To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
          view's transform (UIView.transform).

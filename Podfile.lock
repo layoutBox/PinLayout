@@ -1,6 +1,6 @@
 PODS:
   - Nimble (8.0.2)
-  - PinLayout (1.8.10)
+  - PinLayout (1.8.13)
   - Quick (2.1.0)
   - SwiftLint (0.35.0)
 
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
-  PinLayout: 641bc9679f73d3da35e04bb5180547cf55fd92d7
+  PinLayout: e41a50260a76508b7a7fcee8955c76639adc69bc
   Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 

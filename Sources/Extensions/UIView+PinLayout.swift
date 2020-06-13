@@ -61,11 +61,6 @@ extension UIView: Layoutable, SizeCalculable {
     public func setRect(_ rect: CGRect, keepTransform: Bool) {
         let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
 
-        guard !Pin.autoSizingInProgress else {
-            autoSizingRect = adjustedRect
-            return
-        }
-
         if keepTransform {
             /*
              To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
@@ -108,7 +103,7 @@ extension UIView: AutoSizeCalculable {
         static var pinlayoutAutoSizingRectWithMargins = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
     }
 
-    public var autoSizingRect: CGRect? {
+    private var autoSizingRect: CGRect? {
         get {
             return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRect) as? CGRect
         }
@@ -117,13 +112,18 @@ extension UIView: AutoSizeCalculable {
         }
     }
 
-    public var autoSizingRectWithMargins: CGRect? {
+    private var autoSizingRectWithMargins: CGRect? {
         get {
             return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRectWithMargins) as? CGRect
         }
         set {
             objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRectWithMargins, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
+    }
+
+    public func setAutoSizingRect(_ rect: CGRect, margins: PEdgeInsets) {
+        self.autoSizingRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+        self.autoSizingRectWithMargins = Coordinates<View>.adjustRectToDisplayScale(rect.inset(by: margins))
     }
 
     public func autoSizeThatFits(_ size: CGSize, layoutClosure: () -> Void) -> CGSize {

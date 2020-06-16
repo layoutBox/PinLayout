@@ -127,15 +127,23 @@ extension UIView: AutoSizeCalculable {
     }
 
     public func autoSizeThatFits(_ size: CGSize, layoutClosure: () -> Void) -> CGSize {
-        Pin.autoSizingInProgress = true
-        autoSizingRect = CGRect(origin: CGPoint.zero, size: size)
+        let isAlreadyAutoSizing = Pin.autoSizingInProgress
+
+        if (!isAlreadyAutoSizing) {
+            Pin.autoSizingInProgress = true
+            autoSizingRect = CGRect(origin: CGPoint.zero, size: size)
+        }
+
         layoutClosure()
 
         let boundingRect = subviews.compactMap({ $0.autoSizingRectWithMargins }).reduce(CGRect.zero) { (result: CGRect, autoSizingRect: CGRect) -> CGRect in
             return result.union(autoSizingRect)
         }
 
-        Pin.autoSizingInProgress = false
+        if !isAlreadyAutoSizing {
+            Pin.autoSizingInProgress = false
+        }
+
         return boundingRect.size
     }
 }

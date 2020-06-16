@@ -17,7 +17,7 @@ echo "PinLayout-tvOS"                   &&
 echo "==============================="  &&
 time xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS \
    -derivedDataPath $DERIVED_DATA -sdk appletvsimulator13.4 \
-   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=13.5' \
+   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=13.4' \
    | xcpretty  &&
 
 echo "==============================="  &&
@@ -63,7 +63,7 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
 
 # time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS \
 #    -derivedDataPath $DERIVED_DATA -sdk appletvsimulator13.4 \
-#    -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=13.2' \
+#    -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=13.4' \
 #    | xcpretty
 
 # echo "==============================="

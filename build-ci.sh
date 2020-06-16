@@ -106,7 +106,7 @@ rm -rf $DERIVED_DATA  &&
 pod install  &&
 time xcodebuild clean build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS \
     -sdk appletvsimulator13.4 -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=tvOS Simulator,name=Apple TV,OS=13.5' \
+    -destination 'platform=tvOS Simulator,name=Apple TV,OS=13.4' \
     | xcpretty  &&
 cd ../../..  &&
 

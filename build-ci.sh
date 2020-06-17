@@ -31,7 +31,7 @@ echo "==============================="  &&
 echo "PinLayoutSample"                  &&
 echo "==============================="  &&
 time xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.2 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.5 \
    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
    | xcpretty  &&
 
@@ -39,17 +39,17 @@ echo "==============================="  &&
 echo "iOS unit test"                    &&
 echo "==============================="  &&
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.2 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.5 \
    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
    | xcpretty  &&
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.2 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.5 \
    -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2' \
    | xcpretty  &&
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.2 \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator13.5 \
    -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.5' \
    | xcpretty  &&
 

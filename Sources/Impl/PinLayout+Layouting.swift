@@ -135,7 +135,7 @@ extension PinLayout {
         }
 
         if Pin.autoSizingInProgress, let autoSizeCalculable = view as? AutoSizeCalculable {
-            let marginInsets = UIEdgeInsets(top: -_marginTop, left: -_marginLeft, bottom: -_marginBottom, right: -_marginRight)
+            let marginInsets = PEdgeInsets(top: -_marginTop, left: -_marginLeft, bottom: -_marginBottom, right: -_marginRight)
             autoSizeCalculable.setAutoSizingRect(newRect, margins: marginInsets)
         }
 

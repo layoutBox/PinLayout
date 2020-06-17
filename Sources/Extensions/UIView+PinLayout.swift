@@ -122,14 +122,8 @@ extension UIView: AutoSizeCalculable {
     }
 
     public func setAutoSizingRect(_ rect: CGRect, margins: PEdgeInsets) {
-        #if os(tvOS)
-        let rectWithMargins = UIEdgeInsetsInsetRect(rect, margins)
-        #else
-        let rectWithMargins = rect.inset(by: margins)
-        #endif
-
         self.autoSizingRect = Coordinates<View>.adjustRectToDisplayScale(rect)
-        self.autoSizingRectWithMargins = Coordinates<View>.adjustRectToDisplayScale(rectWithMargins)
+        self.autoSizingRectWithMargins = Coordinates<View>.adjustRectToDisplayScale(rect.inset(by: margins))
     }
 
     public func autoSizeThatFits(_ size: CGSize, layoutClosure: () -> Void) -> CGSize {

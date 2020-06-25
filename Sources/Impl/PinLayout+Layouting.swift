@@ -137,15 +137,9 @@ extension PinLayout {
         if Pin.autoSizingInProgress, let autoSizeCalculable = view as? AutoSizeCalculable {
             let marginInsets = PEdgeInsets(top: -_marginTop, left: -_marginLeft, bottom: -_marginBottom, right: -_marginRight)
             autoSizeCalculable.setAutoSizingRect(newRect, margins: marginInsets)
+        } else {
+            view.setRect(newRect, keepTransform: keepTransform)
         }
-
-        /*
-         To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
-         view's transform (UIView.transform).
-         By setting the view's center and bounds we really set the frame of the non-transformed view, and this keep
-         the view's transform. So view's transforms won't be affected/altered by PinLayout.
-        */
-        view.setRect(newRect, keepTransform: keepTransform)
     }
     
     private func handlePinEdges() {

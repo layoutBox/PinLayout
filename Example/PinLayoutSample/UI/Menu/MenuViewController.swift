@@ -34,6 +34,7 @@ enum PageType: Int {
     case tableViewWithReadable
     case introRTL
     case introObjC
+    case autoSizing
     
     case count
     
@@ -53,6 +54,7 @@ enum PageType: Int {
         case .tableViewWithReadable:  return "UITableView using readableMargins"
         case .introRTL:               return "Right-to-left Language Support"
         case .introObjC:              return "Objective-C PinLayout Example"
+        case .autoSizing:             return "Auto Sizing"
         case .count:                  return ""
         }
     }
@@ -90,6 +92,8 @@ enum PageType: Int {
             return IntroRTLViewController(pageType: self)
         case .introObjC:
             return IntroObjectiveCViewController()
+        case .autoSizing:
+            return AutoSizingViewController()
         case .count:
             return UIViewController()
         }

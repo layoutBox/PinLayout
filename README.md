@@ -1477,6 +1477,58 @@ This example centered horizontally the view B in the space remaining at the righ
 
 <br/>
 
+<a name="justify_align"></a>
+## Automatic Sizing
+Sizing views as part of the manual layout process is made with `sizeThatFits(_ size: CGSize)` where a view returns its ideal size given his parent size. Implementing  sizing code has always been cumbersome because you always end up writing the same code twice, a first time for the layout and the second time for sizing. Sizing usually use the same rules layout does but implemented slightly differently because no subview `frame` should be mutated during sizing. Since `PinLayout` already takes care of the layout, it makes perfect sense to leverage it's layout engine to compute sizing.
+
+###### Traditional example:
+```swift
+	override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.pin.all()
+        imageView.pin.top().horizontally().sizeToFit(.width).margin(margin)
+        textLabel.pin.below(of: imageView).horizontally().sizeToFit(.width).margin(margin)
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: textLabel.frame.maxY + margin)
+    }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+		let availableSize = CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude)
+		return CGSize(width: size.width, height:
+			imageView.sizeThatFits(availableSize).height +
+			margin +
+			textLabel.sizeThatFits(availableSize).height +
+			margin
+		)
+    }
+```
+
+###### Usage examples:
+```swift
+	override func layoutSubviews() {
+        super.layoutSubviews()
+        performLayout()
+        didPerformLayout()
+    }
+
+    private func performLayout() {
+		scrollView.pin.all()
+        imageView.pin.top().horizontally().sizeToFit(.width).margin(margin)
+        textLabel.pin.below(of: imageView).horizontally().sizeToFit(.width).margin(margin)
+    }
+    
+    private func didPerformLayout() {
+		scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: textLabel.frame.maxY + margin)
+    }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        autoSizeThatFits(size, layoutClosure: performLayout)
+    }
+```
+
+By calling `autoSizeThatFits` with the given available size and a layout closure, any layouting performed by PinLayout in that closure will be computed without affecting any subview's `frame` in the view hierarchy. On the other hand, any non PinLayout related code will also be executed, for that reason, it is really important to isolate your layout code in a separate function to avoid any side effect from occuring during sizing, like setting the scroll view's content size in the above exemple or assigning `itemSize` in collection view layout for exemple. That kind of code that depends on the layout should only be executed when `layoutSubviews()` is called as part of a normal layout pass.
+
+The resulting size also takes into account the margins applied on subviews, even on the bottom and trailing sides. Automatic sizing makes it really easy to write your layout logic once and add proper sizing behavior with virtually no additional effort.
+
 <a name="uiview_transform"></a>
 ## UIView's transforms
 

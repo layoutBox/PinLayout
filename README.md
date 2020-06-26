@@ -1479,8 +1479,8 @@ This example centered horizontally the view B in the space remaining at the righ
 <br/>
 
 <a name="automatic_sizing"></a>
-## Automatic Sizing
-Sizing views as part of the manual layout process is made with `sizeThatFits(_ size: CGSize)` where a view returns its ideal size given his parent size. Implementing  sizing code has always been cumbersome because you always end up writing the same code twice, a first time for the layout and the second time for sizing. Sizing usually use the same rules layout does but implemented slightly differently because no subview `frame` should be mutated during sizing. Since `PinLayout` already takes care of the layout, it makes perfect sense to leverage it's layout engine to compute sizing.
+## Automatic Sizing (UIView conly)
+Sizing views as part of the manual layout process is made with `sizeThatFits(_ size: CGSize)` where a view returns its ideal size given his parent size. Implementing  sizing code has always been cumbersome because you always end up writing the same code twice, a first time for the layout and the second time for sizing. Sizing usually use the same rules layout does but implemented slightly differently because no subview `frame` should be mutated during sizing. Since `PinLayout` already takes care of the layout, it makes perfect sense to leverage it's layout engine to compute sizes.
 
 ###### Traditional example:
 ```swift
@@ -1819,7 +1819,7 @@ Included examples:
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" width=120/> </a> 
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/BetweenView/BetweenView.swift"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" width=120/></a>
-  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoSizing/AutoSizingContainerView.swift"><img src="pinlayout_exampleapp_automatic_sizing.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoSizing/AutoSizingContainerView.swift"><img src="docs/pinlayout_exampleapp_automatic_sizing.png" width=120/></a>
 </p>
 
 <br>

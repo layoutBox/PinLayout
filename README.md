@@ -1484,7 +1484,7 @@ Sizing views as part of the manual layout process is made with `sizeThatFits(_ s
 
 ###### Traditional example:
 ```swift
-	override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         scrollView.pin.all()
         imageView.pin.top().horizontally().sizeToFit(.width).margin(margin)
@@ -1493,13 +1493,13 @@ Sizing views as part of the manual layout process is made with `sizeThatFits(_ s
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-		let availableSize = CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude)
-		return CGSize(width: size.width, height:
-			imageView.sizeThatFits(availableSize).height +
-			margin +
-			textLabel.sizeThatFits(availableSize).height +
-			margin
-		)
+        let availableSize = CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude)
+        return CGSize(width: size.width, height:
+        imageView.sizeThatFits(availableSize).height +
+            margin +
+            textLabel.sizeThatFits(availableSize).height +
+            margin
+        )
     }
 ```
 

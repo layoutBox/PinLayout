@@ -236,7 +236,7 @@
 		C8291E40247A242600E95886 /* AutoSizeCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizeCalculable.swift; sourceTree = "<group>"; };
 		C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutable.swift; sourceTree = "<group>"; };
 		C83588BF20DBC5E600D6E8F9 /* CALayerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerSpec.swift; sourceTree = "<group>"; };
-		C83600A520E2949200A3D891 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; usesTabs = 1; };
+		C83600A520E2949200A3D891 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; usesTabs = 0; };
 		C8C4928C20DA7DA700048357 /* CALayer+PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+PinLayout.swift"; sourceTree = "<group>"; };
 		DE878C8BA276883C90524382 /* Pods-PinLayoutTests-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DF10846A212D8B4B00C23B80 /* BetweenSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetweenSpec.swift; sourceTree = "<group>"; };

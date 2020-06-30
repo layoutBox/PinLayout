@@ -38,7 +38,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Xcode 11 / 10 /9
 
 ### Recent changes/features
-* :star: Automatic Sizing (UIView conly), See [Automatic sizing](#automatic_sizing)
+* :star: Automatic Sizing, use PinLayout to compute view size. See [Automatic sizing](#automatic_sizing)
 * :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).
 * :star: Add [`pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets) properties.
 * :star: Add `sizeToFit()` method. See [Adjusting size](#adjusting_size).

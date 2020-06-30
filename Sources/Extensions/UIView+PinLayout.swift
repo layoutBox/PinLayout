@@ -38,6 +38,8 @@ extension UIView: Layoutable, SizeCalculable {
     }
 
     public func getRect(keepTransform: Bool) -> CGRect {
+        guard !Pin.autoSizingInProgress || autoSizingRect == nil else { return autoSizingRect ?? CGRect.zero }
+
         if keepTransform {
             /*
              To adjust the view's position and size, we don't set the UIView's frame directly, because we want to keep the
@@ -92,6 +94,57 @@ extension UIView: Layoutable, SizeCalculable {
         case .ltr: return true
         case .rtl: return false
         }
+    }
+}
+
+extension UIView: AutoSizeCalculable {
+    private struct pinlayoutAssociatedKeys {
+        static var pinlayoutAutoSizingRect = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
+        static var pinlayoutAutoSizingRectWithMargins = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
+    }
+
+    private var autoSizingRect: CGRect? {
+        get {
+            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRect) as? CGRect
+        }
+        set {
+            objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRect, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    private var autoSizingRectWithMargins: CGRect? {
+        get {
+            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRectWithMargins) as? CGRect
+        }
+        set {
+            objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutAutoSizingRectWithMargins, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    public func setAutoSizingRect(_ rect: CGRect, margins: PEdgeInsets) {
+        self.autoSizingRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+        self.autoSizingRectWithMargins = Coordinates<View>.adjustRectToDisplayScale(rect.inset(by: margins))
+    }
+
+    public func autoSizeThatFits(_ size: CGSize, layoutClosure: () -> Void) -> CGSize {
+        let isAlreadyAutoSizing = Pin.autoSizingInProgress
+
+        if (!isAlreadyAutoSizing) {
+            Pin.autoSizingInProgress = true
+            autoSizingRect = CGRect(origin: CGPoint.zero, size: size)
+        }
+
+        layoutClosure()
+
+        let boundingRect = subviews.compactMap({ $0.autoSizingRectWithMargins }).reduce(CGRect.zero) { (result: CGRect, autoSizingRect: CGRect) -> CGRect in
+            return result.union(autoSizingRect)
+        }
+
+        if !isAlreadyAutoSizing {
+            Pin.autoSizingInProgress = false
+        }
+
+        return boundingRect.size
     }
 }
 

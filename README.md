@@ -72,6 +72,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
   * [safeArea, readable and layout margins](#safeAreaInsets)
   * [WrapContent](#wrapContent)
   * [justify, align](#justify_align)
+  * [Automatic sizing](#automatic_sizing)
   * [UIView's transforms](#uiview_transform)
   * [Warnings](#warnings)
   * [Animations using PinLayout](#animations)
@@ -1477,6 +1478,58 @@ This example centered horizontally the view B in the space remaining at the righ
 
 <br/>
 
+<a name="automatic_sizing"></a>
+## Automatic Sizing (UIView conly)
+Sizing views as part of the manual layout process is made with `sizeThatFits(_ size: CGSize)` where a view returns its ideal size given his parent size. Implementing  sizing code has always been cumbersome because you always end up writing the same code twice, a first time for the layout and the second time for sizing. Sizing usually use the same rules layout does but implemented slightly differently because no subview `frame` should be mutated during sizing. Since `PinLayout` already takes care of the layout, it makes perfect sense to leverage it's layout engine to compute sizes.
+
+###### Traditional example:
+```swift
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.pin.all()
+        imageView.pin.top().horizontally().sizeToFit(.width).margin(margin)
+        textLabel.pin.below(of: imageView).horizontally().sizeToFit(.width).margin(margin)
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: textLabel.frame.maxY + margin)
+    }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let availableSize = CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude)
+        return CGSize(width: size.width, height:
+        imageView.sizeThatFits(availableSize).height +
+            margin +
+            textLabel.sizeThatFits(availableSize).height +
+            margin
+        )
+    }
+```
+
+###### Usage examples:
+```swift
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        performLayout()
+        didPerformLayout()
+    }
+
+    private func performLayout() {
+        scrollView.pin.all()
+        imageView.pin.top().horizontally().sizeToFit(.width).margin(margin)
+        textLabel.pin.below(of: imageView).horizontally().sizeToFit(.width).margin(margin)
+    }
+    
+    private func didPerformLayout() {
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: textLabel.frame.maxY + margin)
+    }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        autoSizeThatFits(size, layoutClosure: performLayout)
+    }
+```
+
+By calling `autoSizeThatFits` with the given available size and a layout closure, any layouting performed by PinLayout in that closure will be computed without affecting any subview's `frame` in the view hierarchy. On the other hand, any non PinLayout related code will also be executed. For that reason, it is really important to separate your layout code in it's own function to avoid any side effect during sizing, like setting the scroll view's content size in the above exemple or perhaps assigning `itemSize` in a collection view layout. That kind of code that depends on the layout should only be executed when `layoutSubviews()` is called as part of a normal layout pass.
+
+The resulting size also takes into account the margins applied on subviews, even on the bottom and trailing sides. Automatic sizing makes it really easy to write your layout logic once and add proper sizing behavior with virtually no additional effort.
+
 <a name="uiview_transform"></a>
 ## UIView's transforms
 
@@ -1749,6 +1802,7 @@ Included examples:
 * Example showing how to animate with PinLayout.
 * Example using [`pin.safeArea`, `pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets)
 * Example using [`wrapContent()`](#wrapContent)
+* Example using [`autoSizeThatFits`](#automatic_sizing)
 * Example showing right-to-left (RTL) language support.
 * Example showing a simple form example	
 * Example showing Relative Edges layout.
@@ -1765,6 +1819,7 @@ Included examples:
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoAdjustingSize/AutoAdjustingSizeView.swift"><img src="docs/pinlayout_exampleapp_auto_adjusting_size.png" width=120/></a>
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/RelativeView/RelativeView.swift"><img src="docs/pinlayout_exampleapp_relative_position.png" width=120/> </a> 
   <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/BetweenView/BetweenView.swift"><img src="docs/pinlayout_exampleapp_multi_relative_position.png" width=120/></a>
+  <a href="https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AutoSizing/AutoSizingContainerView.swift"><img src="docs/pinlayout_exampleapp_automatic_sizing.png" width=120/></a>
 </p>
 
 <br>

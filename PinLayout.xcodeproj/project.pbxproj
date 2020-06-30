@@ -44,6 +44,9 @@
 		C80435D720D08A2C00EB1BD7 /* SizeCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80435D220D0891C00EB1BD7 /* SizeCalculable.swift */; };
 		C80435D820D08B7300EB1BD7 /* Layoutable+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80435D420D0898000EB1BD7 /* Layoutable+PinLayout.swift */; };
 		C80435D920D08B7400EB1BD7 /* Layoutable+PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80435D420D0898000EB1BD7 /* Layoutable+PinLayout.swift */; };
+		C8291E41247A242600E95886 /* AutoSizeCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8291E40247A242600E95886 /* AutoSizeCalculable.swift */; };
+		C8291E42247A243900E95886 /* AutoSizeCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8291E40247A242600E95886 /* AutoSizeCalculable.swift */; };
+		C8291E43247A243900E95886 /* AutoSizeCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8291E40247A242600E95886 /* AutoSizeCalculable.swift */; };
 		C82DC20C20CE9F6800B7ACF5 /* Layoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */; };
 		C82DC20D20CE9F6800B7ACF5 /* Layoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */; };
 		C82DC20E20CE9F6800B7ACF5 /* Layoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */; };
@@ -230,9 +233,10 @@
 		A55FA6F0D7AFC9918887FBF2 /* Pods-PinLayoutTests-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-iOS.release.xcconfig"; path = "Target Support Files/Pods-PinLayoutTests-iOS/Pods-PinLayoutTests-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		C80435D220D0891C00EB1BD7 /* SizeCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculable.swift; sourceTree = "<group>"; };
 		C80435D420D0898000EB1BD7 /* Layoutable+PinLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layoutable+PinLayout.swift"; sourceTree = "<group>"; };
+		C8291E40247A242600E95886 /* AutoSizeCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizeCalculable.swift; sourceTree = "<group>"; };
 		C82DC20B20CE9F6800B7ACF5 /* Layoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutable.swift; sourceTree = "<group>"; };
 		C83588BF20DBC5E600D6E8F9 /* CALayerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerSpec.swift; sourceTree = "<group>"; };
-		C83600A520E2949200A3D891 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; usesTabs = 1; };
+		C83600A520E2949200A3D891 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; usesTabs = 0; };
 		C8C4928C20DA7DA700048357 /* CALayer+PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+PinLayout.swift"; sourceTree = "<group>"; };
 		DE878C8BA276883C90524382 /* Pods-PinLayoutTests-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutTests-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PinLayoutTests-tvOS/Pods-PinLayoutTests-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DF10846A212D8B4B00C23B80 /* BetweenSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetweenSpec.swift; sourceTree = "<group>"; };
@@ -375,6 +379,7 @@
 				DF702D8C20D33BA90062045C /* PinLayout+Size.swift */,
 				DF702D8B20D33BA90062045C /* PinLayout+WrapContent.swift */,
 				C80435D220D0891C00EB1BD7 /* SizeCalculable.swift */,
+				C8291E40247A242600E95886 /* AutoSizeCalculable.swift */,
 				DFF222CC20B999BD00AC2A84 /* Types.swift */,
 				DF702DA720D33D2A0062045C /* Extensions */,
 				DFA06B031E8B38B300B6D5E7 /* Impl */,
@@ -418,7 +423,6 @@
 				DE878C8BA276883C90524382 /* Pods-PinLayoutTests-tvOS.debug.xcconfig */,
 				89672C5CCF1F123104855629 /* Pods-PinLayoutTests-tvOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -895,6 +899,7 @@
 				DF46F686212442EF0055B081 /* PEdgeInsets+Operators.swift in Sources */,
 				DF702DA520D33CFA0062045C /* PinLayout+Layouting.swift in Sources */,
 				DF702DA620D33CFA0062045C /* PinLayout+Warning.swift in Sources */,
+				C8291E43247A243900E95886 /* AutoSizeCalculable.swift in Sources */,
 				DF702DAF20D33D6A0062045C /* UIView+PinLayout.swift in Sources */,
 				DF702D9D20D33CF20062045C /* PinLayout.swift in Sources */,
 			);
@@ -927,6 +932,7 @@
 				DF46F684212442EE0055B081 /* PEdgeInsets+Operators.swift in Sources */,
 				24949A2E1EF69474003643D3 /* Filters.swift in Sources */,
 				DFB3ECB12061602F005F226B /* PinSafeArea.swift in Sources */,
+				C8291E41247A242600E95886 /* AutoSizeCalculable.swift in Sources */,
 				DF702DAB20D33D660062045C /* UIView+PinLayout.swift in Sources */,
 				C80435D520D0898000EB1BD7 /* Layoutable+PinLayout.swift in Sources */,
 			);
@@ -1018,6 +1024,7 @@
 				DF46F685212442EE0055B081 /* PEdgeInsets+Operators.swift in Sources */,
 				DF702DA220D33CF90062045C /* PinLayout+Layouting.swift in Sources */,
 				DF702DA320D33CF90062045C /* PinLayout+Warning.swift in Sources */,
+				C8291E42247A243900E95886 /* AutoSizeCalculable.swift in Sources */,
 				DF702DAD20D33D6A0062045C /* UIView+PinLayout.swift in Sources */,
 				DF702D9920D33CF10062045C /* PinLayout.swift in Sources */,
 			);
@@ -1088,7 +1095,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1112,7 +1118,6 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1176,7 +1181,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1234,7 +1239,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
@@ -1260,7 +1265,6 @@
 				PRODUCT_NAME = PinLayout;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1280,7 +1284,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mirego.PinLayout-iOS";
 				PRODUCT_NAME = PinLayout;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1295,7 +1298,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1310,7 +1312,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mirego.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1336,7 +1337,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1362,7 +1362,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1395,7 +1394,6 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1428,7 +1426,6 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1451,7 +1448,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.3;
 			};
@@ -1476,7 +1472,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.3;
 			};

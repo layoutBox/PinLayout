@@ -31,6 +31,7 @@ enum PageType: Int {
     case between
     case form
     case wrapContent
+    case autoSizing
     case tableViewWithReadable
     case introRTL
     case introObjC
@@ -50,6 +51,7 @@ enum PageType: Int {
         case .between:                return "Between Example"
         case .form:                   return "Form Example"
         case .wrapContent:            return "wrapContent Example"
+        case .autoSizing:             return "Auto Sizing"
         case .tableViewWithReadable:  return "UITableView using readableMargins"
         case .introRTL:               return "Right-to-left Language Support"
         case .introObjC:              return "Objective-C PinLayout Example"
@@ -84,6 +86,8 @@ enum PageType: Int {
             return FormViewController(pageType: self)
         case .wrapContent:
             return WrapContentViewController(pageType: self)
+        case .autoSizing:
+            return AutoSizingViewController()
         case .tableViewWithReadable:
             return TableViewReadableContentViewController(pageType: self)
         case .introRTL:

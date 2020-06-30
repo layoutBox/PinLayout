@@ -41,7 +41,11 @@
 		24F246141FA8D57100B6332E /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F246131FA8D57100B6332E /* UIImageView+Download.swift */; };
 		24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B591EE5644E008DB567 /* IntroView.swift */; };
 		24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F75B5A1EE5644E008DB567 /* IntroViewController.swift */; };
-		DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */; };
+		C892FA1924A5821E0086A75E /* AutoSizingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C892FA1824A5821E0086A75E /* AutoSizingViewController.swift */; };
+		C892FA1B24A5822B0086A75E /* AutoSizingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C892FA1A24A5822B0086A75E /* AutoSizingView.swift */; };
+		C892FA1D24A584010086A75E /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C892FA1C24A584010086A75E /* ContentService.swift */; };
+		C892FA1F24A597FA0086A75E /* AutoSizingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C892FA1E24A597FA0086A75E /* AutoSizingContainerView.swift */; };
+		C892FA2124A598170086A75E /* ProxyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C892FA2024A598170086A75E /* ProxyWrapper.swift */; };
 		DF390898211900320049FD56 /* AnimationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF390897211900320049FD56 /* AnimationsView.swift */; };
 		DF39089A211900480049FD56 /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF390899211900480049FD56 /* AnimationsViewController.swift */; };
 		DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */; };
@@ -148,8 +152,12 @@
 		24F75B591EE5644E008DB567 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		24F75B5A1EE5644E008DB567 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A35A00E6536E49A548E763E6 /* Pods-PinLayoutSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.debug.xcconfig"; sourceTree = "<group>"; };
-		AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinLayoutSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C589624E868FCB20F7C10918 /* Pods-PinLayoutSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinLayoutSample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PinLayoutSample/Pods-PinLayoutSample.release.xcconfig"; sourceTree = "<group>"; };
+		C892FA1824A5821E0086A75E /* AutoSizingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingViewController.swift; sourceTree = "<group>"; };
+		C892FA1A24A5822B0086A75E /* AutoSizingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingView.swift; sourceTree = "<group>"; };
+		C892FA1C24A584010086A75E /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
+		C892FA1E24A597FA0086A75E /* AutoSizingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingContainerView.swift; sourceTree = "<group>"; };
+		C892FA2024A598170086A75E /* ProxyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyWrapper.swift; sourceTree = "<group>"; };
 		DF390897211900320049FD56 /* AnimationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationsView.swift; path = PinLayoutSample/UI/Examples/Animations/AnimationsView.swift; sourceTree = SOURCE_ROOT; };
 		DF390899211900480049FD56 /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationsViewController.swift; sourceTree = "<group>"; };
 		DF4C1AA0205AEDFC00DED50B /* SafeAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaView.swift; sourceTree = "<group>"; };
@@ -173,7 +181,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE6C3D736B571B80E207DF6A /* Pods_PinLayoutSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +190,6 @@
 		160FB83905049FCEDD18DC8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AAD69688AA2A3F0994F3074E /* Pods_PinLayoutSample.framework */,
 				246812FC1F8D013500462E53 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -240,6 +246,7 @@
 				DFD31B9D212EE4D600566CA4 /* TableViewReadableContent */,
 				24D18D181F3DECD6008129EF /* IntroRTL */,
 				2416376F1F8E4BC200EE703A /* IntroObjectiveC */,
+				C892FA1124A582050086A75E /* AutoSizing */,
 				24CD1E8D1F8E4B0A00C3A54D /* PinLayoutSample-Bridging-Header.h */,
 			);
 			path = Examples;
@@ -255,6 +262,8 @@
 				24F246131FA8D57100B6332E /* UIImageView+Download.swift */,
 				DFD27840211B1A700056BD93 /* UINavigationController+Orientation.swift */,
 				DFD27847211B1D090056BD93 /* UITabBarController+Orientation.swift */,
+				C892FA1C24A584010086A75E /* ContentService.swift */,
+				C892FA2024A598170086A75E /* ProxyWrapper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -397,6 +406,16 @@
 				24F75B5A1EE5644E008DB567 /* IntroViewController.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		C892FA1124A582050086A75E /* AutoSizing */ = {
+			isa = PBXGroup;
+			children = (
+				C892FA1824A5821E0086A75E /* AutoSizingViewController.swift */,
+				C892FA1A24A5822B0086A75E /* AutoSizingView.swift */,
+				C892FA1E24A597FA0086A75E /* AutoSizingContainerView.swift */,
+			);
+			path = AutoSizing;
 			sourceTree = "<group>";
 		};
 		DF3908912118FFF20049FD56 /* Animations */ = {
@@ -661,10 +680,12 @@
 				24F75B5C1EE5644E008DB567 /* IntroViewController.swift in Sources */,
 				241637741F8E4BC200EE703A /* IntroObjectiveCViewController.m in Sources */,
 				DF390898211900320049FD56 /* AnimationsView.swift in Sources */,
+				C892FA2124A598170086A75E /* ProxyWrapper.swift in Sources */,
 				2439CC541E665C6B003326FB /* RelativeView.swift in Sources */,
 				2439CC551E665C6B003326FB /* RelativeViewController.swift in Sources */,
 				247157941F87BD680003424F /* UIEdgeInsets+PinLayout.swift in Sources */,
 				24D18D1E1F3DED0D008129EF /* IntroRTLViewController.swift in Sources */,
+				C892FA1F24A597FA0086A75E /* AutoSizingContainerView.swift in Sources */,
 				DFEAF74C20C9649F00E33147 /* WrapContentViewController.swift in Sources */,
 				24F246121FA8D4D100B6332E /* HouseCell.swift in Sources */,
 				DF4C1AAE205AF78A00DED50B /* SafeAreaAndMarginsViewController.swift in Sources */,
@@ -681,6 +702,7 @@
 				24CB999C1F29059B004EA7FB /* AdjustToContainerView.swift in Sources */,
 				2497CFED1EF40B9100DFD13B /* FormView.swift in Sources */,
 				24F75B5B1EE5644E008DB567 /* IntroView.swift in Sources */,
+				C892FA1B24A5822B0086A75E /* AutoSizingView.swift in Sources */,
 				DF4C1AA5205AEDFC00DED50B /* SafeAreaViewController.swift in Sources */,
 				DFEAF74A20C9648A00E33147 /* WrapContentView.swift in Sources */,
 				249EFE431E64FAFE00165E39 /* AppDelegate.swift in Sources */,
@@ -693,9 +715,11 @@
 				24F246111FA8D4D100B6332E /* CollectionViewExampleViewController.swift in Sources */,
 				2439CC531E665C6B003326FB /* BetweenViewController.swift in Sources */,
 				DF4C1AA4205AEDFC00DED50B /* SafeAreaView.swift in Sources */,
+				C892FA1924A5821E0086A75E /* AutoSizingViewController.swift in Sources */,
 				241637771F8E4F9100EE703A /* IntroObjectiveCView.m in Sources */,
 				24CB99A01F290664004EA7FB /* ChoiceSelectorView.swift in Sources */,
 				249326891EEEEE3D00BCB814 /* Stylesheet.swift in Sources */,
+				C892FA1D24A584010086A75E /* ContentService.swift in Sources */,
 				DFD31BA0212EE4F200566CA4 /* TableViewReadableContentView.swift in Sources */,
 				DF39089A211900480049FD56 /* AnimationsViewController.swift in Sources */,
 				2439CC521E665C6B003326FB /* BetweenView.swift in Sources */,

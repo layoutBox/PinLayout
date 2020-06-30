@@ -38,14 +38,12 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Xcode 11 / 10 /9
 
 ### Recent changes/features
+* :star: Automatic Sizing (UIView conly), See [Automatic sizing](#automatic_sizing)
 * :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).
 * :star: Add [`pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets) properties.
 * :star: Add `sizeToFit()` method. See [Adjusting size](#adjusting_size).
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
-* :star: PinLayout is in the Top 10 of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
-* :star: PinLayout has moved to the **[layoutBox](https://github.com/layoutBox)** organization.
-* :star: Add [`wrapContent()`](#wrapContent) methods that adjust view's width and height to wrap all its subviews.
-* :star: PinLayout expose the `safeAreaInsets` through [`pin.safeArea`](#safeAreaInsets), this property support not only iOS 11, but is also backward compatible for earlier iOS releases (7/8/9/10). See [safeAreaInsets support](#safeAreaInsets) for more information.
+* :star: PinLayout is #9 in the list of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
 * See [Changelog](https://github.com/layoutBox/PinLayout/blob/master/CHANGELOG.md) for all changes.
 
 
@@ -1529,6 +1527,14 @@ Sizing views as part of the manual layout process is made with `sizeThatFits(_ s
 By calling `autoSizeThatFits` with the given available size and a layout closure, any layouting performed by PinLayout in that closure will be computed without affecting any subview's `frame` in the view hierarchy. On the other hand, any non PinLayout related code will also be executed. For that reason, it is really important to separate your layout code in it's own function to avoid any side effect during sizing, like setting the scroll view's content size in the above exemple or perhaps assigning `itemSize` in a collection view layout. That kind of code that depends on the layout should only be executed when `layoutSubviews()` is called as part of a normal layout pass.
 
 The resulting size also takes into account the margins applied on subviews, even on the bottom and trailing sides. Automatic sizing makes it really easy to write your layout logic once and add proper sizing behavior with virtually no additional effort.
+
+An Automatic Sizing example is available in the [Examples App](#examples_app). 
+
+Notes:
+1. Automatic Sizing is currently only available on iOS.
+2. Automatic Sizing is still in beta, so any comments are welcomed.
+
+<br/>
 
 <a name="uiview_transform"></a>
 ## UIView's transforms

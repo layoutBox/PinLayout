@@ -120,3 +120,8 @@ This example show how fixed size views and expandable views can be layouted usin
 <img src="pinlayout_exampleapp_auto_adjusting_size.png" width=180/>
 
 
+## Automatic Sizing Example
+This example show how to use Automatic Sizing (`autoSizeThatFits()`) to compute views size. 
+[Source code](https://github.com/layoutBox/PinLayout/tree/master/Example/PinLayoutSample/UI/Examples/AutoSizing)
+
+<img src="pinlayout_exampleapp_automatic_sizing.png" width=180/>

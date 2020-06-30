@@ -10,7 +10,7 @@
 ## [1.9.0](https://github.com/layoutBox/PinLayout/releases/tag/1.9.0)
 Released on 2019-10-03
 
-#### Automatic Sizing (UIView conly) 
+#### Automatic Sizing (UIView only) 
 
 * By calling `autoSizeThatFits` with the given available size and a layout closure, any layouting performed by PinLayout in that closure will be computed without affecting any subview's `frame` in the view hierarchy. On the other hand, any non PinLayout related code will also be executed. For that reason, it is really important to separate your layout code in it's own function to avoid any side effect during sizing, like setting the scroll view's content size in the above exemple or perhaps assigning `itemSize` in a collection view layout. That kind of code that depends on the layout should only be executed when `layoutSubviews()` is called as part of a normal layout pass.  The resulting size also takes into account the margins applied on subviews, even on the bottom and trailing sides. Automatic sizing makes it really easy to write your layout logic once and add proper sizing behavior with virtually no additional effort. See https://github.com/layoutBox/PinLayout#automatic_sizing for more documentation. 
 	* Added by [Antoine Lamy](https://github.com/antoinelamy) in Pull Request [#216](https://github.com/layoutBox/PinLayout/pull/216) 

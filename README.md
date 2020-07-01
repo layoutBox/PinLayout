@@ -1477,7 +1477,7 @@ This example centered horizontally the view B in the space remaining at the righ
 <br/>
 
 <a name="automatic_sizing"></a>
-## Automatic Sizing (UIView conly)
+## Automatic Sizing (UIView only)
 Sizing views as part of the manual layout process is made with `sizeThatFits(_ size: CGSize)` where a view returns its ideal size given his parent size. Implementing  sizing code has always been cumbersome because you always end up writing the same code twice, a first time for the layout and the second time for sizing. Sizing usually use the same rules layout does but implemented slightly differently because no subview `frame` should be mutated during sizing. Since `PinLayout` already takes care of the layout, it makes perfect sense to leverage it's layout engine to compute sizes.
 
 ###### Traditional example:

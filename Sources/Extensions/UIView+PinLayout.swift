@@ -131,8 +131,9 @@ extension UIView: AutoSizeCalculable {
 
         if (!isAlreadyAutoSizing) {
             Pin.autoSizingInProgress = true
-            autoSizingRect = CGRect(origin: CGPoint.zero, size: size)
         }
+
+        autoSizingRect = CGRect(origin: CGPoint.zero, size: size)
 
         layoutClosure()
 

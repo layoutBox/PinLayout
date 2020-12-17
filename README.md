@@ -33,9 +33,9 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 
 
 ### Requirements
-* iOS 13.x / 8.0+ / tvOS 9.0+ / macOS 10.9+
+* iOS 9.0+ / tvOS 9.0+ / macOS 10.9+
 * Swift 5.x / 4 / 3 / Objective-C
-* Xcode 11 / 10 /9
+* Xcode 12 / 11 / 10 / 9
 
 ### Recent changes/features
 * :star: Automatic Sizing, use PinLayout to compute view size. See [Automatic sizing](#automatic_sizing)

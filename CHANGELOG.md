@@ -7,6 +7,16 @@
 
 # Change Log
 
+## [1.9.3](https://github.com/layoutBox/PinLayout/releases/tag/1.9.3)
+Released on 2020-12-17
+
+#### Fix an issue with Automatic Sizing
+
+* Fix autoSizeThatFits wrong calculations. There was a problem with size calculations of inner views while using `autoSizeThatFits`.
+	* Added by [Igor Bulyga](https://github.com/IgorBulyga) in Pull Request [#221](https://github.com/layoutBox/PinLayout/pull/221) 
+
+
+
 ## [1.9.0](https://github.com/layoutBox/PinLayout/releases/tag/1.9.0)
 Released on 2019-10-03
 

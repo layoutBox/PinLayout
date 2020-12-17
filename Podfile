@@ -1,3 +1,4 @@
+source 'https://cdn.cocoapods.org/'
 use_frameworks!
 
 workspace 'PinLayout.xcworkspace'

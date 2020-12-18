@@ -17,4 +17,13 @@ Pod::Spec.new do |spec|
   spec.source        = { :git => "https://github.com/layoutBox/PinLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "Sources/**/*.swift"
   spec.swift_versions = ['4.2', '5.0', '5.1', '5.2', '5.3']
+
+  spec.ios.deployment_target  = '9.0'
+  spec.ios.frameworks         = 'Foundation', 'CoreGraphics', 'UIKit'
+  
+  spec.tvos.deployment_target = '9.0'
+  spec.tvos.frameworks        = 'Foundation', 'CoreGraphics', 'UIKit'
+
+  spec.osx.deployment_target  = '10.11'
+  spec.osx.frameworks         = 'Foundation', 'CoreGraphics', 'AppKit'
 end

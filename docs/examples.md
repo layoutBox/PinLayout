@@ -93,7 +93,7 @@ Example showing how PinLayout can be used to adjust the layout depending of the 
 
 In this example the UISegmentedControl is shown below its label if the available width is smaller than 500 pixels, or on the same line as the label if the width is wider.
 
-[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift")
+[Source code](https://github.com/layoutBox/PinLayout/blob/master/Example/PinLayoutSample/UI/Examples/AdjustToContainer/Subviews/ChoiceSelectorView.swift)
 
 <img src="pinlayout_example_adjust_to_container2.png" width=420/>
 

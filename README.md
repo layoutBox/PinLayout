@@ -379,7 +379,7 @@ In RTL direction position the vertical center (center.y) and the left edge.
    view.pin.topLeft(10)
 
    // Position the 4 edges with a margin of 10 pixels.
-   view.pin.topLeft(10).bottomCenter(10)
+   view.pin.topLeft(10).bottomRight(10)
 ```
 
 <br/>

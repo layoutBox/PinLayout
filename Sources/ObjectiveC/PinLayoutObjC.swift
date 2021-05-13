@@ -42,224 +42,252 @@ import AppKit
      */
     func layout()
 
-    @discardableResult func top() -> PinLayoutObjC
-    @discardableResult func top(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func top(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func top(insets: PEdgeInsets) -> PinLayoutObjC
-    
-    @discardableResult func left() -> PinLayoutObjC
-    @discardableResult func left(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func left(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func left(insets: PEdgeInsets) -> PinLayoutObjC
+    typealias POVoid = () -> PinLayoutObjC?
+    typealias POValue = (_ value: CGFloat) -> PinLayoutObjC?
+    typealias POEdgeInsets = (_ insets: PEdgeInsets) -> PinLayoutObjC?
+    typealias POVEdge = (_ edge: VerticalEdge) -> PinLayoutObjC?
+    typealias POHEdge = (_ edge: HorizontalEdge) -> PinLayoutObjC?
+    typealias POAnchor = (_ anchor: Anchor) -> PinLayoutObjC?
+    typealias POSize = (_ size: CGSize) -> PinLayoutObjC?
+    typealias POHAlign = (_ hAlign: HorizontalAlign) -> PinLayoutObjC?
+    typealias POVAlign = (_ hAlign: VerticalAlign) -> PinLayoutObjC?
+    typealias POWrapType = (_ type: WrapType) -> PinLayoutObjC?
+    typealias POWrapTypePadding = (_ type: WrapType, _ padding: CGFloat) -> PinLayoutObjC?
+    typealias POWrapTypeInsets = (_ type: WrapType, _ insets: PEdgeInsets) -> PinLayoutObjC?
+    typealias POFitType = (_ type: Fit) -> PinLayoutObjC?
 
-    @discardableResult func bottom() -> PinLayoutObjC
-    @discardableResult func bottom(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func bottom(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func bottom(insets: PEdgeInsets) -> PinLayoutObjC
+    var top: POVoid { get }
+    var topValue: POValue { get }
+    var topPercent: POValue { get }
+    var topInsets: POEdgeInsets { get }
 
-    @discardableResult func right() -> PinLayoutObjC
-    @discardableResult func right(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func right(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func right(insets: PEdgeInsets) -> PinLayoutObjC
+    var left: POVoid { get }
+    var leftValue: POValue { get }
+    var leftPercent: POValue { get }
+    var leftInsets: POEdgeInsets { get }
 
-    @discardableResult func hCenter() -> PinLayoutObjC
-    @discardableResult func hCenter(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func hCenter(percent: CGFloat) -> PinLayoutObjC
-    
-    @discardableResult func vCenter() -> PinLayoutObjC
-    @discardableResult func vCenter(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func vCenter(percent: CGFloat) -> PinLayoutObjC
-    
+    var bottom: POVoid { get }
+    var bottomValue: POValue { get }
+    var bottomPercent: POValue { get }
+    var bottomInsets: POEdgeInsets { get }
+
+    var right: POVoid { get }
+    var rightValue: POValue { get }
+    var rightPercent: POValue { get }
+    var rightInsets: POEdgeInsets { get }
+
+    var hCenter: POVoid { get }
+    var hCenterValue: POValue { get }
+    var hCenterPercent: POValue { get }
+
+    var vCenter: POVoid { get }
+    var vCenterValue: POValue { get }
+    var vCenterPercent: POValue { get }
+
     // RTL support
-    @discardableResult func start() -> PinLayoutObjC
-    @discardableResult func start(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func start(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func start(insets: PEdgeInsets) -> PinLayoutObjC
+    var start: POVoid { get }
+    var startValue: POValue { get }
+    var startPercent: POValue { get }
+    var startInsets: POEdgeInsets { get }
 
-    @discardableResult func end() -> PinLayoutObjC
-    @discardableResult func end(_ value: CGFloat) -> PinLayoutObjC
-    @discardableResult func end(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func end(insets: PEdgeInsets) -> PinLayoutObjC
-    
+    var end: POVoid { get }
+    var endValue: POValue { get }
+    var endPercent: POValue { get }
+    var endInsets: POEdgeInsets { get }
+
     // Pin multiple edges at once.
-    @discardableResult func all() -> PinLayoutObjC
-    @discardableResult func horizontally() -> PinLayoutObjC
-    @discardableResult func vertically() -> PinLayoutObjC
-    
+    var all: POVoid { get }
+    var horizontally: POVoid { get }
+    var vertically: POVoid { get }
+
     //
     // MARK: Layout using edges
     //
-    @discardableResult func top(to edge: VerticalEdge) -> PinLayoutObjC
-    @discardableResult func vCenter(to edge: VerticalEdge) -> PinLayoutObjC
-    @discardableResult func bottom(to edge: VerticalEdge) -> PinLayoutObjC
-    @discardableResult func left(to edge: HorizontalEdge) -> PinLayoutObjC
-    @discardableResult func hCenter(to edge: HorizontalEdge) -> PinLayoutObjC
-    @discardableResult func right(to edge: HorizontalEdge) -> PinLayoutObjC
+    var topToEdge: POVEdge { get }
+    var vCenterToEdge: POVEdge { get }
+    var bottomToEdge: POVEdge { get }
+    var leftToEdge: POHEdge { get }
+    var hCenterToEdge: POHEdge { get }
+    var rightToEdge: POHEdge { get }
+
     // RTL support
-    @discardableResult func start(to edge: HorizontalEdge) -> PinLayoutObjC
-    @discardableResult func end(to edge: HorizontalEdge) -> PinLayoutObjC
-    
+    var startToEdge: POHEdge { get }
+    var endToEdge: POHEdge { get }
+
     //
     // MARK: Layout using anchors
     //
-    @discardableResult func topLeft(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func topLeft() -> PinLayoutObjC
-    @discardableResult func topStart(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func topStart() -> PinLayoutObjC
-    
-    @discardableResult func topCenter(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func topCenter() -> PinLayoutObjC
-    
-    @discardableResult func topRight(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func topRight() -> PinLayoutObjC
-    @discardableResult func topEnd(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func topEnd() -> PinLayoutObjC
-    
-    @discardableResult func centerLeft(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func centerLeft() -> PinLayoutObjC
-    @discardableResult func centerStart(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func centerStart() -> PinLayoutObjC
-    
-    @discardableResult func center(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func center() -> PinLayoutObjC
-    
-    @discardableResult func centerRight(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func centerRight() -> PinLayoutObjC
-    @discardableResult func centerEnd(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func centerEnd() -> PinLayoutObjC
-    
-    @discardableResult func bottomLeft(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func bottomLeft() -> PinLayoutObjC
-    @discardableResult func bottomStart(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func bottomStart() -> PinLayoutObjC
-    
-    @discardableResult func bottomCenter(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func bottomCenter() -> PinLayoutObjC
-    
-    @discardableResult func bottomRight(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func bottomRight() -> PinLayoutObjC
-    @discardableResult func bottomEnd(to anchor: Anchor) -> PinLayoutObjC
-    @discardableResult func bottomEnd() -> PinLayoutObjC
-    
+    var topLeftToAnchor: POAnchor { get }
+    var topLeft: POVoid { get }
+    var topStartToAnchor: POAnchor { get }
+    var topStart: POVoid { get }
+
+    var topCenterToAnchor: POAnchor { get }
+    var topCenter: POVoid { get }
+
+    var topRightToAnchor: POAnchor { get }
+    var topRight: POVoid { get }
+    var topEndToAnchor: POAnchor { get }
+    var topEnd: POVoid { get }
+
+    var centerLeftToAnchor: POAnchor { get }
+    var centerLeft: POVoid { get }
+    var centerStartToAnchor: POAnchor { get }
+    var centerStart: POVoid { get }
+
+    var centerToAnchor: POAnchor { get }
+    var center: POVoid { get }
+
+    var centerRightToAnchor: POAnchor { get }
+    var centerRight: POVoid { get }
+    var centerEndToAnchor: POAnchor { get }
+    var centerEnd: POVoid { get }
+
+    var bottomLeftToAnchor: POAnchor { get }
+    var bottomLeft: POVoid { get }
+    var bottomStartToAnchor: POAnchor { get }
+    var bottomStart: POVoid { get }
+
+    var bottomCenterToAnchor: POAnchor { get }
+    var bottomCenter: POVoid { get }
+
+    var bottomRightToAnchor: POAnchor { get }
+    var bottomRight: POVoid { get }
+    var bottomEndToAnchor: POAnchor { get }
+    var bottomEnd: POVoid { get }
+
     //
     // MARK: Layout using relative positioning
     //
     #if os(iOS) || os(tvOS)
-        @discardableResult func above(of: UIView) -> PinLayoutObjC
-        @discardableResult func above(ofViews: [UIView]) -> PinLayoutObjC
-        @discardableResult func above(of: UIView, aligned: HorizontalAlign) -> PinLayoutObjC
-        @discardableResult func above(ofViews: [UIView], aligned: HorizontalAlign) -> PinLayoutObjC
 
-        @discardableResult func below(of: UIView) -> PinLayoutObjC
-        @discardableResult func below(ofViews: [UIView]) -> PinLayoutObjC
-        @discardableResult func below(of: UIView, aligned: HorizontalAlign) -> PinLayoutObjC
-        @discardableResult func below(ofViews: [UIView], aligned: HorizontalAlign) -> PinLayoutObjC
+        typealias POView = (_ view: UIView) -> PinLayoutObjC?
+        typealias POViews = (_ views: [UIView]) -> PinLayoutObjC?
+        typealias POViewHAligned = (_ view: UIView, _ aligned: HorizontalAlign) -> PinLayoutObjC?
+        typealias POViewsHAligned = (_ views: [UIView], _ aligned: HorizontalAlign) -> PinLayoutObjC?
+        typealias POViewVAligned = (_ view: UIView, _ aligned: VerticalAlign) -> PinLayoutObjC?
+        typealias POViewsVAligned = (_ views: [UIView], _ aligned: VerticalAlign) -> PinLayoutObjC?
 
-        @discardableResult func left(of: UIView) -> PinLayoutObjC
-        @discardableResult func left(ofViews: [UIView]) -> PinLayoutObjC
-        @discardableResult func left(of: UIView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func left(ofViews: [UIView], aligned: VerticalAlign) -> PinLayoutObjC
+        var aboveOf: POView { get }
+        var aboveOfViews: POViews { get }
+        var aboveOfAligned: POViewHAligned { get }
+        var aboveOfViewsAligned: POViewsHAligned { get }
 
-        @discardableResult func right(of: UIView) -> PinLayoutObjC
-        @discardableResult func right(ofViews: [UIView]) -> PinLayoutObjC
-        @discardableResult func right(of: UIView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func right(ofViews: [UIView], aligned: VerticalAlign) -> PinLayoutObjC
+        var belowOf: POView { get }
+        var belowOfViews: POViews { get }
+        var belowOfAligned: POViewHAligned { get }
+        var belowOfViewsAligned: POViewsHAligned { get }
+
+        var leftOf: POView { get }
+        var leftOfViews: POViews { get }
+        var leftOfAligned: POViewVAligned { get }
+        var leftOfViewsAligned: POViewsVAligned { get }
+
+        var rightOf: POView { get }
+        var rightOfViews: POViews { get }
+        var rightOfAligned: POViewVAligned { get }
+        var rightOfViewsAligned: POViewsVAligned { get }
 
         // RTL support
-        @discardableResult func before(of: UIView) -> PinLayoutObjC
-        @discardableResult func before(ofViews: [UIView]) -> PinLayoutObjC
-        @discardableResult func before(of: UIView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func before(ofViews: [UIView], aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func after(of: UIView) -> PinLayoutObjC
-        @discardableResult func after(ofViews: [UIView]) -> PinLayoutObjC
-        @discardableResult func after(of: UIView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func after(ofViews: [UIView], aligned: VerticalAlign) -> PinLayoutObjC
+        var beforeOf: POView { get }
+        var beforeOfViews: POViews { get }
+        var beforeOfAligned: POViewVAligned { get }
+        var beforeOfViewsAligned: POViewsVAligned { get }
+        var afterOf: POView { get }
+        var afterOfViews: POViews { get }
+        var afterOfAligned: POViewVAligned { get }
+        var afterOfViewsAligned: POViewsVAligned { get }
     #elseif os(macOS)
-        @discardableResult func above(of: NSView) -> PinLayoutObjC
-        @discardableResult func above(ofViews: [NSView]) -> PinLayoutObjC
-        @discardableResult func above(of: NSView, aligned: HorizontalAlign) -> PinLayoutObjC
-        @discardableResult func above(ofViews: [NSView], aligned: HorizontalAlign) -> PinLayoutObjC
 
-        @discardableResult func below(of: NSView) -> PinLayoutObjC
-        @discardableResult func below(ofViews: [NSView]) -> PinLayoutObjC
-        @discardableResult func below(of: NSView, aligned: HorizontalAlign) -> PinLayoutObjC
-        @discardableResult func below(ofViews: [NSView], aligned: HorizontalAlign) -> PinLayoutObjC
+        typealias POView = (_ view: NSView) -> PinLayoutObjC?
+        typealias POViews = (_ views: [NSView]) -> PinLayoutObjC?
+        typealias POViewHAligned = (_ view: NSView, _ aligned: HorizontalAlign) -> PinLayoutObjC?
+        typealias POViewsHAligned = (_ views: [NSView], _ aligned: HorizontalAlign) -> PinLayoutObjC?
+        typealias POViewVAligned = (_ view: NSView, _ aligned: VerticalAlign) -> PinLayoutObjC?
+        typealias POViewsVAligned = (_ views: [NSView], _ aligned: VerticalAlign) -> PinLayoutObjC?
 
-        @discardableResult func left(of: NSView) -> PinLayoutObjC
-        @discardableResult func left(ofViews: [NSView]) -> PinLayoutObjC
-        @discardableResult func left(of: NSView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func left(ofViews: [NSView], aligned: VerticalAlign) -> PinLayoutObjC
+        var aboveOf: POView { get }
+        var aboveOfViews: POViews { get }
+        var aboveOfAligned: POViewHAligned { get }
+        var aboveOfViewsAligned: POViewsHAligned { get }
 
-        @discardableResult func right(of: NSView) -> PinLayoutObjC
-        @discardableResult func right(ofViews: [NSView]) -> PinLayoutObjC
-        @discardableResult func right(of: NSView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func right(ofViews: [NSView], aligned: VerticalAlign) -> PinLayoutObjC
+        var belowOf: POView { get }
+        var belowOfViews: POViews { get }
+        var belowOfAligned: POViewHAligned { get }
+        var belowOfViewsAligned: POViewsHAligned { get }
+        var leftOf: POView { get }
+        var leftOfViews: POViews { get }
+        var leftOfAligned: POViewVAligned { get }
+        var leftOfViewsAligned: POViewsVAligned { get }
+
+        var rightOf: POView { get }
+        var rightOfViews: POViews { get }
+        var rightOfAligned: POViewVAligned { get }
+        var rightOfViewsAligned: POViewsVAligned { get }
 
         // RTL support
-        @discardableResult func before(of: NSView) -> PinLayoutObjC
-        @discardableResult func before(ofViews: [NSView]) -> PinLayoutObjC
-        @discardableResult func before(of: NSView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func before(ofViews: [NSView], aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func after(of: NSView) -> PinLayoutObjC
-        @discardableResult func after(ofViews: [NSView]) -> PinLayoutObjC
-        @discardableResult func after(of: NSView, aligned: VerticalAlign) -> PinLayoutObjC
-        @discardableResult func after(ofViews: [NSView], aligned: VerticalAlign) -> PinLayoutObjC
+        var beforeOf: POView { get }
+        var beforeOfViews: POViews { get }
+        var beforeOfAligned: POViewVAligned { get }
+        var beforeOfViewsAligned: POViewsVAligned { get }
+        var afterOf: POView { get }
+        var afterOfViews: POViews { get }
+        var afterOfAligned: POViewVAligned { get }
+        var afterOfViewsAligned: POViewsVAligned { get }
     #endif
 
     //
     // MARK: justify / align
     //
-    @discardableResult func justify(_: HorizontalAlign) -> PinLayoutObjC
-    @discardableResult func align(_: VerticalAlign) -> PinLayoutObjC
+    var justify: POHAlign { get }
+    var align: POVAlign { get }
 
     //
     // MARK: Width, height and size
     //
-    @discardableResult func width(_ width: CGFloat) -> PinLayoutObjC
-    @discardableResult func width(percent: CGFloat) -> PinLayoutObjC
+    var width: POValue { get }
+    var widthPercent: POValue { get }
     #if os(iOS) || os(tvOS)
-    @discardableResult func width(of view: UIView) -> PinLayoutObjC
+        var widthOf: POView { get }
     #elseif os(macOS)
-    @discardableResult func width(of view: NSView) -> PinLayoutObjC
+        var widthOf: POView { get }
     #endif
 
-    @discardableResult func minWidth(_ width: CGFloat) -> PinLayoutObjC
-    @discardableResult func minWidth(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func maxWidth(_ width: CGFloat) -> PinLayoutObjC
-    @discardableResult func maxWidth(percent: CGFloat) -> PinLayoutObjC
+    var minWidth: POValue { get }
+    var minWidthPercent: POValue { get }
+    var maxWidth: POValue { get }
+    var maxWidthPercent: POValue { get }
 
-    @discardableResult func height(_ height: CGFloat) -> PinLayoutObjC
-    @discardableResult func height(percent: CGFloat) -> PinLayoutObjC
+    var height: POValue { get }
+    var heightPercent: POValue { get }
     #if os(iOS) || os(tvOS)
-    @discardableResult func height(of view: UIView) -> PinLayoutObjC
+        var heightOf: POView { get }
     #elseif os(macOS)
-    @discardableResult func height(of view: NSView) -> PinLayoutObjC
+        var heightOf: POView { get }
     #endif
 
-    @discardableResult func minHeight(_ height: CGFloat) -> PinLayoutObjC
-    @discardableResult func minHeight(percent: CGFloat) -> PinLayoutObjC
-    @discardableResult func maxHeight(_ height: CGFloat) -> PinLayoutObjC
-    @discardableResult func maxHeight(percent: CGFloat) -> PinLayoutObjC
+    var minHeight: POValue { get }
+    var minHeightPercent: POValue { get }
+    var maxHeight: POValue { get }
+    var maxHeightPercent: POValue { get }
 
-    @discardableResult func size(_ size: CGSize) -> PinLayoutObjC
-    @discardableResult func size(length: CGFloat) -> PinLayoutObjC
-    @discardableResult func size(percent: CGFloat) -> PinLayoutObjC
+    var size: POSize { get }
+    var sizeLength: POValue { get }
+    var sizePercent: POValue { get }
     #if os(iOS) || os(tvOS)
-    @discardableResult func size(of view: UIView) -> PinLayoutObjC
+        var sizeOf: POView{ get }
     #elseif os(macOS)
-    @discardableResult func size(of view: NSView) -> PinLayoutObjC
+        var sizeOf: POView{ get }
     #endif
-    
-    
+
     //
     // MARK: wrapContent
-    @discardableResult func wrapContent() -> PinLayoutObjC;
-    @discardableResult func wrapContent(padding: CGFloat) -> PinLayoutObjC;
-    @discardableResult func wrapContent(insets: PEdgeInsets) -> PinLayoutObjC;
-    @discardableResult func wrapContent(type: WrapType) -> PinLayoutObjC;
-    @discardableResult func wrapContent(type: WrapType, padding: CGFloat) -> PinLayoutObjC;
-    @discardableResult func wrapContent(type: WrapType, insets: PEdgeInsets) -> PinLayoutObjC;
-
+    var wrapContent: POVoid { get }
+    var wrapContentPadding: POValue { get }
+    var wrapContentInsets: POEdgeInsets { get }
+    var wrapContentType: POWrapType { get }
+    var wrapContentTypePadding: POWrapTypePadding { get }
+    var wrapContentTypeInsets: POWrapTypeInsets { get }
 
     /**
      Set the view aspect ratio.
@@ -272,7 +300,7 @@ import AppKit
      * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
      dimensions of an item.
      */
-    @discardableResult func aspectRatio(_ ratio: CGFloat) -> PinLayoutObjC
+    var aspectRatioValue: POValue { get }
     /**
      Set the view aspect ratio using another UIView's aspect ratio.
 
@@ -284,9 +312,9 @@ import AppKit
      dimensions of an item.
      */
     #if os(iOS) || os(tvOS)
-    @discardableResult func aspectRatio(of view: UIView) -> PinLayoutObjC
+        var aspectRatioOf: POView { get }
     #elseif os(macOS)
-    @discardableResult func aspectRatio(of view: NSView) -> PinLayoutObjC
+        var aspectRatioOf: POView { get }
     #endif
 
     /**
@@ -296,12 +324,12 @@ import AppKit
      For other types of views, this method as no impact.
      */
     #if os(iOS) || os(tvOS)
-    @discardableResult func aspectRatio() -> PinLayoutObjC
+        var aspectRatio: POVoid { get }
     #endif
 
-    @discardableResult func sizeToFit() -> PinLayoutObjC
-
-    @discardableResult func sizeToFit(_ fitType: Fit) -> PinLayoutObjC
+    var sizeToFit: POVoid { get }
+    
+    var sizeToFitType: POFitType { get }
 
     //
     // MARK: Margins
@@ -310,22 +338,22 @@ import AppKit
     /**
      Set the top margin.
      */
-    @discardableResult func marginTop(_ value: CGFloat) -> PinLayoutObjC
+    var marginTop: POValue { get }
 
     /**
      Set the left margin.
      */
-    @discardableResult func marginLeft(_ value: CGFloat) -> PinLayoutObjC
+    var marginLeft: POValue { get }
 
     /**
      Set the bottom margin.
      */
-    @discardableResult func marginBottom(_ value: CGFloat) -> PinLayoutObjC
+    var marginBottom: POValue { get }
 
     /**
      Set the right margin.
      */
-    @discardableResult func marginRight(_ value: CGFloat) -> PinLayoutObjC
+    var marginRight: POValue { get }
 
     // RTL support
     /**
@@ -335,7 +363,7 @@ import AppKit
      * In LTR direction, start margin specify the **left** margin.
      * In RTL direction, start margin specify the **right** margin.
      */
-    @discardableResult func marginStart(_ value: CGFloat) -> PinLayoutObjC
+    var marginStart: POValue { get }
 
     /**
      Set the end margin.
@@ -344,26 +372,26 @@ import AppKit
      * In LTR direction, end margin specify the **right** margin.
      * In RTL direction, end margin specify the **left** margin.
      */
-    @discardableResult func marginEnd(_ value: CGFloat) -> PinLayoutObjC
+    var marginEnd: POValue { get }
 
     /**
      Set the left, right, start and end margins to the specified value.
      */
-    @discardableResult func marginHorizontal(_ value: CGFloat) -> PinLayoutObjC
+    var marginHorizontal: POValue { get }
 
     /**
      Set the top and bottom margins to the specified value.
      */
-    @discardableResult func marginVertical(_ value: CGFloat) -> PinLayoutObjC
+    var marginVertical: POValue { get }
 
     /**
      Set all margins using UIEdgeInsets.
      This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
      */
     #if os(iOS) || os(tvOS)
-    @discardableResult func margin(insets: UIEdgeInsets) -> PinLayoutObjC
+        var marginInsets: POEdgeInsets { get }
     #elseif os(macOS)
-    @discardableResult func margin(insets: NSEdgeInsets) -> PinLayoutObjC
+        var marginInsets: POEdgeInsets { get }
     #endif
 
     /**
@@ -372,28 +400,28 @@ import AppKit
 
      Available only on iOS 11 and higher.
      */
-    //@available(iOS 11.0, *)
-    //@discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayoutObjC
+    // @available(iOS 11.0, *)
+    // @discardableResult func margin(_ directionalInsets: NSDirectionalEdgeInsets) -> PinLayoutObjC
 
     /**
      Set all margins to the specified value.
      */
-    @discardableResult func margin(_ value: CGFloat) -> PinLayoutObjC
+    var margin: POValue { get }
 
     /**
      Set individually vertical margins (top, bottom) and horizontal margins (left, right, start, end).
      */
-    @discardableResult func margin(vertical: CGFloat, horizontal: CGFloat) -> PinLayoutObjC
+    var marginVH: (_ vertical: CGFloat, _ horizontal: CGFloat) -> PinLayoutObjC? { get }
 
     /**
      Set individually top, horizontal margins and bottom margin.
      */
-    @discardableResult func margin(top: CGFloat, horizontal: CGFloat, bottom: CGFloat) -> PinLayoutObjC
+    var marginTHB: (_ top: CGFloat, _ horizontal: CGFloat, _ bottom: CGFloat) -> PinLayoutObjC? { get }
 
     /**
      Set individually top, left, bottom and right margins.
      */
-    @discardableResult func margin(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) -> PinLayoutObjC
+    var marginTLBR: (_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> PinLayoutObjC? { get }
 
     /// Normally if only either left or right has been specified, PinLayout will MOVE the view to apply left or right margins.
     /// This is also true even if the width has been set.
@@ -401,9 +429,9 @@ import AppKit
     /// moving the view.
     ///
     /// - Returns: PinLayout
-    @discardableResult func pinEdges() -> PinLayoutObjC
+    var pinEdges: POVoid { get }
 }
-    
+
 @objc public enum Fit: Int {
     case width
     case height

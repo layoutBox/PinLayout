@@ -72,26 +72,26 @@
 //    [[[[segmented.pinObjc rightOf:logo aligned:VerticalAlignTop] rightWithInsets:safeArea] marginHorizontal:margin] layout];
 //    [[[[[[textLabel.pinObjc belowOf:segmented aligned:HorizontalAlignLeft] widthOf:segmented] pinEdges] marginTop:margin] sizeToFit:FitWidth] layout];
 //    [[[[[separatorView.pinObjc belowOfViews:@[logo, textLabel] aligned:HorizontalAlignLeft] rightTo:segmented.edge.right] height:1] marginTop:margin] layout];
-    [logo.pinObjc
+    logo.pinObjc
      .topInsets(safeArea)
      .leftInsets(safeArea)
      .width(100).aspectRatio()
-     .margin(margin) layout];
-    [segmented.pinObjc
+     .margin(margin).layout();
+    segmented.pinObjc
      .rightOfAligned(logo, VerticalAlignTop)
      .rightInsets(safeArea)
-     .marginHorizontal(margin) layout];
-    [textLabel.pinObjc
+     .marginHorizontal(margin).layout();
+    textLabel.pinObjc
      .belowOfAligned(segmented, HorizontalAlignLeft)
      .widthOf(segmented)
      .pinEdges()
      .marginTop(margin)
-     .sizeToFitType(FitWidth) layout];
-    [separatorView.pinObjc
+     .sizeToFitType(FitWidth).layout();
+    separatorView.pinObjc
      .belowOfViewsAligned(@[logo, textLabel], HorizontalAlignLeft)
      .rightToEdge(segmented.edge.right)
      .height(1)
-     .marginTop(margin) layout];
+     .marginTop(margin).layout();
 }
 
 - (void) setLayoutGuidesTop:(CGFloat)top {

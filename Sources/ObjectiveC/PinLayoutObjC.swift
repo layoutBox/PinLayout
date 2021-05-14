@@ -33,15 +33,7 @@ import AppKit
     #if os(iOS) || os(tvOS)
     var safeArea: PEdgeInsets { get }
     #endif
-
-    /**
-     With the Objective-C interface, you must call the \"layout\" method to ensure the view is layouted correctly.
-     Ex:
-         [[[textLabel.pin_objc top] left] layout];"
-         [[[textLabel.pin_objc top] left] layout];"
-     */
-    func layout()
-
+    
     typealias POVoid = () -> PinLayoutObjC?
     typealias POValue = (_ value: CGFloat) -> PinLayoutObjC?
     typealias POEdgeInsets = (_ insets: PEdgeInsets) -> PinLayoutObjC?
@@ -55,6 +47,13 @@ import AppKit
     typealias POWrapTypePadding = (_ type: WrapType, _ padding: CGFloat) -> PinLayoutObjC?
     typealias POWrapTypeInsets = (_ type: WrapType, _ insets: PEdgeInsets) -> PinLayoutObjC?
     typealias POFitType = (_ type: Fit) -> PinLayoutObjC?
+
+    /**
+     With the Objective-C interface, you must call the \"layout\" method to ensure the view is layouted correctly.
+     Ex:
+         textLabel.pinObjc.top().left().layout()
+     */
+    var layout: POVoid { get }
 
     var top: POVoid { get }
     var topValue: POValue { get }

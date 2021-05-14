@@ -70,11 +70,12 @@ import AppKit
         }
     }
 
-    func layout() {
-        // With objective-c PinLayoutObjCImpl instance are sometimes deallocated only after the context has been quit. For this reason
-        // developpers must call the layout: method implicetely.
-        impl?.layout()
-        impl = nil
+    var layout: POVoid {
+        return { [weak self] in
+            _ = self?.impl?.layout()
+            self?.impl = nil
+            return self
+        }
     }
     
     var top: POVoid {

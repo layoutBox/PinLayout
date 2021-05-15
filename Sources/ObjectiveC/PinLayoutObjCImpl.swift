@@ -939,12 +939,14 @@ import AppKit
         }
     }
     
+    #if os(iOS) || os(tvOS)
     var aspectRatio: POVoid {
         return { [weak self] in
             _ = self?.impl?.aspectRatio()
             return self
         }
     }
+    #endif
     
     var sizeToFit: POVoid {
         return { [weak self] in

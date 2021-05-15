@@ -159,81 +159,49 @@ import AppKit
     // MARK: Layout using relative positioning
     //
     #if os(iOS) || os(tvOS)
-
         typealias POView = (_ view: UIView) -> PinLayoutObjC?
         typealias POViews = (_ views: [UIView]) -> PinLayoutObjC?
         typealias POViewHAligned = (_ view: UIView, _ aligned: HorizontalAlign) -> PinLayoutObjC?
         typealias POViewsHAligned = (_ views: [UIView], _ aligned: HorizontalAlign) -> PinLayoutObjC?
         typealias POViewVAligned = (_ view: UIView, _ aligned: VerticalAlign) -> PinLayoutObjC?
         typealias POViewsVAligned = (_ views: [UIView], _ aligned: VerticalAlign) -> PinLayoutObjC?
-
-        var aboveOf: POView { get }
-        var aboveOfViews: POViews { get }
-        var aboveOfAligned: POViewHAligned { get }
-        var aboveOfViewsAligned: POViewsHAligned { get }
-
-        var belowOf: POView { get }
-        var belowOfViews: POViews { get }
-        var belowOfAligned: POViewHAligned { get }
-        var belowOfViewsAligned: POViewsHAligned { get }
-
-        var leftOf: POView { get }
-        var leftOfViews: POViews { get }
-        var leftOfAligned: POViewVAligned { get }
-        var leftOfViewsAligned: POViewsVAligned { get }
-
-        var rightOf: POView { get }
-        var rightOfViews: POViews { get }
-        var rightOfAligned: POViewVAligned { get }
-        var rightOfViewsAligned: POViewsVAligned { get }
-
-        // RTL support
-        var beforeOf: POView { get }
-        var beforeOfViews: POViews { get }
-        var beforeOfAligned: POViewVAligned { get }
-        var beforeOfViewsAligned: POViewsVAligned { get }
-        var afterOf: POView { get }
-        var afterOfViews: POViews { get }
-        var afterOfAligned: POViewVAligned { get }
-        var afterOfViewsAligned: POViewsVAligned { get }
     #elseif os(macOS)
-
         typealias POView = (_ view: NSView) -> PinLayoutObjC?
         typealias POViews = (_ views: [NSView]) -> PinLayoutObjC?
         typealias POViewHAligned = (_ view: NSView, _ aligned: HorizontalAlign) -> PinLayoutObjC?
         typealias POViewsHAligned = (_ views: [NSView], _ aligned: HorizontalAlign) -> PinLayoutObjC?
         typealias POViewVAligned = (_ view: NSView, _ aligned: VerticalAlign) -> PinLayoutObjC?
         typealias POViewsVAligned = (_ views: [NSView], _ aligned: VerticalAlign) -> PinLayoutObjC?
-
-        var aboveOf: POView { get }
-        var aboveOfViews: POViews { get }
-        var aboveOfAligned: POViewHAligned { get }
-        var aboveOfViewsAligned: POViewsHAligned { get }
-
-        var belowOf: POView { get }
-        var belowOfViews: POViews { get }
-        var belowOfAligned: POViewHAligned { get }
-        var belowOfViewsAligned: POViewsHAligned { get }
-        var leftOf: POView { get }
-        var leftOfViews: POViews { get }
-        var leftOfAligned: POViewVAligned { get }
-        var leftOfViewsAligned: POViewsVAligned { get }
-
-        var rightOf: POView { get }
-        var rightOfViews: POViews { get }
-        var rightOfAligned: POViewVAligned { get }
-        var rightOfViewsAligned: POViewsVAligned { get }
-
-        // RTL support
-        var beforeOf: POView { get }
-        var beforeOfViews: POViews { get }
-        var beforeOfAligned: POViewVAligned { get }
-        var beforeOfViewsAligned: POViewsVAligned { get }
-        var afterOf: POView { get }
-        var afterOfViews: POViews { get }
-        var afterOfAligned: POViewVAligned { get }
-        var afterOfViewsAligned: POViewsVAligned { get }
     #endif
+    
+    var aboveOf: POView { get }
+    var aboveOfViews: POViews { get }
+    var aboveOfAligned: POViewHAligned { get }
+    var aboveOfViewsAligned: POViewsHAligned { get }
+
+    var belowOf: POView { get }
+    var belowOfViews: POViews { get }
+    var belowOfAligned: POViewHAligned { get }
+    var belowOfViewsAligned: POViewsHAligned { get }
+    var leftOf: POView { get }
+    var leftOfViews: POViews { get }
+    var leftOfAligned: POViewVAligned { get }
+    var leftOfViewsAligned: POViewsVAligned { get }
+
+    var rightOf: POView { get }
+    var rightOfViews: POViews { get }
+    var rightOfAligned: POViewVAligned { get }
+    var rightOfViewsAligned: POViewsVAligned { get }
+
+    // RTL support
+    var beforeOf: POView { get }
+    var beforeOfViews: POViews { get }
+    var beforeOfAligned: POViewVAligned { get }
+    var beforeOfViewsAligned: POViewsVAligned { get }
+    var afterOf: POView { get }
+    var afterOfViews: POViews { get }
+    var afterOfAligned: POViewVAligned { get }
+    var afterOfViewsAligned: POViewsVAligned { get }
 
     //
     // MARK: justify / align
@@ -246,11 +214,7 @@ import AppKit
     //
     var width: POValue { get }
     var widthPercent: POValue { get }
-    #if os(iOS) || os(tvOS)
-        var widthOf: POView { get }
-    #elseif os(macOS)
-        var widthOf: POView { get }
-    #endif
+    var widthOf: POView { get }
 
     var minWidth: POValue { get }
     var minWidthPercent: POValue { get }
@@ -259,11 +223,7 @@ import AppKit
 
     var height: POValue { get }
     var heightPercent: POValue { get }
-    #if os(iOS) || os(tvOS)
-        var heightOf: POView { get }
-    #elseif os(macOS)
-        var heightOf: POView { get }
-    #endif
+    var heightOf: POView { get }
 
     var minHeight: POValue { get }
     var minHeightPercent: POValue { get }
@@ -273,11 +233,7 @@ import AppKit
     var size: POSize { get }
     var sizeLength: POValue { get }
     var sizePercent: POValue { get }
-    #if os(iOS) || os(tvOS)
-        var sizeOf: POView{ get }
-    #elseif os(macOS)
-        var sizeOf: POView{ get }
-    #endif
+    var sizeOf: POView{ get }
 
     //
     // MARK: wrapContent
@@ -310,11 +266,7 @@ import AppKit
      * AspectRatio respects the min (minWidth/minHeight) and the max (maxWidth/maxHeight)
      dimensions of an item.
      */
-    #if os(iOS) || os(tvOS)
-        var aspectRatioOf: POView { get }
-    #elseif os(macOS)
-        var aspectRatioOf: POView { get }
-    #endif
+    var aspectRatioOf: POView { get }
 
     /**
      If the layouted view is an UIImageView, this method will set the aspectRatio using
@@ -387,11 +339,7 @@ import AppKit
      Set all margins using UIEdgeInsets.
      This method is particularly useful to set all margins using iOS 11 `UIView.safeAreaInsets`.
      */
-    #if os(iOS) || os(tvOS)
-        var marginInsets: POEdgeInsets { get }
-    #elseif os(macOS)
-        var marginInsets: POEdgeInsets { get }
-    #endif
+    var marginInsets: POEdgeInsets { get }
 
     /**
      Set margins using NSDirectionalEdgeInsets.

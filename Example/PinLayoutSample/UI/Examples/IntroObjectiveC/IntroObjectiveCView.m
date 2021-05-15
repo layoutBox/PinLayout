@@ -68,26 +68,10 @@
     CGFloat margin = 10;
     UIEdgeInsets safeArea = self.pinObjc.safeArea;
 
-    logo.pinObjc
-     .topInsets(safeArea)
-     .leftInsets(safeArea)
-     .width(100).aspectRatio()
-     .margin(margin).layout();
-    segmented.pinObjc
-     .rightOfAligned(logo, VerticalAlignTop)
-     .rightInsets(safeArea)
-     .marginHorizontal(margin).layout();
-    textLabel.pinObjc
-     .belowOfAligned(segmented, HorizontalAlignLeft)
-     .widthOf(segmented)
-     .pinEdges()
-     .marginTop(margin)
-     .sizeToFitType(FitWidth).layout();
-    separatorView.pinObjc
-     .belowOfViewsAligned(@[logo, textLabel], HorizontalAlignLeft)
-     .rightToEdge(segmented.edge.right)
-     .height(1)
-     .marginTop(margin).layout();
+    logo.pinObjc.topInsets(safeArea).leftInsets(safeArea).width(100).aspectRatio().margin(margin).layout();
+    segmented.pinObjc.rightOfAligned(logo, VerticalAlignTop).rightInsets(safeArea).marginHorizontal(margin).layout();
+    textLabel.pinObjc.belowOfAligned(segmented, HorizontalAlignLeft).widthOf(segmented).pinEdges().marginTop(margin).sizeToFitType(FitWidth).layout();
+    separatorView.pinObjc.belowOfViewsAligned(@[logo, textLabel], HorizontalAlignLeft).rightToEdge(segmented.edge.right).height(1).marginTop(margin).layout();
 }
 
 - (void) setLayoutGuidesTop:(CGFloat)top {

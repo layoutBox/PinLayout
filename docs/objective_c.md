@@ -14,11 +14,14 @@ This example implement the PinLayout's Intro example using objective-c
 ```
 - (void) layoutSubviews {
     [super layoutSubviews];
-    
-    [[[[[[logo.pinObjc top] left] width:100] aspectRatio] marginWithTop:topLayoutGuide + 10 horizontal:10 bottom:10] layout];
-    [[[[segmented.pinObjc rightOf:logo aligned:VerticalAlignTop] right] marginHorizontal:10] layout];
-    [[[[[[textLabel.pinObjc belowOf:segmented aligned:HorizontalAlignLeft] widthOf:segmented] pinEdges] marginTop:10] fitSize] layout];
-    [[[[[separatorView.pinObjc belowOfViews:@[logo, textLabel] aligned:HorizontalAlignLeft] rightTo:segmented.edge.right] height:1] marginTop:10] layout];
+
+    CGFloat margin = 10;
+    UIEdgeInsets safeArea = self.pinObjc.safeArea;
+
+    logo.pinObjc.topInsets(safeArea).leftInsets(safeArea).width(100).aspectRatio().margin(margin).layout();
+    segmented.pinObjc.rightOfAligned(logo, VerticalAlignTop).rightInsets(safeArea).marginHorizontal(margin).layout();
+    textLabel.pinObjc.belowOfAligned(segmented, HorizontalAlignLeft).widthOf(segmented).pinEdges().marginTop(margin).sizeToFitType(FitWidth).layout();
+    separatorView.pinObjc.belowOfViewsAligned(@[logo, textLabel], HorizontalAlignLeft).rightToEdge(segmented.edge.right).height(1).marginTop(margin).layout();
 }
 
 ``` 
@@ -31,7 +34,7 @@ This example implement the PinLayout's Intro example using objective-c
 The PinLayout's objective-c interface is available using the property `pinObjc` (instead of `pin` in Swift)
 
 ```
- [[view.pinObjc top] layout];
+ view.pinObjc.top().layout();
 ``` 
 
 #### `layout()`
@@ -47,6 +50,6 @@ When using the Objective-c interface, the `layout` method must be called explici
  view.pin.width(100)
 
  // Objective-c
- [[view.pinObjc width:100] layout];
+ view.pinObjc.width().layout();
 ``` 
 

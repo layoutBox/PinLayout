@@ -17,7 +17,7 @@ echo "PinLayout-tvOS"                   &&
 echo "==============================="  &&
 time xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS \
    -derivedDataPath $DERIVED_DATA -sdk appletvsimulator14.5 \
-   -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=14.5' \
+   -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=14.5' \
    | xcpretty  &&
 
 echo "==============================="  &&
@@ -35,18 +35,18 @@ time xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
    -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5'  \
    | xcpretty  &&
 
-# time xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
-#    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator14.5 \
-#    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
-#    | xcpretty  &&
+time xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator14.5 \
+   -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
+   | xcpretty  &&
 
 echo "==============================="  &&
 echo "iOS unit test"                    &&
 echo "==============================="  &&
-# time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-#    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator14.5 \
-#    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
-#    | xcpretty  &&
+time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator14.5 \
+   -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4'  \
+   | xcpretty  &&
 
 time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator14.5 \

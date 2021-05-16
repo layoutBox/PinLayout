@@ -71,7 +71,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     rouge (1.11.1)
     ruby-macho (1.4.0)
     sass (3.7.4)

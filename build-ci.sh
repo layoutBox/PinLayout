@@ -63,7 +63,7 @@ time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-i
 # echo "==============================="
 # time  xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS \
 #    -derivedDataPath $DERIVED_DATA -sdk appletvos14.5 \
-#    -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=14.5' \
+#    -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=14.5' \
 #    | xcpretty
 
 
@@ -108,7 +108,7 @@ rm -rf $DERIVED_DATA  &&
 pod install  &&
 time xcodebuild clean build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS \
     -sdk appletvsimulator14.5 -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=tvOS Simulator,name=Apple TV 4K,OS=14.5' \
+    -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=14.5' \
     | xcpretty  &&
 rm -rf $DERIVED_DATA  &&
 cd ../../..  &&

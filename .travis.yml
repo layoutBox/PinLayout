@@ -6,7 +6,6 @@ cache:
   - cocoapods
 
 install:
-  - brew update
   - bundle install # --deployment # to cache vendor/bundle
   - pod install --repo-update;
 

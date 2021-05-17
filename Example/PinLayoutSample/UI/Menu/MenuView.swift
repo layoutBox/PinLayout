@@ -20,7 +20,7 @@
 import UIKit
 import PinLayout
 
-protocol MenuViewDelegate: class {
+protocol MenuViewDelegate: AnyObject {
     func didSelect(pageType: PageType)
 }
 

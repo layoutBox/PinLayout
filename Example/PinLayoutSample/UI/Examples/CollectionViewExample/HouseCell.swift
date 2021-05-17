@@ -41,7 +41,7 @@ class HouseCell: UICollectionViewCell {
         nameLabel.textColor = .white
         headerView.addSubview(nameLabel)
 
-        /// IMAGE
+        // IMAGE
         mainImage.backgroundColor = .black
         mainImage.contentMode = .scaleAspectFill
         mainImage.clipsToBounds = true

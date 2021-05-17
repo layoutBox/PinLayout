@@ -7,6 +7,13 @@
 
 # Change Log
 
+## [1.9.4](https://github.com/layoutBox/PinLayout/releases/tag/1.9.4)
+Released on 2021-05-17
+
+* Update to Xcode 12.5
+	* Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#223](https://github.com/layoutBox/PinLayout/pull/223) 
+
+
 ## [1.9.3](https://github.com/layoutBox/PinLayout/releases/tag/1.9.3)
 Released on 2020-12-17
 

@@ -58,7 +58,7 @@ describe(@"test Objective-C interface", ^{
         });
 
         it(@"basic pinlayout calls", ^{
-            [[[aView pinObjc] top:10] layout];
+            aView.pinObjc.topValue(10).layout();
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
         });
         

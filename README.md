@@ -35,9 +35,10 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 ### Requirements
 * iOS 9.0+ / tvOS 9.0+ / macOS 10.9+
 * Swift 5.x / 4 / 3 / Objective-C
-* Xcode 12 / 11 / 10 / 9
+* Xcode 12 / 11 / 10
 
 ### Recent changes/features
+* :star: New chainable Objective-C syntax. See [PinLayout using Objective-C](#objective_c_interface)
 * :star: Automatic Sizing, use PinLayout to compute view size. See [Automatic sizing](#automatic_sizing)
 * :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).
 * :star: Add [`pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets) properties.
@@ -1780,6 +1781,11 @@ To integrate PinLayout into your Xcode project using CocoaPods, specify it in yo
 ```
 
 Then, run `pod install`.
+
+### Swift Package Manager (SPM)
+
+1. From Xcode, select from the menu **File > Swift Packages > Add Package Dependency**
+2. Specify the URL `https://github.com/layoutBox/PinLayout`
 
 ### Carthage
 

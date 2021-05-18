@@ -129,6 +129,7 @@ time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
     -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' \
     | xcpretty  &&
 rm -rf $DERIVED_DATA  &&
+rm Cartfile.resolved &&
 cd ../../..  &&
 
 

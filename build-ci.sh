@@ -131,10 +131,6 @@ time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
 rm -rf $DERIVED_DATA  &&
 cd ../../..  &&
 
-echo "==============================="  &&
-echo " Pod lib lint"                    &&
-echo "==============================="  &&
-time bundle exec pod lib lint --allow-warnings
 
 echo "=========================================="
 echo " Swift Package Manager: iOS Empty project "
@@ -147,5 +143,8 @@ time xcodebuild clean build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayo
     | xcpretty
 cd ../../..
 
-#OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies'
-xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA  -sdk macosx10.15
+
+echo "==============================="  &&
+echo " Pod lib lint"                    &&
+echo "==============================="  &&
+time bundle exec pod lib lint --allow-warnings

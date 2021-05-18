@@ -7,6 +7,22 @@
 
 # Change Log
 
+## [1.10.0](https://github.com/layoutBox/PinLayout/releases/tag/1.10.0)
+Released on 2021-05-18
+
+#### New Objective-C interface
+Instead of using verbose Objective-C with all brackets (`[ ]`):
+```
+[[[[[[logo.pinObjc top] left] width:100] aspectRatio] marginWithTop:topLayoutGuide + 10 horizontal:10 bottom:10] layout];
+```
+
+It now use a function chaining:
+```
+logo.pinObjc.topInsets(safeArea).leftInsets(safeArea).width(100).aspectRatio().margin(margin).layout();
+```
+
+Added by [protosse](https://github.com/protosse) in Pull Request [#229](https://github.com/layoutBox/PinLayout/pull/229) 
+
 ## [1.9.4](https://github.com/layoutBox/PinLayout/releases/tag/1.9.4)
 Released on 2021-05-17
 

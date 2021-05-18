@@ -50,6 +50,6 @@ When using the Objective-c interface, the `layout` method must be called explici
  view.pin.width(100)
 
  // Objective-c
- view.pinObjc.width().layout();
+ view.pinObjc.width(100).layout();
 ``` 
 

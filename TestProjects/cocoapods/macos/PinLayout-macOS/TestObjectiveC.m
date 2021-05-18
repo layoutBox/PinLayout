@@ -27,8 +27,8 @@
 - (void)layout {
     [super layout];
 
-    [[[[[logo.pinObjc top] left] width:100] marginWithTop:topLayoutGuide + 10 horizontal:10 bottom:10] layout];
-    [[[[separatorView.pinObjc belowOf:logo aligned:HorizontalAlignLeft] height:1] marginTop:10] layout];
+    logo.pinObjc.top().left().width(100).marginTHB(topLayoutGuide + 10, 10, 10).layout();
+    separatorView.pinObjc.belowOfAligned(logo, HorizontalAlignLeft).height(1).marginTop(10).layout();
 }
 
 @end

@@ -64,24 +64,23 @@ describe(@"test Objective-C interface", ^{
         
         it(@"using Pin.logMissingLayoutCalls", ^{
             Pin.logMissingLayoutCalls = true;
-            [[aView pinObjc] top:10];
+            aView.pinObjc.topValue(10);
             //expect(Pin.lastWarningText).to(contain(@"PinLayout commands have been issued without calling the 'layout()' method to complete the layout"));
         });
 
         it(@"using Pin.logMissingLayoutCalls set to false", ^{
             Pin.logMissingLayoutCalls = false;
-            [[[aView pinObjc] top:10] layout];
+            aView.pinObjc.topValue(10).layout();
             expect(@(aView.frame)).to(equal(@(CGRectMake(40, 10, 100, 60))));
             expect(Pin.lastWarningText).to(beNil());
         });
         
         it(@"check the access to PinLayout methods from objective-c", ^{
-            [[[rootView pinObjc] wrapContent] layout];
-            [[[rootView pinObjc] wrapContentWithType:WrapTypeVertically] layout];
-            [[[rootView pinObjc] wrapContentWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)] layout];
-            [[[rootView pinObjc] wrapContentWithType:WrapTypeAll insets:UIEdgeInsetsMake(0, 0, 0, 0)] layout];
-            [[[rootView pinObjc] wrapContentWithPadding:10] layout];
-            [[[rootView pinObjc] wrapContentWithType:WrapTypeHorizontally padding:10] layout];            
+            rootView.pinObjc.wrapContent().layout();
+            rootView.pinObjc.wrapContentInsets(UIEdgeInsetsMake(0, 0, 0, 0)).layout();
+            rootView.pinObjc.wrapContentTypeInsets(WrapTypeAll, UIEdgeInsetsMake(0, 0, 0, 0)).layout();
+            rootView.pinObjc.wrapContentPadding(10).layout();
+            rootView.pinObjc.wrapContentTypePadding(WrapTypeHorizontally, 10).layout();           
         });
     });
 });

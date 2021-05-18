@@ -1,4 +1,5 @@
 DERIVED_DATA=${1:-/tmp/PinLayout}
+BASEDIR=$(pwd)
 
 set -e  &&
 set -o pipefail  &&
@@ -120,7 +121,7 @@ echo "==============================="  &&
 cd TestProjects/carthage/ios  &&
 rm -rf $DERIVED_DATA  &&
 rm Cartfile  &&
-echo "git \"$TRAVIS_BUILD_DIR\" \"$TRAVIS_BRANCH\"" > Cartfile  &&
+echo "git \"file:///$BASEDIR\"" > Cartfile  &&
 carthage update --use-ssh --platform iOS --use-xcframeworks  &&
 time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
     -scheme PinLayout-Carthage-iOS -sdk iphonesimulator14.5  \
@@ -135,18 +136,16 @@ echo " Pod lib lint"                    &&
 echo "==============================="  &&
 time bundle exec pod lib lint --allow-warnings
 
-# echo "=========================================="
-# echo " Swift Package Manager: iOS Empty project "
-# echo "=========================================="
-# cd TestProjects/swift-package-manager/ios
-# rm -rf $DERIVED_DATA
-# rm -rf .build
-# rm Package.pins
-# swift package show-dependencies --format json
-# time xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator14.5  -derivedDataPath $DERIVED_DATA \
-#     -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' \
-#     | xcpretty
-# cd ../../..
-#
-# #OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies'
-# xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA  -sdk macosx10.15
+echo "=========================================="
+echo " Swift Package Manager: iOS Empty project "
+echo "=========================================="
+cd TestProjects/swift-package-manager/ios
+rm -rf $DERIVED_DATA
+rm -rf .build
+time xcodebuild clean build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator14.5  -derivedDataPath $DERIVED_DATA \
+    -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' \
+    | xcpretty
+cd ../../..
+
+#OTHER_SWIFT_FLAGS='-Xfrontend -debug-time-function-bodies'
+xcodebuild clean test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -derivedDataPath $DERIVED_DATA  -sdk macosx10.15

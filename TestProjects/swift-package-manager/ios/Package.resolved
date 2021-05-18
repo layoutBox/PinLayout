@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PinLayout",
+        "repositoryURL": "https://github.com/layoutBox/PinLayout.git",
+        "state": {
+          "branch": null,
+          "revision": "eb3e2a3b14954c89f0a6c31f8f0a00dbe3208121",
+          "version": "1.9.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

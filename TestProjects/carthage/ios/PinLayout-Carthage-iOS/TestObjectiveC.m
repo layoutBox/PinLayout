@@ -45,7 +45,7 @@
 - (void) layoutSubviews {
     [super layoutSubviews];
     
-    logo.pinObjc.top().left().width(100).aspectRatio.marginTHB(topLayoutGuide + 10, 10, 10).layout();
+    logo.pinObjc.top().left().width(100).aspectRatio().marginTHB(topLayoutGuide + 10, 10, 10).layout();
     segmented.pinObjc.rightOfAligned(logo, VerticalAlignTop).right().marginHorizontal(10).layout();
     textLabel.pinObjc.belowOfAligned(segmented, HorizontalAlignLeft).widthOf(segmented).pinEdges().marginTop(10).sizeToFitType(FitWidth).layout();
     separatorView.pinObjc.belowOfViewsAligned(@[logo, textLabel], HorizontalAlignLeft).rightToEdge(segmented.edge.right).height(1).marginTop(10).layout();

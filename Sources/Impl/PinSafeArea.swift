@@ -58,14 +58,7 @@ internal class PinSafeArea {
             // noop on iOS 11, `UIView.safeAreaInsetsDidChange` is natively supported
         } else {
             guard currentSafeAreaInsetsDidChangeMode == nil else { return }
-            if #available(iOS 9.0, tvOS 9.0, *) {
-                PinSafeArea.safeAreaInsetsDidChangeMode = .always
-            } else {
-                // Due to an issue with the keyboard on iOS 8, we don't activate
-                // the support of `UIView.safeAreaInsetsDidChange` on iOS 8. The developper can still
-                // activate it using `Pin.enableSafeArea(true)`
-                PinSafeArea.safeAreaInsetsDidChangeMode = .disable
-            }
+            PinSafeArea.safeAreaInsetsDidChangeMode = .always
         }
     }
 
@@ -163,8 +156,15 @@ struct PinLayoutSwizzling {
         if #available(iOS 11.0, tvOS 11.0, *) { assertionFailure() }
 
         if let view = viewController.view {
-            let safeAreaInsets = UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
+            let safeAreaInsets: UIEdgeInsets
+            
+            if #available(iOS 11.0, tvOS 11.0, *) {
+                safeAreaInsets = UIEdgeInsets(top: viewController.view.safeAreaInsets.top, left: 0,
+                                                  bottom: viewController.view.safeAreaInsets.bottom, right: 0)
+            } else {
+                safeAreaInsets = UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
                                               bottom: viewController.bottomLayoutGuide.length, right: 0)
+            }
 
             // Set children safeArea up to 3 level, to limit the performance issue of computing this compatibilitySafeAreaInsets
             PinSafeArea.setViewSafeAreaInsets(view: view, insets: safeAreaInsets, recursiveLevel: 3)
@@ -201,8 +201,13 @@ extension UIView {
                 // UIViewController.viewWillLayoutSubviews hasn't been swizzled, we can return an insets
                 // only if the view is a UIViewController's view.
                 if let viewController = self.next as? UIViewController {
-                    return UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
-                                        bottom: viewController.bottomLayoutGuide.length, right: 0)
+                    if #available(iOS 11.0, tvOS 11.0, *) {
+                        return UIEdgeInsets(top: viewController.view.safeAreaInsets.top, left: 0,
+                                            bottom: viewController.view.safeAreaInsets.bottom, right: 0)
+                    } else {
+                        return UIEdgeInsets(top: viewController.topLayoutGuide.length, left: 0,
+                                            bottom: viewController.bottomLayoutGuide.length, right: 0)
+                    }
                 } else {
                     return .zero
                 }

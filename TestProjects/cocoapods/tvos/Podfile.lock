@@ -1,5 +1,5 @@
 PODS:
-  - PinLayout (1.9.1)
+  - PinLayout (1.9.3)
 
 DEPENDENCIES:
   - PinLayout (from `../../..`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../../.."
 
 SPEC CHECKSUMS:
-  PinLayout: 971dd075938150aee314753269751e0f76dbb851
+  PinLayout: 45d8413afa778da892f6c2d4f898fb8de88c8e29
 
 PODFILE CHECKSUM: 8c63011727a286dcaaff051ed3b2eedd5363f244
 

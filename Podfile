@@ -4,7 +4,7 @@ use_frameworks!
 workspace 'PinLayout.xcworkspace'
 
 target 'PinLayoutTests-iOS' do
-  platform :ios, "8.0"
+  platform :ios, "9.0"
   project 'PinLayout.xcodeproj'
 
   pod 'Quick'
@@ -28,7 +28,7 @@ target 'PinLayoutTests-macOS' do
 end
 
 target 'PinLayoutSample' do
-  platform :ios, "8.0"
+  platform :ios, "9.0"
   project 'Example/PinLayoutSample.xcodeproj'
 
   pod 'PinLayout', :path => './'

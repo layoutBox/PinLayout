@@ -41,7 +41,6 @@ class BaseFormView: UIView {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     override func layoutSubviews() {

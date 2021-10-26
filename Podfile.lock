@@ -1,8 +1,8 @@
 PODS:
-  - Nimble (9.2.0)
-  - PinLayout (1.9.4)
+  - Nimble (9.2.1)
+  - PinLayout (1.10.0)
   - Quick (4.0.0)
-  - SwiftLint (0.43.1)
+  - SwiftLint (0.45.0)
 
 DEPENDENCIES:
   - Nimble
@@ -21,10 +21,10 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  Nimble: 4f4a345c80b503b3ea13606a4f98405974ee4d0b
-  PinLayout: 0d73cf5bea456b8112429c984de377839b9ec34c
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  PinLayout: e50e9a748b632905fca6e67043ea4b05d6c92186
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
 PODFILE CHECKSUM: 0e4023ca11a146f618714ee6235a6f3a757959e4
 

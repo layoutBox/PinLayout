@@ -96,6 +96,12 @@ public class PinLayout<View: Layoutable> {
             return .zero
         }
     }
+    
+    public var keyBoardLayout: PEdgeInsets {
+        guard #available(iOS 15.0, *) else { return .zero }
+        guard let view = view as? UIView else { return .zero }
+        return view.keyboardLayoutGuide
+    }
 
     public var readableMargins: PEdgeInsets {
         guard #available(iOS 9.0, *) else { return .zero }

@@ -88,7 +88,14 @@ public class PinLayout<View: Layoutable> {
     public var keyboardMargins: PEdgeInsets {
         guard #available(iOS 15.0, *) else { return .zero }
         guard let view = view as? UIView else { return .zero }
-        return view.keyboardLayoutGuide
+        
+        let layoutFrame = view.keyboardLayoutGuide.layoutFrame
+        guard !layoutFrame.isEmpty else { return .zero }
+        
+        return UIEdgeInsets(top: layoutFrame.origin.y,
+                            left: layoutFrame.origin.x,
+                            bottom: view.frame.height - layoutFrame.origin.y - layoutFrame.height,
+                            right: view.frame.width - layoutFrame.origin.x - layoutFrame.width)
     }
     #endif
 

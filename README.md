@@ -1221,7 +1221,7 @@ This example layout an UIImageView at the top and center it horizontally, it als
 
 
 <a name="safeAreaInsets"></a>
-## safeArea, keyboardLayout, readable and layout margins
+## safeArea, keyboardMargins, readable and layout margins
 
 UIKit expose 4 kind of areas/guides that can be used to layout views.
 PinLayout expose them using these properties:
@@ -1229,7 +1229,7 @@ PinLayout expose them using these properties:
 1. **`UIView.pin.safeArea`**: Expose UIKit `UIView.safeAreaInsets` / `UIView.safeAreaLayoutGuide`. 
 2. **`UIView.pin.readableMargins`**: Expose UIKit `UIView.readableContentGuide`. 
 3. **`UIView.pin.layoutMargins`**: Expose UIKit `UIView.layoutMargins` / `UIView.layoutMarginsGuide`. 
-4. **`UIView.pin.keyboardLayout`**: Expose UIKit `UIView.keyboardLayoutGuide`.
+4. **`UIView.pin.keyboardMargins`**: Expose UIKit `UIView.keyboardLayoutGuide`.
 
 The following image display the 3 areas on an iPad in landscape mode. (safeArea, readableMargins, layoutMargins)
 
@@ -1361,11 +1361,11 @@ PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIK
 
 <br/>
 
-### 4. pin.keyboardLayout:
+### 4. pin.keyboardMargins:
 
 ##### Property:
-* **`pin.keyboardLayout: UIEdgeInset`**
-PinLayout's `UIView.pin.keyboardLayout` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required.
+* **`pin.keyboardMargins: UIEdgeInset`**
+PinLayout's `UIView.pin.keyboardMargins` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required.
 
    Bottom of safe area when the keyboard undocked.
 
@@ -1373,7 +1373,7 @@ PinLayout's `UIView.pin.keyboardLayout` property expose directly the value of UI
 
 ##### Usage example:
 ```swift
-   container.pin.bottom(view.pin.keyboardLayout.top)
+   container.pin.bottom(view.pin.keyboardMargins.top)
 ```
 
 

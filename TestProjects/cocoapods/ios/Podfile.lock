@@ -1,5 +1,5 @@
 PODS:
-  - PinLayout (1.9.3)
+  - PinLayout (1.10.0)
   - SwifterSwift (5.0.0):
     - SwifterSwift/AppKit (= 5.0.0)
     - SwifterSwift/CoreGraphics (= 5.0.0)
@@ -25,7 +25,7 @@ DEPENDENCIES:
   - SwifterSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - SwifterSwift
 
 EXTERNAL SOURCES:
@@ -33,9 +33,9 @@ EXTERNAL SOURCES:
     :path: "../../.."
 
 SPEC CHECKSUMS:
-  PinLayout: 45d8413afa778da892f6c2d4f898fb8de88c8e29
+  PinLayout: e50e9a748b632905fca6e67043ea4b05d6c92186
   SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
 
-PODFILE CHECKSUM: c982140b0cd5bfe70429dbe53e838e301e7b0022
+PODFILE CHECKSUM: 3eeeff509b48ae95b0ba6a131fc224e3d13ac363
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.11.2

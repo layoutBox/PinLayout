@@ -1221,17 +1221,17 @@ This example layout an UIImageView at the top and center it horizontally, it als
 
 
 <a name="safeAreaInsets"></a>
-## safeArea, readable and layout margins
+## safeArea, keyboardLayout, readable and layout margins
 
-UIKit expose 3 kind of areas/guides that can be used to layout views.
+UIKit expose 4 kind of areas/guides that can be used to layout views.
 PinLayout expose them using these properties:
 
 1. **`UIView.pin.safeArea`**: Expose UIKit `UIView.safeAreaInsets` / `UIView.safeAreaLayoutGuide`. 
 2. **`UIView.pin.readableMargins`**: Expose UIKit `UIView.readableContentGuide`. 
 3. **`UIView.pin.layoutMargins`**: Expose UIKit `UIView.layoutMargins` / `UIView.layoutMarginsGuide`. 
-4. **`UIView.pin.keyBoardLayout`**: Expose UIKit `UIView.keyboardLayoutGuide`.
+4. **`UIView.pin.keyboardLayout`**: Expose UIKit `UIView.keyboardLayoutGuide`.
 
-The following image display the 3 areas on an iPad in landscape mode. 
+The following image display the 3 areas on an iPad in landscape mode. (safeArea, readableMargins, layoutMargins)
 
 <img src="docs/images/pinlayout_example_layout_margins_landscape.png" width="440" />
 
@@ -1361,19 +1361,19 @@ PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIK
 
 <br/>
 
-### 4. pin.keyBoardLayout:
+### 4. pin.keyboardLayout:
 
 ##### Property:
-* **`pin.keyBoardLayout: UIEdgeInset`**
-PinLayout's `UIView.pin.keyBoardLayout` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required.
+* **`pin.keyboardLayout: UIEdgeInset`**
+PinLayout's `UIView.pin.keyboardLayout` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required.
 
-   Bottom of safe area when the keyboard undocked
+   Bottom of safe area when the keyboard undocked.
 
    This property can be used from iOS 15 and above.
 
 ##### Usage example:
 ```swift
-   view.pin.bottom(pin.keyBoardLayout.top)
+   container.pin.bottom(view.pin.keyboardLayout.top)
 ```
 
 

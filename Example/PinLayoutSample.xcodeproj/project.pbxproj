@@ -528,7 +528,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = layoutbox;
 				TargetAttributes = {
 					249EFE3E1E64FAFE00165E39 = {

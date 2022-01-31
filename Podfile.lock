@@ -1,8 +1,8 @@
 PODS:
-  - Nimble (9.2.0)
-  - PinLayout (1.9.4)
+  - Nimble (9.2.1)
+  - PinLayout (1.10.0)
   - Quick (4.0.0)
-  - SwiftLint (0.43.1)
+  - SwiftLint (0.46.2)
 
 DEPENDENCIES:
   - Nimble
@@ -11,7 +11,7 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - Nimble
     - Quick
     - SwiftLint
@@ -21,11 +21,11 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  Nimble: 4f4a345c80b503b3ea13606a4f98405974ee4d0b
-  PinLayout: 0d73cf5bea456b8112429c984de377839b9ec34c
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  PinLayout: e50e9a748b632905fca6e67043ea4b05d6c92186
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
 PODFILE CHECKSUM: 0e4023ca11a146f618714ee6235a6f3a757959e4
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.11.2

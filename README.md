@@ -1369,6 +1369,8 @@ PinLayout's `UIView.pin.keyBoardLayout` property expose directly the value of UI
 
    Bottom of safe area when the keyboard undocked
 
+   This property can be used from iOS 15 and above.
+
 ##### Usage example:
 ```swift
    view.pin.bottom(pin.keyBoardLayout.top)

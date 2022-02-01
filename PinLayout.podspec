@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name          = "PinLayout"
-  spec.version       = "1.10.0"
+  spec.version       = "1.10.1"
   spec.summary       = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast."
   spec.description   = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. [iOS/macOS/tvOS/CALayer]"
   spec.homepage      = "https://github.com/layoutBox/PinLayout"

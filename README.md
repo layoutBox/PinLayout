@@ -35,16 +35,17 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 ### Requirements
 * iOS 9.0+ / tvOS 9.0+ / macOS 10.9+
 * Swift 5.x / 4 / 3 / Objective-C
-* Xcode 12 / 11 / 10
+* Xcode 13 / 12 / 11 / 10
 
 ### Recent changes/features
+* :star: Add [`pin.keyboardMargins`](#safeAreaInsets) property [iOS 15+]
 * :star: New chainable Objective-C syntax. See [PinLayout using Objective-C](#objective_c_interface)
 * :star: Automatic Sizing, use PinLayout to compute view size. See [Automatic sizing](#automatic_sizing)
 * :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).
 * :star: Add [`pin.readableMargins` and `pin.layoutMargins`](#safeAreaInsets) properties.
 * :star: Add `sizeToFit()` method. See [Adjusting size](#adjusting_size).
 * :star: PinLayout can now layout CALayer. See [CALayer Support](#calayer_support) for more information.
-* :star: PinLayout is #9 in the list of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
+* :star: PinLayout is #8 in the list of Swift Layout frameworks on [Awesome Swift](https://swift.libhunt.com/categories/714-layout) 
 * See [Changelog](https://github.com/layoutBox/PinLayout/blob/master/CHANGELOG.md) for all changes.
 
 
@@ -1221,7 +1222,7 @@ This example layout an UIImageView at the top and center it horizontally, it als
 
 
 <a name="safeAreaInsets"></a>
-## safeArea, keyboardMargins, readable and layout margins
+## safeArea, readable, layout and keyboard margins
 
 UIKit expose 4 kind of areas/guides that can be used to layout views.
 PinLayout expose them using these properties:
@@ -1229,7 +1230,7 @@ PinLayout expose them using these properties:
 1. **`UIView.pin.safeArea`**: Expose UIKit `UIView.safeAreaInsets` / `UIView.safeAreaLayoutGuide`. 
 2. **`UIView.pin.readableMargins`**: Expose UIKit `UIView.readableContentGuide`. 
 3. **`UIView.pin.layoutMargins`**: Expose UIKit `UIView.layoutMargins` / `UIView.layoutMarginsGuide`. 
-4. **`UIView.pin.keyboardMargins`**: Expose UIKit `UIView.keyboardLayoutGuide`.
+4. **`UIView.pin.keyboardMargins`**: Expose UIKit `UIView.keyboardLayoutGuide`. [iOS 15+]
 
 The following image display the 3 areas on an iPad in landscape mode. (safeArea, readableMargins, layoutMargins)
 
@@ -1364,12 +1365,8 @@ PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIK
 ### 4. pin.keyboardMargins:
 
 ##### Property:
-* **`pin.keyboardMargins: UIEdgeInset`**
-PinLayout's `UIView.pin.keyboardMargins` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required.
-
-   Bottom of safe area when the keyboard undocked.
-
-   This property can be used from iOS 15 and above.
+* **`pin.keyboardMargins: UIEdgeInset` [iOS 15+]** 
+PinLayout's `UIView.pin.keyboardMargins` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required. [iOS 15+]
 
 ##### Usage example:
 ```swift

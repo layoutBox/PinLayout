@@ -7,6 +7,16 @@
 
 # Change Log
 
+## [1.10.1](https://github.com/layoutBox/PinLayout/releases/tag/1.10.1)
+Released on 2022-02-01
+
+#### New property `pin.keyboardMargins`
+
+* `UIView.pin.keyboardMargins`: property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required. iOS 15+
+
+Added by [baegteun](https://github.com/baekteun) in Pull Request [#238](https://github.com/layoutBox/PinLayout/pull/238) 
+
+
 ## [1.10.0](https://github.com/layoutBox/PinLayout/releases/tag/1.10.0)
 Released on 2021-05-18
 

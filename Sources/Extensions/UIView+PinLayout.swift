@@ -84,12 +84,8 @@ extension UIView: Layoutable, SizeCalculable {
         case .auto:
             if #available(iOS 10.0, tvOS 10.0, *) {
                 return effectiveUserInterfaceLayoutDirection == .leftToRight
-            } else if #available(iOS 9.0, *) {
-                return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
-            } else if let shared = UIApplication.value(forKey: "sharedApplication") as? UIApplication {
-                return shared.userInterfaceLayoutDirection == .leftToRight
             } else {
-                return true
+                return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
             }
         case .ltr: return true
         case .rtl: return false

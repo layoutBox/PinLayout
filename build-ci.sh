@@ -112,22 +112,22 @@ rm -rf $DERIVED_DATA
 cd ../../.. 
 
 
-echo "===============================" 
-echo " Carthage: iOS Empty project"    
-echo "===============================" 
-cd TestProjects/carthage/ios 
-rm -rf $DERIVED_DATA 
-rm Cartfile 
-echo "git \"file:///$BASEDIR\"" > Cartfile 
-carthage update --use-ssh --platform iOS --use-xcframeworks 
-xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
-    -scheme PinLayout-Carthage-iOS -sdk iphonesimulator15.2  \
-    -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
-    | xcpretty 
-rm -rf $DERIVED_DATA 
-rm Cartfile.resolved
-cd ../../.. 
+# echo "===============================" 
+# echo " Carthage: iOS Empty project"    
+# echo "===============================" 
+# cd TestProjects/carthage/ios 
+# rm -rf $DERIVED_DATA 
+# rm Cartfile 
+# echo "git \"file:///$BASEDIR\"" > Cartfile 
+# carthage update --use-ssh --platform iOS --use-xcframeworks 
+# xcodebuild clean build -project PinLayout-Carthage-iOS.xcodeproj \
+#     -scheme PinLayout-Carthage-iOS -sdk iphonesimulator15.2  \
+#     -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
+#     | xcpretty 
+# rm -rf $DERIVED_DATA 
+# rm Cartfile.resolved
+# cd ../../.. 
 
 
 echo "=========================================="

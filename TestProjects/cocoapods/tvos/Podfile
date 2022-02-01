@@ -1,4 +1,4 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 platform :tvos, '10.3'
 
 target 'PinLayout-tvOS' do

@@ -123,7 +123,7 @@ public class PinLayout<View: Layoutable> {
         let layoutFrame = view.keyboardLayoutGuide.layoutFrame
         guard !layoutFrame.isEmpty else { return .zero }
         
-        return UIEdgeInsets(top: layoutFrame.origin.y,
+        return UIEdgeInsets(top: layoutFrame.height,
                             left: layoutFrame.origin.x,
                             bottom: view.frame.height - layoutFrame.origin.y - layoutFrame.height,
                             right: view.frame.width - layoutFrame.origin.x - layoutFrame.width)

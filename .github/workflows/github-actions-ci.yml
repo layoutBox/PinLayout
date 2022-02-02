@@ -24,11 +24,11 @@ jobs:
       - name: Build PinLayoutSample - iOS 15.2
         run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
 
-      - name: Build PinLayoutSample - iOS 14.5
-        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator14.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' | xcpretty 
+      # - name: Build PinLayoutSample - iOS 14.5
+      #   run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator14.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' | xcpretty 
 
-      - name: Build PinLayoutSample - iOS 13.7
-        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator13.7 -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.7' | xcpretty 
+      # - name: Build PinLayoutSample - iOS 13.7
+      #   run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator13.7 -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.7' | xcpretty 
 
       - name: iOS unit tests
         run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 

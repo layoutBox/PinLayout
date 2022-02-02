@@ -1,4 +1,4 @@
-name: GitHub Actions CI
+name: Run CI
 on: [push]
 jobs:
   CI:

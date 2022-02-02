@@ -14,17 +14,17 @@ jobs:
 
       # - run: ./build-ci.sh /tmp/PinLayout
 
-      - name: Build PinLayout-iOS
-        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+      # - name: Build PinLayout-iOS
+      #   run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
 
-      - name: Build PinLayout-tvOS
-        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
+      # - name: Build PinLayout-tvOS
+      #   run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
 
-      - name: Build PinLayout-macOS
-        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
+      # - name: Build PinLayout-macOS
+      #   run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
 
-      - name: Build PinLayoutSample
-        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+      # - name: Build PinLayoutSample
+      #   run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
 
       - name: iOS unit test
         run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 

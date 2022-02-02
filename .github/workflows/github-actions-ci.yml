@@ -1,0 +1,67 @@
+name: GitHub Actions CI
+on: [push]
+jobs:
+  CI:
+    runs-on: macos-latest
+    # env: 
+    #   DEVELOPER_DIR: /Applications/Xcode_13.2.1.app/Contents/Developer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - run: bundle install
+      - run: pod install --repo-update
+
+      - name: Set Xcode Version 13.2.1
+        run: sudo xcode-select -s /Applications/Xcode_13.2.1.app
+
+      - name: Build PinLayout-iOS
+        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+
+      - name: Build PinLayout-tvOS
+        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
+
+      - name: Build PinLayout-macOS
+        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
+
+      - name: Build PinLayoutSample - iOS 15.2
+        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+
+      - name: iOS unit tests
+        run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+
+      # # - name: tvOS unit tests
+      # #   run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS -sdk appletvos15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
+
+      # # - name: macOS unit tests
+      # #   run: set -o pipefail && xcodebuild test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 -destination 'platform=macOS,name=Any Mac' | xcpretty
+
+      - name: Cocoapods - iOS Empty project
+        run: set -o pipefail && cd TestProjects/cocoapods/ios && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && cd ../../.. 
+
+      # - name: Cocoapods - macOS Empty project
+      #   run: set -o pipefail && cd TestProjects/cocoapods/macos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty && cd ../../.. 
+
+      # - name: Cocoapods - tvOS Empty project
+      #   run: set -o pipefail && cd TestProjects/cocoapods/tvos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty && cd ../../.. 
+
+      # - name: Carthage - iOS Empty project
+      #   run: set -o pipefail && cd TestProjects/carthage/ios && rm Cartfile && echo "git \"file:///$BASEDIR\"" > Cartfile && carthage update --use-ssh --platform iOS --use-xcframeworks && xcodebuild build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && rm Cartfile.resolved && cd ../../.. 
+
+      - name: Swift Package Manager - iOS Empty project
+        run: set -o pipefail && cd TestProjects/swift-package-manager/ios && rm -rf .build && xcodebuild build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && cd ../../..
+
+      - name: Set XCode Version 12.5.1 (iOS 14)
+        run: sudo xcode-select -s /Applications/Xcode_12.5.1.app
+      - name: Build PinLayoutSample - iOS 14.5
+        run: set -o pipefail && xcodebuild clean build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator14.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' | xcpretty 
+
+      - name: Set XCode Version 11.7 (iOS 13)
+        run: sudo xcode-select -s /Applications/Xcode_11.7.app
+      - name: Build PinLayoutSample - iOS 13.7
+        run: set -o pipefail && xcodebuild clean build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator13.7 -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.7' | xcpretty 
+
+      - name: Pod lib lint
+        run: set -o pipefail && bundle exec pod lib lint --allow-warnings
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."

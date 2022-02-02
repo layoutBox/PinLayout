@@ -81,7 +81,7 @@ extension MenuView: UITableViewDelegate {
 extension MenuView {
     private func validation() {
         // Compilation validation
-#if compiler(>=5.5)
+#if compiler(>=5.5) // Xcode 13+
         // iOS 15+
         _ = tableView.pin.keyboardMargins
 #endif

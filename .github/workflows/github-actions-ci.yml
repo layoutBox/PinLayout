@@ -32,8 +32,8 @@ jobs:
       # - name: tvOS unit tests
       #   run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS -sdk appletvos15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
 
-      - name: macOS unit tests
-        run: set -o pipefail && xcodebuild test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty
+      # - name: macOS unit tests
+      #   run: set -o pipefail && xcodebuild test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty
 
       - name: Cocoapods - iOS Empty project
         run: set -o pipefail && cd TestProjects/cocoapods/ios && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && cd ../../.. 

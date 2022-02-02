@@ -12,7 +12,7 @@ jobs:
       - run: bundle install
       - run: pod install --repo-update
 
-      - name: Set XCode Version
+      - name: Set Xcode Version 13.2.1
         run: sudo xcode-select -s /Applications/Xcode_13.2.1.app
 
       - name: Build PinLayout-iOS
@@ -54,11 +54,15 @@ jobs:
       # - name: Swift Package Manager - iOS Empty project
       #   run: set -o pipefail && cd TestProjects/swift-package-manager/ios && rm -rf .build && xcodebuild build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && cd ../../..
 
-      - name: Set XCode Version
+      - name: Set XCode Version 12.5.1
         run: sudo xcode-select -s /Applications/Xcode_12.5.1.app
       - name: Build PinLayoutSample - iOS 14.5
         run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator14.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' | xcpretty 
 
+      - name: Set XCode Version 11.7
+        run: sudo xcode-select -s /Applications/Xcode_11.7.app
+      - name: Build PinLayoutSample - iOS 13.7
+        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator13.7 -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.7' | xcpretty 
 
 
       - name: Pod lib lint

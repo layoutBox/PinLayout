@@ -11,20 +11,10 @@
   <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg?style=flat" />	 
   <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" /></a>
   <a href="https://swift.org/package-manager/"><img src="https://camo.githubusercontent.com/57aa80b42087a088cdf607fb98c0224bccf1b441/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73706d2d636f6d70617469626c652d627269676874677265656e2e7376673f7374796c653d666c6174" /></a>
-  <a href="https://travis-ci.org/layoutBox/PinLayout"><img src="https://travis-ci.org/layoutBox/PinLayout.svg?branch=master&colorB=28B9FE" /></a>
-  <a href="https://codecov.io/gh/layoutBox/PinLayout"><img src="https://codecov.io/gh/layoutBox/PinLayout/branch/master/graph/badge.svg"/></a>
-  <a href="https://raw.githubusercontent.com/layoutBox/PinLayout/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/PinLayout.svg" /></a>
+  <a href="https://github.com/layoutBox/PinLayout/actions/workflows/github-actions-ci.yml"><img src="https://github.com/layoutBox/PinLayout/actions/workflows/github-actions-ci.yml/badge.svg?branch=master"/></a>
+<!--  <a href="https://codecov.io/gh/layoutBox/PinLayout"><img src="https://codecov.io/gh/layoutBox/PinLayout/branch/master/graph/badge.svg"/></a>
+-->  <a href="https://raw.githubusercontent.com/layoutBox/PinLayout/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/PinLayout.svg" /></a>
 </p>
-
-<!--p align="center">
-  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/v/PinLayout.svg?style=flat" /></a>
-  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/dm/PinLayout.svg?label=Downloads&colorB=317cb0" /></a>
-  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/dt/PinLayout.svg?label=Total%20Downloads&colorB=317cb0" /></a>
-  <a href='https://cocoapods.org/pods/PinLayout'><img src="https://img.shields.io/cocoapods/at/PinLayout.svg?label=Apps%20Using%20PinLayout&colorB=317cb0"/></a>
-</p-->
-
-<!--<a href="https://github.com/layoutBox/PinLayout/issues"><img src="https://img.shields.io/github/issues/layoutBox/PinLayout.svg?style=flat" /></a>-->
-
 
 Extremely Fast views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. PinLayout can layouts UIView, NSView and CALayer.
 

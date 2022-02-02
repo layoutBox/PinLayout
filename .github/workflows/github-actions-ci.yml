@@ -32,14 +32,63 @@ jobs:
       - name: tvOS unit test
         run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-tvOS -sdk appletvos15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2 | xcpretty 
 
+      - name: macOS unit test
+        run: set -o pipefail && xcodebuild test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty
+
+      - name: Cocoapods iOS Empty project
+        run: cd TestProjects/cocoapods/ios 
+        run: arch -x86_64 pod install 
+        run: set -o pipefail && xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+        run: cd ../../.. 
+
+      - name: Cocoapods macOS Empty project
+        run: cd TestProjects/cocoapods/macos 
+        run: arch -x86_64 pod install 
+        run: set -o pipefail && xcodebuild build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
+        run: cd ../../.. 
+
+      - name: Cocoapods tvOS Empty project
+        run: cd TestProjects/cocoapods/tvos 
+        run: arch -x86_64 pod install 
+        run: set -o pipefail && xcodebuild build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
+        run: cd ../../.. 
 
 
-# echo "==============================="
-# echo "macOS unit test"
-# echo "==============================="
-# xcodebuild test -workspace PinLayout.xcworkspace -scheme PinLayout-macOS \
-#    -derivedDataPath $DERIVED_DATA -sdk macosx12.1 \
-#    | xcpretty
+# echo "===============================" 
+# echo " Carthage: iOS Empty project"    
+# echo "===============================" 
+# cd TestProjects/carthage/ios 
+# rm -rf $DERIVED_DATA 
+# rm Cartfile 
+# echo "git \"file:///$BASEDIR\"" > Cartfile 
+# carthage update --use-ssh --platform iOS --use-xcframeworks 
+# xcodebuild build -project PinLayout-Carthage-iOS.xcodeproj \
+#     -scheme PinLayout-Carthage-iOS -sdk iphonesimulator15.2  \
+#     -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
+#     | xcpretty 
+# rm -rf $DERIVED_DATA 
+# rm Cartfile.resolved
+# cd ../../.. 
+
+
+# echo "=========================================="
+# echo " Swift Package Manager: iOS Empty project "
+# echo "=========================================="
+# cd TestProjects/swift-package-manager/ios
+# rm -rf $DERIVED_DATA
+# rm -rf .build
+# xcodebuild build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator15.2  -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
+#     | xcpretty
+# cd ../../..
+
+
+# echo "===============================" 
+# echo " Pod lib lint"                   
+# echo "===============================" 
+# bundle exec pod lib lint --allow-warnings
+
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 

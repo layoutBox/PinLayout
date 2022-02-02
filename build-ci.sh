@@ -7,13 +7,13 @@ set -e
 set -o pipefail
 rm -rf $DERIVED_DATA
 
-echo "===============================" 
-echo "PinLayout-iOS"                   
-echo "===============================" 
-xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
-   -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
-   | xcpretty 
+# echo "===============================" 
+# echo "PinLayout-iOS"                   
+# echo "===============================" 
+# xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
+#    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
+#    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
+#    | xcpretty 
 
 # echo "===============================" 
 # echo "PinLayout-tvOS"                  
@@ -30,13 +30,13 @@ xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
 #    -derivedDataPath $DERIVED_DATA -sdk macosx12.1 \
 #    | xcpretty 
 
-echo "===============================" 
-echo "PinLayoutSample"                 
-echo "===============================" 
-xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
-   -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
-   | xcpretty 
+# echo "===============================" 
+# echo "PinLayoutSample"                 
+# echo "===============================" 
+# xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
+#    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
+#    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
+#    | xcpretty 
 
 # xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
 #    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \

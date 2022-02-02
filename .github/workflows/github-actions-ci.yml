@@ -38,18 +38,11 @@ jobs:
       - name: Cocoapods iOS Empty project
         run: set -o pipefail && cd TestProjects/cocoapods/ios && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && cd ../../.. 
 
-      # - name: Cocoapods macOS Empty project
-      #   run: cd TestProjects/cocoapods/macos 
-      #   run: arch -x86_64 pod install 
-      #   run: set -o pipefail && xcodebuild build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
-      #   run: cd ../../.. 
+      - name: Cocoapods macOS Empty project
+        run: set -o pipefail && cd TestProjects/cocoapods/macos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty && cd ../../.. 
 
-      # - name: Cocoapods tvOS Empty project
-      #   run: cd TestProjects/cocoapods/tvos 
-      #   run: arch -x86_64 pod install 
-      #   run: set -o pipefail && xcodebuild build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty 
-      #   run: cd ../../.. 
-
+      - name: Cocoapods tvOS Empty project
+        run: set -o pipefail && cd TestProjects/cocoapods/tvos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty && cd ../../.. 
 
 
       - run: echo "🍏 This job's status is ${{ job.status }}."

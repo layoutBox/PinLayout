@@ -10,7 +10,7 @@
 ## [1.10.2](https://github.com/layoutBox/PinLayout/releases/tag/1.10.2)
 Released on 2022-02-01
 
-#### Renamed property `pin.keyboardMargins` -> `pin.keyBoardArea`
+#### Renamed property `pin.keyboardMargins` -> `pin.keyboardArea`
 
 This new name better represent what `UIKit`'s `UIView.keyboardLayoutGuide` is.
 

@@ -116,7 +116,7 @@ public class PinLayout<View: Layoutable> {
     #endif
     
     #if os(iOS)
-    public var keyBoardArea: CGRect {
+    public var keyboardArea: CGRect {
         guard #available(iOS 15.0, *) else { return .zero }
         guard let view = view as? UIView else { return .zero }
         

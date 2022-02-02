@@ -110,14 +110,15 @@ class ReadableLayoutMargins: QuickSpec {
         }
         
         #if os(iOS) && compiler(>=5.5)
-        describe("Using pin.keyboardMargins") {
+        describe("Using pin.keyboardArea") {
             it("test") {
                 setupWindow(with: viewController)
                 
                 rootView.pin.top(0).horizontally()
-                rootView.pin.bottom(rootView.pin.keyboardMargins.top)
+                rootView.pin.bottom(rootView.pin.keyboardArea.minY)
                 
                 expect(rootView.frame).to(equal(CGRect(x: 0, y: 267, width: 375, height: 400)))
+                expect(rootView.pin.keyboardArea).to(equal(CGRect(x: 0, y: 0, width: 0, height: 0)))
             }
         }
         #endif

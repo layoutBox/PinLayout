@@ -38,7 +38,7 @@ Extremely Fast views layouting without auto layout. No magic, pure code, full co
 * Xcode 13 / 12 / 11 / 10
 
 ### Recent changes/features
-* :star: Add [`pin.keyboardMargins`](#safeAreaInsets) property [iOS 15+]
+* :star: Add [`pin.keyboardArea`](#safeAreaInsets) property [iOS 15+]
 * :star: New chainable Objective-C syntax. See [PinLayout using Objective-C](#objective_c_interface)
 * :star: Automatic Sizing, use PinLayout to compute view size. See [Automatic sizing](#automatic_sizing)
 * :star: Add methods to position a view between two other views. See [Layout between other views](#layout_between).
@@ -1230,7 +1230,7 @@ PinLayout expose them using these properties:
 1. **`UIView.pin.safeArea`**: Expose UIKit `UIView.safeAreaInsets` / `UIView.safeAreaLayoutGuide`. 
 2. **`UIView.pin.readableMargins`**: Expose UIKit `UIView.readableContentGuide`. 
 3. **`UIView.pin.layoutMargins`**: Expose UIKit `UIView.layoutMargins` / `UIView.layoutMarginsGuide`. 
-4. **`UIView.pin.keyboardMargins`**: Expose UIKit `UIView.keyboardLayoutGuide`. [iOS 15+]
+4. **`UIView.pin.keyboardArea`**: Expose UIKit `UIView.keyboardLayoutGuide`. [iOS 15+]
 
 The following image display the 3 areas on an iPad in landscape mode. (safeArea, readableMargins, layoutMargins)
 
@@ -1362,15 +1362,15 @@ PinLayout's `UIView.pin.layoutMargins` property expose directly the value of UIK
 
 <br/>
 
-### 4. pin.keyboardMargins:
+### 4. pin.keyboardArea:
 
 ##### Property:
-* **`pin.keyboardMargins: UIEdgeInset` [iOS 15+]** 
-PinLayout's `UIView.pin.keyboardMargins` property expose directly the value of UIKit [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). This is really useful when layout adjustment due to the keyboard is required. [iOS 15+]
+* **`pin.keyboardArea: CGRect` [iOS 15+]**  
+The property expose the `UIKit` value [`UIView.keyboardLayoutGuide`](https://developer.apple.com/documentation/uikit/keyboards_and_input/adjusting_your_layout_with_keyboard_layout_guide). It represents the area (`CGRect`) of the keyboard that is covering the view. Useful to adjust the layout when the keyboard is visible. [iOS 15+]
 
 ##### Usage example:
 ```swift
-   container.pin.bottom(view.pin.keyboardMargins.top)
+   container.pin.bottom(view.pin.keyboardArea.top)
 ```
 
 

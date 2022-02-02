@@ -4,6 +4,8 @@ jobs:
   Build:
     runs-on: macos-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - run: ./build-ci.sh /tmp/PinLayout
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"

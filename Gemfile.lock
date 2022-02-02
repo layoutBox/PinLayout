@@ -110,10 +110,6 @@ GEM
       colored2 (~> 3.1)
       nanaimo (~> 0.3.0)
       rexml (~> 3.2.4)
-    xcpretty (0.2.6)
-      rouge (~> 1.8)
-    xcpretty-travis-formatter (1.0.1)
-      xcpretty (~> 0.2, >= 0.0.7)
     zeitwerk (2.5.4)
 
 PLATFORMS
@@ -122,7 +118,6 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (~> 1.7)
   jazzy (= 0.9)
-  xcpretty-travis-formatter
 
 BUNDLED WITH
    2.2.33

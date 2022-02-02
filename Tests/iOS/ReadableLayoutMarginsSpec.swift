@@ -85,6 +85,8 @@ class ReadableLayoutMargins: QuickSpec {
 
                 #if os(iOS)
                 expect(aView.frame).to(equal(CGRect(x: 8, y: 8, width: 384.0, height: 384.0)))
+                #elseif os(tvOS)
+                expect(aView.frame).to(equal(CGRect(x: 88, y: 68, width: 304.0, height: 324.0)))
                 #else
                 expect(aView.frame).to(equal(CGRect(x: 98, y: 68, width: 294.0, height: 324.0)))
                 #endif
@@ -99,10 +101,25 @@ class ReadableLayoutMargins: QuickSpec {
 
                 #if os(iOS)
                 expect(aView.frame).to(equal(CGRect(x: 8, y: 8, width: 384.0, height: 384.0)))
+                #elseif os(tvOS)
+                expect(aView.frame).to(equal(CGRect(x: 88, y: 68, width: 304.0, height: 324.0)))
                 #else
                 expect(aView.frame).to(equal(CGRect(x: 98, y: 68, width: 294.0, height: 324.0)))
                 #endif
             }
         }
+        
+        #if os(iOS) && compiler(>=5.5)
+        describe("Using pin.keyboardMargins") {
+            it("test") {
+                setupWindow(with: viewController)
+                
+                rootView.pin.top(0).horizontally()
+                rootView.pin.bottom(rootView.pin.keyboardMargins.top)
+                
+                expect(rootView.frame).to(equal(CGRect(x: 0, y: 267, width: 375, height: 400)))
+            }
+        }
+        #endif
     }
 }

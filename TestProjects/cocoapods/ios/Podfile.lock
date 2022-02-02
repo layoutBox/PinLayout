@@ -1,5 +1,5 @@
 PODS:
-  - PinLayout (1.10.0)
+  - PinLayout (1.10.1)
   - SwifterSwift (5.0.0):
     - SwifterSwift/AppKit (= 5.0.0)
     - SwifterSwift/CoreGraphics (= 5.0.0)
@@ -33,7 +33,7 @@ EXTERNAL SOURCES:
     :path: "../../.."
 
 SPEC CHECKSUMS:
-  PinLayout: e50e9a748b632905fca6e67043ea4b05d6c92186
+  PinLayout: 8b3199b283d1b34e6b35a71d0202049b67551c96
   SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
 
 PODFILE CHECKSUM: 3eeeff509b48ae95b0ba6a131fc224e3d13ac363

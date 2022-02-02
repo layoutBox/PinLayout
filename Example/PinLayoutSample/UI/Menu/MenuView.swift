@@ -76,3 +76,15 @@ extension MenuView: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+// MARK: PinLayout validation
+extension MenuView {
+    private func validation() {
+        // Compilation validation
+#if compiler(>=5.5) // Xcode 13+
+        // iOS 15+
+        _ = tableView.pin.keyboardMargins
+#endif
+    }
+
+}

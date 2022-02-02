@@ -21,8 +21,14 @@ jobs:
       - name: Build PinLayout-macOS
         run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
 
-      - name: Build PinLayoutSample
+      - name: Build PinLayoutSample - iOS 15.2
         run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+
+      - name: Build PinLayoutSample - iOS 14.5
+        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator14.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' | xcpretty 
+
+      - name: Build PinLayoutSample - iOS 13.7
+        run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator13.7 -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.7' | xcpretty 
 
       - name: iOS unit tests
         run: set -o pipefail && xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
@@ -36,11 +42,11 @@ jobs:
       - name: Cocoapods - iOS Empty project
         run: set -o pipefail && cd TestProjects/cocoapods/ios && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && cd ../../.. 
 
-      - name: Cocoapods - macOS Empty project
-        run: set -o pipefail && cd TestProjects/cocoapods/macos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty && cd ../../.. 
+      # - name: Cocoapods - macOS Empty project
+      #   run: set -o pipefail && cd TestProjects/cocoapods/macos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-macOS.xcworkspace -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty && cd ../../.. 
 
-      - name: Cocoapods - tvOS Empty project
-        run: set -o pipefail && cd TestProjects/cocoapods/tvos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty && cd ../../.. 
+      # - name: Cocoapods - tvOS Empty project
+      #   run: set -o pipefail && cd TestProjects/cocoapods/tvos && arch -x86_64 pod install && xcodebuild build -workspace PinLayout-tvOS.xcworkspace -scheme PinLayout-tvOS -sdk appletvsimulator15.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=15.2' | xcpretty && cd ../../.. 
 
       # - name: Carthage - iOS Empty project
       #   run: set -o pipefail && cd TestProjects/carthage/ios && rm Cartfile && echo "git \"file:///$BASEDIR\"" > Cartfile && carthage update --use-ssh --platform iOS --use-xcframeworks && xcodebuild build -project PinLayout-Carthage-iOS.xcodeproj -scheme PinLayout-Carthage-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty && rm Cartfile.resolved && cd ../../.. 

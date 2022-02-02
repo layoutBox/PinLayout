@@ -6,19 +6,13 @@ jobs:
     env: 
       DEVELOPER_DIR: /Applications/Xcode_13.2.1.app/Contents/Developer
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      
       - name: Checkout
         uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - run: bundle install
       - run: pod install --repo-update
-      - run: ./build-ci.sh /tmp/PinLayout
-
+      # - run: ./build-ci.sh /tmp/PinLayout
+      - run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
   # Build:

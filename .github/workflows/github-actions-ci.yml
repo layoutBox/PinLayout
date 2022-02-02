@@ -12,8 +12,6 @@ jobs:
       - run: bundle install
       - run: pod install --repo-update
 
-      # - run: ./build-ci.sh /tmp/PinLayout
-
       - name: Build PinLayout-iOS
         run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
 

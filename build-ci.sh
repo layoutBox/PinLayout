@@ -7,13 +7,13 @@ set -e
 set -o pipefail
 rm -rf $DERIVED_DATA
 
-# echo "===============================" 
-# echo "PinLayout-iOS"                   
-# echo "===============================" 
-# xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
-#    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
-#    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
-#    | xcpretty 
+echo "===============================" 
+echo "PinLayout-iOS"                   
+echo "===============================" 
+xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-iOS \
+   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
+   -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
+   | xcpretty 
 
 # echo "===============================" 
 # echo "PinLayout-tvOS"                  
@@ -30,31 +30,27 @@ rm -rf $DERIVED_DATA
 #    -derivedDataPath $DERIVED_DATA -sdk macosx12.1 \
 #    | xcpretty 
 
-echo "===============================" 
-echo "PinLayoutSample"                 
-echo "===============================" 
-xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
-   -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
-   | xcpretty 
+# echo "===============================" 
+# echo "PinLayoutSample"                 
+# echo "===============================" 
+# xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
+#    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
+#    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2'  \
+#    | xcpretty 
 
 # xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample \
 #    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
 #    -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.1'  \
 #    | xcpretty 
 
-echo "===============================" 
-echo "iOS unit test"                   
-echo "===============================" 
+# echo "===============================" 
+# echo "iOS unit test"                   
+# echo "===============================" 
+
 # xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
 #    -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
-#    -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.1' \
+#    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
 #    | xcpretty 
-
-xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
-   -derivedDataPath $DERIVED_DATA -sdk iphonesimulator15.2 \
-   -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
-   | xcpretty 
 
 # echo "==============================="
 # echo "tvOS unit test"
@@ -72,17 +68,17 @@ xcodebuild build test -workspace PinLayout.xcworkspace -scheme PinLayout-iOS \
 #    -derivedDataPath $DERIVED_DATA -sdk macosx12.1 \
 #    | xcpretty
 
-echo "===============================" 
-echo " Cocoapods: iOS Empty project"   
-echo "===============================" 
-cd TestProjects/cocoapods/ios 
-rm -rf $DERIVED_DATA 
-arch -x86_64 pod install 
-xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS \
-    -sdk iphonesimulator15.2  -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
-    | xcpretty 
-cd ../../.. 
+# echo "===============================" 
+# echo " Cocoapods: iOS Empty project"   
+# echo "===============================" 
+# cd TestProjects/cocoapods/ios 
+# rm -rf $DERIVED_DATA 
+# arch -x86_64 pod install 
+# xcodebuild build -workspace PinLayout-iOS.xcworkspace -scheme PinLayout-iOS \
+#     -sdk iphonesimulator15.2  -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
+#     | xcpretty 
+# cd ../../.. 
 
 
 # echo "===============================" 
@@ -130,19 +126,19 @@ cd ../../..
 # cd ../../.. 
 
 
-echo "=========================================="
-echo " Swift Package Manager: iOS Empty project "
-echo "=========================================="
-cd TestProjects/swift-package-manager/ios
-rm -rf $DERIVED_DATA
-rm -rf .build
-xcodebuild build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator15.2  -derivedDataPath $DERIVED_DATA \
-    -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
-    | xcpretty
-cd ../../..
+# echo "=========================================="
+# echo " Swift Package Manager: iOS Empty project "
+# echo "=========================================="
+# cd TestProjects/swift-package-manager/ios
+# rm -rf $DERIVED_DATA
+# rm -rf .build
+# xcodebuild build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator15.2  -derivedDataPath $DERIVED_DATA \
+#     -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' \
+#     | xcpretty
+# cd ../../..
 
 
-echo "===============================" 
-echo " Pod lib lint"                   
-echo "===============================" 
-bundle exec pod lib lint --allow-warnings
+# echo "===============================" 
+# echo " Pod lib lint"                   
+# echo "===============================" 
+# bundle exec pod lib lint --allow-warnings

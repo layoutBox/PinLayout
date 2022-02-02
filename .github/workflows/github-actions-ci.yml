@@ -1,23 +1,45 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Build:
+  Setup:
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - run: bundle install
-      - run: pod install --repo-update
-      - run: ./build-ci.sh /tmp/PinLayout
-
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
+      - run: |
+        echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        echo "   This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+        echo "   The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      
+      - uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+
+      - run: bundle install
+      - run: pod install --repo-update
+      # - run: ./build-ci.sh /tmp/PinLayout
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+  # macOS:
+  #   name: Test macOS 
+  #   runs-on: macOS-latest
+  #   env: 
+  #     DEVELOPER_DIR: /Applications/Xcode_11.1.app/Contents/Developer
+  #   steps:
+  #     - uses: actions/checkout@v1    
+  #     - name: macOS
+  #       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Alamofire.xcodeproj" -scheme "Alamofire macOS" -destination "platform=macOS" clean test | xcpretty
+  Build:
+    name: Test iOS 
+    runs-on: macOS-latest
+    env: 
+      DEVELOPER_DIR: /Applications/Xcode_11.1.app/Contents/Developer
+    # strategy:
+    #   matrix:
+    #     destination: ["OS=13.1,name=iPhone 11 Pro"] #, "OS=12.4,name=iPhone XS", "OS=11.4,name=iPhone X", "OS=10.3.1,name=iPhone SE"]
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./build-ci.sh /tmp/PinLayout
+      # - name: iOS - ${{ matrix.destination }}
+      #   run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Alamofire.xcodeproj" -scheme "Alamofire iOS" -destination "${{ matrix.destination }}" clean test | xcpretty
       - run: echo "🍏 This job's status is ${{ job.status }}."

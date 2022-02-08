@@ -8,6 +8,12 @@ let package = Package(
         .library(name: "PinLayout", targets: ["PinLayout"])
     ],
     targets: [
-        .target(name: "PinLayout", path: "Sources")
+        .target(
+            name: "PinLayout",
+            path: "Sources",
+            exclude: [
+                "SupportingFiles/Info.plist"
+            ]
+        )
     ]
 )

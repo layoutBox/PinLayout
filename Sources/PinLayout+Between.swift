@@ -29,7 +29,7 @@ extension PinLayout {
     // horizontallyBetween(...)
     //
     @discardableResult
-    public func horizontallyBetween(_ view1: View, and view2: View, aligned: VerticalAlign = .none) -> PinLayout {
+    public func horizontallyBetween(_ view1: PinView, and view2: PinView, aligned: VerticalAlign = .none) -> PinLayout {
         func context() -> String { return betweenContext("horizontallyBetween", view1, view2, aligned) }
         guard self.view != view1 && self.view != view2 else {
             warnWontBeApplied("the view being layouted cannot be used as one of the references.", context)
@@ -77,7 +77,7 @@ extension PinLayout {
     // verticallyBetween(...)
     //
     @discardableResult
-    public func verticallyBetween(_ view1: View, and view2: View, aligned: HorizontalAlign = .none) -> PinLayout {
+    public func verticallyBetween(_ view1: PinView, and view2: PinView, aligned: HorizontalAlign = .none) -> PinLayout {
         func context() -> String { return betweenContext("verticallyBetween", view1, view2, aligned) }
         guard self.view != view1 && self.view != view2 else {
             warnWontBeApplied("the view being layouted cannot be used as one of the references.", context)
@@ -130,15 +130,15 @@ extension PinLayout {
 
 // MARK: private
 extension PinLayout {
-    fileprivate func betweenContext(_ type: String, _ view1: View, _ view2: View, _ aligned: HorizontalAlign) -> String {
+    fileprivate func betweenContext(_ type: String, _ view1: PinView, _ view2: PinView, _ aligned: HorizontalAlign) -> String {
         return betweenContext(type, view1, view2, aligned: aligned == HorizontalAlign.none ? nil : aligned.description)
     }
 
-    fileprivate func betweenContext(_ type: String, _ view1: View, _ view2: View, _ aligned: VerticalAlign) -> String {
+    fileprivate func betweenContext(_ type: String, _ view1: PinView, _ view2: PinView, _ aligned: VerticalAlign) -> String {
         return betweenContext(type, view1, view2, aligned: aligned == VerticalAlign.none ? nil : aligned.description)
     }
 
-    private func betweenContext(_ type: String, _ view1: View, _ view2: View, aligned: String?) -> String {
+    private func betweenContext(_ type: String, _ view1: PinView, _ view2: PinView, aligned: String?) -> String {
         if let aligned = aligned {
             return "\(type)(\(viewDescription(view1)), \(viewDescription(view1)), aligned: .\(aligned))"
         } else {

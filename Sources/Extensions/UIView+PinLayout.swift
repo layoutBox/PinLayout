@@ -23,7 +23,7 @@ import Foundation
 import UIKit
 
 extension UIView: Layoutable, SizeCalculable {
-    public typealias View = UIView
+    public typealias PinView = UIView
 
     public var pin: PinLayout<UIView> {
         return PinLayout(view: self, keepTransform: true)
@@ -59,7 +59,7 @@ extension UIView: Layoutable, SizeCalculable {
     }
 
     public func setRect(_ rect: CGRect, keepTransform: Bool) {
-        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+        let adjustedRect = Coordinates<PinView>.adjustRectToDisplayScale(rect)
 
         if keepTransform {
             /*
@@ -118,8 +118,8 @@ extension UIView: AutoSizeCalculable {
     }
 
     public func setAutoSizingRect(_ rect: CGRect, margins: PEdgeInsets) {
-        self.autoSizingRect = Coordinates<View>.adjustRectToDisplayScale(rect)
-        self.autoSizingRectWithMargins = Coordinates<View>.adjustRectToDisplayScale(rect.inset(by: margins))
+        self.autoSizingRect = Coordinates<PinView>.adjustRectToDisplayScale(rect)
+        self.autoSizingRectWithMargins = Coordinates<PinView>.adjustRectToDisplayScale(rect.inset(by: margins))
     }
 
     public func autoSizeThatFits(_ size: CGSize, layoutClosure: () -> Void) -> CGSize {

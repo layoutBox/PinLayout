@@ -27,8 +27,8 @@ import Foundation
     public typealias PEdgeInsets = NSEdgeInsets
 #endif
 
-public class PinLayout<View: Layoutable> {
-    internal let view: View
+public class PinLayout<PinView: Layoutable> {
+    internal let view: PinView
     internal let keepTransform: Bool
 
     internal var _top: CGFloat?       // offset from superview's top edge
@@ -68,7 +68,7 @@ public class PinLayout<View: Layoutable> {
     
     internal var isLayouted = false
 
-    init(view: View, keepTransform: Bool) {
+    init(view: PinView, keepTransform: Bool) {
         self.view = view
         self.keepTransform = keepTransform
 
@@ -780,7 +780,7 @@ public class PinLayout<View: Layoutable> {
     }
 
     @discardableResult
-    public func width(of view: View) -> PinLayout {
+    public func width(of view: PinView) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setWidth(rect.width, { return "width(of: \(viewDescription(view)))" })
     }
@@ -824,7 +824,7 @@ public class PinLayout<View: Layoutable> {
     }
 
     @discardableResult
-    public func height(of view: View) -> PinLayout {
+    public func height(of view: PinView) -> PinLayout {
         let rect = view.getRect(keepTransform: keepTransform)
         return setHeight(rect.height, { return "height(of: \(viewDescription(view)))" })
     }
@@ -1218,9 +1218,9 @@ extension PinLayout {
         }
     }
     
-    internal func layoutSuperview(_ context: Context) -> View? {
+    internal func layoutSuperview(_ context: Context) -> PinView? {
         if let superview = view.superview {
-            return superview as? View
+            return superview as? PinView
         } else {
             // Disable this warning: Using XIB, layoutSubview() is called even before views have been
             // added, and there is no way to modify that strange behaviour of UIKit.
@@ -1229,9 +1229,9 @@ extension PinLayout {
         }
     }
 
-    internal func referenceSuperview(_ referenceView: View, _ context: Context) -> View? {
+    internal func referenceSuperview(_ referenceView: PinView, _ context: Context) -> PinView? {
         if let superview = referenceView.superview {
-            return superview as? View
+            return superview as? PinView
         } else {
             warnWontBeApplied("the reference view \(viewDescription(referenceView)) must be added as a sub-view before being used as a reference.", context)
             return nil

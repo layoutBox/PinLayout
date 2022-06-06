@@ -24,15 +24,15 @@ import AppKit
 #endif
 
 public protocol Layoutable: AnyObject, Equatable, CustomDebugStringConvertible {
-    associatedtype View: Layoutable
+    associatedtype PinView: Layoutable
 
-    var superview: View? { get }
-    var subviews: [View] { get }
+    var superview: PinView? { get }
+    var subviews: [PinView] { get }
 
     func getRect(keepTransform: Bool) -> CGRect
     func setRect(_ rect: CGRect, keepTransform: Bool)
 
-    func convert(_ point: CGPoint, to view: View?) -> CGPoint
+    func convert(_ point: CGPoint, to view: PinView?) -> CGPoint
 
     func isLTR() -> Bool
 }

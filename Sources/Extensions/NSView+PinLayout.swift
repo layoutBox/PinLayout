@@ -23,7 +23,7 @@ import Foundation
 import AppKit
 
 extension NSView: Layoutable {
-    public typealias View = NSView
+    public typealias PinView = NSView
 
     public var pin: PinLayout<NSView> {
         return PinLayout(view: self, keepTransform: true)
@@ -48,7 +48,7 @@ extension NSView: Layoutable {
     }
 
     public func setRect(_ rect: CGRect, keepTransform: Bool) {
-        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+        let adjustedRect = Coordinates<PinView>.adjustRectToDisplayScale(rect)
 
         if let superview = superview, !superview.isFlipped {
             var flippedRect = adjustedRect

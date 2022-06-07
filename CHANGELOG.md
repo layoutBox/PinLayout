@@ -7,6 +7,16 @@
 
 # Change Log
 
+## [1.10.3](https://github.com/layoutBox/PinLayout/releases/tag/1.10.2)
+Released on 2022-06-07
+
+#### Fix Xcode Live Preview
+
+Fix an error while using Xcode live preview with PinLayout. An internal class has been renamed.
+
+Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#243](https://github.com/layoutBox/PinLayout/pull/243)
+
+
 ## [1.10.2](https://github.com/layoutBox/PinLayout/releases/tag/1.10.2)
 Released on 2022-02-01
 
@@ -14,7 +24,7 @@ Released on 2022-02-01
 
 This new name better represent what `UIKit`'s `UIView.keyboardLayoutGuide` is
 
-Added by [Luc Dion](https://github.com/lucdion) in Pull Request [#243](https://github.com/layoutBox/PinLayout/pull/243)
+Added by [OriTheElf](https://github.com/OriTheElf) in Pull Request [#251](https://github.com/layoutBox/PinLayout/pull/251)
 
 ## [1.10.1](https://github.com/layoutBox/PinLayout/releases/tag/1.10.1)
 Released on 2022-02-01

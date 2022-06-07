@@ -44,7 +44,10 @@ extension PinLayout {
     }
     
     /**
-     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+     The method...
+        - Adjust the view's width and height to wrap all its subviews.
+        - Adjust subviews's position to create a tight wrap.
+        - Apply padding around all subviews.
 
      - Parameters:
      - padding: Specify a padding using an UIEdgeInsets.
@@ -55,7 +58,9 @@ extension PinLayout {
     }
 
     /**
-     Adjust the view's width AND/OR height to wrap all its subviews.
+     The method...
+     - Adjust the view's width and height to wrap all its subviews.
+     - Adjust subviews's position to create a tight wrap.
 
      - Parameters:
      - type: Specify the wrap type (.all, .horizontally, .vertically)
@@ -66,7 +71,10 @@ extension PinLayout {
     }
 
     /**
-     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+     The method...
+     - Adjust the view's width and height to wrap all its subviews.
+     - Adjust subviews's position to create a tight wrap.
+     - Apply padding around all subviews.
 
      - Parameters:
      - type: Specify the wrap type (.all, .horizontally, .vertically)
@@ -78,7 +86,10 @@ extension PinLayout {
     }
 
     /**
-     Adjust the view's width AND/OR height to wrap all its subviews. The method also adds a padding around all subviews.
+     The method...
+     - Adjust the view's width and height to wrap all its subviews.
+     - Adjust subviews's position to create a tight wrap.
+     - Apply padding around all subviews.
 
      - Parameters:
      - type: Specify the wrap type (.all, .horizontally, .vertically)

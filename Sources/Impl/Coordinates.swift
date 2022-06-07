@@ -34,58 +34,58 @@ public func _pinlayoutSetUnitTest(scale: CGFloat?) {
     }
 }
 
-final class Coordinates<View: Layoutable> {
-    static func hCenter(_ view: View, keepTransform: Bool) -> CGFloat {
+final class Coordinates<PinView: Layoutable> {
+    static func hCenter(_ view: PinView, keepTransform: Bool) -> CGFloat {
         let rect = view.getRect(keepTransform: keepTransform)
         return rect.minX + (rect.width / 2)
     }
 
-    static func vCenter(_ view: View, keepTransform: Bool) -> CGFloat {
+    static func vCenter(_ view: PinView, keepTransform: Bool) -> CGFloat {
         let rect = view.getRect(keepTransform: keepTransform)
         return rect.minY + (rect.height / 2)
     }
 
-    static func topLeft(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func topLeft(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX, y: rect.minY)
     }
 
-    static func topCenter(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func topCenter(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + (rect.width / 2), y: rect.minY)
     }
 
-    static func topRight(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func topRight(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + rect.width, y: rect.minY)
     }
 
-    static func centerLeft(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func centerLeft(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX, y: rect.minY + (rect.height / 2))
     }
     
-    static func center(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func center(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + (rect.width / 2), y: rect.minY + (rect.height / 2))
     }
 
-    static func centerRight(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func centerRight(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + rect.width, y: rect.minY + (rect.height / 2))
     }
     
-    static func bottomLeft(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func bottomLeft(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX, y: rect.minY + rect.height)
     }
 
-    static func bottomCenter(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func bottomCenter(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + (rect.width / 2), y: rect.minY + rect.height)
     }
 
-    static func bottomRight(_ view: View, keepTransform: Bool) -> CGPoint {
+    static func bottomRight(_ view: PinView, keepTransform: Bool) -> CGPoint {
         let rect = view.getRect(keepTransform: keepTransform)
         return CGPoint(x: rect.minX + rect.width, y: rect.minY + rect.height)
     }

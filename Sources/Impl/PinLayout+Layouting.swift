@@ -45,7 +45,7 @@ extension PinLayout {
         isLayouted = true
     }
     
-    private func apply(onView view: View) {
+    private func apply(onView view: PinView) {
         displayLayoutWarnings()
         
         var newRect = view.getRect(keepTransform: keepTransform)

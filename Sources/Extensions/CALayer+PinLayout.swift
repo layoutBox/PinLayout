@@ -20,7 +20,7 @@
 import QuartzCore
 
 extension CALayer: Layoutable {
-    public typealias View = CALayer
+    public typealias PinView = CALayer
 
     public var superview: CALayer? {
         return superlayer
@@ -58,7 +58,7 @@ extension CALayer: Layoutable {
     }
 
     public func setRect(_ rect: CGRect, keepTransform: Bool) {
-        let adjustedRect = Coordinates<View>.adjustRectToDisplayScale(rect)
+        let adjustedRect = Coordinates<PinView>.adjustRectToDisplayScale(rect)
 
         if keepTransform {
             /*

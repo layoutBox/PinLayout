@@ -21,10 +21,10 @@ import Foundation
 
 extension Layoutable {
     public var anchor: AnchorList {
-        return AnchorListImpl(view: self as! View)
+        return AnchorListImpl(view: self as! PinView)
     }
 
     public var edge: EdgeList {
-        return EdgeListImpl(view: self as! View)
+        return EdgeListImpl(view: self as! PinView)
     }
 }

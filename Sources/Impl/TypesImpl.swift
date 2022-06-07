@@ -32,10 +32,10 @@ struct Size {
     var height: CGFloat?
 }
 
-class EdgeListImpl<View: Layoutable>: EdgeList {
-    internal let view: View
+class EdgeListImpl<PinView: Layoutable>: EdgeList {
+    internal let view: PinView
 
-    init(view: View) {
+    init(view: PinView) {
         self.view = view
     }
 
@@ -52,14 +52,14 @@ class EdgeListImpl<View: Layoutable>: EdgeList {
     var end: HorizontalEdge { return view.isLTR() ? right : left }
 }
 
-class HorizontalEdgeImpl<View: Layoutable>: HorizontalEdge {
+class HorizontalEdgeImpl<PinView: Layoutable>: HorizontalEdge {
     enum EdgeType: String {
         case left
         case hCenter
         case right
     }
 
-    let view: View
+    let view: PinView
     let type: EdgeType
 
     func x(keepTransform: Bool) -> CGFloat {
@@ -72,20 +72,20 @@ class HorizontalEdgeImpl<View: Layoutable>: HorizontalEdge {
         }
     }
 
-    internal init(view: View, type: EdgeType) {
+    internal init(view: PinView, type: EdgeType) {
         self.view = view
         self.type = type
     }
 }
 
-class VerticalEdgeImpl<View: Layoutable>: VerticalEdge {
+class VerticalEdgeImpl<PinView: Layoutable>: VerticalEdge {
     enum EdgeType: String {
         case top
         case vCenter
         case bottom
     }
     
-    internal let view: View
+    internal let view: PinView
     internal let type: EdgeType
 
     func y(keepTransform: Bool) -> CGFloat {
@@ -99,16 +99,16 @@ class VerticalEdgeImpl<View: Layoutable>: VerticalEdge {
         }
     }
 
-    internal init(view: View, type: EdgeType) {
+    internal init(view: PinView, type: EdgeType) {
         self.view = view
         self.type = type
     }
 }
 
-class AnchorListImpl<View: Layoutable>: AnchorList {
-    internal let view: View
+class AnchorListImpl<PinView: Layoutable>: AnchorList {
+    internal let view: PinView
 
-    internal init(view: View) {
+    internal init(view: PinView) {
         self.view = view
     }
 
@@ -143,8 +143,8 @@ enum AnchorType: String {
     case bottomRight
 }
 
-class AnchorImpl<View: Layoutable>: Anchor {
-    let view: View
+class AnchorImpl<PinView: Layoutable>: Anchor {
+    let view: PinView
     let type: AnchorType
 
     func point(keepTransform: Bool) -> CGPoint {
@@ -161,7 +161,7 @@ class AnchorImpl<View: Layoutable>: Anchor {
         }
     }
 
-    fileprivate init(view: View, type: AnchorType) {
+    fileprivate init(view: PinView, type: AnchorType) {
         self.view = view
         self.type = type
     }

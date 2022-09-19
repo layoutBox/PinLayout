@@ -172,7 +172,7 @@ public enum FitType {
     case widthFlexible
     /**
      Similar to `.height`, except that PinLayout won't constrain the resulting height to
-     match the reference height. The resulting height may be smaller of bigger depending on the view's
+     match the reference height. The resulting height may be smaller or bigger depending on the view's
      sizeThatFits(..) method result.
      */
     case heightFlexible

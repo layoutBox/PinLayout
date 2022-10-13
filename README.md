@@ -454,20 +454,20 @@ Position the view above the specified view(s) and aligned it using the specified
 **`below(of: [UIView], aligned: HorizontalAlignment)`**  
 Position the view below the specified view(s) and aligned it using the specified HorizontalAlignment. One or many relative views can be specified. 
   
-* **`before(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
-**`before(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
+* **`before(of: UIView, aligned: VerticalAlignment)`**:left_right_arrow:  
+**`before(of: [UIView], aligned: VerticalAlignment)`**:left_right_arrow:  
 In LTR direction the view is positioned at the left of the specified view(s). In RTL direction the view is positioned at the right. One or many relative views can be specified. 
 
-* **`after(of: UIView, aligned: HorizontalAlignment)`**:left_right_arrow:  
-**`after(of: [UIView], aligned: HorizontalAlignment)`**:left_right_arrow:  
+* **`after(of: UIView, aligned: VerticalAlignment)`**:left_right_arrow:  
+**`after(of: [UIView], aligned: VerticalAlignment)`**:left_right_arrow:  
 In LTR direction the view is positioned at the right of the specified view(s). In RTL direction the view is positioned at the left. One or many relative views can be specified. 
 
 * **`left(of: UIView, aligned: VerticalAlignment)`**  
-**`left(of: [UIView], aligned: HorizontalAlignment)`**  
+**`left(of: [UIView], aligned: VerticalAlignment)`**  
 Position the view left of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `before(of:)`. One or many relative views can be specified. 
   
 * **`right(of: UIView, aligned: VerticalAlignment)`**  
-**`right(of: [UIView], aligned: HorizontalAlignment)`**  
+**`right(of: [UIView], aligned: VerticalAlignment)`**  
 Position the view right of the specified view(s) and aligned it using the specified VerticalAlignment. Similar to `after(of:)`. One or many relative views can be specified. 
 
 

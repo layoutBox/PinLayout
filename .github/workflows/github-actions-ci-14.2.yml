@@ -12,7 +12,7 @@ jobs:
       - run: bundle install
       - run: pod install --repo-update
 
-      - name: Set Xcode Version 14.2.0
+      - name: Set Xcode Version 14.2.0 (iOS 16.2)
         run: sudo xcode-select -s /Applications/Xcode_14.2.0.app
 
       - name: Build PinLayout-iOS
@@ -22,7 +22,7 @@ jobs:
         run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS -sdk appletvsimulator16.1 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=16.1' | xcpretty 
 
       - name: Build PinLayout-macOS
-        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx12.1 | xcpretty 
+        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx13.1 | xcpretty 
 
       - name: Build PinLayoutSample - iOS 16.2
         run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator16.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=16.2' | xcpretty 
@@ -51,17 +51,17 @@ jobs:
       - name: Swift Package Manager - iOS Empty project
         run: set -o pipefail && cd TestProjects/swift-package-manager/ios && rm -rf .build && xcodebuild build -project PinLayout-SPM-iOS.xcodeproj -scheme PinLayout-SPM-iOS -sdk iphonesimulator16.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=16.2' | xcpretty && cd ../../..
 
-      - name: Set XCode Version 13.2.1 (iOS 15)
-        run: sudo xcode-select -s /Applications/Xcode_13.2.1.app
-      - name: Build PinLayoutSample - iOS 15.2
-        run: set -o pipefail && xcodebuild clean build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.2 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.2' | xcpretty 
+      - name: Set XCode Version 13.4.1 (iOS 15.5)
+        run: sudo xcode-select -s /Applications/Xcode_13.4.1.app
+      - name: Build PinLayoutSample - iOS 15.5
+        run: set -o pipefail && xcodebuild clean build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator15.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=15.5' | xcpretty 
 
-      - name: Set XCode Version 12.5.1 (iOS 14)
+      - name: Set XCode Version 12.5.1 (iOS 14.5)
         run: sudo xcode-select -s /Applications/Xcode_12.5.1.app
       - name: Build PinLayoutSample - iOS 14.5
         run: set -o pipefail && xcodebuild clean build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator14.5 -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' | xcpretty 
 
-      - name: Set XCode Version 11.7 (iOS 13)
+      - name: Set XCode Version 11.7 (iOS 13.7)
         run: sudo xcode-select -s /Applications/Xcode_11.7.app
       - name: Build PinLayoutSample - iOS 13.7
         run: set -o pipefail && xcodebuild clean build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator13.7 -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.7' | xcpretty 

@@ -16,11 +16,12 @@ Pod::Spec.new do |spec|
   spec.author        = { "Luc Dion" => "luc_dion@yahoo.com" }
   spec.source        = { :git => "https://github.com/layoutBox/PinLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "Sources/**/*.swift"
+  spec.swift_versions = ['4.2', '5.7']
 
-  spec.ios.deployment_target  = '9.0'
+  spec.ios.deployment_target  = '11.0'
   spec.ios.frameworks         = 'Foundation', 'CoreGraphics', 'UIKit'
   
-  spec.tvos.deployment_target = '9.0'
+  spec.tvos.deployment_target = '11.0'
   spec.tvos.frameworks        = 'Foundation', 'CoreGraphics', 'UIKit'
 
   spec.osx.deployment_target  = '10.11'

@@ -38,7 +38,7 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];    
-    [((IntroObjectiveCView*)self.view) setLayoutGuidesTop:self.topLayoutGuide.length];
+    [((IntroObjectiveCView*)self.view) setLayoutGuidesTop:self.view.safeAreaInsets.top];
 }
 
 @end

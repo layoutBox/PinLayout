@@ -34,7 +34,8 @@ class CollectionViewExampleView: UIView {
         if #available(iOS 11.0, tvOS 11.0, *) {
             flowLayout.sectionInsetReference = .fromSafeArea
         }
-        
+
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self

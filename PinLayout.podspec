@@ -18,12 +18,12 @@ Pod::Spec.new do |spec|
   spec.source_files  = "Sources/**/*.swift"
   spec.swift_versions = ['4.2', '5.7']
 
-  spec.ios.deployment_target  = '11.0'
+  spec.ios.deployment_target  = '12.0'
   spec.ios.frameworks         = 'Foundation', 'CoreGraphics', 'UIKit'
   
-  spec.tvos.deployment_target = '11.0'
+  spec.tvos.deployment_target = '12.0'
   spec.tvos.frameworks        = 'Foundation', 'CoreGraphics', 'UIKit'
 
-  spec.osx.deployment_target  = '10.11'
+  spec.osx.deployment_target  = '10.13'
   spec.osx.frameworks         = 'Foundation', 'CoreGraphics', 'AppKit'
 end

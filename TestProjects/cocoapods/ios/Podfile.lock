@@ -1,24 +1,30 @@
 PODS:
-  - PinLayout (1.10.1)
-  - SwifterSwift (5.0.0):
-    - SwifterSwift/AppKit (= 5.0.0)
-    - SwifterSwift/CoreGraphics (= 5.0.0)
-    - SwifterSwift/CoreLocation (= 5.0.0)
-    - SwifterSwift/Dispatch (= 5.0.0)
-    - SwifterSwift/Foundation (= 5.0.0)
-    - SwifterSwift/MapKit (= 5.0.0)
-    - SwifterSwift/SpriteKit (= 5.0.0)
-    - SwifterSwift/SwiftStdlib (= 5.0.0)
-    - SwifterSwift/UIKit (= 5.0.0)
-  - SwifterSwift/AppKit (5.0.0)
-  - SwifterSwift/CoreGraphics (5.0.0)
-  - SwifterSwift/CoreLocation (5.0.0)
-  - SwifterSwift/Dispatch (5.0.0)
-  - SwifterSwift/Foundation (5.0.0)
-  - SwifterSwift/MapKit (5.0.0)
-  - SwifterSwift/SpriteKit (5.0.0)
-  - SwifterSwift/SwiftStdlib (5.0.0)
-  - SwifterSwift/UIKit (5.0.0)
+  - PinLayout (1.10.4)
+  - SwifterSwift (5.2.0):
+    - SwifterSwift/AppKit (= 5.2.0)
+    - SwifterSwift/CoreAnimation (= 5.2.0)
+    - SwifterSwift/CoreGraphics (= 5.2.0)
+    - SwifterSwift/CoreLocation (= 5.2.0)
+    - SwifterSwift/Dispatch (= 5.2.0)
+    - SwifterSwift/Foundation (= 5.2.0)
+    - SwifterSwift/MapKit (= 5.2.0)
+    - SwifterSwift/SceneKit (= 5.2.0)
+    - SwifterSwift/SpriteKit (= 5.2.0)
+    - SwifterSwift/StoreKit (= 5.2.0)
+    - SwifterSwift/SwiftStdlib (= 5.2.0)
+    - SwifterSwift/UIKit (= 5.2.0)
+  - SwifterSwift/AppKit (5.2.0)
+  - SwifterSwift/CoreAnimation (5.2.0)
+  - SwifterSwift/CoreGraphics (5.2.0)
+  - SwifterSwift/CoreLocation (5.2.0)
+  - SwifterSwift/Dispatch (5.2.0)
+  - SwifterSwift/Foundation (5.2.0)
+  - SwifterSwift/MapKit (5.2.0)
+  - SwifterSwift/SceneKit (5.2.0)
+  - SwifterSwift/SpriteKit (5.2.0)
+  - SwifterSwift/StoreKit (5.2.0)
+  - SwifterSwift/SwiftStdlib (5.2.0)
+  - SwifterSwift/UIKit (5.2.0)
 
 DEPENDENCIES:
   - PinLayout (from `../../..`)
@@ -33,9 +39,9 @@ EXTERNAL SOURCES:
     :path: "../../.."
 
 SPEC CHECKSUMS:
-  PinLayout: 8b3199b283d1b34e6b35a71d0202049b67551c96
-  SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
+  PinLayout: f8a677ce0cd1cfe96b58435d029b4ceb4ce9c04c
+  SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: 3eeeff509b48ae95b0ba6a131fc224e3d13ac363
+PODFILE CHECKSUM: f40959ab258f12059918e48f6019cb401a81723f
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.0

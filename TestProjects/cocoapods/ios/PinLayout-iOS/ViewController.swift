@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         // PinLayout
-        logo.pin.top().left().size(100).margin(topLayoutGuide.length + 10, 10, 10)
+        logo.pin.top().left().size(100).margin(view.safeAreaInsets.top + 10, 10, 10)
         label1.pin.after(of: logo, aligned: .top).right().marginHorizontal(10).sizeToFit(.width)
         label2.pin.after(of: logo, aligned: .center).right().marginHorizontal(10).sizeToFit(.width)
         label3.pin.after(of: logo, aligned: .bottom).right().marginHorizontal(10).sizeToFit(.width)

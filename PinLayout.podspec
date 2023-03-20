@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name          = "PinLayout"
-  spec.version       = "1.10.3"
+  spec.version       = "1.10.4"
   spec.summary       = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast."
   spec.description   = "Fast Swift Views layouting without auto layout. No magic, pure code, full control and blazing fast. Concise syntax, intuitive, readable & chainable. [iOS/macOS/tvOS/CALayer]"
   spec.homepage      = "https://github.com/layoutBox/PinLayout"
@@ -16,14 +16,14 @@ Pod::Spec.new do |spec|
   spec.author        = { "Luc Dion" => "luc_dion@yahoo.com" }
   spec.source        = { :git => "https://github.com/layoutBox/PinLayout.git", :tag => "#{spec.version}" }
   spec.source_files  = "Sources/**/*.swift"
-  spec.swift_versions = ['4.2', '5.0', '5.1', '5.2', '5.3', '5.4']
+  spec.swift_versions = ['4.2', '5.7']
 
-  spec.ios.deployment_target  = '9.0'
+  spec.ios.deployment_target  = '12.0'
   spec.ios.frameworks         = 'Foundation', 'CoreGraphics', 'UIKit'
   
-  spec.tvos.deployment_target = '9.0'
+  spec.tvos.deployment_target = '12.0'
   spec.tvos.frameworks        = 'Foundation', 'CoreGraphics', 'UIKit'
 
-  spec.osx.deployment_target  = '10.11'
+  spec.osx.deployment_target  = '10.13'
   spec.osx.frameworks         = 'Foundation', 'CoreGraphics', 'AppKit'
 end

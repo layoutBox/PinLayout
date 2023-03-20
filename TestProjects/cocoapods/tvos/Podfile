@@ -1,5 +1,5 @@
 source 'https://cdn.cocoapods.org/'
-platform :tvos, '10.3'
+platform :tvos, '11.3'
 
 target 'PinLayout-tvOS' do
     #pod 'PinLayout'

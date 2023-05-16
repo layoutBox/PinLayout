@@ -1367,17 +1367,17 @@ The property expose the `UIKit` value [`UIView.keyboardLayoutGuide`](https://dev
 <a name="wrapContent"></a>
 ## WrapContent
 
-The following methods are useful to adjust view's width and/or height to wrap all its subviews. These methods also adjust subviews position to create a tight wrap.
+The following methods are useful to adjust view's width and/or height to wrap all its subviews that are included in the layout. These methods also adjust subviews position to create a tight wrap.
 
 **Methods:**
 
 * **`wrapContent()`**  
 **`wrapContent(padding: CGFloat)`**  
 **`wrapContent(padding: UIEdgeInsets)`**   
-Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews's position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
+Adjust the view's width and height to wrap all its subviews that are included in the layout. The method also adjusts subviews's position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
 * **`wrapContent(:WrapType)`**  
 **`wrapContent(:WrapType, padding: CGFloat)`**  **`wrapContent(:WrapType, padding: UIEdgeInsets)`**  
-Adjust the view's width AND/OR height to wrap all its subviews. Accept a WrapType parameter to define the wrapping type. It is also possible to specify an optional padding around all subviews.
+Adjust the view's width AND/OR height to wrap all its subviews that are included in the layout. Accept a WrapType parameter to define the wrapping type. It is also possible to specify an optional padding around all subviews.
  
 **Types:** 
 

@@ -25,7 +25,7 @@ import AppKit
 
 extension PinLayout {
     /**
-     Adjust the view's width & height to wrap all its subviews. The method also adjust subviews position to create a tight wrap.
+     Adjust the view's width & height to wrap all its subviews that are included in the size calculation. The method also adjust subviews position to create a tight wrap.
      */
     @discardableResult
     public func wrapContent() -> PinLayout {
@@ -33,7 +33,7 @@ extension PinLayout {
     }
 
     /**
-     Adjust the view's width & height to wrap all its subviews. The method also adds a padding around all subviews.
+     Adjust the view's width & height to wrap all its subviews that are included in the size calculation. The method also adds a padding around all subviews.
 
      - Parameters:
      - padding: Specify a padding value.
@@ -45,7 +45,7 @@ extension PinLayout {
     
     /**
      The method...
-        - Adjust the view's width and height to wrap all its subviews.
+        - Adjust the view's width and height to wrap all its subviews that are included in the size calculation.
         - Adjust subviews's position to create a tight wrap.
         - Apply padding around all subviews.
 
@@ -59,7 +59,7 @@ extension PinLayout {
 
     /**
      The method...
-     - Adjust the view's width and height to wrap all its subviews.
+     - Adjust the view's width and height to wrap all its subviews that are included in the size calculation.
      - Adjust subviews's position to create a tight wrap.
 
      - Parameters:
@@ -72,7 +72,7 @@ extension PinLayout {
 
     /**
      The method...
-     - Adjust the view's width and height to wrap all its subviews.
+     - Adjust the view's width and height to wrap all its subviews that are included in the size calculation.
      - Adjust subviews's position to create a tight wrap.
      - Apply padding around all subviews.
 
@@ -87,7 +87,7 @@ extension PinLayout {
 
     /**
      The method...
-     - Adjust the view's width and height to wrap all its subviews.
+     - Adjust the view's width and height to wrap all its subviews that are included in the size calculation.
      - Adjust subviews's position to create a tight wrap.
      - Apply padding around all subviews.
 
@@ -101,11 +101,11 @@ extension PinLayout {
     }
 
     private func wrapContent(_ type: WrapType, padding: PEdgeInsets, _ context: Context) -> PinLayout {
-        let subviews = view.subviews
-        guard !subviews.isEmpty else { return self }
+        let includedSubviews = view.subviewsIncludedInSizeCalculation
+        guard !includedSubviews.isEmpty else { return self }
 
-        let firstViewRect = subviews[0].getRect(keepTransform: keepTransform)
-        let boundingRect = subviews.reduce(firstViewRect, { (result, view) in
+        let firstViewRect = includedSubviews[0].getRect(keepTransform: keepTransform)
+        let boundingRect = includedSubviews.reduce(firstViewRect, { (result, view) in
             result.union(view.getRect(keepTransform: keepTransform))
         })
 
@@ -131,7 +131,7 @@ extension PinLayout {
         }
 
         if offsetDx != 0 || offsetDy != 0 {
-            subviews.forEach { (view) in
+            includedSubviews.forEach { (view) in
                 let viewRect = view.getRect(keepTransform: keepTransform)
                 let newRect = viewRect.offsetBy(dx: offsetDx, dy: offsetDy)
                 view.setRect(newRect, keepTransform: keepTransform)

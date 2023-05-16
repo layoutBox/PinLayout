@@ -37,6 +37,15 @@ extension UIView: Layoutable, SizeCalculable {
         return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
 
+    public var isIncludedInPinLayoutSizeCalculation: Bool {
+        get {
+            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInPinLayoutSizeCalculation) as? Bool ?? true
+        }
+        set {
+            objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInPinLayoutSizeCalculation, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
     public func getRect(keepTransform: Bool) -> CGRect {
         guard !Pin.autoSizingInProgress || autoSizingRect == nil else { return autoSizingRect ?? CGRect.zero }
 
@@ -95,6 +104,7 @@ extension UIView: Layoutable, SizeCalculable {
 
 extension UIView: AutoSizeCalculable {
     private struct pinlayoutAssociatedKeys {
+        static var pinlayoutIsIncludedInPinLayoutSizeCalculation = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
         static var pinlayoutAutoSizingRect = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
         static var pinlayoutAutoSizingRectWithMargins = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
     }

@@ -29,10 +29,23 @@ public protocol Layoutable: AnyObject, Equatable, CustomDebugStringConvertible {
     var superview: PinView? { get }
     var subviews: [PinView] { get }
 
+    /// A Boolean value that determines whether the view is included in the PinLayout's size calculation.
+    ///
+    /// An excluded view does not take up space in the layout
+    /// when using `wrapContent(_:padding:_:)` or `autoSizeThatFits(_:layoutClosure:)`.
+    /// The default value is `true`.
+    var isIncludedInPinLayoutSizeCalculation: Bool { get set }
+
     func getRect(keepTransform: Bool) -> CGRect
     func setRect(_ rect: CGRect, keepTransform: Bool)
 
     func convert(_ point: CGPoint, to view: PinView?) -> CGPoint
 
     func isLTR() -> Bool
+}
+
+extension Layoutable {
+    var subviewsIncludedInSizeCalculation: [PinView] {
+        return subviews.filter(\.isIncludedInPinLayoutSizeCalculation)
+    }
 }

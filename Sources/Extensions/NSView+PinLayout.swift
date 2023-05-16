@@ -23,6 +23,10 @@ import Foundation
 import AppKit
 
 extension NSView: Layoutable {
+    private struct pinlayoutAssociatedKeys {
+        static var pinlayoutIsIncludedInPinLayoutSizeCalculation = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
+    }
+  
     public typealias PinView = NSView
 
     public var pin: PinLayout<NSView> {
@@ -35,6 +39,15 @@ extension NSView: Layoutable {
 
     @objc public var pinObjc: PinLayoutObjC {
         return PinLayoutObjCImpl(view: self, keepTransform: true)
+    }
+
+    public var isIncludedInPinLayoutSizeCalculation: Bool {
+        get {
+            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInPinLayoutSizeCalculation) as? Bool ?? true
+        }
+        set {
+            objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInPinLayoutSizeCalculation, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 
     public func getRect(keepTransform: Bool) -> CGRect {

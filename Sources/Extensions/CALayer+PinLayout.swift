@@ -20,6 +20,10 @@
 import QuartzCore
 
 extension CALayer: Layoutable {
+    private struct pinlayoutAssociatedKeys {
+        static var pinlayoutIsIncludedInPinLayoutSizeCalculation = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
+    }
+
     public typealias PinView = CALayer
 
     public var superview: CALayer? {
@@ -36,6 +40,15 @@ extension CALayer: Layoutable {
 
     public var pinFrame: PinLayout<CALayer> {
         return PinLayout(view: self, keepTransform: false)
+    }
+
+    public var isIncludedInPinLayoutSizeCalculation: Bool {
+        get {
+            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInPinLayoutSizeCalculation) as? Bool ?? true
+        }
+        set {
+            objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInPinLayoutSizeCalculation, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 
     public func getRect(keepTransform: Bool) -> CGRect {

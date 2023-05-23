@@ -6,7 +6,7 @@
 
 * Manual layouting (doesn't rely on auto layout).
 
-* PinLayout exist to be simple and fast as possible! In fact, it is fast as manual layouting. See [performance results below.](https://github.com/layoutBox/PinLayout#pinlayouts-performance)
+* PinLayout exist to be simple and fast as possible! In fact, it is fast as manual layouting. See [performance results here.](https://github.com/layoutBox/PinLayout#pinlayouts-performance)
 
 * Full control: You're in the middle of the layout process, no magic black box. 
 	* You can add conditions (if/switch/guard/...) related to the device orientation, device type, traitCollection, animations, ...

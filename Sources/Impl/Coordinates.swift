@@ -110,7 +110,7 @@ private func getDisplayScale() -> CGFloat {
     #if os(iOS) || os(tvOS)
     if #available(iOS 13.0, tvOS 13.0, *) {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        return windowScene?.screen.scale ?? .zero
+        return windowScene?.screen.scale ?? 1.0
     } else {
         return UIScreen.main.scale
     }

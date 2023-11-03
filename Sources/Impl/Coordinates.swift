@@ -108,7 +108,11 @@ final class Coordinates<PinView: Layoutable> {
 
 private func getDisplayScale() -> CGFloat {
     #if os(iOS) || os(tvOS)
+    if #available(iOS 13.0, tvOS 13.0, *) {
+        return UITraitCollection.current.displayScale
+    } else {
         return UIScreen.main.scale
+    }
     #elseif os(OSX)
         #if swift(>=4.1)
         return NSScreen.main?.backingScaleFactor ?? 2.0

@@ -7,6 +7,16 @@
 
 # Change Log
 
+## [1.10.5](https://github.com/layoutBox/PinLayout/releases/tag/1.10.5)
+Released on 2023-11-03
+
+#### Replace UIScreen.main to get display scale on iOS 13.0 and later
+
+UIScree.main will be deprecated in a future version of iOS.
+
+Added by [Hyungyu Kim](https://github.com/hyun99999) in Pull Request [#275](https://github.com/layoutBox/PinLayout/pull/275)
+
+
 ## [1.10.3](https://github.com/layoutBox/PinLayout/releases/tag/1.10.2)
 Released on 2022-06-07
 

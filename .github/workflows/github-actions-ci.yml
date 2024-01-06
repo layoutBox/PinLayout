@@ -24,7 +24,7 @@ jobs:
         run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-tvOS -sdk appletvsimulator17.2 -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation),OS=17.2' | xcpretty 
 
       - name: Build PinLayout-macOS
-        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx13.1 | xcpretty 
+        run: set -o pipefail && xcodebuild build -project PinLayout.xcodeproj -scheme PinLayout-macOS -sdk macosx14.2 | xcpretty 
 
       - name: Build PinLayoutSample - iOS 17.2
         run: set -o pipefail && xcodebuild build -workspace PinLayout.xcworkspace -scheme PinLayoutSample -sdk iphonesimulator17.2 -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=17.2' | xcpretty 

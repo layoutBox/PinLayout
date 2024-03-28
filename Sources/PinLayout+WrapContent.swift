@@ -113,7 +113,7 @@ extension PinLayout {
         switch viewFilter {
         case .visibleOnly:
             subviews = view.subviews.filter { !$0.isHidden }
-        default:
+        case .none:
             subviews = view.subviews
         }
 

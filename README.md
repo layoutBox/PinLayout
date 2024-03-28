@@ -1371,20 +1371,24 @@ The following methods are useful to adjust view's width and/or height to wrap al
 
 **Methods:**
 
-* **`wrapContent()`**  
-**`wrapContent(padding: CGFloat)`**  
-**`wrapContent(padding: UIEdgeInsets)`**   
-Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews's position to create a tight wrap. It is also possible to specify an optional padding around all subviews. 
-* **`wrapContent(:WrapType)`**  
-**`wrapContent(:WrapType, padding: CGFloat)`**  **`wrapContent(:WrapType, padding: UIEdgeInsets)`**  
-Adjust the view's width AND/OR height to wrap all its subviews. Accept a WrapType parameter to define the wrapping type. It is also possible to specify an optional padding around all subviews.
- 
+* **`wrapContent(viewFilter: ViewFilter = .none)`**  
+**`wrapContent(padding: CGFloat, viewFilter: ViewFilter = .none)`**  
+**`wrapContent(padding: UIEdgeInsets, viewFilter: ViewFilter = .none)`**   
+Adjust the view's width and height to wrap all its subviews. The method also adjusts subviews's position to create a tight wrap. It is also possible to specify an optional padding around all subviews. Additionally, it's possible to specify whether to include all views or only visible ones. 
+* **`wrapContent(:WrapType, viewFilter: ViewFilter = .none)`**  **`wrapContent(:WrapType, padding: UIEdgeInsets, viewFilter: ViewFilter = .none)`**  
+**`wrapContent(:WrapType, padding: CGFloat, viewFilter: ViewFilter = .none)`**  
+Adjust the view's width AND/OR height to wrap all its subviews. Accept a WrapType parameter to define the wrapping type. It is also possible to specify an optional padding around all subviews. Additionally, it's possible to specify whether to include all views or only visible ones.
+
 **Types:** 
 
 * **`WrapType`** values:
 	* `.horizontally`: Adjust the view's width and update subviews's horizontal position.
 	* `.vertically`: Adjust only the view's height and update subviews's vertical position.
 	* `.all`: Adjust the view's width AND height and update subviews position. This is the default WrapType parameter value `wrapContent()` methods.
+ 
+* **`ViewFilter`** values:
+    * `.none`: No filter, use all views
+    * `.visibleOnly`: Consider only visible views (isHidden is false and alpha is > 0)
 
 ###### Usage examples:
 ```swift

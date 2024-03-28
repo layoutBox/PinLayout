@@ -26,6 +26,9 @@ import AppKit
 extension PinLayout {
     /**
      Adjust the view's width & height to wrap all its subviews. The method also adjust subviews position to create a tight wrap.
+
+     - Parameters:
+     - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
     public func wrapContent(viewFilter: ViewFilter = .none) -> PinLayout {
@@ -37,6 +40,7 @@ extension PinLayout {
 
      - Parameters:
      - padding: Specify a padding value.
+     - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
     public func wrapContent(padding: CGFloat, viewFilter: ViewFilter = .none) -> PinLayout {
@@ -51,6 +55,7 @@ extension PinLayout {
 
      - Parameters:
      - padding: Specify a padding using an UIEdgeInsets.
+     - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
     public func wrapContent(padding: PEdgeInsets, viewFilter: ViewFilter = .none) -> PinLayout {
@@ -64,6 +69,7 @@ extension PinLayout {
 
      - Parameters:
      - type: Specify the wrap type (.all, .horizontally, .vertically)
+     - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
     public func wrapContent(_ type: WrapType, viewFilter: ViewFilter = .none) -> PinLayout {
@@ -79,6 +85,7 @@ extension PinLayout {
      - Parameters:
      - type: Specify the wrap type (.all, .horizontally, .vertically)
      - padding: Specify a padding value.
+     - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
     public func wrapContent(_ type: WrapType, padding: CGFloat, viewFilter: ViewFilter = .none) -> PinLayout {
@@ -94,6 +101,7 @@ extension PinLayout {
      - Parameters:
      - type: Specify the wrap type (.all, .horizontally, .vertically)
      - padding: Specify a padding using an UIEdgeInsets.
+     - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
     public func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter = .none) -> PinLayout {

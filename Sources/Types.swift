@@ -194,6 +194,13 @@ public enum FitType {
     case vertically
 }
 
+@objc public enum ViewFilter: Int {
+    /// No filter, use all views
+    case none
+    /// Consider only views where `hidden` is false
+    case visibleOnly
+}
+
 @objc public enum LayoutDirection: Int {
     case auto
     case ltr

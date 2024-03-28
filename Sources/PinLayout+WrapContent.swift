@@ -28,8 +28,8 @@ extension PinLayout {
      Adjust the view's width & height to wrap all its subviews. The method also adjust subviews position to create a tight wrap.
      */
     @discardableResult
-    public func wrapContent() -> PinLayout {
-        return wrapContent(.all, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), { return "wrapContent()" })
+    public func wrapContent(viewFilter: ViewFilter = .none) -> PinLayout {
+        return wrapContent(.all, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), viewFilter: viewFilter, { return "wrapContent()" })
     }
 
     /**
@@ -39,8 +39,8 @@ extension PinLayout {
      - padding: Specify a padding value.
      */
     @discardableResult
-    public func wrapContent(padding: CGFloat) -> PinLayout {
-        return wrapContent(.all, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(padding: \(padding)" })
+    public func wrapContent(padding: CGFloat, viewFilter: ViewFilter = .none) -> PinLayout {
+        return wrapContent(.all, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), viewFilter: viewFilter, { return "wrapContent(padding: \(padding)" })
     }
     
     /**
@@ -53,8 +53,8 @@ extension PinLayout {
      - padding: Specify a padding using an UIEdgeInsets.
      */
     @discardableResult
-    public func wrapContent(padding: PEdgeInsets) -> PinLayout {
-        return wrapContent(.all, padding: padding, { return "wrapContent(padding: \(insetsDescription(padding))" })
+    public func wrapContent(padding: PEdgeInsets, viewFilter: ViewFilter = .none) -> PinLayout {
+        return wrapContent(.all, padding: padding, viewFilter: viewFilter, { return "wrapContent(padding: \(insetsDescription(padding))" })
     }
 
     /**
@@ -66,8 +66,8 @@ extension PinLayout {
      - type: Specify the wrap type (.all, .horizontally, .vertically)
      */
     @discardableResult
-    public func wrapContent(_ type: WrapType) -> PinLayout {
-        return wrapContent(type, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), { return "wrapContent(\(type.description)" })
+    public func wrapContent(_ type: WrapType, viewFilter: ViewFilter = .none) -> PinLayout {
+        return wrapContent(type, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), viewFilter: viewFilter, { return "wrapContent(\(type.description)" })
     }
 
     /**
@@ -81,8 +81,8 @@ extension PinLayout {
      - padding: Specify a padding value.
      */
     @discardableResult
-    public func wrapContent(_ type: WrapType, padding: CGFloat) -> PinLayout {
-        return wrapContent(type, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), { return "wrapContent(\(type.description), padding: \(padding)" })
+    public func wrapContent(_ type: WrapType, padding: CGFloat, viewFilter: ViewFilter = .none) -> PinLayout {
+        return wrapContent(type, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), viewFilter: viewFilter, { return "wrapContent(\(type.description), padding: \(padding)" })
     }
 
     /**
@@ -96,12 +96,19 @@ extension PinLayout {
      - padding: Specify a padding using an UIEdgeInsets.
      */
     @discardableResult
-    public func wrapContent(_ type: WrapType, padding: PEdgeInsets) -> PinLayout {
-        return wrapContent(type, padding: padding, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
+    public func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter = .none) -> PinLayout {
+        return wrapContent(type, padding: padding, viewFilter: viewFilter, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
     }
 
-    private func wrapContent(_ type: WrapType, padding: PEdgeInsets, _ context: Context) -> PinLayout {
-        let subviews = view.subviews.filter { !$0.isHidden }
+    private func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter = .none, _ context: Context) -> PinLayout {
+        let subviews: [PinView.PinView]
+        switch viewFilter {
+        case .visibleOnly:
+            subviews = view.subviews.filter { !$0.isHidden }
+        default:
+            subviews = view.subviews
+        }
+
         guard !subviews.isEmpty else { return self }
 
         let firstViewRect = subviews[0].getRect(keepTransform: keepTransform)

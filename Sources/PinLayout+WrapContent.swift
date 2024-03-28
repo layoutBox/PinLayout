@@ -101,7 +101,7 @@ extension PinLayout {
     }
 
     private func wrapContent(_ type: WrapType, padding: PEdgeInsets, _ context: Context) -> PinLayout {
-        let subviews = view.subviews
+        let subviews = view.subviews.filter { !$0.isHidden }
         guard !subviews.isEmpty else { return self }
 
         let firstViewRect = subviews[0].getRect(keepTransform: keepTransform)

@@ -112,7 +112,7 @@ extension PinLayout {
         let subviews: [PinView.PinView]
         switch viewFilter {
         case .visibleOnly:
-            subviews = view.subviews.filter { !$0.isHidden && $0.alpha > 0 }
+            subviews = view.subviews.filter { $0.isVisible }
         case .none:
             subviews = view.subviews
         }

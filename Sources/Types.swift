@@ -197,7 +197,7 @@ public enum FitType {
 @objc public enum ViewFilter: Int {
     /// No filter, use all views
     case none
-    /// Consider only views where `hidden` is false
+    /// Consider only visible views (isHidden is false and alpha is > 0)
     case visibleOnly
 }
 

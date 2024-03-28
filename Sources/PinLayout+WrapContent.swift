@@ -108,11 +108,11 @@ extension PinLayout {
         return wrapContent(type, padding: padding, viewFilter: viewFilter, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
     }
 
-    private func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter = .none, _ context: Context) -> PinLayout {
+    private func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter, _ context: Context) -> PinLayout {
         let subviews: [PinView.PinView]
         switch viewFilter {
         case .visibleOnly:
-            subviews = view.subviews.filter { !$0.isHidden }
+            subviews = view.subviews.filter { !$0.isHidden && $0.alpha > 0 }
         case .none:
             subviews = view.subviews
         }

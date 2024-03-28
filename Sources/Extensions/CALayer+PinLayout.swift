@@ -22,6 +22,10 @@ import QuartzCore
 extension CALayer: Layoutable {
     public typealias PinView = CALayer
 
+    public var alpha: CGFloat {
+        CGFloat(opacity)
+    }
+
     public var superview: CALayer? {
         return superlayer
     }

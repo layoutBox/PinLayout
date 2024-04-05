@@ -33,8 +33,8 @@ extension NSView: Layoutable {
         return PinLayout(view: self, keepTransform: false)
     }
 
-    public var isVisible: Bool {
-        !isHidden && alphaValue > 0
+    public var isConsideredVisibleForViewFilters: Bool {
+        return !isHidden && alphaValue > 0
     }
 
     @objc public var pinObjc: PinLayoutObjC {

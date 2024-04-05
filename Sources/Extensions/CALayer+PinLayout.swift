@@ -30,8 +30,8 @@ extension CALayer: Layoutable {
         return sublayers ?? []
     }
 
-    public var isVisible: Bool {
-        !isHidden && opacity > 0
+    public var isConsideredVisibleForViewFilters: Bool {
+        return !isHidden && opacity > 0
     }
 
     public var pin: PinLayout<CALayer> {

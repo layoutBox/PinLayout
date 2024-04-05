@@ -29,7 +29,7 @@ public protocol Layoutable: AnyObject, Equatable, CustomDebugStringConvertible {
     var superview: PinView? { get }
     var subviews: [PinView] { get }
 
-    var isVisible: Bool { get }
+    var isConsideredVisibleForViewFilters: Bool { get }
 
     func getRect(keepTransform: Bool) -> CGRect
     func setRect(_ rect: CGRect, keepTransform: Bool)

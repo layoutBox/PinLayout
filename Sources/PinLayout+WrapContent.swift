@@ -31,7 +31,7 @@ extension PinLayout {
      - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
-    public func wrapContent(viewFilter: ViewFilter = .none) -> PinLayout {
+    public func wrapContent(viewFilter: ViewFilter = .all) -> PinLayout {
         return wrapContent(.all, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), viewFilter: viewFilter, { return "wrapContent()" })
     }
 
@@ -43,7 +43,7 @@ extension PinLayout {
      - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
-    public func wrapContent(padding: CGFloat, viewFilter: ViewFilter = .none) -> PinLayout {
+    public func wrapContent(padding: CGFloat, viewFilter: ViewFilter = .all) -> PinLayout {
         return wrapContent(.all, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), viewFilter: viewFilter, { return "wrapContent(padding: \(padding)" })
     }
     
@@ -58,7 +58,7 @@ extension PinLayout {
      - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
-    public func wrapContent(padding: PEdgeInsets, viewFilter: ViewFilter = .none) -> PinLayout {
+    public func wrapContent(padding: PEdgeInsets, viewFilter: ViewFilter = .all) -> PinLayout {
         return wrapContent(.all, padding: padding, viewFilter: viewFilter, { return "wrapContent(padding: \(insetsDescription(padding))" })
     }
 
@@ -72,7 +72,7 @@ extension PinLayout {
      - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
-    public func wrapContent(_ type: WrapType, viewFilter: ViewFilter = .none) -> PinLayout {
+    public func wrapContent(_ type: WrapType, viewFilter: ViewFilter = .all) -> PinLayout {
         return wrapContent(type, padding: PEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), viewFilter: viewFilter, { return "wrapContent(\(type.description)" })
     }
 
@@ -88,7 +88,7 @@ extension PinLayout {
      - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
-    public func wrapContent(_ type: WrapType, padding: CGFloat, viewFilter: ViewFilter = .none) -> PinLayout {
+    public func wrapContent(_ type: WrapType, padding: CGFloat, viewFilter: ViewFilter = .all) -> PinLayout {
         return wrapContent(type, padding: PEdgeInsets(top: padding, left: padding, bottom: padding, right: padding), viewFilter: viewFilter, { return "wrapContent(\(type.description), padding: \(padding)" })
     }
 
@@ -104,7 +104,7 @@ extension PinLayout {
      - viewFilter: Specify whether to include all views or only visible ones.
      */
     @discardableResult
-    public func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter = .none) -> PinLayout {
+    public func wrapContent(_ type: WrapType, padding: PEdgeInsets, viewFilter: ViewFilter = .all) -> PinLayout {
         return wrapContent(type, padding: padding, viewFilter: viewFilter, { return "wrapContent(\(type.description), padding: \(insetsDescription(padding))" })
     }
 
@@ -112,8 +112,8 @@ extension PinLayout {
         let subviews: [PinView.PinView]
         switch viewFilter {
         case .visibleOnly:
-            subviews = view.subviews.filter { $0.isVisible }
-        case .none:
+            subviews = view.subviews.filter { $0.isConsideredVisibleForViewFilters }
+        case .all:
             subviews = view.subviews
         }
 

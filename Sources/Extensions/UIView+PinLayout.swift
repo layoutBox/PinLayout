@@ -37,8 +37,8 @@ extension UIView: Layoutable, SizeCalculable {
         return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
 
-    public var isVisible: Bool {
-        !isHidden && alpha > 0
+    public var isConsideredVisibleForViewFilters: Bool {
+        return !isHidden && alpha > 0
     }
 
     public func getRect(keepTransform: Bool) -> CGRect {

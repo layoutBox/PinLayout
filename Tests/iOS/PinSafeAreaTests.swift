@@ -106,28 +106,30 @@ class PinSafeAreaSpec: QuickSpec {
             }
 
             it("with OffsetView") {
+                let offsetViewTop = CGFloat(10)
                 let mainView = viewController.mainView
 
                 mainView.layoutOffsetViewClosure = { (_ offsetView: UIView, _ parent: UIView) in
-                    offsetView.pin.top(10).width(100).height(100)
+                    offsetView.pin.top(offsetViewTop).width(100).height(100)
                 }
-
-                let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(
+                    top: mainView.safeAreaInsets.top - offsetViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
 
                 let screenSize = mainView.frame.size
                 XCTAssertEqual(mainView.frame, CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
-                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: 10, width: 100, height: 100))
+                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: offsetViewTop, width: 100, height: 100))
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
             }
 

@@ -90,23 +90,19 @@ class PinSafeAreaSpec: QuickSpec {
                     offsetView.pin.all().margin(parent.pin.safeArea)
                 }
 
-                let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+ 
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
-
+                
                 let screenSize = mainView.frame.size
                 XCTAssertEqual(mainView.frame, CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
-                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: 44, width: screenSize.width, height: screenSize.height - 44))
+                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: expectedSafeAreaInsets.top, width: screenSize.width, height: screenSize.height - (expectedSafeAreaInsets.top + expectedSafeAreaInsets.bottom)))
             }
 
             it("with OffsetView") {

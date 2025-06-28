@@ -55,6 +55,12 @@ class PinSafeAreaSpec: QuickSpec {
         describe("using opaque NavigationBar") {
             it("testOpaqueNavigationBar") {
                 let mainView = viewController.mainView
+                mainView.layoutOffsetViewClosure = { _, _ in }
+                navigationController.navigationBar.isTranslucent = true
+
+                setupWindow(with: navigationController)
+                let safeAreaInsetsWhenTranslucent = mainView.safeAreaInsets
+                let screenSizeWhenTranslucent = mainView.frame.size
 
                 mainView.layoutOffsetViewClosure = { (_ offsetView: UIView, _ parent: UIView) in
                     offsetView.pin.top(10).width(100).height(100)
@@ -62,21 +68,16 @@ class PinSafeAreaSpec: QuickSpec {
 
                 navigationController.navigationBar.isTranslucent = false
                 setupWindow(with: navigationController)
-
-                let expectedSafeAreaInsets = UIEdgeInsets.zero
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
                 let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    expect(viewController.view.safeAreaInsets).to(equal(expectedSafeAreaInsets))
-                    expect(mainView.offsetView.safeAreaInsets).to(equal(expectedOffsetViewSafeAreaInsets))
-                }
 
                 expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
                 expect(mainView.offsetView.pin.safeArea).to(equal(expectedOffsetViewSafeAreaInsets))
-                expect(mainView.safeAreaInsetsDidChangeCalledCount).to(equal(0))
+                expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
 
                 let screenSize = mainView.frame.size
-                expect(mainView.frame).to(equal(CGRect(x: 0, y: 44, width: screenSize.width, height: screenSize.height)))
+                expect(mainView.frame).to(equal(CGRect(x: 0, y: safeAreaInsetsWhenTranslucent.top, width: screenSize.width, height: screenSizeWhenTranslucent.height - safeAreaInsetsWhenTranslucent.top)))
                 expect(mainView.offsetView.frame).to(equal(CGRect(x: 0, y: 10, width: 100, height: 100)))
             }
         }

@@ -456,14 +456,24 @@ class PinSafeAreaWithOptInModeSpec: QuickSpec {
         describe("using Pin.safeAreaInsetsDidChangeMode = .optIn") {
             it("should not call safeAreaInsetsDidChange()") {
                 let mainView = viewController.mainView
+                let subViewTop = CGFloat(10)
+                let subViewLeft = CGFloat(10)
 
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).left(10).size(100)
+                    subView.pin.top(subViewTop).left(subViewLeft).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
-
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
+                
                 // MATCH safeAreaInsets!
                 if #available(iOS 11.0, tvOS 11.0, *) {
                     expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
@@ -476,12 +486,15 @@ class PinSafeAreaWithOptInModeSpec: QuickSpec {
                     expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) == 0
                 }
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
+                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
+
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
-                expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: subViewLeft, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
         }
     }

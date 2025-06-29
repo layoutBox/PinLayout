@@ -82,14 +82,8 @@ class ReadableLayoutMargins: QuickSpec {
                 setupWindow(with: viewController)
 
                 aView.pin.all(rootView.pin.readableMargins)
-
-                #if os(iOS)
-                expect(aView.frame).to(equal(CGRect(x: 8, y: 8, width: 384.0, height: 384.0)))
-                #elseif os(tvOS)
-                expect(aView.frame).to(equal(CGRect(x: 88, y: 68, width: 304.0, height: 324.0)))
-                #else
-                expect(aView.frame).to(equal(CGRect(x: 98, y: 68, width: 294.0, height: 324.0)))
-                #endif
+                
+                expect(aView.frame).to(equal(rootView.readableContentGuide.layoutFrame))
             }
         }
 
@@ -98,27 +92,44 @@ class ReadableLayoutMargins: QuickSpec {
                 setupWindow(with: viewController)
 
                 aView.pin.all(rootView.pin.layoutMargins)
-
-                #if os(iOS)
-                expect(aView.frame).to(equal(CGRect(x: 8, y: 8, width: 384.0, height: 384.0)))
-                #elseif os(tvOS)
-                expect(aView.frame).to(equal(CGRect(x: 88, y: 68, width: 304.0, height: 324.0)))
-                #else
-                expect(aView.frame).to(equal(CGRect(x: 98, y: 68, width: 294.0, height: 324.0)))
-                #endif
+                
+                let layoutMargins = rootView.layoutMargins
+                let aViewFrame = CGRect(
+                    x: layoutMargins.left,
+                    y: layoutMargins.top,
+                    width: rootView.frame.width - (layoutMargins.left + layoutMargins.right),
+                    height: rootView.frame.height - (layoutMargins.top + layoutMargins.bottom)
+                )
+                expect(aView.frame).to(equal(aViewFrame))
             }
         }
         
-        #if os(iOS) && compiler(>=5.5)
+        #if os(iOS)
         describe("Using pin.keyboardArea") {
             it("test") {
                 setupWindow(with: viewController)
                 
                 rootView.pin.top(0).horizontally()
-                rootView.pin.bottom(rootView.pin.keyboardArea.minY)
+                rootView.pin.bottom(rootView.pin.keyboardArea.height)
+
+                let keyboardLayoutFrame: CGRect
                 
-                expect(rootView.frame).to(equal(CGRect(x: 0, y: 267, width: 375, height: 400)))
-                expect(rootView.pin.keyboardArea).to(equal(CGRect(x: 0, y: 0, width: 0, height: 0)))
+                if #available(iOS 15, *) {
+                    keyboardLayoutFrame = rootView.keyboardLayoutGuide.layoutFrame
+                } else {
+                    keyboardLayoutFrame = .zero
+                }
+                
+                let screenSize = viewController.view.frame
+                let expectedRootViewFrame = CGRect(
+                    x: .zero,
+                    y: .zero,
+                    width: screenSize.width,
+                    height: screenSize.height - keyboardLayoutFrame.height
+                )
+                
+                expect(rootView.frame).to(equal(expectedRootViewFrame))
+                expect(rootView.pin.keyboardArea).to(equal(keyboardLayoutFrame))
             }
         }
         #endif

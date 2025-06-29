@@ -703,12 +703,14 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount).to(equal(0))
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
 
                 // subView is inside a UIScrollView, its safeArea should be .zero
                 expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))

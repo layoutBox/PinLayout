@@ -141,30 +141,19 @@ class PinSafeAreaSpec: QuickSpec {
                 }
 
                 navigationController.navigationBar.isTranslucent = true
+                viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
                 setupWindow(with: navigationController)
 
-                let expectedSafeAreaInsets: UIEdgeInsets
-                let expectedOffsetViewSafeAreaInsets: UIEdgeInsets
-                let expectedOffsetViewFrame: CGRect
                 let screenSize = mainView.frame.size
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+                let expectedOffsetViewFrame = CGRect(
+                    x: expectedSafeAreaInsets.left,
+                    y: expectedSafeAreaInsets.top,
+                    width: screenSize.width - (expectedSafeAreaInsets.left + expectedSafeAreaInsets.right),
+                    height: screenSize.height - (expectedSafeAreaInsets.top + expectedSafeAreaInsets.bottom)
+                )
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-                    expectedOffsetViewFrame = CGRect(x: 0, y: 44, width: screenSize.width,
-                                                     height: screenSize.height - 44)
-                } else {
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-                    expectedOffsetViewFrame = CGRect(x: 0, y: 44, width: screenSize.width,
-                                                     height: screenSize.height - expectedSafeAreaInsets.top)
-                }
-
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
@@ -175,29 +164,26 @@ class PinSafeAreaSpec: QuickSpec {
 
             it("with OffsetView and AdditionalSafeAreaInsets 2") {
                 let mainView = viewController.mainView
+                let offsetViewTop = CGFloat(10)
 
                 mainView.layoutOffsetViewClosure = { (_ offsetView: UIView, _ parent: UIView) in
-                    offsetView.pin.top(10).width(100).height(100)
-                }
-
-                let expectedSafeAreaInsets: UIEdgeInsets
-                let expectedOffsetViewSafeAreaInsets: UIEdgeInsets
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 44, left: 10, bottom: 0, right: 0)
-                } else {
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
+                    offsetView.pin.top(offsetViewTop).width(100).height(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - offsetViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
+                XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
+                XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
+                
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0

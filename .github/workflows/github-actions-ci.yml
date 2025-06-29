@@ -91,7 +91,7 @@ jobs:
         run: |
           echo "Testing CocoaPods integration..."
           cd TestProjects/cocoapods/ios
-          arch -x86_64 pod install
+          pod install
           set -o pipefail && xcodebuild build \
             -workspace PinLayout-iOS.xcworkspace \
             -scheme PinLayout-iOS \
@@ -103,7 +103,7 @@ jobs:
       # - name: Test CocoaPods macOS Integration
       #   run: |
       #     cd TestProjects/cocoapods/macos
-      #     arch -x86_64 pod install
+      #     pod install
       #     set -o pipefail && xcodebuild build \
       #       -workspace PinLayout-macOS.xcworkspace \
       #       -scheme PinLayout-macOS \
@@ -114,7 +114,7 @@ jobs:
       # - name: Test CocoaPods tvOS Integration
       #   run: |
       #     cd TestProjects/cocoapods/tvos
-      #     arch -x86_64 pod install
+      #     pod install
       #     set -o pipefail && xcodebuild build \
       #       -workspace PinLayout-tvOS.xcworkspace \
       #       -scheme PinLayout-tvOS \

@@ -151,7 +151,7 @@ jobs:
           cd ../../..
 
       - name: Pod Lib Lint
-        run: set -o pipefail && bundle exec pod lib lint --allow-warnings
+        run: set -o pipefail && pod lib lint --allow-warnings
 
       - name: Codecov
         run: bash <(curl -s https://codecov.io/bash) -D /tmp/PinLayout

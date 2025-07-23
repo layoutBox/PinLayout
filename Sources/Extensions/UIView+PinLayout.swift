@@ -37,6 +37,10 @@ extension UIView: Layoutable, SizeCalculable {
         return PinLayoutObjCImpl(view: self, keepTransform: true)
     }
 
+    public var isConsideredVisibleForViewFilters: Bool {
+        return !isHidden && alpha > 0
+    }
+
     public func getRect(keepTransform: Bool) -> CGRect {
         guard !Pin.autoSizingInProgress || autoSizingRect == nil else { return autoSizingRect ?? CGRect.zero }
 

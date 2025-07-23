@@ -7,6 +7,13 @@
 
 # Change Log
 
+## [1.10.6](https://github.com/layoutBox/PinLayout/releases/tag/1.10.6)
+
+#### Fix CI Failures and Improve Test Code
+
+Added by [heoblitz](https://github.com/heoblitz) in Pull Request [#283](https://github.com/layoutBox/PinLayout/pull/283)
+
+
 ## [1.10.5](https://github.com/layoutBox/PinLayout/releases/tag/1.10.5)
 Released on 2023-11-03
 

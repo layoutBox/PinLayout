@@ -84,6 +84,16 @@ public class PinLayout<PinView: Layoutable> {
         apply()
     }
 
+    /// A Boolean value that determines whether the view is included in the PinLayout's size calculation.
+    ///
+    /// An excluded view does not take up space in the layout
+    /// when using `wrapContent(_:padding:_:)` or `autoSizeThatFits(_:layoutClosure:)`.
+    /// The default value is `true`.
+    public var isIncludedInSizeCalculation: Bool {
+        get { return view.isIncludedInSizeCalculation }
+        set { view.isIncludedInSizeCalculation = newValue }
+    }
+
     #if os(iOS) || os(tvOS)
     public var safeArea: PEdgeInsets {
         if let view = view as? UIView {

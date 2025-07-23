@@ -36,3 +36,23 @@ public protocol Layoutable: AnyObject, Equatable, CustomDebugStringConvertible {
 
     func isLTR() -> Bool
 }
+
+private struct pinlayoutAssociatedKeys {
+    static var pinlayoutIsIncludedInSizeCalculation = UnsafeMutablePointer<Int8>.allocate(capacity: 1)
+}
+
+extension Layoutable {
+
+    var isIncludedInSizeCalculation: Bool {
+        get {
+            return objc_getAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInSizeCalculation) as? Bool ?? true
+        }
+        set {
+            objc_setAssociatedObject(self, &pinlayoutAssociatedKeys.pinlayoutIsIncludedInSizeCalculation, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    var subviewsIncludedInSizeCalculation: [PinView] {
+        return subviews.filter(\.isIncludedInSizeCalculation)
+    }
+}

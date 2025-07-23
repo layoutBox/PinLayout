@@ -186,11 +186,11 @@ public enum FitType {
 }
 
 @objc public enum WrapType: Int {
-    /// Adjust the view's width AND height to wrap all its subviews.
+    /// Adjust the view's width AND height to wrap all its subviews that are included in the size calculation.
     case all
-    /// Adjust only the view's width to wrap all its subviews. The view's height won't be modified.
+    /// Adjust only the view's width to wrap all its subviews that are included in the size calculation. The view's height won't be modified.
     case horizontally
-    /// Adjust only the view's height to wrap all its subviews. The view's width won't be modified.
+    /// Adjust only the view's height to wrap all its subviews that are included in the size calculation. The view's width won't be modified.
     case vertically
 }
 

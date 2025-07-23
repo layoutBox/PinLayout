@@ -133,7 +133,7 @@ extension UIView: AutoSizeCalculable {
 
         layoutClosure()
 
-        let boundingRect = subviews.compactMap({ $0.autoSizingRectWithMargins }).reduce(CGRect.zero) { (result: CGRect, autoSizingRect: CGRect) -> CGRect in
+        let boundingRect = subviewsIncludedInSizeCalculation.compactMap({ $0.autoSizingRectWithMargins }).reduce(CGRect.zero) { (result: CGRect, autoSizingRect: CGRect) -> CGRect in
             return result.union(autoSizingRect)
         }
 

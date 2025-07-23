@@ -55,6 +55,12 @@ class PinSafeAreaSpec: QuickSpec {
         describe("using opaque NavigationBar") {
             it("testOpaqueNavigationBar") {
                 let mainView = viewController.mainView
+                mainView.layoutOffsetViewClosure = { _, _ in }
+                navigationController.navigationBar.isTranslucent = true
+
+                setupWindow(with: navigationController)
+                let safeAreaInsetsWhenTranslucent = mainView.safeAreaInsets
+                let screenSizeWhenTranslucent = mainView.frame.size
 
                 mainView.layoutOffsetViewClosure = { (_ offsetView: UIView, _ parent: UIView) in
                     offsetView.pin.top(10).width(100).height(100)
@@ -62,21 +68,16 @@ class PinSafeAreaSpec: QuickSpec {
 
                 navigationController.navigationBar.isTranslucent = false
                 setupWindow(with: navigationController)
-
-                let expectedSafeAreaInsets = UIEdgeInsets.zero
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
                 let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    expect(viewController.view.safeAreaInsets).to(equal(expectedSafeAreaInsets))
-                    expect(mainView.offsetView.safeAreaInsets).to(equal(expectedOffsetViewSafeAreaInsets))
-                }
 
                 expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
                 expect(mainView.offsetView.pin.safeArea).to(equal(expectedOffsetViewSafeAreaInsets))
-                expect(mainView.safeAreaInsetsDidChangeCalledCount).to(equal(0))
+                expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
 
                 let screenSize = mainView.frame.size
-                expect(mainView.frame).to(equal(CGRect(x: 0, y: 44, width: screenSize.width, height: screenSize.height)))
+                expect(mainView.frame).to(equal(CGRect(x: 0, y: safeAreaInsetsWhenTranslucent.top, width: screenSize.width, height: screenSizeWhenTranslucent.height - safeAreaInsetsWhenTranslucent.top)))
                 expect(mainView.offsetView.frame).to(equal(CGRect(x: 0, y: 10, width: 100, height: 100)))
             }
         }
@@ -89,48 +90,46 @@ class PinSafeAreaSpec: QuickSpec {
                     offsetView.pin.all().margin(parent.pin.safeArea)
                 }
 
-                let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+ 
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
-
+                
                 let screenSize = mainView.frame.size
                 XCTAssertEqual(mainView.frame, CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
-                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: 44, width: screenSize.width, height: screenSize.height - 44))
+                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: expectedSafeAreaInsets.top, width: screenSize.width, height: screenSize.height - (expectedSafeAreaInsets.top + expectedSafeAreaInsets.bottom)))
             }
 
             it("with OffsetView") {
+                let offsetViewTop = CGFloat(10)
                 let mainView = viewController.mainView
 
                 mainView.layoutOffsetViewClosure = { (_ offsetView: UIView, _ parent: UIView) in
-                    offsetView.pin.top(10).width(100).height(100)
+                    offsetView.pin.top(offsetViewTop).width(100).height(100)
                 }
-
-                let expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(
+                    top: mainView.safeAreaInsets.top - offsetViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
 
                 let screenSize = mainView.frame.size
                 XCTAssertEqual(mainView.frame, CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
-                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: 10, width: 100, height: 100))
+                XCTAssertEqual(mainView.offsetView.frame, CGRect(x: 0, y: offsetViewTop, width: 100, height: 100))
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
             }
 
@@ -142,30 +141,19 @@ class PinSafeAreaSpec: QuickSpec {
                 }
 
                 navigationController.navigationBar.isTranslucent = true
+                viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
                 setupWindow(with: navigationController)
 
-                let expectedSafeAreaInsets: UIEdgeInsets
-                let expectedOffsetViewSafeAreaInsets: UIEdgeInsets
-                let expectedOffsetViewFrame: CGRect
                 let screenSize = mainView.frame.size
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
+                let expectedOffsetViewFrame = CGRect(
+                    x: expectedSafeAreaInsets.left,
+                    y: expectedSafeAreaInsets.top,
+                    width: screenSize.width - (expectedSafeAreaInsets.left + expectedSafeAreaInsets.right),
+                    height: screenSize.height - (expectedSafeAreaInsets.top + expectedSafeAreaInsets.bottom)
+                )
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-                    expectedOffsetViewFrame = CGRect(x: 0, y: 44, width: screenSize.width,
-                                                     height: screenSize.height - 44)
-                } else {
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets.zero
-                    expectedOffsetViewFrame = CGRect(x: 0, y: 44, width: screenSize.width,
-                                                     height: screenSize.height - expectedSafeAreaInsets.top)
-                }
-
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
@@ -176,29 +164,26 @@ class PinSafeAreaSpec: QuickSpec {
 
             it("with OffsetView and AdditionalSafeAreaInsets 2") {
                 let mainView = viewController.mainView
+                let offsetViewTop = CGFloat(10)
 
                 mainView.layoutOffsetViewClosure = { (_ offsetView: UIView, _ parent: UIView) in
-                    offsetView.pin.top(10).width(100).height(100)
-                }
-
-                let expectedSafeAreaInsets: UIEdgeInsets
-                let expectedOffsetViewSafeAreaInsets: UIEdgeInsets
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    viewController.additionalSafeAreaInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 0)
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 54, left: 10, bottom: 30, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 44, left: 10, bottom: 0, right: 0)
-                } else {
-                    expectedSafeAreaInsets = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-                    expectedOffsetViewSafeAreaInsets = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
+                    offsetView.pin.top(offsetViewTop).width(100).height(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedOffsetViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - offsetViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
-                if #available(iOS 11.0, tvOS 11.0, *) {
-                    XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
-                    XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
-                }
+                XCTAssertEqual(viewController.view.safeAreaInsets, expectedSafeAreaInsets)
+                XCTAssertEqual(mainView.offsetView.safeAreaInsets, expectedOffsetViewSafeAreaInsets)
+                
                 XCTAssertEqual(mainView.pin.safeArea, expectedSafeAreaInsets)
                 XCTAssertEqual(mainView.offsetView.pin.safeArea, expectedOffsetViewSafeAreaInsets)
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
@@ -276,113 +261,163 @@ class PinSafeAreaMoreTestsSpec: QuickSpec {
         describe("navigationbar + subview") {
             it("transluscent navigationbar 1") {
                 let mainView = viewController.mainView
-
+                let subViewTop = CGFloat(10)
+                
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).left(10).size(100)
+                    subView.pin.top(subViewTop).left(10).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
                 expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
 
             it("transluscent navigationbar 2") {
                 let mainView = viewController.mainView
+                let subViewTop = CGFloat(10)
+                let subViewLeft = CGFloat(-10)
 
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).left(-10).size(100)
+                    subView.pin.top(subViewTop).left(subViewLeft).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
-                expect(mainView.subView.frame).to(equal(CGRect(x: -10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: subViewLeft, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
 
             it("transluscent navigationbar 3") {
                 let mainView = viewController.mainView
+                let subViewTop = CGFloat(10)
+                let subViewRight = CGFloat(10)
 
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).right(10).size(100)
+                    subView.pin.top(subViewTop).right(subViewRight).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
                 let screenSize = mainView.frame.size
-                expect(mainView.subView.frame).to(equal(CGRect(x: screenSize.width - 100 - 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: screenSize.width - 100 - subViewRight, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
 
             it("transluscent navigationbar 4") {
                 let mainView = viewController.mainView
-
+                let subViewTop = CGFloat(10)
+                let subViewRight = CGFloat(-10)
+                
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).right(-10).size(100)
+                    subView.pin.top(subViewTop).right(subViewRight).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
                 let screenSize = mainView.frame.size
-                expect(mainView.subView.frame).to(equal(CGRect(x: screenSize.width - 100 + 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: screenSize.width - 100 - subViewRight, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
 
             it("transluscent navigationbar 5") {
                 let mainView = viewController.mainView
+                let subViewTop = CGFloat(-20)
+                let subViewLeft = CGFloat(-10)
+                
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(-20).left(-10).size(100)
+                    subView.pin.top(subViewTop).left(subViewLeft).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
-                expect(mainView.subView.frame).to(equal(CGRect(x: -10, y: -20, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 44, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: subViewLeft, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
         }
     }
@@ -421,14 +456,24 @@ class PinSafeAreaWithOptInModeSpec: QuickSpec {
         describe("using Pin.safeAreaInsetsDidChangeMode = .optIn") {
             it("should not call safeAreaInsetsDidChange()") {
                 let mainView = viewController.mainView
+                let subViewTop = CGFloat(10)
+                let subViewLeft = CGFloat(10)
 
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).left(10).size(100)
+                    subView.pin.top(subViewTop).left(subViewLeft).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
-
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
+                
                 // MATCH safeAreaInsets!
                 if #available(iOS 11.0, tvOS 11.0, *) {
                     expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
@@ -441,12 +486,15 @@ class PinSafeAreaWithOptInModeSpec: QuickSpec {
                     expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) == 0
                 }
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
+                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
+
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
-                expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: subViewLeft, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
         }
     }
@@ -485,24 +533,34 @@ class PinSafeAreaWithOptInInsetsUpdateModeSpec: QuickSpec {
                 Pin.safeAreaInsetsDidChangeMode = .optIn
                 
                 let mainView = viewController.mainView
-
+                let subViewTop = CGFloat(10)
+                let subViewLeft = CGFloat(10)
+                
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).left(10).size(100)
+                    subView.pin.top(subViewTop).left(subViewLeft).size(100)
                 }
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
-//                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
+                expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
                 expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
         }
     }
@@ -546,27 +604,36 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
         describe("navigationbar + tabbar + subview") {
             it("translucent navigation bar") {
                 let mainView = viewController.mainView
+                let subViewTop = CGFloat(10)
+                let subViewLeft = CGFloat(10)
 
                 mainView.layoutOffsetViewClosure = { (_ subView: UIView, _ parent: UIView) in
-                    subView.pin.top(10).left(10).size(100)
+                    subView.pin.top(subViewTop).left(subViewLeft).size(100)
                 }
 
-//                navigationController.navigationBar.barStyle = .blackTranslucent
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = UIEdgeInsets(
+                    top: expectedSafeAreaInsets.top - subViewTop,
+                    left: .zero,
+                    bottom: .zero,
+                    right: .zero
+                )
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 49.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 34.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
                 let screenSize = mainView.frame.size
                 expect(mainView.frame).to(equal(CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)))
-                expect(mainView.subView.frame).to(equal(CGRect(x: 10, y: 10, width: 100, height: 100)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 34, width: 40, height: 40)))
+                expect(mainView.subView.frame).to(equal(CGRect(x: subViewLeft, y: subViewTop, width: 100, height: 100)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
         }
 
@@ -580,18 +647,21 @@ class PinSafeAreaTabBarControllerSpec: QuickSpec {
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
+                let expectedSubViewSafeAreaInsets = expectedSafeAreaInsets
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount) > 0
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 49.0, right: 0.0)))
-                expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 49.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
+                expect(mainView.subView.pin.safeArea).to(equal(expectedSubViewSafeAreaInsets))
                 expect(mainView.subView.subViewB!.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
 
                 let screenSize = mainView.frame.size
                 expect(mainView.subView.frame).to(equal(CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)))
-                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: 44, width: 40, height: 40)))
+                expect(mainView.subView.subViewB!.frame).to(equal(CGRect(x: 0, y: expectedSubViewSafeAreaInsets.top, width: 40, height: 40)))
             }
         }
     }
@@ -633,12 +703,14 @@ class PinSafeAreaScrollViewControllerSpec: QuickSpec {
 
                 navigationController.navigationBar.isTranslucent = true
                 setupWindow(with: navigationController)
+                
+                let expectedSafeAreaInsets = mainView.safeAreaInsets
 
                 // MATCH safeAreaInsets!
                 expect(mainView.safeAreaInsetsDidChangeCalledCount) > 0
                 expect(mainView.subView.safeAreaInsetsDidChangeCalledCount).to(equal(0))
 
-                expect(mainView.pin.safeArea).to(equal(UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)))
+                expect(mainView.pin.safeArea).to(equal(expectedSafeAreaInsets))
 
                 // subView is inside a UIScrollView, its safeArea should be .zero
                 expect(mainView.subView.pin.safeArea).to(equal(UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)))
